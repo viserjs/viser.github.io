@@ -193,13 +193,14 @@ new Vue({
 
   getJsfiddleJsonData(index) {
     const code = this.attrs.codes[index]['jsonCode'];
+    code.config.chart.container = 'example';
     const config = JSON.stringify(code.config, null, 2);
     const data = {
       js: `var config = ${config};
 Viser.default(config);
       `,
       html: `<script src="${CONS.URL.viser}"></script>
-<div id="example${index}"></div>`,
+<div id="example"></div>`,
       panel_css: 1,
       panel_js: 3
     };
