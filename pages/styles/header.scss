@@ -1,0 +1,91 @@
+.common-header {
+  height: 60px;
+  line-height: 60px;
+  display: block;
+  outline: 0;
+  list-style: none;
+  color: #666;
+  font-size: 14px;
+  position: relative;
+  background: #00c49f;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+  .common-title {
+    float: left;
+    margin-left: -30px;
+    padding-left: 60px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 36px;
+    font-weight: 100;
+    height: 60px;
+    line-height: 60px;
+    display: block;
+    background: #0088fe;
+    width: 260px;
+    box-sizing: border-box;
+    border-radius: 60px;
+    &::before {
+      content: ' ';
+      display: block;
+      margin-top: 10px;
+      height: 36px;
+      width: 110px;
+      float: left;
+      background: url('//img.alicdn.com/tfs/TB1HxTId4rI8KJjy0FpXXb5hVXa-282-96.png');
+      background-size: auto 36px;
+      background-repeat: no-repeat;
+    }
+  }
+  .common-header-nav {
+    width: 500px;
+    height: 60px;
+    box-sizing: border-box;
+    padding-top: 13px;
+    float: right;
+    margin-right: 126px;
+  }
+  .common-header-nav-item {
+    color: white;
+    display: block;
+    width: 130px;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 34px;
+    font-size: 14px;
+    float: right;
+    text-decoration: none;
+    text-align: center;
+    transition: background .3s, color .3s;
+  }
+  .common-header-nav-item:hover {
+    color: #00c49f;
+    background: white;
+  }
+  .github-link {
+    color: white;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    display: block;
+    float: right;
+    margin-left: 48px;
+  }
+  .github-link .iconfont {
+    height: 29px;
+    width: 29px;
+    overflow: hidden;
+    font-size: 28px;
+  }
+  .github-link .icon-gh {
+    display: none;
+  }
+  .github-link .icon-gh-o {
+    display: block;
+  }
+  .github-link:hover .icon-gh {
+    display: block;
+  }
+  .github-link:hover .icon-gh-o {
+    display: none;
+  }
+}

@@ -1,0 +1,17 @@
+#main-content {
+  position: relative;
+  height: 100%;
+  .left-panel {
+    float: left;
+    width: 200px;
+    height: 100%;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    padding-top: 20px;
+  }
+  .right-panel {
+    overflow: hidden;
+    min-height: 100%;
+    padding: 20px;
+  }
+}

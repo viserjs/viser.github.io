@@ -3,28 +3,25 @@ import { render } from 'react-dom';
 import { HashRouter, Route, Link } from 'react-router-dom';
 import components from './components';
 require('./index.scss');
-require('./markdown.scss');
 
 class App extends React.Component {
   render() {
     return (
       <div>
         <div className="left-panel">
-          <div className="nav-children">
+          <div className="common-nav">
             {
               Object.keys(components).map((folderKey) => {
                 const itemsInFolder = components[folderKey];
                 return (
-                  <div key={`folder-${folderKey}`}>
-                    <h3>{folderKey}</h3>
-                    <ul className="nav-list">
+                  <div className="common-nav-folder" key={`folder-${folderKey}`}>
+                    <h3 className="common-nav-title">{folderKey}</h3>
+                    <ul className="common-nav-list">
                       {
                         Object.keys(itemsInFolder).map((key) => {
                           return (
-                            <li key={`component-${folderKey}-${key}`}>
-                              <Link className="nav-link" to={`/${folderKey.toLowerCase()}/${key.toLowerCase()}`}>
-                                <span className="nav-link-zh">{key}</span>
-                              </Link>
+                            <li className="common-nav-item" key={`component-${folderKey}-${key}`}>
+                              <Link className="common-nav-link" to={`/${folderKey.toLowerCase()}/${key.toLowerCase()}`}>{key}</Link>
                             </li>
                           );
                         })
@@ -37,7 +34,7 @@ class App extends React.Component {
           </div>
         </div>
         <div className="right-panel">
-          <div className="api-container">{this.props.children}</div>
+          {this.props.children}
         </div>
       </div>
     )

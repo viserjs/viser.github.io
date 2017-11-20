@@ -14,7 +14,7 @@ $ npm install viser
 The UMD build is also available on unpkg.com  ( unpkg )   :
 
 ```html
-<script src="https://unpkg.com/viser/umd/Viser.min.js"></script>
+<script src="https://unpkg.com/viserjs/umd/Viser.min.js"></script>
 ```
 
 You can find the library on window.Viser
@@ -23,7 +23,7 @@ You can find the library on window.Viser
 ### Dev Build
 
 ```bash
-$ git clone https://github.com/viser/viser.git
+$ git clone https://github.com/viserjs/viser.git
 $ cd viser
 $ npm install
 $ npm run build
