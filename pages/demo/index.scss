@@ -6,92 +6,76 @@
 
 #main-content {
   .case-type {
-    border-left: 5px solid #2d8cf0;
     padding: 5px 10px;
     background: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
   }
   .case-list {
     .case-box {
-      margin-top: 5px;
-      border: 1px solid #eee;
-      border-radius: 5px;
+      margin: 20px 0 20px;
       background: #fff;
       position: relative;
       transition: all .2s ease-in-out;
-      .index-bg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 0;
-        height: 0;
-        border-top: 80px solid #2d8cf0;
-        border-right: 80px solid transparent;
-      }
-      .index {
-        position: absolute;
-        left: 0;
-        top: 0;
-        padding: 10px 20px;
-        font-size: 26px;
-        color: #fff;
+
+      .op {
+        .index {
+          font-size: 20px;
+          line-height: 28px;
+          color: #666;
+          margin-right: 10px;
+        }
+        a {
+          cursor: pointer;
+          padding: 3px 16px;
+          display: inline-block;
+          background: #0088fe;
+          border-radius: 4px;
+          color: #fff;
+          i {
+            color: #fff;
+          }
+        }
+        a:hover {
+          background: #2d8cf0;
+          color: #fff;
+          i {
+            color: #fff;
+          }
+        }
       }
     }
-      .case-demo,
-      .case-code {
-        display: inline-block;
-        width: 48%;
-        height: 400px;
-        overflow: hidden;
+    .case-demo,
+    .case-code {
+      display: inline-block;
+      width: 48%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+      padding: 15px;
+      box-sizing: border-box;
+      .case-code-detail {
+        height: 340px;
+        width: 100%;
+        overflow-y: auto;
         position: relative;
-        padding: 15px;
-        box-sizing: border-box;
-        .case-code-detail {
-          height: 340px;
-          width: 100%;
-          overflow-y: auto;
-          position: relative;
-          pre {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-          }
-        }
-        .op {
+        pre {
           position: absolute;
+          top: 0;
+          right: 0;
           bottom: 0;
-          background: #fff;
-          width: 100%;
-          border-top: 1px solid #eee;
-          padding: 5px 0;
-          a {
-            cursor: pointer;
-            padding: 2px 15px;
-            background: #edf1f5;
-            display: inline-block;
-          }
-          a:hover {
-            background: #2d8cf0;
-            color: #fff;
-            i {
-              color: #fff;
-            }
-          }
+          left: 0;
         }
       }
-      .case-split {
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 48%;
-        border: 1px dashed #eee;
-      }
-      &:hover {
-        box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
-      }
+    }
+    .case-split {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 48%;
+      border: 1px dashed #eee;
+    }
   }
   .case-box.no-code {
     padding: 15px;

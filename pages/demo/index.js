@@ -142,11 +142,11 @@ class App {
       $('.case-list').append(caseBoxJsonTpl({i}));
       var editor = ace.edit(`code${i}`);
       const showCode = JSON.stringify(code.config, null, 2);
-      editor.setTheme("ace/theme/textmate");
+      editor.env.editor.setTheme("ace/theme/textmate");
+      editor.env.editor.setShowPrintMargin(false);
       editor.env.editor.setReadOnly(true);
       editor.renderer.setShowGutter(false);
       editor.env.editor.setValue(showCode, 1);
-
       code.config.chart.container = `example${i}`;
       Viser.default(code.config);
     });
@@ -188,6 +188,7 @@ new Vue({
       var editor = ace.edit(`code${i}`);
       const showCode = `${vueTpl}${scriptCode}`;
       editor.setTheme("ace/theme/textmate");
+      editor.env.editor.setShowPrintMargin(false);
       editor.env.editor.setReadOnly(true);
       editor.renderer.setShowGutter(false);
       editor.env.editor.setValue(showCode, 1);
@@ -231,6 +232,7 @@ ReactDOM.render(${code.template}, document.getElementById('example${i}'))`;
       $('.case-list').append(caseBoxReactTpl({ i }));
       var editor = ace.edit(`code${i}`);
       editor.setTheme("ace/theme/textmate");
+      editor.env.editor.setShowPrintMargin(false);
       editor.env.editor.setReadOnly(true);
       editor.renderer.setShowGutter(false);
       editor.env.editor.setValue(scriptCode, 1);
