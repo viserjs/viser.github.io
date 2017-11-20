@@ -1,101 +1,64 @@
+const data = [
+  { country: 'Europe', year: '1750', value: 163 },
+  { country: 'Europe', year: '1800', value: 203 },
+  { country: 'Europe', year: '1850', value: 276 },
+  { country: 'Europe', year: '1900', value: 408 },
+  { country: 'Europe', year: '1950', value: 547 },
+  { country: 'Europe', year: '1999', value: 729 },
+  { country: 'Europe', year: '2050', value: 628 },
+  { country: 'Europe', year: '2100', value: 828 },
+  { country: 'Asia', year: '1750', value: 502 },
+  { country: 'Asia', year: '1800', value: 635 },
+  { country: 'Asia', year: '1850', value: 809 },
+  { country: 'Asia', year: '1900', value: 947 },
+  { country: 'Asia', year: '1950', value: 1402 },
+  { country: 'Asia', year: '1999', value: 3634 },
+  { country: 'Asia', year: '2050', value: 5268 },
+  { country: 'Asia', year: '2100', value: 7268 }
+];
+const dataPre = {
+  transform: {
+    type: 'percent',
+    field: 'value',
+    dimension: 'country',
+    groupBy: ['year'],
+    as: 'percent'
+  }
+};
+const dataMapping = [{
+  dataKey: 'year',
+  mark: 'column',
+}, {
+  dataKey: 'percent',
+  mark: 'row',
+}, {
+  dataKey: 'country',
+  mark: 'color',
+}];
+
+const scale = [{
+  dataKey: 'percent',
+  min: 0,
+  formatter: '.2%',
+}];
+
 export const config = {
-  data: [
-    {age: '5', gender: '女性', mean: 101, lower: 93, upper: 109 },
-    {age: '10', gender: '女性', mean: 120, lower: 110, upper: 124},
-    {age: '15', gender: '女性', mean: 150, lower: 134, upper: 165},
-    {age: '20', gender: '女性', mean: 167, lower: 151.6, upper: 178},
-    {age: '25', gender: '女性', mean: 175, lower: 156.7, upper: 181},
-    {age: '30', gender: '女性', mean: 175, lower: 160, upper: 181},
-    {age: '35', gender: '女性', mean: 173, lower: 156, upper: 181},
-    {age: '40', gender: '女性', mean: 170, lower: 152, upper: 173},
-    {age: '45', gender: '女性', mean: 170, lower: 154, upper: 176},
-    {age: '50', gender: '女性', mean: 163, lower: 149, upper: 166},
-    {age: '5', gender: '男性', mean: 104, lower: 101, upper: 111},
-    {age: '10', gender: '男性', mean: 130, lower: 120, upper: 134},
-    {age: '15', gender: '男性', mean: 165, lower: 149, upper: 180},
-    {age: '20', gender: '男性', mean: 178, lower: 152.6, upper: 193},
-    {age: '25', gender: '男性', mean: 185, lower: 166.7, upper: 194},
-    {age: '30', gender: '男性', mean: 183, lower: 158, upper: 189},
-    {age: '35', gender: '男性', mean: 182, lower: 165, upper: 192},
-    {age: '40', gender: '男性', mean: 180, lower: 172, upper: 190},
-    {age: '45', gender: '男性', mean: 182, lower: 166, upper: 188},
-    {age: '50', gender: '男性', mean: 177, lower: 163, upper: 192},
-  ],
-  dataDef: [
-    {
-      key: 'age',
-      mark: 'column',
-      scale: {},
-    }, {
-      key: 'gender',
-      mark: 'color',
-      scale: {},
-    },
-    {
-      key: 'mean',
-      mark: 'row',
-      scale: {},
-    },
-  ],
-  axis: [{
-    dataKey: 'age',
-    show: true,
-    position: 'bottom',
-    line: 'normal',   // 可选 normal  bold
-    label: {
-      textStyle: 'bold',  // 可选 normal  bold
-    },
-    title: {
-      textStyle: 'bold',   // 可选 normal  bold
-    },
-    tickLine: 'bold',   // 可选 normal  bold
-    subTickCount: 5,
-    subTickLine: 'normal',
-    grid: 'background',  // 可选 line  background
-    name: {
-      value: 'age',
-      position: 'right'
-    },
-  }, {
-    dataKey: 'mean',
-    show: true,
-    position: 'left',
-    name: {
-      value: 'mean',
-      position: 'top'
-    },
+  data,
+  dataPre,
+  dataMapping,
+  scale,
+  axis: true,
+  tooltip: true,
+  series: [{
+    quickType: 'line',
+    style: {
+      stroke: 'red',
+      lineWidth: 1
+    }
   }],
-  legend: {
-    position: 'bottom',
-    name: '性别',
-    // formatter: (v: any) => {
-    //   return v;
-    // },
-    label: {
-      fill: 'blue',
-      fontSize: 14,
-      shape: 'diamond',
-    },
-  },
-  tooltip: {
-    show: false,
-    showTitle: false,
-    offset: 0,
-    crosshairs: {
-      type: 'y',
-      stroke: '#aaa',
-      lineWidth: '2',
-      lineDash: [1, 1],
-    },
-  },
-  series: {
-    position: ['age', 'mean'],
-    gemo: 'area',
-  },
   chart: {
-    type: 'commonChart',
     container: 'example1',
-    width: 550,
+    forceFit: true,
     height: 400,
   },
 };
