@@ -47,7 +47,7 @@
   .common-header-nav-item {
     color: white;
     display: block;
-    width: 130px;
+    width: 150px;
     height: 34px;
     line-height: 34px;
     border-radius: 34px;
@@ -56,10 +56,38 @@
     text-decoration: none;
     text-align: center;
     transition: background .3s, color .3s;
+    position: relative;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    .language-type {
+      position: absolute;
+      left: 15px;
+      top: 34px;
+      z-index: 20;
+      background: #fff;
+      display: none;
+      border: 1px solid #eee;
+      border-top: none;
+    }
+    &:hover .language-type {
+      display: block;
+      transition: all .3s;
+    }
+    .language-type li {
+      width: 100px;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 10px;
+    }
   }
   .common-header-nav-item:hover {
-    color: #00c49f;
     background: white;
+  }
+  .common-header-nav-item:hover a,
+  .common-header-nav-item:hover i {
+    color: #00c49f;
   }
   .github-link {
     color: white;

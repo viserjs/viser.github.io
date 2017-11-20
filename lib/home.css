@@ -166,7 +166,7 @@ header.home-header .home-nav {
 header.home-header .home-nav-item {
   color: white;
   display: block;
-  width: 130px;
+  width: 150px;
   height: 34px;
   line-height: 34px;
   border-radius: 34px;
@@ -175,10 +175,38 @@ header.home-header .home-nav-item {
   text-decoration: none;
   text-align: center;
   transition: background .3s, color .3s;
+  position: relative;
 }
 header.home-header .home-nav-item:hover {
-  color: #00c49f;
   background: white;
+}
+header.home-header .home-nav-item a {
+  text-decoration: none;
+  color: #fff;
+}
+header.home-header .home-nav-item:hover a,
+header.home-header .home-nav-item:hover i {
+  color: #00c49f;
+}
+header.home-header .home-nav-item .language-type {
+  position: absolute;
+  left: 15px;
+  top: 34px;
+  z-index: 20;
+  background: #fff;
+  display: none;
+  border: 1px solid #eee;
+  border-top: none;
+}
+header.home-header .home-nav-item:hover .language-type {
+  display: block;
+  transition: all .3s;
+}
+header.home-header .home-nav-item .language-type li {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
 }
 header.home-header .github-link {
   color: white;

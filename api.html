@@ -15,12 +15,25 @@
     <div class="common-header">
       <a href="/" class="common-title"></a>
       <nav class="common-header-nav">
-        <a class="github-link" href="https://github.com/viserjs/viser" target="_blank">
-          <i class="iconfont icon-gh"></i>
-          <i class="iconfont icon-gh-o"></i>
-        </a>
-        <a class="common-header-nav-item demo-link" href="/demo.html">案例</a>
-        <a class="common-header-nav-item api-link" href="/api.html">文档</a>
+        <div class="common-header-nav-item">
+            <a class="github-link" href="https://github.com/viserjs/viser" target="_blank">
+              <i class="iconfont icon-gh"></i>
+              <i class="iconfont icon-gh-o"></i>
+            </a>
+          </div>
+          <div class="common-header-nav-item">
+            <a class="demo-link" href="/demo.html">案例</a>
+            <i class="iconfont icon-down-triangle"></i>
+            <ul class="language-type">
+              <li><a href="/demo.html?language=json">json</a></li>
+              <li><a href="/demo.html?language=react">react</a></li>
+              <li><a href="/demo.html?language=vue">vue</a></li>
+              <li><a href="/demo.html?language=angular">angular</a></li>
+            </ul>
+          </div>
+          <div class="common-header-nav-item">
+            <a class="api-link" href="/api.html">文档</a>
+          </div>
       </nav>
     </div>
     <div class="main-content" id="main-content">
