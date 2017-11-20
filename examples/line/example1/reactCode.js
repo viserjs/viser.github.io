@@ -1,43 +1,41 @@
 export const config = `{
   data: [
-    { month: 'Jan', Tokyo: 7.0, London: 3.9 },
-    { month: 'Feb', Tokyo: 6.9, London: 4.2 },
-    { month: 'Mar', Tokyo: 9.5, London: 5.7 },
-    { month: 'Apr', Tokyo: 14.5, London: 8.5 },
-    { month: 'May', Tokyo: 18.4, London: 11.9 },
-    { month: 'Jun', Tokyo: 21.5, London: 15.2 },
-    { month: 'Jul', Tokyo: 25.2, London: 17.0 },
-    { month: 'Aug', Tokyo: 26.5, London: 16.6 },
-    { month: 'Sep', Tokyo: 23.3, London: 14.2 },
-    { month: 'Oct', Tokyo: 18.3, London: 10.3 },
-    { month: 'Nov', Tokyo: 13.9, London: 6.6 },
-    { month: 'Dec', Tokyo: 9.6, London: 4.8 }
+    { country: 'Europe', year: '1750', value: 163 },
+    { country: 'Europe', year: '1800', value: 203 },
+    { country: 'Europe', year: '1850', value: 276 },
+    { country: 'Europe', year: '1900', value: 408 },
+    { country: 'Europe', year: '1950', value: 547 },
+    { country: 'Europe', year: '1999', value: 729 },
+    { country: 'Europe', year: '2050', value: 628 },
+    { country: 'Europe', year: '2100', value: 828 },
+    { country: 'Asia', year: '1750', value: 502 },
+    { country: 'Asia', year: '1800', value: 635 },
+    { country: 'Asia', year: '1850', value: 809 },
+    { country: 'Asia', year: '1900', value: 947 },
+    { country: 'Asia', year: '1950', value: 1402 },
+    { country: 'Asia', year: '1999', value: 3634 },
+    { country: 'Asia', year: '2050', value: 5268 },
+    { country: 'Asia', year: '2100', value: 7268 }
   ],
   dataPre: {
-    transform: [{
-      type: 'fold',
-      fields: ['Tokyo', 'London'],
-      key: 'city',
-      value: 'temperature',
-    }]
+    transform: {
+      type: 'percent',
+      field: 'value',
+      dimension: 'country',
+      groupBy: ['year'],
+      as: 'percent'
+    }
   },
-  dataDef: [
-    {
-      key: 'month',
-      mark: 'column',
-      scale: {
-        range: [0, 1],
-      },
-    }, {
-      key: 'city',
-      mark: 'color',
-      scale: {},
-    }, {
-      key: 'temperature',
-      mark: 'row',
-      scale: {},
-    },
-  ],
+  dataMapping: [{
+    dataKey: 'year',
+    mark: 'column',
+  }, {
+    dataKey: 'percent',
+    mark: 'row',
+  }, {
+    dataKey: 'country',
+    mark: 'color',
+  }],
   axis: [{
     show: true,
     dataKey: 'temperature',
@@ -47,27 +45,24 @@ export const config = `{
       }
     }
   }],
-  legend: true,
-  tooltip: {
-    crosshairs: {
-      type: 'line'
-    }
-  },
+  scale: [{
+    dataKey: 'percent',
+    min: 0,
+    formatter: '.2%',
+  }],
+  axis: true,
+  tooltip: true,
   series: [{
-    quickType: 'smoothLine',
-    size: 2,
-  }, {
-    quickType: 'point',
-    size: 4,
+    quickType: 'line',
     style: {
-      stroke: '#fff',
-      lineWidth: 1,
-    },
+      stroke: 'red',
+      lineWidth: 1
+    }
   }],
   chart: {
-    container: 'demo2',
-    width: 400,
-    height: 300,
+    container: 'example1',
+    forceFit: true,
+    height: 400,
   },
 }`;
 
@@ -78,12 +73,10 @@ var labelFormatter = function (val) {
 
 export const template = `
 <div>
-  <Chart width={500} height={380} data={config.data} dataPre={config.dataPre} dataDef={config.dataDef}>
-    <SmoothLine size={2} />
-    <Point size={4} style={{ stroke: '#fff', lineWidth: 1 }} />
-    <Tooltip crosshairs={{ type: 'line' }} />
-    <Legend />
-    <Axis dataKey="temperature" label={{ formatter: labelFormatter.bind(this)}} />
+  <Chart forceFit height={400} data={data} dataPre={dataPre} dataMapping={dataMapping} scale={scale}>
+    <Tooltip />
+    <Axis />
+    <Line style={{ stroke: 'red', lineWidth: 1 }} />
   </Chart>
 </div>
 `;
