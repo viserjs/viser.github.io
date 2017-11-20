@@ -11,22 +11,6 @@
   &:hover, &.active {
     background: #edf1f5;
   }
-  .language-type {
-    position: absolute;
-    left: 0;
-    z-index: 20;
-    background: #fff;
-    display: none;
-    border: 1px solid #eee;
-    border-top: none;
-    box-shadow: 5px 5px 5px #eee;
-    li {
-      width: 120px;
-      height: 40px;
-      line-height: 40px;
-      padding: 0 10px;
-    }
-  }
 }
 .common-nav-title {
   color: #999;

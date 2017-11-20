@@ -11,8 +11,7 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
   .common-title {
     float: left;
-    margin-left: -30px;
-    padding-left: 60px;
+    padding-left: 30px;
     color: #fff;
     text-decoration: none;
     font-size: 36px;
@@ -21,9 +20,9 @@
     line-height: 60px;
     display: block;
     background: #0088fe;
-    width: 260px;
+    width: 200px;
     box-sizing: border-box;
-    border-radius: 60px;
+
     &::before {
       content: ' ';
       display: block;
@@ -34,6 +33,19 @@
       background: url('//img.alicdn.com/tfs/TB1HxTId4rI8KJjy0FpXXb5hVXa-282-96.png');
       background-size: auto 36px;
       background-repeat: no-repeat;
+    }
+
+    &::after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: -26px;
+      left: 160px;
+      width: 80px;
+      height: 80px;
+      transform: rotate(-30deg);
+      background: #0088fe;
+      border-radius: 20px;
     }
   }
   .common-header-nav {
@@ -47,7 +59,7 @@
   .common-header-nav-item {
     color: white;
     display: block;
-    width: 150px;
+    width: 130px;
     height: 34px;
     line-height: 34px;
     border-radius: 34px;
@@ -57,29 +69,39 @@
     text-align: center;
     transition: background .3s, color .3s;
     position: relative;
+    cursor: pointer;
     a {
       text-decoration: none;
       color: #fff;
     }
     .language-type {
       position: absolute;
-      left: 15px;
+      left: 5px;
       top: 34px;
       z-index: 20;
       background: #fff;
       display: none;
       border: 1px solid #eee;
       border-top: none;
+      >li {
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 10px;
+        cursor: pointer;
+        &:hover {
+          background: #00c49f;
+          >a {
+            color: white;
+          }
+        }
+      }
     }
-    &:hover .language-type {
-      display: block;
-      transition: all .3s;
-    }
-    .language-type li {
-      width: 100px;
-      height: 40px;
-      line-height: 40px;
-      padding: 0 10px;
+    &:hover {
+      .language-type {
+        display: block;
+        transition: all .3s;
+      }
     }
   }
   .common-header-nav-item:hover {
