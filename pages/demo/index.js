@@ -34,10 +34,24 @@ class App {
     this.attrs.chartType = chartType;
     const exampleFolders = codeConfig[chartType].examples || [];
     exampleFolders.forEach((folder) => {
-      const code = require(`../../examples/${chartType}/${folder}/${lang}Code.js`);
-      this.attrs.codes.push(code);
-    });
+      let jsonCode = '';
+      let reactCode = '';
+      let vueCode = '';
+      let angularCode = '';
+      try {
+        jsonCode = require(`../../examples/${chartType}/${folder}/jsonCode.js`);
+        reactCode = require(`../../examples/${chartType}/${folder}/reactCode.js`);
+        vueCode = require(`../../examples/${chartType}/${folder}/vueCode.js`);
+        angularCode = require(`../../examples/${chartType}/${folder}/angularCode.js`);
+      } catch(e) {
+        console.log('exception:', e);
+      } finally {
+        this.attrs.codes.push({
+          jsonCode, reactCode, vueCode, angularCode
+        });
+      }
 
+    });
 
     this.render();
   }
@@ -69,23 +83,23 @@ class App {
 
       const data = _this.getJsfiddleData(index);
       const formAttributes = {
-          method: 'post',
-          action: 'https://jsfiddle.net/api/post/library/pure/',
-          target: '_blank',
-          id: 'fiddle-form',
-          style: 'display: none;'
+        method: 'post',
+        action: 'https://jsfiddle.net/api/post/library/pure/',
+        target: '_blank',
+        id: 'fiddle-form',
+        style: 'display: none;'
       }
 
       const node = document.createElement('textarea');
       const form = document.createElement('form');
       for (const attr in formAttributes) {
-          form.setAttribute(attr, formAttributes[attr]);
+        form.setAttribute(attr, formAttributes[attr]);
       }
 
       for (let name in data) {
-          node.name = name;
-          node.value = data[name].toString();
-          form.appendChild(node.cloneNode());
+        node.name = name;
+        node.value = data[name].toString();
+        form.appendChild(node.cloneNode());
       }
 
       document.body.appendChild(form);
@@ -101,7 +115,7 @@ class App {
       case 'react':
         return this.getJsfiddleReactData(index);
       case 'vue':
-      return this.getJsfiddleVueData(index);
+        return this.getJsfiddleVueData(index);
       case 'angular':
         return;
       case 'rax':
@@ -113,19 +127,35 @@ class App {
   }
 
   renderExample() {
+    const _this = this;
+    if (!this.attrs.codes.length) {
+      return;
+    }
+    $('.case-list').empty();
+    this.attrs.codes.forEach((code, i) => {
+      $('.case-list').append(caseBoxJsonTpl({i}));
+      const runCode = code['jsonCode'];
+      runCode.config.chart.container = `example${i}`;
+      Viser.default(runCode.config);
+
+      var editor = ace.edit(`code${i}`);
+      const showCode = _this.getShowCode(code, i);
+      editor.setTheme("ace/theme/textmate");
+      editor.env.editor.setReadOnly(true);
+      editor.renderer.setShowGutter(false);
+      editor.env.editor.setValue(showCode, 1);
+    });
+  }
+
+  getShowCode(code, i) {
     const language = this.attrs.language;
     switch(language) {
       case 'json':
-        this.renderJson();
-        break;
+        return this.getJsonCode(code);
       case 'react':
-        this.renderReact();
-        break;
-      case 'rax':
-        break;
+        return this.getReactCode(code);
       case 'vue':
-        this.renderVue();
-        break;
+        return this.getVueCode(code);
       case 'angular':
         break;
       default:
@@ -133,26 +163,36 @@ class App {
     }
   }
 
-  renderJson() {
-    if (!this.attrs.codes.length) {
-      return;
-    }
-    $('.case-list').empty();
-    this.attrs.codes.forEach((code, i) => {
-      $('.case-list').append(caseBoxJsonTpl({i}));
-      var editor = ace.edit(`code${i}`);
-      const showCode = JSON.stringify(code.config, null, 2);
-      editor.setTheme("ace/theme/textmate");
-      editor.env.editor.setReadOnly(true);
-      editor.renderer.setShowGutter(false);
-      editor.env.editor.setValue(showCode, 1);
-
-      code.config.chart.container = `example${i}`;
-      Viser.default(code.config);
-    });
+  getJsonCode(code) {
+    return JSON.stringify(code['jsonCode'].config, null, 2);
   }
+  getReactCode(code) {
+    const languageCode = code[`reactCode`];
+    const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
+    return `
+var config = ${jsonCode};
+${languageCode.script || ''}
+ReactDOM.render(${languageCode.template}, document.getElementById('example'))`;
+  }
+
+  getVueCode(code) {
+    const languageCode = code[`vueCode`];
+    const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
+    let vueTpl = `<div id="example">${languageCode.template}</div>`;
+    let scriptCode = `
+var config = ${jsonCode}
+new Vue({
+  el: '#example',
+  data: {
+    config,
+  }
+});
+`;
+    return `${vueTpl}${scriptCode}`;
+  }
+
   getJsfiddleJsonData(index) {
-    const code = this.attrs.codes[index];
+    const code = this.attrs.codes[index]['jsonCode'];
     const config = JSON.stringify(code.config, null, 2);
     const data = {
       js: `var config = ${config};
@@ -167,39 +207,11 @@ Viser.default(config);
   }
 
 
-  renderVue() {
-    if (!this.attrs.codes.length) {
-      return;
-    }
-    $('.case-list').empty();
-    this.attrs.codes.forEach((code, i) => {
-      const vueTpl = `<div id="example${i}">${code.tpl}</div>`;
-      const scriptCode = `
-var config = ${code.config}
-new Vue({
-  el: '#example${i}',
-  data: {
-    config,
-  }
-});
-`;
-
-      $('.case-list').append(caseBoxVueTpl({ tpl: vueTpl, i }));
-      var editor = ace.edit(`code${i}`);
-      const showCode = `${vueTpl}${scriptCode}`;
-      editor.setTheme("ace/theme/textmate");
-      editor.env.editor.setReadOnly(true);
-      editor.renderer.setShowGutter(false);
-      editor.env.editor.setValue(showCode, 1);
-      $('.case-list').append(`<script type="text/javascript">${scriptCode}</script>`);
-    });
-  }
-
   getJsfiddleVueData(index) {
-    const code = this.attrs.codes[index];
-    const config = JSON.stringify(code.config, null, 2);
+    const {vueCode, jsonCode} = this.attrs.codes[index];
+    const config = JSON.stringify(jsonCode.config, null, 2);
     const data = {
-      js: `var config = ${code.config};
+      js: `var config = ${config};
 new Vue({
   el: '#example',
   data: {
@@ -210,47 +222,26 @@ new Vue({
       html: `
 <script src="${CONS.URL.vue}"></script>
 <script src="${CONS.URL.rechartVue}"></script>
-<div id="example">${code.tpl}</div>`,
+<div id="example">${vueCode.template}</div>`,
       panel_css: 1,
       panel_js: 3
     };
     return data;
   }
 
-  renderReact() {
-    if (!this.attrs.codes.length) {
-      return;
-    }
-    $('.case-list').empty();
-    this.attrs.codes.forEach((code, i) => {
-      const scriptCode = `
-var config = ${code.config};
-${code.script}
-ReactDOM.render(${code.template}, document.getElementById('example${i}'))`;
-
-      $('.case-list').append(caseBoxReactTpl({ i }));
-      var editor = ace.edit(`code${i}`);
-      editor.setTheme("ace/theme/textmate");
-      editor.env.editor.setReadOnly(true);
-      editor.renderer.setShowGutter(false);
-      editor.env.editor.setValue(scriptCode, 1);
-      $('.case-list').append(`<script type="text/babel">${scriptCode}</script>`);
-    });
-  }
-
-
-  getJsfiddleReactData(i) {
-    const code = this.attrs.codes[i];
+  getJsfiddleReactData(index) {
+    const {reactCode, jsonCode} = this.attrs.codes[index];
+    const config = JSON.stringify(jsonCode.config, null, 2);
     const data = {
       js: `
-var config = ${code.config};
-${code.script}
-ReactDOM.render(${code.template},document.getElementById('example${i}'));`,
+var config = ${config};
+${reactCode.script || ''}
+ReactDOM.render(${reactCode.template},document.getElementById('example'));`,
       html: `<script src="${CONS.URL.react}"></script>
 <script src="${CONS.URL.reactDom}"></script>
 <script src="${CONS.URL.viser}"></script>
 <script src="${CONS.URL.viserReact}"></script>
-<div id="example${i}"></div>`,
+<div id="example"></div>`,
       panel_css: 1,
       panel_js: 3
     };
