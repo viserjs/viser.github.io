@@ -14,46 +14,28 @@
     <script src="./lib/ace.js" type="text/javascript" ></script>
   </head>
   <body>
-    <div class="header">
-      <div class="left-panel">
-        <a href="/" class="logo">
-          Rechart 2.0
-        </a>
-      </div>
-      <div class="right-panel">
-        <ul>
-          <li class="menu"><a href="/">首页</a></li>
-          <li class="menu case">
-            案例
-            <i class="iconfont icon-down-triangle"></i>
-            <ul class="language-type">
-              <li><a href="/demo.html?language=json">纯json配置</a></li>
-              <li><a href="/demo.html?language=react">react版本</a></li>
-              <li><a href="/demo.html?language=vue">vue版本</a></li>
-              <li><a href="/demo.html?language=angular">angular版本</a></li>
-            </ul>
-          </li>
-          <li class="menu">API</li>
-          <li class="menu">
-            <span class="github">
-              <a href="" target="_blank"><i class="iconfont icon-github"></i></a>
-            </span>
-            <span class="local">
-              <span class="local-language">EN</span>|<span class="local-language">CN</span>
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
     <div class="common-header">
       <a href="/" class="common-title"></a>
       <nav class="common-header-nav">
-        <a class="github-link" href="https://github.com/viserjs/viser" target="_blank">
-          <i class="iconfont icon-gh"></i>
-          <i class="iconfont icon-gh-o"></i>
-        </a>
-        <a class="common-header-nav-item demo-link" href="/demo.html">案例</a>
-        <a class="common-header-nav-item api-link" href="/api.html">文档</a>
+        <div class="common-header-nav-item">
+          <a class="github-link" href="https://github.com/viserjs/viser" target="_blank">
+            <i class="iconfont icon-gh"></i>
+            <i class="iconfont icon-gh-o"></i>
+          </a>
+        </div>
+        <div class="common-header-nav-item">
+          <a class="demo-link" href="/demo.html">案例</a>
+          <i class="iconfont icon-down-triangle"></i>
+          <ul class="language-type">
+            <li><a href="/demo.html?language=json">json</a></li>
+            <li><a href="/demo.html?language=react">react</a></li>
+            <li><a href="/demo.html?language=vue">vue</a></li>
+            <li><a href="/demo.html?language=angular">angular</a></li>
+          </ul>
+        </div>
+        <div class="common-header-nav-item">
+          <a class="api-link" href="/api.html">文档</a>
+        </div>
       </nav>
     </div>
     <div class="main-content" id="main-content">
