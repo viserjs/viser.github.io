@@ -148,7 +148,7 @@ class App {
       editor.env.editor.setValue(showCode, 1);
 
       code.config.chart.container = `example${i}`;
-      RechartCore.ChartBuilder(code.config);
+      Viser.default(code.config);
     });
   }
   getJsfiddleJsonData(index) {
