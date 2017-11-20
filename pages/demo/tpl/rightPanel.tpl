@@ -1,6 +1,6 @@
 <div>
   <div class="case-type">
-    <h3>{{cnName}}</h3>
+    <h3>{{name}}</h3>
   </div>
   <div class="case-list">
     {{#if noCodes}}
