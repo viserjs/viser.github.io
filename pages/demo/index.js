@@ -58,8 +58,8 @@ class App {
   }
 
   renderRightPanel() {
-    const cnName = codeConfig[this.attrs.chartType].cnName;
-    $('#rightPanel').append(rightPanelTpl({cnName, noCodes: this.attrs.codes.length ? false : true}));
+    const enName = this.attrs.chartType + 'Chart';
+    $('#rightPanel').append(rightPanelTpl({name: enName, noCodes: this.attrs.codes.length ? false : true}));
   }
 
   bindEvent() {
@@ -156,9 +156,9 @@ class App {
     const config = JSON.stringify(code.config, null, 2);
     const data = {
       js: `var config = ${config};
-RechartCore.ChartBuilder(config);
+Viser.default(config);
       `,
-      html: `<script src="${CONS.URL.rechartCore}"></script>
+      html: `<script src="${CONS.URL.viser}"></script>
 <div id="example${index}"></div>`,
       panel_css: 1,
       panel_js: 3
@@ -248,8 +248,8 @@ ${code.script}
 ReactDOM.render(${code.template},document.getElementById('example${i}'));`,
       html: `<script src="${CONS.URL.react}"></script>
 <script src="${CONS.URL.reactDom}"></script>
-<script src="${CONS.URL.rechartCore}"></script>
-<script src="${CONS.URL.rechartReact}"></script>
+<script src="${CONS.URL.viser}"></script>
+<script src="${CONS.URL.viserReact}"></script>
 <div id="example${i}"></div>`,
       panel_css: 1,
       panel_js: 3
