@@ -1,0 +1,5 @@
+.DS_Store
+.awcache
+.vscode
+*.log
+node_modules

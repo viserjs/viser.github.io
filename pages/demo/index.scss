@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+body {
+  background: #edf1f5;
+}
+ul {
+  display: block;
+  list-style-type: none;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0;
+}
+a {
+  text-decoration: none;
+}
+.header {
+  height: 80px;
+  line-height: 80px;
+  display: block;
+  outline: 0;
+  list-style: none;
+  color: #495060;
+  font-size: 14px;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,.08);
+  .left-panel {
+    float: left;
+    padding-left: 10px;
+    & > a {
+      color: #2d8cf0;
+      font-weight: 900;
+      font-size: 32px;
+    }
+  }
+  .right-panel {
+    float: right;
+    margin-right: 250px;
+    ul {
+      li.menu {
+        display: inline-block;
+        margin: 0 40px;
+        cursor: pointer;
+        position: relative;
+        padding: 0 10px;
+        a:hover {
+          color: #2d8cf0;
+        }
+        .language-type {
+          position: absolute;
+          left: 0;
+          z-index: 20;
+          background: #fff;
+          display: none;
+          border: 1px solid #eee;
+          border-top: none;
+          box-shadow: 5px 5px 5px #eee;
+          li {
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+          }
+        }
+        .github {
+          margin: 0 10px;
+        }
+        .local {
+          .local-language {
+            margin: 0 5px;
+            cursor: pointer;
+          }
+          .local-language:hover {
+            color: #2d8cf0;
+          }
+        }
+        &:hover {
+          color: #2d8cf0;
+        }
+      }
+      .menu.case:hover {
+        .language-type {
+          display: block;
+        }
+        .icon-down-triangle {
+          display: inline-block;
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+#main-content {
+  position: relative;
+  height: 100%;
+  .left-panel {
+    position: absolute;
+    width: 150px;
+    background: #fff;
+    height: 100%;
+    border-right: 1px solid #ddd;
+    top: 1px;
+    bottom: 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,.08);
+    .nav {
+      margin: 10px 0;
+      li {
+        padding: 8px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        &:hover,
+        &.active {
+          background: #edf1f5;
+          a,.iconfont {
+            color: #2d8cf0;
+          }
+        }
+      }
+    }
+  }
+  .right-panel {
+    margin-left: 150px;
+    padding: 10px;
+    .case-type {
+      border-left: 5px solid #2d8cf0;
+      padding: 5px 10px;
+      background: #fff;
+      border-radius: 5px;
+    }
+    .case-list {
+      .case-box {
+        margin-top: 5px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background: #fff;
+        position: relative;
+        transition: all .2s ease-in-out;
+        .index-bg {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 0;
+          height: 0;
+          border-top: 80px solid #2d8cf0;
+          border-right: 80px solid transparent;
+        }
+        .index {
+          position: absolute;
+          left: 0;
+          top: 0;
+          padding: 10px 20px;
+          font-size: 26px;
+          color: #fff;
+        }
+      }
+        .case-demo,
+        .case-code {
+          display: inline-block;
+          width: 48%;
+          height: 400px;
+          overflow: hidden;
+          position: relative;
+          padding: 15px;
+          box-sizing: border-box;
+          .case-code-detail {
+            height: 340px;
+            width: 100%;
+            overflow-y: auto;
+            position: relative;
+            pre {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+            }
+          }
+          .op {
+            position: absolute;
+            bottom: 0;
+            background: #fff;
+            width: 100%;
+            border-top: 1px solid #eee;
+            padding: 5px 0;
+            a {
+              cursor: pointer;
+              padding: 2px 15px;
+              background: #edf1f5;
+              display: inline-block;
+            }
+            a:hover {
+              background: #2d8cf0;
+              color: #fff;
+              i {
+                color: #fff;
+              }
+            }
+          }
+        }
+        .case-split {
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 48%;
+          border: 1px dashed #eee;
+        }
+        &:hover {
+          box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
+        }
+    }
+    .case-box.no-code {
+      padding: 15px;
+    }
+  }
+}

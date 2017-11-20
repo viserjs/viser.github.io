@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #edf1f5;
+}
+
+ul {
+  display: block;
+  list-style-type: none;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  height: 80px;
+  line-height: 80px;
+  display: block;
+  outline: 0;
+  list-style: none;
+  color: #495060;
+  font-size: 14px;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .08);
+  .left-panel {
+    float: left;
+    padding-left: 10px;
+    &>a {
+      color: #2d8cf0;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 32px;
+    }
+  }
+  .right-panel {
+    float: right;
+    margin-right: 250px;
+    ul {
+      li {
+        display: inline-block;
+        margin: 0 50px;
+      }
+    }
+  }
+}
+
+#main-content {
+  position: relative;
+  height: 100%;
+  .left-panel {
+    position: absolute;
+    width: 200px;
+    background: #fff;
+    height: 100%;
+    border-right: 1px solid #ddd;
+    top: 1px;
+    bottom: 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .08);
+    .nav {
+      margin: 10px 0;
+      li {
+        padding: 8px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        &:hover {
+          background: #edf1f5;
+          color: #2d8cf0;
+        }
+      }
+    }
+  }
+  .right-panel {
+    margin-left: 200px;
+    .case-type {
+      border-left: 5px solid #2d8cf0;
+      padding-left: 10px;
+    }
+    .case-list {
+      .case-box {
+        margin: 10px 0;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background: #fff;
+        position: relative;
+        transition: all .2s ease-in-out;
+        .case-demo,
+        .case-code {
+          display: inline-block;
+          width: 48%;
+          height: 400px;
+          overflow: auto;
+          position: relative;
+          .case-code-detail {
+            height: 380px;
+            overflow: scroll;
+          }
+          .op {
+            position: absolute;
+            bottom: 0;
+            background: #fff;
+            width: 100%;
+            text-align: right;
+            border-top: 1px solid #eee;
+            padding: 5px 0;
+            a {
+              cursor: pointer;
+            }
+            a:hover {
+              color: #2d8cf0;
+            }
+          }
+        }
+        .case-split {
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 46%;
+          border: 1px dashed #eee;
+        }
+        &:hover {
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+  }
+}
+
+
+.api-container {
+  padding: 20px;
+  background: white;
+}
