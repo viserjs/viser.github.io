@@ -243,6 +243,7 @@ ${reactCode.script || ''}
 ReactDOM.render(${reactCode.template},document.getElementById('example'));`,
       html: `<script src="${CONS.URL.react}"></script>
 <script src="${CONS.URL.reactDom}"></script>
+<script src="${CONS.URL.browser}"></script>
 <script src="${CONS.URL.viser}"></script>
 <script src="${CONS.URL.viserReact}"></script>
 <div id="example"></div>`,
