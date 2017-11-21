@@ -1,6 +1,7 @@
+export const script = `const { Chart, Tooltip, Axis, Legend, Series } = ViserReact`;
 export const template = `
 <div>
-  <Chart forceFit height={400} data={data} dataMapping={dataMapping}>
+  <Chart forceFit height={400} data={config.data} dataMapping={config.dataMapping}>
     <Tooltip />
     <Axis dataKey={'weight'} show={true} position={'left'}/>
     <Axis dataKey={'height'} show={true} position={'bottom'}/>
