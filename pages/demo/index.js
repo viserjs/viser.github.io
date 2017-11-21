@@ -140,7 +140,7 @@ class App {
 
       var editor = ace.edit(`code${i}`);
       const showCode = _this.getShowCode(code, i);
-      editor.setTheme("ace/theme/textmate");
+      editor.setTheme("ace/theme/github");
       editor.getSession().setMode("ace/mode/javascript");
       editor.setHighlightActiveLine(true);
       editor.setShowPrintMargin(false);
