@@ -34,15 +34,8 @@
           cursor: pointer;
           padding: 3px 16px;
           display: inline-block;
-          background: #0088fe;
+          background: $primary;
           border-radius: 4px;
-          color: #fff;
-          i {
-            color: #fff;
-          }
-        }
-        a:hover {
-          background: #2d8cf0;
           color: #fff;
           i {
             color: #fff;
