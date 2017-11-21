@@ -176,9 +176,11 @@ header.home-header .home-nav-item {
   text-align: center;
   transition: background .3s, color .3s;
   position: relative;
+  cursor: pointer;
 }
 header.home-header .home-nav-item:hover {
   background: white;
+  color: #00c49f;
 }
 header.home-header .home-nav-item a {
   text-decoration: none;

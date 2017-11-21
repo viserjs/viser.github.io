@@ -1,7 +1,5 @@
-<hr />
 <div class="case-box" id="caseBox{{i}}">
   <div class="op">
-    <span class="index">{{#add i 1}}{{/add}}</span>
     <a class="run" data-index="{{i}}">
       <i class="iconfont icon-yunxing"></i>
       Try
