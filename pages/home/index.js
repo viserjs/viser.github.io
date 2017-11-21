@@ -1,4 +1,6 @@
-var GDP_JSON = [
+require('./index.scss');
+
+const GDP_JSON = [
   { "year": 2006, "gdp": 21.94385 },
   { "year": 2007, "gdp": 27.02323 },
   { "year": 2008, "gdp": 31.95155 },

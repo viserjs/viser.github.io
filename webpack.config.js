@@ -6,6 +6,7 @@ let config = {
   entry: {
     demo: './pages/demo/index',
     api: './pages/api/index',
+    home: './pages/home/index',
   }, // 入口文件
 
   // 输出文件 build下的bundle.js

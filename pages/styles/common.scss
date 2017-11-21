@@ -1,11 +1,15 @@
+@import './variable.scss';
+
 * {
   margin: 0;
   padding: 0;
 }
 
-body {}
+body {
+  overflow-x: hidden;
+}
 
-ul {
+ul, ol {
   display: block;
   list-style-type: none;
   -webkit-margin-before: 0;
@@ -27,5 +31,35 @@ a {
   }
   &:after {
     clear: both;
+  }
+}
+
+.github-link {
+  color: white;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  display: block;
+  float: right;
+  margin-left: 48px;
+  .iconfont {
+    height: 29px;
+    width: 29px;
+    overflow: hidden;
+    font-size: 28px;
+  }
+  .icon-gh {
+    display: none;
+  }
+  .icon-gh-o {
+    display: block;
+  }
+  &:hover {
+    .icon-gh {
+      display: block;
+    }
+    .icon-gh-o {
+      display: none;
+    }
   }
 }
