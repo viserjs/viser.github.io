@@ -20,7 +20,7 @@ function renderChart() {
     tooltip: true,
     axis: true,
     series: [{ position: ['year', 'gdp'], gemo: 'line', color: '#0088fe' }],
-    chart: { width: 700, height: 400, container: 'viser-mount-1' },
+    chart: { width: 700, height: 300, container: 'viser-mount-1-1' },
   });
 
   RechartCore.ChartBuilder({

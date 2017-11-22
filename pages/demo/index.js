@@ -16,7 +16,7 @@ class App {
   constructor() {
     this.attrs = {
       codes: [],
-      language: 'json',
+      language: 'react',
       chartType: 'line',
     };
   }
@@ -28,7 +28,7 @@ class App {
 
     const langResult = search.match(langReg);
     const typeResult = search.match(typeReg);
-    const lang = langResult ? langResult[2] : 'json';
+    const lang = langResult ? langResult[2] : 'react';
     const chartType = typeResult? typeResult[2] : Object.keys(codeConfig)[0];
     this.attrs.language = lang;
     this.attrs.chartType = chartType;
@@ -72,8 +72,7 @@ class App {
   }
 
   renderRightPanel() {
-    const enName = this.attrs.chartType + 'Chart';
-    $('#rightPanel').append(rightPanelTpl({name: enName, noCodes: this.attrs.codes.length ? false : true}));
+    $('#rightPanel').append(rightPanelTpl({noCodes: this.attrs.codes.length ? false : true}));
   }
 
   bindEvent() {
@@ -128,12 +127,14 @@ class App {
 
   renderExample() {
     const _this = this;
+    const enName = this.attrs.chartType + ' Chart';
+
     if (!this.attrs.codes.length) {
       return;
     }
     $('.case-list').empty();
     this.attrs.codes.forEach((code, i) => {
-      $('.case-list').append(caseBoxJsonTpl({i}));
+      $('.case-list').append(caseBoxJsonTpl({name: enName, i}));
       const runCode = code['jsonCode'];
       runCode.config.chart.container = `example${i}`;
       Viser.default(runCode.config);

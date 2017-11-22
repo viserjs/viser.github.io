@@ -6,10 +6,13 @@
 
 #main-content {
   .case-type {
-    padding: 5px 10px;
     background: #fff;
+    color: #333;
     margin-bottom: 10px;
     font-size: 20px;
+    text-transform: capitalize;
+    width: 48%;
+    position: absolute;
   }
   .case-list {
     .case-box {
@@ -21,7 +24,7 @@
       .op {
         position: absolute;
         top: 0;
-        right: 0;
+        right: 30px;
         z-index: 11;
 
         .index {
@@ -43,17 +46,28 @@
         }
       }
     }
+    .case-demo {
+      padding: 50px 0 0;
+    }
+    .case-code {
+      padding: 0 15px;
+    }
+
     .case-demo,
     .case-code {
       display: inline-block;
       width: 48%;
-      height: 400px;
+      height: 100%;
       overflow: hidden;
       position: relative;
-      padding: 15px;
       box-sizing: border-box;
+      .case-code-switch {
+        width: 100%;
+        height: 60px;
+        position: relative;
+      }
       .case-code-detail {
-        height: 340px;
+        height: calc(100% - 60px);
         width: 100%;
         overflow-y: auto;
         position: relative;
