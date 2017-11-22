@@ -11860,9 +11860,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
 
   return "<div class=\"case-box\">\n  <div class=\"case-type\">\n    <h3>"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h3>\n    <div class=\"op\">\n      <a class=\"run\" data-index=\""
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\">\n        <i class=\"iconfont icon-yunxing\"></i>\n        Try\n      </a>\n    </div>\n  </div>\n  <div class=\"case-demo\">\n    <div id=\"example"
+    + "</h3>\n  </div>\n  <div class=\"case-demo\">\n    <div id=\"example"
     + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
     + "\"></div>\n  </div>\n  <div class=\"case-code\">\n    <ul class=\"case-code-switch\">\n      <li data-lang=\"react\" class=\"case-code-switch-item"
     + alias4(((helper = (helper = helpers.reactClass || (depth0 != null ? depth0.reactClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"reactClass","hash":{},"data":data}) : helper)))
