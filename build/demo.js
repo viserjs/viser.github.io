@@ -12261,13 +12261,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const template = `
 <template>
   <div>
-    <!-- <button v-on:click="handleClick">Click</button> -->
     <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :data-mapping="dataMapping" :scale="scale">
       <v-tooltip />
       <v-axis />
       <v-stack-bar :v-style="stackBarStyle" />
     </v-chart>
-    <!-- <v-lite-chart :stack-bar="true" :height="400" :data="data" :data-pre="dataPre" :dataMapping="dataMapping" :forceFit="true" /> -->
   </div>
 </template>
 
@@ -12400,7 +12398,6 @@ import { data, dataMapping, dataPre, scale } from './data'
       <Axis></Axis>
       <StackBar [ngStyle]="{ stroke: '#fff', lineWidth: 1 }" ></StackBar>
     </Chart>
-    <LiteChart stackBar="true" [height]="height" [data]="data" [dataMapping]="dataMapping" [forceFit]="forceFit"></LiteChart>
   </div>
   \`
 })
