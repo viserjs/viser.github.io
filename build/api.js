@@ -24211,7 +24211,7 @@ const routes = Object.keys(components_1.default).map((folderKey) => {
 }).reduce((prev, curr) => { return prev.concat(curr); }, []);
 react_dom_1.render((React.createElement(react_router_dom_1.HashRouter, { basename: "/" },
     React.createElement(App, null,
-        React.createElement(react_router_dom_1.Route, { exact: true, path: '/', component: components_1.default.Guide.Introduction }),
+        React.createElement(react_router_dom_1.Route, { exact: true, path: '/', component: components_1.default.Guide.Installation }),
         routes))), document.getElementById('main-content'));
 
 
@@ -39261,7 +39261,6 @@ const Demo = __webpack_require__(622).default;
 const Demo1 = __webpack_require__(625).default;
 const components = {
     Guide: {
-        Introduction,
         Installation,
     },
 };

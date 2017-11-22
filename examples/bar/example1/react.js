@@ -24,13 +24,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <button onClick={this.handleClick}>Click</button> */}
         <Chart forceFit height={this.state.height} data={data} dataPre={dataPre} dataMapping={dataMapping} scale={scale}>
           <Tooltip />
           <Axis />
           <StackBar style={{ stroke: '#fff', lineWidth: this.state.lineWidth }} />
         </Chart>
-        {/* <LiteChart height={400} data={data} dataPre={dataPre} dataMapping={dataMapping} forceFit stackBar /> */}
       </div>
     );
   }
