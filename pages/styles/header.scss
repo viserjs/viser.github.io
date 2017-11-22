@@ -25,18 +25,6 @@
     width: 200px;
     box-sizing: border-box;
 
-    &::before {
-      content: ' ';
-      display: block;
-      margin-top: 10px;
-      height: 36px;
-      width: 110px;
-      float: left;
-      background: url('//img.alicdn.com/tfs/TB1HxTId4rI8KJjy0FpXXb5hVXa-282-96.png');
-      background-size: auto 36px;
-      background-repeat: no-repeat;
-    }
-
     &::after {
       content: ' ';
       display: block;
@@ -76,41 +64,14 @@
       text-decoration: none;
       color: #fff;
     }
-    .language-type {
-      position: absolute;
-      left: 5px;
-      top: 34px;
-      z-index: 20;
-      background: #fff;
-      display: none;
-      border: 1px solid #eee;
-      border-top: none;
-      >li {
-        width: 100px;
-        height: 40px;
-        line-height: 40px;
-        padding: 0 10px;
-        cursor: pointer;
-        &:hover {
-          background: $secondary;
-          >a {
-            color: white;
-          }
-        }
-      }
-    }
+
     &:hover {
-      .language-type {
-        display: block;
-        transition: all .3s;
+      background: white;
+      color: $secondary;
+      a,
+      i {
+        color: $secondary;
       }
     }
-  }
-  .common-header-nav-item:hover {
-    background: white;
-  }
-  .common-header-nav-item:hover a,
-  .common-header-nav-item:hover i {
-    color: $secondary;
   }
 }

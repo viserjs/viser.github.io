@@ -1,30 +1,33 @@
 ## Installation
 
-### NPM
+We use React version to write install method.
 
-NPM is the easiest and fastest way to get started using Viser. It is also the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.
+### npm
 
-```bash
+NPM is the easiest and fastest way to get started using Recharts. It is also the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.
+
+```shell
 # latest stable
-$ npm install viser
+$ npm install viser-react
 ```
 
-### UMD
+### umd
 
-The UMD build is also available on unpkg.com  ( unpkg )   :
+The UMD build is also available on unpkg.com:
 
 ```html
-<script src="https://unpkg.com/viserjs/umd/Viser.min.js"></script>
+ <script src="https://unpkg.com/recharts/umd/viser-react.min.js"></script>
 ```
 
-You can find the library on window.Viser
+Then you can find the library on window.ViserReact.
 
+### dev build
 
-### Dev Build
-
-```bash
+```shell
 $ git clone https://github.com/viserjs/viser.git
-$ cd viser
+$ cd viser/packages/viser-react
 $ npm install
-$ npm run build
+$ cd ../../demo
+$ npm install
+$ npm run start
 ```

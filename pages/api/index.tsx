@@ -58,7 +58,7 @@ const routes = Object.keys(components).map((folderKey) => {
 render((
   <HashRouter basename="/">
     <App>
-      <Route exact path='/' component={components.Guide.Installation}/>
+      <Route exact path='/' component={components.Guide.Introduction}/>
       {routes}
     </App>
   </HashRouter>
