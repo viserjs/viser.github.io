@@ -11,82 +11,109 @@
     margin-bottom: 10px;
     font-size: 20px;
     text-transform: capitalize;
-    width: 48%;
+    width: calc(100% - 460px);
     position: absolute;
   }
-  .case-list {
-    .case-box {
-      margin-bottom: 10px;
-      background: #fff;
-      position: relative;
-      transition: all .2s ease-in-out;
+  .case-box {
+    margin-bottom: 10px;
+    background: #fff;
+    position: relative;
+    transition: all .2s ease-in-out;
 
-      .op {
-        position: absolute;
-        top: 0;
-        right: 30px;
-        z-index: 11;
-
-        .index {
-          font-size: 20px;
-          line-height: 28px;
-          color: #666;
-          margin-right: 10px;
-        }
-        a {
-          cursor: pointer;
-          padding: 3px 16px;
-          display: inline-block;
-          background: $primary;
-          border-radius: 4px;
-          color: #fff;
-          i {
-            color: #fff;
-          }
-        }
-      }
-    }
-    .case-demo {
-      padding: 50px 0 0;
-    }
-    .case-code {
-      padding: 0 15px;
-    }
-
-    .case-demo,
-    .case-code {
-      display: inline-block;
-      width: 48%;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-      box-sizing: border-box;
-      .case-code-switch {
-        width: 100%;
-        height: 60px;
-        position: relative;
-      }
-      .case-code-detail {
-        height: calc(100% - 60px);
-        width: 100%;
-        overflow-y: auto;
-        position: relative;
-        pre {
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-        }
-      }
-    }
-    .case-split {
-      display: block;
+    .op {
       position: absolute;
       top: 0;
-      bottom: 0;
-      left: 48%;
-      border: 1px dashed #eee;
+      right: 15px;
+      z-index: 11;
+      line-height: 28px;
+      color: #666;
+
+      a {
+        cursor: pointer;
+        margin-top: 3px;
+        padding: 3px 16px;
+        display: inline-block;
+        background: $primary;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 22px;
+        color: #fff;
+        i {
+          font-size: 14px;
+          line-height: 22px;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .case-demo {
+    padding: 50px 15px 0 0;
+    width: calc(100% - 460px);
+    border-right: 1px dashed #eee;
+  }
+  .case-code {
+    padding: 0 15px;
+    width: 400px;
+  }
+
+  .case-demo,
+  .case-code {
+    display: inline-block;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    .case-code-switch {
+      width: 100%;
+      height: 40px;
+      position: relative;
+    }
+    .case-code-detail {
+      display: none;
+      height: calc(100% - 40px);
+      width: 100%;
+      overflow-y: auto;
+      position: relative;
+      &.active {
+        display: block;
+      }
+      pre {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  .case-code-switch {
+    height: 36px;
+    width: 100%;
+    display: block;
+    padding-top: 4px;
+
+    .case-code-switch-item {
+      float: left;
+      display: block;
+      width: 80px;
+      margin: 0 10px;
+      font-size: 14px;
+      height: 28px;
+      text-align: center;
+      padding-bottom: 2px;
+      color: #999;
+      cursor: pointer;
+
+      &:hover {
+        color: #666;
+      }
+
+      &.active, &.active:hover {
+        color: $primary;
+        padding-bottom: 0;
+        border-bottom: 2px solid $primary;
+      }
     }
   }
   .case-box.no-code {

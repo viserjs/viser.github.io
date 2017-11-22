@@ -11,13 +11,14 @@
   <div class="case-demo">
     <div id="example{{i}}"></div>
   </div>
-  <div class="case-split"></div>
-  <u class="case-code">
+  <div class="case-code">
     <ul class="case-code-switch">
-      <li class="case-code-switch-item"></li>
-      <li class="case-code-switch-item"></li>
-      <li class="case-code-switch-item"></li>
+      <li data-lang="react" class="case-code-switch-item{{reactClass}}">React</li>
+      <li data-lang="vue" class="case-code-switch-item{{vueClass}}">Vue</li>
+      <li data-lang="angular" class="case-code-switch-item{{angularClass}}">Angular</li>
     </ul>
-    <pre class="case-code-detail" id="code{{i}}"></pre>
+    <pre class="case-code-detail{{reactClass}}" id="react-{{i}}"></pre>
+    <pre class="case-code-detail{{vueClass}}" id="vue-{{i}}"></pre>
+    <pre class="case-code-detail{{angularClass}}" id="angular-{{i}}"></pre>
   </div>
 </div>
