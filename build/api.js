@@ -66266,8 +66266,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
-			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss");
+		module.hot.accept("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
+			var newContent = require("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
