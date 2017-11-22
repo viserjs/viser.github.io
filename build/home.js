@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 643);
+/******/ 	return __webpack_require__(__webpack_require__.s = 630);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -604,22 +604,22 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ 643:
+/***/ 630:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(644);
+__webpack_require__(631);
 
 const GDP_JSON = [
-  { "year": 2006, "gdp": 21.94385 },
-  { "year": 2007, "gdp": 27.02323 },
-  { "year": 2008, "gdp": 31.95155 },
-  { "year": 2009, "gdp": 34.90814 },
-  { "year": 2010, "gdp": 41.30303 },
-  { "year": 2011, "gdp": 48.93006 },
-  { "year": 2012, "gdp": 54.03674 },
-  { "year": 2013, "gdp": 59.52444 },
-  { "year": 2014, "gdp": 64.39740 },
-  { "year": 2015, "gdp": 68.90521 }
+  { "year": '2006', "gdp": 21.94385 },
+  { "year": '2007', "gdp": 27.02323 },
+  { "year": '2008', "gdp": 31.95155 },
+  { "year": '2009', "gdp": 34.90814 },
+  { "year": '2010', "gdp": 41.30303 },
+  { "year": '2011', "gdp": 48.93006 },
+  { "year": '2012', "gdp": 54.03674 },
+  { "year": '2013', "gdp": 59.52444 },
+  { "year": '2014', "gdp": 64.39740 },
+  { "year": '2015', "gdp": 68.90521 }
 ];
 
 function renderChart() {
@@ -628,7 +628,7 @@ function renderChart() {
     dataDef: [{ key: 'year', mark: 'column', scale: {} }, { key: 'gdp', mark: 'row', scale: {} }],
     tooltip: true,
     axis: true,
-    series: [{ position: ['year', 'gdp'], gemo: 'line', color: '#0088fe' }],
+    series: [{ position: ['year', 'gdp'], gemo: 'bar', color: '#0088fe' }],
     chart: { width: 700, height: 300, container: 'viser-mount-1-1' },
   });
 
@@ -637,7 +637,7 @@ function renderChart() {
     dataDef: [{ key: 'year', mark: 'column', scale: {} }, { key: 'gdp', mark: 'row', scale: {} }],
     tooltip: true,
     axis: true,
-    series: [{ position: ['year', 'gdp'], gemo: 'bar', color: '#0088fe' }],
+    series: [{ position: ['year', 'gdp'], gemo: 'line', color: '#0088fe' }],
     chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
   });
   RechartCore.ChartBuilder({
@@ -688,13 +688,13 @@ window.onload = renderChart;
 
 /***/ }),
 
-/***/ 644:
+/***/ 631:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(645);
+var content = __webpack_require__(632);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -708,8 +708,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
-			var newContent = require("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss");
+		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
+			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -720,7 +720,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 645:
+/***/ 632:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(41)(undefined);
