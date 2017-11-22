@@ -9,28 +9,26 @@ const codeConfig = require('../../examples/index');
 const navTpl = require('./tpl/nav.tpl');
 const rightPanelTpl = require('./tpl/rightPanel.tpl');
 const caseBoxJsonTpl = require('./tpl/caseBoxJson.tpl');
-const caseBoxVueTpl = require('./tpl/caseBoxVue.tpl');
-const caseBoxReactTpl = require('./tpl/caseBoxReact.tpl');
 
 class App {
   constructor() {
     this.attrs = {
       codes: [],
-      language: 'react',
+      language: 'vue',
       chartType: 'line',
     };
   }
   init() {
     // 根据 url 路由转发
-    const langReg = new RegExp('(^|&)language=([^&]*)(&|$)');
+    // const langReg = new RegExp('(^|&)language=([^&]*)(&|$)');
     const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
     const search = window.location.search.substr(1);
 
-    const langResult = search.match(langReg);
+    // const langResult = search.match(langReg);
     const typeResult = search.match(typeReg);
-    const lang = langResult ? langResult[2] : 'react';
+    // const lang = langResult ? langResult[2] : 'react';
     const chartType = typeResult? typeResult[2] : Object.keys(codeConfig)[0];
-    this.attrs.language = lang;
+    // this.attrs.language = lang;
     this.attrs.chartType = chartType;
     const exampleFolders = codeConfig[chartType].examples || [];
     exampleFolders.forEach((folder) => {
@@ -54,30 +52,31 @@ class App {
     });
 
     this.render();
-  }
-  render() {
-    this.renderNav();
-    this.renderRightPanel();
-
-    this.renderExample();
     this.bindEvent();
   }
 
+  render() {
+    this.renderNav();
+    this.renderRightPanel();
+    this.renderExample();
+  }
+
   renderNav() {
+    $('#nav').empty();
     $('#nav').append(navTpl({
       codeConfig,
       language: this.attrs.language,
       chartType: this.attrs.chartType,
     }));
   }
-
   renderRightPanel() {
+    $('#rightPanel').empty();
     $('#rightPanel').append(rightPanelTpl({noCodes: this.attrs.codes.length ? false : true}));
   }
 
   bindEvent() {
     var _this = this;
-    $('.case-box .op .run').click(function() {
+    $('.case-box .op .run').on('click', function() {
       const index = $(this).attr('data-index');
 
       const data = _this.getJsfiddleData(index);
@@ -105,7 +104,21 @@ class App {
       form.submit();
       document.body.removeChild(form);
     });
+    $('.case-box .case-code-switch .case-code-switch-item').on('click', function () {
+      const lang = $(this).attr('data-lang');
+      _this.attrs.language = lang;
+
+      _this.unbindEvent();
+      _this.render();
+      _this.bindEvent();
+    })
   }
+
+  unbindEvent() {
+    $('.case-box .op .run').off('click');
+    $('.case-box .case-code-switch .case-code-switch-item').off('click');
+  }
+
   getJsfiddleData(index) {
     const language = this.attrs.language;
     switch(language) {
@@ -134,37 +147,47 @@ class App {
     }
     $('.case-list').empty();
     this.attrs.codes.forEach((code, i) => {
-      $('.case-list').append(caseBoxJsonTpl({name: enName, i}));
+      $('.case-list').append(caseBoxJsonTpl({
+        name: enName,
+        i,
+        reactClass: _this.attrs.language === 'react' ? ' active' : '',
+        vueClass: _this.attrs.language === 'vue' ? ' active' : '',
+        angularClass: _this.attrs.language === 'angular' ? ' active' : '',
+      }));
       const runCode = code['jsonCode'];
       runCode.config.chart.container = `example${i}`;
       Viser.default(runCode.config);
 
-      var editor = ace.edit(`code${i}`);
-      const showCode = _this.getShowCode(code, i);
-      editor.setTheme("ace/theme/github");
-      editor.getSession().setMode("ace/mode/javascript");
-      editor.setHighlightActiveLine(true);
-      editor.setShowPrintMargin(false);
-      editor.env.editor.setReadOnly(true);
-      editor.renderer.setShowGutter(false);
-      editor.env.editor.setValue(showCode, 1);
-    });
-  }
+      var reactEditor = ace.edit(`react-${i}`);
+      const showReactCode = _this.getReactCode(code);
+      reactEditor.setTheme("ace/theme/github");
+      reactEditor.getSession().setMode("ace/mode/javascript");
+      reactEditor.setHighlightActiveLine(true);
+      reactEditor.setShowPrintMargin(false);
+      reactEditor.env.editor.setReadOnly(true);
+      reactEditor.renderer.setShowGutter(false);
+      reactEditor.env.editor.setValue(showReactCode, 1);
 
-  getShowCode(code, i) {
-    const language = this.attrs.language;
-    switch(language) {
-      case 'json':
-        return this.getJsonCode(code);
-      case 'react':
-        return this.getReactCode(code);
-      case 'vue':
-        return this.getVueCode(code);
-      case 'angular':
-        break;
-      default:
-        return;
-    }
+      var vueEditor = ace.edit(`vue-${i}`);
+      const showVueCode = _this.getVueCode(code);
+      vueEditor.setTheme("ace/theme/github");
+      vueEditor.getSession().setMode("ace/mode/javascript");
+      vueEditor.setHighlightActiveLine(true);
+      vueEditor.setShowPrintMargin(false);
+      vueEditor.env.editor.setReadOnly(true);
+      vueEditor.renderer.setShowGutter(false);
+      vueEditor.env.editor.setValue(showVueCode, 1);
+
+      var angularEditor = ace.edit(`angular-${i}`);
+      const showAngularCode = this.getVueCode(code);
+      angularEditor.setTheme("ace/theme/github");
+      angularEditor.getSession().setMode("ace/mode/javascript");
+      angularEditor.setHighlightActiveLine(true);
+      angularEditor.setShowPrintMargin(false);
+      angularEditor.env.editor.setReadOnly(true);
+      angularEditor.renderer.setShowGutter(false);
+      angularEditor.env.editor.setValue(showAngularCode, 1);
+    });
   }
 
   getJsonCode(code) {
