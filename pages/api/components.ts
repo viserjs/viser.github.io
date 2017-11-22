@@ -6,7 +6,6 @@ const Demo1 = require('./DemoFolder/Demo1/Demo.md').default;
 
 const components = {
   Guide: {
-    Introduction,
     Installation,
   },
 };
