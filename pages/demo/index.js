@@ -14,7 +14,7 @@ class App {
   constructor() {
     this.attrs = {
       codes: [],
-      language: 'vue',
+      language: 'react',
       chartType: 'line',
     };
   }
@@ -37,10 +37,10 @@ class App {
       let vueCode = '';
       let angularCode = '';
       try {
-        jsonCode = require(`../../examples/${chartType}/${folder}/jsonCode.js`);
-        reactCode = require(`../../examples/${chartType}/${folder}/reactCode.js`);
-        vueCode = require(`../../examples/${chartType}/${folder}/vueCode.js`);
-        angularCode = require(`../../examples/${chartType}/${folder}/angularCode.js`);
+        jsonCode = require(`../../examples/${chartType}/${folder}/json.js`);
+        reactCode = require(`../../examples/${chartType}/${folder}/react.js`);
+        vueCode = require(`../../examples/${chartType}/${folder}/vue.js`);
+        angularCode = require(`../../examples/${chartType}/${folder}/angular.js`);
       } catch(e) {
         console.log('exception:', e);
       } finally {
@@ -179,7 +179,7 @@ class App {
       vueEditor.env.editor.setValue(showVueCode, 1);
 
       var angularEditor = ace.edit(`angular-${i}`);
-      const showAngularCode = this.getVueCode(code);
+      const showAngularCode = this.getAngularCode(code);
       angularEditor.setTheme("ace/theme/github");
       angularEditor.getSession().setMode("ace/mode/javascript");
       angularEditor.setHighlightActiveLine(true);
@@ -195,27 +195,34 @@ class App {
   }
   getReactCode(code) {
     const languageCode = code[`reactCode`];
-    const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
-    return `
-var config = ${jsonCode};
-${languageCode.script || ''}
-ReactDOM.render(${languageCode.template}, document.getElementById('example'))`;
+    return languageCode.template;
+//     const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
+//     return `
+// var config = ${jsonCode};
+// ${languageCode.script || ''}
+// ReactDOM.render(${languageCode.template}, document.getElementById('example'))`;
   }
 
   getVueCode(code) {
     const languageCode = code[`vueCode`];
-    const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
-    let vueTpl = `<div id="example">${languageCode.template}</div>`;
-    let scriptCode = `
-var config = ${jsonCode}
-new Vue({
-  el: '#example',
-  data: {
-    config,
+    return languageCode.template;
+//     const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
+//     let vueTpl = `<div id="example">${languageCode.template}</div>`;
+//     let scriptCode = `
+// var config = ${jsonCode}
+// new Vue({
+//   el: '#example',
+//   data: {
+//     config,
+//   }
+// });
+// `;
+//     return `${vueTpl}${scriptCode}`;
   }
-});
-`;
-    return `${vueTpl}${scriptCode}`;
+
+  getAngularCode(code) {
+    const languageCode = code[`angularCode`];
+    return languageCode.template;
   }
 
   getJsfiddleJsonData(index) {

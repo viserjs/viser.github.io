@@ -63,863 +63,9 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 198);
 /******/ })
 /************************************************************************/
-/******/ (Array(24).concat([
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
+/******/ ({
 
-"use strict";
-
-
-exports.__esModule = true;
-exports.extend = extend;
-exports.indexOf = indexOf;
-exports.escapeExpression = escapeExpression;
-exports.isEmpty = isEmpty;
-exports.createFrame = createFrame;
-exports.blockParams = blockParams;
-exports.appendContextPath = appendContextPath;
-var escape = {
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  "'": '&#x27;',
-  '`': '&#x60;',
-  '=': '&#x3D;'
-};
-
-var badChars = /[&<>"'`=]/g,
-    possible = /[&<>"'`=]/;
-
-function escapeChar(chr) {
-  return escape[chr];
-}
-
-function extend(obj /* , ...source */) {
-  for (var i = 1; i < arguments.length; i++) {
-    for (var key in arguments[i]) {
-      if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
-        obj[key] = arguments[i][key];
-      }
-    }
-  }
-
-  return obj;
-}
-
-var toString = Object.prototype.toString;
-
-exports.toString = toString;
-// Sourced from lodash
-// https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
-/* eslint-disable func-style */
-var isFunction = function isFunction(value) {
-  return typeof value === 'function';
-};
-// fallback for older versions of Chrome and Safari
-/* istanbul ignore next */
-if (isFunction(/x/)) {
-  exports.isFunction = isFunction = function (value) {
-    return typeof value === 'function' && toString.call(value) === '[object Function]';
-  };
-}
-exports.isFunction = isFunction;
-
-/* eslint-enable func-style */
-
-/* istanbul ignore next */
-var isArray = Array.isArray || function (value) {
-  return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
-};
-
-exports.isArray = isArray;
-// Older IE versions do not directly support indexOf so we must implement our own, sadly.
-
-function indexOf(array, value) {
-  for (var i = 0, len = array.length; i < len; i++) {
-    if (array[i] === value) {
-      return i;
-    }
-  }
-  return -1;
-}
-
-function escapeExpression(string) {
-  if (typeof string !== 'string') {
-    // don't escape SafeStrings, since they're already safe
-    if (string && string.toHTML) {
-      return string.toHTML();
-    } else if (string == null) {
-      return '';
-    } else if (!string) {
-      return string + '';
-    }
-
-    // Force a string conversion as this will be done by the append regardless and
-    // the regex test will do this transparently behind the scenes, causing issues if
-    // an object's to string has escaped characters in it.
-    string = '' + string;
-  }
-
-  if (!possible.test(string)) {
-    return string;
-  }
-  return string.replace(badChars, escapeChar);
-}
-
-function isEmpty(value) {
-  if (!value && value !== 0) {
-    return true;
-  } else if (isArray(value) && value.length === 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function createFrame(object) {
-  var frame = extend({}, object);
-  frame._parent = object;
-  return frame;
-}
-
-function blockParams(params, ids) {
-  params.path = ids;
-  return params;
-}
-
-function appendContextPath(contextPath, id) {
-  return (contextPath ? contextPath + '.' : '') + id;
-}
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL3V0aWxzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxJQUFNLE1BQU0sR0FBRztBQUNiLEtBQUcsRUFBRSxPQUFPO0FBQ1osS0FBRyxFQUFFLE1BQU07QUFDWCxLQUFHLEVBQUUsTUFBTTtBQUNYLEtBQUcsRUFBRSxRQUFRO0FBQ2IsS0FBRyxFQUFFLFFBQVE7QUFDYixLQUFHLEVBQUUsUUFBUTtBQUNiLEtBQUcsRUFBRSxRQUFRO0NBQ2QsQ0FBQzs7QUFFRixJQUFNLFFBQVEsR0FBRyxZQUFZO0lBQ3ZCLFFBQVEsR0FBRyxXQUFXLENBQUM7O0FBRTdCLFNBQVMsVUFBVSxDQUFDLEdBQUcsRUFBRTtBQUN2QixTQUFPLE1BQU0sQ0FBQyxHQUFHLENBQUMsQ0FBQztDQUNwQjs7QUFFTSxTQUFTLE1BQU0sQ0FBQyxHQUFHLG9CQUFtQjtBQUMzQyxPQUFLLElBQUksQ0FBQyxHQUFHLENBQUMsRUFBRSxDQUFDLEdBQUcsU0FBUyxDQUFDLE1BQU0sRUFBRSxDQUFDLEVBQUUsRUFBRTtBQUN6QyxTQUFLLElBQUksR0FBRyxJQUFJLFNBQVMsQ0FBQyxDQUFDLENBQUMsRUFBRTtBQUM1QixVQUFJLE1BQU0sQ0FBQyxTQUFTLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsQ0FBQyxDQUFDLEVBQUUsR0FBRyxDQUFDLEVBQUU7QUFDM0QsV0FBRyxDQUFDLEdBQUcsQ0FBQyxHQUFHLFNBQVMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQztPQUM5QjtLQUNGO0dBQ0Y7O0FBRUQsU0FBTyxHQUFHLENBQUM7Q0FDWjs7QUFFTSxJQUFJLFFBQVEsR0FBRyxNQUFNLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQzs7Ozs7O0FBS2hELElBQUksVUFBVSxHQUFHLG9CQUFTLEtBQUssRUFBRTtBQUMvQixTQUFPLE9BQU8sS0FBSyxLQUFLLFVBQVUsQ0FBQztDQUNwQyxDQUFDOzs7QUFHRixJQUFJLFVBQVUsQ0FBQyxHQUFHLENBQUMsRUFBRTtBQUNuQixVQUlNLFVBQVUsR0FKaEIsVUFBVSxHQUFHLFVBQVMsS0FBSyxFQUFFO0FBQzNCLFdBQU8sT0FBTyxLQUFLLEtBQUssVUFBVSxJQUFJLFFBQVEsQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLEtBQUssbUJBQW1CLENBQUM7R0FDcEYsQ0FBQztDQUNIO1FBQ08sVUFBVSxHQUFWLFVBQVU7Ozs7O0FBSVgsSUFBTSxPQUFPLEdBQUcsS0FBSyxDQUFDLE9BQU8sSUFBSSxVQUFTLEtBQUssRUFBRTtBQUN0RCxTQUFPLEFBQUMsS0FBSyxJQUFJLE9BQU8sS0FBSyxLQUFLLFFBQVEsR0FBSSxRQUFRLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxLQUFLLGdCQUFnQixHQUFHLEtBQUssQ0FBQztDQUNqRyxDQUFDOzs7OztBQUdLLFNBQVMsT0FBTyxDQUFDLEtBQUssRUFBRSxLQUFLLEVBQUU7QUFDcEMsT0FBSyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsR0FBRyxHQUFHLEtBQUssQ0FBQyxNQUFNLEVBQUUsQ0FBQyxHQUFHLEdBQUcsRUFBRSxDQUFDLEVBQUUsRUFBRTtBQUNoRCxRQUFJLEtBQUssQ0FBQyxDQUFDLENBQUMsS0FBSyxLQUFLLEVBQUU7QUFDdEIsYUFBTyxDQUFDLENBQUM7S0FDVjtHQUNGO0FBQ0QsU0FBTyxDQUFDLENBQUMsQ0FBQztDQUNYOztBQUdNLFNBQVMsZ0JBQWdCLENBQUMsTUFBTSxFQUFFO0FBQ3ZDLE1BQUksT0FBTyxNQUFNLEtBQUssUUFBUSxFQUFFOztBQUU5QixRQUFJLE1BQU0sSUFBSSxNQUFNLENBQUMsTUFBTSxFQUFFO0FBQzNCLGFBQU8sTUFBTSxDQUFDLE1BQU0sRUFBRSxDQUFDO0tBQ3hCLE1BQU0sSUFBSSxNQUFNLElBQUksSUFBSSxFQUFFO0FBQ3pCLGFBQU8sRUFBRSxDQUFDO0tBQ1gsTUFBTSxJQUFJLENBQUMsTUFBTSxFQUFFO0FBQ2xCLGFBQU8sTUFBTSxHQUFHLEVBQUUsQ0FBQztLQUNwQjs7Ozs7QUFLRCxVQUFNLEdBQUcsRUFBRSxHQUFHLE1BQU0sQ0FBQztHQUN0Qjs7QUFFRCxNQUFJLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsRUFBRTtBQUFFLFdBQU8sTUFBTSxDQUFDO0dBQUU7QUFDOUMsU0FBTyxNQUFNLENBQUMsT0FBTyxDQUFDLFFBQVEsRUFBRSxVQUFVLENBQUMsQ0FBQztDQUM3Qzs7QUFFTSxTQUFTLE9BQU8sQ0FBQyxLQUFLLEVBQUU7QUFDN0IsTUFBSSxDQUFDLEtBQUssSUFBSSxLQUFLLEtBQUssQ0FBQyxFQUFFO0FBQ3pCLFdBQU8sSUFBSSxDQUFDO0dBQ2IsTUFBTSxJQUFJLE9BQU8sQ0FBQyxLQUFLLENBQUMsSUFBSSxLQUFLLENBQUMsTUFBTSxLQUFLLENBQUMsRUFBRTtBQUMvQyxXQUFPLElBQUksQ0FBQztHQUNiLE1BQU07QUFDTCxXQUFPLEtBQUssQ0FBQztHQUNkO0NBQ0Y7O0FBRU0sU0FBUyxXQUFXLENBQUMsTUFBTSxFQUFFO0FBQ2xDLE1BQUksS0FBSyxHQUFHLE1BQU0sQ0FBQyxFQUFFLEVBQUUsTUFBTSxDQUFDLENBQUM7QUFDL0IsT0FBSyxDQUFDLE9BQU8sR0FBRyxNQUFNLENBQUM7QUFDdkIsU0FBTyxLQUFLLENBQUM7Q0FDZDs7QUFFTSxTQUFTLFdBQVcsQ0FBQyxNQUFNLEVBQUUsR0FBRyxFQUFFO0FBQ3ZDLFFBQU0sQ0FBQyxJQUFJLEdBQUcsR0FBRyxDQUFDO0FBQ2xCLFNBQU8sTUFBTSxDQUFDO0NBQ2Y7O0FBRU0sU0FBUyxpQkFBaUIsQ0FBQyxXQUFXLEVBQUUsRUFBRSxFQUFFO0FBQ2pELFNBQU8sQ0FBQyxXQUFXLEdBQUcsV0FBVyxHQUFHLEdBQUcsR0FBRyxFQUFFLENBQUEsR0FBSSxFQUFFLENBQUM7Q0FDcEQiLCJmaWxlIjoidXRpbHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBlc2NhcGUgPSB7XG4gICcmJzogJyZhbXA7JyxcbiAgJzwnOiAnJmx0OycsXG4gICc+JzogJyZndDsnLFxuICAnXCInOiAnJnF1b3Q7JyxcbiAgXCInXCI6ICcmI3gyNzsnLFxuICAnYCc6ICcmI3g2MDsnLFxuICAnPSc6ICcmI3gzRDsnXG59O1xuXG5jb25zdCBiYWRDaGFycyA9IC9bJjw+XCInYD1dL2csXG4gICAgICBwb3NzaWJsZSA9IC9bJjw+XCInYD1dLztcblxuZnVuY3Rpb24gZXNjYXBlQ2hhcihjaHIpIHtcbiAgcmV0dXJuIGVzY2FwZVtjaHJdO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gZXh0ZW5kKG9iai8qICwgLi4uc291cmNlICovKSB7XG4gIGZvciAobGV0IGkgPSAxOyBpIDwgYXJndW1lbnRzLmxlbmd0aDsgaSsrKSB7XG4gICAgZm9yIChsZXQga2V5IGluIGFyZ3VtZW50c1tpXSkge1xuICAgICAgaWYgKE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbChhcmd1bWVudHNbaV0sIGtleSkpIHtcbiAgICAgICAgb2JqW2tleV0gPSBhcmd1bWVudHNbaV1ba2V5XTtcbiAgICAgIH1cbiAgICB9XG4gIH1cblxuICByZXR1cm4gb2JqO1xufVxuXG5leHBvcnQgbGV0IHRvU3RyaW5nID0gT2JqZWN0LnByb3RvdHlwZS50b1N0cmluZztcblxuLy8gU291cmNlZCBmcm9tIGxvZGFzaFxuLy8gaHR0cHM6Ly9naXRodWIuY29tL2Jlc3RpZWpzL2xvZGFzaC9ibG9iL21hc3Rlci9MSUNFTlNFLnR4dFxuLyogZXNsaW50LWRpc2FibGUgZnVuYy1zdHlsZSAqL1xubGV0IGlzRnVuY3Rpb24gPSBmdW5jdGlvbih2YWx1ZSkge1xuICByZXR1cm4gdHlwZW9mIHZhbHVlID09PSAnZnVuY3Rpb24nO1xufTtcbi8vIGZhbGxiYWNrIGZvciBvbGRlciB2ZXJzaW9ucyBvZiBDaHJvbWUgYW5kIFNhZmFyaVxuLyogaXN0YW5idWwgaWdub3JlIG5leHQgKi9cbmlmIChpc0Z1bmN0aW9uKC94LykpIHtcbiAgaXNGdW5jdGlvbiA9IGZ1bmN0aW9uKHZhbHVlKSB7XG4gICAgcmV0dXJuIHR5cGVvZiB2YWx1ZSA9PT0gJ2Z1bmN0aW9uJyAmJiB0b1N0cmluZy5jYWxsKHZhbHVlKSA9PT0gJ1tvYmplY3QgRnVuY3Rpb25dJztcbiAgfTtcbn1cbmV4cG9ydCB7aXNGdW5jdGlvbn07XG4vKiBlc2xpbnQtZW5hYmxlIGZ1bmMtc3R5bGUgKi9cblxuLyogaXN0YW5idWwgaWdub3JlIG5leHQgKi9cbmV4cG9ydCBjb25zdCBpc0FycmF5ID0gQXJyYXkuaXNBcnJheSB8fCBmdW5jdGlvbih2YWx1ZSkge1xuICByZXR1cm4gKHZhbHVlICYmIHR5cGVvZiB2YWx1ZSA9PT0gJ29iamVjdCcpID8gdG9TdHJpbmcuY2FsbCh2YWx1ZSkgPT09ICdbb2JqZWN0IEFycmF5XScgOiBmYWxzZTtcbn07XG5cbi8vIE9sZGVyIElFIHZlcnNpb25zIGRvIG5vdCBkaXJlY3RseSBzdXBwb3J0IGluZGV4T2Ygc28gd2UgbXVzdCBpbXBsZW1lbnQgb3VyIG93biwgc2FkbHkuXG5leHBvcnQgZnVuY3Rpb24gaW5kZXhPZihhcnJheSwgdmFsdWUpIHtcbiAgZm9yIChsZXQgaSA9IDAsIGxlbiA9IGFycmF5Lmxlbmd0aDsgaSA8IGxlbjsgaSsrKSB7XG4gICAgaWYgKGFycmF5W2ldID09PSB2YWx1ZSkge1xuICAgICAgcmV0dXJuIGk7XG4gICAgfVxuICB9XG4gIHJldHVybiAtMTtcbn1cblxuXG5leHBvcnQgZnVuY3Rpb24gZXNjYXBlRXhwcmVzc2lvbihzdHJpbmcpIHtcbiAgaWYgKHR5cGVvZiBzdHJpbmcgIT09ICdzdHJpbmcnKSB7XG4gICAgLy8gZG9uJ3QgZXNjYXBlIFNhZmVTdHJpbmdzLCBzaW5jZSB0aGV5J3JlIGFscmVhZHkgc2FmZVxuICAgIGlmIChzdHJpbmcgJiYgc3RyaW5nLnRvSFRNTCkge1xuICAgICAgcmV0dXJuIHN0cmluZy50b0hUTUwoKTtcbiAgICB9IGVsc2UgaWYgKHN0cmluZyA9PSBudWxsKSB7XG4gICAgICByZXR1cm4gJyc7XG4gICAgfSBlbHNlIGlmICghc3RyaW5nKSB7XG4gICAgICByZXR1cm4gc3RyaW5nICsgJyc7XG4gICAgfVxuXG4gICAgLy8gRm9yY2UgYSBzdHJpbmcgY29udmVyc2lvbiBhcyB0aGlzIHdpbGwgYmUgZG9uZSBieSB0aGUgYXBwZW5kIHJlZ2FyZGxlc3MgYW5kXG4gICAgLy8gdGhlIHJlZ2V4IHRlc3Qgd2lsbCBkbyB0aGlzIHRyYW5zcGFyZW50bHkgYmVoaW5kIHRoZSBzY2VuZXMsIGNhdXNpbmcgaXNzdWVzIGlmXG4gICAgLy8gYW4gb2JqZWN0J3MgdG8gc3RyaW5nIGhhcyBlc2NhcGVkIGNoYXJhY3RlcnMgaW4gaXQuXG4gICAgc3RyaW5nID0gJycgKyBzdHJpbmc7XG4gIH1cblxuICBpZiAoIXBvc3NpYmxlLnRlc3Qoc3RyaW5nKSkgeyByZXR1cm4gc3RyaW5nOyB9XG4gIHJldHVybiBzdHJpbmcucmVwbGFjZShiYWRDaGFycywgZXNjYXBlQ2hhcik7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBpc0VtcHR5KHZhbHVlKSB7XG4gIGlmICghdmFsdWUgJiYgdmFsdWUgIT09IDApIHtcbiAgICByZXR1cm4gdHJ1ZTtcbiAgfSBlbHNlIGlmIChpc0FycmF5KHZhbHVlKSAmJiB2YWx1ZS5sZW5ndGggPT09IDApIHtcbiAgICByZXR1cm4gdHJ1ZTtcbiAgfSBlbHNlIHtcbiAgICByZXR1cm4gZmFsc2U7XG4gIH1cbn1cblxuZXhwb3J0IGZ1bmN0aW9uIGNyZWF0ZUZyYW1lKG9iamVjdCkge1xuICBsZXQgZnJhbWUgPSBleHRlbmQoe30sIG9iamVjdCk7XG4gIGZyYW1lLl9wYXJlbnQgPSBvYmplY3Q7XG4gIHJldHVybiBmcmFtZTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIGJsb2NrUGFyYW1zKHBhcmFtcywgaWRzKSB7XG4gIHBhcmFtcy5wYXRoID0gaWRzO1xuICByZXR1cm4gcGFyYW1zO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gYXBwZW5kQ29udGV4dFBhdGgoY29udGV4dFBhdGgsIGlkKSB7XG4gIHJldHVybiAoY29udGV4dFBhdGggPyBjb250ZXh0UGF0aCArICcuJyA6ICcnKSArIGlkO1xufVxuIl19
-
-
-/***/ }),
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-
-var stylesInDom = {};
-
-var	memoize = function (fn) {
-	var memo;
-
-	return function () {
-		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-		return memo;
-	};
-};
-
-var isOldIE = memoize(function () {
-	// Test for IE <= 9 as proposed by Browserhacks
-	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-	// Tests for existence of standard globals is to allow style-loader
-	// to operate correctly into non-standard environments
-	// @see https://github.com/webpack-contrib/style-loader/issues/177
-	return window && document && document.all && !window.atob;
-});
-
-var getElement = (function (fn) {
-	var memo = {};
-
-	return function(selector) {
-		if (typeof memo[selector] === "undefined") {
-			memo[selector] = fn.call(this, selector);
-		}
-
-		return memo[selector]
-	};
-})(function (target) {
-	return document.querySelector(target)
-});
-
-var singleton = null;
-var	singletonCounter = 0;
-var	stylesInsertedAtTop = [];
-
-var	fixUrls = __webpack_require__(43);
-
-module.exports = function(list, options) {
-	if (typeof DEBUG !== "undefined" && DEBUG) {
-		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-	}
-
-	options = options || {};
-
-	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
-
-	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-	// tags it will allow on a page
-	if (!options.singleton) options.singleton = isOldIE();
-
-	// By default, add <style> tags to the <head> element
-	if (!options.insertInto) options.insertInto = "head";
-
-	// By default, add <style> tags to the bottom of the target
-	if (!options.insertAt) options.insertAt = "bottom";
-
-	var styles = listToStyles(list, options);
-
-	addStylesToDom(styles, options);
-
-	return function update (newList) {
-		var mayRemove = [];
-
-		for (var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-
-			domStyle.refs--;
-			mayRemove.push(domStyle);
-		}
-
-		if(newList) {
-			var newStyles = listToStyles(newList, options);
-			addStylesToDom(newStyles, options);
-		}
-
-		for (var i = 0; i < mayRemove.length; i++) {
-			var domStyle = mayRemove[i];
-
-			if(domStyle.refs === 0) {
-				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
-
-				delete stylesInDom[domStyle.id];
-			}
-		}
-	};
-};
-
-function addStylesToDom (styles, options) {
-	for (var i = 0; i < styles.length; i++) {
-		var item = styles[i];
-		var domStyle = stylesInDom[item.id];
-
-		if(domStyle) {
-			domStyle.refs++;
-
-			for(var j = 0; j < domStyle.parts.length; j++) {
-				domStyle.parts[j](item.parts[j]);
-			}
-
-			for(; j < item.parts.length; j++) {
-				domStyle.parts.push(addStyle(item.parts[j], options));
-			}
-		} else {
-			var parts = [];
-
-			for(var j = 0; j < item.parts.length; j++) {
-				parts.push(addStyle(item.parts[j], options));
-			}
-
-			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-		}
-	}
-}
-
-function listToStyles (list, options) {
-	var styles = [];
-	var newStyles = {};
-
-	for (var i = 0; i < list.length; i++) {
-		var item = list[i];
-		var id = options.base ? item[0] + options.base : item[0];
-		var css = item[1];
-		var media = item[2];
-		var sourceMap = item[3];
-		var part = {css: css, media: media, sourceMap: sourceMap};
-
-		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
-		else newStyles[id].parts.push(part);
-	}
-
-	return styles;
-}
-
-function insertStyleElement (options, style) {
-	var target = getElement(options.insertInto)
-
-	if (!target) {
-		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-	}
-
-	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
-
-	if (options.insertAt === "top") {
-		if (!lastStyleElementInsertedAtTop) {
-			target.insertBefore(style, target.firstChild);
-		} else if (lastStyleElementInsertedAtTop.nextSibling) {
-			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
-		} else {
-			target.appendChild(style);
-		}
-		stylesInsertedAtTop.push(style);
-	} else if (options.insertAt === "bottom") {
-		target.appendChild(style);
-	} else {
-		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-	}
-}
-
-function removeStyleElement (style) {
-	if (style.parentNode === null) return false;
-	style.parentNode.removeChild(style);
-
-	var idx = stylesInsertedAtTop.indexOf(style);
-	if(idx >= 0) {
-		stylesInsertedAtTop.splice(idx, 1);
-	}
-}
-
-function createStyleElement (options) {
-	var style = document.createElement("style");
-
-	options.attrs.type = "text/css";
-
-	addAttrs(style, options.attrs);
-	insertStyleElement(options, style);
-
-	return style;
-}
-
-function createLinkElement (options) {
-	var link = document.createElement("link");
-
-	options.attrs.type = "text/css";
-	options.attrs.rel = "stylesheet";
-
-	addAttrs(link, options.attrs);
-	insertStyleElement(options, link);
-
-	return link;
-}
-
-function addAttrs (el, attrs) {
-	Object.keys(attrs).forEach(function (key) {
-		el.setAttribute(key, attrs[key]);
-	});
-}
-
-function addStyle (obj, options) {
-	var style, update, remove, result;
-
-	// If a transform function was defined, run it on the css
-	if (options.transform && obj.css) {
-	    result = options.transform(obj.css);
-
-	    if (result) {
-	    	// If transform returns a value, use that instead of the original css.
-	    	// This allows running runtime transformations on the css.
-	    	obj.css = result;
-	    } else {
-	    	// If the transform function returns a falsy value, don't add this css.
-	    	// This allows conditional loading of css
-	    	return function() {
-	    		// noop
-	    	};
-	    }
-	}
-
-	if (options.singleton) {
-		var styleIndex = singletonCounter++;
-
-		style = singleton || (singleton = createStyleElement(options));
-
-		update = applyToSingletonTag.bind(null, style, styleIndex, false);
-		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
-
-	} else if (
-		obj.sourceMap &&
-		typeof URL === "function" &&
-		typeof URL.createObjectURL === "function" &&
-		typeof URL.revokeObjectURL === "function" &&
-		typeof Blob === "function" &&
-		typeof btoa === "function"
-	) {
-		style = createLinkElement(options);
-		update = updateLink.bind(null, style, options);
-		remove = function () {
-			removeStyleElement(style);
-
-			if(style.href) URL.revokeObjectURL(style.href);
-		};
-	} else {
-		style = createStyleElement(options);
-		update = applyToTag.bind(null, style);
-		remove = function () {
-			removeStyleElement(style);
-		};
-	}
-
-	update(obj);
-
-	return function updateStyle (newObj) {
-		if (newObj) {
-			if (
-				newObj.css === obj.css &&
-				newObj.media === obj.media &&
-				newObj.sourceMap === obj.sourceMap
-			) {
-				return;
-			}
-
-			update(obj = newObj);
-		} else {
-			remove();
-		}
-	};
-}
-
-var replaceText = (function () {
-	var textStore = [];
-
-	return function (index, replacement) {
-		textStore[index] = replacement;
-
-		return textStore.filter(Boolean).join('\n');
-	};
-})();
-
-function applyToSingletonTag (style, index, remove, obj) {
-	var css = remove ? "" : obj.css;
-
-	if (style.styleSheet) {
-		style.styleSheet.cssText = replaceText(index, css);
-	} else {
-		var cssNode = document.createTextNode(css);
-		var childNodes = style.childNodes;
-
-		if (childNodes[index]) style.removeChild(childNodes[index]);
-
-		if (childNodes.length) {
-			style.insertBefore(cssNode, childNodes[index]);
-		} else {
-			style.appendChild(cssNode);
-		}
-	}
-}
-
-function applyToTag (style, obj) {
-	var css = obj.css;
-	var media = obj.media;
-
-	if(media) {
-		style.setAttribute("media", media)
-	}
-
-	if(style.styleSheet) {
-		style.styleSheet.cssText = css;
-	} else {
-		while(style.firstChild) {
-			style.removeChild(style.firstChild);
-		}
-
-		style.appendChild(document.createTextNode(css));
-	}
-}
-
-function updateLink (link, options, obj) {
-	var css = obj.css;
-	var sourceMap = obj.sourceMap;
-
-	/*
-		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
-		and there is no publicPath defined then lets turn convertToAbsoluteUrls
-		on by default.  Otherwise default to the convertToAbsoluteUrls option
-		directly
-	*/
-	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
-
-	if (options.convertToAbsoluteUrls || autoFixUrls) {
-		css = fixUrls(css);
-	}
-
-	if (sourceMap) {
-		// http://stackoverflow.com/a/26603875
-		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-	}
-
-	var blob = new Blob([css], { type: "text/css" });
-
-	var oldSrc = link.href;
-
-	link.href = URL.createObjectURL(blob);
-
-	if(oldSrc) URL.revokeObjectURL(oldSrc);
-}
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports) {
-
-
-/**
- * When source maps are enabled, `style-loader` uses a link element with a data-uri to
- * embed the css on the page. This breaks all relative urls because now they are relative to a
- * bundle instead of the current page.
- *
- * One solution is to only use full urls, but that may be impossible.
- *
- * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
- *
- * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
- *
- */
-
-module.exports = function (css) {
-  // get current location
-  var location = typeof window !== "undefined" && window.location;
-
-  if (!location) {
-    throw new Error("fixUrls requires window.location");
-  }
-
-	// blank or null?
-	if (!css || typeof css !== "string") {
-	  return css;
-  }
-
-  var baseUrl = location.protocol + "//" + location.host;
-  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
-
-	// convert each url(...)
-	/*
-	This regular expression is just a way to recursively match brackets within
-	a string.
-
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	   (  = Start a capturing group
-	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
-	         |  = OR
-	         \(  = Match a start parentheses
-	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
-	                 |  = OR
-	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
-	                 \)  = Match a end parentheses
-	             )  = End Group
-              *\) = Match anything and then a close parens
-          )  = Close non-capturing group
-          *  = Match anything
-       )  = Close capturing group
-	 \)  = Match a close parens
-
-	 /gi  = Get all matches, not the first.  Be case insensitive.
-	 */
-	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
-		// strip quotes (if they exist)
-		var unquotedOrigUrl = origUrl
-			.trim()
-			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
-			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
-
-		// already a full url? no change
-		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
-		  return fullMatch;
-		}
-
-		// convert the url to a full url
-		var newUrl;
-
-		if (unquotedOrigUrl.indexOf("//") === 0) {
-		  	//TODO: should we add protocol?
-			newUrl = unquotedOrigUrl;
-		} else if (unquotedOrigUrl.indexOf("/") === 0) {
-			// path should be relative to the base url
-			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-		} else {
-			// path should be relative to current directory
-			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
-		}
-
-		// send back the fixed url(...)
-		return "url(" + JSON.stringify(newUrl) + ")";
-	});
-
-	// send back the fixed css
-	return fixedCss;
-};
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Create a simple path alias to allow browserify to resolve
-// the runtime on a supported path.
-module.exports = __webpack_require__(205)['default'];
-
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
-
-function Exception(message, node) {
-  var loc = node && node.loc,
-      line = undefined,
-      column = undefined;
-  if (loc) {
-    line = loc.start.line;
-    column = loc.start.column;
-
-    message += ' - ' + line + ':' + column;
-  }
-
-  var tmp = Error.prototype.constructor.call(this, message);
-
-  // Unfortunately errors are not enumerable in Chrome (at least), so `for prop in tmp` doesn't work.
-  for (var idx = 0; idx < errorProps.length; idx++) {
-    this[errorProps[idx]] = tmp[errorProps[idx]];
-  }
-
-  /* istanbul ignore else */
-  if (Error.captureStackTrace) {
-    Error.captureStackTrace(this, Exception);
-  }
-
-  try {
-    if (loc) {
-      this.lineNumber = line;
-
-      // Work around issue under safari where we can't directly set the column value
-      /* istanbul ignore next */
-      if (Object.defineProperty) {
-        Object.defineProperty(this, 'column', {
-          value: column,
-          enumerable: true
-        });
-      } else {
-        this.column = column;
-      }
-    }
-  } catch (nop) {
-    /* Ignore if the browser is very particular */
-  }
-}
-
-Exception.prototype = new Error();
-
-exports['default'] = Exception;
-module.exports = exports['default'];
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2V4Y2VwdGlvbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQ0EsSUFBTSxVQUFVLEdBQUcsQ0FBQyxhQUFhLEVBQUUsVUFBVSxFQUFFLFlBQVksRUFBRSxTQUFTLEVBQUUsTUFBTSxFQUFFLFFBQVEsRUFBRSxPQUFPLENBQUMsQ0FBQzs7QUFFbkcsU0FBUyxTQUFTLENBQUMsT0FBTyxFQUFFLElBQUksRUFBRTtBQUNoQyxNQUFJLEdBQUcsR0FBRyxJQUFJLElBQUksSUFBSSxDQUFDLEdBQUc7TUFDdEIsSUFBSSxZQUFBO01BQ0osTUFBTSxZQUFBLENBQUM7QUFDWCxNQUFJLEdBQUcsRUFBRTtBQUNQLFFBQUksR0FBRyxHQUFHLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQztBQUN0QixVQUFNLEdBQUcsR0FBRyxDQUFDLEtBQUssQ0FBQyxNQUFNLENBQUM7O0FBRTFCLFdBQU8sSUFBSSxLQUFLLEdBQUcsSUFBSSxHQUFHLEdBQUcsR0FBRyxNQUFNLENBQUM7R0FDeEM7O0FBRUQsTUFBSSxHQUFHLEdBQUcsS0FBSyxDQUFDLFNBQVMsQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLElBQUksRUFBRSxPQUFPLENBQUMsQ0FBQzs7O0FBRzFELE9BQUssSUFBSSxHQUFHLEdBQUcsQ0FBQyxFQUFFLEdBQUcsR0FBRyxVQUFVLENBQUMsTUFBTSxFQUFFLEdBQUcsRUFBRSxFQUFFO0FBQ2hELFFBQUksQ0FBQyxVQUFVLENBQUMsR0FBRyxDQUFDLENBQUMsR0FBRyxHQUFHLENBQUMsVUFBVSxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUM7R0FDOUM7OztBQUdELE1BQUksS0FBSyxDQUFDLGlCQUFpQixFQUFFO0FBQzNCLFNBQUssQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLEVBQUUsU0FBUyxDQUFDLENBQUM7R0FDMUM7O0FBRUQsTUFBSTtBQUNGLFFBQUksR0FBRyxFQUFFO0FBQ1AsVUFBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLENBQUM7Ozs7QUFJdkIsVUFBSSxNQUFNLENBQUMsY0FBYyxFQUFFO0FBQ3pCLGNBQU0sQ0FBQyxjQUFjLENBQUMsSUFBSSxFQUFFLFFBQVEsRUFBRTtBQUNwQyxlQUFLLEVBQUUsTUFBTTtBQUNiLG9CQUFVLEVBQUUsSUFBSTtTQUNqQixDQUFDLENBQUM7T0FDSixNQUFNO0FBQ0wsWUFBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUM7T0FDdEI7S0FDRjtHQUNGLENBQUMsT0FBTyxHQUFHLEVBQUU7O0dBRWI7Q0FDRjs7QUFFRCxTQUFTLENBQUMsU0FBUyxHQUFHLElBQUksS0FBSyxFQUFFLENBQUM7O3FCQUVuQixTQUFTIiwiZmlsZSI6ImV4Y2VwdGlvbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIlxuY29uc3QgZXJyb3JQcm9wcyA9IFsnZGVzY3JpcHRpb24nLCAnZmlsZU5hbWUnLCAnbGluZU51bWJlcicsICdtZXNzYWdlJywgJ25hbWUnLCAnbnVtYmVyJywgJ3N0YWNrJ107XG5cbmZ1bmN0aW9uIEV4Y2VwdGlvbihtZXNzYWdlLCBub2RlKSB7XG4gIGxldCBsb2MgPSBub2RlICYmIG5vZGUubG9jLFxuICAgICAgbGluZSxcbiAgICAgIGNvbHVtbjtcbiAgaWYgKGxvYykge1xuICAgIGxpbmUgPSBsb2Muc3RhcnQubGluZTtcbiAgICBjb2x1bW4gPSBsb2Muc3RhcnQuY29sdW1uO1xuXG4gICAgbWVzc2FnZSArPSAnIC0gJyArIGxpbmUgKyAnOicgKyBjb2x1bW47XG4gIH1cblxuICBsZXQgdG1wID0gRXJyb3IucHJvdG90eXBlLmNvbnN0cnVjdG9yLmNhbGwodGhpcywgbWVzc2FnZSk7XG5cbiAgLy8gVW5mb3J0dW5hdGVseSBlcnJvcnMgYXJlIG5vdCBlbnVtZXJhYmxlIGluIENocm9tZSAoYXQgbGVhc3QpLCBzbyBgZm9yIHByb3AgaW4gdG1wYCBkb2Vzbid0IHdvcmsuXG4gIGZvciAobGV0IGlkeCA9IDA7IGlkeCA8IGVycm9yUHJvcHMubGVuZ3RoOyBpZHgrKykge1xuICAgIHRoaXNbZXJyb3JQcm9wc1tpZHhdXSA9IHRtcFtlcnJvclByb3BzW2lkeF1dO1xuICB9XG5cbiAgLyogaXN0YW5idWwgaWdub3JlIGVsc2UgKi9cbiAgaWYgKEVycm9yLmNhcHR1cmVTdGFja1RyYWNlKSB7XG4gICAgRXJyb3IuY2FwdHVyZVN0YWNrVHJhY2UodGhpcywgRXhjZXB0aW9uKTtcbiAgfVxuXG4gIHRyeSB7XG4gICAgaWYgKGxvYykge1xuICAgICAgdGhpcy5saW5lTnVtYmVyID0gbGluZTtcblxuICAgICAgLy8gV29yayBhcm91bmQgaXNzdWUgdW5kZXIgc2FmYXJpIHdoZXJlIHdlIGNhbid0IGRpcmVjdGx5IHNldCB0aGUgY29sdW1uIHZhbHVlXG4gICAgICAvKiBpc3RhbmJ1bCBpZ25vcmUgbmV4dCAqL1xuICAgICAgaWYgKE9iamVjdC5kZWZpbmVQcm9wZXJ0eSkge1xuICAgICAgICBPYmplY3QuZGVmaW5lUHJvcGVydHkodGhpcywgJ2NvbHVtbicsIHtcbiAgICAgICAgICB2YWx1ZTogY29sdW1uLFxuICAgICAgICAgIGVudW1lcmFibGU6IHRydWVcbiAgICAgICAgfSk7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICB0aGlzLmNvbHVtbiA9IGNvbHVtbjtcbiAgICAgIH1cbiAgICB9XG4gIH0gY2F0Y2ggKG5vcCkge1xuICAgIC8qIElnbm9yZSBpZiB0aGUgYnJvd3NlciBpcyB2ZXJ5IHBhcnRpY3VsYXIgKi9cbiAgfVxufVxuXG5FeGNlcHRpb24ucHJvdG90eXBlID0gbmV3IEVycm9yKCk7XG5cbmV4cG9ydCBkZWZhdWx0IEV4Y2VwdGlvbjtcbiJdfQ==
-
-
-/***/ }),
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */,
-/* 114 */,
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */
+/***/ 122:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -933,7 +79,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 var _utils = __webpack_require__(24);
 
-var _exception = __webpack_require__(45);
+var _exception = __webpack_require__(44);
 
 var _exception2 = _interopRequireDefault(_exception);
 
@@ -945,7 +91,7 @@ var _logger = __webpack_require__(216);
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var VERSION = '4.0.10';
+var VERSION = '4.0.11';
 exports.VERSION = VERSION;
 var COMPILER_REVISION = 7;
 
@@ -1026,86 +172,12 @@ var log = _logger2['default'].log;
 exports.log = log;
 exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2Jhc2UuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7cUJBQTRDLFNBQVM7O3lCQUMvQixhQUFhOzs7O3VCQUNFLFdBQVc7OzBCQUNSLGNBQWM7O3NCQUNuQyxVQUFVOzs7O0FBRXRCLElBQU0sT0FBTyxHQUFHLFFBQVEsQ0FBQzs7QUFDekIsSUFBTSxpQkFBaUIsR0FBRyxDQUFDLENBQUM7OztBQUU1QixJQUFNLGdCQUFnQixHQUFHO0FBQzlCLEdBQUMsRUFBRSxhQUFhO0FBQ2hCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxVQUFVO0FBQ2IsR0FBQyxFQUFFLGtCQUFrQjtBQUNyQixHQUFDLEVBQUUsaUJBQWlCO0FBQ3BCLEdBQUMsRUFBRSxVQUFVO0NBQ2QsQ0FBQzs7O0FBRUYsSUFBTSxVQUFVLEdBQUcsaUJBQWlCLENBQUM7O0FBRTlCLFNBQVMscUJBQXFCLENBQUMsT0FBTyxFQUFFLFFBQVEsRUFBRSxVQUFVLEVBQUU7QUFDbkUsTUFBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLElBQUksRUFBRSxDQUFDO0FBQzdCLE1BQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxJQUFJLEVBQUUsQ0FBQztBQUMvQixNQUFJLENBQUMsVUFBVSxHQUFHLFVBQVUsSUFBSSxFQUFFLENBQUM7O0FBRW5DLGtDQUF1QixJQUFJLENBQUMsQ0FBQztBQUM3Qix3Q0FBMEIsSUFBSSxDQUFDLENBQUM7Q0FDakM7O0FBRUQscUJBQXFCLENBQUMsU0FBUyxHQUFHO0FBQ2hDLGFBQVcsRUFBRSxxQkFBcUI7O0FBRWxDLFFBQU0scUJBQVE7QUFDZCxLQUFHLEVBQUUsb0JBQU8sR0FBRzs7QUFFZixnQkFBYyxFQUFFLHdCQUFTLElBQUksRUFBRSxFQUFFLEVBQUU7QUFDakMsUUFBSSxnQkFBUyxJQUFJLENBQUMsSUFBSSxDQUFDLEtBQUssVUFBVSxFQUFFO0FBQ3RDLFVBQUksRUFBRSxFQUFFO0FBQUUsY0FBTSwyQkFBYyx5Q0FBeUMsQ0FBQyxDQUFDO09BQUU7QUFDM0Usb0JBQU8sSUFBSSxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsQ0FBQztLQUM1QixNQUFNO0FBQ0wsVUFBSSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsR0FBRyxFQUFFLENBQUM7S0FDekI7R0FDRjtBQUNELGtCQUFnQixFQUFFLDBCQUFTLElBQUksRUFBRTtBQUMvQixXQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDM0I7O0FBRUQsaUJBQWUsRUFBRSx5QkFBUyxJQUFJLEVBQUUsT0FBTyxFQUFFO0FBQ3ZDLFFBQUksZ0JBQVMsSUFBSSxDQUFDLElBQUksQ0FBQyxLQUFLLFVBQVUsRUFBRTtBQUN0QyxvQkFBTyxJQUFJLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQzdCLE1BQU07QUFDTCxVQUFJLE9BQU8sT0FBTyxLQUFLLFdBQVcsRUFBRTtBQUNsQyxjQUFNLHlFQUEwRCxJQUFJLG9CQUFpQixDQUFDO09BQ3ZGO0FBQ0QsVUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsR0FBRyxPQUFPLENBQUM7S0FDL0I7R0FDRjtBQUNELG1CQUFpQixFQUFFLDJCQUFTLElBQUksRUFBRTtBQUNoQyxXQUFPLElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDNUI7O0FBRUQsbUJBQWlCLEVBQUUsMkJBQVMsSUFBSSxFQUFFLEVBQUUsRUFBRTtBQUNwQyxRQUFJLGdCQUFTLElBQUksQ0FBQyxJQUFJLENBQUMsS0FBSyxVQUFVLEVBQUU7QUFDdEMsVUFBSSxFQUFFLEVBQUU7QUFBRSxjQUFNLDJCQUFjLDRDQUE0QyxDQUFDLENBQUM7T0FBRTtBQUM5RSxvQkFBTyxJQUFJLENBQUMsVUFBVSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQy9CLE1BQU07QUFDTCxVQUFJLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUUsQ0FBQztLQUM1QjtHQUNGO0FBQ0QscUJBQW1CLEVBQUUsNkJBQVMsSUFBSSxFQUFFO0FBQ2xDLFdBQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQztHQUM5QjtDQUNGLENBQUM7O0FBRUssSUFBSSxHQUFHLEdBQUcsb0JBQU8sR0FBRyxDQUFDOzs7UUFFcEIsV0FBVztRQUFFLE1BQU0iLCJmaWxlIjoiYmFzZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Y3JlYXRlRnJhbWUsIGV4dGVuZCwgdG9TdHJpbmd9IGZyb20gJy4vdXRpbHMnO1xuaW1wb3J0IEV4Y2VwdGlvbiBmcm9tICcuL2V4Y2VwdGlvbic7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdEhlbHBlcnN9IGZyb20gJy4vaGVscGVycyc7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdERlY29yYXRvcnN9IGZyb20gJy4vZGVjb3JhdG9ycyc7XG5pbXBvcnQgbG9nZ2VyIGZyb20gJy4vbG9nZ2VyJztcblxuZXhwb3J0IGNvbnN0IFZFUlNJT04gPSAnNC4wLjEwJztcbmV4cG9ydCBjb25zdCBDT01QSUxFUl9SRVZJU0lPTiA9IDc7XG5cbmV4cG9ydCBjb25zdCBSRVZJU0lPTl9DSEFOR0VTID0ge1xuICAxOiAnPD0gMS4wLnJjLjInLCAvLyAxLjAucmMuMiBpcyBhY3R1YWxseSByZXYyIGJ1dCBkb2Vzbid0IHJlcG9ydCBpdFxuICAyOiAnPT0gMS4wLjAtcmMuMycsXG4gIDM6ICc9PSAxLjAuMC1yYy40JyxcbiAgNDogJz09IDEueC54JyxcbiAgNTogJz09IDIuMC4wLWFscGhhLngnLFxuICA2OiAnPj0gMi4wLjAtYmV0YS4xJyxcbiAgNzogJz49IDQuMC4wJ1xufTtcblxuY29uc3Qgb2JqZWN0VHlwZSA9ICdbb2JqZWN0IE9iamVjdF0nO1xuXG5leHBvcnQgZnVuY3Rpb24gSGFuZGxlYmFyc0Vudmlyb25tZW50KGhlbHBlcnMsIHBhcnRpYWxzLCBkZWNvcmF0b3JzKSB7XG4gIHRoaXMuaGVscGVycyA9IGhlbHBlcnMgfHwge307XG4gIHRoaXMucGFydGlhbHMgPSBwYXJ0aWFscyB8fCB7fTtcbiAgdGhpcy5kZWNvcmF0b3JzID0gZGVjb3JhdG9ycyB8fCB7fTtcblxuICByZWdpc3RlckRlZmF1bHRIZWxwZXJzKHRoaXMpO1xuICByZWdpc3RlckRlZmF1bHREZWNvcmF0b3JzKHRoaXMpO1xufVxuXG5IYW5kbGViYXJzRW52aXJvbm1lbnQucHJvdG90eXBlID0ge1xuICBjb25zdHJ1Y3RvcjogSGFuZGxlYmFyc0Vudmlyb25tZW50LFxuXG4gIGxvZ2dlcjogbG9nZ2VyLFxuICBsb2c6IGxvZ2dlci5sb2csXG5cbiAgcmVnaXN0ZXJIZWxwZXI6IGZ1bmN0aW9uKG5hbWUsIGZuKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGlmIChmbikgeyB0aHJvdyBuZXcgRXhjZXB0aW9uKCdBcmcgbm90IHN1cHBvcnRlZCB3aXRoIG11bHRpcGxlIGhlbHBlcnMnKTsgfVxuICAgICAgZXh0ZW5kKHRoaXMuaGVscGVycywgbmFtZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMuaGVscGVyc1tuYW1lXSA9IGZuO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlckhlbHBlcjogZnVuY3Rpb24obmFtZSkge1xuICAgIGRlbGV0ZSB0aGlzLmhlbHBlcnNbbmFtZV07XG4gIH0sXG5cbiAgcmVnaXN0ZXJQYXJ0aWFsOiBmdW5jdGlvbihuYW1lLCBwYXJ0aWFsKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGV4dGVuZCh0aGlzLnBhcnRpYWxzLCBuYW1lKTtcbiAgICB9IGVsc2Uge1xuICAgICAgaWYgKHR5cGVvZiBwYXJ0aWFsID09PSAndW5kZWZpbmVkJykge1xuICAgICAgICB0aHJvdyBuZXcgRXhjZXB0aW9uKGBBdHRlbXB0aW5nIHRvIHJlZ2lzdGVyIGEgcGFydGlhbCBjYWxsZWQgXCIke25hbWV9XCIgYXMgdW5kZWZpbmVkYCk7XG4gICAgICB9XG4gICAgICB0aGlzLnBhcnRpYWxzW25hbWVdID0gcGFydGlhbDtcbiAgICB9XG4gIH0sXG4gIHVucmVnaXN0ZXJQYXJ0aWFsOiBmdW5jdGlvbihuYW1lKSB7XG4gICAgZGVsZXRlIHRoaXMucGFydGlhbHNbbmFtZV07XG4gIH0sXG5cbiAgcmVnaXN0ZXJEZWNvcmF0b3I6IGZ1bmN0aW9uKG5hbWUsIGZuKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGlmIChmbikgeyB0aHJvdyBuZXcgRXhjZXB0aW9uKCdBcmcgbm90IHN1cHBvcnRlZCB3aXRoIG11bHRpcGxlIGRlY29yYXRvcnMnKTsgfVxuICAgICAgZXh0ZW5kKHRoaXMuZGVjb3JhdG9ycywgbmFtZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMuZGVjb3JhdG9yc1tuYW1lXSA9IGZuO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlckRlY29yYXRvcjogZnVuY3Rpb24obmFtZSkge1xuICAgIGRlbGV0ZSB0aGlzLmRlY29yYXRvcnNbbmFtZV07XG4gIH1cbn07XG5cbmV4cG9ydCBsZXQgbG9nID0gbG9nZ2VyLmxvZztcblxuZXhwb3J0IHtjcmVhdGVGcmFtZSwgbG9nZ2VyfTtcbiJdfQ==
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2Jhc2UuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7cUJBQTRDLFNBQVM7O3lCQUMvQixhQUFhOzs7O3VCQUNFLFdBQVc7OzBCQUNSLGNBQWM7O3NCQUNuQyxVQUFVOzs7O0FBRXRCLElBQU0sT0FBTyxHQUFHLFFBQVEsQ0FBQzs7QUFDekIsSUFBTSxpQkFBaUIsR0FBRyxDQUFDLENBQUM7OztBQUU1QixJQUFNLGdCQUFnQixHQUFHO0FBQzlCLEdBQUMsRUFBRSxhQUFhO0FBQ2hCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxVQUFVO0FBQ2IsR0FBQyxFQUFFLGtCQUFrQjtBQUNyQixHQUFDLEVBQUUsaUJBQWlCO0FBQ3BCLEdBQUMsRUFBRSxVQUFVO0NBQ2QsQ0FBQzs7O0FBRUYsSUFBTSxVQUFVLEdBQUcsaUJBQWlCLENBQUM7O0FBRTlCLFNBQVMscUJBQXFCLENBQUMsT0FBTyxFQUFFLFFBQVEsRUFBRSxVQUFVLEVBQUU7QUFDbkUsTUFBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLElBQUksRUFBRSxDQUFDO0FBQzdCLE1BQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxJQUFJLEVBQUUsQ0FBQztBQUMvQixNQUFJLENBQUMsVUFBVSxHQUFHLFVBQVUsSUFBSSxFQUFFLENBQUM7O0FBRW5DLGtDQUF1QixJQUFJLENBQUMsQ0FBQztBQUM3Qix3Q0FBMEIsSUFBSSxDQUFDLENBQUM7Q0FDakM7O0FBRUQscUJBQXFCLENBQUMsU0FBUyxHQUFHO0FBQ2hDLGFBQVcsRUFBRSxxQkFBcUI7O0FBRWxDLFFBQU0scUJBQVE7QUFDZCxLQUFHLEVBQUUsb0JBQU8sR0FBRzs7QUFFZixnQkFBYyxFQUFFLHdCQUFTLElBQUksRUFBRSxFQUFFLEVBQUU7QUFDakMsUUFBSSxnQkFBUyxJQUFJLENBQUMsSUFBSSxDQUFDLEtBQUssVUFBVSxFQUFFO0FBQ3RDLFVBQUksRUFBRSxFQUFFO0FBQUUsY0FBTSwyQkFBYyx5Q0FBeUMsQ0FBQyxDQUFDO09BQUU7QUFDM0Usb0JBQU8sSUFBSSxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsQ0FBQztLQUM1QixNQUFNO0FBQ0wsVUFBSSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsR0FBRyxFQUFFLENBQUM7S0FDekI7R0FDRjtBQUNELGtCQUFnQixFQUFFLDBCQUFTLElBQUksRUFBRTtBQUMvQixXQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDM0I7O0FBRUQsaUJBQWUsRUFBRSx5QkFBUyxJQUFJLEVBQUUsT0FBTyxFQUFFO0FBQ3ZDLFFBQUksZ0JBQVMsSUFBSSxDQUFDLElBQUksQ0FBQyxLQUFLLFVBQVUsRUFBRTtBQUN0QyxvQkFBTyxJQUFJLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQzdCLE1BQU07QUFDTCxVQUFJLE9BQU8sT0FBTyxLQUFLLFdBQVcsRUFBRTtBQUNsQyxjQUFNLHlFQUEwRCxJQUFJLG9CQUFpQixDQUFDO09BQ3ZGO0FBQ0QsVUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsR0FBRyxPQUFPLENBQUM7S0FDL0I7R0FDRjtBQUNELG1CQUFpQixFQUFFLDJCQUFTLElBQUksRUFBRTtBQUNoQyxXQUFPLElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDNUI7O0FBRUQsbUJBQWlCLEVBQUUsMkJBQVMsSUFBSSxFQUFFLEVBQUUsRUFBRTtBQUNwQyxRQUFJLGdCQUFTLElBQUksQ0FBQyxJQUFJLENBQUMsS0FBSyxVQUFVLEVBQUU7QUFDdEMsVUFBSSxFQUFFLEVBQUU7QUFBRSxjQUFNLDJCQUFjLDRDQUE0QyxDQUFDLENBQUM7T0FBRTtBQUM5RSxvQkFBTyxJQUFJLENBQUMsVUFBVSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQy9CLE1BQU07QUFDTCxVQUFJLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUUsQ0FBQztLQUM1QjtHQUNGO0FBQ0QscUJBQW1CLEVBQUUsNkJBQVMsSUFBSSxFQUFFO0FBQ2xDLFdBQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQztHQUM5QjtDQUNGLENBQUM7O0FBRUssSUFBSSxHQUFHLEdBQUcsb0JBQU8sR0FBRyxDQUFDOzs7UUFFcEIsV0FBVztRQUFFLE1BQU0iLCJmaWxlIjoiYmFzZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Y3JlYXRlRnJhbWUsIGV4dGVuZCwgdG9TdHJpbmd9IGZyb20gJy4vdXRpbHMnO1xuaW1wb3J0IEV4Y2VwdGlvbiBmcm9tICcuL2V4Y2VwdGlvbic7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdEhlbHBlcnN9IGZyb20gJy4vaGVscGVycyc7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdERlY29yYXRvcnN9IGZyb20gJy4vZGVjb3JhdG9ycyc7XG5pbXBvcnQgbG9nZ2VyIGZyb20gJy4vbG9nZ2VyJztcblxuZXhwb3J0IGNvbnN0IFZFUlNJT04gPSAnNC4wLjExJztcbmV4cG9ydCBjb25zdCBDT01QSUxFUl9SRVZJU0lPTiA9IDc7XG5cbmV4cG9ydCBjb25zdCBSRVZJU0lPTl9DSEFOR0VTID0ge1xuICAxOiAnPD0gMS4wLnJjLjInLCAvLyAxLjAucmMuMiBpcyBhY3R1YWxseSByZXYyIGJ1dCBkb2Vzbid0IHJlcG9ydCBpdFxuICAyOiAnPT0gMS4wLjAtcmMuMycsXG4gIDM6ICc9PSAxLjAuMC1yYy40JyxcbiAgNDogJz09IDEueC54JyxcbiAgNTogJz09IDIuMC4wLWFscGhhLngnLFxuICA2OiAnPj0gMi4wLjAtYmV0YS4xJyxcbiAgNzogJz49IDQuMC4wJ1xufTtcblxuY29uc3Qgb2JqZWN0VHlwZSA9ICdbb2JqZWN0IE9iamVjdF0nO1xuXG5leHBvcnQgZnVuY3Rpb24gSGFuZGxlYmFyc0Vudmlyb25tZW50KGhlbHBlcnMsIHBhcnRpYWxzLCBkZWNvcmF0b3JzKSB7XG4gIHRoaXMuaGVscGVycyA9IGhlbHBlcnMgfHwge307XG4gIHRoaXMucGFydGlhbHMgPSBwYXJ0aWFscyB8fCB7fTtcbiAgdGhpcy5kZWNvcmF0b3JzID0gZGVjb3JhdG9ycyB8fCB7fTtcblxuICByZWdpc3RlckRlZmF1bHRIZWxwZXJzKHRoaXMpO1xuICByZWdpc3RlckRlZmF1bHREZWNvcmF0b3JzKHRoaXMpO1xufVxuXG5IYW5kbGViYXJzRW52aXJvbm1lbnQucHJvdG90eXBlID0ge1xuICBjb25zdHJ1Y3RvcjogSGFuZGxlYmFyc0Vudmlyb25tZW50LFxuXG4gIGxvZ2dlcjogbG9nZ2VyLFxuICBsb2c6IGxvZ2dlci5sb2csXG5cbiAgcmVnaXN0ZXJIZWxwZXI6IGZ1bmN0aW9uKG5hbWUsIGZuKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGlmIChmbikgeyB0aHJvdyBuZXcgRXhjZXB0aW9uKCdBcmcgbm90IHN1cHBvcnRlZCB3aXRoIG11bHRpcGxlIGhlbHBlcnMnKTsgfVxuICAgICAgZXh0ZW5kKHRoaXMuaGVscGVycywgbmFtZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMuaGVscGVyc1tuYW1lXSA9IGZuO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlckhlbHBlcjogZnVuY3Rpb24obmFtZSkge1xuICAgIGRlbGV0ZSB0aGlzLmhlbHBlcnNbbmFtZV07XG4gIH0sXG5cbiAgcmVnaXN0ZXJQYXJ0aWFsOiBmdW5jdGlvbihuYW1lLCBwYXJ0aWFsKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGV4dGVuZCh0aGlzLnBhcnRpYWxzLCBuYW1lKTtcbiAgICB9IGVsc2Uge1xuICAgICAgaWYgKHR5cGVvZiBwYXJ0aWFsID09PSAndW5kZWZpbmVkJykge1xuICAgICAgICB0aHJvdyBuZXcgRXhjZXB0aW9uKGBBdHRlbXB0aW5nIHRvIHJlZ2lzdGVyIGEgcGFydGlhbCBjYWxsZWQgXCIke25hbWV9XCIgYXMgdW5kZWZpbmVkYCk7XG4gICAgICB9XG4gICAgICB0aGlzLnBhcnRpYWxzW25hbWVdID0gcGFydGlhbDtcbiAgICB9XG4gIH0sXG4gIHVucmVnaXN0ZXJQYXJ0aWFsOiBmdW5jdGlvbihuYW1lKSB7XG4gICAgZGVsZXRlIHRoaXMucGFydGlhbHNbbmFtZV07XG4gIH0sXG5cbiAgcmVnaXN0ZXJEZWNvcmF0b3I6IGZ1bmN0aW9uKG5hbWUsIGZuKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGlmIChmbikgeyB0aHJvdyBuZXcgRXhjZXB0aW9uKCdBcmcgbm90IHN1cHBvcnRlZCB3aXRoIG11bHRpcGxlIGRlY29yYXRvcnMnKTsgfVxuICAgICAgZXh0ZW5kKHRoaXMuZGVjb3JhdG9ycywgbmFtZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMuZGVjb3JhdG9yc1tuYW1lXSA9IGZuO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlckRlY29yYXRvcjogZnVuY3Rpb24obmFtZSkge1xuICAgIGRlbGV0ZSB0aGlzLmRlY29yYXRvcnNbbmFtZV07XG4gIH1cbn07XG5cbmV4cG9ydCBsZXQgbG9nID0gbG9nZ2VyLmxvZztcblxuZXhwb3J0IHtjcmVhdGVGcmFtZSwgbG9nZ2VyfTtcbiJdfQ==
 
 
 /***/ }),
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */,
-/* 127 */,
-/* 128 */,
-/* 129 */,
-/* 130 */,
-/* 131 */,
-/* 132 */,
-/* 133 */,
-/* 134 */,
-/* 135 */,
-/* 136 */,
-/* 137 */,
-/* 138 */,
-/* 139 */,
-/* 140 */,
-/* 141 */,
-/* 142 */,
-/* 143 */,
-/* 144 */,
-/* 145 */,
-/* 146 */,
-/* 147 */,
-/* 148 */,
-/* 149 */,
-/* 150 */,
-/* 151 */,
-/* 152 */,
-/* 153 */,
-/* 154 */,
-/* 155 */,
-/* 156 */,
-/* 157 */,
-/* 158 */,
-/* 159 */,
-/* 160 */,
-/* 161 */,
-/* 162 */,
-/* 163 */,
-/* 164 */,
-/* 165 */,
-/* 166 */,
-/* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */,
-/* 174 */,
-/* 175 */,
-/* 176 */,
-/* 177 */,
-/* 178 */,
-/* 179 */,
-/* 180 */,
-/* 181 */,
-/* 182 */,
-/* 183 */,
-/* 184 */,
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */
+
+/***/ 198:
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -1119,8 +191,6 @@ const codeConfig = __webpack_require__(203);
 const navTpl = __webpack_require__(204);
 const rightPanelTpl = __webpack_require__(221);
 const caseBoxJsonTpl = __webpack_require__(222);
-const caseBoxVueTpl = __webpack_require__(223);
-const caseBoxReactTpl = __webpack_require__(224);
 
 class App {
   constructor() {
@@ -1132,15 +202,15 @@ class App {
   }
   init() {
     // 根据 url 路由转发
-    const langReg = new RegExp('(^|&)language=([^&]*)(&|$)');
+    // const langReg = new RegExp('(^|&)language=([^&]*)(&|$)');
     const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
     const search = window.location.search.substr(1);
 
-    const langResult = search.match(langReg);
+    // const langResult = search.match(langReg);
     const typeResult = search.match(typeReg);
-    const lang = langResult ? langResult[2] : 'react';
+    // const lang = langResult ? langResult[2] : 'react';
     const chartType = typeResult? typeResult[2] : Object.keys(codeConfig)[0];
-    this.attrs.language = lang;
+    // this.attrs.language = lang;
     this.attrs.chartType = chartType;
     const exampleFolders = codeConfig[chartType].examples || [];
     exampleFolders.forEach((folder) => {
@@ -1149,10 +219,10 @@ class App {
       let vueCode = '';
       let angularCode = '';
       try {
-        jsonCode = __webpack_require__(225)(`./${chartType}/${folder}/jsonCode.js`);
-        reactCode = __webpack_require__(238)(`./${chartType}/${folder}/reactCode.js`);
-        vueCode = __webpack_require__(247)(`./${chartType}/${folder}/vueCode.js`);
-        angularCode = !(function webpackMissingModule() { var e = new Error("Cannot find module \"../../examples\""); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+        jsonCode = __webpack_require__(223)(`./${chartType}/${folder}/json.js`);
+        reactCode = __webpack_require__(228)(`./${chartType}/${folder}/react.js`);
+        vueCode = __webpack_require__(231)(`./${chartType}/${folder}/vue.js`);
+        angularCode = __webpack_require__(234)(`./${chartType}/${folder}/angular.js`);
       } catch(e) {
         console.log('exception:', e);
       } finally {
@@ -1164,30 +234,31 @@ class App {
     });
 
     this.render();
-  }
-  render() {
-    this.renderNav();
-    this.renderRightPanel();
-
-    this.renderExample();
     this.bindEvent();
   }
 
+  render() {
+    this.renderNav();
+    this.renderRightPanel();
+    this.renderExample();
+  }
+
   renderNav() {
+    $('#nav').empty();
     $('#nav').append(navTpl({
       codeConfig,
       language: this.attrs.language,
       chartType: this.attrs.chartType,
     }));
   }
-
   renderRightPanel() {
+    $('#rightPanel').empty();
     $('#rightPanel').append(rightPanelTpl({noCodes: this.attrs.codes.length ? false : true}));
   }
 
   bindEvent() {
     var _this = this;
-    $('.case-box .op .run').click(function() {
+    $('.case-box .op .run').on('click', function() {
       const index = $(this).attr('data-index');
 
       const data = _this.getJsfiddleData(index);
@@ -1215,7 +286,21 @@ class App {
       form.submit();
       document.body.removeChild(form);
     });
+    $('.case-box .case-code-switch .case-code-switch-item').on('click', function () {
+      const lang = $(this).attr('data-lang');
+      _this.attrs.language = lang;
+
+      _this.unbindEvent();
+      _this.render();
+      _this.bindEvent();
+    })
   }
+
+  unbindEvent() {
+    $('.case-box .op .run').off('click');
+    $('.case-box .case-code-switch .case-code-switch-item').off('click');
+  }
+
   getJsfiddleData(index) {
     const language = this.attrs.language;
     switch(language) {
@@ -1244,37 +329,47 @@ class App {
     }
     $('.case-list').empty();
     this.attrs.codes.forEach((code, i) => {
-      $('.case-list').append(caseBoxJsonTpl({name: enName, i}));
+      $('.case-list').append(caseBoxJsonTpl({
+        name: enName,
+        i,
+        reactClass: _this.attrs.language === 'react' ? ' active' : '',
+        vueClass: _this.attrs.language === 'vue' ? ' active' : '',
+        angularClass: _this.attrs.language === 'angular' ? ' active' : '',
+      }));
       const runCode = code['jsonCode'];
       runCode.config.chart.container = `example${i}`;
       Viser.default(runCode.config);
 
-      var editor = ace.edit(`code${i}`);
-      const showCode = _this.getShowCode(code, i);
-      editor.setTheme("ace/theme/github");
-      editor.getSession().setMode("ace/mode/javascript");
-      editor.setHighlightActiveLine(true);
-      editor.setShowPrintMargin(false);
-      editor.env.editor.setReadOnly(true);
-      editor.renderer.setShowGutter(false);
-      editor.env.editor.setValue(showCode, 1);
-    });
-  }
+      var reactEditor = ace.edit(`react-${i}`);
+      const showReactCode = _this.getReactCode(code);
+      reactEditor.setTheme("ace/theme/github");
+      reactEditor.getSession().setMode("ace/mode/javascript");
+      reactEditor.setHighlightActiveLine(true);
+      reactEditor.setShowPrintMargin(false);
+      reactEditor.env.editor.setReadOnly(true);
+      reactEditor.renderer.setShowGutter(false);
+      reactEditor.env.editor.setValue(showReactCode, 1);
 
-  getShowCode(code, i) {
-    const language = this.attrs.language;
-    switch(language) {
-      case 'json':
-        return this.getJsonCode(code);
-      case 'react':
-        return this.getReactCode(code);
-      case 'vue':
-        return this.getVueCode(code);
-      case 'angular':
-        break;
-      default:
-        return;
-    }
+      var vueEditor = ace.edit(`vue-${i}`);
+      const showVueCode = _this.getVueCode(code);
+      vueEditor.setTheme("ace/theme/github");
+      vueEditor.getSession().setMode("ace/mode/javascript");
+      vueEditor.setHighlightActiveLine(true);
+      vueEditor.setShowPrintMargin(false);
+      vueEditor.env.editor.setReadOnly(true);
+      vueEditor.renderer.setShowGutter(false);
+      vueEditor.env.editor.setValue(showVueCode, 1);
+
+      var angularEditor = ace.edit(`angular-${i}`);
+      const showAngularCode = this.getAngularCode(code);
+      angularEditor.setTheme("ace/theme/github");
+      angularEditor.getSession().setMode("ace/mode/javascript");
+      angularEditor.setHighlightActiveLine(true);
+      angularEditor.setShowPrintMargin(false);
+      angularEditor.env.editor.setReadOnly(true);
+      angularEditor.renderer.setShowGutter(false);
+      angularEditor.env.editor.setValue(showAngularCode, 1);
+    });
   }
 
   getJsonCode(code) {
@@ -1282,27 +377,34 @@ class App {
   }
   getReactCode(code) {
     const languageCode = code[`reactCode`];
-    const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
-    return `
-var config = ${jsonCode};
-${languageCode.script || ''}
-ReactDOM.render(${languageCode.template}, document.getElementById('example'))`;
+    return languageCode.template;
+//     const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
+//     return `
+// var config = ${jsonCode};
+// ${languageCode.script || ''}
+// ReactDOM.render(${languageCode.template}, document.getElementById('example'))`;
   }
 
   getVueCode(code) {
     const languageCode = code[`vueCode`];
-    const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
-    let vueTpl = `<div id="example">${languageCode.template}</div>`;
-    let scriptCode = `
-var config = ${jsonCode}
-new Vue({
-  el: '#example',
-  data: {
-    config,
+    return languageCode.template;
+//     const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
+//     let vueTpl = `<div id="example">${languageCode.template}</div>`;
+//     let scriptCode = `
+// var config = ${jsonCode}
+// new Vue({
+//   el: '#example',
+//   data: {
+//     config,
+//   }
+// });
+// `;
+//     return `${vueTpl}${scriptCode}`;
   }
-});
-`;
-    return `${vueTpl}${scriptCode}`;
+
+  getAngularCode(code) {
+    const languageCode = code[`angularCode`];
+    return languageCode.template;
   }
 
   getJsfiddleJsonData(index) {
@@ -1371,7 +473,8 @@ new App().init();
 
 
 /***/ }),
-/* 199 */
+
+/***/ 199:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -1391,8 +494,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
-			var newContent = require("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss");
+		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
+			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -1402,7 +505,8 @@ if(false) {
 }
 
 /***/ }),
-/* 200 */
+
+/***/ 200:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(41)(undefined);
@@ -1410,13 +514,14 @@ exports = module.exports = __webpack_require__(41)(undefined);
 
 
 // module
-exports.push([module.i, ".common-header {\n  height: 60px;\n  line-height: 60px;\n  display: block;\n  outline: 0;\n  list-style: none;\n  color: #666;\n  font-size: 14px;\n  position: relative;\n  background: #00c49f;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }\n  .common-header .common-title {\n    float: left;\n    padding-left: 30px;\n    color: #fff;\n    text-decoration: none;\n    font-size: 36px;\n    font-weight: 100;\n    height: 60px;\n    line-height: 60px;\n    display: block;\n    background: #0088fe;\n    width: 200px;\n    box-sizing: border-box; }\n    .common-header .common-title::after {\n      content: ' ';\n      display: block;\n      position: absolute;\n      top: -28px;\n      left: 163px;\n      width: 80px;\n      height: 80px;\n      transform: rotate(-30deg);\n      background: #0088fe;\n      border-radius: 20px; }\n  .common-header .common-header-nav {\n    width: 500px;\n    height: 60px;\n    box-sizing: border-box;\n    padding-top: 13px;\n    float: right;\n    margin-right: 126px; }\n  .common-header .common-header-nav-item {\n    color: white;\n    display: block;\n    width: 130px;\n    height: 34px;\n    line-height: 34px;\n    border-radius: 34px;\n    font-size: 14px;\n    float: right;\n    text-decoration: none;\n    text-align: center;\n    transition: background .3s, color .3s;\n    position: relative;\n    cursor: pointer; }\n    .common-header .common-header-nav-item a {\n      text-decoration: none;\n      color: #fff; }\n    .common-header .common-header-nav-item:hover {\n      background: white;\n      color: #00c49f; }\n      .common-header .common-header-nav-item:hover a,\n      .common-header .common-header-nav-item:hover i {\n        color: #00c49f; }\n\n* {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  overflow-x: hidden; }\n\nul, ol {\n  display: block;\n  list-style-type: none;\n  -webkit-margin-before: 0;\n  -webkit-margin-after: 0;\n  -webkit-margin-start: 0px;\n  -webkit-margin-end: 0px;\n  -webkit-padding-start: 0; }\n\na {\n  text-decoration: none; }\n\n.github-link {\n  color: white;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  display: block;\n  float: right;\n  margin-left: 48px; }\n  .github-link .iconfont {\n    height: 29px;\n    width: 29px;\n    overflow: hidden;\n    font-size: 28px; }\n  .github-link .icon-gh {\n    display: none; }\n  .github-link .icon-gh-o {\n    display: block; }\n  .github-link:hover .icon-gh {\n    display: block; }\n  .github-link:hover .icon-gh-o {\n    display: none; }\n\n@font-face {\n  font-family: 'iconfont';\n  /* project id 473307 */\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot\");\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot?#iefix\") format(\"embedded-opentype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.woff\") format(\"woff\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.ttf\") format(\"truetype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.svg#iconfont\") format(\"svg\"); }\n\n.iconfont {\n  font-family: \"iconfont\" !important;\n  font-size: 16px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.icon-bingtu:before {\n  content: \"\\E600\"; }\n\n.icon-gh:before {\n  content: \"\\E719\"; }\n\n.icon-fuzhi:before {\n  content: \"\\E644\"; }\n\n.icon-relitu:before {\n  content: \"\\E650\"; }\n\n.icon-jizuobiao:before {\n  content: \"\\E830\"; }\n\n.icon-loudoutu:before {\n  content: \"\\E645\"; }\n\n.icon-mianjitu:before {\n  content: \"\\E6E7\"; }\n\n.icon-gh-o:before {\n  content: \"\\EEA9\"; }\n\n.icon-leidatu:before {\n  content: \"\\E626\"; }\n\n.icon-yibiaopan:before {\n  content: \"\\E66C\"; }\n\n.icon-fenmian:before {\n  content: \"\\E6EA\"; }\n\n.icon-zhuzhuangtu:before {\n  content: \"\\E6B4\"; }\n\n.icon-diantu:before {\n  content: \"\\E61E\"; }\n\n.icon-infinite:before {\n  content: \"\\E6CE\"; }\n\n.icon-one:before {\n  content: \"\\E687\"; }\n\n.icon-xiangxiantu:before {\n  content: \"\\E62B\"; }\n\n.icon-ditu:before {\n  content: \"\\E882\"; }\n\n.icon-github:before {\n  content: \"\\E601\"; }\n\n.icon-guanxitu:before {\n  content: \"\\E615\"; }\n\n.icon-down-triangle:before {\n  content: \"\\E610\"; }\n\n.icon-yunxing:before {\n  content: \"\\E66D\"; }\n\n.icon-xianxingtu:before {\n  content: \"\\E660\"; }\n\n.icon-contain:before {\n  content: \"\\E614\"; }\n\n.icon-juzhentu:before {\n  content: \"\\E740\"; }\n\n.icon-gupiaotu:before {\n  content: \"\\E73B\"; }\n\n.icon-meiguitu:before {\n  content: \"\\E60B\"; }\n\n#main-content {\n  position: relative;\n  height: calc(100% - 60px); }\n  #main-content .left-panel {\n    float: left;\n    width: 200px;\n    height: 100%;\n    background: #fff;\n    border-right: 1px solid #ddd;\n    padding-top: 20px;\n    box-sizing: border-box; }\n  #main-content .right-panel {\n    overflow: hidden;\n    height: 100%;\n    padding: 20px;\n    box-sizing: border-box; }\n\n.common-nav-folder {\n  margin-bottom: 20px;\n  padding-left: 30px;\n  line-height: 40px; }\n\n.common-nav-item {\n  cursor: pointer;\n  padding-left: 60px;\n  margin-left: -30px; }\n  .common-nav-item:hover, .common-nav-item.active {\n    background: #edf1f5; }\n\n.common-nav-title {\n  color: #999;\n  font-weight: 100; }\n\n.common-nav-link {\n  color: #666;\n  display: block;\n  width: 100%;\n  height: 34px;\n  line-height: 34px;\n  font-size: 16px;\n  text-transform: capitalize; }\n\n#main-content .case-type {\n  background: #fff;\n  color: #333;\n  margin-bottom: 10px;\n  font-size: 20px;\n  text-transform: capitalize;\n  width: 48%;\n  position: absolute; }\n\n#main-content .case-list .case-box {\n  margin-bottom: 10px;\n  background: #fff;\n  position: relative;\n  transition: all .2s ease-in-out; }\n  #main-content .case-list .case-box .op {\n    position: absolute;\n    top: 0;\n    right: 30px;\n    z-index: 11; }\n    #main-content .case-list .case-box .op .index {\n      font-size: 20px;\n      line-height: 28px;\n      color: #666;\n      margin-right: 10px; }\n    #main-content .case-list .case-box .op a {\n      cursor: pointer;\n      padding: 3px 16px;\n      display: inline-block;\n      background: #0088fe;\n      border-radius: 4px;\n      color: #fff; }\n      #main-content .case-list .case-box .op a i {\n        color: #fff; }\n\n#main-content .case-list .case-demo {\n  padding: 50px 0 0; }\n\n#main-content .case-list .case-code {\n  padding: 0 15px; }\n\n#main-content .case-list .case-demo,\n#main-content .case-list .case-code {\n  display: inline-block;\n  width: 48%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  box-sizing: border-box; }\n  #main-content .case-list .case-demo .case-code-switch,\n  #main-content .case-list .case-code .case-code-switch {\n    width: 100%;\n    height: 60px;\n    position: relative; }\n  #main-content .case-list .case-demo .case-code-detail,\n  #main-content .case-list .case-code .case-code-detail {\n    height: calc(100% - 60px);\n    width: 100%;\n    overflow-y: auto;\n    position: relative; }\n    #main-content .case-list .case-demo .case-code-detail pre,\n    #main-content .case-list .case-code .case-code-detail pre {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0; }\n\n#main-content .case-list .case-split {\n  display: block;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 48%;\n  border: 1px dashed #eee; }\n\n#main-content .case-box.no-code {\n  padding: 15px; }\n", ""]);
+exports.push([module.i, ".common-header {\n  height: 60px;\n  line-height: 60px;\n  display: block;\n  outline: 0;\n  list-style: none;\n  color: #666;\n  font-size: 14px;\n  position: relative;\n  background: #00c49f;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }\n  .common-header .common-title {\n    float: left;\n    padding-left: 30px;\n    color: #fff;\n    text-decoration: none;\n    font-size: 36px;\n    font-weight: 100;\n    height: 60px;\n    line-height: 60px;\n    display: block;\n    background: #0088fe;\n    width: 200px;\n    box-sizing: border-box; }\n    .common-header .common-title::after {\n      content: ' ';\n      display: block;\n      position: absolute;\n      top: -28px;\n      left: 163px;\n      width: 80px;\n      height: 80px;\n      transform: rotate(-30deg);\n      background: #0088fe;\n      border-radius: 20px; }\n  .common-header .common-header-nav {\n    width: 500px;\n    height: 60px;\n    box-sizing: border-box;\n    padding-top: 13px;\n    float: right;\n    margin-right: 126px; }\n  .common-header .common-header-nav-item {\n    color: white;\n    display: block;\n    width: 130px;\n    height: 34px;\n    line-height: 34px;\n    border-radius: 34px;\n    font-size: 14px;\n    float: right;\n    text-decoration: none;\n    text-align: center;\n    transition: background .3s, color .3s;\n    position: relative;\n    cursor: pointer; }\n    .common-header .common-header-nav-item a {\n      text-decoration: none;\n      color: #fff; }\n    .common-header .common-header-nav-item:hover {\n      background: white;\n      color: #00c49f; }\n      .common-header .common-header-nav-item:hover a,\n      .common-header .common-header-nav-item:hover i {\n        color: #00c49f; }\n\n* {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  overflow-x: hidden; }\n\nul, ol {\n  display: block;\n  list-style-type: none;\n  -webkit-margin-before: 0;\n  -webkit-margin-after: 0;\n  -webkit-margin-start: 0px;\n  -webkit-margin-end: 0px;\n  -webkit-padding-start: 0; }\n\na {\n  text-decoration: none; }\n\n.github-link {\n  color: white;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  display: block;\n  float: right;\n  margin-left: 48px; }\n  .github-link .iconfont {\n    height: 29px;\n    width: 29px;\n    overflow: hidden;\n    font-size: 28px; }\n  .github-link .icon-gh {\n    display: none; }\n  .github-link .icon-gh-o {\n    display: block; }\n  .github-link:hover .icon-gh {\n    display: block; }\n  .github-link:hover .icon-gh-o {\n    display: none; }\n\n@font-face {\n  font-family: 'iconfont';\n  /* project id 473307 */\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot\");\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot?#iefix\") format(\"embedded-opentype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.woff\") format(\"woff\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.ttf\") format(\"truetype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.svg#iconfont\") format(\"svg\"); }\n\n.iconfont {\n  font-family: \"iconfont\" !important;\n  font-size: 16px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.icon-bingtu:before {\n  content: \"\\E600\"; }\n\n.icon-gh:before {\n  content: \"\\E719\"; }\n\n.icon-fuzhi:before {\n  content: \"\\E644\"; }\n\n.icon-relitu:before {\n  content: \"\\E650\"; }\n\n.icon-jizuobiao:before {\n  content: \"\\E830\"; }\n\n.icon-loudoutu:before {\n  content: \"\\E645\"; }\n\n.icon-mianjitu:before {\n  content: \"\\E6E7\"; }\n\n.icon-gh-o:before {\n  content: \"\\EEA9\"; }\n\n.icon-leidatu:before {\n  content: \"\\E626\"; }\n\n.icon-yibiaopan:before {\n  content: \"\\E66C\"; }\n\n.icon-fenmian:before {\n  content: \"\\E6EA\"; }\n\n.icon-zhuzhuangtu:before {\n  content: \"\\E6B4\"; }\n\n.icon-diantu:before {\n  content: \"\\E61E\"; }\n\n.icon-infinite:before {\n  content: \"\\E6CE\"; }\n\n.icon-one:before {\n  content: \"\\E687\"; }\n\n.icon-xiangxiantu:before {\n  content: \"\\E62B\"; }\n\n.icon-ditu:before {\n  content: \"\\E882\"; }\n\n.icon-github:before {\n  content: \"\\E601\"; }\n\n.icon-guanxitu:before {\n  content: \"\\E615\"; }\n\n.icon-down-triangle:before {\n  content: \"\\E610\"; }\n\n.icon-yunxing:before {\n  content: \"\\E66D\"; }\n\n.icon-xianxingtu:before {\n  content: \"\\E660\"; }\n\n.icon-contain:before {\n  content: \"\\E614\"; }\n\n.icon-juzhentu:before {\n  content: \"\\E740\"; }\n\n.icon-gupiaotu:before {\n  content: \"\\E73B\"; }\n\n.icon-meiguitu:before {\n  content: \"\\E60B\"; }\n\n#main-content {\n  position: relative;\n  height: calc(100% - 60px); }\n  #main-content .left-panel {\n    float: left;\n    width: 200px;\n    height: 100%;\n    background: #fff;\n    border-right: 1px solid #ddd;\n    padding-top: 20px;\n    box-sizing: border-box; }\n  #main-content .right-panel {\n    overflow: hidden;\n    height: 100%;\n    padding: 20px;\n    box-sizing: border-box; }\n\n.common-nav-folder {\n  margin-bottom: 20px;\n  padding-left: 30px;\n  line-height: 40px; }\n\n.common-nav-item {\n  cursor: pointer;\n  padding-left: 60px;\n  margin-left: -30px; }\n  .common-nav-item:hover, .common-nav-item.active {\n    background: #edf1f5; }\n\n.common-nav-title {\n  color: #999;\n  font-weight: 100; }\n\n.common-nav-link {\n  color: #666;\n  display: block;\n  width: 100%;\n  height: 34px;\n  line-height: 34px;\n  font-size: 16px;\n  text-transform: capitalize; }\n\n#main-content .case-type {\n  background: #fff;\n  color: #333;\n  margin-bottom: 10px;\n  font-size: 20px;\n  text-transform: capitalize;\n  width: calc(100% - 460px);\n  position: absolute; }\n\n#main-content .case-box {\n  margin-bottom: 10px;\n  background: #fff;\n  position: relative;\n  transition: all .2s ease-in-out; }\n  #main-content .case-box .op {\n    position: absolute;\n    top: 0;\n    right: 15px;\n    z-index: 11;\n    line-height: 28px;\n    color: #666; }\n    #main-content .case-box .op a {\n      cursor: pointer;\n      margin-top: 3px;\n      padding: 3px 16px;\n      display: inline-block;\n      background: #0088fe;\n      border-radius: 4px;\n      font-size: 14px;\n      line-height: 22px;\n      color: #fff; }\n      #main-content .case-box .op a i {\n        font-size: 14px;\n        line-height: 22px;\n        color: #fff; }\n\n#main-content .case-demo {\n  padding: 50px 15px 0 0;\n  width: calc(100% - 460px);\n  border-right: 1px dashed #eee; }\n\n#main-content .case-code {\n  padding: 0 15px;\n  width: 400px; }\n\n#main-content .case-demo,\n#main-content .case-code {\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  box-sizing: border-box; }\n  #main-content .case-demo .case-code-switch,\n  #main-content .case-code .case-code-switch {\n    width: 100%;\n    height: 40px;\n    position: relative; }\n  #main-content .case-demo .case-code-detail,\n  #main-content .case-code .case-code-detail {\n    display: none;\n    height: calc(100% - 40px);\n    width: 100%;\n    overflow-y: auto;\n    position: relative; }\n    #main-content .case-demo .case-code-detail.active,\n    #main-content .case-code .case-code-detail.active {\n      display: block; }\n    #main-content .case-demo .case-code-detail pre,\n    #main-content .case-code .case-code-detail pre {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0; }\n\n#main-content .case-code-switch {\n  height: 36px;\n  width: 100%;\n  display: block;\n  padding-top: 4px; }\n  #main-content .case-code-switch .case-code-switch-item {\n    float: left;\n    display: block;\n    width: 80px;\n    margin: 0 10px;\n    font-size: 14px;\n    height: 28px;\n    text-align: center;\n    padding-bottom: 2px;\n    color: #999;\n    cursor: pointer; }\n    #main-content .case-code-switch .case-code-switch-item:hover {\n      color: #666; }\n    #main-content .case-code-switch .case-code-switch-item.active, #main-content .case-code-switch .case-code-switch-item.active:hover {\n      color: #0088fe;\n      padding-bottom: 0;\n      border-bottom: 2px solid #0088fe; }\n\n#main-content .case-box.no-code {\n  padding: 15px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 201 */
+
+/***/ 201:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11676,7 +10781,8 @@ return jQuery;
 
 
 /***/ }),
-/* 202 */
+
+/***/ 202:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11695,78 +10801,80 @@ const URL = {
 
 
 /***/ }),
-/* 203 */
+
+/***/ 203:
 /***/ (function(module, exports) {
 
 module.exports = {
-  line: {
-    cnName: '线性图',
-    examples: ['example1'],
-    icon: 'xianxingtu'
-  },
-  area: {
-    cnName: '面积图',
-    examples: ['example1'],
-    icon: 'mianjitu'
-  },
+  // line: {
+  //   cnName: '线性图',
+  //   examples: ['example1'],
+  //   icon: 'xianxingtu'
+  // },
+  // area: {
+  //   cnName: '面积图',
+  //   examples: ['example1'],
+  //   icon: 'mianjitu'
+  // },
   bar: {
     cnName: '柱状图',
     examples: ['example1'],
     icon: 'zhuzhuangtu'
   },
-  pie: {
-    cnName: '饼图',
-    examples: ['example1'],
-    icon: 'bingtu'
-  },
-  rose: {
-    cnName: '玫瑰图',
-    examples: ['example1'],
-    icon: 'meiguitu'
-  },
-  radial: {
-    cnName: '玉珏图',
-    examples: ['example1'],
-    icon: 'jizuobiao'
-  },
-  scatter: {
-    cnName: '散点图',
-    examples: ['example1'],
-    icon: 'diantu'
-  },
-  radar: {
-    cnName: '雷达图',
-    examples: ['example1'],
-    icon: 'leidatu'
-  },
-  funnel: {
-    cnName: '漏斗图',
-    examples: ['example1'],
-    icon: 'loudoutu'
-  },
+  // pie: {
+  //   cnName: '饼图',
+  //   examples: ['example1'],
+  //   icon: 'bingtu'
+  // },
+  // rose: {
+  //   cnName: '玫瑰图',
+  //   examples: ['example1'],
+  //   icon: 'meiguitu'
+  // },
+  // radial: {
+  //   cnName: '玉珏图',
+  //   examples: ['example1'],
+  //   icon: 'jizuobiao'
+  // },
+  // scatter: {
+  //   cnName: '散点图',
+  //   examples: ['example1'],
+  //   icon: 'diantu'
+  // },
+  // radar: {
+  //   cnName: '雷达图',
+  //   examples: ['example1'],
+  //   icon: 'leidatu'
+  // },
+  // funnel: {
+  //   cnName: '漏斗图',
+  //   examples: ['example1'],
+  //   icon: 'loudoutu'
+  // },
   facet: {
     cnName: '分面图',
     examples: ['example1'],
     icon: 'fenmian'
   },
-  sankey: {
-    cnName: '桑基图',
-    examples: ['example1'],
-    icon: 'guanxitu'
-  },
-  treemap: {
-    cnName: '矩阵图',
-    examples: ['example1'],
-    icon: 'juzhentu'
-  },
+  // sankey: {
+  //   cnName: '桑基图',
+  //   examples: ['example1'],
+  //   icon: 'guanxitu'
+  // },
+  // treemap: {
+  //   cnName: '矩阵图',
+  //   examples: ['example1'],
+  //   icon: 'juzhentu'
+  // },
 };
 
 
 /***/ }),
-/* 204 */
+
+/***/ 204:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(44);
+var Handlebars = __webpack_require__(77);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
@@ -11775,8 +10883,6 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     + ((stack1 = __default(__webpack_require__(220)).call(depth0 != null ? depth0 : (container.nullContext || {}),(depths[1] != null ? depths[1].chartType : depths[1]),(data && data.key),{"name":"active","hash":{},"fn":container.program(2, data, 0, blockParams, depths),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\">\n    <a class=\"common-nav-link\" href=\"/demo.html?type="
     + alias2(alias1((data && data.key), depth0))
-    + "&language="
-    + alias2(alias1((depths[1] != null ? depths[1].language : depths[1]), depth0))
     + "\">\n      <i class=\"iconfont icon-"
     + alias2(alias1((depth0 != null ? depth0.icon : depth0), depth0))
     + "\"></i>\n      "
@@ -11791,7 +10897,8 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 },"useData":true,"useDepths":true});
 
 /***/ }),
-/* 205 */
+
+/***/ 205:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11817,7 +10924,7 @@ var _handlebarsSafeString = __webpack_require__(217);
 
 var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
-var _handlebarsException = __webpack_require__(45);
+var _handlebarsException = __webpack_require__(44);
 
 var _handlebarsException2 = _interopRequireDefault(_handlebarsException);
 
@@ -11864,7 +10971,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 206 */
+
+/***/ 206:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11917,7 +11025,8 @@ function registerDefaultHelpers(instance) {
 
 
 /***/ }),
-/* 207 */
+
+/***/ 207:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11963,7 +11072,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 208 */
+
+/***/ 208:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11976,7 +11086,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 var _utils = __webpack_require__(24);
 
-var _exception = __webpack_require__(45);
+var _exception = __webpack_require__(44);
 
 var _exception2 = _interopRequireDefault(_exception);
 
@@ -12064,7 +11174,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 209 */
+
+/***/ 209:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12075,7 +11186,7 @@ exports.__esModule = true;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _exception = __webpack_require__(45);
+var _exception = __webpack_require__(44);
 
 var _exception2 = _interopRequireDefault(_exception);
 
@@ -12096,7 +11207,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 210 */
+
+/***/ 210:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12132,7 +11244,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 211 */
+
+/***/ 211:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12165,7 +11278,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 212 */
+
+/***/ 212:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12184,7 +11298,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 213 */
+
+/***/ 213:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12224,7 +11339,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 214 */
+
+/***/ 214:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12247,7 +11363,8 @@ function registerDefaultDecorators(instance) {
 
 
 /***/ }),
-/* 215 */
+
+/***/ 215:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12283,7 +11400,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 216 */
+
+/***/ 216:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12337,7 +11455,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 217 */
+
+/***/ 217:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12359,7 +11478,8 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 218 */
+
+/***/ 218:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12384,7 +11504,7 @@ var _utils = __webpack_require__(24);
 
 var Utils = _interopRequireWildcard(_utils);
 
-var _exception = __webpack_require__(45);
+var _exception = __webpack_require__(44);
 
 var _exception2 = _interopRequireDefault(_exception);
 
@@ -12673,7 +11793,8 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 
 
 /***/ }),
-/* 219 */
+
+/***/ 219:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12701,7 +11822,8 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(78)))
 
 /***/ }),
-/* 220 */
+
+/***/ 220:
 /***/ (function(module, exports) {
 
 module.exports = function (a, b) {
@@ -12710,13 +11832,14 @@ module.exports = function (a, b) {
 
 
 /***/ }),
-/* 221 */
+
+/***/ 221:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(44);
+var Handlebars = __webpack_require__(77);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
-    return "    <div class=\"case-box no-code\">\n      建设中，暂无案例...\n    </div>\n";
+    return "    <div class=\"case-box no-code\">\n      Coming soon...\n    </div>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
@@ -12726,10 +11849,11 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 },"useData":true});
 
 /***/ }),
-/* 222 */
+
+/***/ 222:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(44);
+var Handlebars = __webpack_require__(77);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
@@ -12740,68 +11864,35 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
     + "\">\n        <i class=\"iconfont icon-yunxing\"></i>\n        Try\n      </a>\n    </div>\n  </div>\n  <div class=\"case-demo\">\n    <div id=\"example"
     + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\"></div>\n  </div>\n  <div class=\"case-split\"></div>\n  <u class=\"case-code\">\n    <ul class=\"case-code-switch\">\n      <li class=\"case-code-switch-item\"></li>\n      <li class=\"case-code-switch-item\"></li>\n      <li class=\"case-code-switch-item\"></li>\n    </ul>\n    <pre class=\"case-code-detail\" id=\"code"
+    + "\"></div>\n  </div>\n  <div class=\"case-code\">\n    <ul class=\"case-code-switch\">\n      <li data-lang=\"react\" class=\"case-code-switch-item"
+    + alias4(((helper = (helper = helpers.reactClass || (depth0 != null ? depth0.reactClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"reactClass","hash":{},"data":data}) : helper)))
+    + "\">React</li>\n      <li data-lang=\"vue\" class=\"case-code-switch-item"
+    + alias4(((helper = (helper = helpers.vueClass || (depth0 != null ? depth0.vueClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"vueClass","hash":{},"data":data}) : helper)))
+    + "\">Vue</li>\n      <li data-lang=\"angular\" class=\"case-code-switch-item"
+    + alias4(((helper = (helper = helpers.angularClass || (depth0 != null ? depth0.angularClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"angularClass","hash":{},"data":data}) : helper)))
+    + "\">Angular</li>\n    </ul>\n    <pre class=\"case-code-detail"
+    + alias4(((helper = (helper = helpers.reactClass || (depth0 != null ? depth0.reactClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"reactClass","hash":{},"data":data}) : helper)))
+    + "\" id=\"react-"
+    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
+    + "\"></pre>\n    <pre class=\"case-code-detail"
+    + alias4(((helper = (helper = helpers.vueClass || (depth0 != null ? depth0.vueClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"vueClass","hash":{},"data":data}) : helper)))
+    + "\" id=\"vue-"
+    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
+    + "\"></pre>\n    <pre class=\"case-code-detail"
+    + alias4(((helper = (helper = helpers.angularClass || (depth0 != null ? depth0.angularClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"angularClass","hash":{},"data":data}) : helper)))
+    + "\" id=\"angular-"
     + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
     + "\"></pre>\n  </div>\n</div>\n";
 },"useData":true});
 
 /***/ }),
-/* 223 */
-/***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(44);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-  return "<div class=\"case-box\">\n  <div class=\"case-type\">\n    <h3>"
-    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h3>\n    <div class=\"op\">\n      <a class=\"run\" data-index=\""
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\">\n        <i class=\"iconfont icon-yunxing\"></i>\n        Try\n      </a>\n    </div>\n  </div>\n  <div class=\"case-demo\">\n    "
-    + ((stack1 = ((helper = (helper = helpers.tpl || (depth0 != null ? depth0.tpl : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tpl","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "\n  </div>\n  <div class=\"case-split\"></div>\n  <div class=\"case-code\">\n    <pre class=\"case-code-detail\" id=\"code"
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\"></pre>\n  </div>\n</div>\n";
-},"useData":true});
-
-/***/ }),
-/* 224 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Handlebars = __webpack_require__(44);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-  return "<div class=\"case-box\">\n  <div class=\"case-type\">\n    <h3>"
-    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h3>\n    <div class=\"op\">\n      <a class=\"run\" data-index=\""
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\">\n        <i class=\"iconfont icon-yunxing\"></i>\n        Try\n      </a>\n    </div>\n  </div>\n  <div class=\"case-demo\">\n    <div id=\"example"
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\"></div>\n  </div>\n  <div class=\"case-split\"></div>\n  <div class=\"case-code\">\n    <div class=\"case-code-detail\">\n      <pre id=\"code"
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\"></pre>\n    </div>\n  </div>\n</div>\n";
-},"useData":true});
-
-/***/ }),
-/* 225 */
+/***/ 223:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./area/example1/jsonCode.js": 226,
-	"./bar/example1/jsonCode.js": 227,
-	"./facet/example1/jsonCode.js": 228,
-	"./funnel/example1/jsonCode.js": 229,
-	"./line/example1/jsonCode.js": 230,
-	"./pie/example1/jsonCode.js": 231,
-	"./radar/example1/jsonCode.js": 232,
-	"./radial/example1/jsonCode.js": 233,
-	"./rose/example1/jsonCode.js": 234,
-	"./sankey/example1/jsonCode.js": 235,
-	"./scatter/example1/jsonCode.js": 236,
-	"./treemap/example1/jsonCode.js": 237
+	"./bar/example1/json.js": 224,
+	"./facet/example1/json.js": 226
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -12817,128 +11908,35 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 225;
+webpackContext.id = 223;
 
 /***/ }),
-/* 226 */
+
+/***/ 224:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = [
-  { country: 'Europe', year: '1750', value: 163 },
-  { country: 'Europe', year: '1800', value: 203 },
-  { country: 'Europe', year: '1850', value: 276 },
-  { country: 'Europe', year: '1900', value: 408 },
-  { country: 'Europe', year: '1950', value: 547 },
-  { country: 'Europe', year: '1999', value: 729 },
-  { country: 'Europe', year: '2050', value: 628 },
-  { country: 'Europe', year: '2100', value: 828 },
-  { country: 'Asia', year: '1750', value: 502 },
-  { country: 'Asia', year: '1800', value: 635 },
-  { country: 'Asia', year: '1850', value: 809 },
-  { country: 'Asia', year: '1900', value: 947 },
-  { country: 'Asia', year: '1950', value: 1402 },
-  { country: 'Asia', year: '1999', value: 3634 },
-  { country: 'Asia', year: '2050', value: 5268 },
-  { country: 'Asia', year: '2100', value: 7268 }
-];
-
-const dataPre = {
-  transform: {
-    type: 'percent',
-    field: 'value',
-    dimension: 'country',
-    groupBy: ['year'],
-    as: 'percent'
-  }
-};
-
-const dataMapping = [{
-  dataKey: 'year',
-  mark: 'column',
-}, {
-  dataKey: 'percent',
-  mark: 'row',
-}, {
-  dataKey: 'country',
-  mark: 'color',
-}];
-
-const scale = [{
-  dataKey: 'percent',
-  min: 0,
-  formatter: '.2%',
-}];
-
+const allData = __webpack_require__(225);
+const { data, dataMapping, dataPre, scale } = allData;
 
 const config = {
-  data,
-  dataPre,
-  dataMapping,
-  scale,
-  axis: true,
-  tooltip: true,
-  legend: true,
-  series: [{
-    quickType: 'area',
-  }],
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 400,
+  data: data,
+  dataPre: {
+    transform: [
+    // {
+    //   exchangeType: 'type-3',
+    //   fields: ['country', 'year', 'value'],
+    // },
+    {
+      type: 'percent',
+      field: 'value',
+      dimension: 'country',
+      groupBy: ['year'],
+      as: 'percent'
+    }]
   },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
-
-/***/ }),
-/* 227 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = [
-  ['Europe', 'Europe', 'Europe', 'Asia', 'Asia', 'Asia'],
-  ['1750', '1800', '1850', '1750', '1800', '1850'],
-  [163, 203, 276, 502, 635, 809],
-];
-
-const dataPre = {
-  transform: [{
-    exchangeType: 'type-3',
-    fields: ['country', 'year', 'value'],
-  },{
-    type: 'percent',
-    field: 'value',
-    dimension: 'country',
-    groupBy: ['year'],
-    as: 'percent'
-  }]
-};
-
-const dataMapping = [{
-  dataKey: 'year',
-  mark: 'column',
-}, {
-  dataKey: 'percent',
-  mark: 'row',
-}, {
-  dataKey: 'country',
-  mark: 'color',
-}];
-
-const scale = [{
-  dataKey: 'percent',
-  min: 0,
-  formatter: '.2%',
-}];
-
-const config = {
-  data,
-  dataPre,
-  dataMapping,
+  dataMapping: dataMapping,
   scale: scale,
   axis: true,
   tooltip: true,
@@ -12950,7 +11948,7 @@ const config = {
     }
   }],
   chart: {
-    container: 'example1',
+    container: 'mount',
     forceFit: true,
     height: 400,
   },
@@ -12959,42 +11957,86 @@ const config = {
 
 
 
+/***/ }),
+
+/***/ 225:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.data = [
+    { country: 'Europe', year: '1750', value: 163 },
+    { country: 'Europe', year: '1800', value: 203 },
+    { country: 'Europe', year: '1850', value: 276 },
+    { country: 'Europe', year: '1900', value: 408 },
+    { country: 'Europe', year: '1950', value: 547 },
+    { country: 'Europe', year: '1999', value: 729 },
+    { country: 'Europe', year: '2050', value: 628 },
+    { country: 'Europe', year: '2100', value: 828 },
+    { country: 'Asia', year: '1750', value: 502 },
+    { country: 'Asia', year: '1800', value: 635 },
+    { country: 'Asia', year: '1850', value: 809 },
+    { country: 'Asia', year: '1900', value: 947 },
+    { country: 'Asia', year: '1950', value: 1402 },
+    { country: 'Asia', year: '1999', value: 3634 },
+    { country: 'Asia', year: '2050', value: 5268 },
+    { country: 'Asia', year: '2100', value: 7268 }
+];
+exports.data1 = {
+    'country': ['Europe', 'Europe', 'Europe', 'Asia', 'Asia', 'Asia'],
+    'year': ['1750', '1800', '1850', '1750', '1800', '1850'],
+    'value': [163, 203, 276, 502, 635, 809],
+};
+exports.data2 = [
+    ['country', 'Europe', 'Europe', 'Europe', 'Asia', 'Asia', 'Asia'],
+    ['year', '1750', '1800', '1850', '1750', '1800', '1850'],
+    ['value', 163, 203, 276, 502, 635, 809],
+];
+exports.data3 = [
+    ['Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Asia', 'Asia', 'Asia', 'Asia', 'Asia', 'Asia', 'Asia', 'Asia'],
+    ['1750', '1800', '1850', '1900', '1950', '1999', '2050', '2100', '1750', '1800', '1850', '1900', '1950', '1999', '2050', '2100'],
+    [163, 203, 276, 408, 547, 729, 628, 828, 502, 635, 809, 947, 1402, 3634, 5268, 7268],
+];
+exports.dataPre = {
+    transform: {
+        type: 'percent',
+        field: 'value',
+        dimension: 'country',
+        groupBy: ['year'],
+        as: 'percent'
+    }
+};
+exports.dataMapping = [{
+        dataKey: 'year',
+        mark: 'column',
+    }, {
+        dataKey: 'percent',
+        mark: 'row',
+    }, {
+        dataKey: 'country',
+        mark: 'color',
+    }];
+exports.scale = [{
+        dataKey: 'percent',
+        min: 0,
+        formatter: '.2%',
+    }];
+
 
 /***/ }),
-/* 228 */
+
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const chartData = [{"name":14513,"carat":1.35,"cut":"Ideal","color":"J","clarity":"VS2","depth":61.4,"table":57,"price":5862,"x":7.1,"y":7.13,"z":4.37},{"name":28685,"carat":0.3,"cut":"Good","color":"G","clarity":"VVS1","depth":64,"table":57,"price":678,"x":4.23,"y":4.27,"z":2.72},{"name":50368,"carat":0.75,"cut":"Ideal","color":"F","clarity":"SI2","depth":59.2,"table":60,"price":2248,"x":5.87,"y":5.92,"z":3.49},{"name":7721,"carat":0.26,"cut":"Ideal","color":"F","clarity":"VS1","depth":60.9,"table":57,"price":580,"x":4.13,"y":4.11,"z":2.51},{"name":31082,"carat":0.33,"cut":"Premium","color":"H","clarity":"VVS1","depth":61.4,"table":59,"price":752,"x":4.42,"y":4.44,"z":2.72},{"name":26429,"carat":1.52,"cut":"Ideal","color":"G","clarity":"VVS1","depth":62.4,"table":55,"price":15959,"x":7.3,"y":7.39,"z":4.58},{"name":35900,"carat":0.32,"cut":"Ideal","color":"G","clarity":"IF","depth":61.3,"table":54,"price":918,"x":4.41,"y":4.47,"z":2.72},{"name":27015,"carat":2.25,"cut":"Ideal","color":"I","clarity":"SI2","depth":62.4,"table":57,"price":17143,"x":8.39,"y":8.32,"z":5.21},{"name":30760,"carat":0.25,"cut":"Premium","color":"E","clarity":"VVS2","depth":62.5,"table":59,"price":740,"x":4.04,"y":4.02,"z":2.52},{"name":2205,"carat":1.02,"cut":"Premium","color":"H","clarity":"I1","depth":62.5,"table":60,"price":3141,"x":6.39,"y":6.41,"z":4},{"name":25584,"carat":2.01,"cut":"Very-Good","color":"H","clarity":"SI2","depth":62.9,"table":55,"price":14426,"x":8.03,"y":8.09,"z":5.07},{"name":16788,"carat":0.9,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.2,"table":56,"price":6689,"x":6.2,"y":6.26,"z":3.81},{"name":2468,"carat":0.71,"cut":"Ideal","color":"D","clarity":"VS1","depth":62.2,"table":55,"price":3192,"x":5.71,"y":5.74,"z":3.56},{"name":6508,"carat":1.01,"cut":"Very-Good","color":"G","clarity":"SI1","depth":62.3,"table":59,"price":4064,"x":6.34,"y":6.37,"z":3.96},{"name":44895,"carat":0.5,"cut":"Very-Good","color":"E","clarity":"VS2","depth":63.4,"table":58,"price":1629,"x":5.06,"y":5.04,"z":3.2},{"name":20653,"carat":1.26,"cut":"Ideal","color":"H","clarity":"VVS2","depth":61.8,"table":56,"price":8941,"x":6.9,"y":6.93,"z":4.28},{"name":38210,"carat":0.43,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.7,"table":54,"price":1016,"x":4.9,"y":4.86,"z":3.01},{"name":13359,"carat":0.24,"cut":"Very-Good","color":"E","clarity":"VS2","depth":62.1,"table":59,"price":419,"x":3.98,"y":4.01,"z":2.48},{"name":3260,"carat":0.7,"cut":"Very-Good","color":"E","clarity":"VS1","depth":60.7,"table":57,"price":3358,"x":5.72,"y":5.75,"z":3.48},{"name":46272,"carat":0.54,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.8,"table":54,"price":1754,"x":5.22,"y":5.24,"z":3.23},{"name":23875,"carat":2.03,"cut":"Very-Good","color":"J","clarity":"SI2","depth":61.7,"table":61,"price":11968,"x":8.04,"y":8.18,"z":5},{"name":17434,"carat":1.41,"cut":"Premium","color":"D","clarity":"SI2","depth":61.1,"table":56,"price":6988,"x":7.19,"y":7.15,"z":4.38},{"name":25,"carat":0.31,"cut":"Very-Good","color":"J","clarity":"SI1","depth":58.1,"table":62,"price":353,"x":4.44,"y":4.47,"z":2.59},{"name":22130,"carat":1.5,"cut":"Very-Good","color":"I","clarity":"VS1","depth":62.2,"table":59,"price":10164,"x":7.27,"y":7.3,"z":4.53},{"name":53295,"carat":0.3,"cut":"Very-Good","color":"I","clarity":"VVS1","depth":60.5,"table":60,"price":552,"x":4.32,"y":4.34,"z":2.62},{"name":44404,"carat":0.55,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.4,"table":56,"price":1584,"x":5.28,"y":5.31,"z":3.25},{"name":40387,"carat":0.42,"cut":"Ideal","color":"D","clarity":"VVS2","depth":61.7,"table":57,"price":1132,"x":4.8,"y":4.82,"z":2.97},{"name":11416,"carat":1.5,"cut":"Fair","color":"H","clarity":"SI2","depth":66,"table":64,"price":5000,"x":7.1,"y":6.97,"z":4.64},{"name":47315,"carat":0.23,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":61.5,"table":59,"price":530,"x":3.95,"y":3.98,"z":2.44},{"name":5724,"carat":0.25,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":63,"table":55,"price":575,"x":4,"y":4.03,"z":2.53},{"name":30624,"carat":0.3,"cut":"Premium","color":"D","clarity":"SI2","depth":60.2,"table":60,"price":447,"x":4.32,"y":4.35,"z":2.61},{"name":9803,"carat":0.9,"cut":"Very-Good","color":"D","clarity":"VS2","depth":63,"table":62,"price":4668,"x":6.06,"y":6.13,"z":3.84},{"name":46497,"carat":0.5,"cut":"Very-Good","color":"F","clarity":"VVS2","depth":60.4,"table":61,"price":1778,"x":5.12,"y":5.14,"z":3.1},{"name":45329,"carat":0.32,"cut":"Premium","color":"E","clarity":"SI1","depth":61.2,"table":58,"price":524,"x":4.37,"y":4.42,"z":2.69},{"name":22424,"carat":1.57,"cut":"Very-Good","color":"H","clarity":"SI1","depth":59.6,"table":58,"price":10447,"x":7.61,"y":7.65,"z":4.55},{"name":3143,"carat":0.7,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.6,"table":56,"price":3330,"x":5.7,"y":5.72,"z":3.52},{"name":6815,"carat":1.01,"cut":"Fair","color":"E","clarity":"SI2","depth":64.7,"table":55,"price":4118,"x":6.37,"y":6.3,"z":4.1},{"name":5947,"carat":0.72,"cut":"Ideal","color":"E","clarity":"VS1","depth":61.1,"table":57,"price":3947,"x":5.78,"y":5.81,"z":3.54},{"name":9084,"carat":1.07,"cut":"Premium","color":"G","clarity":"SI2","depth":62,"table":59,"price":4523,"x":6.54,"y":6.5,"z":4.04},{"name":36793,"carat":0.34,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.6,"table":57,"price":956,"x":4.47,"y":4.45,"z":2.79},{"name":4943,"carat":0.76,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.3,"table":55,"price":3732,"x":5.81,"y":5.84,"z":3.63},{"name":52525,"carat":0.8,"cut":"Ideal","color":"F","clarity":"SI2","depth":62.4,"table":57,"price":2529,"x":5.92,"y":5.97,"z":3.71},{"name":46417,"carat":0.55,"cut":"Ideal","color":"D","clarity":"VS2","depth":61,"table":56,"price":1768,"x":5.31,"y":5.28,"z":3.23},{"name":35997,"carat":0.42,"cut":"Very-Good","color":"G","clarity":"VS1","depth":59.4,"table":59,"price":921,"x":4.86,"y":4.9,"z":2.9},{"name":25539,"carat":1.5,"cut":"Very-Good","color":"G","clarity":"VVS1","depth":63.1,"table":62,"price":14361,"x":7.25,"y":7.23,"z":4.57},{"name":2361,"carat":0.9,"cut":"Ideal","color":"J","clarity":"VS1","depth":62.5,"table":55,"price":3175,"x":6.18,"y":6.14,"z":3.85},{"name":23147,"carat":1.02,"cut":"Premium","color":"E","clarity":"VVS1","depth":61.5,"table":59,"price":11163,"x":6.46,"y":6.41,"z":3.96},{"name":39674,"carat":0.42,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.1,"table":56,"price":1087,"x":4.84,"y":4.79,"z":2.99},{"name":42947,"carat":0.3,"cut":"Very-Good","color":"F","clarity":"SI2","depth":63.4,"table":56,"price":506,"x":4.29,"y":4.26,"z":2.71},{"name":23762,"carat":1.51,"cut":"Premium","color":"F","clarity":"SI1","depth":61.4,"table":58,"price":11817,"x":7.43,"y":7.35,"z":4.54},{"name":47355,"carat":0.5,"cut":"Ideal","color":"E","clarity":"VS2","depth":63.8,"table":54,"price":1845,"x":5.07,"y":5.05,"z":3.23},{"name":35598,"carat":0.31,"cut":"Ideal","color":"H","clarity":"VVS1","depth":62.7,"table":54,"price":907,"x":4.38,"y":4.33,"z":2.73},{"name":43086,"carat":0.61,"cut":"Ideal","color":"I","clarity":"VS2","depth":62,"table":54,"price":1380,"x":5.44,"y":5.49,"z":3.39},{"name":15471,"carat":1.58,"cut":"Premium","color":"F","clarity":"SI2","depth":59.1,"table":59,"price":6194,"x":7.68,"y":7.59,"z":4.51},{"name":29072,"carat":0.34,"cut":"Premium","color":"D","clarity":"VS2","depth":59.3,"table":59,"price":687,"x":4.55,"y":4.59,"z":2.71},{"name":20868,"carat":1.27,"cut":"Premium","color":"E","clarity":"VS2","depth":61.2,"table":59,"price":9086,"x":7.02,"y":6.97,"z":4.28},{"name":51424,"carat":0.85,"cut":"Good","color":"J","clarity":"VS1","depth":63.6,"table":57,"price":2372,"x":6.01,"y":5.94,"z":3.8},{"name":27320,"carat":2.18,"cut":"Premium","color":"G","clarity":"SI2","depth":61.9,"table":60,"price":17841,"x":8.24,"y":8.29,"z":5.12},{"name":1128,"carat":0.73,"cut":"Premium","color":"G","clarity":"VVS2","depth":62.2,"table":56,"price":2919,"x":5.79,"y":5.75,"z":3.59},{"name":18182,"carat":1.2,"cut":"Very-Good","color":"G","clarity":"VS2","depth":63.1,"table":57,"price":7371,"x":6.69,"y":6.74,"z":4.24},{"name":669,"carat":0.77,"cut":"Premium","color":"E","clarity":"SI1","depth":62.9,"table":59,"price":2846,"x":5.84,"y":5.79,"z":3.66},{"name":47240,"carat":0.51,"cut":"Ideal","color":"E","clarity":"VS1","depth":62,"table":57,"price":1841,"x":5.11,"y":5.15,"z":3.18},{"name":14256,"carat":1,"cut":"Ideal","color":"D","clarity":"SI1","depth":60.6,"table":56,"price":5775,"x":6.5,"y":6.54,"z":3.95},{"name":20118,"carat":1.31,"cut":"Ideal","color":"H","clarity":"VS1","depth":61.5,"table":55,"price":8583,"x":7.05,"y":7.02,"z":4.33},{"name":53884,"carat":0.7,"cut":"Very-Good","color":"G","clarity":"VS1","depth":61.4,"table":55,"price":2748,"x":5.7,"y":5.74,"z":3.51},{"name":48410,"carat":0.72,"cut":"Very-Good","color":"H","clarity":"SI2","depth":62.9,"table":57,"price":1970,"x":5.64,"y":5.68,"z":3.56},{"name":48807,"carat":0.75,"cut":"Ideal","color":"J","clarity":"VS2","depth":62.3,"table":57,"price":2025,"x":5.84,"y":5.81,"z":3.63},{"name":42132,"carat":0.53,"cut":"Ideal","color":"F","clarity":"SI2","depth":63,"table":54,"price":1279,"x":5.24,"y":5.19,"z":3.29},{"name":25596,"carat":1.7,"cut":"Good","color":"G","clarity":"VS1","depth":63.5,"table":56,"price":14445,"x":7.53,"y":7.64,"z":4.82},{"name":23434,"carat":1.62,"cut":"Very-Good","color":"H","clarity":"VS2","depth":59.6,"table":59,"price":11427,"x":7.59,"y":7.67,"z":4.55},{"name":20160,"carat":1.21,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.6,"table":56,"price":8616,"x":6.77,"y":6.81,"z":4.25},{"name":2174,"carat":0.73,"cut":"Ideal","color":"F","clarity":"VS1","depth":62.9,"table":56,"price":3135,"x":5.71,"y":5.77,"z":3.61},{"name":23377,"carat":0.33,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.4,"table":57,"price":631,"x":4.48,"y":4.45,"z":2.74},{"name":14592,"carat":1.1,"cut":"Ideal","color":"H","clarity":"VS2","depth":61.3,"table":56,"price":5888,"x":6.64,"y":6.67,"z":4.08},{"name":11074,"carat":1.13,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62.7,"table":57,"price":4922,"x":6.62,"y":6.65,"z":4.16},{"name":36627,"carat":0.24,"cut":"Very-Good","color":"D","clarity":"VVS2","depth":61.9,"table":58,"price":478,"x":4.02,"y":4.03,"z":2.49},{"name":8533,"carat":0.9,"cut":"Ideal","color":"H","clarity":"VS1","depth":62.2,"table":58,"price":4428,"x":6.14,"y":6.17,"z":3.83},{"name":2420,"carat":0.91,"cut":"Fair","color":"H","clarity":"SI1","depth":64.8,"table":57,"price":3180,"x":6.12,"y":6.07,"z":3.95},{"name":21758,"carat":1.53,"cut":"Very-Good","color":"I","clarity":"VS1","depth":59.3,"table":58,"price":9823,"x":7.5,"y":7.54,"z":4.46},{"name":9029,"carat":1.06,"cut":"Ideal","color":"H","clarity":"SI2","depth":60.1,"table":59,"price":4516,"x":6.58,"y":6.67,"z":3.98},{"name":53870,"carat":0.75,"cut":"Ideal","color":"F","clarity":"SI1","depth":62.3,"table":57,"price":2744,"x":5.82,"y":5.77,"z":3.61},{"name":25628,"carat":2.5,"cut":"Ideal","color":"J","clarity":"SI2","depth":64,"table":55,"price":14502,"x":8.56,"y":8.48,"z":5.46},{"name":20051,"carat":0.31,"cut":"Premium","color":"G","clarity":"VS1","depth":61.2,"table":60,"price":625,"x":4.37,"y":4.39,"z":2.68},{"name":26772,"carat":2.06,"cut":"Very-Good","color":"F","clarity":"SI2","depth":61.5,"table":56,"price":16603,"x":8.15,"y":8.18,"z":5.02},{"name":38208,"carat":0.43,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.8,"table":56,"price":1016,"x":4.87,"y":4.84,"z":3},{"name":17039,"carat":1.3,"cut":"Ideal","color":"I","clarity":"VS1","depth":62.1,"table":57,"price":6806,"x":6.98,"y":7.04,"z":4.35},{"name":35184,"carat":0.31,"cut":"Ideal","color":"G","clarity":"IF","depth":61.7,"table":55,"price":891,"x":4.36,"y":4.39,"z":2.7},{"name":29861,"carat":0.3,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.5,"table":55,"price":710,"x":4.3,"y":4.35,"z":2.66},{"name":2592,"carat":1,"cut":"Very-Good","color":"I","clarity":"SI2","depth":62.4,"table":63,"price":3217,"x":6.35,"y":6.44,"z":3.99},{"name":51705,"carat":0.7,"cut":"Very-Good","color":"F","clarity":"VS2","depth":61.2,"table":56,"price":2400,"x":5.72,"y":5.78,"z":3.52},{"name":16984,"carat":1.25,"cut":"Premium","color":"H","clarity":"SI1","depth":62.2,"table":57,"price":6783,"x":6.91,"y":6.85,"z":4.28},{"name":18724,"carat":1.75,"cut":"Premium","color":"I","clarity":"SI1","depth":60.8,"table":58,"price":7644,"x":7.83,"y":7.79,"z":4.75},{"name":12270,"carat":1,"cut":"Good","color":"H","clarity":"VS2","depth":56.9,"table":63,"price":5208,"x":6.6,"y":6.57,"z":3.75},{"name":34355,"carat":0.37,"cut":"Very-Good","color":"F","clarity":"VS1","depth":58.6,"table":65,"price":863,"x":4.68,"y":4.71,"z":2.75},{"name":1996,"carat":0.52,"cut":"Ideal","color":"E","clarity":"VVS1","depth":61.8,"table":55,"price":3097,"x":5.19,"y":5.2,"z":3.21},{"name":39442,"carat":0.41,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.4,"table":54,"price":1076,"x":4.78,"y":4.74,"z":2.97},{"name":32035,"carat":0.32,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.3,"table":57,"price":779,"x":4.39,"y":4.42,"z":2.7},{"name":1257,"carat":0.73,"cut":"Premium","color":"D","clarity":"VS2","depth":60.9,"table":59,"price":2947,"x":5.82,"y":5.77,"z":3.53},{"name":35751,"carat":0.3,"cut":"Premium","color":"D","clarity":"VS2","depth":62.9,"table":58,"price":911,"x":4.26,"y":4.23,"z":2.67},{"name":17748,"carat":1.12,"cut":"Ideal","color":"D","clarity":"SI1","depth":61.2,"table":58,"price":7145,"x":6.65,"y":6.68,"z":4.08},{"name":52350,"carat":0.82,"cut":"Premium","color":"H","clarity":"SI2","depth":59.5,"table":62,"price":2499,"x":6.13,"y":6.07,"z":3.63},{"name":12512,"carat":1.01,"cut":"Premium","color":"H","clarity":"VS2","depth":61.9,"table":57,"price":5260,"x":6.42,"y":6.35,"z":3.95},{"name":30836,"carat":0.33,"cut":"Premium","color":"H","clarity":"VS1","depth":59.2,"table":58,"price":743,"x":4.55,"y":4.5,"z":2.68},{"name":17939,"carat":1.21,"cut":"Very-Good","color":"H","clarity":"VS1","depth":62.3,"table":58,"price":7246,"x":6.71,"y":6.74,"z":4.19},{"name":53151,"carat":0.7,"cut":"Ideal","color":"I","clarity":"SI1","depth":61.6,"table":56,"price":2623,"x":5.69,"y":5.71,"z":3.51},{"name":21427,"carat":1.5,"cut":"Ideal","color":"I","clarity":"VS1","depth":62.8,"table":57,"price":9533,"x":7.24,"y":7.28,"z":4.56},{"name":4025,"carat":0.73,"cut":"Ideal","color":"F","clarity":"VVS2","depth":61.7,"table":54,"price":3524,"x":5.76,"y":5.82,"z":3.57},{"name":10997,"carat":1.17,"cut":"Good","color":"H","clarity":"SI2","depth":63.8,"table":58,"price":4914,"x":6.73,"y":6.57,"z":4.24},{"name":37380,"carat":0.4,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.4,"table":56,"price":982,"x":4.64,"y":4.68,"z":2.91},{"name":32301,"carat":0.32,"cut":"Ideal","color":"D","clarity":"SI2","depth":61.7,"table":55,"price":454,"x":4.39,"y":4.42,"z":2.72},{"name":5986,"carat":0.71,"cut":"Premium","color":"D","clarity":"VVS1","depth":58.8,"table":58,"price":3952,"x":5.89,"y":5.81,"z":3.44},{"name":7062,"carat":0.33,"cut":"Premium","color":"I","clarity":"VVS2","depth":61,"table":59,"price":579,"x":4.41,"y":4.44,"z":2.7},{"name":6488,"carat":0.96,"cut":"Premium","color":"G","clarity":"SI2","depth":61.1,"table":59,"price":4059,"x":6.32,"y":6.28,"z":3.85},{"name":10508,"carat":1.02,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.1,"table":53,"price":4798,"x":6.43,"y":6.38,"z":3.98},{"name":1143,"carat":0.71,"cut":"Very-Good","color":"E","clarity":"VS2","depth":63.3,"table":59,"price":2922,"x":5.62,"y":5.66,"z":3.57},{"name":40005,"carat":0.41,"cut":"Very-Good","color":"F","clarity":"VS2","depth":63.2,"table":57,"price":1107,"x":4.76,"y":4.74,"z":3},{"name":42200,"carat":0.56,"cut":"Premium","color":"G","clarity":"SI1","depth":61.1,"table":61,"price":1287,"x":5.31,"y":5.29,"z":3.24},{"name":46075,"carat":0.5,"cut":"Premium","color":"F","clarity":"VS2","depth":61.4,"table":59,"price":1736,"x":5.12,"y":5.1,"z":3.14},{"name":41028,"carat":0.41,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.1,"table":56,"price":1187,"x":4.8,"y":4.85,"z":2.95},{"name":7732,"carat":0.3,"cut":"Very-Good","color":"G","clarity":"VS1","depth":62.6,"table":56,"price":581,"x":4.29,"y":4.31,"z":2.69},{"name":20659,"carat":1.17,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.7,"table":55,"price":8947,"x":6.74,"y":6.77,"z":4.17},{"name":42320,"carat":0.41,"cut":"Ideal","color":"D","clarity":"VVS2","depth":62.3,"table":57,"price":1295,"x":4.74,"y":4.76,"z":2.96},{"name":502,"carat":0.7,"cut":"Premium","color":"E","clarity":"VS2","depth":61.5,"table":59,"price":2822,"x":5.73,"y":5.68,"z":3.51},{"name":5786,"carat":0.72,"cut":"Very-Good","color":"E","clarity":"VVS1","depth":61.2,"table":58,"price":3903,"x":5.75,"y":5.79,"z":3.53},{"name":28008,"carat":0.3,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.6,"table":56,"price":658,"x":4.29,"y":4.34,"z":2.7},{"name":1319,"carat":0.72,"cut":"Good","color":"G","clarity":"VS1","depth":58,"table":57.8,"price":2958,"x":5.85,"y":5.87,"z":3.4},{"name":33956,"carat":0.23,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":60.2,"table":57,"price":465,"x":3.99,"y":4.05,"z":2.42},{"name":6983,"carat":1.03,"cut":"Premium","color":"J","clarity":"SI1","depth":61.7,"table":54,"price":4153,"x":6.56,"y":6.5,"z":4.03},{"name":5595,"carat":1.01,"cut":"Fair","color":"H","clarity":"SI1","depth":64.5,"table":59,"price":3869,"x":6.27,"y":6.23,"z":4.03},{"name":22168,"carat":1.56,"cut":"Ideal","color":"F","clarity":"SI2","depth":61.6,"table":56,"price":10210,"x":7.41,"y":7.45,"z":4.58},{"name":34991,"carat":0.34,"cut":"Premium","color":"D","clarity":"VS2","depth":59.3,"table":59,"price":881,"x":4.59,"y":4.55,"z":2.71},{"name":3246,"carat":0.81,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.4,"table":55,"price":3355,"x":6.03,"y":6.06,"z":3.71},{"name":39872,"carat":0.36,"cut":"Premium","color":"E","clarity":"VVS2","depth":61.7,"table":59,"price":1102,"x":4.56,"y":4.52,"z":2.8},{"name":29982,"carat":0.31,"cut":"Ideal","color":"F","clarity":"VVS2","depth":61.2,"table":56,"price":716,"x":4.4,"y":4.43,"z":2.7},{"name":29194,"carat":0.38,"cut":"Ideal","color":"E","clarity":"SI1","depth":61,"table":56,"price":694,"x":4.68,"y":4.69,"z":2.86},{"name":41649,"carat":0.4,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.7,"table":55,"price":1238,"x":4.76,"y":4.74,"z":2.93},{"name":48035,"carat":0.6,"cut":"Ideal","color":"F","clarity":"VS2","depth":58.6,"table":60,"price":1923,"x":5.54,"y":5.62,"z":3.27},{"name":38063,"carat":0.3,"cut":"Ideal","color":"E","clarity":"IF","depth":61.1,"table":57,"price":1013,"x":4.31,"y":4.33,"z":2.64},{"name":23199,"carat":1.52,"cut":"Ideal","color":"H","clarity":"VS2","depth":60.7,"table":56,"price":11206,"x":7.49,"y":7.41,"z":4.52},{"name":14152,"carat":1.01,"cut":"Premium","color":"G","clarity":"VS2","depth":63,"table":58,"price":5741,"x":6.42,"y":6.37,"z":4.03},{"name":45512,"carat":0.51,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.5,"table":57,"price":1682,"x":5.11,"y":5.16,"z":3.16},{"name":33630,"carat":0.33,"cut":"Very-Good","color":"H","clarity":"SI1","depth":63,"table":56,"price":463,"x":4.41,"y":4.42,"z":2.78},{"name":31484,"carat":0.34,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.9,"table":55,"price":765,"x":4.53,"y":4.49,"z":2.79},{"name":4780,"carat":1.23,"cut":"Fair","color":"E","clarity":"I1","depth":67.4,"table":56,"price":3692,"x":6.76,"y":6.56,"z":4.49},{"name":1849,"carat":0.76,"cut":"Premium","color":"E","clarity":"VS2","depth":61.7,"table":62,"price":3064,"x":5.85,"y":5.82,"z":3.6},{"name":3200,"carat":0.92,"cut":"Very-Good","color":"I","clarity":"SI1","depth":63.7,"table":58,"price":3345,"x":6.12,"y":6.18,"z":3.92},{"name":18133,"carat":1.52,"cut":"Premium","color":"I","clarity":"SI2","depth":62.5,"table":56,"price":7341,"x":7.35,"y":7.33,"z":4.59},{"name":40938,"carat":0.23,"cut":"Very-Good","color":"E","clarity":"VVS1","depth":60.8,"table":56,"price":499,"x":3.94,"y":3.99,"z":2.41},{"name":33643,"carat":0.38,"cut":"Premium","color":"H","clarity":"VVS2","depth":62,"table":58,"price":833,"x":4.62,"y":4.64,"z":2.87},{"name":52241,"carat":0.73,"cut":"Ideal","color":"I","clarity":"VVS2","depth":63.3,"table":57,"price":2485,"x":5.77,"y":5.73,"z":3.64},{"name":10406,"carat":0.31,"cut":"Premium","color":"D","clarity":"SI2","depth":61.5,"table":60,"price":593,"x":4.34,"y":4.31,"z":2.66},{"name":51776,"carat":0.74,"cut":"Ideal","color":"F","clarity":"SI2","depth":61.6,"table":55,"price":2410,"x":5.81,"y":5.87,"z":3.6},{"name":31450,"carat":0.4,"cut":"Very-Good","color":"G","clarity":"SI2","depth":63.4,"table":59,"price":765,"x":4.66,"y":4.64,"z":2.95},{"name":21271,"carat":1.53,"cut":"Premium","color":"F","clarity":"SI2","depth":62.7,"table":60,"price":9424,"x":7.28,"y":7.34,"z":4.58},{"name":22716,"carat":1.01,"cut":"Premium","color":"D","clarity":"VVS2","depth":62.4,"table":58,"price":10732,"x":6.39,"y":6.44,"z":4},{"name":17977,"carat":1.1,"cut":"Very-Good","color":"F","clarity":"VS2","depth":62.7,"table":58.5,"price":7272,"x":6.5,"y":6.59,"z":4.1},{"name":18203,"carat":1.52,"cut":"Fair","color":"H","clarity":"SI2","depth":65,"table":57,"price":7388,"x":7.12,"y":7.09,"z":4.62},{"name":10318,"carat":1.03,"cut":"Premium","color":"D","clarity":"SI2","depth":61.3,"table":61,"price":4764,"x":6.49,"y":6.46,"z":3.97},{"name":28823,"carat":0.41,"cut":"Good","color":"H","clarity":"SI1","depth":63.8,"table":56,"price":683,"x":4.69,"y":4.74,"z":3.01},{"name":5145,"carat":0.9,"cut":"Very-Good","color":"I","clarity":"VS2","depth":62.8,"table":52,"price":3764,"x":6.19,"y":6.23,"z":3.9},{"name":37720,"carat":0.34,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.1,"table":57,"price":995,"x":4.52,"y":4.48,"z":2.75},{"name":595,"carat":0.76,"cut":"Very-Good","color":"H","clarity":"SI1","depth":60.9,"table":55,"price":2838,"x":5.92,"y":5.94,"z":3.61},{"name":12362,"carat":0.26,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":61.5,"table":58,"price":597,"x":4.08,"y":4.12,"z":2.52},{"name":50151,"carat":0.71,"cut":"Good","color":"D","clarity":"SI2","depth":64.3,"table":56,"price":2215,"x":5.64,"y":5.59,"z":3.61},{"name":41669,"carat":0.4,"cut":"Ideal","color":"I","clarity":"VVS2","depth":61.4,"table":56,"price":1240,"x":4.76,"y":4.79,"z":2.93},{"name":4974,"carat":1.14,"cut":"Good","color":"I","clarity":"SI2","depth":60,"table":65,"price":3735,"x":6.8,"y":6.75,"z":4.06},{"name":47558,"carat":0.7,"cut":"Ideal","color":"J","clarity":"VS2","depth":62.4,"table":55,"price":1874,"x":5.68,"y":5.7,"z":3.55},{"name":52829,"carat":0.7,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.4,"table":55,"price":2573,"x":5.74,"y":5.69,"z":3.51},{"name":3874,"carat":0.81,"cut":"Ideal","color":"F","clarity":"SI1","depth":62.3,"table":55,"price":3481,"x":5.96,"y":6,"z":3.72},{"name":22691,"carat":0.36,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.5,"table":55,"price":629,"x":4.57,"y":4.6,"z":2.82},{"name":28407,"carat":0.35,"cut":"Premium","color":"G","clarity":"SI1","depth":60.3,"table":60,"price":669,"x":4.59,"y":4.57,"z":2.76},{"name":27459,"carat":2.03,"cut":"Very-Good","color":"E","clarity":"SI2","depth":58.8,"table":59,"price":18115,"x":8.23,"y":8.28,"z":4.85},{"name":30473,"carat":0.31,"cut":"Ideal","color":"I","clarity":"VVS1","depth":62.1,"table":56,"price":732,"x":4.38,"y":4.35,"z":2.71},{"name":32370,"carat":0.3,"cut":"Ideal","color":"F","clarity":"VVS1","depth":62.4,"table":57,"price":790,"x":4.25,"y":4.28,"z":2.66},{"name":20135,"carat":1.57,"cut":"Premium","color":"J","clarity":"VS1","depth":61.3,"table":59,"price":8595,"x":7.44,"y":7.47,"z":4.57},{"name":50802,"carat":0.71,"cut":"Premium","color":"E","clarity":"SI2","depth":61.4,"table":59,"price":2306,"x":5.74,"y":5.7,"z":3.51},{"name":29439,"carat":0.42,"cut":"Premium","color":"D","clarity":"SI2","depth":60.1,"table":58,"price":700,"x":4.83,"y":4.88,"z":2.92},{"name":19544,"carat":1,"cut":"Premium","color":"E","clarity":"VS1","depth":59.1,"table":59,"price":8176,"x":6.56,"y":6.51,"z":3.86},{"name":16410,"carat":1,"cut":"Good","color":"F","clarity":"VS1","depth":57.8,"table":59,"price":6552,"x":6.57,"y":6.59,"z":3.8},{"name":41500,"carat":0.58,"cut":"Premium","color":"J","clarity":"VS2","depth":59.5,"table":62,"price":1233,"x":5.44,"y":5.41,"z":3.23},{"name":22107,"carat":1.66,"cut":"Very-Good","color":"H","clarity":"SI1","depth":62.8,"table":56,"price":10134,"x":7.53,"y":7.57,"z":4.74},{"name":37064,"carat":0.43,"cut":"Premium","color":"F","clarity":"VS2","depth":59.8,"table":58,"price":968,"x":4.94,"y":4.89,"z":2.94},{"name":27284,"carat":2.03,"cut":"Very-Good","color":"G","clarity":"SI2","depth":62.7,"table":55,"price":17752,"x":8.07,"y":8.14,"z":5.08},{"name":21724,"carat":1.86,"cut":"Good","color":"G","clarity":"SI2","depth":63.8,"table":55,"price":9791,"x":7.79,"y":7.73,"z":4.95},{"name":47369,"carat":0.52,"cut":"Very-Good","color":"D","clarity":"VS2","depth":62.9,"table":59,"price":1847,"x":5.11,"y":5.13,"z":3.22},{"name":34279,"carat":0.23,"cut":"Very-Good","color":"D","clarity":"VS1","depth":62.4,"table":56,"price":468,"x":3.93,"y":3.98,"z":2.46},{"name":28365,"carat":0.4,"cut":"Good","color":"D","clarity":"SI1","depth":60.3,"table":61,"price":667,"x":4.74,"y":4.78,"z":2.87},{"name":41811,"carat":0.54,"cut":"Good","color":"E","clarity":"SI2","depth":63.8,"table":54,"price":1250,"x":5.18,"y":5.17,"z":3.3},{"name":36655,"carat":0.3,"cut":"Very-Good","color":"E","clarity":"IF","depth":60.9,"table":59,"price":949,"x":4.29,"y":4.32,"z":2.62},{"name":4623,"carat":0.91,"cut":"Ideal","color":"E","clarity":"SI1","depth":60.7,"table":56,"price":3665,"x":6.26,"y":6.22,"z":3.79},{"name":12087,"carat":1.44,"cut":"Premium","color":"E","clarity":"I1","depth":61.1,"table":62,"price":5161,"x":7.23,"y":7.15,"z":4.39},{"name":7116,"carat":1.01,"cut":"Very-Good","color":"I","clarity":"SI2","depth":62.9,"table":55,"price":4171,"x":6.37,"y":6.42,"z":4.02},{"name":21908,"carat":1.71,"cut":"Very-Good","color":"H","clarity":"VS1","depth":63.5,"table":59,"price":9974,"x":7.59,"y":7.52,"z":4.8},{"name":50703,"carat":0.53,"cut":"Ideal","color":"F","clarity":"VVS2","depth":61.3,"table":55,"price":2291,"x":5.23,"y":5.27,"z":3.22},{"name":2069,"carat":0.32,"cut":"Premium","color":"G","clarity":"VS2","depth":61.5,"table":60,"price":561,"x":4.4,"y":4.42,"z":2.71},{"name":14758,"carat":1.01,"cut":"Ideal","color":"D","clarity":"SI1","depth":62,"table":57,"price":5939,"x":6.44,"y":6.37,"z":3.97},{"name":3516,"carat":0.71,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.5,"table":57,"price":3404,"x":5.7,"y":5.74,"z":3.52},{"name":34464,"carat":0.31,"cut":"Ideal","color":"E","clarity":"VVS1","depth":61.3,"table":56,"price":865,"x":4.38,"y":4.4,"z":2.69},{"name":25285,"carat":2.09,"cut":"Ideal","color":"I","clarity":"SI2","depth":61.2,"table":57,"price":13933,"x":8.27,"y":8.19,"z":5.04},{"name":35783,"carat":0.32,"cut":"Ideal","color":"F","clarity":"VVS1","depth":61,"table":56,"price":912,"x":4.42,"y":4.43,"z":2.7},{"name":39495,"carat":0.41,"cut":"Ideal","color":"E","clarity":"VS1","depth":62,"table":55,"price":1079,"x":4.74,"y":4.77,"z":2.95},{"name":15922,"carat":1.52,"cut":"Premium","color":"J","clarity":"SI1","depth":61,"table":59,"price":6367,"x":7.41,"y":7.35,"z":4.5},{"name":40625,"carat":0.41,"cut":"Ideal","color":"E","clarity":"VS1","depth":61.9,"table":55,"price":1153,"x":4.8,"y":4.76,"z":2.96},{"name":8663,"carat":1.16,"cut":"Very-Good","color":"H","clarity":"SI2","depth":63.2,"table":57,"price":4455,"x":6.66,"y":6.7,"z":4.22},{"name":5613,"carat":0.92,"cut":"Very-Good","color":"F","clarity":"SI2","depth":62.8,"table":56,"price":3873,"x":6.19,"y":6.23,"z":3.9},{"name":52450,"carat":0.71,"cut":"Premium","color":"G","clarity":"VS2","depth":62.8,"table":58,"price":2515,"x":5.74,"y":5.69,"z":3.59},{"name":17352,"carat":1.11,"cut":"Premium","color":"D","clarity":"SI1","depth":62,"table":58,"price":6962,"x":6.68,"y":6.64,"z":4.13},{"name":51937,"carat":0.72,"cut":"Ideal","color":"F","clarity":"SI1","depth":62.1,"table":55,"price":2440,"x":5.73,"y":5.8,"z":3.58},{"name":5387,"carat":0.3,"cut":"Premium","color":"G","clarity":"SI1","depth":58.8,"table":60,"price":574,"x":4.39,"y":4.35,"z":2.57},{"name":12962,"carat":1,"cut":"Very-Good","color":"D","clarity":"SI1","depth":62.1,"table":58,"price":5390,"x":6.34,"y":6.45,"z":3.97},{"name":34751,"carat":0.41,"cut":"Premium","color":"H","clarity":"SI1","depth":62,"table":59,"price":876,"x":4.8,"y":4.78,"z":2.97},{"name":4364,"carat":0.9,"cut":"Good","color":"F","clarity":"SI1","depth":63.9,"table":58,"price":3604,"x":6.12,"y":6.08,"z":3.9},{"name":13164,"carat":1.24,"cut":"Ideal","color":"J","clarity":"VS2","depth":62.3,"table":56,"price":5443,"x":6.84,"y":6.91,"z":4.28},{"name":34488,"carat":0.43,"cut":"Premium","color":"G","clarity":"VS2","depth":61.2,"table":58,"price":867,"x":4.84,"y":4.9,"z":2.98},{"name":33762,"carat":0.4,"cut":"Very-Good","color":"G","clarity":"SI1","depth":63.4,"table":58,"price":840,"x":4.71,"y":4.66,"z":2.97},{"name":18486,"carat":1.31,"cut":"Premium","color":"H","clarity":"SI1","depth":62.4,"table":58,"price":7527,"x":7.02,"y":6.96,"z":4.36},{"name":53494,"carat":0.73,"cut":"Ideal","color":"D","clarity":"SI2","depth":62.4,"table":56,"price":2683,"x":5.74,"y":5.77,"z":3.59},{"name":45458,"carat":0.7,"cut":"Good","color":"I","clarity":"SI2","depth":63.5,"table":56,"price":1675,"x":5.59,"y":5.63,"z":3.56},{"name":34592,"carat":0.37,"cut":"Ideal","color":"J","clarity":"SI1","depth":61.4,"table":57,"price":469,"x":4.62,"y":4.66,"z":2.85},{"name":7984,"carat":0.92,"cut":"Ideal","color":"H","clarity":"SI1","depth":60.5,"table":57,"price":4325,"x":6.27,"y":6.32,"z":3.81},{"name":23251,"carat":1.7,"cut":"Premium","color":"I","clarity":"VS2","depth":61.2,"table":59,"price":11257,"x":7.55,"y":7.62,"z":4.64},{"name":34473,"carat":0.38,"cut":"Very-Good","color":"E","clarity":"VS2","depth":60.3,"table":58,"price":866,"x":4.67,"y":4.72,"z":2.83},{"name":6235,"carat":0.75,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":62.8,"table":57,"price":4005,"x":5.74,"y":5.78,"z":3.62},{"name":28202,"carat":0.4,"cut":"Very-Good","color":"E","clarity":"SI2","depth":62.9,"table":59,"price":666,"x":4.66,"y":4.69,"z":2.94},{"name":42691,"carat":0.5,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.6,"table":57,"price":1337,"x":5.08,"y":5.11,"z":3.14},{"name":34013,"carat":0.43,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.4,"table":54,"price":848,"x":4.9,"y":4.93,"z":3.02},{"name":49461,"carat":0.6,"cut":"Ideal","color":"E","clarity":"VS2","depth":62,"table":56,"price":2112,"x":5.4,"y":5.43,"z":3.36},{"name":50401,"carat":0.71,"cut":"Ideal","color":"I","clarity":"SI1","depth":61.4,"table":56,"price":2255,"x":5.73,"y":5.77,"z":3.53},{"name":27056,"carat":0.28,"cut":"Premium","color":"H","clarity":"VVS1","depth":59.9,"table":62,"price":646,"x":4.28,"y":4.23,"z":2.55},{"name":47424,"carat":0.7,"cut":"Good","color":"F","clarity":"SI2","depth":64.1,"table":55,"price":1851,"x":5.58,"y":5.52,"z":3.56},{"name":38417,"carat":0.3,"cut":"Ideal","color":"G","clarity":"IF","depth":62.4,"table":55,"price":1025,"x":4.32,"y":4.3,"z":2.69},{"name":10216,"carat":1.26,"cut":"Ideal","color":"J","clarity":"SI2","depth":62.5,"table":53,"price":4742,"x":6.9,"y":6.86,"z":4.3},{"name":13031,"carat":0.26,"cut":"Premium","color":"H","clarity":"VVS1","depth":59.8,"table":59,"price":600,"x":4.17,"y":4.12,"z":2.48},{"name":22644,"carat":1.5,"cut":"Good","color":"H","clarity":"VS2","depth":63.9,"table":60,"price":10692,"x":7.17,"y":7.22,"z":4.6},{"name":31530,"carat":0.34,"cut":"Ideal","color":"E","clarity":"SI1","depth":62.9,"table":56,"price":765,"x":4.48,"y":4.45,"z":2.81},{"name":33600,"carat":0.37,"cut":"Ideal","color":"G","clarity":"VS2","depth":60.8,"table":57,"price":833,"x":4.66,"y":4.61,"z":2.82},{"name":40166,"carat":0.39,"cut":"Very-Good","color":"F","clarity":"VVS2","depth":58.2,"table":62,"price":1117,"x":4.77,"y":4.82,"z":2.79},{"name":6524,"carat":0.91,"cut":"Ideal","color":"D","clarity":"SI2","depth":62.6,"table":54,"price":4067,"x":6.22,"y":6.25,"z":3.9},{"name":2493,"carat":0.9,"cut":"Good","color":"I","clarity":"SI1","depth":63,"table":53,"price":3196,"x":6.08,"y":6.15,"z":3.85},{"name":53307,"carat":0.3,"cut":"Good","color":"D","clarity":"SI1","depth":63.4,"table":56,"price":552,"x":4.26,"y":4.29,"z":2.71},{"name":6661,"carat":1,"cut":"Premium","color":"G","clarity":"SI2","depth":62.7,"table":59,"price":4095,"x":6.3,"y":6.36,"z":3.97},{"name":143,"carat":0.7,"cut":"Very-Good","color":"D","clarity":"VS2","depth":61.8,"table":55,"price":2767,"x":5.68,"y":5.72,"z":3.52},{"name":51773,"carat":0.71,"cut":"Premium","color":"F","clarity":"SI2","depth":59.6,"table":59,"price":2409,"x":5.79,"y":5.75,"z":3.44},{"name":14482,"carat":1.2,"cut":"Premium","color":"F","clarity":"SI2","depth":62.6,"table":58,"price":5846,"x":6.79,"y":6.73,"z":4.23},{"name":33251,"carat":0.45,"cut":"Ideal","color":"I","clarity":"VS1","depth":61.9,"table":54,"price":825,"x":4.95,"y":4.97,"z":3.07},{"name":9911,"carat":1.01,"cut":"Premium","color":"E","clarity":"SI2","depth":62.9,"table":59,"price":4688,"x":6.37,"y":6.31,"z":3.99},{"name":259,"carat":0.83,"cut":"Ideal","color":"F","clarity":"SI2","depth":62.3,"table":55,"price":2790,"x":6.02,"y":6.05,"z":3.76},{"name":32882,"carat":0.4,"cut":"Ideal","color":"J","clarity":"VS1","depth":62.6,"table":55,"price":810,"x":4.75,"y":4.71,"z":2.96},{"name":31115,"carat":0.42,"cut":"Very-Good","color":"H","clarity":"SI1","depth":61.1,"table":57,"price":754,"x":4.84,"y":4.87,"z":2.96},{"name":20904,"carat":1.06,"cut":"Ideal","color":"F","clarity":"VVS2","depth":62.1,"table":57,"price":9118,"x":6.54,"y":6.5,"z":4.05},{"name":26198,"carat":1.7,"cut":"Premium","color":"G","clarity":"VS2","depth":62.6,"table":61,"price":15568,"x":7.64,"y":7.54,"z":4.75},{"name":2676,"carat":0.7,"cut":"Premium","color":"D","clarity":"VS1","depth":60.6,"table":58,"price":3239,"x":5.73,"y":5.75,"z":3.48},{"name":38697,"carat":0.37,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.9,"table":53,"price":1041,"x":4.65,"y":4.62,"z":2.87},{"name":39651,"carat":0.5,"cut":"Very-Good","color":"I","clarity":"SI1","depth":63.2,"table":57,"price":1087,"x":5.07,"y":5.09,"z":3.21},{"name":16592,"carat":1.06,"cut":"Very-Good","color":"F","clarity":"VS2","depth":62.7,"table":55,"price":6627,"x":6.54,"y":6.5,"z":4.09},{"name":18088,"carat":1.22,"cut":"Premium","color":"H","clarity":"VS2","depth":60.8,"table":59,"price":7310,"x":6.93,"y":6.86,"z":4.19},{"name":48489,"carat":0.5,"cut":"Fair","color":"D","clarity":"VVS2","depth":67.6,"table":57,"price":1980,"x":4.95,"y":4.84,"z":3.31},{"name":6300,"carat":0.9,"cut":"Good","color":"G","clarity":"VS2","depth":63.6,"table":59,"price":4022,"x":6.1,"y":6.04,"z":3.86},{"name":2089,"carat":0.71,"cut":"Very-Good","color":"E","clarity":"VS1","depth":59.8,"table":58,"price":3112,"x":5.78,"y":5.82,"z":3.47},{"name":36243,"carat":0.54,"cut":"Ideal","color":"I","clarity":"SI2","depth":60.9,"table":57,"price":935,"x":5.26,"y":5.31,"z":3.22},{"name":53086,"carat":0.57,"cut":"Ideal","color":"G","clarity":"VVS1","depth":60.9,"table":56,"price":2612,"x":5.37,"y":5.41,"z":3.28},{"name":35614,"carat":0.3,"cut":"Premium","color":"I","clarity":"VS1","depth":59.1,"table":59,"price":473,"x":4.35,"y":4.38,"z":2.58},{"name":48148,"carat":0.53,"cut":"Premium","color":"D","clarity":"VS1","depth":62.4,"table":61,"price":1940,"x":5.25,"y":5.14,"z":3.24},{"name":27367,"carat":0.28,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62.4,"table":56,"price":646,"x":4.16,"y":4.2,"z":2.61},{"name":38602,"carat":0.4,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.6,"table":57,"price":1038,"x":4.7,"y":4.68,"z":2.93},{"name":27118,"carat":2.05,"cut":"Premium","color":"E","clarity":"SI2","depth":62.5,"table":56,"price":17294,"x":8.17,"y":8.08,"z":5.08},{"name":33880,"carat":0.3,"cut":"Premium","color":"E","clarity":"VS2","depth":60.7,"table":59,"price":844,"x":4.33,"y":4.3,"z":2.62},{"name":27465,"carat":2.03,"cut":"Very-Good","color":"D","clarity":"SI2","depth":62.4,"table":59,"price":18120,"x":7.98,"y":8.04,"z":5},{"name":19752,"carat":1.02,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.5,"table":57,"price":8317,"x":6.47,"y":6.44,"z":3.97},{"name":20737,"carat":1.36,"cut":"Ideal","color":"G","clarity":"SI1","depth":60.9,"table":56,"price":8977,"x":7.15,"y":7.16,"z":4.36},{"name":20725,"carat":0.31,"cut":"Very-Good","color":"F","clarity":"VS2","depth":61.4,"table":55,"price":625,"x":4.32,"y":4.34,"z":2.66},{"name":53285,"carat":0.3,"cut":"Premium","color":"D","clarity":"SI1","depth":62.4,"table":60,"price":552,"x":4.23,"y":4.26,"z":2.65},{"name":25760,"carat":2.33,"cut":"Premium","color":"J","clarity":"SI1","depth":59.9,"table":59,"price":14711,"x":8.7,"y":8.65,"z":5.2},{"name":1993,"carat":0.91,"cut":"Premium","color":"F","clarity":"SI2","depth":62.1,"table":56,"price":3096,"x":6.26,"y":6.21,"z":3.87},{"name":13045,"carat":0.36,"cut":"Premium","color":"F","clarity":"SI1","depth":61.6,"table":60,"price":600,"x":4.54,"y":4.61,"z":2.82},{"name":19622,"carat":1,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.2,"table":56,"price":8239,"x":6.47,"y":6.5,"z":3.97},{"name":32358,"carat":0.3,"cut":"Good","color":"G","clarity":"VVS1","depth":63.1,"table":56,"price":789,"x":4.25,"y":4.28,"z":2.69},{"name":26851,"carat":2.01,"cut":"Premium","color":"I","clarity":"VS2","depth":62.6,"table":59,"price":16778,"x":8.04,"y":8.01,"z":5.02},{"name":34059,"carat":0.36,"cut":"Ideal","color":"D","clarity":"SI1","depth":61.5,"table":56,"price":851,"x":4.64,"y":4.56,"z":2.83},{"name":14897,"carat":1.26,"cut":"Premium","color":"H","clarity":"SI2","depth":58.6,"table":59,"price":5998,"x":7.09,"y":7.04,"z":4.14},{"name":235,"carat":0.64,"cut":"Ideal","color":"D","clarity":"VS1","depth":61.5,"table":56,"price":2787,"x":5.54,"y":5.55,"z":3.41},{"name":4997,"carat":0.58,"cut":"Ideal","color":"D","clarity":"VVS1","depth":62.2,"table":56,"price":3741,"x":5.34,"y":5.36,"z":3.33},{"name":39946,"carat":0.24,"cut":"Good","color":"E","clarity":"VVS2","depth":65,"table":58,"price":492,"x":3.85,"y":3.9,"z":2.52},{"name":26147,"carat":2,"cut":"Premium","color":"H","clarity":"SI2","depth":59.7,"table":61,"price":15451,"x":8.2,"y":8.15,"z":4.88},{"name":17956,"carat":1.02,"cut":"Very-Good","color":"F","clarity":"VS1","depth":61.9,"table":59,"price":7257,"x":6.38,"y":6.44,"z":3.97},{"name":19885,"carat":1.2,"cut":"Very-Good","color":"F","clarity":"VS2","depth":61.1,"table":59,"price":8436,"x":6.81,"y":6.87,"z":4.18},{"name":37862,"carat":0.34,"cut":"Ideal","color":"F","clarity":"VVS2","depth":61,"table":56,"price":1003,"x":4.54,"y":4.57,"z":2.78},{"name":5256,"carat":1.01,"cut":"Very-Good","color":"I","clarity":"SI2","depth":61.4,"table":63,"price":3792,"x":6.33,"y":6.38,"z":3.9},{"name":16116,"carat":0.9,"cut":"Premium","color":"D","clarity":"VS1","depth":61.2,"table":58,"price":6441,"x":6.27,"y":6.25,"z":3.83},{"name":17009,"carat":1.33,"cut":"Ideal","color":"H","clarity":"SI2","depth":62.3,"table":55,"price":6791,"x":7.01,"y":7.08,"z":4.39},{"name":4428,"carat":1,"cut":"Good","color":"J","clarity":"SI1","depth":58.7,"table":62,"price":3614,"x":6.47,"y":6.51,"z":3.81},{"name":47942,"carat":0.55,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.2,"table":54,"price":1916,"x":5.23,"y":5.3,"z":3.27},{"name":34574,"carat":0.31,"cut":"Ideal","color":"G","clarity":"IF","depth":61.9,"table":56,"price":871,"x":4.33,"y":4.35,"z":2.68},{"name":11058,"carat":0.4,"cut":"Ideal","color":"H","clarity":"SI2","depth":61.9,"table":58,"price":596,"x":4.71,"y":4.73,"z":2.92},{"name":25643,"carat":2.15,"cut":"Ideal","color":"I","clarity":"SI1","depth":62.5,"table":57,"price":14534,"x":8.2,"y":8.16,"z":5.11},{"name":12593,"carat":1.27,"cut":"Ideal","color":"J","clarity":"VS2","depth":61.8,"table":54,"price":5285,"x":6.95,"y":6.98,"z":4.31},{"name":5579,"carat":0.9,"cut":"Very-Good","color":"E","clarity":"SI1","depth":63.6,"table":57,"price":3863,"x":6.08,"y":6.12,"z":3.88},{"name":9401,"carat":1.05,"cut":"Ideal","color":"H","clarity":"SI2","depth":61.9,"table":56,"price":4586,"x":6.56,"y":6.49,"z":4.04},{"name":20144,"carat":1.43,"cut":"Ideal","color":"G","clarity":"SI1","depth":62.8,"table":57,"price":8599,"x":7.17,"y":7.12,"z":4.49},{"name":52042,"carat":0.71,"cut":"Premium","color":"E","clarity":"SI2","depth":62.6,"table":58,"price":2450,"x":5.7,"y":5.67,"z":3.56},{"name":52908,"carat":0.64,"cut":"Ideal","color":"G","clarity":"VVS2","depth":60.7,"table":57,"price":2587,"x":5.58,"y":5.63,"z":3.4},{"name":32459,"carat":0.38,"cut":"Ideal","color":"H","clarity":"VVS2","depth":61.6,"table":56,"price":794,"x":4.67,"y":4.72,"z":2.89},{"name":41064,"carat":0.49,"cut":"Ideal","color":"H","clarity":"SI2","depth":60.7,"table":56,"price":1190,"x":5.13,"y":5.18,"z":3.13},{"name":47384,"carat":0.54,"cut":"Premium","color":"G","clarity":"VS1","depth":61.6,"table":56,"price":1847,"x":5.26,"y":5.23,"z":3.23},{"name":39278,"carat":0.34,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.6,"table":56,"price":490,"x":4.46,"y":4.48,"z":2.8},{"name":21693,"carat":0.34,"cut":"Ideal","color":"I","clarity":"VVS1","depth":61.8,"table":56,"price":626,"x":4.47,"y":4.5,"z":2.77},{"name":18007,"carat":1.2,"cut":"Premium","color":"F","clarity":"SI1","depth":60.1,"table":59,"price":7282,"x":6.92,"y":6.85,"z":4.14},{"name":14160,"carat":1.31,"cut":"Premium","color":"I","clarity":"SI2","depth":60.5,"table":59,"price":5744,"x":7.11,"y":7.04,"z":4.28},{"name":29415,"carat":0.42,"cut":"Very-Good","color":"E","clarity":"SI2","depth":62.9,"table":56,"price":700,"x":4.77,"y":4.8,"z":3.01},{"name":43419,"carat":0.41,"cut":"Ideal","color":"D","clarity":"VVS1","depth":62.7,"table":56,"price":1413,"x":4.77,"y":4.74,"z":2.98},{"name":37822,"carat":0.31,"cut":"Ideal","color":"E","clarity":"IF","depth":61.3,"table":58,"price":1002,"x":4.37,"y":4.4,"z":2.69},{"name":28546,"carat":0.3,"cut":"Premium","color":"I","clarity":"VVS2","depth":61.8,"table":58,"price":675,"x":4.33,"y":4.28,"z":2.66},{"name":47739,"carat":0.7,"cut":"Premium","color":"I","clarity":"SI2","depth":62.4,"table":58,"price":1890,"x":5.68,"y":5.64,"z":3.53},{"name":40698,"carat":0.4,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62.2,"table":56,"price":1158,"x":4.71,"y":4.78,"z":2.95},{"name":17406,"carat":1.1,"cut":"Ideal","color":"G","clarity":"VS2","depth":60.2,"table":56,"price":6972,"x":6.7,"y":6.74,"z":4.05},{"name":25732,"carat":1.51,"cut":"Good","color":"G","clarity":"IF","depth":62.8,"table":60,"price":14654,"x":7.18,"y":7.24,"z":4.53},{"name":53765,"carat":0.7,"cut":"Very-Good","color":"D","clarity":"SI1","depth":62.6,"table":57,"price":2726,"x":5.67,"y":5.7,"z":3.56},{"name":13811,"carat":1.06,"cut":"Very-Good","color":"H","clarity":"VS1","depth":61.9,"table":58,"price":5627,"x":6.57,"y":6.49,"z":4.04},{"name":13975,"carat":1.27,"cut":"Premium","color":"I","clarity":"SI1","depth":62.3,"table":56,"price":5690,"x":6.93,"y":6.85,"z":4.29},{"name":11498,"carat":1.12,"cut":"Ideal","color":"G","clarity":"SI2","depth":61.5,"table":57,"price":5018,"x":6.74,"y":6.68,"z":4.13},{"name":92,"carat":0.86,"cut":"Fair","color":"E","clarity":"SI2","depth":55.1,"table":69,"price":2757,"x":6.45,"y":6.33,"z":3.52},{"name":40130,"carat":0.41,"cut":"Premium","color":"F","clarity":"VVS2","depth":60.6,"table":58,"price":1115,"x":4.79,"y":4.84,"z":2.92},{"name":31089,"carat":0.33,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":60,"table":63,"price":752,"x":4.45,"y":4.49,"z":2.68},{"name":12062,"carat":1.01,"cut":"Ideal","color":"F","clarity":"SI2","depth":62.4,"table":54,"price":5154,"x":6.41,"y":6.44,"z":4.01},{"name":10388,"carat":0.3,"cut":"Fair","color":"F","clarity":"VS1","depth":61.7,"table":66,"price":593,"x":4.25,"y":4.31,"z":2.64},{"name":46337,"carat":0.58,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.9,"table":56,"price":1758,"x":5.38,"y":5.34,"z":3.32},{"name":41965,"carat":0.23,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":62.7,"table":55,"price":505,"x":3.9,"y":3.95,"z":2.46},{"name":44984,"carat":0.31,"cut":"Premium","color":"G","clarity":"SI2","depth":62.3,"table":57,"price":523,"x":4.37,"y":4.33,"z":2.71},{"name":10061,"carat":0.31,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.5,"table":56,"price":591,"x":4.36,"y":4.39,"z":2.69},{"name":1719,"carat":0.32,"cut":"Good","color":"G","clarity":"VS2","depth":63.3,"table":54,"price":561,"x":4.36,"y":4.39,"z":2.77},{"name":50486,"carat":0.7,"cut":"Premium","color":"G","clarity":"SI2","depth":58,"table":60,"price":2268,"x":5.91,"y":5.88,"z":3.42},{"name":39484,"carat":0.41,"cut":"Ideal","color":"E","clarity":"VS1","depth":61.7,"table":57,"price":1079,"x":4.76,"y":4.8,"z":2.95},{"name":50934,"carat":0.7,"cut":"Premium","color":"D","clarity":"SI2","depth":62.1,"table":60,"price":2319,"x":5.73,"y":5.71,"z":3.55},{"name":21951,"carat":1.26,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":60.9,"table":56,"price":10020,"x":6.95,"y":7.01,"z":4.25},{"name":53149,"carat":0.8,"cut":"Very-Good","color":"E","clarity":"SI2","depth":62.4,"table":55,"price":2623,"x":5.88,"y":5.92,"z":3.68},{"name":36621,"carat":0.24,"cut":"Very-Good","color":"F","clarity":"VVS2","depth":62.1,"table":58,"price":478,"x":3.96,"y":4.03,"z":2.48},{"name":40481,"carat":0.55,"cut":"Very-Good","color":"G","clarity":"SI1","depth":60.7,"table":56,"price":1141,"x":5.32,"y":5.38,"z":3.25},{"name":30147,"carat":0.32,"cut":"Premium","color":"E","clarity":"SI1","depth":60.2,"table":60,"price":720,"x":4.44,"y":4.39,"z":2.66},{"name":47083,"carat":0.69,"cut":"Premium","color":"H","clarity":"SI1","depth":62.8,"table":58,"price":1822,"x":5.65,"y":5.62,"z":3.54},{"name":37623,"carat":0.44,"cut":"Premium","color":"I","clarity":"VVS1","depth":62.5,"table":60,"price":990,"x":4.87,"y":4.82,"z":3.03},{"name":2504,"carat":0.7,"cut":"Premium","color":"E","clarity":"VS2","depth":61,"table":59,"price":3199,"x":5.74,"y":5.7,"z":3.49},{"name":19150,"carat":1.55,"cut":"Premium","color":"J","clarity":"VS2","depth":60.7,"table":59,"price":7911,"x":7.47,"y":7.5,"z":4.54},{"name":14664,"carat":1.01,"cut":"Very-Good","color":"G","clarity":"VS2","depth":61.6,"table":58,"price":5919,"x":6.4,"y":6.45,"z":3.96},{"name":24538,"carat":1.62,"cut":"Ideal","color":"F","clarity":"SI1","depth":62.7,"table":56,"price":12828,"x":7.5,"y":7.44,"z":4.68},{"name":964,"carat":0.71,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.7,"table":56,"price":2891,"x":5.71,"y":5.75,"z":3.59},{"name":34414,"carat":0.3,"cut":"Ideal","color":"G","clarity":"IF","depth":60.7,"table":57,"price":863,"x":4.34,"y":4.39,"z":2.65},{"name":42804,"carat":0.52,"cut":"Ideal","color":"G","clarity":"SI1","depth":62.2,"table":54,"price":1352,"x":5.18,"y":5.2,"z":3.23},{"name":20646,"carat":1.58,"cut":"Premium","color":"H","clarity":"VS2","depth":60.5,"table":58,"price":8936,"x":7.57,"y":7.54,"z":4.57},{"name":52407,"carat":0.71,"cut":"Ideal","color":"E","clarity":"SI2","depth":59.5,"table":57,"price":2511,"x":5.87,"y":5.82,"z":3.48},{"name":51353,"carat":0.71,"cut":"Very-Good","color":"G","clarity":"SI1","depth":63.4,"table":56,"price":2364,"x":5.64,"y":5.68,"z":3.59},{"name":29106,"carat":0.34,"cut":"Ideal","color":"H","clarity":"VS2","depth":62.5,"table":54,"price":689,"x":4.54,"y":4.49,"z":2.82},{"name":19876,"carat":1.31,"cut":"Ideal","color":"H","clarity":"VS1","depth":61.5,"table":56,"price":8429,"x":7,"y":7.06,"z":4.32},{"name":26399,"carat":2.01,"cut":"Premium","color":"H","clarity":"SI2","depth":62.3,"table":58,"price":15917,"x":8.11,"y":8.06,"z":5.04},{"name":33362,"carat":0.41,"cut":"Very-Good","color":"G","clarity":"VS2","depth":62.9,"table":59,"price":827,"x":4.7,"y":4.75,"z":2.97},{"name":10156,"carat":1.01,"cut":"Very-Good","color":"D","clarity":"SI2","depth":61.9,"table":58,"price":4727,"x":6.43,"y":6.49,"z":4},{"name":19789,"carat":1.06,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.7,"table":56,"price":8358,"x":6.59,"y":6.56,"z":4.06},{"name":36629,"carat":0.29,"cut":"Very-Good","color":"H","clarity":"VVS1","depth":62,"table":55,"price":478,"x":4.24,"y":4.27,"z":2.64},{"name":16819,"carat":1.21,"cut":"Premium","color":"H","clarity":"VS2","depth":58.8,"table":59,"price":6708,"x":7.01,"y":6.98,"z":4.11},{"name":15591,"carat":1.24,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.3,"table":57,"price":6254,"x":6.95,"y":6.89,"z":4.24},{"name":28931,"carat":0.3,"cut":"Premium","color":"G","clarity":"VVS2","depth":61.9,"table":59,"price":684,"x":4.25,"y":4.28,"z":2.64},{"name":45361,"carat":0.52,"cut":"Very-Good","color":"E","clarity":"VS2","depth":62.2,"table":56,"price":1665,"x":5.16,"y":5.17,"z":3.21},{"name":19714,"carat":1.51,"cut":"Fair","color":"I","clarity":"VS2","depth":64.6,"table":58,"price":8287,"x":7.19,"y":7.15,"z":4.63},{"name":1192,"carat":0.72,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":62.2,"table":57,"price":2933,"x":5.67,"y":5.72,"z":3.54},{"name":17556,"carat":1.55,"cut":"Very-Good","color":"H","clarity":"SI1","depth":63.2,"table":57,"price":7066,"x":7.35,"y":7.31,"z":4.64},{"name":21432,"carat":1.51,"cut":"Good","color":"E","clarity":"SI1","depth":65.5,"table":56,"price":9539,"x":7.12,"y":7.16,"z":4.68},{"name":4090,"carat":0.9,"cut":"Very-Good","color":"D","clarity":"SI2","depth":63,"table":58,"price":3534,"x":6.12,"y":6.16,"z":3.87},{"name":29990,"carat":0.32,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.6,"table":57,"price":716,"x":4.39,"y":4.42,"z":2.71},{"name":18058,"carat":0.34,"cut":"Ideal","color":"G","clarity":"VS2","depth":60.8,"table":56,"price":616,"x":4.53,"y":4.55,"z":2.76},{"name":44285,"carat":0.52,"cut":"Ideal","color":"G","clarity":"VS2","depth":62,"table":55,"price":1577,"x":5.19,"y":5.13,"z":3.2},{"name":10297,"carat":1.01,"cut":"Good","color":"F","clarity":"SI1","depth":63.5,"table":59,"price":4759,"x":6.3,"y":6.39,"z":4.03},{"name":44889,"carat":0.5,"cut":"Premium","color":"E","clarity":"VS2","depth":61.8,"table":59,"price":1629,"x":5.12,"y":5.08,"z":3.15},{"name":2845,"carat":0.56,"cut":"Ideal","color":"D","clarity":"VVS1","depth":61.8,"table":56,"price":3270,"x":5.28,"y":5.31,"z":3.27},{"name":1505,"carat":0.75,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.1,"table":57,"price":2993,"x":5.83,"y":5.86,"z":3.57},{"name":29164,"carat":0.27,"cut":"Good","color":"D","clarity":"VVS2","depth":64.3,"table":55,"price":693,"x":4.14,"y":4.09,"z":2.65},{"name":37686,"carat":0.43,"cut":"Premium","color":"D","clarity":"SI1","depth":61,"table":57,"price":993,"x":4.88,"y":4.85,"z":2.97},{"name":8363,"carat":1.01,"cut":"Very-Good","color":"E","clarity":"SI1","depth":61,"table":56,"price":4399,"x":6.47,"y":6.54,"z":3.97},{"name":21925,"carat":1.23,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":62.2,"table":57,"price":9999,"x":6.8,"y":6.87,"z":4.25},{"name":6997,"carat":1,"cut":"Good","color":"F","clarity":"SI2","depth":63.8,"table":58,"price":4155,"x":6.33,"y":6.28,"z":4.02},{"name":31546,"carat":0.3,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62.1,"table":57,"price":766,"x":4.27,"y":4.3,"z":2.66},{"name":30660,"carat":0.42,"cut":"Very-Good","color":"G","clarity":"SI1","depth":62.9,"table":54,"price":737,"x":4.79,"y":4.81,"z":3.02},{"name":48380,"carat":0.58,"cut":"Ideal","color":"E","clarity":"VS1","depth":60.1,"table":57,"price":1965,"x":5.41,"y":5.47,"z":3.27},{"name":33793,"carat":0.4,"cut":"Premium","color":"I","clarity":"VVS1","depth":62.7,"table":59,"price":842,"x":4.67,"y":4.71,"z":2.94},{"name":44592,"carat":0.53,"cut":"Premium","color":"I","clarity":"VVS1","depth":63,"table":56,"price":1607,"x":5.19,"y":5.13,"z":3.25},{"name":10888,"carat":1.21,"cut":"Ideal","color":"I","clarity":"SI2","depth":60.7,"table":56,"price":4880,"x":6.86,"y":6.91,"z":4.18},{"name":49510,"carat":0.73,"cut":"Ideal","color":"J","clarity":"VS1","depth":62,"table":53,"price":2121,"x":5.78,"y":5.82,"z":3.6},{"name":22374,"carat":0.31,"cut":"Premium","color":"H","clarity":"VS2","depth":62.5,"table":60,"price":628,"x":4.36,"y":4.31,"z":2.71},{"name":6709,"carat":0.24,"cut":"Very-Good","color":"E","clarity":"VS1","depth":62.5,"table":55,"price":412,"x":3.96,"y":3.98,"z":2.48},{"name":16834,"carat":1.01,"cut":"Very-Good","color":"F","clarity":"VS2","depth":63.6,"table":59,"price":6714,"x":6.3,"y":6.34,"z":4.02},{"name":14128,"carat":1.13,"cut":"Premium","color":"H","clarity":"VS2","depth":61.7,"table":56,"price":5728,"x":6.73,"y":6.65,"z":4.13},{"name":48456,"carat":0.58,"cut":"Premium","color":"G","clarity":"VVS2","depth":61.4,"table":61,"price":1975,"x":5.43,"y":5.38,"z":3.32},{"name":52067,"carat":0.79,"cut":"Ideal","color":"G","clarity":"SI2","depth":60.8,"table":57,"price":2453,"x":5.99,"y":5.96,"z":3.63},{"name":46822,"carat":0.7,"cut":"Premium","color":"H","clarity":"SI2","depth":60.5,"table":61,"price":1808,"x":5.75,"y":5.72,"z":3.47},{"name":40311,"carat":0.4,"cut":"Premium","color":"E","clarity":"VS1","depth":62.5,"table":58,"price":1125,"x":4.72,"y":4.69,"z":2.94},{"name":3638,"carat":0.74,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.2,"table":56,"price":3434,"x":5.82,"y":5.85,"z":3.57},{"name":37724,"carat":0.34,"cut":"Premium","color":"G","clarity":"VVS2","depth":61.6,"table":58,"price":995,"x":4.49,"y":4.44,"z":2.75},{"name":46074,"carat":0.5,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.9,"table":55,"price":1736,"x":5.12,"y":5.08,"z":3.21},{"name":20574,"carat":1.24,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.7,"table":58,"price":8887,"x":6.79,"y":6.86,"z":4.28},{"name":46990,"carat":0.57,"cut":"Good","color":"G","clarity":"VS2","depth":58.2,"table":66,"price":1816,"x":5.34,"y":5.45,"z":3.14},{"name":2760,"carat":0.93,"cut":"Premium","color":"J","clarity":"VS2","depth":62.3,"table":60,"price":3250,"x":6.3,"y":6.23,"z":3.9},{"name":40891,"carat":0.5,"cut":"Fair","color":"E","clarity":"SI1","depth":65,"table":58,"price":1176,"x":4.98,"y":4.9,"z":3.21},{"name":27955,"carat":0.27,"cut":"Ideal","color":"I","clarity":"VS1","depth":62.5,"table":54,"price":432,"x":4.16,"y":4.19,"z":2.61},{"name":13867,"carat":1.01,"cut":"Ideal","color":"F","clarity":"SI1","depth":62.3,"table":58,"price":5646,"x":6.35,"y":6.42,"z":3.98},{"name":742,"carat":0.33,"cut":"Premium","color":"G","clarity":"SI2","depth":62.6,"table":58,"price":557,"x":4.42,"y":4.4,"z":2.76},{"name":34077,"carat":0.36,"cut":"Ideal","color":"D","clarity":"VS2","depth":61,"table":56,"price":852,"x":4.59,"y":4.63,"z":2.81},{"name":47862,"carat":0.56,"cut":"Premium","color":"D","clarity":"VS2","depth":61.5,"table":58,"price":1910,"x":5.28,"y":5.33,"z":3.26},{"name":31308,"carat":0.32,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.6,"table":57,"price":758,"x":4.37,"y":4.41,"z":2.75},{"name":784,"carat":0.53,"cut":"Ideal","color":"F","clarity":"VVS1","depth":61.4,"table":57,"price":2860,"x":5.23,"y":5.2,"z":3.2},{"name":17276,"carat":1.07,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.8,"table":57,"price":6917,"x":6.58,"y":6.52,"z":4.05},{"name":26631,"carat":2.22,"cut":"Good","color":"I","clarity":"SI2","depth":63.2,"table":57,"price":16398,"x":8.23,"y":8.28,"z":5.22},{"name":39297,"carat":0.3,"cut":"Ideal","color":"H","clarity":"VS2","depth":62.3,"table":57,"price":491,"x":4.27,"y":4.3,"z":2.67},{"name":31558,"carat":0.38,"cut":"Very-Good","color":"G","clarity":"VS2","depth":59.9,"table":58,"price":766,"x":4.72,"y":4.77,"z":2.84},{"name":10524,"carat":1.01,"cut":"Ideal","color":"D","clarity":"SI2","depth":63,"table":54,"price":4805,"x":6.43,"y":6.39,"z":4.04},{"name":19656,"carat":1.01,"cut":"Premium","color":"D","clarity":"VS1","depth":62.4,"table":58,"price":8265,"x":6.38,"y":6.41,"z":3.99},{"name":44163,"carat":0.5,"cut":"Very-Good","color":"D","clarity":"VS2","depth":61.1,"table":58,"price":1565,"x":5.09,"y":5.18,"z":3.14},{"name":15322,"carat":1.04,"cut":"Good","color":"G","clarity":"VS1","depth":58.9,"table":64,"price":6151,"x":6.6,"y":6.64,"z":3.9},{"name":33575,"carat":0.3,"cut":"Very-Good","color":"F","clarity":"VVS1","depth":62.2,"table":56,"price":832,"x":4.28,"y":4.3,"z":2.67},{"name":23208,"carat":1,"cut":"Very-Good","color":"E","clarity":"IF","depth":62.5,"table":55,"price":11214,"x":6.28,"y":6.39,"z":3.96},{"name":35938,"carat":0.41,"cut":"Very-Good","color":"D","clarity":"SI1","depth":60.3,"table":63,"price":920,"x":4.8,"y":4.78,"z":2.89},{"name":25815,"carat":1.62,"cut":"Premium","color":"F","clarity":"VS2","depth":61.1,"table":60,"price":14826,"x":7.56,"y":7.57,"z":4.62},{"name":36962,"carat":0.41,"cut":"Premium","color":"G","clarity":"VS1","depth":61.9,"table":60,"price":961,"x":4.76,"y":4.7,"z":2.93},{"name":22887,"carat":1.36,"cut":"Premium","color":"F","clarity":"VS2","depth":59.3,"table":60,"price":10929,"x":7.23,"y":7.2,"z":4.28},{"name":8411,"carat":0.9,"cut":"Ideal","color":"H","clarity":"VS2","depth":61.9,"table":58,"price":4403,"x":6.2,"y":6.24,"z":3.85},{"name":30964,"carat":0.36,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.1,"table":55,"price":746,"x":4.63,"y":4.66,"z":2.84},{"name":11781,"carat":1.02,"cut":"Premium","color":"H","clarity":"SI1","depth":61.1,"table":58,"price":5084,"x":6.51,"y":6.46,"z":3.96},{"name":4269,"carat":1.02,"cut":"Premium","color":"H","clarity":"SI1","depth":62.2,"table":52,"price":3581,"x":6.47,"y":6.43,"z":4.01},{"name":2070,"carat":0.32,"cut":"Premium","color":"E","clarity":"SI1","depth":61.9,"table":59,"price":561,"x":4.36,"y":4.39,"z":2.71},{"name":3541,"carat":1.01,"cut":"Good","color":"I","clarity":"SI2","depth":64.1,"table":58,"price":3411,"x":6.31,"y":6.26,"z":4.03},{"name":21716,"carat":0.28,"cut":"Very-Good","color":"F","clarity":"VVS2","depth":60.2,"table":58,"price":628,"x":4.26,"y":4.28,"z":2.57},{"name":35949,"carat":0.3,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.9,"table":54,"price":475,"x":4.33,"y":4.36,"z":2.69},{"name":26088,"carat":2.03,"cut":"Premium","color":"G","clarity":"SI1","depth":61.9,"table":59,"price":15322,"x":8.14,"y":8.09,"z":5.02},{"name":11169,"carat":1.07,"cut":"Premium","color":"D","clarity":"SI2","depth":62.6,"table":61,"price":4949,"x":6.49,"y":6.42,"z":4.04},{"name":25784,"carat":1.5,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.6,"table":57,"price":14759,"x":7.27,"y":7.34,"z":4.57},{"name":47991,"carat":0.32,"cut":"Good","color":"F","clarity":"SI1","depth":63.2,"table":55,"price":533,"x":4.37,"y":4.4,"z":2.77},{"name":4390,"carat":0.31,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.6,"table":57,"price":571,"x":4.3,"y":4.33,"z":2.7},{"name":38412,"carat":0.35,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61,"table":57,"price":1024,"x":4.58,"y":4.54,"z":2.78},{"name":28578,"carat":0.3,"cut":"Premium","color":"H","clarity":"VS1","depth":63,"table":59,"price":675,"x":4.27,"y":4.21,"z":2.67},{"name":20013,"carat":0.32,"cut":"Premium","color":"G","clarity":"SI2","depth":61.6,"table":59,"price":421,"x":4.35,"y":4.38,"z":2.69},{"name":29574,"carat":0.41,"cut":"Good","color":"F","clarity":"SI1","depth":63.7,"table":58,"price":705,"x":4.71,"y":4.74,"z":3.01},{"name":44447,"carat":0.51,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.9,"table":55,"price":1591,"x":5.11,"y":5.15,"z":3.18},{"name":22881,"carat":1.26,"cut":"Very-Good","color":"G","clarity":"VVS1","depth":60.2,"table":59,"price":10922,"x":6.98,"y":7.07,"z":4.23},{"name":35856,"carat":0.32,"cut":"Ideal","color":"D","clarity":"VVS1","depth":62.6,"table":57,"price":917,"x":4.34,"y":4.41,"z":2.74},{"name":52284,"carat":0.59,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":61.7,"table":59,"price":2494,"x":5.37,"y":5.36,"z":3.31},{"name":16038,"carat":0.3,"cut":"Very-Good","color":"I","clarity":"VS1","depth":63.3,"table":59,"price":608,"x":4.23,"y":4.2,"z":2.67},{"name":51853,"carat":0.7,"cut":"Ideal","color":"D","clarity":"SI2","depth":60.3,"table":56,"price":2423,"x":5.77,"y":5.73,"z":3.47},{"name":33738,"carat":0.3,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":62.9,"table":55,"price":840,"x":4.25,"y":4.27,"z":2.68},{"name":14498,"carat":0.9,"cut":"Good","color":"G","clarity":"IF","depth":61.8,"table":61,"price":5855,"x":6.12,"y":6.17,"z":3.8},{"name":33530,"carat":0.35,"cut":"Very-Good","color":"E","clarity":"VS1","depth":62.3,"table":60,"price":829,"x":4.5,"y":4.52,"z":2.81},{"name":39122,"carat":0.41,"cut":"Premium","color":"G","clarity":"VS2","depth":59.7,"table":59,"price":1061,"x":4.84,"y":4.81,"z":2.88},{"name":15622,"carat":1.01,"cut":"Very-Good","color":"F","clarity":"VS2","depth":63.1,"table":56,"price":6267,"x":6.41,"y":6.37,"z":4.03},{"name":14279,"carat":1.01,"cut":"Premium","color":"D","clarity":"SI1","depth":61.2,"table":60,"price":5780,"x":6.47,"y":6.41,"z":3.94},{"name":41635,"carat":0.32,"cut":"Ideal","color":"J","clarity":"VS2","depth":62.1,"table":54,"price":504,"x":4.44,"y":4.38,"z":2.74},{"name":1109,"carat":0.85,"cut":"Ideal","color":"G","clarity":"SI2","depth":62,"table":57,"price":2913,"x":6.1,"y":6.02,"z":3.76},{"name":15925,"carat":1.31,"cut":"Premium","color":"H","clarity":"VS2","depth":62.1,"table":58,"price":6368,"x":7.01,"y":6.86,"z":4.31},{"name":23645,"carat":3.65,"cut":"Fair","color":"H","clarity":"I1","depth":67.1,"table":53,"price":11668,"x":9.53,"y":9.48,"z":6.38},{"name":51650,"carat":0.26,"cut":"Very-Good","color":"G","clarity":"VVS1","depth":61.8,"table":57,"price":545,"x":4.06,"y":4.1,"z":2.52},{"name":32858,"carat":0.4,"cut":"Ideal","color":"H","clarity":"VS1","depth":61.8,"table":56,"price":807,"x":4.74,"y":4.78,"z":2.94},{"name":9462,"carat":0.9,"cut":"Very-Good","color":"G","clarity":"VS2","depth":62.5,"table":57,"price":4600,"x":6.12,"y":6.14,"z":3.83},{"name":28225,"carat":0.33,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.1,"table":55,"price":666,"x":4.45,"y":4.47,"z":2.77},{"name":36301,"carat":0.32,"cut":"Ideal","color":"H","clarity":"VVS1","depth":60.4,"table":57,"price":936,"x":4.46,"y":4.42,"z":2.68},{"name":21272,"carat":1.2,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.4,"table":55,"price":9424,"x":6.78,"y":6.87,"z":4.19},{"name":53353,"carat":1,"cut":"Good","color":"D","clarity":"I1","depth":57.8,"table":62,"price":2657,"x":6.51,"y":6.47,"z":3.75},{"name":19863,"carat":1.01,"cut":"Premium","color":"D","clarity":"VS1","depth":62.4,"table":58,"price":8416,"x":6.41,"y":6.38,"z":3.99},{"name":49842,"carat":0.71,"cut":"Premium","color":"H","clarity":"VS2","depth":61.3,"table":58,"price":2169,"x":5.76,"y":5.82,"z":3.55},{"name":12867,"carat":1.12,"cut":"Premium","color":"H","clarity":"SI1","depth":62.2,"table":60,"price":5363,"x":6.65,"y":6.59,"z":4.12},{"name":45455,"carat":0.5,"cut":"Very-Good","color":"E","clarity":"VS1","depth":62.7,"table":56,"price":1675,"x":5.09,"y":5.12,"z":3.2},{"name":17538,"carat":1,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.7,"table":55,"price":7056,"x":6.42,"y":6.39,"z":3.95},{"name":50586,"carat":0.56,"cut":"Ideal","color":"F","clarity":"VVS2","depth":62.3,"table":54,"price":2281,"x":5.29,"y":5.34,"z":3.31},{"name":12350,"carat":1.14,"cut":"Premium","color":"F","clarity":"SI1","depth":62.5,"table":59,"price":5228,"x":6.67,"y":6.65,"z":4.16},{"name":24704,"carat":0.32,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.1,"table":55,"price":639,"x":4.39,"y":4.43,"z":2.74},{"name":39854,"carat":0.57,"cut":"Good","color":"J","clarity":"VS2","depth":63.3,"table":56,"price":1100,"x":5.24,"y":5.28,"z":3.33},{"name":40949,"carat":0.3,"cut":"Good","color":"F","clarity":"SI1","depth":63.5,"table":59,"price":500,"x":4.19,"y":4.22,"z":2.67},{"name":29620,"carat":0.3,"cut":"Ideal","color":"I","clarity":"SI1","depth":60.4,"table":59,"price":439,"x":4.33,"y":4.35,"z":2.62},{"name":15525,"carat":1.01,"cut":"Very-Good","color":"E","clarity":"VS2","depth":63,"table":60,"price":6221,"x":6.32,"y":6.35,"z":3.99},{"name":52886,"carat":0.7,"cut":"Good","color":"D","clarity":"SI2","depth":58.2,"table":63,"price":2583,"x":5.78,"y":5.83,"z":3.38},{"name":41653,"carat":0.59,"cut":"Very-Good","color":"H","clarity":"SI1","depth":61.8,"table":56,"price":1239,"x":5.39,"y":5.43,"z":3.35},{"name":22879,"carat":1.5,"cut":"Ideal","color":"H","clarity":"VS2","depth":62.3,"table":56,"price":10920,"x":7.34,"y":7.29,"z":4.56},{"name":13418,"carat":1.5,"cut":"Ideal","color":"I","clarity":"I1","depth":61.8,"table":57,"price":5510,"x":7.39,"y":7.31,"z":4.54},{"name":7283,"carat":1,"cut":"Premium","color":"E","clarity":"SI2","depth":62.8,"table":59,"price":4200,"x":6.34,"y":6.3,"z":3.97},{"name":19217,"carat":1.51,"cut":"Good","color":"I","clarity":"SI2","depth":63.6,"table":60,"price":7957,"x":7.27,"y":7.23,"z":4.61},{"name":11040,"carat":1.01,"cut":"Premium","color":"H","clarity":"VS2","depth":60.7,"table":61,"price":4921,"x":6.47,"y":6.39,"z":3.9},{"name":45136,"carat":0.5,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.4,"table":55,"price":1653,"x":5.09,"y":5.1,"z":3.18},{"name":37894,"carat":0.41,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":62.9,"table":56,"price":1007,"x":4.7,"y":4.74,"z":2.97},{"name":46392,"carat":0.37,"cut":"Ideal","color":"D","clarity":"VVS1","depth":61.3,"table":56,"price":1764,"x":4.6,"y":4.63,"z":2.83},{"name":28687,"carat":0.36,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.3,"table":57,"price":678,"x":4.55,"y":4.57,"z":2.84},{"name":7453,"carat":0.9,"cut":"Premium","color":"H","clarity":"VS1","depth":62.7,"table":60,"price":4234,"x":6.12,"y":6.07,"z":3.82},{"name":17663,"carat":1.02,"cut":"Ideal","color":"D","clarity":"VS1","depth":62.7,"table":55,"price":7118,"x":6.49,"y":6.4,"z":4.04},{"name":50415,"carat":0.71,"cut":"Good","color":"F","clarity":"SI1","depth":64.3,"table":58,"price":2258,"x":5.61,"y":5.55,"z":3.59},{"name":32993,"carat":0.38,"cut":"Premium","color":"I","clarity":"VS2","depth":61.5,"table":58,"price":812,"x":4.62,"y":4.61,"z":2.84},{"name":29,"carat":0.23,"cut":"Very-Good","color":"D","clarity":"VS2","depth":60.5,"table":61,"price":357,"x":3.96,"y":3.97,"z":2.4},{"name":5320,"carat":0.9,"cut":"Good","color":"D","clarity":"SI2","depth":62.3,"table":58,"price":3806,"x":6.05,"y":6.27,"z":3.84},{"name":23642,"carat":1.51,"cut":"Premium","color":"F","clarity":"SI1","depth":62.8,"table":59,"price":11666,"x":7.31,"y":7.28,"z":4.58},{"name":17874,"carat":1.4,"cut":"Ideal","color":"H","clarity":"SI2","depth":61.2,"table":56,"price":7213,"x":7.23,"y":7.18,"z":4.41},{"name":51203,"carat":0.7,"cut":"Fair","color":"H","clarity":"VS2","depth":67.8,"table":56,"price":2351,"x":5.42,"y":5.38,"z":3.66},{"name":22743,"carat":1.51,"cut":"Ideal","color":"H","clarity":"VS2","depth":62.5,"table":55,"price":10763,"x":7.29,"y":7.34,"z":4.57},{"name":28569,"carat":0.3,"cut":"Good","color":"H","clarity":"VS1","depth":63.9,"table":55,"price":675,"x":4.28,"y":4.26,"z":2.73},{"name":51750,"carat":0.78,"cut":"Very-Good","color":"H","clarity":"SI2","depth":62.6,"table":59,"price":2405,"x":5.81,"y":5.85,"z":3.65},{"name":44363,"carat":0.56,"cut":"Ideal","color":"E","clarity":"SI1","depth":60.9,"table":56,"price":1580,"x":5.32,"y":5.35,"z":3.25},{"name":42559,"carat":0.42,"cut":"Ideal","color":"D","clarity":"VVS2","depth":62.1,"table":55,"price":1326,"x":4.78,"y":4.81,"z":2.98},{"name":32403,"carat":0.37,"cut":"Premium","color":"F","clarity":"SI1","depth":62.5,"table":58,"price":791,"x":4.57,"y":4.52,"z":2.84},{"name":15752,"carat":1.32,"cut":"Very-Good","color":"I","clarity":"SI2","depth":61.2,"table":58,"price":6300,"x":7.12,"y":7.06,"z":4.34},{"name":46703,"carat":0.55,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.4,"table":56,"price":1792,"x":5.32,"y":5.26,"z":3.25},{"name":2555,"carat":0.93,"cut":"Very-Good","color":"J","clarity":"VS2","depth":63.3,"table":61,"price":3208,"x":6.19,"y":6.14,"z":3.9},{"name":11773,"carat":1.21,"cut":"Premium","color":"H","clarity":"SI2","depth":58.2,"table":59,"price":5082,"x":7.05,"y":7.03,"z":4.1},{"name":39085,"carat":0.41,"cut":"Good","color":"E","clarity":"VVS2","depth":63.1,"table":58,"price":1060,"x":4.72,"y":4.75,"z":2.99},{"name":53456,"carat":0.7,"cut":"Very-Good","color":"D","clarity":"SI1","depth":61.1,"table":57,"price":2677,"x":5.74,"y":5.66,"z":3.48},{"name":44088,"carat":0.5,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.1,"table":55,"price":1554,"x":5.11,"y":5.13,"z":3.18},{"name":8446,"carat":1.01,"cut":"Premium","color":"H","clarity":"VS2","depth":62.3,"table":58,"price":4412,"x":6.45,"y":6.36,"z":3.99},{"name":35862,"carat":0.4,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.8,"table":54,"price":917,"x":4.75,"y":4.77,"z":2.94},{"name":49888,"carat":0.65,"cut":"Ideal","color":"H","clarity":"VVS1","depth":62.4,"table":54,"price":2177,"x":5.55,"y":5.57,"z":3.47},{"name":30460,"carat":0.4,"cut":"Premium","color":"H","clarity":"VS1","depth":62.7,"table":59,"price":731,"x":4.63,"y":4.71,"z":2.93},{"name":7842,"carat":0.91,"cut":"Very-Good","color":"D","clarity":"SI1","depth":62.8,"table":57,"price":4303,"x":6.12,"y":6.17,"z":3.86},{"name":36223,"carat":0.36,"cut":"Ideal","color":"D","clarity":"VS2","depth":60,"table":56,"price":933,"x":4.68,"y":4.66,"z":2.8},{"name":33553,"carat":0.3,"cut":"Ideal","color":"G","clarity":"IF","depth":62.3,"table":52.8,"price":830,"x":4.29,"y":4.33,"z":2.69},{"name":35961,"carat":0.3,"cut":"Very-Good","color":"D","clarity":"SI1","depth":62.6,"table":59,"price":476,"x":4.24,"y":4.26,"z":2.66},{"name":42011,"carat":0.51,"cut":"Premium","color":"E","clarity":"SI2","depth":61.8,"table":58,"price":1265,"x":5.11,"y":5.08,"z":3.15},{"name":9296,"carat":0.91,"cut":"Premium","color":"G","clarity":"VS1","depth":62.5,"table":61,"price":4570,"x":6.17,"y":6.05,"z":3.82},{"name":34989,"carat":0.34,"cut":"Ideal","color":"E","clarity":"VS1","depth":62,"table":57,"price":881,"x":4.49,"y":4.44,"z":2.77},{"name":51770,"carat":0.7,"cut":"Good","color":"F","clarity":"SI1","depth":58.7,"table":60,"price":2409,"x":5.75,"y":5.81,"z":3.39},{"name":10157,"carat":1.02,"cut":"Very-Good","color":"H","clarity":"SI1","depth":61.6,"table":58,"price":4727,"x":6.49,"y":6.54,"z":4.01},{"name":111,"carat":0.8,"cut":"Ideal","color":"F","clarity":"SI2","depth":61.4,"table":57,"price":2761,"x":5.96,"y":6,"z":3.67},{"name":42346,"carat":0.42,"cut":"Ideal","color":"H","clarity":"VS1","depth":61,"table":57,"price":1299,"x":4.85,"y":4.89,"z":2.97},{"name":16255,"carat":1.2,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.2,"table":56,"price":6502,"x":6.92,"y":6.84,"z":4.21},{"name":33850,"carat":0.3,"cut":"Premium","color":"F","clarity":"VS1","depth":61.9,"table":59,"price":844,"x":4.3,"y":4.26,"z":2.65},{"name":11943,"carat":1.01,"cut":"Fair","color":"F","clarity":"SI1","depth":65,"table":61,"price":5131,"x":6.29,"y":6.23,"z":4.07},{"name":6954,"carat":0.93,"cut":"Very-Good","color":"G","clarity":"SI1","depth":62.3,"table":58,"price":4144,"x":6.2,"y":6.29,"z":3.9},{"name":51812,"carat":0.71,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.6,"table":56,"price":2416,"x":5.71,"y":5.75,"z":3.53},{"name":5367,"carat":0.75,"cut":"Very-Good","color":"E","clarity":"VS2","depth":60.4,"table":56,"price":3817,"x":5.9,"y":5.96,"z":3.58},{"name":40884,"carat":0.38,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.6,"table":55,"price":1176,"x":4.66,"y":4.63,"z":2.86},{"name":28456,"carat":0.41,"cut":"Good","color":"G","clarity":"SI1","depth":63.4,"table":57,"price":671,"x":4.7,"y":4.73,"z":2.99},{"name":20701,"carat":0.31,"cut":"Very-Good","color":"G","clarity":"VS1","depth":62.9,"table":57,"price":625,"x":4.3,"y":4.32,"z":2.71},{"name":17288,"carat":1.12,"cut":"Very-Good","color":"F","clarity":"VS2","depth":62,"table":58,"price":6925,"x":6.63,"y":6.69,"z":4.13},{"name":31557,"carat":0.38,"cut":"Very-Good","color":"G","clarity":"VS2","depth":60.4,"table":57,"price":766,"x":4.67,"y":4.7,"z":2.83},{"name":47244,"carat":0.62,"cut":"Premium","color":"G","clarity":"VS2","depth":61.1,"table":59,"price":1841,"x":5.56,"y":5.5,"z":3.38},{"name":29351,"carat":0.31,"cut":"Ideal","color":"G","clarity":"VS2","depth":62,"table":57,"price":698,"x":4.37,"y":4.34,"z":2.7},{"name":29461,"carat":0.32,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.2,"table":56,"price":702,"x":4.37,"y":4.41,"z":2.73},{"name":52358,"carat":0.74,"cut":"Ideal","color":"E","clarity":"SI2","depth":61.7,"table":57,"price":2501,"x":5.78,"y":5.82,"z":3.58},{"name":37202,"carat":0.46,"cut":"Ideal","color":"I","clarity":"VVS1","depth":61.7,"table":57,"price":974,"x":4.96,"y":4.99,"z":3.07},{"name":41766,"carat":0.52,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.7,"table":55,"price":1245,"x":5.17,"y":5.21,"z":3.2},{"name":13395,"carat":0.32,"cut":"Good","color":"F","clarity":"VS2","depth":63.3,"table":57,"price":602,"x":4.34,"y":4.38,"z":2.76},{"name":15775,"carat":1.28,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.4,"table":57,"price":6308,"x":7.04,"y":6.97,"z":4.3},{"name":30071,"carat":0.32,"cut":"Premium","color":"G","clarity":"VS2","depth":62.3,"table":60,"price":720,"x":4.4,"y":4.37,"z":2.73},{"name":35305,"carat":0.3,"cut":"Ideal","color":"I","clarity":"VS1","depth":61,"table":56,"price":473,"x":4.35,"y":4.37,"z":2.66},{"name":2839,"carat":0.96,"cut":"Premium","color":"J","clarity":"SI1","depth":60.3,"table":59,"price":3269,"x":6.4,"y":6.36,"z":3.85},{"name":5321,"carat":0.9,"cut":"Very-Good","color":"D","clarity":"SI2","depth":61,"table":59,"price":3806,"x":6.14,"y":6.18,"z":3.76},{"name":4166,"carat":0.71,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.6,"table":56,"price":3553,"x":5.73,"y":5.77,"z":3.54},{"name":29995,"carat":0.43,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.5,"table":57,"price":716,"x":4.79,"y":4.84,"z":3.01},{"name":44224,"carat":0.5,"cut":"Ideal","color":"D","clarity":"VS1","depth":63,"table":57,"price":1571,"x":5.06,"y":5,"z":3.17},{"name":17403,"carat":1.09,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.4,"table":56,"price":6970,"x":6.61,"y":6.64,"z":4.07},{"name":47978,"carat":0.38,"cut":"Ideal","color":"G","clarity":"SI2","depth":62,"table":55,"price":532,"x":4.66,"y":4.69,"z":2.9},{"name":13226,"carat":1.01,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62.1,"table":56,"price":5461,"x":6.43,"y":6.48,"z":4.01},{"name":47074,"carat":0.52,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.3,"table":56,"price":1822,"x":5.11,"y":5.16,"z":3.2},{"name":47372,"carat":0.54,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.8,"table":55,"price":1847,"x":5.26,"y":5.24,"z":3.24},{"name":11837,"carat":1,"cut":"Good","color":"D","clarity":"SI1","depth":60.4,"table":64,"price":5096,"x":6.39,"y":6.3,"z":3.83},{"name":29997,"carat":0.43,"cut":"Premium","color":"D","clarity":"SI2","depth":62.6,"table":58,"price":716,"x":4.79,"y":4.82,"z":3.01},{"name":23705,"carat":0.4,"cut":"Good","color":"J","clarity":"VS1","depth":63.2,"table":57,"price":631,"x":4.7,"y":4.73,"z":2.98},{"name":32085,"carat":0.33,"cut":"Ideal","color":"D","clarity":"VS2","depth":60.9,"table":55,"price":781,"x":4.47,"y":4.5,"z":2.73},{"name":47038,"carat":0.55,"cut":"Ideal","color":"D","clarity":"SI1","depth":60.6,"table":56,"price":1819,"x":5.32,"y":5.27,"z":3.21},{"name":18340,"carat":1.29,"cut":"Ideal","color":"G","clarity":"SI1","depth":60.9,"table":59,"price":7463,"x":6.99,"y":7.04,"z":4.27},{"name":40778,"carat":0.5,"cut":"Very-Good","color":"D","clarity":"SI2","depth":61.9,"table":56,"price":1167,"x":5.09,"y":5.14,"z":3.16},{"name":17448,"carat":1.07,"cut":"Very-Good","color":"G","clarity":"VS1","depth":60.9,"table":55,"price":6998,"x":6.6,"y":6.64,"z":4.03},{"name":53543,"carat":0.78,"cut":"Fair","color":"H","clarity":"VS2","depth":54.7,"table":67,"price":2691,"x":6.25,"y":6.15,"z":3.4},{"name":33882,"carat":0.3,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.5,"table":56,"price":844,"x":4.33,"y":4.29,"z":2.65},{"name":9332,"carat":0.9,"cut":"Very-Good","color":"E","clarity":"VS2","depth":62.2,"table":59,"price":4580,"x":6.13,"y":6.18,"z":3.83},{"name":52271,"carat":0.76,"cut":"Premium","color":"F","clarity":"SI2","depth":62.7,"table":55,"price":2491,"x":5.83,"y":5.74,"z":3.63},{"name":28016,"carat":0.3,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.3,"table":56,"price":658,"x":4.3,"y":4.34,"z":2.69},{"name":29765,"carat":0.35,"cut":"Premium","color":"H","clarity":"VS2","depth":61.8,"table":56,"price":709,"x":4.58,"y":4.54,"z":2.82},{"name":43461,"carat":0.55,"cut":"Very-Good","color":"E","clarity":"SI1","depth":64.2,"table":55,"price":1417,"x":5.18,"y":5.2,"z":3.33},{"name":11508,"carat":1.01,"cut":"Ideal","color":"I","clarity":"SI1","depth":62.5,"table":56,"price":5020,"x":6.4,"y":6.36,"z":3.99},{"name":19105,"carat":1.22,"cut":"Premium","color":"G","clarity":"VS2","depth":61.2,"table":58,"price":7870,"x":6.91,"y":6.81,"z":4.2},{"name":33733,"carat":0.39,"cut":"Ideal","color":"E","clarity":"VS2","depth":60.9,"table":55,"price":839,"x":4.73,"y":4.76,"z":2.89},{"name":22264,"carat":1.54,"cut":"Premium","color":"E","clarity":"SI1","depth":62.7,"table":58,"price":10314,"x":7.37,"y":7.3,"z":4.6},{"name":21692,"carat":0.34,"cut":"Good","color":"D","clarity":"SI1","depth":63.1,"table":57,"price":626,"x":4.44,"y":4.46,"z":2.81},{"name":4129,"carat":1.52,"cut":"Premium","color":"I","clarity":"I1","depth":61.2,"table":58,"price":3541,"x":7.43,"y":7.35,"z":4.52},{"name":49854,"carat":0.71,"cut":"Very-Good","color":"G","clarity":"SI2","depth":62.4,"table":54,"price":2171,"x":5.72,"y":5.76,"z":3.58},{"name":37817,"carat":0.36,"cut":"Very-Good","color":"G","clarity":"IF","depth":60.4,"table":62,"price":1002,"x":4.6,"y":4.64,"z":2.79},{"name":39821,"carat":0.3,"cut":"Premium","color":"E","clarity":"IF","depth":61.9,"table":58,"price":1097,"x":4.3,"y":4.26,"z":2.65},{"name":26386,"carat":1.23,"cut":"Very-Good","color":"E","clarity":"VVS1","depth":61.2,"table":59,"price":15878,"x":6.9,"y":6.98,"z":4.25},{"name":19879,"carat":1.12,"cut":"Good","color":"F","clarity":"VVS2","depth":57.9,"table":57,"price":8430,"x":6.86,"y":6.83,"z":3.96},{"name":1205,"carat":0.7,"cut":"Ideal","color":"D","clarity":"SI2","depth":62.6,"table":54,"price":2936,"x":5.69,"y":5.72,"z":3.57},{"name":53509,"carat":0.71,"cut":"Premium","color":"F","clarity":"VS2","depth":59.6,"table":59,"price":2686,"x":5.81,"y":5.77,"z":3.45},{"name":46313,"carat":0.3,"cut":"Ideal","color":"H","clarity":"VS1","depth":62.3,"table":55,"price":526,"x":4.29,"y":4.34,"z":2.69},{"name":21203,"carat":1.57,"cut":"Ideal","color":"J","clarity":"VVS2","depth":61.4,"table":57,"price":9346,"x":7.45,"y":7.5,"z":4.59},{"name":47536,"carat":0.51,"cut":"Very-Good","color":"G","clarity":"VVS1","depth":63.2,"table":59,"price":1871,"x":5.04,"y":5.09,"z":3.2},{"name":34885,"carat":0.38,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62,"table":57,"price":879,"x":4.64,"y":4.66,"z":2.89},{"name":18260,"carat":1.55,"cut":"Ideal","color":"J","clarity":"VS2","depth":61.7,"table":57,"price":7416,"x":7.37,"y":7.42,"z":4.56},{"name":13936,"carat":1.25,"cut":"Ideal","color":"H","clarity":"SI2","depth":62.7,"table":56,"price":5670,"x":6.92,"y":6.87,"z":4.32},{"name":21943,"carat":1.51,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.3,"table":56,"price":10012,"x":7.44,"y":7.4,"z":4.55},{"name":13677,"carat":1.02,"cut":"Very-Good","color":"H","clarity":"VS1","depth":62.8,"table":59,"price":5598,"x":6.34,"y":6.47,"z":4.02},{"name":38367,"carat":0.43,"cut":"Premium","color":"D","clarity":"SI1","depth":62.4,"table":60,"price":1022,"x":4.82,"y":4.79,"z":3},{"name":28449,"carat":0.31,"cut":"Ideal","color":"H","clarity":"VVS1","depth":61.3,"table":56,"price":671,"x":4.36,"y":4.39,"z":2.68},{"name":17279,"carat":1.29,"cut":"Ideal","color":"J","clarity":"VVS1","depth":61.2,"table":56,"price":6918,"x":7.01,"y":7.05,"z":4.3},{"name":26427,"carat":2.01,"cut":"Ideal","color":"F","clarity":"SI2","depth":62.3,"table":58,"price":15955,"x":8.03,"y":8.01,"z":5},{"name":16905,"carat":1.03,"cut":"Premium","color":"G","clarity":"VS1","depth":62.2,"table":59,"price":6749,"x":6.46,"y":6.41,"z":4},{"name":51360,"carat":0.72,"cut":"Premium","color":"F","clarity":"SI2","depth":59.3,"table":57,"price":2364,"x":5.89,"y":5.85,"z":3.48},{"name":23591,"carat":1.02,"cut":"Ideal","color":"E","clarity":"IF","depth":62.6,"table":57,"price":11605,"x":6.47,"y":6.41,"z":4.03},{"name":39676,"carat":0.42,"cut":"Premium","color":"G","clarity":"VS2","depth":62.6,"table":57,"price":1087,"x":4.8,"y":4.76,"z":2.99},{"name":50879,"carat":0.7,"cut":"Premium","color":"G","clarity":"VS2","depth":62.1,"table":60,"price":2314,"x":5.71,"y":5.65,"z":3.53},{"name":50743,"carat":0.5,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.8,"table":53.6,"price":2297,"x":5.1,"y":5.13,"z":3.16},{"name":51754,"carat":0.72,"cut":"Premium","color":"G","clarity":"VS2","depth":62.3,"table":59,"price":2405,"x":5.77,"y":5.69,"z":3.57},{"name":34118,"carat":0.31,"cut":"Ideal","color":"E","clarity":"VVS1","depth":62.1,"table":55,"price":853,"x":4.34,"y":4.36,"z":2.7},{"name":27836,"carat":0.31,"cut":"Good","color":"H","clarity":"VS1","depth":59.2,"table":65,"price":651,"x":4.42,"y":4.33,"z":2.59},{"name":10935,"carat":0.9,"cut":"Very-Good","color":"F","clarity":"VS1","depth":62.1,"table":58,"price":4898,"x":6.15,"y":6.19,"z":3.83},{"name":51879,"carat":0.71,"cut":"Very-Good","color":"H","clarity":"VS2","depth":59.2,"table":63,"price":2428,"x":5.81,"y":5.85,"z":3.45},{"name":52880,"carat":0.78,"cut":"Ideal","color":"G","clarity":"SI1","depth":62.8,"table":56,"price":2583,"x":5.88,"y":5.84,"z":3.68},{"name":18591,"carat":1.51,"cut":"Premium","color":"G","clarity":"SI1","depth":61.3,"table":61,"price":7585,"x":7.41,"y":7.34,"z":4.52},{"name":41668,"carat":0.4,"cut":"Ideal","color":"I","clarity":"VVS2","depth":62,"table":56,"price":1240,"x":4.74,"y":4.77,"z":2.95},{"name":31414,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VVS1","depth":62,"table":58,"price":764,"x":4.28,"y":4.3,"z":2.66},{"name":18767,"carat":1.22,"cut":"Very-Good","color":"H","clarity":"VS1","depth":62.4,"table":59,"price":7673,"x":6.91,"y":6.85,"z":4.29},{"name":170,"carat":0.71,"cut":"Good","color":"E","clarity":"VS2","depth":59.2,"table":61,"price":2772,"x":5.8,"y":5.88,"z":3.46},{"name":50007,"carat":0.7,"cut":"Very-Good","color":"F","clarity":"SI2","depth":60.7,"table":58,"price":2195,"x":5.73,"y":5.77,"z":3.49},{"name":17670,"carat":1.59,"cut":"Premium","color":"F","clarity":"SI2","depth":62.2,"table":58,"price":7123,"x":7.49,"y":7.45,"z":4.64},{"name":5549,"carat":1.02,"cut":"Premium","color":"I","clarity":"SI2","depth":62,"table":59,"price":3856,"x":6.45,"y":6.42,"z":3.99},{"name":21449,"carat":2,"cut":"Fair","color":"H","clarity":"SI2","depth":68.7,"table":55,"price":9549,"x":7.9,"y":7.67,"z":5.35},{"name":41066,"carat":0.52,"cut":"Premium","color":"F","clarity":"SI1","depth":61.5,"table":60,"price":1191,"x":5.15,"y":5.16,"z":3.17},{"name":18494,"carat":1.72,"cut":"Premium","color":"F","clarity":"I1","depth":60.1,"table":58,"price":7532,"x":7.77,"y":7.74,"z":4.66},{"name":27874,"carat":0.42,"cut":"Premium","color":"E","clarity":"SI2","depth":60.1,"table":58,"price":653,"x":4.87,"y":4.91,"z":2.94},{"name":19620,"carat":1.03,"cut":"Ideal","color":"F","clarity":"VS1","depth":62.8,"table":54,"price":8237,"x":6.48,"y":6.39,"z":4.05},{"name":45404,"carat":0.51,"cut":"Very-Good","color":"D","clarity":"VS2","depth":62.5,"table":58,"price":1668,"x":5.12,"y":5.18,"z":3.22},{"name":49824,"carat":0.7,"cut":"Good","color":"F","clarity":"SI1","depth":63.1,"table":64,"price":2167,"x":5.61,"y":5.58,"z":3.53},{"name":32115,"carat":0.43,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.9,"table":55,"price":783,"x":4.84,"y":4.88,"z":3.01},{"name":15385,"carat":0.32,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":64,"table":55,"price":607,"x":4.31,"y":4.35,"z":2.77},{"name":46742,"carat":0.54,"cut":"Ideal","color":"F","clarity":"VS1","depth":62.2,"table":55,"price":1799,"x":5.23,"y":5.25,"z":3.26},{"name":45000,"carat":0.31,"cut":"Very-Good","color":"G","clarity":"SI2","depth":63.3,"table":54,"price":523,"x":4.34,"y":4.29,"z":2.73},{"name":43432,"carat":0.54,"cut":"Very-Good","color":"E","clarity":"SI2","depth":60.7,"table":56.5,"price":1415,"x":5.24,"y":5.28,"z":3.19},{"name":36115,"carat":0.42,"cut":"Premium","color":"E","clarity":"SI1","depth":61.5,"table":58,"price":926,"x":4.84,"y":4.78,"z":2.96},{"name":15582,"carat":1.22,"cut":"Good","color":"H","clarity":"SI2","depth":63.5,"table":56,"price":6250,"x":6.84,"y":6.77,"z":4.32},{"name":50665,"carat":0.31,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62.7,"table":58,"price":544,"x":4.31,"y":4.33,"z":2.71},{"name":21280,"carat":1.06,"cut":"Very-Good","color":"F","clarity":"IF","depth":60.6,"table":56,"price":9433,"x":6.62,"y":6.69,"z":4.03},{"name":39346,"carat":0.38,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62.2,"table":53.8,"price":1073,"x":4.62,"y":4.66,"z":2.88},{"name":53798,"carat":0.72,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.3,"table":56,"price":2731,"x":5.77,"y":5.81,"z":3.55},{"name":15335,"carat":1.36,"cut":"Premium","color":"J","clarity":"VS2","depth":58.4,"table":59,"price":6157,"x":7.4,"y":7.27,"z":4.28},{"name":29219,"carat":0.34,"cut":"Ideal","color":"I","clarity":"IF","depth":61.6,"table":54,"price":695,"x":4.5,"y":4.53,"z":2.78},{"name":49795,"carat":0.53,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.8,"table":55,"price":2163,"x":5.21,"y":5.24,"z":3.23},{"name":7118,"carat":0.73,"cut":"Ideal","color":"F","clarity":"VVS1","depth":61.1,"table":56,"price":4171,"x":5.83,"y":5.86,"z":3.57},{"name":47672,"carat":0.51,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.7,"table":55,"price":1882,"x":5.14,"y":5.11,"z":3.16},{"name":22618,"carat":1.62,"cut":"Premium","color":"I","clarity":"VS2","depth":60.1,"table":59,"price":10669,"x":7.63,"y":7.6,"z":4.58},{"name":18267,"carat":1.51,"cut":"Premium","color":"J","clarity":"VS2","depth":62.3,"table":59,"price":7418,"x":7.31,"y":7.35,"z":4.57},{"name":4350,"carat":0.72,"cut":"Premium","color":"D","clarity":"VS1","depth":62.7,"table":56,"price":3601,"x":5.76,"y":5.69,"z":3.59},{"name":18997,"carat":1.01,"cut":"Premium","color":"E","clarity":"VS1","depth":60.8,"table":59,"price":7821,"x":6.42,"y":6.46,"z":3.92},{"name":1669,"carat":0.72,"cut":"Very-Good","color":"G","clarity":"VS1","depth":60.1,"table":63,"price":3024,"x":5.86,"y":5.82,"z":3.51},{"name":37291,"carat":0.32,"cut":"Good","color":"F","clarity":"VVS1","depth":63.8,"table":54,"price":977,"x":4.38,"y":4.31,"z":2.77},{"name":25360,"carat":0.31,"cut":"Very-Good","color":"G","clarity":"VVS1","depth":61.9,"table":55,"price":642,"x":4.36,"y":4.4,"z":2.71},{"name":44405,"carat":0.55,"cut":"Ideal","color":"H","clarity":"SI1","depth":60.8,"table":56,"price":1584,"x":5.3,"y":5.33,"z":3.23},{"name":50759,"carat":0.72,"cut":"Premium","color":"F","clarity":"SI2","depth":60.5,"table":59,"price":2298,"x":5.83,"y":5.8,"z":3.52},{"name":40304,"carat":0.4,"cut":"Ideal","color":"E","clarity":"VS1","depth":61.2,"table":57,"price":1125,"x":4.77,"y":4.74,"z":2.91},{"name":342,"carat":0.91,"cut":"Ideal","color":"D","clarity":"SI2","depth":62.2,"table":57,"price":2803,"x":6.21,"y":6.15,"z":3.85},{"name":28375,"carat":0.24,"cut":"Premium","color":"E","clarity":"VVS1","depth":60.6,"table":59,"price":668,"x":4.02,"y":4,"z":2.43},{"name":2939,"carat":0.9,"cut":"Premium","color":"I","clarity":"VS2","depth":63,"table":59,"price":3292,"x":6.1,"y":6.06,"z":3.83},{"name":33426,"carat":0.32,"cut":"Ideal","color":"H","clarity":"VVS2","depth":61.2,"table":56,"price":828,"x":4.43,"y":4.4,"z":2.7},{"name":1246,"carat":0.78,"cut":"Very-Good","color":"D","clarity":"SI1","depth":62.4,"table":58,"price":2945,"x":5.86,"y":5.9,"z":3.67},{"name":42039,"carat":0.54,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.1,"table":56,"price":1268,"x":5.25,"y":5.27,"z":3.21},{"name":51318,"carat":0.31,"cut":"Ideal","color":"H","clarity":"VS1","depth":61.1,"table":57,"price":544,"x":4.35,"y":4.39,"z":2.67},{"name":16702,"carat":0.3,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.6,"table":55,"price":421,"x":4.28,"y":4.32,"z":2.69},{"name":48199,"carat":0.53,"cut":"Very-Good","color":"G","clarity":"VVS1","depth":61.7,"table":57,"price":1948,"x":5.19,"y":5.22,"z":3.21},{"name":12936,"carat":1.13,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.3,"table":56,"price":5384,"x":6.66,"y":6.69,"z":4.16},{"name":42560,"carat":0.42,"cut":"Ideal","color":"D","clarity":"VVS2","depth":62.5,"table":57,"price":1326,"x":4.77,"y":4.8,"z":2.99},{"name":51354,"carat":0.72,"cut":"Premium","color":"F","clarity":"SI1","depth":62,"table":60,"price":2364,"x":5.74,"y":5.77,"z":3.57},{"name":22497,"carat":1.71,"cut":"Ideal","color":"H","clarity":"VS2","depth":63,"table":57,"price":10534,"x":7.57,"y":7.53,"z":4.76},{"name":41128,"carat":0.52,"cut":"Premium","color":"G","clarity":"SI2","depth":61.5,"table":59,"price":1196,"x":5.19,"y":5.15,"z":3.18},{"name":35047,"carat":0.42,"cut":"Ideal","color":"I","clarity":"VVS1","depth":62.7,"table":55,"price":884,"x":4.77,"y":4.8,"z":3},{"name":28537,"carat":0.3,"cut":"Very-Good","color":"G","clarity":"VS2","depth":63.5,"table":55,"price":675,"x":4.25,"y":4.22,"z":2.69},{"name":46474,"carat":0.51,"cut":"Ideal","color":"H","clarity":"VVS1","depth":61.8,"table":55,"price":1776,"x":5.15,"y":5.18,"z":3.19},{"name":28473,"carat":0.32,"cut":"Premium","color":"G","clarity":"VS2","depth":58.4,"table":57,"price":672,"x":4.53,"y":4.51,"z":2.64},{"name":5605,"carat":0.96,"cut":"Good","color":"F","clarity":"VS2","depth":63.7,"table":54,"price":3871,"x":6.24,"y":6.19,"z":3.96},{"name":30472,"carat":0.41,"cut":"Good","color":"G","clarity":"SI2","depth":63.7,"table":55,"price":732,"x":4.75,"y":4.7,"z":3.01},{"name":49406,"carat":0.5,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":59.1,"table":61,"price":2106,"x":5.19,"y":5.23,"z":3.08},{"name":12230,"carat":1,"cut":"Very-Good","color":"F","clarity":"SI1","depth":61.6,"table":61,"price":5197,"x":6.3,"y":6.37,"z":3.9},{"name":24964,"carat":1.5,"cut":"Premium","color":"D","clarity":"SI1","depth":61.6,"table":59,"price":13445,"x":7.4,"y":7.3,"z":4.53},{"name":20225,"carat":1.04,"cut":"Very-Good","color":"G","clarity":"IF","depth":60.7,"table":58,"price":8655,"x":6.52,"y":6.65,"z":4},{"name":42851,"carat":0.41,"cut":"Ideal","color":"F","clarity":"VVS1","depth":61.8,"table":57,"price":1356,"x":4.79,"y":4.75,"z":2.95},{"name":44114,"carat":0.46,"cut":"Ideal","color":"G","clarity":"IF","depth":61.6,"table":54,"price":1558,"x":4.97,"y":5,"z":3.07},{"name":43852,"carat":0.5,"cut":"Good","color":"D","clarity":"SI1","depth":60.5,"table":57,"price":1447,"x":5.1,"y":5.14,"z":3.1},{"name":28924,"carat":0.3,"cut":"Ideal","color":"H","clarity":"VVS1","depth":61.9,"table":55,"price":684,"x":4.32,"y":4.34,"z":2.68},{"name":37886,"carat":0.42,"cut":"Ideal","color":"D","clarity":"VS1","depth":61.4,"table":55,"price":1006,"x":4.8,"y":4.9,"z":2.98},{"name":27862,"carat":0.31,"cut":"Ideal","color":"I","clarity":"IF","depth":61.3,"table":57,"price":652,"x":4.34,"y":4.4,"z":2.68},{"name":11672,"carat":0.91,"cut":"Very-Good","color":"E","clarity":"VS1","depth":62.8,"table":60,"price":5057,"x":6.08,"y":6.11,"z":3.83},{"name":9250,"carat":1.07,"cut":"Premium","color":"F","clarity":"SI2","depth":61.8,"table":59,"price":4560,"x":6.53,"y":6.57,"z":4.05},{"name":23105,"carat":1.02,"cut":"Ideal","color":"E","clarity":"VVS1","depth":61.3,"table":57,"price":11128,"x":6.47,"y":6.54,"z":3.99},{"name":53587,"carat":0.8,"cut":"Ideal","color":"G","clarity":"SI1","depth":60.8,"table":57,"price":2699,"x":6.02,"y":6.05,"z":3.67},{"name":32473,"carat":0.33,"cut":"Very-Good","color":"G","clarity":"VVS1","depth":61.2,"table":57,"price":795,"x":4.47,"y":4.5,"z":2.74},{"name":2113,"carat":1.16,"cut":"Fair","color":"H","clarity":"SI2","depth":68.2,"table":55,"price":3118,"x":6.47,"y":6.37,"z":4.38},{"name":51281,"carat":0.7,"cut":"Very-Good","color":"I","clarity":"VS2","depth":60.8,"table":61,"price":2360,"x":5.72,"y":5.76,"z":3.49},{"name":26223,"carat":2.01,"cut":"Fair","color":"D","clarity":"SI2","depth":59.4,"table":66,"price":15627,"x":8.2,"y":8.17,"z":4.86},{"name":50152,"carat":0.71,"cut":"Premium","color":"G","clarity":"SI1","depth":62.8,"table":61,"price":2215,"x":5.64,"y":5.59,"z":3.53},{"name":16946,"carat":1.16,"cut":"Ideal","color":"F","clarity":"SI1","depth":62.6,"table":58,"price":6768,"x":6.68,"y":6.73,"z":4.2},{"name":46080,"carat":0.64,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.6,"table":55,"price":1737,"x":5.55,"y":5.59,"z":3.43},{"name":42924,"carat":0.41,"cut":"Very-Good","color":"D","clarity":"VVS2","depth":61.2,"table":55,"price":1364,"x":4.79,"y":4.82,"z":2.95},{"name":16551,"carat":1.02,"cut":"Very-Good","color":"E","clarity":"VS2","depth":59.2,"table":58,"price":6612,"x":6.52,"y":6.58,"z":3.88},{"name":22487,"carat":1.5,"cut":"Premium","color":"D","clarity":"SI2","depth":59.9,"table":62,"price":10517,"x":7.4,"y":7.37,"z":4.42},{"name":30915,"carat":0.34,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.4,"table":55,"price":745,"x":4.48,"y":4.53,"z":2.81},{"name":3792,"carat":0.73,"cut":"Ideal","color":"H","clarity":"VVS2","depth":61.6,"table":56,"price":3463,"x":5.8,"y":5.82,"z":3.57},{"name":1845,"carat":0.7,"cut":"Very-Good","color":"E","clarity":"VS1","depth":62.2,"table":57,"price":3063,"x":5.63,"y":5.68,"z":3.52},{"name":51932,"carat":0.78,"cut":"Good","color":"H","clarity":"VS2","depth":63.7,"table":60,"price":2440,"x":5.77,"y":5.73,"z":3.66},{"name":35346,"carat":0.42,"cut":"Very-Good","color":"H","clarity":"SI1","depth":63.1,"table":57,"price":898,"x":4.78,"y":4.76,"z":3.01},{"name":15601,"carat":1.01,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":61.9,"table":58,"price":6257,"x":6.38,"y":6.48,"z":3.98},{"name":52282,"carat":0.84,"cut":"Ideal","color":"J","clarity":"SI1","depth":61.8,"table":56,"price":2493,"x":6.04,"y":6.07,"z":3.74},{"name":31240,"carat":0.38,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.9,"table":54.1,"price":757,"x":4.66,"y":4.69,"z":2.89},{"name":6245,"carat":1.03,"cut":"Ideal","color":"J","clarity":"SI2","depth":62.1,"table":54,"price":4008,"x":6.47,"y":6.51,"z":4.03},{"name":13751,"carat":1.1,"cut":"Premium","color":"D","clarity":"SI1","depth":58.8,"table":61,"price":5606,"x":6.73,"y":6.67,"z":3.94},{"name":16558,"carat":1.33,"cut":"Premium","color":"H","clarity":"VS2","depth":59.9,"table":60,"price":6614,"x":7.13,"y":7.09,"z":4.26},{"name":12471,"carat":1.08,"cut":"Premium","color":"H","clarity":"VS2","depth":62.1,"table":58,"price":5250,"x":6.63,"y":6.51,"z":4.08},{"name":48006,"carat":0.52,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.6,"table":55,"price":1919,"x":5.14,"y":5.12,"z":3.21},{"name":46658,"carat":0.51,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.6,"table":56,"price":1787,"x":5.15,"y":5.17,"z":3.18},{"name":22186,"carat":1.22,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.3,"table":56,"price":10221,"x":6.84,"y":6.81,"z":4.25},{"name":3612,"carat":0.9,"cut":"Ideal","color":"G","clarity":"SI2","depth":62.7,"table":55,"price":3428,"x":6.11,"y":6.17,"z":3.85},{"name":20791,"carat":1.52,"cut":"Good","color":"F","clarity":"SI2","depth":58.2,"table":60,"price":9028,"x":7.52,"y":7.63,"z":4.41},{"name":51092,"carat":0.73,"cut":"Ideal","color":"I","clarity":"VS2","depth":62.2,"table":54,"price":2335,"x":5.76,"y":5.78,"z":3.59},{"name":19807,"carat":1.5,"cut":"Ideal","color":"I","clarity":"SI1","depth":62.3,"table":56,"price":8371,"x":7.35,"y":7.41,"z":4.6},{"name":39840,"carat":0.52,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.9,"table":56,"price":1098,"x":5.16,"y":5.22,"z":3.2},{"name":14694,"carat":1,"cut":"Ideal","color":"D","clarity":"SI1","depth":59.9,"table":56,"price":5929,"x":6.51,"y":6.54,"z":3.91},{"name":48874,"carat":0.61,"cut":"Very-Good","color":"E","clarity":"VS2","depth":60,"table":57,"price":2036,"x":5.52,"y":5.55,"z":3.32},{"name":25599,"carat":2.14,"cut":"Good","color":"I","clarity":"SI2","depth":63.8,"table":57,"price":14452,"x":8.17,"y":8.14,"z":5.2},{"name":45086,"carat":0.5,"cut":"Very-Good","color":"D","clarity":"VS2","depth":61.1,"table":58,"price":1646,"x":5.07,"y":5.11,"z":3.11},{"name":10001,"carat":1,"cut":"Fair","color":"D","clarity":"SI1","depth":65.9,"table":54,"price":4704,"x":6.24,"y":6.2,"z":4.1},{"name":49271,"carat":0.64,"cut":"Ideal","color":"E","clarity":"SI1","depth":62,"table":56,"price":2089,"x":5.57,"y":5.53,"z":3.44},{"name":42549,"carat":0.59,"cut":"Very-Good","color":"E","clarity":"SI2","depth":60.5,"table":58,"price":1325,"x":5.43,"y":5.51,"z":3.31},{"name":52180,"carat":0.7,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62.3,"table":58,"price":2476,"x":5.6,"y":5.67,"z":3.51},{"name":41354,"carat":0.53,"cut":"Ideal","color":"J","clarity":"VS1","depth":61.4,"table":55.2,"price":1218,"x":5.2,"y":5.22,"z":3.2},{"name":4748,"carat":0.92,"cut":"Premium","color":"F","clarity":"SI1","depth":62.6,"table":59,"price":3684,"x":6.23,"y":6.19,"z":3.89},{"name":18772,"carat":1.03,"cut":"Very-Good","color":"E","clarity":"VS1","depth":62.8,"table":55,"price":7677,"x":6.4,"y":6.52,"z":4.06},{"name":51178,"carat":0.75,"cut":"Very-Good","color":"F","clarity":"SI1","depth":63.1,"table":58,"price":2347,"x":5.7,"y":5.74,"z":3.61},{"name":2423,"carat":0.95,"cut":"Premium","color":"G","clarity":"SI2","depth":62.6,"table":58,"price":3181,"x":6.22,"y":6.18,"z":3.88},{"name":19659,"carat":1.4,"cut":"Very-Good","color":"D","clarity":"SI2","depth":61.8,"table":54,"price":8268,"x":7.16,"y":7.21,"z":4.44},{"name":45684,"carat":0.5,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.2,"table":56,"price":1695,"x":5.13,"y":5.17,"z":3.15},{"name":25903,"carat":2.19,"cut":"Premium","color":"I","clarity":"SI2","depth":60.8,"table":60,"price":15032,"x":8.34,"y":8.38,"z":5.08},{"name":32989,"carat":0.38,"cut":"Ideal","color":"D","clarity":"SI2","depth":61.1,"table":56,"price":812,"x":4.71,"y":4.65,"z":2.86},{"name":47257,"carat":0.51,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62,"table":57,"price":1842,"x":5.13,"y":5.1,"z":3.17},{"name":49516,"carat":0.75,"cut":"Premium","color":"I","clarity":"SI1","depth":62.5,"table":58,"price":2122,"x":5.77,"y":5.82,"z":3.62},{"name":24658,"carat":1.72,"cut":"Premium","color":"H","clarity":"SI1","depth":61.4,"table":59,"price":12998,"x":7.71,"y":7.64,"z":4.71},{"name":39746,"carat":0.53,"cut":"Ideal","color":"G","clarity":"SI2","depth":62.4,"table":56,"price":1093,"x":5.18,"y":5.14,"z":3.22},{"name":9185,"carat":1.1,"cut":"Very-Good","color":"J","clarity":"VS1","depth":60.9,"table":59,"price":4545,"x":6.65,"y":6.74,"z":4.08},{"name":44901,"carat":0.5,"cut":"Premium","color":"E","clarity":"VS2","depth":62.6,"table":60,"price":1629,"x":5.03,"y":5,"z":3.14},{"name":33962,"carat":0.4,"cut":"Very-Good","color":"D","clarity":"VS2","depth":63.3,"table":58,"price":845,"x":4.63,"y":4.66,"z":2.94},{"name":14450,"carat":1.31,"cut":"Premium","color":"I","clarity":"VS2","depth":60.4,"table":59,"price":5832,"x":7.16,"y":7.05,"z":4.29},{"name":40656,"carat":0.5,"cut":"Very-Good","color":"E","clarity":"SI2","depth":61.4,"table":58,"price":1154,"x":5.09,"y":5.11,"z":3.13},{"name":22254,"carat":1.18,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.3,"table":55,"price":10308,"x":6.86,"y":6.81,"z":4.19},{"name":242,"carat":1.01,"cut":"Fair","color":"E","clarity":"I1","depth":64.5,"table":58,"price":2788,"x":6.29,"y":6.21,"z":4.03},{"name":36145,"carat":0.33,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.3,"table":55,"price":928,"x":4.46,"y":4.43,"z":2.77},{"name":36050,"carat":0.31,"cut":"Very-Good","color":"G","clarity":"IF","depth":61.6,"table":55,"price":924,"x":4.38,"y":4.42,"z":2.71},{"name":17226,"carat":1.22,"cut":"Premium","color":"F","clarity":"SI1","depth":61.8,"table":59,"price":6887,"x":6.86,"y":6.83,"z":4.23},{"name":35075,"carat":0.3,"cut":"Very-Good","color":"F","clarity":"IF","depth":62.4,"table":56,"price":886,"x":4.28,"y":4.31,"z":2.68},{"name":26131,"carat":2.14,"cut":"Premium","color":"I","clarity":"VS2","depth":59.3,"table":59,"price":15418,"x":8.39,"y":8.43,"z":5},{"name":11008,"carat":0.97,"cut":"Premium","color":"E","clarity":"SI1","depth":61,"table":61,"price":4915,"x":6.32,"y":6.28,"z":3.84},{"name":45652,"carat":0.38,"cut":"Ideal","color":"J","clarity":"SI1","depth":62,"table":54,"price":525,"x":4.67,"y":4.71,"z":2.91},{"name":45451,"carat":0.51,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.5,"table":56,"price":1674,"x":5.21,"y":5.17,"z":3.19},{"name":49282,"carat":0.57,"cut":"Ideal","color":"D","clarity":"VS1","depth":61.7,"table":56,"price":2091,"x":5.31,"y":5.33,"z":3.28},{"name":7262,"carat":1.01,"cut":"Good","color":"F","clarity":"SI1","depth":64.2,"table":58,"price":4199,"x":6.31,"y":6.33,"z":4.06},{"name":28479,"carat":0.32,"cut":"Very-Good","color":"E","clarity":"SI1","depth":63.1,"table":54,"price":672,"x":4.41,"y":4.37,"z":2.77},{"name":38658,"carat":0.42,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.4,"table":57,"price":1040,"x":4.84,"y":4.77,"z":3},{"name":40260,"carat":0.4,"cut":"Premium","color":"H","clarity":"VVS2","depth":60.6,"table":60,"price":1125,"x":4.79,"y":4.75,"z":2.89},{"name":8662,"carat":1.16,"cut":"Very-Good","color":"H","clarity":"SI2","depth":59.6,"table":59,"price":4455,"x":6.85,"y":6.87,"z":4.09},{"name":37789,"carat":0.3,"cut":"Ideal","color":"D","clarity":"VVS1","depth":61.3,"table":57,"price":1000,"x":4.29,"y":4.32,"z":2.64},{"name":5169,"carat":0.91,"cut":"Very-Good","color":"E","clarity":"SI2","depth":63,"table":56,"price":3772,"x":6.12,"y":6.16,"z":3.87},{"name":13961,"carat":1.51,"cut":"Premium","color":"I","clarity":"SI2","depth":61.2,"table":62,"price":5682,"x":7.28,"y":7.19,"z":4.43},{"name":3082,"carat":0.57,"cut":"Ideal","color":"F","clarity":"VVS1","depth":61.3,"table":56,"price":3313,"x":5.37,"y":5.4,"z":3.3},{"name":2546,"carat":0.7,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.4,"table":55,"price":3206,"x":5.71,"y":5.76,"z":3.53},{"name":16242,"carat":1.01,"cut":"Premium","color":"G","clarity":"VS1","depth":62.6,"table":59,"price":6499,"x":6.38,"y":6.46,"z":4.02},{"name":1973,"carat":0.72,"cut":"Ideal","color":"E","clarity":"VS2","depth":60.8,"table":57,"price":3091,"x":5.79,"y":5.82,"z":3.53},{"name":548,"carat":0.75,"cut":"Premium","color":"E","clarity":"SI2","depth":61.9,"table":57,"price":2829,"x":5.88,"y":5.82,"z":3.62},{"name":8034,"carat":0.91,"cut":"Very-Good","color":"F","clarity":"SI2","depth":62.5,"table":58,"price":4334,"x":6.1,"y":6.16,"z":3.83},{"name":37127,"carat":0.52,"cut":"Ideal","color":"D","clarity":"I1","depth":61.1,"table":57,"price":971,"x":5.18,"y":5.2,"z":3.17},{"name":34755,"carat":0.41,"cut":"Premium","color":"H","clarity":"SI1","depth":60.9,"table":60,"price":876,"x":4.83,"y":4.79,"z":2.93},{"name":19801,"carat":1.71,"cut":"Premium","color":"I","clarity":"SI2","depth":59,"table":60,"price":8366,"x":7.86,"y":7.83,"z":4.63},{"name":28129,"carat":0.29,"cut":"Very-Good","color":"F","clarity":"VVS2","depth":62.7,"table":58,"price":664,"x":4.22,"y":4.26,"z":2.66},{"name":15985,"carat":1.02,"cut":"Premium","color":"G","clarity":"VS2","depth":62.1,"table":58,"price":6397,"x":6.5,"y":6.44,"z":4.02},{"name":45202,"carat":0.51,"cut":"Premium","color":"E","clarity":"VS2","depth":61.9,"table":59,"price":1656,"x":5.06,"y":5.11,"z":3.15},{"name":25904,"carat":1.83,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.5,"table":56,"price":15032,"x":7.87,"y":7.81,"z":4.82},{"name":51466,"carat":0.72,"cut":"Premium","color":"H","clarity":"SI1","depth":61.5,"table":59,"price":2376,"x":5.71,"y":5.67,"z":3.5},{"name":33422,"carat":0.32,"cut":"Ideal","color":"H","clarity":"VVS2","depth":61.7,"table":56,"price":828,"x":4.42,"y":4.37,"z":2.71},{"name":27707,"carat":0.36,"cut":"Premium","color":"I","clarity":"VS2","depth":61.6,"table":58,"price":648,"x":4.57,"y":4.52,"z":2.8},{"name":21334,"carat":1.53,"cut":"Premium","color":"G","clarity":"SI1","depth":58.4,"table":59,"price":9476,"x":7.62,"y":7.55,"z":4.43},{"name":21363,"carat":0.33,"cut":"Good","color":"D","clarity":"VS2","depth":63.6,"table":56,"price":625,"x":4.38,"y":4.42,"z":2.8},{"name":48897,"carat":0.52,"cut":"Very-Good","color":"G","clarity":"VVS1","depth":62.3,"table":55,"price":2040,"x":5.13,"y":5.15,"z":3.2},{"name":18390,"carat":0.32,"cut":"Very-Good","color":"D","clarity":"SI1","depth":60.1,"table":60,"price":619,"x":4.38,"y":4.4,"z":2.64},{"name":7304,"carat":1.05,"cut":"Good","color":"E","clarity":"SI2","depth":63.2,"table":59,"price":4204,"x":6.36,"y":6.43,"z":4.04},{"name":33212,"carat":0.36,"cut":"Very-Good","color":"G","clarity":"VS1","depth":60.7,"table":57.1,"price":821,"x":4.57,"y":4.65,"z":2.79},{"name":11747,"carat":1.06,"cut":"Premium","color":"H","clarity":"SI1","depth":61,"table":58,"price":5075,"x":6.61,"y":6.57,"z":4.02},{"name":31566,"carat":0.31,"cut":"Ideal","color":"D","clarity":"VVS2","depth":62,"table":56,"price":766,"x":4.34,"y":4.37,"z":2.7},{"name":19784,"carat":1.15,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":58.4,"table":59,"price":8349,"x":6.84,"y":6.92,"z":4.02},{"name":2897,"carat":0.91,"cut":"Very-Good","color":"G","clarity":"SI2","depth":63.3,"table":57,"price":3282,"x":6.12,"y":6.08,"z":3.86},{"name":3884,"carat":1.01,"cut":"Good","color":"I","clarity":"VS1","depth":64.2,"table":60,"price":3484,"x":6.35,"y":6.27,"z":4.05},{"name":24333,"carat":1.54,"cut":"Premium","color":"G","clarity":"SI1","depth":61,"table":59,"price":12592,"x":7.43,"y":7.38,"z":4.52},{"name":40761,"carat":0.4,"cut":"Very-Good","color":"E","clarity":"VVS1","depth":63.4,"table":57,"price":1164,"x":4.64,"y":4.66,"z":2.95},{"name":17619,"carat":1.56,"cut":"Good","color":"J","clarity":"VS2","depth":57.6,"table":65,"price":7094,"x":7.62,"y":7.6,"z":4.38},{"name":17354,"carat":1.33,"cut":"Good","color":"I","clarity":"VS1","depth":63.7,"table":56,"price":6963,"x":6.92,"y":6.96,"z":4.42},{"name":47923,"carat":0.56,"cut":"Premium","color":"G","clarity":"VS1","depth":60.5,"table":59,"price":1915,"x":5.31,"y":5.26,"z":3.2},{"name":37149,"carat":0.32,"cut":"Ideal","color":"E","clarity":"VS1","depth":61.8,"table":55,"price":972,"x":4.43,"y":4.4,"z":2.73},{"name":27961,"carat":0.3,"cut":"Premium","color":"E","clarity":"VS2","depth":59.9,"table":59,"price":658,"x":4.33,"y":4.38,"z":2.61},{"name":1445,"carat":0.83,"cut":"Premium","color":"G","clarity":"SI1","depth":61.6,"table":59,"price":2975,"x":6.02,"y":5.99,"z":3.7},{"name":12764,"carat":1.21,"cut":"Ideal","color":"J","clarity":"VS1","depth":62.3,"table":55,"price":5324,"x":6.81,"y":6.86,"z":4.26},{"name":23038,"carat":0.33,"cut":"Premium","color":"D","clarity":"SI2","depth":59.5,"table":59,"price":631,"x":4.5,"y":4.48,"z":2.67},{"name":19647,"carat":1.52,"cut":"Premium","color":"J","clarity":"VS1","depth":62.4,"table":59,"price":8258,"x":7.36,"y":7.31,"z":4.58},{"name":34090,"carat":0.41,"cut":"Very-Good","color":"F","clarity":"SI1","depth":63.4,"table":58,"price":852,"x":4.75,"y":4.68,"z":2.99},{"name":8265,"carat":0.9,"cut":"Good","color":"D","clarity":"SI1","depth":63.5,"table":57,"price":4381,"x":6.11,"y":6.15,"z":3.89},{"name":38481,"carat":0.42,"cut":"Premium","color":"F","clarity":"VS1","depth":61.8,"table":59,"price":1031,"x":4.81,"y":4.83,"z":2.98},{"name":40980,"carat":0.41,"cut":"Premium","color":"D","clarity":"VVS2","depth":62.2,"table":58,"price":1181,"x":4.8,"y":4.78,"z":2.98},{"name":9617,"carat":1.01,"cut":"Fair","color":"F","clarity":"SI1","depth":65.5,"table":57,"price":4634,"x":6.12,"y":6.22,"z":4.04},{"name":12104,"carat":1.22,"cut":"Premium","color":"I","clarity":"SI2","depth":62.9,"table":56,"price":5165,"x":6.84,"y":6.79,"z":4.29},{"name":18829,"carat":1.27,"cut":"Very-Good","color":"H","clarity":"VS2","depth":62.6,"table":57,"price":7715,"x":6.91,"y":6.95,"z":4.34},{"name":3016,"carat":0.53,"cut":"Very-Good","color":"D","clarity":"VVS1","depth":61.2,"table":55,"price":3307,"x":5.21,"y":5.26,"z":3.21},{"name":20984,"carat":1.63,"cut":"Very-Good","color":"I","clarity":"SI1","depth":61.9,"table":60,"price":9199,"x":7.51,"y":7.55,"z":4.66},{"name":2226,"carat":0.7,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.6,"table":55,"price":3145,"x":5.71,"y":5.76,"z":3.53},{"name":39260,"carat":0.3,"cut":"Ideal","color":"D","clarity":"VVS1","depth":61.3,"table":57,"price":1069,"x":4.32,"y":4.29,"z":2.64},{"name":52713,"carat":0.52,"cut":"Premium","color":"D","clarity":"VVS1","depth":58.8,"table":61,"price":2553,"x":5.31,"y":5.27,"z":3.11},{"name":1783,"carat":0.66,"cut":"Ideal","color":"D","clarity":"VVS2","depth":61.6,"table":57,"price":3049,"x":5.64,"y":5.57,"z":3.45},{"name":19774,"carat":1.52,"cut":"Premium","color":"F","clarity":"SI2","depth":62.3,"table":59,"price":8342,"x":7.37,"y":7.33,"z":4.58},{"name":17061,"carat":0.32,"cut":"Premium","color":"G","clarity":"SI1","depth":62,"table":55,"price":612,"x":4.43,"y":4.41,"z":2.74},{"name":30335,"carat":0.38,"cut":"Premium","color":"J","clarity":"VS2","depth":60.5,"table":60,"price":727,"x":4.68,"y":4.64,"z":2.82},{"name":47019,"carat":0.56,"cut":"Premium","color":"G","clarity":"VS1","depth":62.4,"table":58,"price":1819,"x":5.22,"y":5.3,"z":3.28},{"name":34634,"carat":0.31,"cut":"Premium","color":"E","clarity":"VS2","depth":60.3,"table":58,"price":872,"x":4.42,"y":4.37,"z":2.65},{"name":17141,"carat":1,"cut":"Very-Good","color":"F","clarity":"VS2","depth":63.8,"table":56.9,"price":6841,"x":6.29,"y":6.36,"z":4.04},{"name":51614,"carat":0.73,"cut":"Very-Good","color":"E","clarity":"SI2","depth":59.3,"table":57,"price":2395,"x":5.88,"y":5.95,"z":3.51},{"name":31682,"carat":0.26,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62,"table":56,"price":769,"x":4.13,"y":4.1,"z":2.55},{"name":47056,"carat":0.61,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.4,"table":55.7,"price":1821,"x":5.43,"y":5.53,"z":3.37},{"name":34323,"carat":0.4,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.1,"table":58,"price":859,"x":4.68,"y":4.72,"z":2.92},{"name":19197,"carat":1.25,"cut":"Premium","color":"G","clarity":"VS2","depth":61.2,"table":57,"price":7948,"x":6.95,"y":6.91,"z":4.24},{"name":46802,"carat":0.52,"cut":"Ideal","color":"F","clarity":"VS2","depth":60,"table":62,"price":1806,"x":5.23,"y":5.19,"z":3.13},{"name":24274,"carat":2.3,"cut":"Premium","color":"J","clarity":"SI1","depth":59.6,"table":59,"price":12499,"x":8.61,"y":8.56,"z":5.12},{"name":11748,"carat":1.03,"cut":"Premium","color":"D","clarity":"SI2","depth":60.6,"table":60,"price":5076,"x":6.52,"y":6.46,"z":3.93},{"name":8951,"carat":1.19,"cut":"Premium","color":"I","clarity":"SI2","depth":59.5,"table":59,"price":4498,"x":6.95,"y":6.89,"z":4.12},{"name":23224,"carat":1.51,"cut":"Premium","color":"G","clarity":"SI1","depth":60.5,"table":59,"price":11230,"x":7.49,"y":7.41,"z":4.51},{"name":46517,"carat":0.53,"cut":"Ideal","color":"H","clarity":"VVS1","depth":60.8,"table":56,"price":1781,"x":5.24,"y":5.26,"z":3.19},{"name":5902,"carat":0.92,"cut":"Premium","color":"I","clarity":"VVS1","depth":62.4,"table":59,"price":3932,"x":6.17,"y":6.14,"z":3.84},{"name":13724,"carat":0.32,"cut":"Good","color":"G","clarity":"VS2","depth":56.7,"table":64,"price":603,"x":4.52,"y":4.55,"z":2.57},{"name":44842,"carat":0.42,"cut":"Ideal","color":"H","clarity":"VVS1","depth":61.3,"table":56,"price":1625,"x":4.83,"y":4.86,"z":2.97},{"name":32610,"carat":0.31,"cut":"Ideal","color":"H","clarity":"VVS2","depth":62.3,"table":55,"price":802,"x":4.37,"y":4.36,"z":2.72},{"name":32729,"carat":0.31,"cut":"Premium","color":"F","clarity":"VS2","depth":62,"table":60,"price":802,"x":4.34,"y":4.3,"z":2.68},{"name":40293,"carat":0.4,"cut":"Ideal","color":"H","clarity":"VVS2","depth":62.2,"table":56,"price":1125,"x":4.75,"y":4.7,"z":2.94},{"name":22281,"carat":1.56,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.8,"table":56,"price":10333,"x":7.41,"y":7.45,"z":4.59},{"name":39900,"carat":0.42,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.2,"table":56,"price":1103,"x":4.84,"y":4.8,"z":2.95},{"name":2657,"carat":0.7,"cut":"Premium","color":"G","clarity":"VVS1","depth":62.8,"table":58,"price":3234,"x":5.68,"y":5.62,"z":3.55},{"name":39750,"carat":0.5,"cut":"Premium","color":"H","clarity":"SI1","depth":62.3,"table":59,"price":1094,"x":5.02,"y":4.99,"z":3.12},{"name":8576,"carat":1,"cut":"Fair","color":"G","clarity":"VS2","depth":69.8,"table":54,"price":4435,"x":6.03,"y":5.94,"z":4.18},{"name":46613,"carat":0.51,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.7,"table":55,"price":1787,"x":5.09,"y":5.12,"z":3.2},{"name":35533,"carat":0.36,"cut":"Premium","color":"F","clarity":"VS2","depth":59.4,"table":56,"price":905,"x":4.71,"y":4.69,"z":2.79},{"name":23870,"carat":1.63,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.8,"table":56,"price":11963,"x":7.56,"y":7.59,"z":4.68},{"name":5281,"carat":0.82,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.5,"table":57,"price":3798,"x":6.01,"y":6.05,"z":3.71},{"name":45257,"carat":0.6,"cut":"Very-Good","color":"F","clarity":"SI1","depth":60.6,"table":57,"price":1661,"x":5.46,"y":5.5,"z":3.32},{"name":36946,"carat":0.23,"cut":"Good","color":"D","clarity":"VVS1","depth":64.8,"table":58,"price":478,"x":3.83,"y":3.85,"z":2.49},{"name":27120,"carat":2.35,"cut":"Premium","color":"I","clarity":"SI2","depth":61.1,"table":58,"price":17294,"x":8.63,"y":8.56,"z":5.25},{"name":20765,"carat":1.22,"cut":"Ideal","color":"G","clarity":"VS1","depth":60.7,"table":57,"price":9002,"x":6.93,"y":6.94,"z":4.21},{"name":35706,"carat":0.3,"cut":"Ideal","color":"D","clarity":"VS2","depth":62,"table":56,"price":911,"x":4.35,"y":4.33,"z":2.69},{"name":24232,"carat":2.02,"cut":"Premium","color":"J","clarity":"SI1","depth":61.6,"table":58,"price":12431,"x":8.14,"y":8.1,"z":5},{"name":20284,"carat":1.52,"cut":"Very-Good","color":"I","clarity":"SI1","depth":62.6,"table":60,"price":8703,"x":7.3,"y":7.33,"z":4.58},{"name":51292,"carat":0.75,"cut":"Premium","color":"E","clarity":"SI1","depth":59.8,"table":60,"price":2360,"x":5.9,"y":5.84,"z":3.51},{"name":13615,"carat":1,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62.4,"table":59,"price":5571,"x":6.36,"y":6.42,"z":3.99},{"name":34302,"carat":0.4,"cut":"Very-Good","color":"E","clarity":"VS2","depth":62.9,"table":59,"price":858,"x":4.7,"y":4.75,"z":2.97},{"name":12363,"carat":0.26,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":62.6,"table":58,"price":597,"x":4.07,"y":4.11,"z":2.56},{"name":5119,"carat":1.01,"cut":"Premium","color":"I","clarity":"SI2","depth":60.5,"table":61,"price":3761,"x":6.47,"y":6.42,"z":3.9},{"name":48839,"carat":0.55,"cut":"Premium","color":"D","clarity":"VS2","depth":61.3,"table":60,"price":2030,"x":5.29,"y":5.28,"z":3.24},{"name":46340,"carat":0.51,"cut":"Premium","color":"E","clarity":"VS1","depth":62,"table":61,"price":1758,"x":5.14,"y":5.11,"z":3.18},{"name":41877,"carat":0.5,"cut":"Fair","color":"G","clarity":"VS1","depth":65.7,"table":63,"price":1257,"x":4.97,"y":4.87,"z":3.23},{"name":40539,"carat":0.36,"cut":"Premium","color":"G","clarity":"IF","depth":62.5,"table":60,"price":1148,"x":4.53,"y":4.49,"z":2.82},{"name":31176,"carat":0.35,"cut":"Ideal","color":"H","clarity":"VVS1","depth":62,"table":55,"price":756,"x":4.52,"y":4.54,"z":2.81},{"name":26640,"carat":2.03,"cut":"Very-Good","color":"E","clarity":"SI2","depth":63.7,"table":58,"price":16412,"x":7.91,"y":7.94,"z":5.05},{"name":41700,"carat":0.41,"cut":"Premium","color":"E","clarity":"VVS1","depth":61.2,"table":62,"price":1241,"x":4.78,"y":4.76,"z":2.92},{"name":45694,"carat":0.7,"cut":"Good","color":"H","clarity":"SI2","depth":64.2,"table":58,"price":1697,"x":5.56,"y":5.6,"z":3.58},{"name":40284,"carat":0.34,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.1,"table":55,"price":495,"x":4.51,"y":4.55,"z":2.77},{"name":33029,"carat":0.3,"cut":"Ideal","color":"D","clarity":"VVS2","depth":60.7,"table":58,"price":814,"x":4.3,"y":4.33,"z":2.62},{"name":11496,"carat":1.03,"cut":"Ideal","color":"H","clarity":"SI1","depth":59.8,"table":57,"price":5018,"x":6.64,"y":6.57,"z":3.95},{"name":20438,"carat":1.51,"cut":"Ideal","color":"G","clarity":"SI2","depth":60.8,"table":57,"price":8794,"x":7.44,"y":7.39,"z":4.51},{"name":17076,"carat":1.24,"cut":"Premium","color":"H","clarity":"SI1","depth":60.2,"table":60,"price":6808,"x":6.94,"y":6.91,"z":4.17},{"name":16525,"carat":1.33,"cut":"Very-Good","color":"G","clarity":"SI2","depth":62,"table":59,"price":6603,"x":7.1,"y":7.04,"z":4.38},{"name":28064,"carat":0.31,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.1,"table":56,"price":660,"x":4.39,"y":4.41,"z":2.69},{"name":21288,"carat":1.7,"cut":"Ideal","color":"H","clarity":"SI2","depth":61.2,"table":56,"price":9444,"x":7.71,"y":7.64,"z":4.7},{"name":40319,"carat":0.5,"cut":"Premium","color":"F","clarity":"SI2","depth":59.9,"table":60,"price":1125,"x":5.22,"y":5.16,"z":3.11},{"name":6229,"carat":0.9,"cut":"Very-Good","color":"F","clarity":"SI1","depth":63.3,"table":55,"price":4004,"x":6.05,"y":6.08,"z":3.84},{"name":20362,"carat":1.09,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.8,"table":56,"price":8753,"x":6.58,"y":6.62,"z":4.08},{"name":27719,"carat":0.32,"cut":"Premium","color":"I","clarity":"VS1","depth":59.8,"table":60,"price":648,"x":4.46,"y":4.44,"z":2.66},{"name":13355,"carat":0.24,"cut":"Very-Good","color":"E","clarity":"VS2","depth":62.1,"table":58,"price":419,"x":4,"y":4.02,"z":2.49},{"name":23211,"carat":1.26,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.7,"table":56,"price":11218,"x":6.96,"y":6.98,"z":4.3},{"name":8072,"carat":0.74,"cut":"Good","color":"F","clarity":"VVS1","depth":58.4,"table":60,"price":4336,"x":6.03,"y":6.06,"z":3.53},{"name":50355,"carat":0.8,"cut":"Fair","color":"G","clarity":"SI2","depth":61.2,"table":58,"price":2246,"x":5.96,"y":5.93,"z":3.64},{"name":29236,"carat":0.43,"cut":"Ideal","color":"G","clarity":"SI2","depth":62.3,"table":53,"price":696,"x":4.84,"y":4.86,"z":3.02},{"name":15462,"carat":1.21,"cut":"Ideal","color":"D","clarity":"SI2","depth":62,"table":57,"price":6190,"x":6.81,"y":6.83,"z":4.23},{"name":37924,"carat":0.23,"cut":"Very-Good","color":"D","clarity":"VVS1","depth":61.7,"table":59,"price":485,"x":3.94,"y":3.97,"z":2.44},{"name":38438,"carat":0.49,"cut":"Premium","color":"G","clarity":"SI1","depth":62.5,"table":58,"price":1026,"x":5.03,"y":4.98,"z":3.13},{"name":53845,"carat":0.74,"cut":"Very-Good","color":"D","clarity":"SI2","depth":61.5,"table":59,"price":2740,"x":5.79,"y":5.82,"z":3.57},{"name":42942,"carat":0.3,"cut":"Premium","color":"F","clarity":"SI2","depth":61.3,"table":58,"price":506,"x":4.33,"y":4.28,"z":2.64},{"name":30233,"carat":0.33,"cut":"Ideal","color":"E","clarity":"VS2","depth":60.5,"table":56,"price":723,"x":4.48,"y":4.51,"z":2.72},{"name":12447,"carat":1.3,"cut":"Premium","color":"I","clarity":"VS2","depth":60.3,"table":60,"price":5242,"x":7.01,"y":6.99,"z":4.22},{"name":39528,"carat":0.4,"cut":"Very-Good","color":"I","clarity":"VVS1","depth":63.5,"table":57,"price":1080,"x":4.68,"y":4.65,"z":2.96},{"name":14827,"carat":1.21,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.2,"table":57,"price":5973,"x":6.86,"y":6.93,"z":4.22},{"name":23609,"carat":1.52,"cut":"Premium","color":"F","clarity":"SI1","depth":62.6,"table":59,"price":11637,"x":7.27,"y":7.36,"z":4.58},{"name":52759,"carat":0.72,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62,"table":57,"price":2562,"x":5.73,"y":5.76,"z":3.56},{"name":38309,"carat":0.31,"cut":"Good","color":"I","clarity":"SI1","depth":64.3,"table":55,"price":488,"x":4.29,"y":4.27,"z":2.75},{"name":17027,"carat":1.02,"cut":"Ideal","color":"H","clarity":"VVS2","depth":62.1,"table":56,"price":6797,"x":6.5,"y":6.45,"z":4.02},{"name":17159,"carat":1.51,"cut":"Very-Good","color":"J","clarity":"SI1","depth":61.2,"table":62,"price":6851,"x":7.32,"y":7.36,"z":4.49},{"name":51702,"carat":0.7,"cut":"Very-Good","color":"F","clarity":"VS2","depth":62.9,"table":56,"price":2400,"x":5.66,"y":5.73,"z":3.58},{"name":16966,"carat":1.22,"cut":"Premium","color":"H","clarity":"SI1","depth":61.8,"table":57,"price":6776,"x":6.86,"y":6.82,"z":4.23},{"name":11068,"carat":0.34,"cut":"Ideal","color":"E","clarity":"SI1","depth":62,"table":57,"price":596,"x":4.46,"y":4.48,"z":2.77},{"name":28424,"carat":0.38,"cut":"Ideal","color":"J","clarity":"VVS2","depth":61.7,"table":54.6,"price":670,"x":4.65,"y":4.69,"z":2.89},{"name":28283,"carat":0.23,"cut":"Ideal","color":"G","clarity":"SI1","depth":62,"table":54,"price":364,"x":3.95,"y":3.99,"z":2.46},{"name":44763,"carat":0.52,"cut":"Very-Good","color":"G","clarity":"VS1","depth":59.5,"table":58,"price":1621,"x":5.21,"y":5.28,"z":3.12},{"name":47921,"carat":0.76,"cut":"Premium","color":"H","clarity":"SI1","depth":60.9,"table":59,"price":1915,"x":5.91,"y":5.86,"z":3.58},{"name":45809,"carat":0.52,"cut":"Good","color":"F","clarity":"VS1","depth":61.2,"table":62,"price":1710,"x":5.12,"y":5.05,"z":3.11},{"name":2789,"carat":0.81,"cut":"Ideal","color":"H","clarity":"VS1","depth":61.8,"table":58,"price":3257,"x":5.97,"y":6.04,"z":3.71},{"name":25299,"carat":2.08,"cut":"Good","color":"I","clarity":"SI2","depth":63.8,"table":58,"price":13956,"x":8.02,"y":8.1,"z":5.14},{"name":27405,"carat":1.93,"cut":"Fair","color":"F","clarity":"VS1","depth":58.9,"table":62,"price":17995,"x":8.17,"y":7.97,"z":4.75},{"name":18129,"carat":1.41,"cut":"Very-Good","color":"H","clarity":"SI2","depth":58.5,"table":57,"price":7339,"x":7.36,"y":7.44,"z":4.33},{"name":39532,"carat":0.4,"cut":"Good","color":"I","clarity":"VVS1","depth":63.9,"table":56,"price":1080,"x":4.68,"y":4.64,"z":2.98},{"name":674,"carat":0.76,"cut":"Premium","color":"D","clarity":"SI1","depth":61.1,"table":59,"price":2847,"x":5.93,"y":5.88,"z":3.61},{"name":53665,"carat":0.72,"cut":"Good","color":"G","clarity":"VS2","depth":63.1,"table":57,"price":2708,"x":5.71,"y":5.74,"z":3.61},{"name":14068,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.6,"table":57,"price":605,"x":4.27,"y":4.29,"z":2.68},{"name":15754,"carat":1.29,"cut":"Ideal","color":"H","clarity":"SI2","depth":61.6,"table":54,"price":6300,"x":7,"y":7.02,"z":4.32},{"name":39855,"carat":0.33,"cut":"Ideal","color":"D","clarity":"VVS1","depth":61,"table":55,"price":1100,"x":4.47,"y":4.52,"z":2.74},{"name":47231,"carat":0.7,"cut":"Fair","color":"H","clarity":"SI1","depth":66,"table":56,"price":1840,"x":5.5,"y":5.53,"z":3.64},{"name":35265,"carat":0.34,"cut":"Ideal","color":"G","clarity":"VVS1","depth":62.1,"table":55,"price":895,"x":4.46,"y":4.49,"z":2.78},{"name":35740,"carat":0.3,"cut":"Premium","color":"D","clarity":"VS2","depth":61.1,"table":59,"price":911,"x":4.31,"y":4.26,"z":2.62},{"name":9811,"carat":1.21,"cut":"Premium","color":"I","clarity":"VS2","depth":61.6,"table":61,"price":4669,"x":6.86,"y":6.8,"z":4.21},{"name":16780,"carat":1.02,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.2,"table":56,"price":6683,"x":6.46,"y":6.4,"z":4},{"name":9127,"carat":1.13,"cut":"Premium","color":"I","clarity":"SI1","depth":61.8,"table":59,"price":4536,"x":6.65,"y":6.68,"z":4.12},{"name":12726,"carat":0.9,"cut":"Premium","color":"E","clarity":"VS2","depth":59.5,"table":58,"price":5312,"x":6.33,"y":6.28,"z":3.75},{"name":25205,"carat":2.07,"cut":"Premium","color":"J","clarity":"VS2","depth":61.5,"table":59,"price":13800,"x":8.2,"y":8.16,"z":5.03},{"name":29275,"carat":0.31,"cut":"Premium","color":"I","clarity":"VVS2","depth":59.4,"table":59,"price":698,"x":4.44,"y":4.41,"z":2.63},{"name":18402,"carat":1.06,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.9,"table":57,"price":7479,"x":6.55,"y":6.53,"z":4.05},{"name":42611,"carat":0.32,"cut":"Ideal","color":"H","clarity":"VS2","depth":62.1,"table":56,"price":505,"x":4.37,"y":4.42,"z":2.73},{"name":50928,"carat":0.71,"cut":"Ideal","color":"I","clarity":"SI1","depth":61.6,"table":55,"price":2319,"x":5.72,"y":5.74,"z":3.53},{"name":29951,"carat":0.33,"cut":"Premium","color":"I","clarity":"SI1","depth":61.3,"table":59,"price":445,"x":4.46,"y":4.51,"z":2.75},{"name":26314,"carat":2.34,"cut":"Premium","color":"I","clarity":"SI1","depth":61.7,"table":60,"price":15818,"x":8.59,"y":8.53,"z":5.28},{"name":3457,"carat":0.78,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.2,"table":55,"price":3389,"x":5.92,"y":5.95,"z":3.69},{"name":49097,"carat":0.52,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.6,"table":55,"price":2063,"x":5.14,"y":5.18,"z":3.18},{"name":4156,"carat":0.72,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.7,"table":54.8,"price":3548,"x":5.73,"y":5.77,"z":3.55},{"name":9566,"carat":1.12,"cut":"Very-Good","color":"H","clarity":"SI2","depth":61.8,"table":58,"price":4624,"x":6.62,"y":6.68,"z":4.11},{"name":52609,"carat":0.7,"cut":"Very-Good","color":"G","clarity":"SI1","depth":62.5,"table":59,"price":2545,"x":5.69,"y":5.73,"z":3.57},{"name":17441,"carat":1.24,"cut":"Ideal","color":"G","clarity":"SI1","depth":60.5,"table":60,"price":6994,"x":6.97,"y":6.91,"z":4.2},{"name":7345,"carat":1.01,"cut":"Very-Good","color":"I","clarity":"SI1","depth":62.7,"table":56,"price":4212,"x":6.36,"y":6.43,"z":4.01},{"name":42696,"carat":0.46,"cut":"Ideal","color":"H","clarity":"VVS1","depth":62.4,"table":53.4,"price":1338,"x":4.95,"y":5.01,"z":3.1},{"name":47851,"carat":0.77,"cut":"Good","color":"J","clarity":"SI1","depth":63.3,"table":57,"price":1909,"x":5.79,"y":5.84,"z":3.68},{"name":25534,"carat":1.5,"cut":"Premium","color":"F","clarity":"VS2","depth":61,"table":58,"price":14352,"x":7.37,"y":7.31,"z":4.48},{"name":16092,"carat":1.32,"cut":"Ideal","color":"I","clarity":"SI1","depth":62.2,"table":57,"price":6431,"x":7.07,"y":7.01,"z":4.38},{"name":31166,"carat":0.41,"cut":"Premium","color":"E","clarity":"SI1","depth":60.1,"table":60,"price":755,"x":4.79,"y":4.83,"z":2.89},{"name":51790,"carat":0.7,"cut":"Ideal","color":"G","clarity":"SI1","depth":60.9,"table":57,"price":2415,"x":5.79,"y":5.77,"z":3.52},{"name":88,"carat":0.24,"cut":"Premium","color":"H","clarity":"VVS1","depth":60.8,"table":59,"price":554,"x":4.02,"y":4,"z":2.44},{"name":25451,"carat":1.51,"cut":"Very-Good","color":"D","clarity":"VS2","depth":63.1,"table":62,"price":14205,"x":7.24,"y":7.22,"z":4.56},{"name":31204,"carat":0.32,"cut":"Premium","color":"D","clarity":"SI1","depth":60.4,"table":58,"price":756,"x":4.47,"y":4.44,"z":2.69},{"name":31959,"carat":0.31,"cut":"Ideal","color":"I","clarity":"VS2","depth":62.3,"table":54,"price":452,"x":4.37,"y":4.4,"z":2.73},{"name":38340,"carat":0.32,"cut":"Ideal","color":"G","clarity":"IF","depth":61.8,"table":55,"price":1020,"x":4.43,"y":4.41,"z":2.73},{"name":2594,"carat":0.64,"cut":"Ideal","color":"F","clarity":"VVS2","depth":60.9,"table":56,"price":3217,"x":5.57,"y":5.59,"z":3.4},{"name":24570,"carat":1.01,"cut":"Ideal","color":"E","clarity":"IF","depth":61.4,"table":57,"price":12865,"x":6.53,"y":6.46,"z":3.99},{"name":53212,"carat":0.85,"cut":"Ideal","color":"H","clarity":"SI2","depth":61.8,"table":54,"price":2635,"x":6.07,"y":6.1,"z":3.76},{"name":39773,"carat":0.5,"cut":"Very-Good","color":"F","clarity":"SI2","depth":63.5,"table":58,"price":1094,"x":5.03,"y":4.98,"z":3.18},{"name":42305,"carat":0.5,"cut":"Very-Good","color":"F","clarity":"SI1","depth":61.4,"table":57,"price":1295,"x":5.08,"y":5.12,"z":3.13},{"name":39063,"carat":0.52,"cut":"Very-Good","color":"E","clarity":"SI2","depth":64,"table":55,"price":1059,"x":5.07,"y":5.11,"z":3.26},{"name":1060,"carat":0.31,"cut":"Very-Good","color":"I","clarity":"VS2","depth":63.2,"table":55,"price":558,"x":4.4,"y":4.3,"z":2.75},{"name":41268,"carat":0.31,"cut":"Ideal","color":"I","clarity":"VS1","depth":61.9,"table":54.5,"price":502,"x":4.33,"y":4.36,"z":2.69},{"name":13499,"carat":0.7,"cut":"Ideal","color":"D","clarity":"VVS2","depth":61.3,"table":56,"price":5539,"x":5.72,"y":5.76,"z":3.52},{"name":9650,"carat":1.12,"cut":"Premium","color":"H","clarity":"SI1","depth":61.2,"table":59,"price":4641,"x":6.69,"y":6.65,"z":4.08},{"name":46896,"carat":0.6,"cut":"Premium","color":"D","clarity":"SI1","depth":61.5,"table":52,"price":1814,"x":5.5,"y":5.43,"z":3.36},{"name":4117,"carat":0.79,"cut":"Premium","color":"G","clarity":"SI1","depth":61.2,"table":56,"price":3539,"x":6,"y":5.96,"z":3.66},{"name":39352,"carat":0.52,"cut":"Premium","color":"I","clarity":"SI1","depth":62.5,"table":59,"price":1073,"x":5.12,"y":5.06,"z":3.18},{"name":40808,"carat":0.5,"cut":"Very-Good","color":"G","clarity":"SI1","depth":62.8,"table":55,"price":1170,"x":5.03,"y":5.07,"z":3.17},{"name":17708,"carat":0.3,"cut":"Very-Good","color":"F","clarity":"VVS2","depth":64.2,"table":56,"price":613,"x":4.22,"y":4.26,"z":2.72},{"name":34501,"carat":0.42,"cut":"Good","color":"I","clarity":"VVS1","depth":59.2,"table":61,"price":867,"x":4.88,"y":4.91,"z":2.9},{"name":33837,"carat":0.3,"cut":"Ideal","color":"E","clarity":"VVS1","depth":62,"table":57,"price":844,"x":4.29,"y":4.32,"z":2.67},{"name":35374,"carat":0.41,"cut":"Very-Good","color":"G","clarity":"VS1","depth":62.4,"table":57,"price":899,"x":4.71,"y":4.74,"z":2.95},{"name":320,"carat":0.71,"cut":"Premium","color":"F","clarity":"VS2","depth":62.1,"table":58,"price":2801,"x":5.7,"y":5.67,"z":3.53},{"name":11930,"carat":0.93,"cut":"Ideal","color":"G","clarity":"SI1","depth":60.1,"table":57,"price":5126,"x":6.33,"y":6.41,"z":3.83},{"name":10079,"carat":0.32,"cut":"Ideal","color":"H","clarity":"VS1","depth":61.6,"table":56,"price":592,"x":4.42,"y":4.46,"z":2.73},{"name":15112,"carat":1,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.7,"table":57,"price":6073,"x":6.34,"y":6.38,"z":3.99},{"name":49356,"carat":0.71,"cut":"Very-Good","color":"F","clarity":"SI2","depth":63.6,"table":56,"price":2098,"x":5.58,"y":5.67,"z":3.58},{"name":17755,"carat":1.33,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.1,"table":54,"price":7148,"x":7.14,"y":7.15,"z":4.37},{"name":34192,"carat":0.33,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.6,"table":56,"price":854,"x":4.46,"y":4.44,"z":2.74},{"name":42409,"carat":0.42,"cut":"Ideal","color":"H","clarity":"VVS1","depth":61.1,"table":56,"price":1310,"x":4.86,"y":4.9,"z":2.98},{"name":37858,"carat":0.44,"cut":"Premium","color":"E","clarity":"VS2","depth":60.4,"table":58,"price":1003,"x":4.87,"y":4.93,"z":2.96},{"name":31467,"carat":0.34,"cut":"Premium","color":"I","clarity":"VVS2","depth":61.5,"table":60,"price":765,"x":4.49,"y":4.45,"z":2.75},{"name":39215,"carat":0.42,"cut":"Very-Good","color":"D","clarity":"VS1","depth":60.7,"table":60,"price":1066,"x":4.81,"y":4.88,"z":2.94},{"name":29220,"carat":0.34,"cut":"Ideal","color":"I","clarity":"IF","depth":61.9,"table":55,"price":695,"x":4.5,"y":4.52,"z":2.79},{"name":37440,"carat":0.33,"cut":"Ideal","color":"E","clarity":"VVS1","depth":61.7,"table":56,"price":984,"x":4.42,"y":4.46,"z":2.74},{"name":4536,"carat":0.76,"cut":"Very-Good","color":"F","clarity":"VVS2","depth":62.9,"table":58,"price":3640,"x":5.76,"y":5.85,"z":3.65},{"name":3091,"carat":0.93,"cut":"Premium","color":"F","clarity":"SI2","depth":61.3,"table":62,"price":3317,"x":6.26,"y":6.17,"z":3.81},{"name":8882,"carat":0.9,"cut":"Good","color":"G","clarity":"VVS2","depth":62.6,"table":63,"price":4485,"x":6.1,"y":6.14,"z":3.83},{"name":13302,"carat":1.05,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62.2,"table":56,"price":5494,"x":6.49,"y":6.56,"z":4.06},{"name":43088,"carat":0.51,"cut":"Premium","color":"E","clarity":"SI1","depth":62.4,"table":59,"price":1381,"x":5.07,"y":5.12,"z":3.18},{"name":15091,"carat":1.21,"cut":"Premium","color":"E","clarity":"SI2","depth":58.8,"table":58,"price":6065,"x":7.07,"y":6.91,"z":4.11},{"name":52428,"carat":0.75,"cut":"Very-Good","color":"H","clarity":"VS1","depth":59.3,"table":59,"price":2513,"x":5.87,"y":6,"z":3.52},{"name":40412,"carat":0.55,"cut":"Ideal","color":"I","clarity":"SI1","depth":61.3,"table":55,"price":1134,"x":5.3,"y":5.33,"z":3.26},{"name":10498,"carat":1.02,"cut":"Fair","color":"D","clarity":"SI1","depth":66.4,"table":60,"price":4798,"x":6.29,"y":6.21,"z":4.15},{"name":36997,"carat":0.41,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.6,"table":55,"price":964,"x":4.81,"y":4.84,"z":2.97},{"name":34210,"carat":0.33,"cut":"Premium","color":"F","clarity":"VS2","depth":62.1,"table":59,"price":854,"x":4.45,"y":4.4,"z":2.75},{"name":48645,"carat":0.27,"cut":"Ideal","color":"E","clarity":"VS2","depth":60.8,"table":56,"price":537,"x":4.25,"y":4.23,"z":2.58},{"name":20802,"carat":1.5,"cut":"Very-Good","color":"I","clarity":"VS1","depth":62.8,"table":58,"price":9033,"x":7.17,"y":7.23,"z":4.52},{"name":4618,"carat":0.9,"cut":"Premium","color":"I","clarity":"VS2","depth":60.1,"table":59,"price":3663,"x":6.37,"y":6.25,"z":3.79},{"name":10955,"carat":1.03,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.6,"table":57,"price":4900,"x":6.53,"y":6.46,"z":4},{"name":3797,"carat":0.73,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.6,"table":56,"price":3464,"x":5.78,"y":5.82,"z":3.57},{"name":16221,"carat":1.03,"cut":"Premium","color":"F","clarity":"VS2","depth":62,"table":58,"price":6484,"x":6.5,"y":6.46,"z":4.02},{"name":12627,"carat":1.25,"cut":"Ideal","color":"I","clarity":"SI2","depth":63.3,"table":56,"price":5292,"x":6.87,"y":6.83,"z":4.34},{"name":41967,"carat":0.23,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":61.1,"table":58,"price":505,"x":3.93,"y":3.99,"z":2.42},{"name":6493,"carat":1.06,"cut":"Good","color":"H","clarity":"SI1","depth":57.2,"table":60,"price":4060,"x":6.84,"y":6.74,"z":3.88},{"name":15854,"carat":1.02,"cut":"Ideal","color":"E","clarity":"SI1","depth":62.6,"table":57,"price":6342,"x":6.41,"y":6.44,"z":4.02},{"name":36269,"carat":0.32,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.9,"table":57,"price":936,"x":4.41,"y":4.38,"z":2.72},{"name":7956,"carat":1.07,"cut":"Very-Good","color":"G","clarity":"SI2","depth":62.9,"table":59,"price":4321,"x":6.51,"y":6.58,"z":4.12},{"name":50816,"carat":0.75,"cut":"Premium","color":"D","clarity":"SI2","depth":60.3,"table":61,"price":2307,"x":5.88,"y":5.86,"z":3.54},{"name":33151,"carat":0.31,"cut":"Premium","color":"G","clarity":"VVS1","depth":61.4,"table":58,"price":816,"x":4.32,"y":4.35,"z":2.66},{"name":37024,"carat":0.33,"cut":"Premium","color":"G","clarity":"VVS2","depth":61.9,"table":58,"price":965,"x":4.43,"y":4.39,"z":2.73},{"name":6022,"carat":1.18,"cut":"Very-Good","color":"E","clarity":"I1","depth":63.3,"table":57,"price":3965,"x":6.7,"y":6.64,"z":4.22},{"name":31531,"carat":0.34,"cut":"Ideal","color":"E","clarity":"SI1","depth":62.2,"table":55,"price":765,"x":4.49,"y":4.45,"z":2.78},{"name":25949,"carat":1.51,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.8,"table":57,"price":15118,"x":7.36,"y":7.31,"z":4.53},{"name":2426,"carat":0.95,"cut":"Premium","color":"G","clarity":"SI2","depth":59.8,"table":60,"price":3181,"x":6.36,"y":6.34,"z":3.8},{"name":35436,"carat":0.32,"cut":"Ideal","color":"E","clarity":"VS2","depth":62,"table":55,"price":900,"x":4.41,"y":4.39,"z":2.73},{"name":41220,"carat":0.43,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.5,"table":56,"price":1207,"x":4.85,"y":4.87,"z":2.99},{"name":33773,"carat":0.48,"cut":"Ideal","color":"I","clarity":"SI1","depth":61.9,"table":53,"price":841,"x":5.06,"y":5.08,"z":3.14},{"name":16566,"carat":1.01,"cut":"Premium","color":"G","clarity":"VS1","depth":62.8,"table":59,"price":6618,"x":6.37,"y":6.34,"z":3.99},{"name":9385,"carat":0.32,"cut":"Ideal","color":"D","clarity":"SI1","depth":61.5,"table":56,"price":589,"x":4.39,"y":4.42,"z":2.71},{"name":22896,"carat":1.56,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.2,"table":58,"price":10934,"x":7.37,"y":7.42,"z":4.6},{"name":15350,"carat":1,"cut":"Good","color":"E","clarity":"VS2","depth":57.4,"table":58,"price":6160,"x":6.61,"y":6.57,"z":3.78},{"name":20496,"carat":1.2,"cut":"Very-Good","color":"F","clarity":"VS2","depth":62.4,"table":58,"price":8829,"x":6.75,"y":6.81,"z":4.23},{"name":26237,"carat":1.71,"cut":"Premium","color":"G","clarity":"VS2","depth":59.3,"table":60,"price":15671,"x":7.86,"y":7.81,"z":4.65},{"name":21635,"carat":1.02,"cut":"Very-Good","color":"F","clarity":"VVS2","depth":63.7,"table":59,"price":9728,"x":6.34,"y":6.38,"z":4.05},{"name":413,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.3,"table":56,"price":555,"x":4.29,"y":4.31,"z":2.68},{"name":4229,"carat":0.74,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.5,"table":56,"price":3572,"x":5.79,"y":5.82,"z":3.57},{"name":10579,"carat":1.23,"cut":"Ideal","color":"F","clarity":"SI2","depth":62.1,"table":57,"price":4819,"x":6.83,"y":6.8,"z":4.23},{"name":40264,"carat":0.33,"cut":"Ideal","color":"D","clarity":"SI2","depth":61.1,"table":57,"price":492,"x":4.47,"y":4.5,"z":2.74},{"name":19797,"carat":1.74,"cut":"Premium","color":"J","clarity":"VS2","depth":61.9,"table":62,"price":8364,"x":7.62,"y":7.54,"z":4.7},{"name":41748,"carat":0.52,"cut":"Good","color":"G","clarity":"SI1","depth":63.6,"table":56,"price":1244,"x":5.07,"y":5.09,"z":3.23},{"name":2696,"carat":0.9,"cut":"Very-Good","color":"G","clarity":"SI2","depth":63.4,"table":59,"price":3246,"x":6.08,"y":6.04,"z":3.84},{"name":13216,"carat":0.91,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.9,"table":55,"price":5458,"x":6.21,"y":6.23,"z":3.85},{"name":6925,"carat":0.91,"cut":"Very-Good","color":"E","clarity":"SI1","depth":63.5,"table":57,"price":4138,"x":6.11,"y":6.07,"z":3.87},{"name":41236,"carat":0.39,"cut":"Premium","color":"E","clarity":"VVS2","depth":61.1,"table":59,"price":1207,"x":4.74,"y":4.68,"z":2.88},{"name":51977,"carat":0.26,"cut":"Very-Good","color":"E","clarity":"VVS1","depth":62.9,"table":61,"price":547,"x":4.01,"y":4.06,"z":2.54},{"name":44527,"carat":0.5,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.2,"table":54.1,"price":1601,"x":5.07,"y":5.12,"z":3.17},{"name":442,"carat":0.89,"cut":"Premium","color":"H","clarity":"SI2","depth":60.2,"table":59,"price":2815,"x":6.26,"y":6.23,"z":3.76},{"name":6065,"carat":1.01,"cut":"Very-Good","color":"G","clarity":"SI2","depth":62.1,"table":61,"price":3966,"x":6.27,"y":6.38,"z":3.93},{"name":50812,"carat":0.54,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.6,"table":55,"price":2307,"x":5.25,"y":5.27,"z":3.24},{"name":28616,"carat":0.3,"cut":"Premium","color":"E","clarity":"SI1","depth":62.5,"table":60,"price":675,"x":4.27,"y":4.24,"z":2.66},{"name":3714,"carat":0.9,"cut":"Very-Good","color":"G","clarity":"SI2","depth":63.1,"table":55,"price":3452,"x":6.16,"y":6.13,"z":3.88},{"name":48054,"carat":0.72,"cut":"Ideal","color":"I","clarity":"SI2","depth":60.7,"table":60,"price":1927,"x":5.75,"y":5.78,"z":3.5},{"name":31482,"carat":0.34,"cut":"Premium","color":"G","clarity":"VS2","depth":60.2,"table":58,"price":765,"x":4.55,"y":4.52,"z":2.73},{"name":43479,"carat":0.5,"cut":"Premium","color":"E","clarity":"VS2","depth":60.1,"table":61,"price":1420,"x":5.2,"y":5.15,"z":3.11},{"name":49421,"carat":0.55,"cut":"Ideal","color":"E","clarity":"VS1","depth":61.2,"table":57,"price":2107,"x":5.3,"y":5.28,"z":3.24},{"name":26852,"carat":2.01,"cut":"Premium","color":"I","clarity":"VS2","depth":61,"table":61,"price":16778,"x":8.15,"y":7.99,"z":4.92},{"name":50683,"carat":0.76,"cut":"Ideal","color":"H","clarity":"SI2","depth":63,"table":56,"price":2288,"x":5.81,"y":5.84,"z":3.67},{"name":51574,"carat":0.74,"cut":"Very-Good","color":"E","clarity":"SI2","depth":61.8,"table":60,"price":2391,"x":5.78,"y":5.8,"z":3.58},{"name":4490,"carat":1.01,"cut":"Good","color":"G","clarity":"SI2","depth":63.7,"table":58,"price":3626,"x":6.31,"y":6.35,"z":4.03},{"name":14321,"carat":1.18,"cut":"Premium","color":"H","clarity":"SI1","depth":61.8,"table":58,"price":5801,"x":6.79,"y":6.74,"z":4.18},{"name":32399,"carat":0.31,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62,"table":54,"price":791,"x":4.38,"y":4.4,"z":2.72},{"name":48692,"carat":0.58,"cut":"Ideal","color":"H","clarity":"VVS1","depth":61.6,"table":56,"price":2006,"x":5.35,"y":5.39,"z":3.31},{"name":28458,"carat":0.32,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":61.9,"table":57,"price":672,"x":4.39,"y":4.41,"z":2.73},{"name":15645,"carat":1,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.3,"table":54,"price":6272,"x":6.42,"y":6.38,"z":3.99},{"name":30606,"carat":0.34,"cut":"Very-Good","color":"I","clarity":"SI1","depth":61.8,"table":57,"price":447,"x":4.46,"y":4.51,"z":2.77},{"name":8079,"carat":1.01,"cut":"Good","color":"D","clarity":"SI2","depth":57.6,"table":62,"price":4338,"x":6.66,"y":6.56,"z":3.81},{"name":50346,"carat":0.7,"cut":"Premium","color":"H","clarity":"VS1","depth":60.5,"table":58,"price":2245,"x":5.73,"y":5.77,"z":3.48},{"name":5859,"carat":0.91,"cut":"Premium","color":"H","clarity":"VS2","depth":59.6,"table":60,"price":3921,"x":6.25,"y":6.29,"z":3.74},{"name":6230,"carat":0.9,"cut":"Good","color":"F","clarity":"SI1","depth":58.8,"table":60,"price":4004,"x":6.22,"y":6.26,"z":3.67},{"name":33140,"carat":0.31,"cut":"Premium","color":"G","clarity":"VVS1","depth":62.1,"table":59,"price":816,"x":4.34,"y":4.39,"z":2.71},{"name":991,"carat":0.77,"cut":"Premium","color":"E","clarity":"SI1","depth":60.9,"table":58,"price":2896,"x":5.94,"y":5.88,"z":3.6},{"name":11591,"carat":1.07,"cut":"Premium","color":"F","clarity":"SI1","depth":61.7,"table":58,"price":5042,"x":6.54,"y":6.61,"z":4.06},{"name":1034,"carat":0.71,"cut":"Very-Good","color":"G","clarity":"VS2","depth":62.1,"table":58,"price":2905,"x":5.65,"y":5.71,"z":3.53},{"name":23396,"carat":0.36,"cut":"Premium","color":"E","clarity":"SI1","depth":60.9,"table":60,"price":631,"x":4.56,"y":4.61,"z":2.79},{"name":13821,"carat":1.26,"cut":"Premium","color":"H","clarity":"SI1","depth":61,"table":55,"price":5631,"x":7,"y":6.97,"z":4.26},{"name":4418,"carat":1.01,"cut":"Good","color":"E","clarity":"SI2","depth":63.9,"table":58,"price":3611,"x":6.37,"y":6.31,"z":4.05},{"name":110,"carat":0.59,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62,"table":55,"price":2761,"x":5.38,"y":5.43,"z":3.35},{"name":46385,"carat":0.57,"cut":"Premium","color":"E","clarity":"VS2","depth":62,"table":58,"price":1763,"x":5.38,"y":5.33,"z":3.32},{"name":36517,"carat":0.3,"cut":"Premium","color":"F","clarity":"VVS2","depth":62.4,"table":58,"price":945,"x":4.28,"y":4.25,"z":2.66},{"name":50692,"carat":0.53,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.6,"table":56,"price":2290,"x":5.26,"y":5.23,"z":3.23},{"name":16356,"carat":0.3,"cut":"Premium","color":"H","clarity":"VS2","depth":62.6,"table":58,"price":608,"x":4.28,"y":4.22,"z":2.66},{"name":30090,"carat":0.32,"cut":"Premium","color":"H","clarity":"VS1","depth":60.5,"table":59,"price":720,"x":4.42,"y":4.41,"z":2.67},{"name":47490,"carat":0.72,"cut":"Ideal","color":"J","clarity":"SI1","depth":62.3,"table":56,"price":1864,"x":5.75,"y":5.78,"z":3.59},{"name":34950,"carat":0.31,"cut":"Ideal","color":"I","clarity":"SI2","depth":61,"table":56,"price":379,"x":4.39,"y":4.43,"z":2.69},{"name":19144,"carat":1.6,"cut":"Very-Good","color":"I","clarity":"SI2","depth":62.2,"table":59,"price":7906,"x":7.42,"y":7.46,"z":4.63},{"name":14123,"carat":1.05,"cut":"Ideal","color":"H","clarity":"VS2","depth":61.7,"table":57,"price":5728,"x":6.52,"y":6.55,"z":4.03},{"name":32105,"carat":0.33,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.1,"table":55,"price":781,"x":4.43,"y":4.46,"z":2.76},{"name":18898,"carat":1.07,"cut":"Premium","color":"D","clarity":"VS2","depth":61.3,"table":59,"price":7751,"x":6.61,"y":6.53,"z":4.03},{"name":29023,"carat":0.31,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.4,"table":54,"price":687,"x":4.37,"y":4.38,"z":2.73},{"name":35086,"carat":0.3,"cut":"Ideal","color":"F","clarity":"IF","depth":61.1,"table":58,"price":886,"x":4.32,"y":4.36,"z":2.65},{"name":2621,"carat":0.74,"cut":"Very-Good","color":"F","clarity":"VS1","depth":61.7,"table":57,"price":3226,"x":5.79,"y":5.85,"z":3.59},{"name":50578,"carat":0.56,"cut":"Premium","color":"E","clarity":"VVS2","depth":61.5,"table":58,"price":2279,"x":5.3,"y":5.33,"z":3.27},{"name":27907,"carat":0.41,"cut":"Ideal","color":"D","clarity":"SI2","depth":62.6,"table":57,"price":656,"x":4.72,"y":4.77,"z":2.97},{"name":46212,"carat":0.51,"cut":"Very-Good","color":"F","clarity":"VS1","depth":62.5,"table":54,"price":1751,"x":5.13,"y":5.15,"z":3.21},{"name":27876,"carat":0.44,"cut":"Ideal","color":"H","clarity":"SI2","depth":62.3,"table":54,"price":654,"x":4.89,"y":4.93,"z":3.06},{"name":39269,"carat":0.38,"cut":"Premium","color":"G","clarity":"VS1","depth":61.9,"table":59,"price":1069,"x":4.67,"y":4.63,"z":2.88},{"name":25518,"carat":2.14,"cut":"Ideal","color":"I","clarity":"SI2","depth":61.9,"table":56,"price":14321,"x":8.22,"y":8.26,"z":5.1},{"name":32774,"carat":0.34,"cut":"Premium","color":"D","clarity":"SI1","depth":61.2,"table":58,"price":803,"x":4.49,"y":4.47,"z":2.74},{"name":44438,"carat":0.51,"cut":"Premium","color":"E","clarity":"VS2","depth":62.5,"table":60,"price":1590,"x":5.08,"y":5.1,"z":3.18},{"name":2369,"carat":0.9,"cut":"Good","color":"I","clarity":"SI1","depth":63.5,"table":59,"price":3176,"x":6.05,"y":6.1,"z":3.86},{"name":34537,"carat":0.33,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.7,"table":57,"price":868,"x":4.41,"y":4.44,"z":2.73},{"name":41755,"carat":0.5,"cut":"Ideal","color":"I","clarity":"VS2","depth":62.5,"table":55,"price":1244,"x":5.05,"y":5.09,"z":3.17},{"name":41188,"carat":0.5,"cut":"Very-Good","color":"G","clarity":"SI1","depth":60.6,"table":56,"price":1202,"x":5.13,"y":5.16,"z":3.12},{"name":38319,"carat":0.52,"cut":"Ideal","color":"I","clarity":"SI1","depth":62,"table":54,"price":1019,"x":5.17,"y":5.19,"z":3.21},{"name":13565,"carat":1.16,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.2,"table":55,"price":5554,"x":6.79,"y":6.74,"z":4.21},{"name":3909,"carat":0.71,"cut":"Very-Good","color":"F","clarity":"VVS2","depth":60.6,"table":58,"price":3494,"x":5.76,"y":5.79,"z":3.5},{"name":48366,"carat":0.56,"cut":"Premium","color":"D","clarity":"VS2","depth":61.1,"table":58,"price":1963,"x":5.3,"y":5.34,"z":3.25},{"name":6629,"carat":0.8,"cut":"Ideal","color":"E","clarity":"VS1","depth":62.1,"table":56,"price":4086,"x":5.92,"y":5.97,"z":3.69},{"name":51713,"carat":0.78,"cut":"Very-Good","color":"G","clarity":"SI2","depth":63.7,"table":55.9,"price":2401,"x":5.82,"y":5.85,"z":3.72},{"name":11921,"carat":1.22,"cut":"Ideal","color":"I","clarity":"SI1","depth":62.5,"table":56,"price":5124,"x":6.82,"y":6.79,"z":4.25},{"name":30835,"carat":0.33,"cut":"Ideal","color":"H","clarity":"VS1","depth":60.2,"table":57,"price":743,"x":4.54,"y":4.5,"z":2.72},{"name":4295,"carat":0.82,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.8,"table":55,"price":3588,"x":5.97,"y":6.01,"z":3.7},{"name":423,"carat":0.71,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.4,"table":57,"price":2812,"x":5.69,"y":5.72,"z":3.56},{"name":22043,"carat":0.31,"cut":"Very-Good","color":"I","clarity":"VS1","depth":63.2,"table":56,"price":628,"x":4.33,"y":4.28,"z":2.72},{"name":53028,"carat":0.82,"cut":"Very-Good","color":"I","clarity":"SI1","depth":60.5,"table":58,"price":2602,"x":6.01,"y":6.08,"z":3.66},{"name":41363,"carat":0.52,"cut":"Very-Good","color":"H","clarity":"SI1","depth":63.1,"table":57,"price":1219,"x":5.14,"y":5.09,"z":3.23},{"name":2400,"carat":0.31,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.7,"table":55,"price":562,"x":4.37,"y":4.39,"z":2.7},{"name":39296,"carat":0.3,"cut":"Ideal","color":"H","clarity":"VS2","depth":62.5,"table":57,"price":491,"x":4.26,"y":4.29,"z":2.67},{"name":13143,"carat":1.01,"cut":"Ideal","color":"E","clarity":"SI2","depth":61.5,"table":55,"price":5437,"x":6.44,"y":6.51,"z":3.98},{"name":44041,"carat":0.53,"cut":"Very-Good","color":"H","clarity":"VVS2","depth":61.3,"table":61,"price":1548,"x":5.15,"y":5.2,"z":3.17},{"name":38296,"carat":0.3,"cut":"Ideal","color":"G","clarity":"SI1","depth":60.6,"table":57,"price":487,"x":4.34,"y":4.37,"z":2.63},{"name":44394,"carat":0.51,"cut":"Ideal","color":"F","clarity":"VS2","depth":60.6,"table":57,"price":1583,"x":5.17,"y":5.2,"z":3.14},{"name":28735,"carat":0.31,"cut":"Ideal","color":"E","clarity":"VS2","depth":62,"table":56,"price":680,"x":4.34,"y":4.37,"z":2.7},{"name":14912,"carat":1.07,"cut":"Very-Good","color":"D","clarity":"SI1","depth":60.2,"table":55,"price":6002,"x":6.64,"y":6.68,"z":4.01},{"name":18648,"carat":1.03,"cut":"Ideal","color":"F","clarity":"VS1","depth":59,"table":55,"price":7613,"x":6.62,"y":6.67,"z":3.92},{"name":48841,"carat":0.55,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.8,"table":54,"price":2030,"x":5.29,"y":5.26,"z":3.26},{"name":22540,"carat":2.02,"cut":"Ideal","color":"I","clarity":"SI2","depth":62.3,"table":55,"price":10577,"x":8.1,"y":8.06,"z":5.03},{"name":1752,"carat":0.81,"cut":"Good","color":"I","clarity":"VS1","depth":59.4,"table":56,"price":3042,"x":5.97,"y":6.11,"z":3.59},{"name":14997,"carat":1.07,"cut":"Premium","color":"G","clarity":"VS2","depth":62.2,"table":58,"price":6040,"x":6.54,"y":6.48,"z":4.05},{"name":8429,"carat":0.92,"cut":"Good","color":"E","clarity":"VS2","depth":58.9,"table":57,"price":4406,"x":6.35,"y":6.38,"z":3.75},{"name":43254,"carat":0.42,"cut":"Ideal","color":"E","clarity":"VVS1","depth":62.1,"table":55,"price":1400,"x":4.78,"y":4.81,"z":2.98},{"name":38577,"carat":0.4,"cut":"Premium","color":"G","clarity":"VS2","depth":62.8,"table":61,"price":1035,"x":4.67,"y":4.63,"z":2.92},{"name":45190,"carat":0.51,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.5,"table":57,"price":1656,"x":5.07,"y":5.14,"z":3.19},{"name":28080,"carat":0.4,"cut":"Ideal","color":"J","clarity":"VVS2","depth":62.5,"table":53,"price":662,"x":4.74,"y":4.79,"z":2.98},{"name":14187,"carat":1.01,"cut":"Good","color":"G","clarity":"VS2","depth":58.9,"table":61,"price":5756,"x":6.46,"y":6.55,"z":3.83},{"name":18522,"carat":1.6,"cut":"Premium","color":"J","clarity":"SI1","depth":62.2,"table":58,"price":7550,"x":7.48,"y":7.54,"z":4.67},{"name":18046,"carat":0.3,"cut":"Very-Good","color":"E","clarity":"VS2","depth":62.6,"table":62,"price":614,"x":4.21,"y":4.25,"z":2.65},{"name":30370,"carat":0.36,"cut":"Very-Good","color":"H","clarity":"VS2","depth":63.5,"table":54,"price":729,"x":4.59,"y":4.55,"z":2.9},{"name":3507,"carat":0.76,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.2,"table":56,"price":3401,"x":5.88,"y":5.91,"z":3.61},{"name":21699,"carat":0.34,"cut":"Premium","color":"D","clarity":"SI1","depth":62.4,"table":58,"price":626,"x":4.42,"y":4.46,"z":2.77},{"name":15698,"carat":0.35,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.5,"table":54,"price":607,"x":4.57,"y":4.6,"z":2.82},{"name":44791,"carat":0.5,"cut":"Very-Good","color":"E","clarity":"VS2","depth":61.4,"table":59,"price":1624,"x":5.09,"y":5.13,"z":3.14},{"name":22790,"carat":1.62,"cut":"Premium","color":"H","clarity":"SI1","depth":61.3,"table":60,"price":10813,"x":7.48,"y":7.53,"z":4.6},{"name":19285,"carat":1.11,"cut":"Very-Good","color":"D","clarity":"VS2","depth":63.2,"table":57,"price":8006,"x":6.64,"y":6.61,"z":4.18},{"name":14736,"carat":1.25,"cut":"Ideal","color":"H","clarity":"SI2","depth":62.2,"table":55.4,"price":5932,"x":6.89,"y":6.94,"z":4.29},{"name":46196,"carat":0.5,"cut":"Ideal","color":"F","clarity":"VS2","depth":60.9,"table":57,"price":1749,"x":5.14,"y":5.16,"z":3.14},{"name":37954,"carat":0.41,"cut":"Very-Good","color":"F","clarity":"VS1","depth":58.6,"table":61,"price":1007,"x":4.83,"y":4.87,"z":2.84},{"name":48989,"carat":0.36,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.7,"table":54,"price":538,"x":4.56,"y":4.62,"z":2.83},{"name":29695,"carat":0.31,"cut":"Very-Good","color":"H","clarity":"VVS1","depth":63,"table":58,"price":707,"x":4.33,"y":4.37,"z":2.74},{"name":30585,"carat":0.31,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.5,"table":56,"price":734,"x":4.34,"y":4.37,"z":2.68},{"name":28251,"carat":0.33,"cut":"Premium","color":"F","clarity":"VS2","depth":60.8,"table":58,"price":666,"x":4.44,"y":4.47,"z":2.71},{"name":18984,"carat":1.09,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.1,"table":57,"price":7813,"x":6.62,"y":6.56,"z":4.09},{"name":36046,"carat":0.34,"cut":"Very-Good","color":"G","clarity":"IF","depth":61,"table":56,"price":924,"x":4.5,"y":4.54,"z":2.76},{"name":3,"carat":0.23,"cut":"Good","color":"E","clarity":"VS1","depth":56.9,"table":65,"price":327,"x":4.05,"y":4.07,"z":2.31},{"name":33592,"carat":0.37,"cut":"Premium","color":"H","clarity":"VS1","depth":60.9,"table":60,"price":833,"x":4.63,"y":4.6,"z":2.81},{"name":20738,"carat":1.4,"cut":"Ideal","color":"H","clarity":"VS2","depth":63,"table":56,"price":8977,"x":7.13,"y":7.07,"z":4.47},{"name":10220,"carat":1,"cut":"Ideal","color":"E","clarity":"SI2","depth":61.8,"table":57,"price":4743,"x":6.39,"y":6.43,"z":3.96},{"name":41632,"carat":0.32,"cut":"Very-Good","color":"H","clarity":"SI2","depth":63.2,"table":55,"price":504,"x":4.36,"y":4.34,"z":2.75},{"name":41443,"carat":0.4,"cut":"Very-Good","color":"G","clarity":"IF","depth":61.4,"table":54,"price":1229,"x":4.76,"y":4.79,"z":2.93},{"name":2473,"carat":0.76,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.5,"table":56,"price":3192,"x":5.92,"y":5.89,"z":3.63},{"name":22363,"carat":0.31,"cut":"Premium","color":"H","clarity":"VS2","depth":61.3,"table":60,"price":628,"x":4.36,"y":4.32,"z":2.66},{"name":2615,"carat":0.72,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.3,"table":57,"price":3223,"x":5.76,"y":5.79,"z":3.54},{"name":49975,"carat":0.29,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":60.9,"table":57,"price":541,"x":4.28,"y":4.32,"z":2.61},{"name":26857,"carat":2.1,"cut":"Premium","color":"E","clarity":"SI2","depth":62.9,"table":59,"price":16783,"x":8.18,"y":8.13,"z":5.13},{"name":5333,"carat":1.04,"cut":"Very-Good","color":"J","clarity":"SI2","depth":63.5,"table":59,"price":3810,"x":6.37,"y":6.42,"z":4.06},{"name":52202,"carat":0.67,"cut":"Good","color":"F","clarity":"VS1","depth":59.8,"table":60.3,"price":2479,"x":5.62,"y":5.69,"z":3.38},{"name":30749,"carat":0.34,"cut":"Ideal","color":"H","clarity":"VVS1","depth":62.2,"table":54,"price":740,"x":4.48,"y":4.53,"z":2.8},{"name":28454,"carat":0.41,"cut":"Ideal","color":"G","clarity":"SI1","depth":62.2,"table":56,"price":671,"x":4.75,"y":4.77,"z":2.96},{"name":20320,"carat":1.22,"cut":"Premium","color":"F","clarity":"VS2","depth":62,"table":58,"price":8733,"x":6.89,"y":6.86,"z":4.26},{"name":5571,"carat":1.08,"cut":"Fair","color":"E","clarity":"SI2","depth":64.9,"table":60,"price":3861,"x":6.43,"y":6.39,"z":4.16},{"name":41709,"carat":0.51,"cut":"Very-Good","color":"G","clarity":"SI1","depth":62.7,"table":59,"price":1243,"x":5.07,"y":5.13,"z":3.2},{"name":33087,"carat":0.46,"cut":"Very-Good","color":"F","clarity":"SI2","depth":62.6,"table":58,"price":815,"x":4.88,"y":4.96,"z":3.08},{"name":7344,"carat":1.18,"cut":"Premium","color":"D","clarity":"SI2","depth":61.8,"table":58,"price":4211,"x":6.83,"y":6.7,"z":4.19},{"name":1949,"carat":0.72,"cut":"Ideal","color":"F","clarity":"VS1","depth":62.4,"table":56,"price":3084,"x":5.76,"y":5.72,"z":3.58},{"name":46642,"carat":0.3,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62.9,"table":57,"price":526,"x":4.25,"y":4.3,"z":2.69},{"name":38126,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VVS1","depth":62.3,"table":54,"price":1013,"x":4.33,"y":4.31,"z":2.69},{"name":18465,"carat":1.07,"cut":"Very-Good","color":"F","clarity":"VS1","depth":62,"table":56,"price":7513,"x":6.51,"y":6.55,"z":4.05},{"name":31404,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.9,"table":57,"price":764,"x":4.28,"y":4.31,"z":2.66},{"name":31274,"carat":0.32,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.6,"table":56,"price":449,"x":4.37,"y":4.39,"z":2.7},{"name":23938,"carat":1.5,"cut":"Premium","color":"D","clarity":"SI1","depth":62.4,"table":58,"price":12069,"x":7.27,"y":7.31,"z":4.55},{"name":14586,"carat":1.05,"cut":"Premium","color":"H","clarity":"VS1","depth":60.1,"table":57,"price":5886,"x":6.62,"y":6.59,"z":3.97},{"name":29105,"carat":0.34,"cut":"Ideal","color":"H","clarity":"VS2","depth":61.4,"table":57,"price":689,"x":4.55,"y":4.48,"z":2.77},{"name":35835,"carat":0.32,"cut":"Ideal","color":"F","clarity":"IF","depth":61.9,"table":55,"price":915,"x":4.38,"y":4.44,"z":2.73},{"name":42875,"carat":0.45,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.7,"table":56,"price":1358,"x":4.96,"y":4.93,"z":3.05},{"name":23957,"carat":1.44,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.6,"table":57,"price":12093,"x":7.21,"y":7.19,"z":4.51},{"name":7756,"carat":1.05,"cut":"Fair","color":"I","clarity":"VS1","depth":58.9,"table":66,"price":4281,"x":6.71,"y":6.6,"z":3.92},{"name":28871,"carat":0.32,"cut":"Premium","color":"F","clarity":"SI1","depth":59.3,"table":58,"price":684,"x":4.5,"y":4.47,"z":2.66},{"name":47900,"carat":0.54,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.7,"table":57,"price":1914,"x":5.23,"y":5.26,"z":3.23},{"name":5586,"carat":1,"cut":"Fair","color":"F","clarity":"SI2","depth":65.5,"table":54,"price":3864,"x":6.2,"y":6.16,"z":4.05},{"name":25711,"carat":2.11,"cut":"Premium","color":"I","clarity":"SI2","depth":58.4,"table":62,"price":14615,"x":8.43,"y":8.39,"z":4.91},{"name":33428,"carat":0.32,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.3,"table":55,"price":828,"x":4.46,"y":4.42,"z":2.72},{"name":23684,"carat":1.55,"cut":"Premium","color":"H","clarity":"VS2","depth":60.7,"table":59,"price":11738,"x":7.46,"y":7.5,"z":4.54},{"name":8434,"carat":1.08,"cut":"Very-Good","color":"F","clarity":"SI2","depth":62.6,"table":56,"price":4407,"x":6.55,"y":6.61,"z":4.12},{"name":21746,"carat":1,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":59.1,"table":58,"price":9815,"x":6.5,"y":6.57,"z":3.86},{"name":8729,"carat":0.27,"cut":"Ideal","color":"E","clarity":"VVS1","depth":62,"table":56,"price":586,"x":4.16,"y":4.19,"z":2.59},{"name":2088,"carat":0.79,"cut":"Premium","color":"D","clarity":"SI1","depth":61.4,"table":59,"price":3112,"x":5.89,"y":5.96,"z":3.64},{"name":13055,"carat":1.03,"cut":"Premium","color":"D","clarity":"SI1","depth":60.5,"table":61,"price":5410,"x":6.47,"y":6.43,"z":3.9},{"name":35133,"carat":0.41,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":59.1,"table":60,"price":889,"x":4.84,"y":4.87,"z":2.87},{"name":31658,"carat":0.32,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.4,"table":56,"price":768,"x":4.45,"y":4.41,"z":2.72},{"name":48599,"carat":0.7,"cut":"Fair","color":"I","clarity":"VS2","depth":64.4,"table":55,"price":1996,"x":5.6,"y":5.55,"z":3.59},{"name":36281,"carat":0.32,"cut":"Good","color":"G","clarity":"SI1","depth":63.5,"table":56,"price":477,"x":4.35,"y":4.38,"z":2.77},{"name":35578,"carat":0.35,"cut":"Premium","color":"F","clarity":"VS2","depth":62,"table":59,"price":906,"x":4.55,"y":4.51,"z":2.81},{"name":11700,"carat":1.29,"cut":"Very-Good","color":"J","clarity":"VS2","depth":61.3,"table":60,"price":5068,"x":6.96,"y":6.98,"z":4.27},{"name":34365,"carat":0.41,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.1,"table":56,"price":863,"x":4.8,"y":4.83,"z":2.94},{"name":29341,"carat":0.31,"cut":"Premium","color":"G","clarity":"VS2","depth":59.2,"table":60,"price":698,"x":4.47,"y":4.42,"z":2.63},{"name":2854,"carat":0.73,"cut":"Ideal","color":"G","clarity":"VS1","depth":60.2,"table":56,"price":3273,"x":5.86,"y":5.9,"z":3.54},{"name":17409,"carat":1.36,"cut":"Ideal","color":"J","clarity":"VVS2","depth":61.9,"table":56,"price":6973,"x":7.16,"y":7.13,"z":4.42},{"name":34443,"carat":0.31,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.3,"table":55,"price":864,"x":4.34,"y":4.37,"z":2.67},{"name":52563,"carat":0.7,"cut":"Ideal","color":"I","clarity":"VVS1","depth":62.3,"table":55,"price":2536,"x":5.7,"y":5.64,"z":3.53},{"name":12988,"carat":1,"cut":"Ideal","color":"E","clarity":"SI1","depth":62.3,"table":55,"price":5396,"x":6.41,"y":6.34,"z":3.97},{"name":14853,"carat":1.07,"cut":"Ideal","color":"F","clarity":"SI1","depth":62.7,"table":56,"price":5982,"x":6.47,"y":6.53,"z":4.08},{"name":940,"carat":0.9,"cut":"Fair","color":"D","clarity":"SI2","depth":66.9,"table":57,"price":2885,"x":6.02,"y":5.9,"z":3.99},{"name":26708,"carat":0.32,"cut":"Very-Good","color":"G","clarity":"VS1","depth":61.8,"table":60,"price":645,"x":4.35,"y":4.36,"z":2.69},{"name":44127,"carat":0.5,"cut":"Ideal","color":"E","clarity":"VS2","depth":62,"table":56,"price":1559,"x":5.06,"y":5.1,"z":3.15},{"name":34450,"carat":0.4,"cut":"Premium","color":"G","clarity":"SI1","depth":61.7,"table":61,"price":864,"x":4.68,"y":4.63,"z":2.87},{"name":30140,"carat":0.32,"cut":"Premium","color":"G","clarity":"VS2","depth":62.6,"table":60,"price":720,"x":4.36,"y":4.33,"z":2.72},{"name":4853,"carat":0.71,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.3,"table":56,"price":3710,"x":5.69,"y":5.75,"z":3.51},{"name":47541,"carat":0.58,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":62.1,"table":58,"price":1872,"x":5.35,"y":5.4,"z":3.34},{"name":12751,"carat":1,"cut":"Very-Good","color":"D","clarity":"SI1","depth":63.2,"table":59,"price":5320,"x":6.29,"y":6.4,"z":4.01},{"name":34555,"carat":0.52,"cut":"Premium","color":"F","clarity":"I1","depth":63,"table":56,"price":870,"x":5.18,"y":5.11,"z":3.24},{"name":50137,"carat":0.7,"cut":"Very-Good","color":"H","clarity":"SI1","depth":62.1,"table":59,"price":2213,"x":5.62,"y":5.66,"z":3.5},{"name":25189,"carat":2.01,"cut":"Ideal","color":"I","clarity":"SI2","depth":62.5,"table":55,"price":13777,"x":8.12,"y":8.08,"z":5.06},{"name":34915,"carat":0.34,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.9,"table":55,"price":880,"x":4.48,"y":4.46,"z":2.81},{"name":26431,"carat":2,"cut":"Good","color":"E","clarity":"SI2","depth":60.1,"table":54,"price":15962,"x":8.01,"y":8.15,"z":4.86},{"name":22682,"carat":0.38,"cut":"Ideal","color":"J","clarity":"VVS2","depth":62,"table":55,"price":629,"x":4.67,"y":4.69,"z":2.9},{"name":52236,"carat":0.57,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":60,"table":61,"price":2485,"x":5.36,"y":5.44,"z":3.24},{"name":32203,"carat":0.35,"cut":"Premium","color":"E","clarity":"SI1","depth":61.1,"table":59,"price":788,"x":4.56,"y":4.5,"z":2.77},{"name":7958,"carat":1,"cut":"Very-Good","color":"E","clarity":"SI2","depth":59.8,"table":58,"price":4321,"x":6.47,"y":6.53,"z":3.89},{"name":14904,"carat":1.01,"cut":"Very-Good","color":"G","clarity":"VS2","depth":59.2,"table":59,"price":5999,"x":6.52,"y":6.59,"z":3.88},{"name":18768,"carat":1.35,"cut":"Premium","color":"H","clarity":"SI1","depth":62.4,"table":58,"price":7673,"x":7.03,"y":6.95,"z":4.36},{"name":12175,"carat":1.18,"cut":"Ideal","color":"H","clarity":"SI2","depth":61.2,"table":57,"price":5182,"x":6.81,"y":6.86,"z":4.18},{"name":13522,"carat":1.01,"cut":"Good","color":"H","clarity":"SI1","depth":60.1,"table":61,"price":5544,"x":6.5,"y":6.47,"z":3.9},{"name":40220,"carat":0.4,"cut":"Ideal","color":"G","clarity":"VVS1","depth":62.4,"table":57,"price":1123,"x":4.74,"y":4.78,"z":2.97},{"name":324,"carat":1.04,"cut":"Premium","color":"G","clarity":"I1","depth":62.2,"table":58,"price":2801,"x":6.46,"y":6.41,"z":4},{"name":2955,"carat":0.83,"cut":"Very-Good","color":"E","clarity":"SI1","depth":63.8,"table":54,"price":3295,"x":5.96,"y":6.04,"z":3.83},{"name":38930,"carat":0.36,"cut":"Very-Good","color":"E","clarity":"IF","depth":59.5,"table":57,"price":1053,"x":4.68,"y":4.73,"z":2.8},{"name":903,"carat":0.72,"cut":"Very-Good","color":"H","clarity":"VS1","depth":62.2,"table":54,"price":2877,"x":5.74,"y":5.76,"z":3.57},{"name":35534,"carat":0.3,"cut":"Premium","color":"G","clarity":"VVS1","depth":62.4,"table":59,"price":905,"x":4.31,"y":4.25,"z":2.67},{"name":48135,"carat":0.6,"cut":"Very-Good","color":"F","clarity":"VS2","depth":59.5,"table":57.8,"price":1940,"x":5.48,"y":5.56,"z":3.28},{"name":15376,"carat":0.4,"cut":"Ideal","color":"J","clarity":"VS1","depth":61.3,"table":56,"price":606,"x":4.77,"y":4.79,"z":2.93},{"name":15711,"carat":0.24,"cut":"Very-Good","color":"F","clarity":"VVS1","depth":60.4,"table":56,"price":608,"x":4.05,"y":4.07,"z":2.45},{"name":49465,"carat":1,"cut":"Fair","color":"I","clarity":"I1","depth":65.4,"table":57,"price":2112,"x":6.28,"y":6.2,"z":4.08},{"name":25591,"carat":2,"cut":"Fair","color":"H","clarity":"SI1","depth":65.1,"table":56,"price":14430,"x":7.86,"y":7.77,"z":5.09},{"name":27807,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.9,"table":57,"price":650,"x":4.3,"y":4.33,"z":2.66},{"name":45354,"carat":0.55,"cut":"Premium","color":"E","clarity":"VS2","depth":59.1,"table":62,"price":1664,"x":5.37,"y":5.32,"z":3.16},{"name":39716,"carat":0.5,"cut":"Good","color":"E","clarity":"SI1","depth":64,"table":56,"price":1090,"x":5.03,"y":4.97,"z":3.2},{"name":42245,"carat":0.52,"cut":"Ideal","color":"D","clarity":"SI2","depth":61.7,"table":55,"price":1292,"x":5.17,"y":5.2,"z":3.2},{"name":3519,"carat":0.81,"cut":"Ideal","color":"E","clarity":"SI1","depth":62.3,"table":57,"price":3404,"x":5.95,"y":5.99,"z":3.72},{"name":32008,"carat":0.37,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.4,"table":56,"price":777,"x":4.65,"y":4.6,"z":2.84},{"name":15982,"carat":1.02,"cut":"Premium","color":"E","clarity":"VS2","depth":60.4,"table":58,"price":6397,"x":6.51,"y":6.47,"z":3.92},{"name":2392,"carat":0.32,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.8,"table":55,"price":561,"x":4.42,"y":4.45,"z":2.74},{"name":5981,"carat":1.05,"cut":"Premium","color":"E","clarity":"SI2","depth":60.9,"table":61,"price":3951,"x":6.61,"y":6.55,"z":4.01},{"name":37131,"carat":0.37,"cut":"Premium","color":"E","clarity":"VVS2","depth":59.6,"table":60,"price":971,"x":4.75,"y":4.68,"z":2.81},{"name":19201,"carat":1.56,"cut":"Premium","color":"F","clarity":"SI2","depth":58.8,"table":59,"price":7950,"x":7.76,"y":7.61,"z":4.52},{"name":39933,"carat":0.3,"cut":"Premium","color":"H","clarity":"VS1","depth":62.1,"table":59,"price":491,"x":4.25,"y":4.28,"z":2.65},{"name":41555,"carat":0.5,"cut":"Very-Good","color":"G","clarity":"SI1","depth":62.1,"table":59,"price":1237,"x":5.09,"y":5.12,"z":3.17},{"name":31100,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VVS1","depth":62.6,"table":55,"price":753,"x":4.27,"y":4.32,"z":2.69},{"name":50763,"carat":0.75,"cut":"Very-Good","color":"I","clarity":"SI1","depth":63.7,"table":56,"price":2300,"x":5.73,"y":5.77,"z":3.66},{"name":53179,"carat":0.71,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.8,"table":57,"price":2630,"x":5.7,"y":5.73,"z":3.53},{"name":36142,"carat":0.33,"cut":"Premium","color":"E","clarity":"VS2","depth":61,"table":60,"price":928,"x":4.46,"y":4.43,"z":2.71},{"name":45935,"carat":0.51,"cut":"Very-Good","color":"D","clarity":"VS2","depth":63.2,"table":56,"price":1722,"x":5.04,"y":5.08,"z":3.2},{"name":39645,"carat":0.41,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.4,"table":58,"price":1085,"x":4.77,"y":4.75,"z":2.97},{"name":24054,"carat":0.31,"cut":"Ideal","color":"I","clarity":"IF","depth":61.7,"table":55,"price":635,"x":4.36,"y":4.39,"z":2.7},{"name":6604,"carat":1,"cut":"Good","color":"F","clarity":"SI2","depth":62.7,"table":57,"price":4081,"x":6.29,"y":6.34,"z":3.96},{"name":35952,"carat":0.3,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.9,"table":56,"price":475,"x":4.29,"y":4.33,"z":2.67},{"name":137,"carat":0.71,"cut":"Very-Good","color":"F","clarity":"VS1","depth":60.1,"table":62,"price":2765,"x":5.74,"y":5.77,"z":3.46},{"name":51854,"carat":0.7,"cut":"Premium","color":"D","clarity":"SI2","depth":59.5,"table":60,"price":2423,"x":5.78,"y":5.73,"z":3.43},{"name":26187,"carat":1.51,"cut":"Premium","color":"D","clarity":"VS2","depth":61.7,"table":58,"price":15531,"x":7.33,"y":7.29,"z":4.51},{"name":53325,"carat":0.78,"cut":"Ideal","color":"I","clarity":"VS2","depth":59.8,"table":58,"price":2652,"x":5.98,"y":6.02,"z":3.59},{"name":22143,"carat":1.01,"cut":"Good","color":"G","clarity":"VS2","depth":63.6,"table":56,"price":10181,"x":6.31,"y":6.24,"z":3.99},{"name":28418,"carat":0.43,"cut":"Good","color":"E","clarity":"SI2","depth":63.6,"table":55,"price":669,"x":4.8,"y":4.83,"z":3.06},{"name":30531,"carat":0.38,"cut":"Premium","color":"D","clarity":"SI1","depth":62.2,"table":58,"price":733,"x":4.57,"y":4.63,"z":2.86},{"name":32824,"carat":0.34,"cut":"Ideal","color":"D","clarity":"VS2","depth":62,"table":55,"price":805,"x":4.45,"y":4.49,"z":2.77},{"name":38499,"carat":0.42,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.2,"table":56,"price":1031,"x":4.77,"y":4.81,"z":2.98},{"name":45547,"carat":0.51,"cut":"Premium","color":"D","clarity":"SI1","depth":60.3,"table":59,"price":1687,"x":5.22,"y":5.2,"z":3.14},{"name":46473,"carat":0.53,"cut":"Very-Good","color":"E","clarity":"VS1","depth":63,"table":56,"price":1776,"x":5.13,"y":5.16,"z":3.24},{"name":16413,"carat":1,"cut":"Very-Good","color":"G","clarity":"VS1","depth":63.2,"table":58,"price":6552,"x":6.32,"y":6.27,"z":3.98},{"name":21297,"carat":1.5,"cut":"Very-Good","color":"E","clarity":"SI2","depth":63.5,"table":59,"price":9450,"x":7.28,"y":7.25,"z":4.61},{"name":17233,"carat":1.55,"cut":"Premium","color":"J","clarity":"SI2","depth":62.6,"table":57,"price":6890,"x":7.37,"y":7.32,"z":4.6},{"name":13247,"carat":1.2,"cut":"Premium","color":"I","clarity":"VS2","depth":62.1,"table":59,"price":5474,"x":6.77,"y":6.72,"z":4.19},{"name":45554,"carat":0.51,"cut":"Premium","color":"D","clarity":"SI1","depth":60.1,"table":60,"price":1687,"x":5.18,"y":5.14,"z":3.1},{"name":32388,"carat":0.32,"cut":"Very-Good","color":"D","clarity":"VVS2","depth":60.1,"table":58,"price":791,"x":4.41,"y":4.44,"z":2.66},{"name":11905,"carat":1,"cut":"Very-Good","color":"H","clarity":"VS2","depth":62.9,"table":57,"price":5121,"x":6.31,"y":6.35,"z":3.98},{"name":43427,"carat":0.53,"cut":"Very-Good","color":"E","clarity":"SI1","depth":59.7,"table":59,"price":1415,"x":5.27,"y":5.29,"z":3.15},{"name":32366,"carat":0.32,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.6,"table":55,"price":790,"x":4.42,"y":4.45,"z":2.73},{"name":3899,"carat":0.89,"cut":"Premium","color":"H","clarity":"VS1","depth":60.5,"table":59,"price":3489,"x":6.22,"y":6.17,"z":3.75},{"name":52850,"carat":0.7,"cut":"Premium","color":"E","clarity":"SI1","depth":61,"table":56,"price":2576,"x":5.75,"y":5.69,"z":3.49},{"name":19587,"carat":1.51,"cut":"Very-Good","color":"I","clarity":"SI1","depth":62.8,"table":59,"price":8214,"x":7.17,"y":7.26,"z":4.53},{"name":35213,"carat":0.35,"cut":"Very-Good","color":"G","clarity":"IF","depth":62.1,"table":54,"price":892,"x":4.53,"y":4.57,"z":2.82},{"name":25268,"carat":2.28,"cut":"Ideal","color":"G","clarity":"SI2","depth":61.6,"table":57,"price":13907,"x":8.44,"y":8.37,"z":5.18},{"name":22737,"carat":1.15,"cut":"Ideal","color":"F","clarity":"VVS2","depth":62.7,"table":57,"price":10757,"x":6.69,"y":6.65,"z":4.18},{"name":15167,"carat":1.44,"cut":"Ideal","color":"G","clarity":"I1","depth":63.2,"table":55,"price":6096,"x":7.21,"y":7.18,"z":4.54},{"name":44124,"carat":0.5,"cut":"Premium","color":"E","clarity":"VS2","depth":62,"table":58,"price":1559,"x":5.07,"y":5.09,"z":3.15},{"name":8245,"carat":1.07,"cut":"Premium","color":"H","clarity":"VS2","depth":60.6,"table":60,"price":4374,"x":6.66,"y":6.63,"z":4.03},{"name":30401,"carat":0.32,"cut":"Premium","color":"H","clarity":"VVS1","depth":61.4,"table":58,"price":730,"x":4.37,"y":4.42,"z":2.7},{"name":11998,"carat":1.06,"cut":"Ideal","color":"E","clarity":"SI2","depth":60.9,"table":57,"price":5147,"x":6.58,"y":6.62,"z":4.02},{"name":16655,"carat":1.21,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.1,"table":55,"price":6659,"x":6.87,"y":6.85,"z":4.19},{"name":37749,"carat":0.43,"cut":"Very-Good","color":"I","clarity":"IF","depth":61,"table":56,"price":998,"x":4.9,"y":4.93,"z":3},{"name":9074,"carat":1.14,"cut":"Premium","color":"D","clarity":"SI2","depth":62.6,"table":58,"price":4520,"x":6.64,"y":6.58,"z":4.14},{"name":46353,"carat":0.57,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.9,"table":56,"price":1759,"x":5.33,"y":5.37,"z":3.31},{"name":14516,"carat":1,"cut":"Good","color":"G","clarity":"VS1","depth":64.2,"table":61,"price":5863,"x":6.23,"y":6.29,"z":4.02},{"name":12239,"carat":1.04,"cut":"Ideal","color":"I","clarity":"VS1","depth":62.4,"table":57,"price":5199,"x":6.44,"y":6.48,"z":4.03},{"name":37788,"carat":0.5,"cut":"Good","color":"E","clarity":"SI2","depth":63.2,"table":61,"price":1000,"x":5.02,"y":5.05,"z":3.18},{"name":42551,"carat":0.52,"cut":"Very-Good","color":"F","clarity":"SI1","depth":61,"table":59,"price":1326,"x":5.18,"y":5.21,"z":3.17},{"name":22835,"carat":1.5,"cut":"Good","color":"E","clarity":"SI1","depth":61.3,"table":65,"price":10868,"x":7.17,"y":7.23,"z":4.41},{"name":46144,"carat":0.5,"cut":"Premium","color":"E","clarity":"VS2","depth":61.3,"table":59,"price":1746,"x":5.1,"y":5.05,"z":3.11},{"name":42806,"carat":0.59,"cut":"Ideal","color":"J","clarity":"VS2","depth":60.8,"table":57,"price":1352,"x":5.47,"y":5.42,"z":3.31},{"name":12802,"carat":0.7,"cut":"Ideal","color":"E","clarity":"VVS1","depth":61.8,"table":55,"price":5338,"x":5.69,"y":5.73,"z":3.53},{"name":302,"carat":0.83,"cut":"Very-Good","color":"E","clarity":"SI2","depth":58,"table":62,"price":2799,"x":6.19,"y":6.25,"z":3.61},{"name":2664,"carat":0.72,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.1,"table":57,"price":3235,"x":5.73,"y":5.76,"z":3.57},{"name":5843,"carat":1,"cut":"Premium","color":"H","clarity":"SI2","depth":60.2,"table":61,"price":3920,"x":6.48,"y":6.44,"z":3.89},{"name":2251,"carat":1.03,"cut":"Premium","color":"J","clarity":"SI2","depth":62.2,"table":59,"price":3149,"x":6.42,"y":6.4,"z":3.99},{"name":12178,"carat":1.2,"cut":"Very-Good","color":"G","clarity":"SI2","depth":62.1,"table":56,"price":5183,"x":6.79,"y":6.87,"z":4.24},{"name":13593,"carat":1.01,"cut":"Very-Good","color":"F","clarity":"VS2","depth":61,"table":59,"price":5560,"x":6.39,"y":6.46,"z":3.92},{"name":2337,"carat":1.09,"cut":"Fair","color":"F","clarity":"SI2","depth":66.3,"table":56,"price":3170,"x":6.47,"y":6.39,"z":4.27},{"name":8570,"carat":1.2,"cut":"Premium","color":"J","clarity":"VS2","depth":58,"table":59,"price":4435,"x":6.98,"y":6.92,"z":4.03},{"name":27867,"carat":0.3,"cut":"Very-Good","color":"E","clarity":"VS1","depth":60.2,"table":57,"price":653,"x":4.37,"y":4.3,"z":2.61},{"name":15184,"carat":1,"cut":"Good","color":"F","clarity":"VS2","depth":63.8,"table":58,"price":6098,"x":6.28,"y":6.32,"z":4.02},{"name":50207,"carat":0.58,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.9,"table":56,"price":2227,"x":5.36,"y":5.33,"z":3.31},{"name":32622,"carat":0.3,"cut":"Ideal","color":"I","clarity":"VS1","depth":62,"table":57,"price":457,"x":4.26,"y":4.29,"z":2.65},{"name":34268,"carat":0.29,"cut":"Very-Good","color":"H","clarity":"VVS2","depth":62.2,"table":54,"price":466,"x":4.23,"y":4.26,"z":2.64},{"name":18789,"carat":1.08,"cut":"Premium","color":"D","clarity":"VS2","depth":61.2,"table":60,"price":7683,"x":6.61,"y":6.63,"z":4.05},{"name":22426,"carat":1.5,"cut":"Fair","color":"F","clarity":"SI1","depth":64.3,"table":58,"price":10450,"x":7.04,"y":7.09,"z":4.54},{"name":1449,"carat":0.72,"cut":"Ideal","color":"E","clarity":"SI1","depth":61,"table":56,"price":2976,"x":5.82,"y":5.85,"z":3.56},{"name":25619,"carat":1.5,"cut":"Premium","color":"F","clarity":"VS2","depth":60.3,"table":58,"price":14486,"x":7.47,"y":7.39,"z":4.48},{"name":48417,"carat":0.61,"cut":"Very-Good","color":"F","clarity":"VS2","depth":62.9,"table":58,"price":1971,"x":5.33,"y":5.39,"z":3.37},{"name":48684,"carat":0.53,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.2,"table":55,"price":2005,"x":5.19,"y":5.23,"z":3.19},{"name":35461,"carat":0.33,"cut":"Premium","color":"F","clarity":"VVS2","depth":62.3,"table":60,"price":901,"x":4.43,"y":4.4,"z":2.75},{"name":16657,"carat":1.06,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.2,"table":56,"price":6660,"x":6.51,"y":6.54,"z":4.06},{"name":46366,"carat":0.54,"cut":"Premium","color":"E","clarity":"VS2","depth":60.7,"table":56,"price":1760,"x":5.32,"y":5.29,"z":3.22},{"name":23433,"carat":1.25,"cut":"Ideal","color":"E","clarity":"VS2","depth":60.7,"table":56,"price":11422,"x":6.97,"y":6.99,"z":4.24},{"name":9968,"carat":1,"cut":"Premium","color":"H","clarity":"SI1","depth":61.5,"table":58,"price":4702,"x":6.37,"y":6.45,"z":3.94},{"name":4346,"carat":0.78,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.7,"table":55,"price":3601,"x":5.92,"y":6,"z":3.68},{"name":33198,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.2,"table":54,"price":819,"x":4.33,"y":4.29,"z":2.68},{"name":13886,"carat":1.03,"cut":"Premium","color":"D","clarity":"SI1","depth":63,"table":59,"price":5653,"x":6.44,"y":6.39,"z":4.04},{"name":45744,"carat":0.52,"cut":"Very-Good","color":"D","clarity":"VS2","depth":59.4,"table":61,"price":1701,"x":5.23,"y":5.24,"z":3.11},{"name":27368,"carat":0.28,"cut":"Premium","color":"E","clarity":"VVS1","depth":61.3,"table":60,"price":646,"x":4.18,"y":4.21,"z":2.57},{"name":29516,"carat":0.39,"cut":"Very-Good","color":"G","clarity":"SI1","depth":58.9,"table":61,"price":703,"x":4.74,"y":4.76,"z":2.8},{"name":14540,"carat":1.21,"cut":"Very-Good","color":"H","clarity":"SI1","depth":63.1,"table":60,"price":5871,"x":6.74,"y":6.69,"z":4.24},{"name":11338,"carat":1.01,"cut":"Premium","color":"F","clarity":"SI1","depth":59.5,"table":62,"price":4989,"x":6.53,"y":6.45,"z":3.86},{"name":48507,"carat":0.7,"cut":"Premium","color":"H","clarity":"SI2","depth":61.7,"table":58,"price":1982,"x":5.72,"y":5.69,"z":3.52},{"name":38406,"carat":0.35,"cut":"Premium","color":"H","clarity":"VVS1","depth":61.2,"table":60,"price":1024,"x":4.55,"y":4.5,"z":2.77},{"name":29098,"carat":0.36,"cut":"Premium","color":"D","clarity":"SI2","depth":61.5,"table":60,"price":689,"x":4.6,"y":4.54,"z":2.81},{"name":39110,"carat":0.41,"cut":"Ideal","color":"H","clarity":"VS1","depth":61.9,"table":56,"price":1061,"x":4.78,"y":4.75,"z":2.95},{"name":47525,"carat":0.54,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.4,"table":55,"price":1868,"x":5.26,"y":5.3,"z":3.24},{"name":14780,"carat":1.2,"cut":"Premium","color":"G","clarity":"SI1","depth":61.5,"table":61,"price":5947,"x":6.84,"y":6.78,"z":4.19},{"name":7968,"carat":1.16,"cut":"Very-Good","color":"J","clarity":"VS2","depth":63.7,"table":56,"price":4323,"x":6.63,"y":6.68,"z":4.24},{"name":30555,"carat":0.31,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.3,"table":55,"price":734,"x":4.33,"y":4.37,"z":2.71},{"name":3705,"carat":1,"cut":"Ideal","color":"E","clarity":"SI2","depth":62.9,"table":56,"price":3450,"x":6.32,"y":6.3,"z":3.97},{"name":25884,"carat":2.01,"cut":"Good","color":"I","clarity":"SI1","depth":58.5,"table":62,"price":14998,"x":8.24,"y":8.31,"z":4.84},{"name":11447,"carat":1.01,"cut":"Premium","color":"G","clarity":"SI1","depth":60.6,"table":57,"price":5006,"x":6.52,"y":6.49,"z":3.94},{"name":40236,"carat":0.44,"cut":"Ideal","color":"H","clarity":"VVS1","depth":61.1,"table":57,"price":1124,"x":4.87,"y":4.92,"z":2.99},{"name":38630,"carat":0.31,"cut":"Very-Good","color":"H","clarity":"VS2","depth":62.5,"table":54,"price":489,"x":4.35,"y":4.39,"z":2.73},{"name":8467,"carat":1.03,"cut":"Good","color":"F","clarity":"SI2","depth":59,"table":59,"price":4414,"x":6.55,"y":6.6,"z":3.88},{"name":33011,"carat":0.31,"cut":"Good","color":"E","clarity":"IF","depth":64.2,"table":60,"price":813,"x":4.22,"y":4.28,"z":2.73},{"name":43649,"carat":0.51,"cut":"Good","color":"E","clarity":"SI1","depth":63.6,"table":58,"price":1434,"x":5,"y":4.97,"z":3.17},{"name":27151,"carat":2.04,"cut":"Premium","color":"E","clarity":"SI2","depth":58.3,"table":58,"price":17379,"x":8.35,"y":8.31,"z":4.86},{"name":5855,"carat":1,"cut":"Premium","color":"F","clarity":"SI2","depth":61.5,"table":58,"price":3920,"x":6.41,"y":6.38,"z":3.93},{"name":22842,"carat":1.64,"cut":"Premium","color":"H","clarity":"SI1","depth":59.2,"table":58,"price":10874,"x":7.76,"y":7.68,"z":4.57},{"name":37890,"carat":0.36,"cut":"Ideal","color":"G","clarity":"IF","depth":62,"table":57,"price":1006,"x":4.54,"y":4.58,"z":2.82},{"name":37874,"carat":0.39,"cut":"Ideal","color":"E","clarity":"VS1","depth":62.7,"table":53.6,"price":1004,"x":4.67,"y":4.69,"z":2.93},{"name":39457,"carat":0.39,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.6,"table":55,"price":1077,"x":4.69,"y":4.66,"z":2.93},{"name":41002,"carat":0.43,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.8,"table":55,"price":1183,"x":4.87,"y":4.9,"z":3.02},{"name":11878,"carat":1.25,"cut":"Good","color":"J","clarity":"SI1","depth":63.6,"table":57,"price":5110,"x":6.86,"y":6.81,"z":4.35},{"name":45647,"carat":0.25,"cut":"Ideal","color":"H","clarity":"VVS1","depth":60.2,"table":56,"price":525,"x":4.1,"y":4.11,"z":2.47},{"name":18406,"carat":1.32,"cut":"Ideal","color":"I","clarity":"VS1","depth":61.2,"table":57,"price":7480,"x":7.06,"y":7.12,"z":4.34},{"name":31880,"carat":0.3,"cut":"Ideal","color":"H","clarity":"VVS2","depth":62.8,"table":57,"price":776,"x":4.25,"y":4.22,"z":2.66},{"name":23734,"carat":1.52,"cut":"Very-Good","color":"F","clarity":"SI1","depth":61.4,"table":59,"price":11776,"x":7.39,"y":7.46,"z":4.56},{"name":24975,"carat":2.04,"cut":"Premium","color":"J","clarity":"VS2","depth":61.4,"table":59,"price":13477,"x":8.04,"y":8.14,"z":4.97},{"name":51931,"carat":0.72,"cut":"Very-Good","color":"F","clarity":"SI1","depth":62.6,"table":55,"price":2440,"x":5.71,"y":5.76,"z":3.59},{"name":20742,"carat":1.55,"cut":"Ideal","color":"G","clarity":"SI2","depth":60.5,"table":60,"price":8981,"x":7.46,"y":7.49,"z":4.52},{"name":5324,"carat":0.9,"cut":"Fair","color":"G","clarity":"VS1","depth":65.7,"table":58,"price":3806,"x":6.02,"y":5.97,"z":3.94},{"name":905,"carat":0.74,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.3,"table":55,"price":2877,"x":5.8,"y":5.83,"z":3.62},{"name":37676,"carat":0.7,"cut":"Fair","color":"F","clarity":"I1","depth":65.4,"table":59,"price":992,"x":5.6,"y":5.49,"z":3.63},{"name":35199,"carat":0.43,"cut":"Good","color":"G","clarity":"VS2","depth":61.8,"table":60.7,"price":891,"x":4.8,"y":4.84,"z":2.99},{"name":27971,"carat":0.3,"cut":"Premium","color":"E","clarity":"VS2","depth":62,"table":59,"price":658,"x":4.27,"y":4.31,"z":2.66},{"name":22375,"carat":0.31,"cut":"Ideal","color":"H","clarity":"VS2","depth":63,"table":57,"price":628,"x":4.34,"y":4.32,"z":2.73},{"name":52787,"carat":0.72,"cut":"Premium","color":"D","clarity":"SI1","depth":63,"table":57,"price":2567,"x":5.74,"y":5.69,"z":3.6},{"name":17958,"carat":1.01,"cut":"Very-Good","color":"F","clarity":"VS2","depth":62.8,"table":57,"price":7258,"x":6.34,"y":6.44,"z":4.01},{"name":34836,"carat":0.3,"cut":"Premium","color":"H","clarity":"VVS1","depth":62,"table":59,"price":878,"x":4.29,"y":4.26,"z":2.65},{"name":34114,"carat":0.35,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.8,"table":54.5,"price":853,"x":4.54,"y":4.58,"z":2.82},{"name":25777,"carat":2.01,"cut":"Good","color":"G","clarity":"SI2","depth":63,"table":60,"price":14745,"x":7.92,"y":7.99,"z":5.01},{"name":27538,"carat":2.01,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.1,"table":55,"price":18295,"x":8.12,"y":8.07,"z":5.03},{"name":23409,"carat":2,"cut":"Good","color":"I","clarity":"SI2","depth":64.2,"table":52,"price":11400,"x":7.91,"y":7.88,"z":5.07},{"name":32430,"carat":0.33,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.7,"table":55,"price":792,"x":4.45,"y":4.47,"z":2.75},{"name":22801,"carat":1.52,"cut":"Premium","color":"I","clarity":"VVS2","depth":61.6,"table":58,"price":10824,"x":7.37,"y":7.41,"z":4.55},{"name":33937,"carat":0.3,"cut":"Ideal","color":"J","clarity":"VVS1","depth":60.4,"table":57,"price":464,"x":4.36,"y":4.38,"z":2.64},{"name":2082,"carat":1.01,"cut":"Good","color":"H","clarity":"I1","depth":63.2,"table":58,"price":3110,"x":6.33,"y":6.39,"z":4.02},{"name":3478,"carat":1.01,"cut":"Premium","color":"H","clarity":"SI2","depth":60.9,"table":59,"price":3394,"x":6.42,"y":6.35,"z":3.89},{"name":11382,"carat":0.34,"cut":"Ideal","color":"H","clarity":"VS1","depth":62.5,"table":57,"price":596,"x":4.43,"y":4.46,"z":2.78},{"name":50658,"carat":0.31,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62,"table":58,"price":544,"x":4.3,"y":4.35,"z":2.68},{"name":36357,"carat":0.34,"cut":"Very-Good","color":"F","clarity":"VVS1","depth":61,"table":56,"price":939,"x":4.52,"y":4.53,"z":2.76},{"name":51116,"carat":0.7,"cut":"Very-Good","color":"G","clarity":"VS2","depth":63.4,"table":58,"price":2338,"x":5.63,"y":5.57,"z":3.55},{"name":43034,"carat":0.5,"cut":"Good","color":"D","clarity":"SI1","depth":61.1,"table":64,"price":1374,"x":5.05,"y":5.07,"z":3.09},{"name":13135,"carat":1.11,"cut":"Premium","color":"H","clarity":"SI1","depth":61.1,"table":60,"price":5433,"x":6.68,"y":6.62,"z":4.06},{"name":10922,"carat":1.2,"cut":"Very-Good","color":"J","clarity":"SI1","depth":61.3,"table":59,"price":4891,"x":6.83,"y":6.9,"z":4.21},{"name":28822,"carat":0.41,"cut":"Very-Good","color":"H","clarity":"SI1","depth":62.6,"table":59,"price":683,"x":4.72,"y":4.77,"z":2.97},{"name":3106,"carat":0.72,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.2,"table":56,"price":3322,"x":5.77,"y":5.74,"z":3.58},{"name":31819,"carat":0.3,"cut":"Ideal","color":"E","clarity":"VS1","depth":62.2,"table":54,"price":775,"x":4.28,"y":4.3,"z":2.67},{"name":14218,"carat":1.23,"cut":"Ideal","color":"J","clarity":"VS2","depth":61.7,"table":57,"price":5763,"x":6.87,"y":6.8,"z":4.22},{"name":50596,"carat":0.71,"cut":"Good","color":"I","clarity":"VVS2","depth":63.7,"table":56,"price":2283,"x":5.68,"y":5.63,"z":3.6},{"name":46694,"carat":0.56,"cut":"Ideal","color":"E","clarity":"VS1","depth":60.8,"table":55,"price":1791,"x":5.37,"y":5.32,"z":3.25},{"name":11156,"carat":1.21,"cut":"Very-Good","color":"H","clarity":"SI1","depth":63.5,"table":58,"price":4944,"x":6.73,"y":6.63,"z":4.24},{"name":46259,"carat":0.54,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.3,"table":57,"price":1754,"x":5.25,"y":5.28,"z":3.23},{"name":11307,"carat":1.09,"cut":"Ideal","color":"F","clarity":"SI2","depth":61.2,"table":57,"price":4981,"x":6.64,"y":6.6,"z":4.05},{"name":20502,"carat":1.66,"cut":"Very-Good","color":"H","clarity":"SI1","depth":63.3,"table":59,"price":8831,"x":7.48,"y":7.45,"z":4.72},{"name":14963,"carat":1.21,"cut":"Premium","color":"H","clarity":"SI1","depth":59.5,"table":58,"price":6025,"x":7.02,"y":6.96,"z":4.16},{"name":48215,"carat":0.57,"cut":"Ideal","color":"H","clarity":"VVS1","depth":60.9,"table":56,"price":1949,"x":5.36,"y":5.38,"z":3.27},{"name":52469,"carat":0.8,"cut":"Ideal","color":"G","clarity":"SI2","depth":62,"table":56,"price":2517,"x":5.98,"y":5.92,"z":3.69},{"name":27892,"carat":0.32,"cut":"Ideal","color":"I","clarity":"IF","depth":62.1,"table":54,"price":655,"x":4.39,"y":4.43,"z":2.74},{"name":37944,"carat":0.33,"cut":"Very-Good","color":"H","clarity":"VS2","depth":58.8,"table":62,"price":486,"x":4.49,"y":4.53,"z":2.65},{"name":39931,"carat":0.35,"cut":"Very-Good","color":"I","clarity":"VS2","depth":61.7,"table":57,"price":491,"x":4.52,"y":4.56,"z":2.8},{"name":2695,"carat":0.9,"cut":"Good","color":"G","clarity":"SI2","depth":63.8,"table":59,"price":3246,"x":6.05,"y":6.02,"z":3.85},{"name":21323,"carat":1.35,"cut":"Premium","color":"G","clarity":"VS2","depth":62.8,"table":59,"price":9471,"x":7.04,"y":7.01,"z":4.41},{"name":21796,"carat":1,"cut":"Very-Good","color":"F","clarity":"VVS1","depth":61.1,"table":57,"price":9870,"x":6.36,"y":6.51,"z":3.93},{"name":33669,"carat":0.34,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62.3,"table":57,"price":835,"x":4.44,"y":4.48,"z":2.78},{"name":42502,"carat":0.57,"cut":"Premium","color":"E","clarity":"SI2","depth":60.7,"table":57,"price":1320,"x":5.42,"y":5.35,"z":3.27},{"name":7634,"carat":1.11,"cut":"Premium","color":"J","clarity":"VS2","depth":62.6,"table":59,"price":4265,"x":6.6,"y":6.56,"z":4.12},{"name":43833,"carat":0.59,"cut":"Very-Good","color":"I","clarity":"VS2","depth":60.3,"table":59,"price":1445,"x":5.41,"y":5.43,"z":3.27},{"name":15310,"carat":1.1,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.4,"table":55,"price":6146,"x":6.65,"y":6.68,"z":4.09},{"name":32268,"carat":0.3,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.7,"table":55,"price":789,"x":4.28,"y":4.31,"z":2.65},{"name":2373,"carat":0.32,"cut":"Ideal","color":"G","clarity":"VS2","depth":62,"table":57,"price":561,"x":4.39,"y":4.41,"z":2.73},{"name":35160,"carat":0.32,"cut":"Premium","color":"G","clarity":"IF","depth":61,"table":59,"price":891,"x":4.38,"y":4.41,"z":2.68},{"name":5039,"carat":0.9,"cut":"Good","color":"F","clarity":"VS1","depth":63.8,"table":56,"price":3750,"x":5.99,"y":5.92,"z":3.8},{"name":31680,"carat":0.26,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62.3,"table":57,"price":769,"x":4.09,"y":4.06,"z":2.54},{"name":50106,"carat":0.51,"cut":"Ideal","color":"F","clarity":"VVS1","depth":60.9,"table":57,"price":2208,"x":5.16,"y":5.21,"z":3.16},{"name":10246,"carat":1.01,"cut":"Good","color":"H","clarity":"SI1","depth":63.4,"table":59,"price":4749,"x":6.28,"y":6.34,"z":4},{"name":13452,"carat":1.03,"cut":"Premium","color":"H","clarity":"VS1","depth":62,"table":59,"price":5523,"x":6.45,"y":6.48,"z":4.01},{"name":29000,"carat":0.34,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.6,"table":54,"price":686,"x":4.46,"y":4.48,"z":2.8},{"name":14240,"carat":1.09,"cut":"Ideal","color":"F","clarity":"SI1","depth":62,"table":56,"price":5768,"x":6.61,"y":6.56,"z":4.08},{"name":48404,"carat":0.64,"cut":"Very-Good","color":"D","clarity":"SI1","depth":62.3,"table":58,"price":1969,"x":5.49,"y":5.53,"z":3.43},{"name":23822,"carat":2.08,"cut":"Ideal","color":"I","clarity":"SI2","depth":62,"table":56,"price":11886,"x":8.21,"y":8.1,"z":5.06},{"name":5353,"carat":0.74,"cut":"Ideal","color":"D","clarity":"VS1","depth":61.7,"table":55,"price":3813,"x":5.79,"y":5.85,"z":3.59},{"name":16160,"carat":1.5,"cut":"Premium","color":"H","clarity":"SI2","depth":62.1,"table":58,"price":6458,"x":7.31,"y":7.21,"z":4.51},{"name":28516,"carat":0.32,"cut":"Ideal","color":"I","clarity":"IF","depth":60.8,"table":54,"price":673,"x":4.44,"y":4.47,"z":2.71},{"name":42134,"carat":0.5,"cut":"Premium","color":"D","clarity":"SI1","depth":61.3,"table":60,"price":1279,"x":5.15,"y":5.1,"z":3.14},{"name":6813,"carat":1.01,"cut":"Fair","color":"E","clarity":"SI2","depth":55.2,"table":65,"price":4118,"x":6.78,"y":6.67,"z":3.71},{"name":16962,"carat":1.12,"cut":"Ideal","color":"G","clarity":"VS2","depth":62,"table":56,"price":6774,"x":6.69,"y":6.64,"z":4.13},{"name":13956,"carat":1.16,"cut":"Very-Good","color":"G","clarity":"SI1","depth":60.7,"table":59,"price":5678,"x":6.74,"y":6.87,"z":4.13},{"name":16756,"carat":1.45,"cut":"Very-Good","color":"J","clarity":"VS2","depth":62.8,"table":57,"price":6671,"x":7.14,"y":7.17,"z":4.49},{"name":37782,"carat":0.38,"cut":"Very-Good","color":"E","clarity":"VS1","depth":61.5,"table":58,"price":1000,"x":4.64,"y":4.69,"z":2.87},{"name":47332,"carat":0.23,"cut":"Very-Good","color":"E","clarity":"VVS1","depth":61.3,"table":59,"price":530,"x":3.93,"y":3.97,"z":2.42},{"name":7328,"carat":0.9,"cut":"Premium","color":"E","clarity":"SI1","depth":61.9,"table":58,"price":4209,"x":6.17,"y":6.1,"z":3.8},{"name":31834,"carat":0.34,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.9,"table":57,"price":775,"x":4.44,"y":4.48,"z":2.76},{"name":66,"carat":0.28,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.4,"table":56,"price":553,"x":4.19,"y":4.22,"z":2.58},{"name":21826,"carat":1.26,"cut":"Premium","color":"F","clarity":"VS1","depth":62.7,"table":58,"price":9896,"x":6.86,"y":6.93,"z":4.32},{"name":40205,"carat":0.53,"cut":"Good","color":"J","clarity":"VS2","depth":63.8,"table":57,"price":1122,"x":5.12,"y":5.1,"z":3.26},{"name":26027,"carat":0.32,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.2,"table":57,"price":645,"x":4.4,"y":4.43,"z":2.7},{"name":5966,"carat":0.9,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.8,"table":57,"price":3950,"x":6.19,"y":6.21,"z":3.83},{"name":32163,"carat":0.47,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.1,"table":55,"price":787,"x":5.04,"y":5.07,"z":3.09},{"name":332,"carat":0.71,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.3,"table":56,"price":2803,"x":5.75,"y":5.71,"z":3.51},{"name":22181,"carat":1.54,"cut":"Premium","color":"G","clarity":"SI1","depth":61.3,"table":59,"price":10219,"x":7.41,"y":7.38,"z":4.53},{"name":18741,"carat":1.55,"cut":"Premium","color":"I","clarity":"VS2","depth":61.3,"table":58,"price":7656,"x":7.48,"y":7.44,"z":4.57},{"name":52489,"carat":0.73,"cut":"Very-Good","color":"E","clarity":"SI1","depth":63.3,"table":60,"price":2523,"x":5.65,"y":5.7,"z":3.59},{"name":4115,"carat":0.78,"cut":"Premium","color":"E","clarity":"VS1","depth":62.2,"table":58,"price":3538,"x":5.9,"y":5.86,"z":3.66},{"name":22331,"carat":1.7,"cut":"Premium","color":"F","clarity":"SI2","depth":61.8,"table":60,"price":10377,"x":7.64,"y":7.56,"z":4.7},{"name":41660,"carat":0.5,"cut":"Good","color":"H","clarity":"VS2","depth":56.3,"table":65,"price":1239,"x":5.21,"y":5.24,"z":2.94},{"name":17321,"carat":1.19,"cut":"Premium","color":"H","clarity":"VS2","depth":61.1,"table":58,"price":6944,"x":6.83,"y":6.78,"z":4.16},{"name":27840,"carat":0.39,"cut":"Ideal","color":"D","clarity":"SI2","depth":61.6,"table":56,"price":651,"x":4.69,"y":4.72,"z":2.9},{"name":26341,"carat":0.32,"cut":"Ideal","color":"H","clarity":"VVS2","depth":61.7,"table":56,"price":645,"x":4.37,"y":4.42,"z":2.71},{"name":1757,"carat":0.77,"cut":"Very-Good","color":"F","clarity":"SI1","depth":59.6,"table":60,"price":3044,"x":5.95,"y":5.97,"z":3.55},{"name":7671,"carat":1.11,"cut":"Ideal","color":"I","clarity":"SI1","depth":62.4,"table":55,"price":4273,"x":6.6,"y":6.64,"z":4.13},{"name":20313,"carat":1.24,"cut":"Ideal","color":"H","clarity":"VS2","depth":61.8,"table":55,"price":8726,"x":6.91,"y":6.95,"z":4.28},{"name":40866,"carat":0.55,"cut":"Ideal","color":"F","clarity":"SI2","depth":62.4,"table":56,"price":1175,"x":5.22,"y":5.26,"z":3.27},{"name":29196,"carat":0.33,"cut":"Premium","color":"I","clarity":"IF","depth":62.1,"table":58,"price":694,"x":4.39,"y":4.43,"z":2.74},{"name":11543,"carat":1.21,"cut":"Good","color":"J","clarity":"VVS2","depth":63.7,"table":56,"price":5028,"x":6.71,"y":6.67,"z":4.26},{"name":46413,"carat":0.54,"cut":"Good","color":"D","clarity":"SI1","depth":57.9,"table":60,"price":1767,"x":5.36,"y":5.39,"z":3.11},{"name":5619,"carat":1,"cut":"Good","color":"H","clarity":"SI2","depth":63.2,"table":59,"price":3874,"x":6.24,"y":6.29,"z":3.96},{"name":46222,"carat":0.5,"cut":"Premium","color":"D","clarity":"VS2","depth":61.9,"table":58,"price":1752,"x":5.04,"y":5.1,"z":3.14},{"name":11794,"carat":1.12,"cut":"Very-Good","color":"G","clarity":"SI1","depth":62.5,"table":58,"price":5088,"x":6.6,"y":6.64,"z":4.14},{"name":28962,"carat":0.31,"cut":"Very-Good","color":"I","clarity":"VS2","depth":60.7,"table":61,"price":435,"x":4.32,"y":4.34,"z":2.63},{"name":25313,"carat":2.07,"cut":"Premium","color":"H","clarity":"SI1","depth":62.7,"table":58,"price":13993,"x":8.14,"y":8.09,"z":5.09},{"name":33556,"carat":0.41,"cut":"Ideal","color":"J","clarity":"VS1","depth":60.2,"table":57,"price":830,"x":4.85,"y":4.81,"z":2.91},{"name":7949,"carat":1.16,"cut":"Premium","color":"G","clarity":"SI2","depth":62,"table":59,"price":4320,"x":6.74,"y":6.62,"z":4.14},{"name":49142,"carat":1.05,"cut":"Good","color":"E","clarity":"I1","depth":64.1,"table":58,"price":2066,"x":6.46,"y":6.32,"z":4.09},{"name":16341,"carat":1.11,"cut":"Premium","color":"G","clarity":"VS2","depth":61.4,"table":58,"price":6534,"x":6.7,"y":6.66,"z":4.1},{"name":5849,"carat":1,"cut":"Premium","color":"H","clarity":"SI2","depth":61.3,"table":58,"price":3920,"x":6.45,"y":6.41,"z":3.94},{"name":45428,"carat":0.51,"cut":"Ideal","color":"H","clarity":"VVS2","depth":61.2,"table":57,"price":1669,"x":5.14,"y":5.19,"z":3.16},{"name":19274,"carat":1.34,"cut":"Ideal","color":"H","clarity":"VS2","depth":60.8,"table":55,"price":7999,"x":7.18,"y":7.12,"z":4.35},{"name":50899,"carat":0.71,"cut":"Ideal","color":"H","clarity":"SI2","depth":62.7,"table":55,"price":2317,"x":5.68,"y":5.64,"z":3.56},{"name":53908,"carat":0.7,"cut":"Very-Good","color":"E","clarity":"SI1","depth":61,"table":57,"price":2753,"x":5.68,"y":5.73,"z":3.48},{"name":30970,"carat":0.38,"cut":"Premium","color":"I","clarity":"SI1","depth":60.5,"table":58,"price":746,"x":4.72,"y":4.67,"z":2.84},{"name":40324,"carat":0.42,"cut":"Ideal","color":"H","clarity":"IF","depth":61.6,"table":56,"price":1126,"x":4.84,"y":4.87,"z":2.99},{"name":37208,"carat":0.34,"cut":"Ideal","color":"G","clarity":"IF","depth":61,"table":55,"price":974,"x":4.51,"y":4.54,"z":2.76},{"name":4921,"carat":1.21,"cut":"Good","color":"E","clarity":"I1","depth":63.3,"table":63,"price":3726,"x":6.67,"y":6.72,"z":4.24},{"name":44263,"carat":0.52,"cut":"Ideal","color":"H","clarity":"VS1","depth":62,"table":55.4,"price":1575,"x":5.16,"y":5.21,"z":3.21},{"name":8563,"carat":1.04,"cut":"Very-Good","color":"H","clarity":"SI2","depth":62.9,"table":57,"price":4435,"x":6.39,"y":6.45,"z":4.04},{"name":11406,"carat":1.08,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.6,"table":56,"price":5000,"x":6.63,"y":6.59,"z":4.07},{"name":17873,"carat":1.15,"cut":"Premium","color":"D","clarity":"SI1","depth":61.1,"table":53,"price":7213,"x":6.83,"y":6.76,"z":4.15},{"name":8704,"carat":0.4,"cut":"Premium","color":"I","clarity":"SI2","depth":62.9,"table":59,"price":585,"x":4.68,"y":4.63,"z":2.93},{"name":21185,"carat":1.51,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.8,"table":55,"price":9336,"x":7.38,"y":7.42,"z":4.57},{"name":24189,"carat":2.18,"cut":"Very-Good","color":"G","clarity":"SI2","depth":63.3,"table":59,"price":12377,"x":8.25,"y":8.2,"z":5.2},{"name":15396,"carat":1.08,"cut":"Very-Good","color":"G","clarity":"VS2","depth":62,"table":57,"price":6168,"x":6.52,"y":6.55,"z":4.05},{"name":16040,"carat":0.3,"cut":"Good","color":"I","clarity":"VS1","depth":63.7,"table":58,"price":608,"x":4.25,"y":4.23,"z":2.7},{"name":17057,"carat":0.28,"cut":"Good","color":"E","clarity":"IF","depth":64.6,"table":58,"price":612,"x":4.09,"y":4.12,"z":2.65},{"name":45024,"carat":0.54,"cut":"Ideal","color":"H","clarity":"VS1","depth":61.5,"table":56,"price":1637,"x":5.24,"y":5.23,"z":3.22},{"name":19987,"carat":1.53,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.3,"table":57,"price":8529,"x":7.42,"y":7.32,"z":4.52},{"name":38294,"carat":0.28,"cut":"Ideal","color":"D","clarity":"VS2","depth":61.2,"table":57,"price":487,"x":4.2,"y":4.23,"z":2.58},{"name":771,"carat":0.9,"cut":"Fair","color":"G","clarity":"SI2","depth":64.5,"table":56,"price":2858,"x":6.06,"y":6,"z":3.89},{"name":48545,"carat":0.52,"cut":"Ideal","color":"I","clarity":"IF","depth":60.2,"table":56,"price":1988,"x":5.23,"y":5.27,"z":3.16},{"name":12222,"carat":1,"cut":"Ideal","color":"F","clarity":"SI1","depth":62,"table":57,"price":5197,"x":6.37,"y":6.43,"z":3.97},{"name":5540,"carat":0.91,"cut":"Fair","color":"D","clarity":"SI1","depth":64.4,"table":60,"price":3855,"x":6.08,"y":6.04,"z":3.9},{"name":51049,"carat":0.73,"cut":"Fair","color":"I","clarity":"VS1","depth":55.9,"table":66,"price":2330,"x":6.11,"y":6.01,"z":3.39},{"name":14583,"carat":1.13,"cut":"Premium","color":"H","clarity":"VS2","depth":62.4,"table":58,"price":5885,"x":6.66,"y":6.61,"z":4.14},{"name":21195,"carat":1.51,"cut":"Very-Good","color":"I","clarity":"VS1","depth":63,"table":59,"price":9343,"x":7.28,"y":7.3,"z":4.59},{"name":38780,"carat":0.31,"cut":"Premium","color":"E","clarity":"VVS2","depth":61.3,"table":60,"price":1046,"x":4.35,"y":4.33,"z":2.66},{"name":24542,"carat":2.01,"cut":"Premium","color":"I","clarity":"SI1","depth":60.5,"table":58,"price":12829,"x":8.2,"y":8.06,"z":4.92},{"name":45710,"carat":0.56,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.7,"table":56,"price":1698,"x":5.34,"y":5.3,"z":3.28},{"name":20987,"carat":1.2,"cut":"Very-Good","color":"F","clarity":"VS1","depth":61.6,"table":61,"price":9203,"x":6.81,"y":6.86,"z":4.21},{"name":24439,"carat":1.5,"cut":"Good","color":"F","clarity":"VS2","depth":60.2,"table":58,"price":12693,"x":7.31,"y":7.35,"z":4.41},{"name":20964,"carat":1.21,"cut":"Good","color":"E","clarity":"VS2","depth":62.7,"table":61,"price":9176,"x":6.67,"y":6.72,"z":4.2},{"name":33240,"carat":0.36,"cut":"Ideal","color":"I","clarity":"VVS1","depth":61.7,"table":56,"price":824,"x":4.59,"y":4.62,"z":2.84},{"name":50267,"carat":0.5,"cut":"Very-Good","color":"F","clarity":"IF","depth":61.4,"table":60,"price":2238,"x":5.07,"y":5.1,"z":3.12},{"name":26992,"carat":2.05,"cut":"Premium","color":"E","clarity":"SI2","depth":59.7,"table":59,"price":17081,"x":8.27,"y":8.39,"z":4.97},{"name":25844,"carat":1.71,"cut":"Very-Good","color":"H","clarity":"VVS2","depth":61.2,"table":62,"price":14893,"x":7.59,"y":7.65,"z":4.66},{"name":28144,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.6,"table":53,"price":665,"x":4.31,"y":4.35,"z":2.71},{"name":53423,"carat":0.71,"cut":"Premium","color":"G","clarity":"VS2","depth":60.3,"table":60,"price":2671,"x":5.76,"y":5.81,"z":3.49},{"name":40317,"carat":0.4,"cut":"Ideal","color":"E","clarity":"VS1","depth":62.2,"table":55,"price":1125,"x":4.76,"y":4.72,"z":2.95},{"name":48669,"carat":0.61,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.4,"table":55,"price":2002,"x":5.42,"y":5.45,"z":3.39},{"name":26549,"carat":1.87,"cut":"Premium","color":"E","clarity":"SI1","depth":61.9,"table":58,"price":16232,"x":7.94,"y":7.88,"z":4.9},{"name":18629,"carat":1.02,"cut":"Good","color":"E","clarity":"VS1","depth":63.9,"table":56,"price":7602,"x":6.33,"y":6.38,"z":4.06},{"name":44994,"carat":0.31,"cut":"Premium","color":"I","clarity":"SI1","depth":60.7,"table":60,"price":523,"x":4.37,"y":4.33,"z":2.64},{"name":10513,"carat":1.03,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.4,"table":56,"price":4800,"x":6.45,"y":6.5,"z":4.04},{"name":21820,"carat":1.51,"cut":"Ideal","color":"I","clarity":"VS2","depth":62.6,"table":55,"price":9891,"x":7.29,"y":7.34,"z":4.58},{"name":51070,"carat":0.54,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.3,"table":57,"price":2333,"x":5.29,"y":5.24,"z":3.23},{"name":25447,"carat":2,"cut":"Fair","color":"H","clarity":"VS1","depth":66,"table":56,"price":14199,"x":7.79,"y":7.72,"z":5.12},{"name":11880,"carat":1.21,"cut":"Very-Good","color":"I","clarity":"SI2","depth":62,"table":56,"price":5111,"x":6.79,"y":6.86,"z":4.23},{"name":29934,"carat":0.34,"cut":"Premium","color":"G","clarity":"VS2","depth":59.6,"table":62,"price":714,"x":4.56,"y":4.54,"z":2.71},{"name":33722,"carat":0.42,"cut":"Premium","color":"E","clarity":"SI2","depth":60.1,"table":58,"price":838,"x":4.91,"y":4.87,"z":2.94},{"name":6090,"carat":1.02,"cut":"Very-Good","color":"F","clarity":"SI2","depth":59.6,"table":59,"price":3974,"x":6.51,"y":6.54,"z":3.89},{"name":10643,"carat":0.93,"cut":"Premium","color":"G","clarity":"VS2","depth":62.2,"table":59,"price":4834,"x":6.21,"y":6.26,"z":3.88},{"name":17714,"carat":0.41,"cut":"Ideal","color":"J","clarity":"VS2","depth":61.7,"table":55,"price":613,"x":4.8,"y":4.82,"z":2.97},{"name":48418,"carat":0.7,"cut":"Very-Good","color":"I","clarity":"VS1","depth":62.4,"table":58,"price":1971,"x":5.62,"y":5.67,"z":3.52},{"name":52256,"carat":0.7,"cut":"Good","color":"G","clarity":"VS2","depth":64.3,"table":56,"price":2488,"x":5.51,"y":5.58,"z":3.57},{"name":42073,"carat":0.55,"cut":"Good","color":"D","clarity":"SI2","depth":63.3,"table":56,"price":1272,"x":5.21,"y":5.24,"z":3.31},{"name":7421,"carat":1,"cut":"Premium","color":"G","clarity":"SI2","depth":62.9,"table":60,"price":4227,"x":6.35,"y":6.3,"z":3.98},{"name":52345,"carat":0.72,"cut":"Fair","color":"E","clarity":"SI1","depth":56.9,"table":61,"price":2498,"x":5.91,"y":5.97,"z":3.38},{"name":21919,"carat":1.5,"cut":"Ideal","color":"F","clarity":"SI2","depth":62.9,"table":55,"price":9996,"x":7.28,"y":7.26,"z":4.57},{"name":44416,"carat":0.52,"cut":"Ideal","color":"E","clarity":"SI1","depth":61,"table":55,"price":1586,"x":5.19,"y":5.23,"z":3.18},{"name":6044,"carat":0.32,"cut":"Ideal","color":"E","clarity":"SI2","depth":62,"table":55,"price":576,"x":4.41,"y":4.36,"z":2.72},{"name":42202,"carat":0.51,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.7,"table":58,"price":1287,"x":5.12,"y":5.15,"z":3.17},{"name":29510,"carat":0.32,"cut":"Premium","color":"E","clarity":"VS2","depth":60.5,"table":59,"price":702,"x":4.39,"y":4.43,"z":2.67},{"name":24096,"carat":1.91,"cut":"Fair","color":"I","clarity":"VS1","depth":59.5,"table":68,"price":12244,"x":8.1,"y":7.91,"z":4.78},{"name":28544,"carat":0.3,"cut":"Premium","color":"E","clarity":"SI1","depth":61.8,"table":60,"price":675,"x":4.28,"y":4.23,"z":2.63},{"name":14459,"carat":1.06,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.9,"table":57,"price":5834,"x":6.57,"y":6.54,"z":4.06},{"name":1152,"carat":0.87,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.5,"table":57,"price":2923,"x":6.13,"y":6.06,"z":3.81},{"name":37812,"carat":0.35,"cut":"Ideal","color":"G","clarity":"IF","depth":61.3,"table":55,"price":1001,"x":4.57,"y":4.6,"z":2.81},{"name":23616,"carat":1.34,"cut":"Ideal","color":"G","clarity":"VVS1","depth":62.2,"table":56,"price":11640,"x":7.11,"y":7.04,"z":4.4},{"name":24784,"carat":1.51,"cut":"Good","color":"G","clarity":"VVS2","depth":63.8,"table":59,"price":13155,"x":7.24,"y":7.28,"z":4.63},{"name":10890,"carat":1,"cut":"Good","color":"G","clarity":"SI1","depth":64.4,"table":54,"price":4882,"x":6.29,"y":6.32,"z":4.06},{"name":21135,"carat":1,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.1,"table":58,"price":9294,"x":6.43,"y":6.47,"z":3.94},{"name":10217,"carat":1.21,"cut":"Premium","color":"H","clarity":"SI1","depth":60.5,"table":60,"price":4743,"x":6.81,"y":6.72,"z":4.09},{"name":10169,"carat":0.91,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.9,"table":56,"price":4731,"x":6.22,"y":6.18,"z":3.84},{"name":15177,"carat":1.01,"cut":"Premium","color":"F","clarity":"VS2","depth":63,"table":58,"price":6097,"x":6.43,"y":6.36,"z":4.03},{"name":20708,"carat":0.31,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.1,"table":57,"price":625,"x":4.34,"y":4.36,"z":2.7},{"name":17157,"carat":1.24,"cut":"Premium","color":"H","clarity":"VS2","depth":61.2,"table":59,"price":6850,"x":6.89,"y":6.93,"z":4.23},{"name":12185,"carat":1.21,"cut":"Premium","color":"G","clarity":"SI2","depth":59.1,"table":55,"price":5184,"x":7.04,"y":6.98,"z":4.14},{"name":37681,"carat":0.42,"cut":"Ideal","color":"H","clarity":"VS2","depth":62.5,"table":57,"price":992,"x":4.81,"y":4.76,"z":2.99},{"name":9804,"carat":0.9,"cut":"Good","color":"G","clarity":"VVS2","depth":62.6,"table":58,"price":4668,"x":6.1,"y":6.13,"z":3.83},{"name":27382,"carat":0.41,"cut":"Good","color":"J","clarity":"VS1","depth":63.7,"table":56,"price":647,"x":4.68,"y":4.71,"z":2.99},{"name":37287,"carat":0.24,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":64.4,"table":53,"price":485,"x":3.92,"y":3.94,"z":2.53},{"name":5300,"carat":1.01,"cut":"Fair","color":"E","clarity":"SI2","depth":60,"table":60,"price":3801,"x":6.48,"y":6.38,"z":3.86},{"name":18937,"carat":1.12,"cut":"Premium","color":"F","clarity":"VS1","depth":62.1,"table":60,"price":7781,"x":6.62,"y":6.58,"z":4.1},{"name":29097,"carat":0.36,"cut":"Premium","color":"D","clarity":"SI2","depth":61.2,"table":59,"price":689,"x":4.59,"y":4.56,"z":2.8},{"name":5319,"carat":1.08,"cut":"Premium","color":"I","clarity":"SI2","depth":62.7,"table":57,"price":3805,"x":6.57,"y":6.53,"z":4.11},{"name":53268,"carat":0.7,"cut":"Premium","color":"F","clarity":"VS2","depth":62.2,"table":59,"price":2648,"x":5.68,"y":5.64,"z":3.52},{"name":29858,"carat":0.3,"cut":"Very-Good","color":"D","clarity":"VS2","depth":62.6,"table":61,"price":710,"x":4.22,"y":4.25,"z":2.65},{"name":15204,"carat":1.01,"cut":"Very-Good","color":"G","clarity":"VS2","depth":63.1,"table":60,"price":6108,"x":6.36,"y":6.31,"z":4},{"name":50101,"carat":0.71,"cut":"Very-Good","color":"H","clarity":"SI1","depth":63.1,"table":57,"price":2207,"x":5.65,"y":5.61,"z":3.55},{"name":21674,"carat":1.58,"cut":"Good","color":"I","clarity":"VS1","depth":58.6,"table":62,"price":9775,"x":7.59,"y":7.66,"z":4.47},{"name":16732,"carat":0.4,"cut":"Very-Good","color":"E","clarity":"SI2","depth":58.7,"table":57,"price":611,"x":4.88,"y":4.94,"z":2.88},{"name":2543,"carat":0.75,"cut":"Very-Good","color":"E","clarity":"VS2","depth":62.8,"table":55,"price":3206,"x":5.77,"y":5.79,"z":3.63},{"name":6773,"carat":0.9,"cut":"Good","color":"G","clarity":"VS1","depth":65.8,"table":59,"price":4108,"x":6,"y":6.04,"z":3.96},{"name":50497,"carat":0.53,"cut":"Ideal","color":"F","clarity":"VVS2","depth":61,"table":57,"price":2269,"x":5.23,"y":5.26,"z":3.22},{"name":41671,"carat":0.4,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.1,"table":56,"price":1240,"x":4.74,"y":4.78,"z":2.91},{"name":41419,"carat":0.55,"cut":"Premium","color":"G","clarity":"SI1","depth":60.7,"table":56,"price":1226,"x":5.38,"y":5.32,"z":3.25},{"name":42262,"carat":0.49,"cut":"Good","color":"F","clarity":"VS1","depth":59.2,"table":60.9,"price":1294,"x":5.08,"y":5.18,"z":3.04},{"name":439,"carat":0.7,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.4,"table":56,"price":2815,"x":5.72,"y":5.77,"z":3.53},{"name":47145,"carat":0.53,"cut":"Ideal","color":"F","clarity":"VS1","depth":62.4,"table":57,"price":1832,"x":5.18,"y":5.21,"z":3.24},{"name":10387,"carat":0.38,"cut":"Ideal","color":"I","clarity":"SI1","depth":61.8,"table":54,"price":593,"x":4.66,"y":4.7,"z":2.89},{"name":44982,"carat":0.31,"cut":"Premium","color":"G","clarity":"SI2","depth":61.8,"table":59,"price":523,"x":4.34,"y":4.3,"z":2.67},{"name":307,"carat":0.7,"cut":"Premium","color":"E","clarity":"VS1","depth":62.2,"table":58,"price":2800,"x":5.6,"y":5.66,"z":3.5},{"name":26546,"carat":2.03,"cut":"Ideal","color":"G","clarity":"SI1","depth":60.3,"table":56,"price":16224,"x":8.27,"y":8.21,"z":4.97},{"name":49312,"carat":0.34,"cut":"Ideal","color":"G","clarity":"SI1","depth":61.9,"table":55,"price":540,"x":4.5,"y":4.52,"z":2.79},{"name":39638,"carat":0.34,"cut":"Premium","color":"G","clarity":"IF","depth":62.3,"table":59,"price":1084,"x":4.49,"y":4.46,"z":2.79},{"name":2569,"carat":0.9,"cut":"Very-Good","color":"I","clarity":"SI1","depth":63.1,"table":54,"price":3211,"x":6.13,"y":6.16,"z":3.88},{"name":35272,"carat":0.3,"cut":"Ideal","color":"G","clarity":"IF","depth":61.4,"table":57,"price":895,"x":4.33,"y":4.37,"z":2.67},{"name":30391,"carat":0.33,"cut":"Ideal","color":"H","clarity":"VVS1","depth":62.1,"table":53,"price":730,"x":4.48,"y":4.5,"z":2.79},{"name":36335,"carat":0.32,"cut":"Premium","color":"G","clarity":"VVS2","depth":62.3,"table":54,"price":936,"x":4.45,"y":4.38,"z":2.75},{"name":24170,"carat":1.71,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.9,"table":54,"price":12342,"x":7.65,"y":7.75,"z":4.77},{"name":26579,"carat":2.02,"cut":"Ideal","color":"F","clarity":"SI2","depth":61.3,"table":57,"price":16290,"x":8.11,"y":8.16,"z":4.99},{"name":16650,"carat":1.26,"cut":"Premium","color":"F","clarity":"SI2","depth":61.3,"table":58,"price":6657,"x":6.99,"y":6.91,"z":4.26},{"name":7684,"carat":1.03,"cut":"Premium","color":"H","clarity":"SI1","depth":63,"table":59,"price":4274,"x":6.43,"y":6.4,"z":4.04},{"name":8344,"carat":1.02,"cut":"Very-Good","color":"E","clarity":"SI2","depth":60.5,"table":58,"price":4398,"x":6.54,"y":6.58,"z":3.97},{"name":13850,"carat":1.2,"cut":"Very-Good","color":"E","clarity":"SI2","depth":63.3,"table":55,"price":5645,"x":6.77,"y":6.73,"z":4.27},{"name":21762,"carat":1.5,"cut":"Good","color":"I","clarity":"VS1","depth":57.9,"table":60,"price":9828,"x":7.48,"y":7.44,"z":4.32},{"name":15491,"carat":1.04,"cut":"Premium","color":"G","clarity":"VS2","depth":62.3,"table":54,"price":6206,"x":6.55,"y":6.49,"z":4.06},{"name":15416,"carat":1.05,"cut":"Premium","color":"D","clarity":"SI1","depth":59.3,"table":58,"price":6174,"x":6.74,"y":6.68,"z":3.98},{"name":6738,"carat":0.4,"cut":"Very-Good","color":"F","clarity":"SI2","depth":62.6,"table":53,"price":579,"x":4.7,"y":4.75,"z":2.96},{"name":15410,"carat":1.32,"cut":"Premium","color":"I","clarity":"SI1","depth":62.2,"table":58,"price":6171,"x":6.99,"y":7.04,"z":4.36},{"name":7972,"carat":0.9,"cut":"Very-Good","color":"H","clarity":"VS1","depth":62.2,"table":57,"price":4324,"x":6.1,"y":6.15,"z":3.81},{"name":52768,"carat":0.77,"cut":"Ideal","color":"E","clarity":"SI2","depth":62,"table":54,"price":2563,"x":5.89,"y":5.92,"z":3.66},{"name":2171,"carat":0.94,"cut":"Good","color":"I","clarity":"SI2","depth":63.8,"table":60,"price":3134,"x":6.14,"y":6.21,"z":3.94},{"name":40706,"carat":0.58,"cut":"Ideal","color":"I","clarity":"SI2","depth":61.3,"table":56,"price":1158,"x":5.38,"y":5.45,"z":3.32},{"name":30640,"carat":0.36,"cut":"Ideal","color":"I","clarity":"IF","depth":61.8,"table":55,"price":735,"x":4.58,"y":4.61,"z":2.84},{"name":234,"carat":0.51,"cut":"Ideal","color":"F","clarity":"VVS1","depth":62,"table":57,"price":2787,"x":5.11,"y":5.15,"z":3.18},{"name":9490,"carat":1.11,"cut":"Good","color":"H","clarity":"SI1","depth":64.2,"table":58,"price":4606,"x":6.53,"y":6.47,"z":4.17},{"name":593,"carat":0.7,"cut":"Ideal","color":"E","clarity":"VS1","depth":61.8,"table":56,"price":2837,"x":5.74,"y":5.69,"z":3.53},{"name":34805,"carat":0.31,"cut":"Ideal","color":"D","clarity":"VS1","depth":62,"table":54,"price":877,"x":4.36,"y":4.35,"z":2.7},{"name":38939,"carat":0.4,"cut":"Ideal","color":"E","clarity":"VS1","depth":62,"table":54,"price":1053,"x":4.74,"y":4.77,"z":2.95},{"name":13667,"carat":1.02,"cut":"Premium","color":"G","clarity":"VS2","depth":62.9,"table":58,"price":5593,"x":6.41,"y":6.37,"z":4.02},{"name":39302,"carat":0.38,"cut":"Premium","color":"E","clarity":"VS1","depth":60.2,"table":58,"price":1069,"x":4.71,"y":4.66,"z":2.82},{"name":21379,"carat":0.34,"cut":"Very-Good","color":"D","clarity":"SI1","depth":59.6,"table":61,"price":626,"x":4.5,"y":4.53,"z":2.69},{"name":42357,"carat":0.51,"cut":"Ideal","color":"I","clarity":"VS1","depth":61.8,"table":56,"price":1301,"x":5.1,"y":5.13,"z":3.16},{"name":51831,"carat":0.7,"cut":"Good","color":"H","clarity":"VS1","depth":59.4,"table":62,"price":2421,"x":5.71,"y":5.74,"z":3.4},{"name":47340,"carat":0.23,"cut":"Very-Good","color":"E","clarity":"VVS1","depth":62.1,"table":58,"price":530,"x":3.9,"y":3.93,"z":2.43},{"name":13017,"carat":1.2,"cut":"Very-Good","color":"I","clarity":"SI1","depth":62.2,"table":55,"price":5408,"x":6.75,"y":6.92,"z":4.25},{"name":53751,"carat":0.72,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.7,"table":55,"price":2724,"x":5.71,"y":5.68,"z":3.57},{"name":33789,"carat":0.32,"cut":"Ideal","color":"H","clarity":"IF","depth":60.9,"table":56,"price":842,"x":4.41,"y":4.42,"z":2.69},{"name":5813,"carat":0.91,"cut":"Very-Good","color":"D","clarity":"SI2","depth":63.4,"table":59,"price":3911,"x":6.12,"y":6.15,"z":3.89},{"name":53023,"carat":0.74,"cut":"Very-Good","color":"I","clarity":"VVS2","depth":62.8,"table":55,"price":2600,"x":5.75,"y":5.78,"z":3.62},{"name":46596,"carat":0.54,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.4,"table":57,"price":1786,"x":5.25,"y":5.2,"z":3.21},{"name":51908,"carat":0.7,"cut":"Good","color":"E","clarity":"SI2","depth":63.7,"table":55,"price":2435,"x":5.63,"y":5.58,"z":3.57},{"name":25242,"carat":1.6,"cut":"Ideal","color":"F","clarity":"VS2","depth":60.1,"table":57,"price":13853,"x":7.65,"y":7.59,"z":4.58},{"name":43627,"carat":0.38,"cut":"Ideal","color":"E","clarity":"IF","depth":61.9,"table":56,"price":1433,"x":4.65,"y":4.66,"z":2.88},{"name":5997,"carat":0.91,"cut":"Premium","color":"D","clarity":"SI2","depth":61.2,"table":58,"price":3958,"x":6.21,"y":6.25,"z":3.81},{"name":26004,"carat":1.02,"cut":"Premium","color":"D","clarity":"IF","depth":61.5,"table":60,"price":15231,"x":6.45,"y":6.52,"z":3.99},{"name":46049,"carat":0.5,"cut":"Ideal","color":"F","clarity":"VS1","depth":61,"table":56,"price":1731,"x":5.14,"y":5.15,"z":3.14},{"name":47761,"carat":0.52,"cut":"Ideal","color":"H","clarity":"VVS1","depth":61.7,"table":53,"price":1893,"x":5.19,"y":5.25,"z":3.22},{"name":47770,"carat":0.7,"cut":"Very-Good","color":"E","clarity":"SI2","depth":63.5,"table":59,"price":1894,"x":5.63,"y":5.51,"z":3.53},{"name":26719,"carat":0.32,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.1,"table":57,"price":645,"x":4.4,"y":4.44,"z":2.7},{"name":46039,"carat":0.57,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.8,"table":57,"price":1728,"x":5.33,"y":5.28,"z":3.28},{"name":27603,"carat":2.16,"cut":"Ideal","color":"J","clarity":"VS1","depth":61.4,"table":55,"price":18462,"x":8.34,"y":8.27,"z":5.1},{"name":25203,"carat":2.26,"cut":"Very-Good","color":"H","clarity":"SI2","depth":63.1,"table":58,"price":13797,"x":8.3,"y":8.22,"z":5.21},{"name":5980,"carat":1,"cut":"Fair","color":"I","clarity":"VS1","depth":64,"table":49,"price":3951,"x":6.43,"y":6.39,"z":4.1},{"name":10972,"carat":1.2,"cut":"Premium","color":"H","clarity":"SI2","depth":59.6,"table":60,"price":4906,"x":6.91,"y":6.84,"z":4.1},{"name":44419,"carat":0.53,"cut":"Ideal","color":"D","clarity":"SI1","depth":61.2,"table":57,"price":1587,"x":5.19,"y":5.24,"z":3.19},{"name":977,"carat":0.82,"cut":"Premium","color":"G","clarity":"SI1","depth":59.9,"table":59,"price":2893,"x":6.09,"y":6.06,"z":3.64},{"name":10234,"carat":1.19,"cut":"Premium","color":"I","clarity":"SI2","depth":62.6,"table":58,"price":4745,"x":6.75,"y":6.7,"z":4.21},{"name":44874,"carat":0.64,"cut":"Very-Good","color":"D","clarity":"SI2","depth":62.8,"table":54,"price":1629,"x":5.5,"y":5.52,"z":3.46},{"name":665,"carat":1.01,"cut":"Good","color":"H","clarity":"I1","depth":64.2,"table":61,"price":2846,"x":6.25,"y":6.18,"z":3.99},{"name":53847,"carat":0.82,"cut":"Very-Good","color":"E","clarity":"SI1","depth":63.2,"table":57,"price":2741,"x":5.92,"y":5.97,"z":3.76},{"name":42703,"carat":0.52,"cut":"Premium","color":"G","clarity":"SI1","depth":62.8,"table":61,"price":1338,"x":5.14,"y":5.11,"z":3.22},{"name":26603,"carat":2.07,"cut":"Ideal","color":"I","clarity":"SI2","depth":62,"table":55,"price":16337,"x":8.22,"y":8.12,"z":5.07},{"name":33470,"carat":0.32,"cut":"Premium","color":"F","clarity":"VS2","depth":59.7,"table":59,"price":828,"x":4.44,"y":4.41,"z":2.64},{"name":47000,"carat":0.62,"cut":"Very-Good","color":"I","clarity":"VS1","depth":61.8,"table":55,"price":1818,"x":5.5,"y":5.53,"z":3.41},{"name":9368,"carat":0.32,"cut":"Good","color":"D","clarity":"SI1","depth":63.7,"table":55,"price":589,"x":4.35,"y":4.38,"z":2.78},{"name":27741,"carat":1.71,"cut":"Premium","color":"F","clarity":"VS2","depth":62.3,"table":59,"price":18791,"x":7.57,"y":7.53,"z":4.7},{"name":25501,"carat":1.51,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.8,"table":56,"price":14294,"x":7.32,"y":7.27,"z":4.58},{"name":48210,"carat":0.62,"cut":"Very-Good","color":"D","clarity":"SI1","depth":61.3,"table":58,"price":1949,"x":5.47,"y":5.49,"z":3.36},{"name":27312,"carat":1.63,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.3,"table":55,"price":17825,"x":7.6,"y":7.63,"z":4.67},{"name":17574,"carat":1.08,"cut":"Fair","color":"G","clarity":"VS1","depth":64.7,"table":60,"price":7076,"x":6.44,"y":6.41,"z":4.16},{"name":33092,"carat":0.31,"cut":"Ideal","color":"D","clarity":"VVS2","depth":61.7,"table":54,"price":815,"x":4.38,"y":4.43,"z":2.72},{"name":5681,"carat":1.01,"cut":"Good","color":"F","clarity":"SI2","depth":62.5,"table":59,"price":3886,"x":6.31,"y":6.37,"z":3.96},{"name":39210,"carat":0.54,"cut":"Ideal","color":"H","clarity":"SI1","depth":62,"table":54,"price":1065,"x":5.23,"y":5.28,"z":3.26},{"name":11982,"carat":1.06,"cut":"Premium","color":"F","clarity":"SI1","depth":61,"table":58,"price":5142,"x":6.6,"y":6.65,"z":4.04},{"name":33775,"carat":0.41,"cut":"Ideal","color":"D","clarity":"SI2","depth":62.6,"table":57,"price":841,"x":4.77,"y":4.72,"z":2.97},{"name":33646,"carat":0.38,"cut":"Ideal","color":"G","clarity":"VS1","depth":60.8,"table":56,"price":833,"x":4.66,"y":4.71,"z":2.85},{"name":14360,"carat":1.21,"cut":"Ideal","color":"H","clarity":"SI2","depth":62,"table":54.5,"price":5814,"x":6.81,"y":6.87,"z":4.25},{"name":928,"carat":0.54,"cut":"Ideal","color":"F","clarity":"VVS1","depth":61.8,"table":56,"price":2882,"x":5.23,"y":5.26,"z":3.24},{"name":9392,"carat":0.9,"cut":"Premium","color":"D","clarity":"VS2","depth":63,"table":62,"price":4586,"x":6.13,"y":6.06,"z":3.84},{"name":40223,"carat":0.4,"cut":"Very-Good","color":"G","clarity":"VVS1","depth":60.9,"table":57,"price":1123,"x":4.76,"y":4.8,"z":2.91},{"name":30517,"carat":0.31,"cut":"Very-Good","color":"D","clarity":"SI1","depth":63.5,"table":55,"price":732,"x":4.3,"y":4.27,"z":2.72},{"name":7478,"carat":1.07,"cut":"Premium","color":"H","clarity":"SI1","depth":58.9,"table":59,"price":4235,"x":6.76,"y":6.71,"z":3.97},{"name":28014,"carat":0.3,"cut":"Ideal","color":"E","clarity":"VS2","depth":61.8,"table":56,"price":658,"x":4.3,"y":4.34,"z":2.67},{"name":28205,"carat":0.4,"cut":"Very-Good","color":"D","clarity":"SI2","depth":62.8,"table":56,"price":666,"x":4.7,"y":4.73,"z":2.96},{"name":12423,"carat":1,"cut":"Ideal","color":"F","clarity":"SI1","depth":62,"table":55,"price":5239,"x":6.39,"y":6.44,"z":3.98},{"name":27138,"carat":2.01,"cut":"Premium","color":"H","clarity":"SI1","depth":61.8,"table":58,"price":17347,"x":8.13,"y":8.06,"z":5},{"name":45511,"carat":0.55,"cut":"Ideal","color":"F","clarity":"VS1","depth":60.3,"table":57,"price":1682,"x":5.32,"y":5.37,"z":3.23},{"name":52391,"carat":0.71,"cut":"Very-Good","color":"D","clarity":"SI1","depth":63.1,"table":56,"price":2508,"x":5.66,"y":5.62,"z":3.56},{"name":29757,"carat":0.3,"cut":"Premium","color":"D","clarity":"SI1","depth":62.6,"table":56,"price":709,"x":4.29,"y":4.24,"z":2.67},{"name":41446,"carat":0.53,"cut":"Ideal","color":"E","clarity":"SI2","depth":61.2,"table":55,"price":1229,"x":5.23,"y":5.26,"z":3.21},{"name":39341,"carat":0.37,"cut":"Ideal","color":"G","clarity":"VVS2","depth":60.7,"table":55,"price":1073,"x":4.66,"y":4.7,"z":2.84},{"name":15246,"carat":1.22,"cut":"Premium","color":"I","clarity":"VS1","depth":61.1,"table":58,"price":6121,"x":6.91,"y":6.84,"z":4.2},{"name":48026,"carat":0.71,"cut":"Good","color":"J","clarity":"VS2","depth":60.6,"table":61,"price":1922,"x":5.7,"y":5.79,"z":3.48},{"name":16395,"carat":1.05,"cut":"Very-Good","color":"F","clarity":"VS2","depth":62,"table":56,"price":6545,"x":6.48,"y":6.52,"z":4.03},{"name":34875,"carat":0.3,"cut":"Premium","color":"G","clarity":"VVS2","depth":62.1,"table":59,"price":878,"x":4.27,"y":4.23,"z":2.64},{"name":31575,"carat":0.4,"cut":"Ideal","color":"F","clarity":"VS2","depth":62.3,"table":54,"price":767,"x":4.74,"y":4.77,"z":2.96},{"name":17618,"carat":1.01,"cut":"Very-Good","color":"E","clarity":"VS1","depth":60.9,"table":55,"price":7094,"x":6.48,"y":6.58,"z":3.98},{"name":10761,"carat":1.01,"cut":"Fair","color":"E","clarity":"SI1","depth":69.5,"table":55,"price":4853,"x":6,"y":5.94,"z":4.15},{"name":47980,"carat":0.32,"cut":"Ideal","color":"E","clarity":"SI1","depth":62.1,"table":54,"price":532,"x":4.4,"y":4.42,"z":2.74},{"name":41412,"carat":0.47,"cut":"Very-Good","color":"F","clarity":"VS2","depth":59.6,"table":58.1,"price":1226,"x":5.07,"y":5.11,"z":3.03},{"name":21455,"carat":1.04,"cut":"Ideal","color":"E","clarity":"VVS2","depth":62,"table":58,"price":9552,"x":6.54,"y":6.46,"z":4.03},{"name":15036,"carat":0.3,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.9,"table":55,"price":605,"x":4.31,"y":4.32,"z":2.67},{"name":44462,"carat":0.55,"cut":"Premium","color":"I","clarity":"VVS1","depth":61.3,"table":59,"price":1593,"x":5.27,"y":5.3,"z":3.24},{"name":24456,"carat":1.56,"cut":"Ideal","color":"E","clarity":"VS2","depth":60.5,"table":57,"price":12717,"x":7.56,"y":7.5,"z":4.56},{"name":37334,"carat":0.43,"cut":"Ideal","color":"E","clarity":"VS1","depth":61.2,"table":56,"price":981,"x":4.89,"y":4.94,"z":3.01},{"name":9236,"carat":1.01,"cut":"Good","color":"H","clarity":"SI1","depth":63.3,"table":58,"price":4559,"x":6.37,"y":6.4,"z":4.04},{"name":4936,"carat":0.9,"cut":"Premium","color":"I","clarity":"VVS2","depth":60.9,"table":59,"price":3730,"x":6.25,"y":6.22,"z":3.8},{"name":15874,"carat":1.26,"cut":"Premium","color":"H","clarity":"SI2","depth":61.3,"table":57,"price":6350,"x":6.96,"y":6.87,"z":4.24},{"name":40705,"carat":0.4,"cut":"Ideal","color":"E","clarity":"VVS2","depth":61.8,"table":55,"price":1158,"x":4.74,"y":4.78,"z":2.94},{"name":38587,"carat":0.39,"cut":"Ideal","color":"F","clarity":"VVS2","depth":61.9,"table":54.8,"price":1036,"x":4.68,"y":4.69,"z":2.9},{"name":38474,"carat":0.38,"cut":"Ideal","color":"H","clarity":"VVS2","depth":62.1,"table":56,"price":1031,"x":4.64,"y":4.67,"z":2.89},{"name":18994,"carat":1.5,"cut":"Fair","color":"J","clarity":"VS1","depth":60.1,"table":61,"price":7819,"x":7.25,"y":7.3,"z":4.37},{"name":2343,"carat":0.78,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.2,"table":57,"price":3171,"x":5.87,"y":5.9,"z":3.66},{"name":1827,"carat":0.72,"cut":"Very-Good","color":"F","clarity":"VS1","depth":62.1,"table":59,"price":3059,"x":5.69,"y":5.74,"z":3.55},{"name":48630,"carat":0.77,"cut":"Very-Good","color":"J","clarity":"SI2","depth":61.3,"table":58,"price":2001,"x":5.84,"y":5.91,"z":3.6},{"name":42340,"carat":0.73,"cut":"Very-Good","color":"G","clarity":"I1","depth":62.5,"table":58,"price":1298,"x":5.74,"y":5.82,"z":3.61},{"name":27555,"carat":1.7,"cut":"Premium","color":"E","clarity":"VS2","depth":58.6,"table":62,"price":18342,"x":7.92,"y":7.84,"z":4.62},{"name":46863,"carat":0.53,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.8,"table":55,"price":1813,"x":5.22,"y":5.17,"z":3.21},{"name":22475,"carat":1.01,"cut":"Very-Good","color":"D","clarity":"VVS2","depth":59.8,"table":57,"price":10499,"x":6.49,"y":6.58,"z":3.91},{"name":7511,"carat":0.9,"cut":"Ideal","color":"D","clarity":"SI2","depth":60.8,"table":56,"price":4241,"x":6.24,"y":6.26,"z":3.8},{"name":51698,"carat":0.7,"cut":"Very-Good","color":"F","clarity":"VS2","depth":60.5,"table":57,"price":2400,"x":5.74,"y":5.79,"z":3.49},{"name":44899,"carat":0.5,"cut":"Very-Good","color":"E","clarity":"VS2","depth":63.2,"table":56,"price":1629,"x":5.06,"y":5.03,"z":3.19},{"name":45346,"carat":0.53,"cut":"Very-Good","color":"G","clarity":"VS1","depth":62.2,"table":59,"price":1664,"x":5.14,"y":5.18,"z":3.21},{"name":44242,"carat":0.51,"cut":"Premium","color":"F","clarity":"VS2","depth":62.4,"table":58,"price":1574,"x":5.13,"y":5.1,"z":3.19},{"name":43146,"carat":0.52,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62.9,"table":59,"price":1389,"x":5.12,"y":5.15,"z":3.23},{"name":41310,"carat":0.5,"cut":"Very-Good","color":"F","clarity":"SI1","depth":60.2,"table":62,"price":1213,"x":5.1,"y":5.13,"z":3.08},{"name":29288,"carat":0.31,"cut":"Ideal","color":"G","clarity":"SI2","depth":62,"table":54,"price":436,"x":4.38,"y":4.42,"z":2.73},{"name":140,"carat":0.64,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.9,"table":56,"price":2766,"x":5.53,"y":5.56,"z":3.43},{"name":11560,"carat":1.01,"cut":"Premium","color":"G","clarity":"SI1","depth":59.6,"table":58,"price":5034,"x":6.61,"y":6.54,"z":3.92},{"name":51397,"carat":0.73,"cut":"Very-Good","color":"I","clarity":"VS2","depth":62.2,"table":57,"price":2369,"x":5.75,"y":5.76,"z":3.58},{"name":26898,"carat":2.01,"cut":"Premium","color":"F","clarity":"SI2","depth":61.3,"table":61,"price":16881,"x":8.11,"y":8.01,"z":4.94},{"name":39894,"carat":0.42,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.9,"table":57,"price":1103,"x":4.81,"y":4.79,"z":2.97},{"name":47036,"carat":0.55,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.1,"table":56,"price":1819,"x":5.31,"y":5.27,"z":3.23},{"name":18573,"carat":1.51,"cut":"Premium","color":"I","clarity":"SI2","depth":59.7,"table":59,"price":7577,"x":7.48,"y":7.46,"z":4.46},{"name":41674,"carat":0.33,"cut":"Ideal","color":"F","clarity":"IF","depth":60.8,"table":55,"price":1240,"x":4.49,"y":4.53,"z":2.74},{"name":28291,"carat":0.27,"cut":"Ideal","color":"I","clarity":"VS1","depth":62.2,"table":55,"price":432,"x":4.15,"y":4.18,"z":2.59},{"name":21301,"carat":1.51,"cut":"Fair","color":"H","clarity":"VS2","depth":65,"table":64,"price":9452,"x":7.1,"y":7.03,"z":4.59},{"name":17613,"carat":1.3,"cut":"Very-Good","color":"H","clarity":"VS2","depth":62.5,"table":59,"price":7092,"x":6.93,"y":6.96,"z":4.34},{"name":349,"carat":0.82,"cut":"Ideal","color":"H","clarity":"VS2","depth":61.5,"table":56,"price":2804,"x":6.01,"y":6.08,"z":3.72},{"name":28406,"carat":0.35,"cut":"Premium","color":"D","clarity":"SI2","depth":60.8,"table":58,"price":669,"x":4.57,"y":4.51,"z":2.76},{"name":32137,"carat":0.36,"cut":"Ideal","color":"F","clarity":"VS2","depth":60.5,"table":57,"price":786,"x":4.61,"y":4.65,"z":2.8},{"name":45350,"carat":0.59,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.6,"table":54,"price":1664,"x":5.32,"y":5.38,"z":3.35},{"name":24214,"carat":2.05,"cut":"Very-Good","color":"H","clarity":"SI2","depth":63.1,"table":58,"price":12401,"x":8.05,"y":8,"z":5.07},{"name":15534,"carat":1.47,"cut":"Premium","color":"J","clarity":"SI2","depth":60,"table":58,"price":6223,"x":7.36,"y":7.31,"z":4.4},{"name":3654,"carat":1.01,"cut":"Ideal","color":"F","clarity":"I1","depth":62.2,"table":54,"price":3439,"x":6.44,"y":6.42,"z":4},{"name":16404,"carat":1.28,"cut":"Ideal","color":"G","clarity":"SI2","depth":61.1,"table":58,"price":6548,"x":6.98,"y":7.03,"z":4.28},{"name":49276,"carat":0.54,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.1,"table":56,"price":2090,"x":5.22,"y":5.19,"z":3.23},{"name":46982,"carat":0.55,"cut":"Premium","color":"D","clarity":"SI1","depth":61.9,"table":60,"price":1815,"x":5.23,"y":5.14,"z":3.21},{"name":42945,"carat":0.3,"cut":"Premium","color":"F","clarity":"SI2","depth":62.6,"table":61,"price":506,"x":4.24,"y":4.2,"z":2.64},{"name":50405,"carat":0.58,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.3,"table":56,"price":2256,"x":5.36,"y":5.4,"z":3.3},{"name":17138,"carat":1.5,"cut":"Fair","color":"H","clarity":"SI1","depth":65,"table":57,"price":6838,"x":7.1,"y":7.06,"z":4.6},{"name":36607,"carat":0.32,"cut":"Very-Good","color":"G","clarity":"SI1","depth":63,"table":56,"price":477,"x":4.35,"y":4.38,"z":2.75},{"name":28900,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VVS2","depth":61.5,"table":57,"price":684,"x":4.29,"y":4.33,"z":2.65},{"name":45007,"carat":0.54,"cut":"Premium","color":"G","clarity":"VS1","depth":61.1,"table":60,"price":1637,"x":5.23,"y":5.28,"z":3.21},{"name":27114,"carat":1.86,"cut":"Very-Good","color":"H","clarity":"VVS2","depth":58.6,"table":62,"price":17267,"x":8.07,"y":8.14,"z":4.75},{"name":7342,"carat":0.91,"cut":"Good","color":"E","clarity":"SI1","depth":63.5,"table":57,"price":4211,"x":6.07,"y":6.11,"z":3.87},{"name":31233,"carat":0.44,"cut":"Good","color":"F","clarity":"SI1","depth":63.8,"table":54,"price":756,"x":4.8,"y":4.85,"z":3.08},{"name":51634,"carat":0.31,"cut":"Very-Good","color":"H","clarity":"VS1","depth":61.4,"table":61,"price":544,"x":4.33,"y":4.36,"z":2.67},{"name":24304,"carat":1.51,"cut":"Very-Good","color":"G","clarity":"VS2","depth":58.7,"table":63,"price":12551,"x":7.45,"y":7.4,"z":4.36},{"name":22297,"carat":1.27,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.4,"table":53.3,"price":10342,"x":6.94,"y":6.95,"z":4.33},{"name":42196,"carat":0.59,"cut":"Very-Good","color":"J","clarity":"VS2","depth":61.9,"table":58,"price":1287,"x":5.35,"y":5.38,"z":3.32},{"name":11989,"carat":1.06,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.2,"table":57,"price":5143,"x":6.56,"y":6.49,"z":4.06},{"name":41670,"carat":0.46,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.4,"table":56,"price":1240,"x":4.95,"y":4.98,"z":3.1},{"name":21492,"carat":1.25,"cut":"Ideal","color":"F","clarity":"VS1","depth":62,"table":55,"price":9586,"x":6.91,"y":6.95,"z":4.3},{"name":41253,"carat":0.3,"cut":"Very-Good","color":"F","clarity":"SI1","depth":62.8,"table":56,"price":500,"x":4.24,"y":4.26,"z":2.67},{"name":35901,"carat":0.32,"cut":"Ideal","color":"G","clarity":"IF","depth":61.9,"table":55,"price":918,"x":4.38,"y":4.44,"z":2.73},{"name":26509,"carat":1.73,"cut":"Ideal","color":"F","clarity":"VS1","depth":62.1,"table":57,"price":16131,"x":7.73,"y":7.64,"z":4.77},{"name":28158,"carat":0.3,"cut":"Ideal","color":"H","clarity":"VVS1","depth":62.3,"table":55,"price":665,"x":4.3,"y":4.33,"z":2.69},{"name":43075,"carat":0.6,"cut":"Very-Good","color":"H","clarity":"SI1","depth":60.4,"table":63,"price":1378,"x":5.45,"y":5.41,"z":3.28},{"name":12275,"carat":1.21,"cut":"Very-Good","color":"J","clarity":"VS2","depth":61.5,"table":58,"price":5211,"x":6.85,"y":6.9,"z":4.23},{"name":40070,"carat":0.43,"cut":"Premium","color":"G","clarity":"VS2","depth":62.3,"table":58,"price":1113,"x":4.85,"y":4.81,"z":3.01},{"name":13646,"carat":1.24,"cut":"Very-Good","color":"I","clarity":"SI1","depth":60,"table":59,"price":5584,"x":6.98,"y":7.01,"z":4.2},{"name":48842,"carat":0.55,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.3,"table":55,"price":2030,"x":5.29,"y":5.24,"z":3.28},{"name":19463,"carat":1.56,"cut":"Good","color":"J","clarity":"VS2","depth":62.3,"table":64,"price":8107,"x":7.41,"y":7.36,"z":4.6},{"name":44205,"carat":0.51,"cut":"Very-Good","color":"F","clarity":"VS2","depth":61,"table":58,"price":1569,"x":5.1,"y":5.17,"z":3.13},{"name":32537,"carat":0.27,"cut":"Premium","color":"E","clarity":"VVS2","depth":59,"table":59,"price":799,"x":4.27,"y":4.24,"z":2.51},{"name":28079,"carat":0.4,"cut":"Ideal","color":"J","clarity":"VVS2","depth":61.9,"table":55,"price":662,"x":4.74,"y":4.79,"z":2.95},{"name":11605,"carat":1.95,"cut":"Premium","color":"H","clarity":"I1","depth":60.3,"table":59,"price":5045,"x":8.1,"y":8.05,"z":4.87},{"name":16213,"carat":1.03,"cut":"Premium","color":"G","clarity":"VS1","depth":62.1,"table":59,"price":6479,"x":6.48,"y":6.4,"z":4},{"name":198,"carat":0.7,"cut":"Premium","color":"E","clarity":"SI1","depth":61,"table":58,"price":2777,"x":5.78,"y":5.72,"z":3.51},{"name":51777,"carat":0.7,"cut":"Ideal","color":"F","clarity":"SI1","depth":62.6,"table":55,"price":2410,"x":5.67,"y":5.7,"z":3.56},{"name":13350,"carat":1.02,"cut":"Very-Good","color":"E","clarity":"SI1","depth":63.1,"table":61,"price":5508,"x":6.42,"y":6.35,"z":4.03},{"name":46324,"carat":0.69,"cut":"Very-Good","color":"H","clarity":"SI1","depth":62.5,"table":57.6,"price":1757,"x":5.66,"y":5.72,"z":3.55},{"name":48186,"carat":0.72,"cut":"Premium","color":"J","clarity":"VS2","depth":60.2,"table":59,"price":1944,"x":5.85,"y":5.81,"z":3.51},{"name":15375,"carat":0.36,"cut":"Very-Good","color":"G","clarity":"SI1","depth":61.8,"table":57.8,"price":606,"x":4.52,"y":4.58,"z":2.81},{"name":4511,"carat":1.02,"cut":"Good","color":"F","clarity":"SI2","depth":59.6,"table":64,"price":3633,"x":6.58,"y":6.55,"z":3.91},{"name":9850,"carat":1.01,"cut":"Premium","color":"F","clarity":"SI2","depth":61.9,"table":58,"price":4676,"x":6.39,"y":6.34,"z":3.94},{"name":9359,"carat":1.16,"cut":"Very-Good","color":"I","clarity":"SI1","depth":62.9,"table":58,"price":4586,"x":6.64,"y":6.69,"z":4.19},{"name":29610,"carat":0.35,"cut":"Premium","color":"G","clarity":"VS1","depth":61.2,"table":58,"price":706,"x":4.51,"y":4.54,"z":2.77},{"name":8030,"carat":0.96,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.7,"table":56,"price":4333,"x":6.4,"y":6.34,"z":3.93},{"name":15824,"carat":1.26,"cut":"Ideal","color":"J","clarity":"VS1","depth":62.2,"table":58,"price":6332,"x":6.88,"y":6.92,"z":4.29},{"name":8842,"carat":0.9,"cut":"Good","color":"G","clarity":"VS1","depth":63.9,"table":60,"price":4479,"x":6.09,"y":6.14,"z":3.91},{"name":30086,"carat":0.32,"cut":"Ideal","color":"H","clarity":"VS1","depth":61.3,"table":55,"price":720,"x":4.43,"y":4.41,"z":2.71},{"name":16383,"carat":1.04,"cut":"Very-Good","color":"G","clarity":"VS1","depth":63.2,"table":56,"price":6541,"x":6.39,"y":6.46,"z":4.06},{"name":4945,"carat":1.19,"cut":"Ideal","color":"H","clarity":"I1","depth":61.5,"table":57,"price":3732,"x":6.83,"y":6.79,"z":4.19},{"name":27563,"carat":2.06,"cut":"Ideal","color":"D","clarity":"SI2","depth":60.3,"table":56,"price":18371,"x":8.29,"y":8.25,"z":4.99},{"name":22585,"carat":1.25,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.5,"table":54,"price":10636,"x":6.88,"y":6.93,"z":4.31},{"name":2199,"carat":0.72,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.4,"table":57,"price":3139,"x":5.71,"y":5.76,"z":3.58},{"name":11107,"carat":1.05,"cut":"Ideal","color":"D","clarity":"SI2","depth":60.2,"table":57,"price":4932,"x":6.58,"y":6.65,"z":3.98},{"name":30544,"carat":0.31,"cut":"Ideal","color":"D","clarity":"VS2","depth":62.5,"table":56,"price":734,"x":4.29,"y":4.32,"z":2.69},{"name":15196,"carat":1.02,"cut":"Very-Good","color":"I","clarity":"VS2","depth":61.5,"table":57,"price":6104,"x":6.4,"y":6.44,"z":3.95},{"name":53439,"carat":0.7,"cut":"Premium","color":"E","clarity":"VS2","depth":60.8,"table":58,"price":2673,"x":5.7,"y":5.74,"z":3.48},{"name":44886,"carat":0.5,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.2,"table":56,"price":1629,"x":5.12,"y":5.11,"z":3.18},{"name":4021,"carat":0.9,"cut":"Ideal","color":"G","clarity":"SI2","depth":61.2,"table":57,"price":3521,"x":6.24,"y":6.28,"z":3.83},{"name":25537,"carat":2.14,"cut":"Ideal","color":"G","clarity":"SI2","depth":62.9,"table":56,"price":14359,"x":8.18,"y":8.14,"z":5.13},{"name":44606,"carat":0.53,"cut":"Premium","color":"G","clarity":"VS2","depth":62,"table":58,"price":1607,"x":5.21,"y":5.18,"z":3.22},{"name":7821,"carat":1,"cut":"Fair","color":"G","clarity":"SI1","depth":66.2,"table":58,"price":4295,"x":6.25,"y":6.15,"z":4.11},{"name":21578,"carat":1.51,"cut":"Good","color":"H","clarity":"SI1","depth":61.8,"table":62,"price":9681,"x":7.25,"y":7.29,"z":4.49},{"name":21402,"carat":1.5,"cut":"Very-Good","color":"G","clarity":"SI1","depth":62.2,"table":58,"price":9515,"x":7.21,"y":7.28,"z":4.51},{"name":359,"carat":0.72,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.8,"table":56,"price":2805,"x":5.74,"y":5.7,"z":3.59},{"name":43045,"carat":0.51,"cut":"Ideal","color":"H","clarity":"VS2","depth":61.6,"table":55,"price":1375,"x":5.16,"y":5.19,"z":3.19},{"name":31316,"carat":0.32,"cut":"Premium","color":"D","clarity":"VS2","depth":61.7,"table":58,"price":758,"x":4.34,"y":4.38,"z":2.69},{"name":26487,"carat":2.16,"cut":"Very-Good","color":"I","clarity":"VS2","depth":58.6,"table":60,"price":16080,"x":8.48,"y":8.55,"z":4.99},{"name":37415,"carat":0.38,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.2,"table":56,"price":983,"x":4.64,"y":4.62,"z":2.88},{"name":24653,"carat":1.7,"cut":"Premium","color":"H","clarity":"VS2","depth":61.9,"table":60,"price":12992,"x":7.61,"y":7.57,"z":4.7},{"name":44128,"carat":0.5,"cut":"Premium","color":"E","clarity":"VS2","depth":62.1,"table":62,"price":1559,"x":5.1,"y":5.08,"z":3.16},{"name":53043,"carat":0.73,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.5,"table":55,"price":2605,"x":5.79,"y":5.84,"z":3.57},{"name":28087,"carat":0.3,"cut":"Very-Good","color":"D","clarity":"SI1","depth":63.1,"table":56,"price":662,"x":4.28,"y":4.24,"z":2.69},{"name":8018,"carat":1.04,"cut":"Premium","color":"D","clarity":"SI2","depth":58.2,"table":59,"price":4330,"x":6.67,"y":6.62,"z":3.87},{"name":33934,"carat":0.33,"cut":"Premium","color":"I","clarity":"VS2","depth":62,"table":60,"price":463,"x":4.41,"y":4.46,"z":2.75},{"name":18975,"carat":1.59,"cut":"Premium","color":"J","clarity":"VS2","depth":62.6,"table":59,"price":7811,"x":7.43,"y":7.45,"z":4.66},{"name":41641,"carat":0.4,"cut":"Ideal","color":"H","clarity":"IF","depth":62.7,"table":57,"price":1238,"x":4.7,"y":4.68,"z":2.94},{"name":11851,"carat":0.9,"cut":"Very-Good","color":"G","clarity":"VVS2","depth":59.8,"table":60,"price":5102,"x":6.23,"y":6.28,"z":3.74},{"name":3599,"carat":0.9,"cut":"Good","color":"D","clarity":"SI2","depth":63.5,"table":62,"price":3425,"x":6.09,"y":6.13,"z":3.88},{"name":18389,"carat":0.29,"cut":"Very-Good","color":"E","clarity":"VS1","depth":59.2,"table":58,"price":619,"x":4.36,"y":4.39,"z":2.59},{"name":15110,"carat":1.01,"cut":"Very-Good","color":"F","clarity":"VS2","depth":62.3,"table":59,"price":6073,"x":6.37,"y":6.44,"z":3.99},{"name":7929,"carat":0.93,"cut":"Ideal","color":"H","clarity":"SI1","depth":61.7,"table":55,"price":4317,"x":6.26,"y":6.29,"z":3.87},{"name":522,"carat":0.71,"cut":"Premium","color":"G","clarity":"VS1","depth":62.2,"table":59,"price":2825,"x":5.73,"y":5.66,"z":3.54},{"name":51041,"carat":0.82,"cut":"Premium","color":"E","clarity":"SI2","depth":60,"table":56,"price":2329,"x":6.11,"y":6.08,"z":3.66},{"name":8110,"carat":1.13,"cut":"Very-Good","color":"I","clarity":"VS2","depth":61.6,"table":57,"price":4348,"x":6.73,"y":6.78,"z":4.16},{"name":19815,"carat":1.2,"cut":"Good","color":"E","clarity":"VS2","depth":63.6,"table":57,"price":8380,"x":6.74,"y":6.68,"z":4.27},{"name":574,"carat":0.85,"cut":"Ideal","color":"H","clarity":"SI2","depth":62.5,"table":57,"price":2833,"x":6.02,"y":6.07,"z":3.78},{"name":40660,"carat":0.38,"cut":"Ideal","color":"E","clarity":"VVS1","depth":61.5,"table":56,"price":1154,"x":4.67,"y":4.7,"z":2.88},{"name":12900,"carat":0.9,"cut":"Ideal","color":"E","clarity":"SI1","depth":61.9,"table":54,"price":5373,"x":6.19,"y":6.22,"z":3.84},{"name":22739,"carat":1.01,"cut":"Very-Good","color":"E","clarity":"VVS1","depth":63.1,"table":59,"price":10760,"x":6.34,"y":6.31,"z":3.99},{"name":13187,"carat":1.24,"cut":"Ideal","color":"J","clarity":"VS2","depth":62.8,"table":56,"price":5451,"x":6.83,"y":6.8,"z":4.28},{"name":19103,"carat":1.01,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.1,"table":59,"price":7870,"x":6.46,"y":6.5,"z":3.96},{"name":40688,"carat":0.5,"cut":"Fair","color":"F","clarity":"SI2","depth":61.1,"table":67,"price":1156,"x":5.07,"y":5.04,"z":3.09},{"name":22319,"carat":1.31,"cut":"Ideal","color":"G","clarity":"VS1","depth":62,"table":58,"price":10359,"x":6.97,"y":7.02,"z":4.34},{"name":53810,"carat":0.7,"cut":"Ideal","color":"H","clarity":"VS2","depth":61.4,"table":56,"price":2733,"x":5.72,"y":5.75,"z":3.52},{"name":19096,"carat":1.11,"cut":"Good","color":"D","clarity":"VS2","depth":63.2,"table":57,"price":7863,"x":6.61,"y":6.64,"z":4.18},{"name":8031,"carat":1,"cut":"Premium","color":"F","clarity":"SI2","depth":62.9,"table":56,"price":4333,"x":6.42,"y":6.36,"z":4.02},{"name":36299,"carat":0.34,"cut":"Premium","color":"E","clarity":"SI2","depth":61.7,"table":58,"price":477,"x":4.5,"y":4.54,"z":2.79},{"name":23883,"carat":2,"cut":"Premium","color":"H","clarity":"SI2","depth":62.8,"table":57,"price":11975,"x":8.05,"y":8.01,"z":5.04},{"name":41216,"carat":0.4,"cut":"Ideal","color":"F","clarity":"VVS1","depth":61.5,"table":56,"price":1206,"x":4.77,"y":4.73,"z":2.92},{"name":9608,"carat":1.02,"cut":"Premium","color":"G","clarity":"SI1","depth":62.3,"table":59,"price":4633,"x":6.4,"y":6.44,"z":4},{"name":19038,"carat":0.3,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.6,"table":54,"price":621,"x":4.32,"y":4.35,"z":2.67},{"name":5632,"carat":0.9,"cut":"Very-Good","color":"H","clarity":"VS2","depth":62.8,"table":58,"price":3878,"x":6.13,"y":6.17,"z":3.86},{"name":49156,"carat":0.5,"cut":"Ideal","color":"G","clarity":"VVS1","depth":62.7,"table":57,"price":2070,"x":5.1,"y":5.07,"z":3.19},{"name":5298,"carat":0.71,"cut":"Ideal","color":"D","clarity":"VS1","depth":62.1,"table":57,"price":3801,"x":5.7,"y":5.73,"z":3.55},{"name":2119,"carat":1.02,"cut":"Fair","color":"J","clarity":"SI2","depth":65,"table":59,"price":3119,"x":6.34,"y":6.24,"z":4.08},{"name":51094,"carat":0.71,"cut":"Ideal","color":"F","clarity":"SI1","depth":60.9,"table":56,"price":2335,"x":5.79,"y":5.81,"z":3.53},{"name":47439,"carat":0.7,"cut":"Very-Good","color":"J","clarity":"VS1","depth":59.6,"table":62,"price":1855,"x":5.7,"y":5.77,"z":3.42},{"name":25418,"carat":2.01,"cut":"Very-Good","color":"H","clarity":"SI2","depth":63.2,"table":57,"price":14150,"x":8.02,"y":7.97,"z":5.05},{"name":13123,"carat":1.01,"cut":"Fair","color":"D","clarity":"SI1","depth":64.7,"table":57,"price":5430,"x":6.33,"y":6.25,"z":4.07},{"name":18873,"carat":1.02,"cut":"Very-Good","color":"F","clarity":"VS1","depth":61.3,"table":58,"price":7740,"x":6.46,"y":6.52,"z":3.98},{"name":42092,"carat":0.7,"cut":"Fair","color":"E","clarity":"I1","depth":66.1,"table":58,"price":1273,"x":5.61,"y":5.51,"z":3.67},{"name":50627,"carat":0.3,"cut":"Ideal","color":"E","clarity":"SI2","depth":60.9,"table":59,"price":401,"x":4.29,"y":4.32,"z":2.62},{"name":47097,"carat":0.53,"cut":"Very-Good","color":"D","clarity":"VS2","depth":63.4,"table":55,"price":1825,"x":5.23,"y":5.11,"z":3.28},{"name":10005,"carat":0.91,"cut":"Ideal","color":"E","clarity":"SI1","depth":61,"table":57,"price":4706,"x":6.27,"y":6.32,"z":3.84},{"name":1113,"carat":0.77,"cut":"Very-Good","color":"G","clarity":"SI1","depth":63.6,"table":57,"price":2915,"x":5.79,"y":5.88,"z":3.71},{"name":23701,"carat":0.36,"cut":"Ideal","color":"E","clarity":"SI1","depth":62.1,"table":56,"price":631,"x":4.56,"y":4.59,"z":2.84},{"name":24794,"carat":1.31,"cut":"Ideal","color":"G","clarity":"VVS2","depth":60.3,"table":56,"price":13168,"x":7.09,"y":7.15,"z":4.29},{"name":44441,"carat":0.59,"cut":"Premium","color":"D","clarity":"SI2","depth":62.6,"table":61,"price":1590,"x":5.33,"y":5.27,"z":3.32},{"name":46988,"carat":0.46,"cut":"Ideal","color":"E","clarity":"VVS1","depth":62.6,"table":53,"price":1816,"x":4.93,"y":4.97,"z":3.1},{"name":12448,"carat":1.12,"cut":"Very-Good","color":"D","clarity":"SI2","depth":59.3,"table":59,"price":5243,"x":6.76,"y":6.8,"z":4.02},{"name":19749,"carat":1.5,"cut":"Premium","color":"E","clarity":"SI2","depth":62.7,"table":59,"price":8316,"x":7.3,"y":7.22,"z":4.55},{"name":45142,"carat":0.46,"cut":"Ideal","color":"G","clarity":"IF","depth":62.1,"table":56,"price":1654,"x":4.93,"y":4.96,"z":3.07},{"name":47696,"carat":0.5,"cut":"Ideal","color":"G","clarity":"VVS1","depth":61.9,"table":58,"price":1883,"x":5.06,"y":5.09,"z":3.14},{"name":49860,"carat":0.77,"cut":"Premium","color":"E","clarity":"SI2","depth":62.5,"table":60,"price":2171,"x":5.84,"y":5.8,"z":3.64},{"name":7552,"carat":1.01,"cut":"Very-Good","color":"G","clarity":"SI2","depth":62,"table":58,"price":4249,"x":6.37,"y":6.41,"z":3.96},{"name":17985,"carat":1.07,"cut":"Ideal","color":"G","clarity":"VS2","depth":61.9,"table":55,"price":7275,"x":6.55,"y":6.57,"z":4.06},{"name":16685,"carat":0.31,"cut":"Ideal","color":"H","clarity":"SI2","depth":61.1,"table":56,"price":421,"x":4.4,"y":4.42,"z":2.69},{"name":15057,"carat":0.3,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.4,"table":57,"price":605,"x":4.29,"y":4.34,"z":2.65},{"name":35526,"carat":0.32,"cut":"Ideal","color":"H","clarity":"VVS1","depth":61.3,"table":56,"price":905,"x":4.42,"y":4.45,"z":2.72},{"name":53148,"carat":0.73,"cut":"Very-Good","color":"I","clarity":"VVS1","depth":61.9,"table":57,"price":2623,"x":5.75,"y":5.79,"z":3.57},{"name":31634,"carat":0.3,"cut":"Ideal","color":"H","clarity":"SI1","depth":62,"table":56,"price":450,"x":4.29,"y":4.32,"z":2.67},{"name":44034,"carat":0.42,"cut":"Ideal","color":"D","clarity":"VVS1","depth":61.8,"table":55,"price":1547,"x":4.83,"y":4.85,"z":2.99},{"name":27518,"carat":3.01,"cut":"Good","color":"I","clarity":"SI2","depth":63.9,"table":60,"price":18242,"x":9.06,"y":9.01,"z":5.77},{"name":53135,"carat":0.93,"cut":"Very-Good","color":"D","clarity":"I1","depth":63.4,"table":60,"price":2618,"x":6.18,"y":6.15,"z":3.91},{"name":28628,"carat":0.28,"cut":"Very-Good","color":"E","clarity":"VS1","depth":62.8,"table":60,"price":434,"x":4.16,"y":4.21,"z":2.63},{"name":15574,"carat":1.3,"cut":"Premium","color":"I","clarity":"VS2","depth":62.7,"table":58,"price":6246,"x":6.97,"y":6.9,"z":4.35},{"name":52834,"carat":0.7,"cut":"Premium","color":"F","clarity":"VS2","depth":62,"table":56,"price":2573,"x":5.72,"y":5.67,"z":3.53},{"name":7347,"carat":1.09,"cut":"Ideal","color":"H","clarity":"SI2","depth":61.5,"table":55,"price":4212,"x":6.65,"y":6.68,"z":4.1},{"name":53637,"carat":0.3,"cut":"Ideal","color":"D","clarity":"SI1","depth":61.6,"table":57,"price":552,"x":4.28,"y":4.32,"z":2.65},{"name":32902,"carat":0.36,"cut":"Fair","color":"F","clarity":"VS1","depth":55.3,"table":67,"price":810,"x":4.79,"y":4.72,"z":2.63},{"name":39665,"carat":0.42,"cut":"Premium","color":"G","clarity":"VS2","depth":60.1,"table":61,"price":1087,"x":4.84,"y":4.81,"z":2.9},{"name":47149,"carat":0.53,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.7,"table":57,"price":1832,"x":5.23,"y":5.21,"z":3.22},{"name":46510,"carat":0.57,"cut":"Ideal","color":"I","clarity":"IF","depth":61,"table":55,"price":1779,"x":5.38,"y":5.41,"z":3.29},{"name":2072,"carat":0.9,"cut":"Good","color":"I","clarity":"VS2","depth":62.4,"table":65,"price":3107,"x":6.12,"y":6.09,"z":3.81},{"name":12517,"carat":1.01,"cut":"Very-Good","color":"H","clarity":"VS2","depth":63.1,"table":59,"price":5260,"x":6.34,"y":6.3,"z":3.99},{"name":15094,"carat":1.01,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.4,"table":56,"price":6066,"x":6.37,"y":6.42,"z":3.99},{"name":24659,"carat":1.5,"cut":"Very-Good","color":"F","clarity":"VS2","depth":61.9,"table":60,"price":13001,"x":7.29,"y":7.32,"z":4.52},{"name":6714,"carat":0.3,"cut":"Very-Good","color":"G","clarity":"SI1","depth":60.1,"table":58,"price":413,"x":4.31,"y":4.34,"z":2.6},{"name":33485,"carat":0.32,"cut":"Premium","color":"F","clarity":"VS2","depth":61.4,"table":60,"price":828,"x":4.42,"y":4.38,"z":2.7},{"name":48763,"carat":0.6,"cut":"Premium","color":"E","clarity":"SI1","depth":59.6,"table":59,"price":2016,"x":5.52,"y":5.48,"z":3.28},{"name":4583,"carat":1,"cut":"Good","color":"G","clarity":"SI2","depth":57.8,"table":64,"price":3651,"x":6.55,"y":6.5,"z":3.77},{"name":26154,"carat":2.18,"cut":"Premium","color":"J","clarity":"VS2","depth":60.1,"table":58,"price":15465,"x":8.46,"y":8.41,"z":5.07},{"name":8085,"carat":1.01,"cut":"Premium","color":"D","clarity":"SI2","depth":62.6,"table":60,"price":4338,"x":6.4,"y":6.37,"z":4},{"name":51826,"carat":0.64,"cut":"Ideal","color":"H","clarity":"IF","depth":60.5,"table":57,"price":2420,"x":5.58,"y":5.62,"z":3.39},{"name":1117,"carat":0.93,"cut":"Ideal","color":"I","clarity":"SI1","depth":62,"table":57,"price":2917,"x":6.22,"y":6.26,"z":3.87},{"name":52893,"carat":0.73,"cut":"Very-Good","color":"G","clarity":"SI1","depth":60.6,"table":59,"price":2585,"x":5.83,"y":5.85,"z":3.54},{"name":19444,"carat":1.06,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.7,"table":57,"price":8093,"x":6.52,"y":6.57,"z":4.04},{"name":49022,"carat":0.5,"cut":"Good","color":"F","clarity":"VVS2","depth":58.5,"table":62,"price":2052,"x":5.23,"y":5.27,"z":3.07},{"name":4410,"carat":0.31,"cut":"Ideal","color":"D","clarity":"SI1","depth":61.5,"table":56,"price":571,"x":4.33,"y":4.35,"z":2.67},{"name":11949,"carat":1.01,"cut":"Very-Good","color":"E","clarity":"SI1","depth":58.2,"table":59,"price":5132,"x":6.54,"y":6.59,"z":3.82},{"name":35367,"carat":0.38,"cut":"Premium","color":"H","clarity":"VS2","depth":63,"table":56,"price":898,"x":4.61,"y":4.57,"z":2.89},{"name":44863,"carat":0.51,"cut":"Very-Good","color":"H","clarity":"VS1","depth":62.3,"table":56,"price":1628,"x":5.1,"y":5.13,"z":3.18},{"name":9286,"carat":0.91,"cut":"Good","color":"H","clarity":"VS1","depth":57.8,"table":61,"price":4566,"x":6.4,"y":6.36,"z":3.69},{"name":17140,"carat":1.24,"cut":"Premium","color":"D","clarity":"SI2","depth":61.4,"table":59,"price":6840,"x":6.87,"y":6.91,"z":4.23},{"name":12365,"carat":0.26,"cut":"Very-Good","color":"D","clarity":"VVS2","depth":60.4,"table":59,"price":597,"x":4.15,"y":4.19,"z":2.52},{"name":4309,"carat":1.05,"cut":"Premium","color":"J","clarity":"VS2","depth":59.4,"table":62,"price":3593,"x":6.66,"y":6.58,"z":3.93},{"name":43274,"carat":0.3,"cut":"Very-Good","color":"I","clarity":"SI1","depth":63.3,"table":59,"price":506,"x":4.3,"y":4.23,"z":2.7},{"name":37781,"carat":0.39,"cut":"Very-Good","color":"F","clarity":"VS1","depth":57.1,"table":61,"price":1000,"x":4.86,"y":4.91,"z":2.79},{"name":11263,"carat":0.91,"cut":"Premium","color":"E","clarity":"VS1","depth":62.8,"table":60,"price":4969,"x":6.11,"y":6.08,"z":3.83},{"name":4558,"carat":0.9,"cut":"Good","color":"I","clarity":"VS1","depth":63.3,"table":59,"price":3644,"x":6.06,"y":6.1,"z":3.85},{"name":5082,"carat":0.9,"cut":"Fair","color":"D","clarity":"SI1","depth":65.7,"table":65,"price":3751,"x":6.06,"y":5.94,"z":3.94},{"name":47326,"carat":0.23,"cut":"Very-Good","color":"D","clarity":"VVS2","depth":62.6,"table":58,"price":530,"x":3.89,"y":3.94,"z":2.45},{"name":6256,"carat":0.92,"cut":"Very-Good","color":"E","clarity":"SI2","depth":62.1,"table":58,"price":4011,"x":6.18,"y":6.22,"z":3.85},{"name":42144,"carat":0.5,"cut":"Very-Good","color":"E","clarity":"SI1","depth":60.7,"table":59,"price":1281,"x":5.09,"y":5.13,"z":3.1},{"name":418,"carat":0.36,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.9,"table":56,"price":556,"x":4.54,"y":4.57,"z":2.82},{"name":14065,"carat":0.3,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.8,"table":57,"price":605,"x":4.31,"y":4.33,"z":2.67},{"name":24984,"carat":2.07,"cut":"Very-Good","color":"J","clarity":"VS2","depth":61.3,"table":56,"price":13495,"x":8.16,"y":8.2,"z":5.02},{"name":14917,"carat":1.23,"cut":"Ideal","color":"G","clarity":"SI2","depth":58.8,"table":60,"price":6005,"x":7.01,"y":7.08,"z":4.14},{"name":21186,"carat":1.5,"cut":"Good","color":"H","clarity":"SI1","depth":60.8,"table":60,"price":9336,"x":7.28,"y":7.38,"z":4.46},{"name":50869,"carat":0.71,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.1,"table":57,"price":2313,"x":5.68,"y":5.73,"z":3.54},{"name":48614,"carat":0.51,"cut":"Ideal","color":"F","clarity":"VVS2","depth":61.7,"table":56,"price":1998,"x":5.12,"y":5.15,"z":3.17},{"name":19810,"carat":1,"cut":"Good","color":"D","clarity":"VVS2","depth":60.2,"table":62,"price":8374,"x":6.42,"y":6.46,"z":3.88},{"name":53178,"carat":0.71,"cut":"Premium","color":"E","clarity":"VS2","depth":61.3,"table":59,"price":2630,"x":5.7,"y":5.76,"z":3.51},{"name":3942,"carat":0.7,"cut":"Premium","color":"D","clarity":"VS1","depth":61,"table":59,"price":3501,"x":5.79,"y":5.72,"z":3.51},{"name":33350,"carat":0.41,"cut":"Ideal","color":"G","clarity":"VS2","depth":62.4,"table":55,"price":827,"x":4.73,"y":4.76,"z":2.96},{"name":16355,"carat":0.3,"cut":"Premium","color":"H","clarity":"VS2","depth":62.7,"table":59,"price":608,"x":4.27,"y":4.22,"z":2.66},{"name":48815,"carat":0.56,"cut":"Ideal","color":"D","clarity":"VS1","depth":61.7,"table":56,"price":2026,"x":5.33,"y":5.3,"z":3.28},{"name":36379,"carat":0.34,"cut":"Ideal","color":"F","clarity":"IF","depth":62.2,"table":55,"price":941,"x":4.47,"y":4.5,"z":2.79},{"name":23233,"carat":1.52,"cut":"Good","color":"G","clarity":"VS2","depth":63.3,"table":57,"price":11235,"x":7.27,"y":7.32,"z":4.62},{"name":16735,"carat":0.41,"cut":"Premium","color":"J","clarity":"VS2","depth":61.9,"table":59,"price":611,"x":4.69,"y":4.74,"z":2.92},{"name":3305,"carat":0.8,"cut":"Very-Good","color":"F","clarity":"VS2","depth":63.2,"table":55,"price":3369,"x":5.9,"y":5.88,"z":3.72},{"name":32639,"carat":0.32,"cut":"Ideal","color":"G","clarity":"SI2","depth":61.6,"table":56,"price":459,"x":4.4,"y":4.43,"z":2.72},{"name":16684,"carat":0.31,"cut":"Ideal","color":"I","clarity":"VS2","depth":61.2,"table":55,"price":421,"x":4.36,"y":4.4,"z":2.68},{"name":3527,"carat":0.9,"cut":"Very-Good","color":"I","clarity":"SI1","depth":61.8,"table":56,"price":3407,"x":6.19,"y":6.24,"z":3.84},{"name":19343,"carat":1.06,"cut":"Premium","color":"E","clarity":"VS1","depth":63,"table":58,"price":8044,"x":6.49,"y":6.46,"z":4.08},{"name":26878,"carat":1.4,"cut":"Ideal","color":"F","clarity":"VVS1","depth":61.9,"table":57,"price":16808,"x":7.2,"y":7.14,"z":4.44},{"name":8751,"carat":1.09,"cut":"Ideal","color":"J","clarity":"SI1","depth":62.7,"table":57,"price":4465,"x":6.53,"y":6.59,"z":4.11},{"name":8286,"carat":1,"cut":"Very-Good","color":"F","clarity":"SI2","depth":62.2,"table":55,"price":4383,"x":6.39,"y":6.44,"z":3.99},{"name":51952,"carat":0.56,"cut":"Very-Good","color":"E","clarity":"VVS2","depth":60.5,"table":57,"price":2442,"x":5.32,"y":5.36,"z":3.23},{"name":34442,"carat":0.31,"cut":"Ideal","color":"E","clarity":"VVS2","depth":60.9,"table":55,"price":864,"x":4.42,"y":4.45,"z":2.7},{"name":7014,"carat":0.9,"cut":"Premium","color":"F","clarity":"SI1","depth":61.2,"table":59,"price":4158,"x":6.19,"y":6.16,"z":3.78},{"name":13269,"carat":1,"cut":"Good","color":"G","clarity":"VS2","depth":63.7,"table":57,"price":5484,"x":6.32,"y":6.28,"z":4.01},{"name":49554,"carat":0.77,"cut":"Premium","color":"G","clarity":"SI2","depth":61.3,"table":58,"price":2129,"x":5.94,"y":5.88,"z":3.62},{"name":52752,"carat":0.7,"cut":"Fair","color":"D","clarity":"VS2","depth":65.2,"table":59,"price":2560,"x":5.58,"y":5.55,"z":3.63},{"name":12404,"carat":1.01,"cut":"Good","color":"E","clarity":"SI1","depth":57.9,"table":57,"price":5233,"x":6.6,"y":6.67,"z":3.84},{"name":35073,"carat":0.38,"cut":"Very-Good","color":"G","clarity":"VS1","depth":57.1,"table":63,"price":886,"x":4.77,"y":4.86,"z":2.75},{"name":37003,"carat":0.55,"cut":"Very-Good","color":"J","clarity":"SI1","depth":62.5,"table":57,"price":965,"x":5.22,"y":5.24,"z":3.27},{"name":31874,"carat":0.3,"cut":"Very-Good","color":"H","clarity":"VVS2","depth":63.1,"table":60,"price":776,"x":4.28,"y":4.24,"z":2.69},{"name":51509,"carat":0.55,"cut":"Ideal","color":"G","clarity":"IF","depth":61.1,"table":57,"price":2383,"x":5.26,"y":5.31,"z":3.23},{"name":24459,"carat":2.14,"cut":"Ideal","color":"H","clarity":"SI2","depth":63,"table":55,"price":12720,"x":8.25,"y":8.23,"z":5.19},{"name":14906,"carat":1.01,"cut":"Premium","color":"G","clarity":"VS2","depth":62.4,"table":58,"price":5999,"x":6.38,"y":6.41,"z":3.99},{"name":39677,"carat":0.41,"cut":"Ideal","color":"E","clarity":"VS2","depth":62.2,"table":56,"price":1087,"x":4.8,"y":4.75,"z":2.97},{"name":31151,"carat":0.41,"cut":"Ideal","color":"F","clarity":"SI1","depth":62.7,"table":57,"price":755,"x":4.7,"y":4.74,"z":2.96},{"name":40816,"carat":0.32,"cut":"Ideal","color":"E","clarity":"IF","depth":62.6,"table":55,"price":1170,"x":4.41,"y":4.38,"z":2.75},{"name":8358,"carat":1.02,"cut":"Ideal","color":"H","clarity":"SI2","depth":60.7,"table":57,"price":4398,"x":6.54,"y":6.51,"z":3.96},{"name":13997,"carat":1.19,"cut":"Very-Good","color":"H","clarity":"SI1","depth":63.3,"table":55,"price":5698,"x":6.76,"y":6.69,"z":4.26},{"name":37791,"carat":0.38,"cut":"Premium","color":"E","clarity":"VS1","depth":60.2,"table":58,"price":1000,"x":4.66,"y":4.71,"z":2.82},{"name":29983,"carat":0.43,"cut":"Ideal","color":"I","clarity":"VS2","depth":62,"table":55,"price":716,"x":4.84,"y":4.87,"z":3.01},{"name":8025,"carat":1.04,"cut":"Very-Good","color":"H","clarity":"SI2","depth":60.2,"table":60,"price":4332,"x":6.52,"y":6.57,"z":3.94},{"name":19245,"carat":1,"cut":"Ideal","color":"G","clarity":"VVS2","depth":62.8,"table":57,"price":7979,"x":6.37,"y":6.43,"z":4.02},{"name":7650,"carat":0.9,"cut":"Very-Good","color":"G","clarity":"VS2","depth":61.9,"table":56,"price":4269,"x":6.17,"y":6.23,"z":3.84},{"name":7293,"carat":0.91,"cut":"Premium","color":"H","clarity":"VS2","depth":61.9,"table":59,"price":4201,"x":6.18,"y":6.23,"z":3.84},{"name":38677,"carat":0.3,"cut":"Ideal","color":"D","clarity":"VVS2","depth":61.4,"table":55,"price":1041,"x":4.34,"y":4.36,"z":2.67},{"name":7857,"carat":0.9,"cut":"Premium","color":"D","clarity":"SI1","depth":62.7,"table":58,"price":4304,"x":6.15,"y":6.09,"z":3.84},{"name":26152,"carat":1.59,"cut":"Premium","color":"F","clarity":"VS2","depth":60.2,"table":60,"price":15461,"x":7.59,"y":7.62,"z":4.58},{"name":33184,"carat":0.41,"cut":"Very-Good","color":"D","clarity":"SI2","depth":63.1,"table":54,"price":818,"x":4.75,"y":4.72,"z":2.99},{"name":50219,"carat":0.7,"cut":"Premium","color":"F","clarity":"SI1","depth":61.9,"table":58,"price":2230,"x":5.69,"y":5.74,"z":3.54},{"name":953,"carat":0.74,"cut":"Ideal","color":"F","clarity":"SI1","depth":61.2,"table":56,"price":2889,"x":5.83,"y":5.87,"z":3.58},{"name":36020,"carat":0.39,"cut":"Premium","color":"J","clarity":"VVS1","depth":62.8,"table":58,"price":921,"x":4.66,"y":4.61,"z":2.91},{"name":22495,"carat":2,"cut":"Premium","color":"I","clarity":"SI2","depth":62.3,"table":57,"price":10528,"x":8.12,"y":8.05,"z":5.03},{"name":49933,"carat":0.7,"cut":"Premium","color":"H","clarity":"VS2","depth":62.2,"table":58,"price":2184,"x":5.74,"y":5.68,"z":3.55},{"name":45578,"carat":0.52,"cut":"Very-Good","color":"G","clarity":"VS1","depth":61.7,"table":56,"price":1689,"x":5.17,"y":5.21,"z":3.2},{"name":36476,"carat":0.43,"cut":"Ideal","color":"G","clarity":"VS1","depth":61.3,"table":57,"price":943,"x":4.85,"y":4.88,"z":2.98},{"name":46118,"carat":0.56,"cut":"Premium","color":"I","clarity":"VVS1","depth":60.6,"table":59,"price":1743,"x":5.33,"y":5.29,"z":3.22},{"name":18425,"carat":1,"cut":"Good","color":"G","clarity":"VVS2","depth":60.9,"table":56,"price":7492,"x":6.49,"y":6.52,"z":3.96},{"name":20052,"carat":0.31,"cut":"Very-Good","color":"G","clarity":"VS1","depth":62.9,"table":58,"price":625,"x":4.3,"y":4.35,"z":2.72},{"name":23070,"carat":1.18,"cut":"Ideal","color":"E","clarity":"VS1","depth":61.4,"table":57,"price":11104,"x":6.77,"y":6.81,"z":4.17},{"name":5621,"carat":0.9,"cut":"Fair","color":"E","clarity":"VS2","depth":65.2,"table":61,"price":3875,"x":6.01,"y":5.98,"z":3.91},{"name":23086,"carat":1.22,"cut":"Ideal","color":"G","clarity":"IF","depth":61.7,"table":56,"price":11111,"x":6.87,"y":6.91,"z":4.25},{"name":32452,"carat":0.39,"cut":"Very-Good","color":"E","clarity":"VS2","depth":60.9,"table":58,"price":793,"x":4.72,"y":4.77,"z":2.89},{"name":51242,"carat":0.71,"cut":"Very-Good","color":"H","clarity":"SI1","depth":62.1,"table":61,"price":2354,"x":5.63,"y":5.71,"z":3.52},{"name":29987,"carat":0.32,"cut":"Ideal","color":"F","clarity":"VS1","depth":61.9,"table":57,"price":716,"x":4.38,"y":4.41,"z":2.72},{"name":33731,"carat":0.35,"cut":"Ideal","color":"H","clarity":"VVS1","depth":60.5,"table":57,"price":839,"x":4.58,"y":4.59,"z":2.77},{"name":26961,"carat":1.54,"cut":"Ideal","color":"F","clarity":"VS2","depth":61,"table":56,"price":17029,"x":7.44,"y":7.49,"z":4.55},{"name":18070,"carat":1.03,"cut":"Ideal","color":"F","clarity":"VS1","depth":60.7,"table":56,"price":7296,"x":6.54,"y":6.6,"z":3.99},{"name":26610,"carat":2.1,"cut":"Premium","color":"F","clarity":"SI2","depth":62.1,"table":59,"price":16357,"x":8.16,"y":8.18,"z":5.07},{"name":6364,"carat":0.32,"cut":"Ideal","color":"I","clarity":"VS2","depth":63,"table":55,"price":576,"x":4.39,"y":4.34,"z":2.75},{"name":25341,"carat":2,"cut":"Good","color":"H","clarity":"VS2","depth":57.3,"table":59,"price":14042,"x":8.27,"y":8.24,"z":4.73},{"name":51779,"carat":0.61,"cut":"Very-Good","color":"G","clarity":"IF","depth":63,"table":58,"price":2411,"x":5.36,"y":5.43,"z":3.4},{"name":16733,"carat":0.4,"cut":"Very-Good","color":"E","clarity":"SI2","depth":61.6,"table":55,"price":611,"x":4.75,"y":4.83,"z":2.95},{"name":35767,"carat":0.4,"cut":"Premium","color":"E","clarity":"VS2","depth":60.7,"table":60,"price":912,"x":4.7,"y":4.75,"z":2.87},{"name":50150,"carat":0.71,"cut":"Good","color":"E","clarity":"SI2","depth":57.8,"table":60,"price":2215,"x":5.86,"y":5.83,"z":3.38},{"name":31875,"carat":0.3,"cut":"Good","color":"H","clarity":"VVS2","depth":63.6,"table":55,"price":776,"x":4.28,"y":4.24,"z":2.71},{"name":45135,"carat":0.56,"cut":"Premium","color":"H","clarity":"VS1","depth":59.8,"table":62,"price":1653,"x":5.36,"y":5.31,"z":3.19},{"name":6666,"carat":1.11,"cut":"Premium","color":"G","clarity":"SI1","depth":60.9,"table":59,"price":4096,"x":6.69,"y":6.64,"z":4.07},{"name":16061,"carat":1.01,"cut":"Premium","color":"F","clarity":"VS2","depth":59.2,"table":60,"price":6416,"x":6.51,"y":6.54,"z":3.86},{"name":31800,"carat":0.42,"cut":"Ideal","color":"I","clarity":"VS1","depth":62,"table":55,"price":773,"x":4.83,"y":4.85,"z":3},{"name":43689,"carat":0.5,"cut":"Good","color":"D","clarity":"SI1","depth":62.9,"table":59,"price":1436,"x":4.94,"y":5.01,"z":3.13},{"name":4105,"carat":1,"cut":"Good","color":"J","clarity":"SI2","depth":57.8,"table":61,"price":3536,"x":6.54,"y":6.58,"z":3.79},{"name":51131,"carat":0.58,"cut":"Ideal","color":"F","clarity":"VVS2","depth":62,"table":55,"price":2340,"x":5.32,"y":5.4,"z":3.31},{"name":8914,"carat":1.05,"cut":"Ideal","color":"I","clarity":"SI1","depth":61,"table":57,"price":4494,"x":6.55,"y":6.62,"z":4.02},{"name":40374,"carat":0.43,"cut":"Premium","color":"E","clarity":"VS1","depth":62.3,"table":58,"price":1131,"x":4.78,"y":4.82,"z":2.99},{"name":22527,"carat":1.01,"cut":"Good","color":"E","clarity":"VVS1","depth":63.1,"table":59,"price":10567,"x":6.31,"y":6.34,"z":3.99},{"name":51692,"carat":0.7,"cut":"Fair","color":"F","clarity":"VS1","depth":55.9,"table":62,"price":2399,"x":5.94,"y":5.83,"z":3.29},{"name":35824,"carat":0.31,"cut":"Ideal","color":"F","clarity":"IF","depth":62.2,"table":54,"price":914,"x":4.37,"y":4.41,"z":2.73},{"name":10987,"carat":1.01,"cut":"Very-Good","color":"E","clarity":"SI1","depth":62.6,"table":57,"price":4912,"x":6.36,"y":6.41,"z":4},{"name":52052,"carat":0.72,"cut":"Good","color":"I","clarity":"VS1","depth":61.3,"table":63,"price":2451,"x":5.67,"y":5.75,"z":3.5},{"name":22500,"carat":1.28,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.1,"table":56,"price":10537,"x":6.97,"y":6.94,"z":4.32},{"name":31124,"carat":0.43,"cut":"Very-Good","color":"G","clarity":"SI1","depth":60.4,"table":58,"price":754,"x":4.87,"y":4.9,"z":2.95},{"name":48333,"carat":0.62,"cut":"Ideal","color":"D","clarity":"SI1","depth":62.2,"table":55,"price":1959,"x":5.45,"y":5.51,"z":3.41},{"name":29226,"carat":0.31,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.7,"table":57,"price":695,"x":4.34,"y":4.31,"z":2.71},{"name":33982,"carat":0.41,"cut":"Good","color":"G","clarity":"VS1","depth":63.3,"table":62,"price":847,"x":4.67,"y":4.71,"z":2.97},{"name":1025,"carat":0.72,"cut":"Premium","color":"D","clarity":"SI1","depth":61.4,"table":59,"price":2903,"x":5.79,"y":5.71,"z":3.53},{"name":17902,"carat":1.01,"cut":"Ideal","color":"F","clarity":"VS2","depth":61.6,"table":56,"price":7229,"x":6.48,"y":6.45,"z":3.98},{"name":43848,"carat":0.52,"cut":"Premium","color":"G","clarity":"VS2","depth":60.9,"table":58,"price":1447,"x":5.19,"y":5.22,"z":3.17},{"name":42493,"carat":0.52,"cut":"Very-Good","color":"H","clarity":"VS1","depth":59.6,"table":57,"price":1320,"x":5.25,"y":5.34,"z":3.15},{"name":4932,"carat":0.9,"cut":"Good","color":"H","clarity":"SI1","depth":61.4,"table":60,"price":3730,"x":6.06,"y":6.12,"z":3.74},{"name":9558,"carat":1.1,"cut":"Ideal","color":"H","clarity":"SI2","depth":62.6,"table":56,"price":4620,"x":6.65,"y":6.57,"z":4.14},{"name":30468,"carat":0.31,"cut":"Very-Good","color":"D","clarity":"SI1","depth":63.1,"table":57,"price":732,"x":4.32,"y":4.3,"z":2.72},{"name":16197,"carat":1.2,"cut":"Ideal","color":"H","clarity":"SI1","depth":62.2,"table":56,"price":6471,"x":6.8,"y":6.77,"z":4.23},{"name":27606,"carat":2.09,"cut":"Good","color":"F","clarity":"SI2","depth":63.4,"table":55,"price":18472,"x":8.11,"y":8.18,"z":5.16},{"name":32054,"carat":0.35,"cut":"Ideal","color":"D","clarity":"SI1","depth":61.1,"table":56,"price":780,"x":4.55,"y":4.59,"z":2.79},{"name":21823,"carat":1.51,"cut":"Premium","color":"D","clarity":"SI2","depth":63,"table":62,"price":9894,"x":7.28,"y":7.23,"z":4.57},{"name":5928,"carat":0.92,"cut":"Ideal","color":"E","clarity":"SI2","depth":62.1,"table":53,"price":3941,"x":6.25,"y":6.22,"z":3.87},{"name":746,"carat":0.33,"cut":"Premium","color":"J","clarity":"VS1","depth":61.5,"table":61,"price":557,"x":4.46,"y":4.39,"z":2.72},{"name":28751,"carat":0.31,"cut":"Premium","color":"E","clarity":"VS2","depth":60.3,"table":58,"price":680,"x":4.37,"y":4.42,"z":2.65},{"name":49323,"carat":0.72,"cut":"Very-Good","color":"J","clarity":"VVS1","depth":61.4,"table":61,"price":2093,"x":5.7,"y":5.77,"z":3.52},{"name":15282,"carat":1.04,"cut":"Ideal","color":"H","clarity":"VS2","depth":62.2,"table":57,"price":6133,"x":6.46,"y":6.49,"z":4.03},{"name":13423,"carat":0.9,"cut":"Very-Good","color":"D","clarity":"VS1","depth":63.4,"table":58,"price":5511,"x":6.15,"y":6.09,"z":3.88},{"name":42237,"carat":0.64,"cut":"Very-Good","color":"H","clarity":"SI2","depth":64.2,"table":58,"price":1292,"x":5.43,"y":5.48,"z":3.5},{"name":32596,"carat":0.3,"cut":"Ideal","color":"F","clarity":"VVS1","depth":61.2,"table":55,"price":802,"x":4.33,"y":4.36,"z":2.66},{"name":1348,"carat":0.71,"cut":"Ideal","color":"G","clarity":"VS1","depth":62.2,"table":56,"price":2962,"x":5.69,"y":5.72,"z":3.55},{"name":16066,"carat":1.01,"cut":"Ideal","color":"F","clarity":"VS2","depth":62,"table":56,"price":6416,"x":6.46,"y":6.51,"z":4.02},{"name":7871,"carat":0.9,"cut":"Good","color":"G","clarity":"VS2","depth":63.7,"table":60,"price":4309,"x":6.02,"y":5.98,"z":3.82},{"name":34729,"carat":0.34,"cut":"Ideal","color":"E","clarity":"VS1","depth":60.3,"table":57,"price":875,"x":4.52,"y":4.54,"z":2.73},{"name":45616,"carat":0.5,"cut":"Very-Good","color":"F","clarity":"VS1","depth":62,"table":58,"price":1692,"x":5.08,"y":5.11,"z":3.16},{"name":6640,"carat":0.85,"cut":"Ideal","color":"E","clarity":"SI1","depth":63,"table":56,"price":4089,"x":6,"y":6.04,"z":3.79}]
-
-const dataMapping = [
-  {
-    dataKey: 'carat',
-    mark: 'column',
-  }, {
-    dataKey: 'price',
-    mark: 'row',
-  }, {
-    dataKey: 'cut',
-    mark: 'color',
-  }
-];
-
-const scale = [{
-  dataKey: 'carat',
-  sync: true
-}, {
-  dataKey: 'price',
-  sync: true,
-  tickCount: 3
-}, {
-  dataKey: 'cut',
-  sync: true,
-}];
+const allData = __webpack_require__(227);
+const { chartData } = allData;
 
 const config = {
   data: chartData,
+  tooltip: true,
   dataMapping: [{
     dataKey: 'carat',
     mark: 'column',
@@ -13030,9 +12072,9 @@ const config = {
     }
   },
   chart: {
-    container: 'example1',
+    container: 'mount',
     forceFit: true,
-    height: 400,
+    height: 600,
   },
 };
 /* harmony export (immutable) */ __webpack_exports__["config"] = config;
@@ -13040,819 +12082,47 @@ const config = {
 
 
 /***/ }),
-/* 229 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+/***/ 227:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = [
-  { value: 100, name: '展现'},
-  { value: 80, name: '点击'},
-  { value: 60, name: '访问'},
-  { value: 40, name: '咨询'},
-  { value: 20, name: '订单'}
-];
 
-const dataMapping = [
-  {
-    dataKey: 'name',
-    mark: ['color', 'column'],
-  },
-  {
-    dataKey: 'value',
-    mark: 'row',
-  },
-];
-
-const config = {
-  data,
-  dataMapping,
-  coord: {
-    type: 'rect',
-    direction: 'LT',
-  },
-  legend: true,
-  tooltip: {
-    title: 'hahah',
-    crossHairs: {
-      show: false,
-    },
-  },
-  series: [{
-    position: ['name', 'value'],
-    quickType: 'funnel',
-  }],
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 400,
-  },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
-
-/***/ }),
-/* 230 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = [
-  { country: 'Europe', year: '1750', value: 163 },
-  { country: 'Europe', year: '1800', value: 203 },
-  { country: 'Europe', year: '1850', value: 276 },
-  { country: 'Europe', year: '1900', value: 408 },
-  { country: 'Europe', year: '1950', value: 547 },
-  { country: 'Europe', year: '1999', value: 729 },
-  { country: 'Europe', year: '2050', value: 628 },
-  { country: 'Europe', year: '2100', value: 828 },
-  { country: 'Asia', year: '1750', value: 502 },
-  { country: 'Asia', year: '1800', value: 635 },
-  { country: 'Asia', year: '1850', value: 809 },
-  { country: 'Asia', year: '1900', value: 947 },
-  { country: 'Asia', year: '1950', value: 1402 },
-  { country: 'Asia', year: '1999', value: 3634 },
-  { country: 'Asia', year: '2050', value: 5268 },
-  { country: 'Asia', year: '2100', value: 7268 }
-];
-const dataPre = {
-  transform: {
-    type: 'percent',
-    field: 'value',
-    dimension: 'country',
-    groupBy: ['year'],
-    as: 'percent'
-  }
-};
-const dataMapping = [{
-  dataKey: 'year',
-  mark: 'column',
-}, {
-  dataKey: 'percent',
-  mark: 'row',
-}, {
-  dataKey: 'country',
-  mark: 'color',
-}];
-
-const scale = [{
-  dataKey: 'percent',
-  min: 0,
-  formatter: '.2%',
-}];
-
-const config = {
-  data,
-  dataPre,
-  dataMapping,
-  scale,
-  axis: true,
-  tooltip: true,
-  series: [{
-    quickType: 'line',
-    style: {
-      stroke: 'red',
-      lineWidth: 1
-    }
-  }],
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 400,
-  },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
-
-/***/ }),
-/* 231 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = [
-  { area: '亚太地区', profit: 7860 * 0.189 },
-  { area: '非洲及中东', profit: 7860 * 0.042 },
-  { area: '拉丁美洲', profit: 7860 * 0.025 },
-  { area: '中欧和东欧', profit: 7860 * 0.018 },
-  { area: '西欧', profit: 7860 * 0.462 },
-  { area: '北美', profit: 7860 * 0.265 },
-];
-const dataMapping = [
-  {
-    dataKey: 'area',
-    mark: ['column', 'color'],
-  }, {
-    dataKey: 'profit',
-    mark: 'row',
-  }
-];
-
-const config = {
-  data,
-  dataMapping,
-  coord: {
-    // type: 'theta',
-    radius: 1, // 外半径
-    innerRadius: 0.6, // 内半径
-  },
-  legend: true,
-  tooltip: {
-    title: 'hahah',
-    offset: 0,
-    crossHairs: {
-      show: false,
-    },
-  },
-  series: [{
-    position: 'profit',
-    quickType: 'pie',
-    label: true,
-  }],
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 400,
-  },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
-
-
-/***/ }),
-/* 232 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = [
-  { item: 'Design', a: 70, b: 30 },
-  { item: 'Development', a: 60, b: 70 },
-  { item: 'Marketing', a: 50, b: 60 },
-  { item: 'Users', a: 40, b: 50 },
-  { item: 'Test', a: 60, b: 70 },
-  { item: 'Language', a: 70, b: 50 },
-  { item: 'Technology', a: 50, b: 40 },
-  { item: 'Support', a: 30, b: 40 },
-  { item: 'Sales', a: 60, b: 40 },
-  { item: 'UX', a: 50, b: 60 }
-];
-
-const dataPre = {
-  transform: [{
-    type: 'fold',
-    fields: [ 'a', 'b' ],
-    key: 'user',
-    value: 'score',
-  }]
-};
-
-const dataMapping = [
-  {
-    dataKey: 'item',
-    mark: 'column',
-  }, {
-    dataKey: 'user',
-    mark: 'color',
-  }, {
-    dataKey: 'score',
-    mark: 'row',
-  }
-];
-
-const scale = [{
-  dataKey: 'score',
-  min: 0,
-}];
-
-
-const config = {
-  data,
-  dataPre,
-  dataMapping,
-  scale,
-  tooltip: true,
-  legend: {
-    dataKey: 'user',
-    marker: 'circle',
-    offset: 30,
-  },
-  series: [{
-    position: ['item', 'score'],
-    gemo: 'line',
-    size: 2,
-  }, {
-    position: ['item', 'score'],
-    gemo: 'line',
-    size: 2,
-  }, {
-    position: ['item', 'score'],
-    gemo: 'point',
-    shape: 'circle',
-    style: {
-      // stroke: '#fff',
-      lineWidth: 1,
-      fillOpacity: 1,
-    },
-  }],
-  axis: [{
-    dataKey: 'item',
-    show: true,
-    line: null,
-    tickLine: null,
-    grid: {
-      lineStyle: {
-        lineDash: null
-      },
-      hideFirstLine: false
-    },
-  }, {
-    dataKey: 'score',
-    show: true,
-    tickLine: null,
-    grid: {
-      type: 'polygon',
-      lineStyle: {
-        lineDash: null
-      },
-      alternateColor: 'rgba(0, 0, 0, 0.04)',
-    },
-  }],
-  coord: {
-    type: 'polar'
-  },
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 400,
-  },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
-
-
-/***/ }),
-/* 233 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = [
-  { city: '上海', pv: 0.1 },
-  { city: '浙江', pv: 0.8 },
-  { city: '江苏', pv: 0.4 },
-  { city: '江西', pv: 0.5 },
-];
-
-const dataPre = {
-  transform: [
-    { type: 'sort-by', field: 'pv' }
-  ],
-};
-
-const dataMapping = [
-  {
-    dataKey: 'city',
-    mark: 'column',
-  }, {
-    dataKey: 'pv',
-    mark: 'row',
-  }
-];
-
-const config = {
-  data,
-  dataPre,
-  dataMapping,
-  coord: {
-    type: 'polar',
-    direction: 'rotate',
-    startAngle: -90,
-    endAngle: 180,
-  },
-  series: [{
-    position: ['city', 'pv'],
-    quickType: 'bar',
-    color: 'blue',
-    style: {
-      background: '#ddd',
-    }
-  }],
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 400,
-  },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
-
-/***/ }),
-/* 234 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = [
-  { area: '亚太地区', profit: 7860 * 0.189 },
-  { area: '非洲及中东', profit: 7860 * 0.42 },
-  { area: '拉丁美洲', profit: 7860 * 0.25 },
-  { area: '中欧和东欧', profit: 7860 * 0.18 },
-  { area: '西欧', profit: 7860 * 0.462 },
-  { area: '北美', profit: 7860 * 0.265 },
-];
-
-const dataPre= {
-  transform: [
-    { type: 'sort-by', field: 'profit' }
-  ],
-};
-
-const dataMapping = [
-  {
-    dataKey: 'area',
-    mark: ['column', 'color'],
-    scale: {},
-  }, {
-    dataKey: 'profit',
-    mark: 'row',
-    scale: {},
-  }
-];
-
-
-const config = {
-  data,
-  dataMapping,
-  dataPre,
-  coord: {
-    type: 'polar',
-    radius: 0.8,
-  },
-  tooltip: {
-    offset: 0,
-    crossHairs: {
-      show: false,
-    },
-  },
-  legend: true,
-  series: [{
-    position: ['area', 'profit'],
-    gemo: 'interval',
-    fill: ['#CB5050', '#A72023', '#9D1F22', '#70171A', '#461012'],
-    label: true,
-  }],
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 400,
-  },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
-
-
-/***/ }),
-/* 235 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = {
-  "nodes": [
-    { "name": "Agricultural 'waste'" },
-    { "name": "Bio-conversion" },
-    { "name": "Liquid" },
-    { "name": "Losses" },
-    { "name": "Solid" },
-    { "name": "Gas" },
-    { "name": "Biofuel imports" },
-    { "name": "Biomass imports" },
-    { "name": "Coal imports" },
-    { "name": "Coal" },
-    { "name": "Coal reserves" },
-    { "name": "District heating" },
-    { "name": "Industry" },
-    { "name": "Heating and cooling - commercial" },
-    { "name": "Heating and cooling - homes" },
-    { "name": "Electricity grid" },
-    { "name": "Over generation / exports" },
-    { "name": "H2 conversion" },
-    { "name": "Road transport" },
-    { "name": "Agriculture" },
-    { "name": "Rail transport" },
-    { "name": "Lighting & appliances - commercial" },
-    { "name": "Lighting & appliances - homes" },
-    { "name": "Gas imports" },
-    { "name": "Ngas" },
-    { "name": "Gas reserves" },
-    { "name": "Thermal generation" },
-    { "name": "Geothermal" },
-    { "name": "H2" },
-    { "name": "Hydro" },
-    { "name": "International shipping" },
-    { "name": "Domestic aviation" },
-    { "name": "International aviation" },
-    { "name": "National navigation" },
-    { "name": "Marine algae" },
-    { "name": "Nuclear" },
-    { "name": "Oil imports" },
-    { "name": "Oil" },
-    { "name": "Oil reserves" },
-    { "name": "Other waste" },
-    { "name": "Pumped heat" },
-    { "name": "Solar PV" },
-    { "name": "Solar Thermal" },
-    { "name": "Solar" },
-    { "name": "Tidal" },
-    { "name": "UK land based bioenergy" },
-    { "name": "Wave" },
-    { "name": "Wind" },
-  ],
-  "links": [
-    { "source": 0, "target": 1, "value": 124.729 },
-    { "source": 1, "target": 2, "value": 0.597 },
-    { "source": 1, "target": 3, "value": 26.862 },
-    { "source": 1, "target": 4, "value": 280.322 },
-    { "source": 1, "target": 5, "value": 81.144 },
-    { "source": 6, "target": 2, "value": 35 },
-    { "source": 7, "target": 4, "value": 35 },
-    { "source": 8, "target": 9, "value": 11.606 },
-    { "source": 10, "target": 9, "value": 63.965 },
-    { "source": 9, "target": 4, "value": 75.571 },
-    { "source": 11, "target": 12, "value": 10.639 },
-    { "source": 11, "target": 13, "value": 22.505 },
-    { "source": 11, "target": 14, "value": 46.184 },
-    { "source": 15, "target": 16, "value": 104.453 },
-    { "source": 15, "target": 14, "value": 113.726 },
-    { "source": 15, "target": 17, "value": 27.14 },
-    { "source": 15, "target": 12, "value": 342.165 },
-    { "source": 15, "target": 18, "value": 37.797 },
-    { "source": 15, "target": 19, "value": 4.412 },
-    { "source": 15, "target": 13, "value": 40.858 },
-    { "source": 15, "target": 3, "value": 56.691 },
-    { "source": 15, "target": 20, "value": 7.863 },
-    { "source": 15, "target": 21, "value": 90.008 },
-    { "source": 15, "target": 22, "value": 93.494 },
-    { "source": 23, "target": 24, "value": 40.719 },
-    { "source": 25, "target": 24, "value": 82.233 },
-    { "source": 5, "target": 13, "value": 0.129 },
-    { "source": 5, "target": 3, "value": 1.401 },
-    { "source": 5, "target": 26, "value": 151.891 },
-    { "source": 5, "target": 19, "value": 2.096 },
-    { "source": 5, "target": 12, "value": 48.58 },
-    { "source": 27, "target": 15, "value": 7.013 },
-    { "source": 17, "target": 28, "value": 20.897 },
-    { "source": 17, "target": 3, "value": 6.242 },
-    { "source": 28, "target": 18, "value": 20.897 },
-    { "source": 29, "target": 15, "value": 6.995 },
-    { "source": 2, "target": 12, "value": 121.066 },
-    { "source": 2, "target": 30, "value": 128.69 },
-    { "source": 2, "target": 18, "value": 135.835 },
-    { "source": 2, "target": 31, "value": 14.458 },
-    { "source": 2, "target": 32, "value": 206.267 },
-    { "source": 2, "target": 19, "value": 3.64 },
-    { "source": 2, "target": 33, "value": 33.218 },
-    { "source": 2, "target": 20, "value": 4.413 },
-    { "source": 34, "target": 1, "value": 4.375 },
-    { "source": 24, "target": 5, "value": 122.952 },
-    { "source": 35, "target": 26, "value": 839.978 },
-    { "source": 36, "target": 37, "value": 504.287 },
-    { "source": 38, "target": 37, "value": 107.703 },
-    { "source": 37, "target": 2, "value": 611.99 },
-    { "source": 39, "target": 4, "value": 56.587 },
-    { "source": 39, "target": 1, "value": 77.81 },
-    { "source": 40, "target": 14, "value": 193.026 },
-    { "source": 40, "target": 13, "value": 70.672 },
-    { "source": 41, "target": 15, "value": 59.901 },
-    { "source": 42, "target": 14, "value": 19.263 },
-    { "source": 43, "target": 42, "value": 19.263 },
-    { "source": 43, "target": 41, "value": 59.901 },
-    { "source": 4, "target": 19, "value": 0.882 },
-    { "source": 4, "target": 26, "value": 400.12 },
-    { "source": 4, "target": 12, "value": 46.477 },
-    { "source": 26, "target": 15, "value": 525.531 },
-    { "source": 26, "target": 3, "value": 787.129 },
-    { "source": 26, "target": 11, "value": 79.329 },
-    { "source": 44, "target": 15, "value": 9.452 },
-    { "source": 45, "target": 1, "value": 182.01 },
-    { "source": 46, "target": 15, "value": 19.013 },
-    { "source": 47, "target": 15, "value": 289.366 },
-  ],
-};
-
-const dataPre = {
-  connector: 'graph',
-  source: {
-    edgesKey: 'links',
-  },
-  transform: {
-    type: 'diagram.sankey',
-    nodeWidth: 0.015,
-    nodePadding: 0.02,
-  },
-};
-
-const dataMapping = [
-  {
-    dataKey: 'x',
-    mark: 'column',
-    scale: {
-      sync: true
-    }
-  },
-  {
-    dataKey: 'y',
-    mark: 'row',
-    scale: {
-      sync: true
-    }
-  },
-];
-
-const config = {
-  data,
-  dataPre,
-  dataMapping,
-  dataView: 'edges',
-  series: [{
-    position: 'x*y',
-    gemo: 'edge',
-    shape: 'sankey',
-    style: {
-      curvature: 0.5,
-    },
-    color: '#333',
-    opacity: 0.1,
-    tooltip: 'value',
-  }],
-  views: [{
-    viewId: 3,
-    dataView: 'nodes',
-    dataMapping: [
-      {
-        dataKey: 'x',
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.chartData = [{ "name": 14513, "carat": 1.35, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 61.4, "table": 57, "price": 5862, "x": 7.1, "y": 7.13, "z": 4.37 }, { "name": 28685, "carat": 0.3, "cut": "Good", "color": "G", "clarity": "VVS1", "depth": 64, "table": 57, "price": 678, "x": 4.23, "y": 4.27, "z": 2.72 }, { "name": 50368, "carat": 0.75, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 59.2, "table": 60, "price": 2248, "x": 5.87, "y": 5.92, "z": 3.49 }, { "name": 7721, "carat": 0.26, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 60.9, "table": 57, "price": 580, "x": 4.13, "y": 4.11, "z": 2.51 }, { "name": 31082, "carat": 0.33, "cut": "Premium", "color": "H", "clarity": "VVS1", "depth": 61.4, "table": 59, "price": 752, "x": 4.42, "y": 4.44, "z": 2.72 }, { "name": 26429, "carat": 1.52, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 62.4, "table": 55, "price": 15959, "x": 7.3, "y": 7.39, "z": 4.58 }, { "name": 35900, "carat": 0.32, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.3, "table": 54, "price": 918, "x": 4.41, "y": 4.47, "z": 2.72 }, { "name": 27015, "carat": 2.25, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 62.4, "table": 57, "price": 17143, "x": 8.39, "y": 8.32, "z": 5.21 }, { "name": 30760, "carat": 0.25, "cut": "Premium", "color": "E", "clarity": "VVS2", "depth": 62.5, "table": 59, "price": 740, "x": 4.04, "y": 4.02, "z": 2.52 }, { "name": 2205, "carat": 1.02, "cut": "Premium", "color": "H", "clarity": "I1", "depth": 62.5, "table": 60, "price": 3141, "x": 6.39, "y": 6.41, "z": 4 }, { "name": 25584, "carat": 2.01, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 62.9, "table": 55, "price": 14426, "x": 8.03, "y": 8.09, "z": 5.07 }, { "name": 16788, "carat": 0.9, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.2, "table": 56, "price": 6689, "x": 6.2, "y": 6.26, "z": 3.81 }, { "name": 2468, "carat": 0.71, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 62.2, "table": 55, "price": 3192, "x": 5.71, "y": 5.74, "z": 3.56 }, { "name": 6508, "carat": 1.01, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 62.3, "table": 59, "price": 4064, "x": 6.34, "y": 6.37, "z": 3.96 }, { "name": 44895, "carat": 0.5, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 63.4, "table": 58, "price": 1629, "x": 5.06, "y": 5.04, "z": 3.2 }, { "name": 20653, "carat": 1.26, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 61.8, "table": 56, "price": 8941, "x": 6.9, "y": 6.93, "z": 4.28 }, { "name": 38210, "carat": 0.43, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.7, "table": 54, "price": 1016, "x": 4.9, "y": 4.86, "z": 3.01 }, { "name": 13359, "carat": 0.24, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 62.1, "table": 59, "price": 419, "x": 3.98, "y": 4.01, "z": 2.48 }, { "name": 3260, "carat": 0.7, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 60.7, "table": 57, "price": 3358, "x": 5.72, "y": 5.75, "z": 3.48 }, { "name": 46272, "carat": 0.54, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.8, "table": 54, "price": 1754, "x": 5.22, "y": 5.24, "z": 3.23 }, { "name": 23875, "carat": 2.03, "cut": "Very-Good", "color": "J", "clarity": "SI2", "depth": 61.7, "table": 61, "price": 11968, "x": 8.04, "y": 8.18, "z": 5 }, { "name": 17434, "carat": 1.41, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 61.1, "table": 56, "price": 6988, "x": 7.19, "y": 7.15, "z": 4.38 }, { "name": 25, "carat": 0.31, "cut": "Very-Good", "color": "J", "clarity": "SI1", "depth": 58.1, "table": 62, "price": 353, "x": 4.44, "y": 4.47, "z": 2.59 }, { "name": 22130, "carat": 1.5, "cut": "Very-Good", "color": "I", "clarity": "VS1", "depth": 62.2, "table": 59, "price": 10164, "x": 7.27, "y": 7.3, "z": 4.53 }, { "name": 53295, "carat": 0.3, "cut": "Very-Good", "color": "I", "clarity": "VVS1", "depth": 60.5, "table": 60, "price": 552, "x": 4.32, "y": 4.34, "z": 2.62 }, { "name": 44404, "carat": 0.55, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.4, "table": 56, "price": 1584, "x": 5.28, "y": 5.31, "z": 3.25 }, { "name": 40387, "carat": 0.42, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 61.7, "table": 57, "price": 1132, "x": 4.8, "y": 4.82, "z": 2.97 }, { "name": 11416, "carat": 1.5, "cut": "Fair", "color": "H", "clarity": "SI2", "depth": 66, "table": 64, "price": 5000, "x": 7.1, "y": 6.97, "z": 4.64 }, { "name": 47315, "carat": 0.23, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 61.5, "table": 59, "price": 530, "x": 3.95, "y": 3.98, "z": 2.44 }, { "name": 5724, "carat": 0.25, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 63, "table": 55, "price": 575, "x": 4, "y": 4.03, "z": 2.53 }, { "name": 30624, "carat": 0.3, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 60.2, "table": 60, "price": 447, "x": 4.32, "y": 4.35, "z": 2.61 }, { "name": 9803, "carat": 0.9, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 63, "table": 62, "price": 4668, "x": 6.06, "y": 6.13, "z": 3.84 }, { "name": 46497, "carat": 0.5, "cut": "Very-Good", "color": "F", "clarity": "VVS2", "depth": 60.4, "table": 61, "price": 1778, "x": 5.12, "y": 5.14, "z": 3.1 }, { "name": 45329, "carat": 0.32, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61.2, "table": 58, "price": 524, "x": 4.37, "y": 4.42, "z": 2.69 }, { "name": 22424, "carat": 1.57, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 59.6, "table": 58, "price": 10447, "x": 7.61, "y": 7.65, "z": 4.55 }, { "name": 3143, "carat": 0.7, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.6, "table": 56, "price": 3330, "x": 5.7, "y": 5.72, "z": 3.52 }, { "name": 6815, "carat": 1.01, "cut": "Fair", "color": "E", "clarity": "SI2", "depth": 64.7, "table": 55, "price": 4118, "x": 6.37, "y": 6.3, "z": 4.1 }, { "name": 5947, "carat": 0.72, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 61.1, "table": 57, "price": 3947, "x": 5.78, "y": 5.81, "z": 3.54 }, { "name": 9084, "carat": 1.07, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 62, "table": 59, "price": 4523, "x": 6.54, "y": 6.5, "z": 4.04 }, { "name": 36793, "carat": 0.34, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.6, "table": 57, "price": 956, "x": 4.47, "y": 4.45, "z": 2.79 }, { "name": 4943, "carat": 0.76, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.3, "table": 55, "price": 3732, "x": 5.81, "y": 5.84, "z": 3.63 }, { "name": 52525, "carat": 0.8, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 62.4, "table": 57, "price": 2529, "x": 5.92, "y": 5.97, "z": 3.71 }, { "name": 46417, "carat": 0.55, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61, "table": 56, "price": 1768, "x": 5.31, "y": 5.28, "z": 3.23 }, { "name": 35997, "carat": 0.42, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 59.4, "table": 59, "price": 921, "x": 4.86, "y": 4.9, "z": 2.9 }, { "name": 25539, "carat": 1.5, "cut": "Very-Good", "color": "G", "clarity": "VVS1", "depth": 63.1, "table": 62, "price": 14361, "x": 7.25, "y": 7.23, "z": 4.57 }, { "name": 2361, "carat": 0.9, "cut": "Ideal", "color": "J", "clarity": "VS1", "depth": 62.5, "table": 55, "price": 3175, "x": 6.18, "y": 6.14, "z": 3.85 }, { "name": 23147, "carat": 1.02, "cut": "Premium", "color": "E", "clarity": "VVS1", "depth": 61.5, "table": 59, "price": 11163, "x": 6.46, "y": 6.41, "z": 3.96 }, { "name": 39674, "carat": 0.42, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.1, "table": 56, "price": 1087, "x": 4.84, "y": 4.79, "z": 2.99 }, { "name": 42947, "carat": 0.3, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 63.4, "table": 56, "price": 506, "x": 4.29, "y": 4.26, "z": 2.71 }, { "name": 23762, "carat": 1.51, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 61.4, "table": 58, "price": 11817, "x": 7.43, "y": 7.35, "z": 4.54 }, { "name": 47355, "carat": 0.5, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 63.8, "table": 54, "price": 1845, "x": 5.07, "y": 5.05, "z": 3.23 }, { "name": 35598, "carat": 0.31, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 62.7, "table": 54, "price": 907, "x": 4.38, "y": 4.33, "z": 2.73 }, { "name": 43086, "carat": 0.61, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 62, "table": 54, "price": 1380, "x": 5.44, "y": 5.49, "z": 3.39 }, { "name": 15471, "carat": 1.58, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 59.1, "table": 59, "price": 6194, "x": 7.68, "y": 7.59, "z": 4.51 }, { "name": 29072, "carat": 0.34, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 59.3, "table": 59, "price": 687, "x": 4.55, "y": 4.59, "z": 2.71 }, { "name": 20868, "carat": 1.27, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 61.2, "table": 59, "price": 9086, "x": 7.02, "y": 6.97, "z": 4.28 }, { "name": 51424, "carat": 0.85, "cut": "Good", "color": "J", "clarity": "VS1", "depth": 63.6, "table": 57, "price": 2372, "x": 6.01, "y": 5.94, "z": 3.8 }, { "name": 27320, "carat": 2.18, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 61.9, "table": 60, "price": 17841, "x": 8.24, "y": 8.29, "z": 5.12 }, { "name": 1128, "carat": 0.73, "cut": "Premium", "color": "G", "clarity": "VVS2", "depth": 62.2, "table": 56, "price": 2919, "x": 5.79, "y": 5.75, "z": 3.59 }, { "name": 18182, "carat": 1.2, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 63.1, "table": 57, "price": 7371, "x": 6.69, "y": 6.74, "z": 4.24 }, { "name": 669, "carat": 0.77, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 62.9, "table": 59, "price": 2846, "x": 5.84, "y": 5.79, "z": 3.66 }, { "name": 47240, "carat": 0.51, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 62, "table": 57, "price": 1841, "x": 5.11, "y": 5.15, "z": 3.18 }, { "name": 14256, "carat": 1, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 60.6, "table": 56, "price": 5775, "x": 6.5, "y": 6.54, "z": 3.95 }, { "name": 20118, "carat": 1.31, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61.5, "table": 55, "price": 8583, "x": 7.05, "y": 7.02, "z": 4.33 }, { "name": 53884, "carat": 0.7, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 61.4, "table": 55, "price": 2748, "x": 5.7, "y": 5.74, "z": 3.51 }, { "name": 48410, "carat": 0.72, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 62.9, "table": 57, "price": 1970, "x": 5.64, "y": 5.68, "z": 3.56 }, { "name": 48807, "carat": 0.75, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 62.3, "table": 57, "price": 2025, "x": 5.84, "y": 5.81, "z": 3.63 }, { "name": 42132, "carat": 0.53, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 63, "table": 54, "price": 1279, "x": 5.24, "y": 5.19, "z": 3.29 }, { "name": 25596, "carat": 1.7, "cut": "Good", "color": "G", "clarity": "VS1", "depth": 63.5, "table": 56, "price": 14445, "x": 7.53, "y": 7.64, "z": 4.82 }, { "name": 23434, "carat": 1.62, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 59.6, "table": 59, "price": 11427, "x": 7.59, "y": 7.67, "z": 4.55 }, { "name": 20160, "carat": 1.21, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.6, "table": 56, "price": 8616, "x": 6.77, "y": 6.81, "z": 4.25 }, { "name": 2174, "carat": 0.73, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 62.9, "table": 56, "price": 3135, "x": 5.71, "y": 5.77, "z": 3.61 }, { "name": 23377, "carat": 0.33, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.4, "table": 57, "price": 631, "x": 4.48, "y": 4.45, "z": 2.74 }, { "name": 14592, "carat": 1.1, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 61.3, "table": 56, "price": 5888, "x": 6.64, "y": 6.67, "z": 4.08 }, { "name": 11074, "carat": 1.13, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62.7, "table": 57, "price": 4922, "x": 6.62, "y": 6.65, "z": 4.16 }, { "name": 36627, "carat": 0.24, "cut": "Very-Good", "color": "D", "clarity": "VVS2", "depth": 61.9, "table": 58, "price": 478, "x": 4.02, "y": 4.03, "z": 2.49 }, { "name": 8533, "carat": 0.9, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 62.2, "table": 58, "price": 4428, "x": 6.14, "y": 6.17, "z": 3.83 }, { "name": 2420, "carat": 0.91, "cut": "Fair", "color": "H", "clarity": "SI1", "depth": 64.8, "table": 57, "price": 3180, "x": 6.12, "y": 6.07, "z": 3.95 }, { "name": 21758, "carat": 1.53, "cut": "Very-Good", "color": "I", "clarity": "VS1", "depth": 59.3, "table": 58, "price": 9823, "x": 7.5, "y": 7.54, "z": 4.46 }, { "name": 9029, "carat": 1.06, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 60.1, "table": 59, "price": 4516, "x": 6.58, "y": 6.67, "z": 3.98 }, { "name": 53870, "carat": 0.75, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62.3, "table": 57, "price": 2744, "x": 5.82, "y": 5.77, "z": 3.61 }, { "name": 25628, "carat": 2.5, "cut": "Ideal", "color": "J", "clarity": "SI2", "depth": 64, "table": 55, "price": 14502, "x": 8.56, "y": 8.48, "z": 5.46 }, { "name": 20051, "carat": 0.31, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 61.2, "table": 60, "price": 625, "x": 4.37, "y": 4.39, "z": 2.68 }, { "name": 26772, "carat": 2.06, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 61.5, "table": 56, "price": 16603, "x": 8.15, "y": 8.18, "z": 5.02 }, { "name": 38208, "carat": 0.43, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.8, "table": 56, "price": 1016, "x": 4.87, "y": 4.84, "z": 3 }, { "name": 17039, "carat": 1.3, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 62.1, "table": 57, "price": 6806, "x": 6.98, "y": 7.04, "z": 4.35 }, { "name": 35184, "carat": 0.31, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.7, "table": 55, "price": 891, "x": 4.36, "y": 4.39, "z": 2.7 }, { "name": 29861, "carat": 0.3, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.5, "table": 55, "price": 710, "x": 4.3, "y": 4.35, "z": 2.66 }, { "name": 2592, "carat": 1, "cut": "Very-Good", "color": "I", "clarity": "SI2", "depth": 62.4, "table": 63, "price": 3217, "x": 6.35, "y": 6.44, "z": 3.99 }, { "name": 51705, "carat": 0.7, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 61.2, "table": 56, "price": 2400, "x": 5.72, "y": 5.78, "z": 3.52 }, { "name": 16984, "carat": 1.25, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 62.2, "table": 57, "price": 6783, "x": 6.91, "y": 6.85, "z": 4.28 }, { "name": 18724, "carat": 1.75, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 60.8, "table": 58, "price": 7644, "x": 7.83, "y": 7.79, "z": 4.75 }, { "name": 12270, "carat": 1, "cut": "Good", "color": "H", "clarity": "VS2", "depth": 56.9, "table": 63, "price": 5208, "x": 6.6, "y": 6.57, "z": 3.75 }, { "name": 34355, "carat": 0.37, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 58.6, "table": 65, "price": 863, "x": 4.68, "y": 4.71, "z": 2.75 }, { "name": 1996, "carat": 0.52, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 61.8, "table": 55, "price": 3097, "x": 5.19, "y": 5.2, "z": 3.21 }, { "name": 39442, "carat": 0.41, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.4, "table": 54, "price": 1076, "x": 4.78, "y": 4.74, "z": 2.97 }, { "name": 32035, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.3, "table": 57, "price": 779, "x": 4.39, "y": 4.42, "z": 2.7 }, { "name": 1257, "carat": 0.73, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 60.9, "table": 59, "price": 2947, "x": 5.82, "y": 5.77, "z": 3.53 }, { "name": 35751, "carat": 0.3, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 62.9, "table": 58, "price": 911, "x": 4.26, "y": 4.23, "z": 2.67 }, { "name": 17748, "carat": 1.12, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 61.2, "table": 58, "price": 7145, "x": 6.65, "y": 6.68, "z": 4.08 }, { "name": 52350, "carat": 0.82, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 59.5, "table": 62, "price": 2499, "x": 6.13, "y": 6.07, "z": 3.63 }, { "name": 12512, "carat": 1.01, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 61.9, "table": 57, "price": 5260, "x": 6.42, "y": 6.35, "z": 3.95 }, { "name": 30836, "carat": 0.33, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 59.2, "table": 58, "price": 743, "x": 4.55, "y": 4.5, "z": 2.68 }, { "name": 17939, "carat": 1.21, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 62.3, "table": 58, "price": 7246, "x": 6.71, "y": 6.74, "z": 4.19 }, { "name": 53151, "carat": 0.7, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 61.6, "table": 56, "price": 2623, "x": 5.69, "y": 5.71, "z": 3.51 }, { "name": 21427, "carat": 1.5, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 62.8, "table": 57, "price": 9533, "x": 7.24, "y": 7.28, "z": 4.56 }, { "name": 4025, "carat": 0.73, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 61.7, "table": 54, "price": 3524, "x": 5.76, "y": 5.82, "z": 3.57 }, { "name": 10997, "carat": 1.17, "cut": "Good", "color": "H", "clarity": "SI2", "depth": 63.8, "table": 58, "price": 4914, "x": 6.73, "y": 6.57, "z": 4.24 }, { "name": 37380, "carat": 0.4, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.4, "table": 56, "price": 982, "x": 4.64, "y": 4.68, "z": 2.91 }, { "name": 32301, "carat": 0.32, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 61.7, "table": 55, "price": 454, "x": 4.39, "y": 4.42, "z": 2.72 }, { "name": 5986, "carat": 0.71, "cut": "Premium", "color": "D", "clarity": "VVS1", "depth": 58.8, "table": 58, "price": 3952, "x": 5.89, "y": 5.81, "z": 3.44 }, { "name": 7062, "carat": 0.33, "cut": "Premium", "color": "I", "clarity": "VVS2", "depth": 61, "table": 59, "price": 579, "x": 4.41, "y": 4.44, "z": 2.7 }, { "name": 6488, "carat": 0.96, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 61.1, "table": 59, "price": 4059, "x": 6.32, "y": 6.28, "z": 3.85 }, { "name": 10508, "carat": 1.02, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.1, "table": 53, "price": 4798, "x": 6.43, "y": 6.38, "z": 3.98 }, { "name": 1143, "carat": 0.71, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 63.3, "table": 59, "price": 2922, "x": 5.62, "y": 5.66, "z": 3.57 }, { "name": 40005, "carat": 0.41, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 63.2, "table": 57, "price": 1107, "x": 4.76, "y": 4.74, "z": 3 }, { "name": 42200, "carat": 0.56, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 61.1, "table": 61, "price": 1287, "x": 5.31, "y": 5.29, "z": 3.24 }, { "name": 46075, "carat": 0.5, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 61.4, "table": 59, "price": 1736, "x": 5.12, "y": 5.1, "z": 3.14 }, { "name": 41028, "carat": 0.41, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.1, "table": 56, "price": 1187, "x": 4.8, "y": 4.85, "z": 2.95 }, { "name": 7732, "carat": 0.3, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 62.6, "table": 56, "price": 581, "x": 4.29, "y": 4.31, "z": 2.69 }, { "name": 20659, "carat": 1.17, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.7, "table": 55, "price": 8947, "x": 6.74, "y": 6.77, "z": 4.17 }, { "name": 42320, "carat": 0.41, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 62.3, "table": 57, "price": 1295, "x": 4.74, "y": 4.76, "z": 2.96 }, { "name": 502, "carat": 0.7, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 61.5, "table": 59, "price": 2822, "x": 5.73, "y": 5.68, "z": 3.51 }, { "name": 5786, "carat": 0.72, "cut": "Very-Good", "color": "E", "clarity": "VVS1", "depth": 61.2, "table": 58, "price": 3903, "x": 5.75, "y": 5.79, "z": 3.53 }, { "name": 28008, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.6, "table": 56, "price": 658, "x": 4.29, "y": 4.34, "z": 2.7 }, { "name": 1319, "carat": 0.72, "cut": "Good", "color": "G", "clarity": "VS1", "depth": 58, "table": 57.8, "price": 2958, "x": 5.85, "y": 5.87, "z": 3.4 }, { "name": 33956, "carat": 0.23, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 60.2, "table": 57, "price": 465, "x": 3.99, "y": 4.05, "z": 2.42 }, { "name": 6983, "carat": 1.03, "cut": "Premium", "color": "J", "clarity": "SI1", "depth": 61.7, "table": 54, "price": 4153, "x": 6.56, "y": 6.5, "z": 4.03 }, { "name": 5595, "carat": 1.01, "cut": "Fair", "color": "H", "clarity": "SI1", "depth": 64.5, "table": 59, "price": 3869, "x": 6.27, "y": 6.23, "z": 4.03 }, { "name": 22168, "carat": 1.56, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 61.6, "table": 56, "price": 10210, "x": 7.41, "y": 7.45, "z": 4.58 }, { "name": 34991, "carat": 0.34, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 59.3, "table": 59, "price": 881, "x": 4.59, "y": 4.55, "z": 2.71 }, { "name": 3246, "carat": 0.81, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.4, "table": 55, "price": 3355, "x": 6.03, "y": 6.06, "z": 3.71 }, { "name": 39872, "carat": 0.36, "cut": "Premium", "color": "E", "clarity": "VVS2", "depth": 61.7, "table": 59, "price": 1102, "x": 4.56, "y": 4.52, "z": 2.8 }, { "name": 29982, "carat": 0.31, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 61.2, "table": 56, "price": 716, "x": 4.4, "y": 4.43, "z": 2.7 }, { "name": 29194, "carat": 0.38, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61, "table": 56, "price": 694, "x": 4.68, "y": 4.69, "z": 2.86 }, { "name": 41649, "carat": 0.4, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.7, "table": 55, "price": 1238, "x": 4.76, "y": 4.74, "z": 2.93 }, { "name": 48035, "carat": 0.6, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 58.6, "table": 60, "price": 1923, "x": 5.54, "y": 5.62, "z": 3.27 }, { "name": 38063, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "IF", "depth": 61.1, "table": 57, "price": 1013, "x": 4.31, "y": 4.33, "z": 2.64 }, { "name": 23199, "carat": 1.52, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 60.7, "table": 56, "price": 11206, "x": 7.49, "y": 7.41, "z": 4.52 }, { "name": 14152, "carat": 1.01, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 63, "table": 58, "price": 5741, "x": 6.42, "y": 6.37, "z": 4.03 }, { "name": 45512, "carat": 0.51, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.5, "table": 57, "price": 1682, "x": 5.11, "y": 5.16, "z": 3.16 }, { "name": 33630, "carat": 0.33, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 63, "table": 56, "price": 463, "x": 4.41, "y": 4.42, "z": 2.78 }, { "name": 31484, "carat": 0.34, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.9, "table": 55, "price": 765, "x": 4.53, "y": 4.49, "z": 2.79 }, { "name": 4780, "carat": 1.23, "cut": "Fair", "color": "E", "clarity": "I1", "depth": 67.4, "table": 56, "price": 3692, "x": 6.76, "y": 6.56, "z": 4.49 }, { "name": 1849, "carat": 0.76, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 61.7, "table": 62, "price": 3064, "x": 5.85, "y": 5.82, "z": 3.6 }, { "name": 3200, "carat": 0.92, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 63.7, "table": 58, "price": 3345, "x": 6.12, "y": 6.18, "z": 3.92 }, { "name": 18133, "carat": 1.52, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 62.5, "table": 56, "price": 7341, "x": 7.35, "y": 7.33, "z": 4.59 }, { "name": 40938, "carat": 0.23, "cut": "Very-Good", "color": "E", "clarity": "VVS1", "depth": 60.8, "table": 56, "price": 499, "x": 3.94, "y": 3.99, "z": 2.41 }, { "name": 33643, "carat": 0.38, "cut": "Premium", "color": "H", "clarity": "VVS2", "depth": 62, "table": 58, "price": 833, "x": 4.62, "y": 4.64, "z": 2.87 }, { "name": 52241, "carat": 0.73, "cut": "Ideal", "color": "I", "clarity": "VVS2", "depth": 63.3, "table": 57, "price": 2485, "x": 5.77, "y": 5.73, "z": 3.64 }, { "name": 10406, "carat": 0.31, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 61.5, "table": 60, "price": 593, "x": 4.34, "y": 4.31, "z": 2.66 }, { "name": 51776, "carat": 0.74, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 61.6, "table": 55, "price": 2410, "x": 5.81, "y": 5.87, "z": 3.6 }, { "name": 31450, "carat": 0.4, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 63.4, "table": 59, "price": 765, "x": 4.66, "y": 4.64, "z": 2.95 }, { "name": 21271, "carat": 1.53, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 62.7, "table": 60, "price": 9424, "x": 7.28, "y": 7.34, "z": 4.58 }, { "name": 22716, "carat": 1.01, "cut": "Premium", "color": "D", "clarity": "VVS2", "depth": 62.4, "table": 58, "price": 10732, "x": 6.39, "y": 6.44, "z": 4 }, { "name": 17977, "carat": 1.1, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 62.7, "table": 58.5, "price": 7272, "x": 6.5, "y": 6.59, "z": 4.1 }, { "name": 18203, "carat": 1.52, "cut": "Fair", "color": "H", "clarity": "SI2", "depth": 65, "table": 57, "price": 7388, "x": 7.12, "y": 7.09, "z": 4.62 }, { "name": 10318, "carat": 1.03, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 61.3, "table": 61, "price": 4764, "x": 6.49, "y": 6.46, "z": 3.97 }, { "name": 28823, "carat": 0.41, "cut": "Good", "color": "H", "clarity": "SI1", "depth": 63.8, "table": 56, "price": 683, "x": 4.69, "y": 4.74, "z": 3.01 }, { "name": 5145, "carat": 0.9, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 62.8, "table": 52, "price": 3764, "x": 6.19, "y": 6.23, "z": 3.9 }, { "name": 37720, "carat": 0.34, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.1, "table": 57, "price": 995, "x": 4.52, "y": 4.48, "z": 2.75 }, { "name": 595, "carat": 0.76, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 60.9, "table": 55, "price": 2838, "x": 5.92, "y": 5.94, "z": 3.61 }, { "name": 12362, "carat": 0.26, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 61.5, "table": 58, "price": 597, "x": 4.08, "y": 4.12, "z": 2.52 }, { "name": 50151, "carat": 0.71, "cut": "Good", "color": "D", "clarity": "SI2", "depth": 64.3, "table": 56, "price": 2215, "x": 5.64, "y": 5.59, "z": 3.61 }, { "name": 41669, "carat": 0.4, "cut": "Ideal", "color": "I", "clarity": "VVS2", "depth": 61.4, "table": 56, "price": 1240, "x": 4.76, "y": 4.79, "z": 2.93 }, { "name": 4974, "carat": 1.14, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 60, "table": 65, "price": 3735, "x": 6.8, "y": 6.75, "z": 4.06 }, { "name": 47558, "carat": 0.7, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 62.4, "table": 55, "price": 1874, "x": 5.68, "y": 5.7, "z": 3.55 }, { "name": 52829, "carat": 0.7, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.4, "table": 55, "price": 2573, "x": 5.74, "y": 5.69, "z": 3.51 }, { "name": 3874, "carat": 0.81, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62.3, "table": 55, "price": 3481, "x": 5.96, "y": 6, "z": 3.72 }, { "name": 22691, "carat": 0.36, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.5, "table": 55, "price": 629, "x": 4.57, "y": 4.6, "z": 2.82 }, { "name": 28407, "carat": 0.35, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 60.3, "table": 60, "price": 669, "x": 4.59, "y": 4.57, "z": 2.76 }, { "name": 27459, "carat": 2.03, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 58.8, "table": 59, "price": 18115, "x": 8.23, "y": 8.28, "z": 4.85 }, { "name": 30473, "carat": 0.31, "cut": "Ideal", "color": "I", "clarity": "VVS1", "depth": 62.1, "table": 56, "price": 732, "x": 4.38, "y": 4.35, "z": 2.71 }, { "name": 32370, "carat": 0.3, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 62.4, "table": 57, "price": 790, "x": 4.25, "y": 4.28, "z": 2.66 }, { "name": 20135, "carat": 1.57, "cut": "Premium", "color": "J", "clarity": "VS1", "depth": 61.3, "table": 59, "price": 8595, "x": 7.44, "y": 7.47, "z": 4.57 }, { "name": 50802, "carat": 0.71, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 61.4, "table": 59, "price": 2306, "x": 5.74, "y": 5.7, "z": 3.51 }, { "name": 29439, "carat": 0.42, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 60.1, "table": 58, "price": 700, "x": 4.83, "y": 4.88, "z": 2.92 }, { "name": 19544, "carat": 1, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 59.1, "table": 59, "price": 8176, "x": 6.56, "y": 6.51, "z": 3.86 }, { "name": 16410, "carat": 1, "cut": "Good", "color": "F", "clarity": "VS1", "depth": 57.8, "table": 59, "price": 6552, "x": 6.57, "y": 6.59, "z": 3.8 }, { "name": 41500, "carat": 0.58, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 59.5, "table": 62, "price": 1233, "x": 5.44, "y": 5.41, "z": 3.23 }, { "name": 22107, "carat": 1.66, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 62.8, "table": 56, "price": 10134, "x": 7.53, "y": 7.57, "z": 4.74 }, { "name": 37064, "carat": 0.43, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 59.8, "table": 58, "price": 968, "x": 4.94, "y": 4.89, "z": 2.94 }, { "name": 27284, "carat": 2.03, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 62.7, "table": 55, "price": 17752, "x": 8.07, "y": 8.14, "z": 5.08 }, { "name": 21724, "carat": 1.86, "cut": "Good", "color": "G", "clarity": "SI2", "depth": 63.8, "table": 55, "price": 9791, "x": 7.79, "y": 7.73, "z": 4.95 }, { "name": 47369, "carat": 0.52, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 62.9, "table": 59, "price": 1847, "x": 5.11, "y": 5.13, "z": 3.22 }, { "name": 34279, "carat": 0.23, "cut": "Very-Good", "color": "D", "clarity": "VS1", "depth": 62.4, "table": 56, "price": 468, "x": 3.93, "y": 3.98, "z": 2.46 }, { "name": 28365, "carat": 0.4, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 60.3, "table": 61, "price": 667, "x": 4.74, "y": 4.78, "z": 2.87 }, { "name": 41811, "carat": 0.54, "cut": "Good", "color": "E", "clarity": "SI2", "depth": 63.8, "table": 54, "price": 1250, "x": 5.18, "y": 5.17, "z": 3.3 }, { "name": 36655, "carat": 0.3, "cut": "Very-Good", "color": "E", "clarity": "IF", "depth": 60.9, "table": 59, "price": 949, "x": 4.29, "y": 4.32, "z": 2.62 }, { "name": 4623, "carat": 0.91, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 60.7, "table": 56, "price": 3665, "x": 6.26, "y": 6.22, "z": 3.79 }, { "name": 12087, "carat": 1.44, "cut": "Premium", "color": "E", "clarity": "I1", "depth": 61.1, "table": 62, "price": 5161, "x": 7.23, "y": 7.15, "z": 4.39 }, { "name": 7116, "carat": 1.01, "cut": "Very-Good", "color": "I", "clarity": "SI2", "depth": 62.9, "table": 55, "price": 4171, "x": 6.37, "y": 6.42, "z": 4.02 }, { "name": 21908, "carat": 1.71, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 63.5, "table": 59, "price": 9974, "x": 7.59, "y": 7.52, "z": 4.8 }, { "name": 50703, "carat": 0.53, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 61.3, "table": 55, "price": 2291, "x": 5.23, "y": 5.27, "z": 3.22 }, { "name": 2069, "carat": 0.32, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 61.5, "table": 60, "price": 561, "x": 4.4, "y": 4.42, "z": 2.71 }, { "name": 14758, "carat": 1.01, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62, "table": 57, "price": 5939, "x": 6.44, "y": 6.37, "z": 3.97 }, { "name": 3516, "carat": 0.71, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.5, "table": 57, "price": 3404, "x": 5.7, "y": 5.74, "z": 3.52 }, { "name": 34464, "carat": 0.31, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 61.3, "table": 56, "price": 865, "x": 4.38, "y": 4.4, "z": 2.69 }, { "name": 25285, "carat": 2.09, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 61.2, "table": 57, "price": 13933, "x": 8.27, "y": 8.19, "z": 5.04 }, { "name": 35783, "carat": 0.32, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 61, "table": 56, "price": 912, "x": 4.42, "y": 4.43, "z": 2.7 }, { "name": 39495, "carat": 0.41, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 62, "table": 55, "price": 1079, "x": 4.74, "y": 4.77, "z": 2.95 }, { "name": 15922, "carat": 1.52, "cut": "Premium", "color": "J", "clarity": "SI1", "depth": 61, "table": 59, "price": 6367, "x": 7.41, "y": 7.35, "z": 4.5 }, { "name": 40625, "carat": 0.41, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 61.9, "table": 55, "price": 1153, "x": 4.8, "y": 4.76, "z": 2.96 }, { "name": 8663, "carat": 1.16, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 63.2, "table": 57, "price": 4455, "x": 6.66, "y": 6.7, "z": 4.22 }, { "name": 5613, "carat": 0.92, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 62.8, "table": 56, "price": 3873, "x": 6.19, "y": 6.23, "z": 3.9 }, { "name": 52450, "carat": 0.71, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.8, "table": 58, "price": 2515, "x": 5.74, "y": 5.69, "z": 3.59 }, { "name": 17352, "carat": 1.11, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 62, "table": 58, "price": 6962, "x": 6.68, "y": 6.64, "z": 4.13 }, { "name": 51937, "carat": 0.72, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62.1, "table": 55, "price": 2440, "x": 5.73, "y": 5.8, "z": 3.58 }, { "name": 5387, "carat": 0.3, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 58.8, "table": 60, "price": 574, "x": 4.39, "y": 4.35, "z": 2.57 }, { "name": 12962, "carat": 1, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 62.1, "table": 58, "price": 5390, "x": 6.34, "y": 6.45, "z": 3.97 }, { "name": 34751, "carat": 0.41, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 62, "table": 59, "price": 876, "x": 4.8, "y": 4.78, "z": 2.97 }, { "name": 4364, "carat": 0.9, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 63.9, "table": 58, "price": 3604, "x": 6.12, "y": 6.08, "z": 3.9 }, { "name": 13164, "carat": 1.24, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 62.3, "table": 56, "price": 5443, "x": 6.84, "y": 6.91, "z": 4.28 }, { "name": 34488, "carat": 0.43, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 61.2, "table": 58, "price": 867, "x": 4.84, "y": 4.9, "z": 2.98 }, { "name": 33762, "carat": 0.4, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 63.4, "table": 58, "price": 840, "x": 4.71, "y": 4.66, "z": 2.97 }, { "name": 18486, "carat": 1.31, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 62.4, "table": 58, "price": 7527, "x": 7.02, "y": 6.96, "z": 4.36 }, { "name": 53494, "carat": 0.73, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 62.4, "table": 56, "price": 2683, "x": 5.74, "y": 5.77, "z": 3.59 }, { "name": 45458, "carat": 0.7, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 63.5, "table": 56, "price": 1675, "x": 5.59, "y": 5.63, "z": 3.56 }, { "name": 34592, "carat": 0.37, "cut": "Ideal", "color": "J", "clarity": "SI1", "depth": 61.4, "table": 57, "price": 469, "x": 4.62, "y": 4.66, "z": 2.85 }, { "name": 7984, "carat": 0.92, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 60.5, "table": 57, "price": 4325, "x": 6.27, "y": 6.32, "z": 3.81 }, { "name": 23251, "carat": 1.7, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 61.2, "table": 59, "price": 11257, "x": 7.55, "y": 7.62, "z": 4.64 }, { "name": 34473, "carat": 0.38, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 60.3, "table": 58, "price": 866, "x": 4.67, "y": 4.72, "z": 2.83 }, { "name": 6235, "carat": 0.75, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 62.8, "table": 57, "price": 4005, "x": 5.74, "y": 5.78, "z": 3.62 }, { "name": 28202, "carat": 0.4, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 62.9, "table": 59, "price": 666, "x": 4.66, "y": 4.69, "z": 2.94 }, { "name": 42691, "carat": 0.5, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.6, "table": 57, "price": 1337, "x": 5.08, "y": 5.11, "z": 3.14 }, { "name": 34013, "carat": 0.43, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.4, "table": 54, "price": 848, "x": 4.9, "y": 4.93, "z": 3.02 }, { "name": 49461, "carat": 0.6, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62, "table": 56, "price": 2112, "x": 5.4, "y": 5.43, "z": 3.36 }, { "name": 50401, "carat": 0.71, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 61.4, "table": 56, "price": 2255, "x": 5.73, "y": 5.77, "z": 3.53 }, { "name": 27056, "carat": 0.28, "cut": "Premium", "color": "H", "clarity": "VVS1", "depth": 59.9, "table": 62, "price": 646, "x": 4.28, "y": 4.23, "z": 2.55 }, { "name": 47424, "carat": 0.7, "cut": "Good", "color": "F", "clarity": "SI2", "depth": 64.1, "table": 55, "price": 1851, "x": 5.58, "y": 5.52, "z": 3.56 }, { "name": 38417, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 62.4, "table": 55, "price": 1025, "x": 4.32, "y": 4.3, "z": 2.69 }, { "name": 10216, "carat": 1.26, "cut": "Ideal", "color": "J", "clarity": "SI2", "depth": 62.5, "table": 53, "price": 4742, "x": 6.9, "y": 6.86, "z": 4.3 }, { "name": 13031, "carat": 0.26, "cut": "Premium", "color": "H", "clarity": "VVS1", "depth": 59.8, "table": 59, "price": 600, "x": 4.17, "y": 4.12, "z": 2.48 }, { "name": 22644, "carat": 1.5, "cut": "Good", "color": "H", "clarity": "VS2", "depth": 63.9, "table": 60, "price": 10692, "x": 7.17, "y": 7.22, "z": 4.6 }, { "name": 31530, "carat": 0.34, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 62.9, "table": 56, "price": 765, "x": 4.48, "y": 4.45, "z": 2.81 }, { "name": 33600, "carat": 0.37, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 60.8, "table": 57, "price": 833, "x": 4.66, "y": 4.61, "z": 2.82 }, { "name": 40166, "carat": 0.39, "cut": "Very-Good", "color": "F", "clarity": "VVS2", "depth": 58.2, "table": 62, "price": 1117, "x": 4.77, "y": 4.82, "z": 2.79 }, { "name": 6524, "carat": 0.91, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 62.6, "table": 54, "price": 4067, "x": 6.22, "y": 6.25, "z": 3.9 }, { "name": 2493, "carat": 0.9, "cut": "Good", "color": "I", "clarity": "SI1", "depth": 63, "table": 53, "price": 3196, "x": 6.08, "y": 6.15, "z": 3.85 }, { "name": 53307, "carat": 0.3, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 63.4, "table": 56, "price": 552, "x": 4.26, "y": 4.29, "z": 2.71 }, { "name": 6661, "carat": 1, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 62.7, "table": 59, "price": 4095, "x": 6.3, "y": 6.36, "z": 3.97 }, { "name": 143, "carat": 0.7, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 61.8, "table": 55, "price": 2767, "x": 5.68, "y": 5.72, "z": 3.52 }, { "name": 51773, "carat": 0.71, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 59.6, "table": 59, "price": 2409, "x": 5.79, "y": 5.75, "z": 3.44 }, { "name": 14482, "carat": 1.2, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 62.6, "table": 58, "price": 5846, "x": 6.79, "y": 6.73, "z": 4.23 }, { "name": 33251, "carat": 0.45, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 61.9, "table": 54, "price": 825, "x": 4.95, "y": 4.97, "z": 3.07 }, { "name": 9911, "carat": 1.01, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 62.9, "table": 59, "price": 4688, "x": 6.37, "y": 6.31, "z": 3.99 }, { "name": 259, "carat": 0.83, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 62.3, "table": 55, "price": 2790, "x": 6.02, "y": 6.05, "z": 3.76 }, { "name": 32882, "carat": 0.4, "cut": "Ideal", "color": "J", "clarity": "VS1", "depth": 62.6, "table": 55, "price": 810, "x": 4.75, "y": 4.71, "z": 2.96 }, { "name": 31115, "carat": 0.42, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 61.1, "table": 57, "price": 754, "x": 4.84, "y": 4.87, "z": 2.96 }, { "name": 20904, "carat": 1.06, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 62.1, "table": 57, "price": 9118, "x": 6.54, "y": 6.5, "z": 4.05 }, { "name": 26198, "carat": 1.7, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.6, "table": 61, "price": 15568, "x": 7.64, "y": 7.54, "z": 4.75 }, { "name": 2676, "carat": 0.7, "cut": "Premium", "color": "D", "clarity": "VS1", "depth": 60.6, "table": 58, "price": 3239, "x": 5.73, "y": 5.75, "z": 3.48 }, { "name": 38697, "carat": 0.37, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.9, "table": 53, "price": 1041, "x": 4.65, "y": 4.62, "z": 2.87 }, { "name": 39651, "carat": 0.5, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 63.2, "table": 57, "price": 1087, "x": 5.07, "y": 5.09, "z": 3.21 }, { "name": 16592, "carat": 1.06, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 62.7, "table": 55, "price": 6627, "x": 6.54, "y": 6.5, "z": 4.09 }, { "name": 18088, "carat": 1.22, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 60.8, "table": 59, "price": 7310, "x": 6.93, "y": 6.86, "z": 4.19 }, { "name": 48489, "carat": 0.5, "cut": "Fair", "color": "D", "clarity": "VVS2", "depth": 67.6, "table": 57, "price": 1980, "x": 4.95, "y": 4.84, "z": 3.31 }, { "name": 6300, "carat": 0.9, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 63.6, "table": 59, "price": 4022, "x": 6.1, "y": 6.04, "z": 3.86 }, { "name": 2089, "carat": 0.71, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 59.8, "table": 58, "price": 3112, "x": 5.78, "y": 5.82, "z": 3.47 }, { "name": 36243, "carat": 0.54, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 60.9, "table": 57, "price": 935, "x": 5.26, "y": 5.31, "z": 3.22 }, { "name": 53086, "carat": 0.57, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 60.9, "table": 56, "price": 2612, "x": 5.37, "y": 5.41, "z": 3.28 }, { "name": 35614, "carat": 0.3, "cut": "Premium", "color": "I", "clarity": "VS1", "depth": 59.1, "table": 59, "price": 473, "x": 4.35, "y": 4.38, "z": 2.58 }, { "name": 48148, "carat": 0.53, "cut": "Premium", "color": "D", "clarity": "VS1", "depth": 62.4, "table": 61, "price": 1940, "x": 5.25, "y": 5.14, "z": 3.24 }, { "name": 27367, "carat": 0.28, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62.4, "table": 56, "price": 646, "x": 4.16, "y": 4.2, "z": 2.61 }, { "name": 38602, "carat": 0.4, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.6, "table": 57, "price": 1038, "x": 4.7, "y": 4.68, "z": 2.93 }, { "name": 27118, "carat": 2.05, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 62.5, "table": 56, "price": 17294, "x": 8.17, "y": 8.08, "z": 5.08 }, { "name": 33880, "carat": 0.3, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.7, "table": 59, "price": 844, "x": 4.33, "y": 4.3, "z": 2.62 }, { "name": 27465, "carat": 2.03, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 62.4, "table": 59, "price": 18120, "x": 7.98, "y": 8.04, "z": 5 }, { "name": 19752, "carat": 1.02, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.5, "table": 57, "price": 8317, "x": 6.47, "y": 6.44, "z": 3.97 }, { "name": 20737, "carat": 1.36, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 60.9, "table": 56, "price": 8977, "x": 7.15, "y": 7.16, "z": 4.36 }, { "name": 20725, "carat": 0.31, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 61.4, "table": 55, "price": 625, "x": 4.32, "y": 4.34, "z": 2.66 }, { "name": 53285, "carat": 0.3, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 62.4, "table": 60, "price": 552, "x": 4.23, "y": 4.26, "z": 2.65 }, { "name": 25760, "carat": 2.33, "cut": "Premium", "color": "J", "clarity": "SI1", "depth": 59.9, "table": 59, "price": 14711, "x": 8.7, "y": 8.65, "z": 5.2 }, { "name": 1993, "carat": 0.91, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 62.1, "table": 56, "price": 3096, "x": 6.26, "y": 6.21, "z": 3.87 }, { "name": 13045, "carat": 0.36, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 61.6, "table": 60, "price": 600, "x": 4.54, "y": 4.61, "z": 2.82 }, { "name": 19622, "carat": 1, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.2, "table": 56, "price": 8239, "x": 6.47, "y": 6.5, "z": 3.97 }, { "name": 32358, "carat": 0.3, "cut": "Good", "color": "G", "clarity": "VVS1", "depth": 63.1, "table": 56, "price": 789, "x": 4.25, "y": 4.28, "z": 2.69 }, { "name": 26851, "carat": 2.01, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 62.6, "table": 59, "price": 16778, "x": 8.04, "y": 8.01, "z": 5.02 }, { "name": 34059, "carat": 0.36, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 61.5, "table": 56, "price": 851, "x": 4.64, "y": 4.56, "z": 2.83 }, { "name": 14897, "carat": 1.26, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 58.6, "table": 59, "price": 5998, "x": 7.09, "y": 7.04, "z": 4.14 }, { "name": 235, "carat": 0.64, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 61.5, "table": 56, "price": 2787, "x": 5.54, "y": 5.55, "z": 3.41 }, { "name": 4997, "carat": 0.58, "cut": "Ideal", "color": "D", "clarity": "VVS1", "depth": 62.2, "table": 56, "price": 3741, "x": 5.34, "y": 5.36, "z": 3.33 }, { "name": 39946, "carat": 0.24, "cut": "Good", "color": "E", "clarity": "VVS2", "depth": 65, "table": 58, "price": 492, "x": 3.85, "y": 3.9, "z": 2.52 }, { "name": 26147, "carat": 2, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 59.7, "table": 61, "price": 15451, "x": 8.2, "y": 8.15, "z": 4.88 }, { "name": 17956, "carat": 1.02, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 61.9, "table": 59, "price": 7257, "x": 6.38, "y": 6.44, "z": 3.97 }, { "name": 19885, "carat": 1.2, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 61.1, "table": 59, "price": 8436, "x": 6.81, "y": 6.87, "z": 4.18 }, { "name": 37862, "carat": 0.34, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 61, "table": 56, "price": 1003, "x": 4.54, "y": 4.57, "z": 2.78 }, { "name": 5256, "carat": 1.01, "cut": "Very-Good", "color": "I", "clarity": "SI2", "depth": 61.4, "table": 63, "price": 3792, "x": 6.33, "y": 6.38, "z": 3.9 }, { "name": 16116, "carat": 0.9, "cut": "Premium", "color": "D", "clarity": "VS1", "depth": 61.2, "table": 58, "price": 6441, "x": 6.27, "y": 6.25, "z": 3.83 }, { "name": 17009, "carat": 1.33, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 62.3, "table": 55, "price": 6791, "x": 7.01, "y": 7.08, "z": 4.39 }, { "name": 4428, "carat": 1, "cut": "Good", "color": "J", "clarity": "SI1", "depth": 58.7, "table": 62, "price": 3614, "x": 6.47, "y": 6.51, "z": 3.81 }, { "name": 47942, "carat": 0.55, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.2, "table": 54, "price": 1916, "x": 5.23, "y": 5.3, "z": 3.27 }, { "name": 34574, "carat": 0.31, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.9, "table": 56, "price": 871, "x": 4.33, "y": 4.35, "z": 2.68 }, { "name": 11058, "carat": 0.4, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 61.9, "table": 58, "price": 596, "x": 4.71, "y": 4.73, "z": 2.92 }, { "name": 25643, "carat": 2.15, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 62.5, "table": 57, "price": 14534, "x": 8.2, "y": 8.16, "z": 5.11 }, { "name": 12593, "carat": 1.27, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 61.8, "table": 54, "price": 5285, "x": 6.95, "y": 6.98, "z": 4.31 }, { "name": 5579, "carat": 0.9, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 63.6, "table": 57, "price": 3863, "x": 6.08, "y": 6.12, "z": 3.88 }, { "name": 9401, "carat": 1.05, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 61.9, "table": 56, "price": 4586, "x": 6.56, "y": 6.49, "z": 4.04 }, { "name": 20144, "carat": 1.43, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 62.8, "table": 57, "price": 8599, "x": 7.17, "y": 7.12, "z": 4.49 }, { "name": 52042, "carat": 0.71, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 62.6, "table": 58, "price": 2450, "x": 5.7, "y": 5.67, "z": 3.56 }, { "name": 52908, "carat": 0.64, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 60.7, "table": 57, "price": 2587, "x": 5.58, "y": 5.63, "z": 3.4 }, { "name": 32459, "carat": 0.38, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 61.6, "table": 56, "price": 794, "x": 4.67, "y": 4.72, "z": 2.89 }, { "name": 41064, "carat": 0.49, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 60.7, "table": 56, "price": 1190, "x": 5.13, "y": 5.18, "z": 3.13 }, { "name": 47384, "carat": 0.54, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 61.6, "table": 56, "price": 1847, "x": 5.26, "y": 5.23, "z": 3.23 }, { "name": 39278, "carat": 0.34, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.6, "table": 56, "price": 490, "x": 4.46, "y": 4.48, "z": 2.8 }, { "name": 21693, "carat": 0.34, "cut": "Ideal", "color": "I", "clarity": "VVS1", "depth": 61.8, "table": 56, "price": 626, "x": 4.47, "y": 4.5, "z": 2.77 }, { "name": 18007, "carat": 1.2, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 60.1, "table": 59, "price": 7282, "x": 6.92, "y": 6.85, "z": 4.14 }, { "name": 14160, "carat": 1.31, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 60.5, "table": 59, "price": 5744, "x": 7.11, "y": 7.04, "z": 4.28 }, { "name": 29415, "carat": 0.42, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 62.9, "table": 56, "price": 700, "x": 4.77, "y": 4.8, "z": 3.01 }, { "name": 43419, "carat": 0.41, "cut": "Ideal", "color": "D", "clarity": "VVS1", "depth": 62.7, "table": 56, "price": 1413, "x": 4.77, "y": 4.74, "z": 2.98 }, { "name": 37822, "carat": 0.31, "cut": "Ideal", "color": "E", "clarity": "IF", "depth": 61.3, "table": 58, "price": 1002, "x": 4.37, "y": 4.4, "z": 2.69 }, { "name": 28546, "carat": 0.3, "cut": "Premium", "color": "I", "clarity": "VVS2", "depth": 61.8, "table": 58, "price": 675, "x": 4.33, "y": 4.28, "z": 2.66 }, { "name": 47739, "carat": 0.7, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 62.4, "table": 58, "price": 1890, "x": 5.68, "y": 5.64, "z": 3.53 }, { "name": 40698, "carat": 0.4, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62.2, "table": 56, "price": 1158, "x": 4.71, "y": 4.78, "z": 2.95 }, { "name": 17406, "carat": 1.1, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 60.2, "table": 56, "price": 6972, "x": 6.7, "y": 6.74, "z": 4.05 }, { "name": 25732, "carat": 1.51, "cut": "Good", "color": "G", "clarity": "IF", "depth": 62.8, "table": 60, "price": 14654, "x": 7.18, "y": 7.24, "z": 4.53 }, { "name": 53765, "carat": 0.7, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 62.6, "table": 57, "price": 2726, "x": 5.67, "y": 5.7, "z": 3.56 }, { "name": 13811, "carat": 1.06, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 61.9, "table": 58, "price": 5627, "x": 6.57, "y": 6.49, "z": 4.04 }, { "name": 13975, "carat": 1.27, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 62.3, "table": 56, "price": 5690, "x": 6.93, "y": 6.85, "z": 4.29 }, { "name": 11498, "carat": 1.12, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 61.5, "table": 57, "price": 5018, "x": 6.74, "y": 6.68, "z": 4.13 }, { "name": 92, "carat": 0.86, "cut": "Fair", "color": "E", "clarity": "SI2", "depth": 55.1, "table": 69, "price": 2757, "x": 6.45, "y": 6.33, "z": 3.52 }, { "name": 40130, "carat": 0.41, "cut": "Premium", "color": "F", "clarity": "VVS2", "depth": 60.6, "table": 58, "price": 1115, "x": 4.79, "y": 4.84, "z": 2.92 }, { "name": 31089, "carat": 0.33, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 60, "table": 63, "price": 752, "x": 4.45, "y": 4.49, "z": 2.68 }, { "name": 12062, "carat": 1.01, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 62.4, "table": 54, "price": 5154, "x": 6.41, "y": 6.44, "z": 4.01 }, { "name": 10388, "carat": 0.3, "cut": "Fair", "color": "F", "clarity": "VS1", "depth": 61.7, "table": 66, "price": 593, "x": 4.25, "y": 4.31, "z": 2.64 }, { "name": 46337, "carat": 0.58, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.9, "table": 56, "price": 1758, "x": 5.38, "y": 5.34, "z": 3.32 }, { "name": 41965, "carat": 0.23, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 62.7, "table": 55, "price": 505, "x": 3.9, "y": 3.95, "z": 2.46 }, { "name": 44984, "carat": 0.31, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 62.3, "table": 57, "price": 523, "x": 4.37, "y": 4.33, "z": 2.71 }, { "name": 10061, "carat": 0.31, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.5, "table": 56, "price": 591, "x": 4.36, "y": 4.39, "z": 2.69 }, { "name": 1719, "carat": 0.32, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 63.3, "table": 54, "price": 561, "x": 4.36, "y": 4.39, "z": 2.77 }, { "name": 50486, "carat": 0.7, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 58, "table": 60, "price": 2268, "x": 5.91, "y": 5.88, "z": 3.42 }, { "name": 39484, "carat": 0.41, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 61.7, "table": 57, "price": 1079, "x": 4.76, "y": 4.8, "z": 2.95 }, { "name": 50934, "carat": 0.7, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 62.1, "table": 60, "price": 2319, "x": 5.73, "y": 5.71, "z": 3.55 }, { "name": 21951, "carat": 1.26, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 60.9, "table": 56, "price": 10020, "x": 6.95, "y": 7.01, "z": 4.25 }, { "name": 53149, "carat": 0.8, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 62.4, "table": 55, "price": 2623, "x": 5.88, "y": 5.92, "z": 3.68 }, { "name": 36621, "carat": 0.24, "cut": "Very-Good", "color": "F", "clarity": "VVS2", "depth": 62.1, "table": 58, "price": 478, "x": 3.96, "y": 4.03, "z": 2.48 }, { "name": 40481, "carat": 0.55, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 60.7, "table": 56, "price": 1141, "x": 5.32, "y": 5.38, "z": 3.25 }, { "name": 30147, "carat": 0.32, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 60.2, "table": 60, "price": 720, "x": 4.44, "y": 4.39, "z": 2.66 }, { "name": 47083, "carat": 0.69, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 62.8, "table": 58, "price": 1822, "x": 5.65, "y": 5.62, "z": 3.54 }, { "name": 37623, "carat": 0.44, "cut": "Premium", "color": "I", "clarity": "VVS1", "depth": 62.5, "table": 60, "price": 990, "x": 4.87, "y": 4.82, "z": 3.03 }, { "name": 2504, "carat": 0.7, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 61, "table": 59, "price": 3199, "x": 5.74, "y": 5.7, "z": 3.49 }, { "name": 19150, "carat": 1.55, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 60.7, "table": 59, "price": 7911, "x": 7.47, "y": 7.5, "z": 4.54 }, { "name": 14664, "carat": 1.01, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 61.6, "table": 58, "price": 5919, "x": 6.4, "y": 6.45, "z": 3.96 }, { "name": 24538, "carat": 1.62, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62.7, "table": 56, "price": 12828, "x": 7.5, "y": 7.44, "z": 4.68 }, { "name": 964, "carat": 0.71, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.7, "table": 56, "price": 2891, "x": 5.71, "y": 5.75, "z": 3.59 }, { "name": 34414, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 60.7, "table": 57, "price": 863, "x": 4.34, "y": 4.39, "z": 2.65 }, { "name": 42804, "carat": 0.52, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 62.2, "table": 54, "price": 1352, "x": 5.18, "y": 5.2, "z": 3.23 }, { "name": 20646, "carat": 1.58, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 60.5, "table": 58, "price": 8936, "x": 7.57, "y": 7.54, "z": 4.57 }, { "name": 52407, "carat": 0.71, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 59.5, "table": 57, "price": 2511, "x": 5.87, "y": 5.82, "z": 3.48 }, { "name": 51353, "carat": 0.71, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 63.4, "table": 56, "price": 2364, "x": 5.64, "y": 5.68, "z": 3.59 }, { "name": 29106, "carat": 0.34, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 62.5, "table": 54, "price": 689, "x": 4.54, "y": 4.49, "z": 2.82 }, { "name": 19876, "carat": 1.31, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61.5, "table": 56, "price": 8429, "x": 7, "y": 7.06, "z": 4.32 }, { "name": 26399, "carat": 2.01, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 62.3, "table": 58, "price": 15917, "x": 8.11, "y": 8.06, "z": 5.04 }, { "name": 33362, "carat": 0.41, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 62.9, "table": 59, "price": 827, "x": 4.7, "y": 4.75, "z": 2.97 }, { "name": 10156, "carat": 1.01, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 61.9, "table": 58, "price": 4727, "x": 6.43, "y": 6.49, "z": 4 }, { "name": 19789, "carat": 1.06, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.7, "table": 56, "price": 8358, "x": 6.59, "y": 6.56, "z": 4.06 }, { "name": 36629, "carat": 0.29, "cut": "Very-Good", "color": "H", "clarity": "VVS1", "depth": 62, "table": 55, "price": 478, "x": 4.24, "y": 4.27, "z": 2.64 }, { "name": 16819, "carat": 1.21, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 58.8, "table": 59, "price": 6708, "x": 7.01, "y": 6.98, "z": 4.11 }, { "name": 15591, "carat": 1.24, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.3, "table": 57, "price": 6254, "x": 6.95, "y": 6.89, "z": 4.24 }, { "name": 28931, "carat": 0.3, "cut": "Premium", "color": "G", "clarity": "VVS2", "depth": 61.9, "table": 59, "price": 684, "x": 4.25, "y": 4.28, "z": 2.64 }, { "name": 45361, "carat": 0.52, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 62.2, "table": 56, "price": 1665, "x": 5.16, "y": 5.17, "z": 3.21 }, { "name": 19714, "carat": 1.51, "cut": "Fair", "color": "I", "clarity": "VS2", "depth": 64.6, "table": 58, "price": 8287, "x": 7.19, "y": 7.15, "z": 4.63 }, { "name": 1192, "carat": 0.72, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 62.2, "table": 57, "price": 2933, "x": 5.67, "y": 5.72, "z": 3.54 }, { "name": 17556, "carat": 1.55, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 63.2, "table": 57, "price": 7066, "x": 7.35, "y": 7.31, "z": 4.64 }, { "name": 21432, "carat": 1.51, "cut": "Good", "color": "E", "clarity": "SI1", "depth": 65.5, "table": 56, "price": 9539, "x": 7.12, "y": 7.16, "z": 4.68 }, { "name": 4090, "carat": 0.9, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 63, "table": 58, "price": 3534, "x": 6.12, "y": 6.16, "z": 3.87 }, { "name": 29990, "carat": 0.32, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.6, "table": 57, "price": 716, "x": 4.39, "y": 4.42, "z": 2.71 }, { "name": 18058, "carat": 0.34, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 60.8, "table": 56, "price": 616, "x": 4.53, "y": 4.55, "z": 2.76 }, { "name": 44285, "carat": 0.52, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62, "table": 55, "price": 1577, "x": 5.19, "y": 5.13, "z": 3.2 }, { "name": 10297, "carat": 1.01, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 63.5, "table": 59, "price": 4759, "x": 6.3, "y": 6.39, "z": 4.03 }, { "name": 44889, "carat": 0.5, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 61.8, "table": 59, "price": 1629, "x": 5.12, "y": 5.08, "z": 3.15 }, { "name": 2845, "carat": 0.56, "cut": "Ideal", "color": "D", "clarity": "VVS1", "depth": 61.8, "table": 56, "price": 3270, "x": 5.28, "y": 5.31, "z": 3.27 }, { "name": 1505, "carat": 0.75, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.1, "table": 57, "price": 2993, "x": 5.83, "y": 5.86, "z": 3.57 }, { "name": 29164, "carat": 0.27, "cut": "Good", "color": "D", "clarity": "VVS2", "depth": 64.3, "table": 55, "price": 693, "x": 4.14, "y": 4.09, "z": 2.65 }, { "name": 37686, "carat": 0.43, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61, "table": 57, "price": 993, "x": 4.88, "y": 4.85, "z": 2.97 }, { "name": 8363, "carat": 1.01, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 61, "table": 56, "price": 4399, "x": 6.47, "y": 6.54, "z": 3.97 }, { "name": 21925, "carat": 1.23, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 62.2, "table": 57, "price": 9999, "x": 6.8, "y": 6.87, "z": 4.25 }, { "name": 6997, "carat": 1, "cut": "Good", "color": "F", "clarity": "SI2", "depth": 63.8, "table": 58, "price": 4155, "x": 6.33, "y": 6.28, "z": 4.02 }, { "name": 31546, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62.1, "table": 57, "price": 766, "x": 4.27, "y": 4.3, "z": 2.66 }, { "name": 30660, "carat": 0.42, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 62.9, "table": 54, "price": 737, "x": 4.79, "y": 4.81, "z": 3.02 }, { "name": 48380, "carat": 0.58, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 60.1, "table": 57, "price": 1965, "x": 5.41, "y": 5.47, "z": 3.27 }, { "name": 33793, "carat": 0.4, "cut": "Premium", "color": "I", "clarity": "VVS1", "depth": 62.7, "table": 59, "price": 842, "x": 4.67, "y": 4.71, "z": 2.94 }, { "name": 44592, "carat": 0.53, "cut": "Premium", "color": "I", "clarity": "VVS1", "depth": 63, "table": 56, "price": 1607, "x": 5.19, "y": 5.13, "z": 3.25 }, { "name": 10888, "carat": 1.21, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 60.7, "table": 56, "price": 4880, "x": 6.86, "y": 6.91, "z": 4.18 }, { "name": 49510, "carat": 0.73, "cut": "Ideal", "color": "J", "clarity": "VS1", "depth": 62, "table": 53, "price": 2121, "x": 5.78, "y": 5.82, "z": 3.6 }, { "name": 22374, "carat": 0.31, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 62.5, "table": 60, "price": 628, "x": 4.36, "y": 4.31, "z": 2.71 }, { "name": 6709, "carat": 0.24, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 62.5, "table": 55, "price": 412, "x": 3.96, "y": 3.98, "z": 2.48 }, { "name": 16834, "carat": 1.01, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 63.6, "table": 59, "price": 6714, "x": 6.3, "y": 6.34, "z": 4.02 }, { "name": 14128, "carat": 1.13, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 61.7, "table": 56, "price": 5728, "x": 6.73, "y": 6.65, "z": 4.13 }, { "name": 48456, "carat": 0.58, "cut": "Premium", "color": "G", "clarity": "VVS2", "depth": 61.4, "table": 61, "price": 1975, "x": 5.43, "y": 5.38, "z": 3.32 }, { "name": 52067, "carat": 0.79, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 60.8, "table": 57, "price": 2453, "x": 5.99, "y": 5.96, "z": 3.63 }, { "name": 46822, "carat": 0.7, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 60.5, "table": 61, "price": 1808, "x": 5.75, "y": 5.72, "z": 3.47 }, { "name": 40311, "carat": 0.4, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 62.5, "table": 58, "price": 1125, "x": 4.72, "y": 4.69, "z": 2.94 }, { "name": 3638, "carat": 0.74, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.2, "table": 56, "price": 3434, "x": 5.82, "y": 5.85, "z": 3.57 }, { "name": 37724, "carat": 0.34, "cut": "Premium", "color": "G", "clarity": "VVS2", "depth": 61.6, "table": 58, "price": 995, "x": 4.49, "y": 4.44, "z": 2.75 }, { "name": 46074, "carat": 0.5, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.9, "table": 55, "price": 1736, "x": 5.12, "y": 5.08, "z": 3.21 }, { "name": 20574, "carat": 1.24, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.7, "table": 58, "price": 8887, "x": 6.79, "y": 6.86, "z": 4.28 }, { "name": 46990, "carat": 0.57, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 58.2, "table": 66, "price": 1816, "x": 5.34, "y": 5.45, "z": 3.14 }, { "name": 2760, "carat": 0.93, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 62.3, "table": 60, "price": 3250, "x": 6.3, "y": 6.23, "z": 3.9 }, { "name": 40891, "carat": 0.5, "cut": "Fair", "color": "E", "clarity": "SI1", "depth": 65, "table": 58, "price": 1176, "x": 4.98, "y": 4.9, "z": 3.21 }, { "name": 27955, "carat": 0.27, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 62.5, "table": 54, "price": 432, "x": 4.16, "y": 4.19, "z": 2.61 }, { "name": 13867, "carat": 1.01, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62.3, "table": 58, "price": 5646, "x": 6.35, "y": 6.42, "z": 3.98 }, { "name": 742, "carat": 0.33, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 62.6, "table": 58, "price": 557, "x": 4.42, "y": 4.4, "z": 2.76 }, { "name": 34077, "carat": 0.36, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61, "table": 56, "price": 852, "x": 4.59, "y": 4.63, "z": 2.81 }, { "name": 47862, "carat": 0.56, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 61.5, "table": 58, "price": 1910, "x": 5.28, "y": 5.33, "z": 3.26 }, { "name": 31308, "carat": 0.32, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.6, "table": 57, "price": 758, "x": 4.37, "y": 4.41, "z": 2.75 }, { "name": 784, "carat": 0.53, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 61.4, "table": 57, "price": 2860, "x": 5.23, "y": 5.2, "z": 3.2 }, { "name": 17276, "carat": 1.07, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.8, "table": 57, "price": 6917, "x": 6.58, "y": 6.52, "z": 4.05 }, { "name": 26631, "carat": 2.22, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 63.2, "table": 57, "price": 16398, "x": 8.23, "y": 8.28, "z": 5.22 }, { "name": 39297, "carat": 0.3, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 62.3, "table": 57, "price": 491, "x": 4.27, "y": 4.3, "z": 2.67 }, { "name": 31558, "carat": 0.38, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 59.9, "table": 58, "price": 766, "x": 4.72, "y": 4.77, "z": 2.84 }, { "name": 10524, "carat": 1.01, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 63, "table": 54, "price": 4805, "x": 6.43, "y": 6.39, "z": 4.04 }, { "name": 19656, "carat": 1.01, "cut": "Premium", "color": "D", "clarity": "VS1", "depth": 62.4, "table": 58, "price": 8265, "x": 6.38, "y": 6.41, "z": 3.99 }, { "name": 44163, "carat": 0.5, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 61.1, "table": 58, "price": 1565, "x": 5.09, "y": 5.18, "z": 3.14 }, { "name": 15322, "carat": 1.04, "cut": "Good", "color": "G", "clarity": "VS1", "depth": 58.9, "table": 64, "price": 6151, "x": 6.6, "y": 6.64, "z": 3.9 }, { "name": 33575, "carat": 0.3, "cut": "Very-Good", "color": "F", "clarity": "VVS1", "depth": 62.2, "table": 56, "price": 832, "x": 4.28, "y": 4.3, "z": 2.67 }, { "name": 23208, "carat": 1, "cut": "Very-Good", "color": "E", "clarity": "IF", "depth": 62.5, "table": 55, "price": 11214, "x": 6.28, "y": 6.39, "z": 3.96 }, { "name": 35938, "carat": 0.41, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 60.3, "table": 63, "price": 920, "x": 4.8, "y": 4.78, "z": 2.89 }, { "name": 25815, "carat": 1.62, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 61.1, "table": 60, "price": 14826, "x": 7.56, "y": 7.57, "z": 4.62 }, { "name": 36962, "carat": 0.41, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 61.9, "table": 60, "price": 961, "x": 4.76, "y": 4.7, "z": 2.93 }, { "name": 22887, "carat": 1.36, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 59.3, "table": 60, "price": 10929, "x": 7.23, "y": 7.2, "z": 4.28 }, { "name": 8411, "carat": 0.9, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 61.9, "table": 58, "price": 4403, "x": 6.2, "y": 6.24, "z": 3.85 }, { "name": 30964, "carat": 0.36, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.1, "table": 55, "price": 746, "x": 4.63, "y": 4.66, "z": 2.84 }, { "name": 11781, "carat": 1.02, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.1, "table": 58, "price": 5084, "x": 6.51, "y": 6.46, "z": 3.96 }, { "name": 4269, "carat": 1.02, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 62.2, "table": 52, "price": 3581, "x": 6.47, "y": 6.43, "z": 4.01 }, { "name": 2070, "carat": 0.32, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61.9, "table": 59, "price": 561, "x": 4.36, "y": 4.39, "z": 2.71 }, { "name": 3541, "carat": 1.01, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 64.1, "table": 58, "price": 3411, "x": 6.31, "y": 6.26, "z": 4.03 }, { "name": 21716, "carat": 0.28, "cut": "Very-Good", "color": "F", "clarity": "VVS2", "depth": 60.2, "table": 58, "price": 628, "x": 4.26, "y": 4.28, "z": 2.57 }, { "name": 35949, "carat": 0.3, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.9, "table": 54, "price": 475, "x": 4.33, "y": 4.36, "z": 2.69 }, { "name": 26088, "carat": 2.03, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 61.9, "table": 59, "price": 15322, "x": 8.14, "y": 8.09, "z": 5.02 }, { "name": 11169, "carat": 1.07, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 62.6, "table": 61, "price": 4949, "x": 6.49, "y": 6.42, "z": 4.04 }, { "name": 25784, "carat": 1.5, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.6, "table": 57, "price": 14759, "x": 7.27, "y": 7.34, "z": 4.57 }, { "name": 47991, "carat": 0.32, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 63.2, "table": 55, "price": 533, "x": 4.37, "y": 4.4, "z": 2.77 }, { "name": 4390, "carat": 0.31, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.6, "table": 57, "price": 571, "x": 4.3, "y": 4.33, "z": 2.7 }, { "name": 38412, "carat": 0.35, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61, "table": 57, "price": 1024, "x": 4.58, "y": 4.54, "z": 2.78 }, { "name": 28578, "carat": 0.3, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 63, "table": 59, "price": 675, "x": 4.27, "y": 4.21, "z": 2.67 }, { "name": 20013, "carat": 0.32, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 61.6, "table": 59, "price": 421, "x": 4.35, "y": 4.38, "z": 2.69 }, { "name": 29574, "carat": 0.41, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 63.7, "table": 58, "price": 705, "x": 4.71, "y": 4.74, "z": 3.01 }, { "name": 44447, "carat": 0.51, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.9, "table": 55, "price": 1591, "x": 5.11, "y": 5.15, "z": 3.18 }, { "name": 22881, "carat": 1.26, "cut": "Very-Good", "color": "G", "clarity": "VVS1", "depth": 60.2, "table": 59, "price": 10922, "x": 6.98, "y": 7.07, "z": 4.23 }, { "name": 35856, "carat": 0.32, "cut": "Ideal", "color": "D", "clarity": "VVS1", "depth": 62.6, "table": 57, "price": 917, "x": 4.34, "y": 4.41, "z": 2.74 }, { "name": 52284, "carat": 0.59, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 61.7, "table": 59, "price": 2494, "x": 5.37, "y": 5.36, "z": 3.31 }, { "name": 16038, "carat": 0.3, "cut": "Very-Good", "color": "I", "clarity": "VS1", "depth": 63.3, "table": 59, "price": 608, "x": 4.23, "y": 4.2, "z": 2.67 }, { "name": 51853, "carat": 0.7, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 60.3, "table": 56, "price": 2423, "x": 5.77, "y": 5.73, "z": 3.47 }, { "name": 33738, "carat": 0.3, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 62.9, "table": 55, "price": 840, "x": 4.25, "y": 4.27, "z": 2.68 }, { "name": 14498, "carat": 0.9, "cut": "Good", "color": "G", "clarity": "IF", "depth": 61.8, "table": 61, "price": 5855, "x": 6.12, "y": 6.17, "z": 3.8 }, { "name": 33530, "carat": 0.35, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 62.3, "table": 60, "price": 829, "x": 4.5, "y": 4.52, "z": 2.81 }, { "name": 39122, "carat": 0.41, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 59.7, "table": 59, "price": 1061, "x": 4.84, "y": 4.81, "z": 2.88 }, { "name": 15622, "carat": 1.01, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 63.1, "table": 56, "price": 6267, "x": 6.41, "y": 6.37, "z": 4.03 }, { "name": 14279, "carat": 1.01, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.2, "table": 60, "price": 5780, "x": 6.47, "y": 6.41, "z": 3.94 }, { "name": 41635, "carat": 0.32, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 62.1, "table": 54, "price": 504, "x": 4.44, "y": 4.38, "z": 2.74 }, { "name": 1109, "carat": 0.85, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 62, "table": 57, "price": 2913, "x": 6.1, "y": 6.02, "z": 3.76 }, { "name": 15925, "carat": 1.31, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 62.1, "table": 58, "price": 6368, "x": 7.01, "y": 6.86, "z": 4.31 }, { "name": 23645, "carat": 3.65, "cut": "Fair", "color": "H", "clarity": "I1", "depth": 67.1, "table": 53, "price": 11668, "x": 9.53, "y": 9.48, "z": 6.38 }, { "name": 51650, "carat": 0.26, "cut": "Very-Good", "color": "G", "clarity": "VVS1", "depth": 61.8, "table": 57, "price": 545, "x": 4.06, "y": 4.1, "z": 2.52 }, { "name": 32858, "carat": 0.4, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61.8, "table": 56, "price": 807, "x": 4.74, "y": 4.78, "z": 2.94 }, { "name": 9462, "carat": 0.9, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 62.5, "table": 57, "price": 4600, "x": 6.12, "y": 6.14, "z": 3.83 }, { "name": 28225, "carat": 0.33, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.1, "table": 55, "price": 666, "x": 4.45, "y": 4.47, "z": 2.77 }, { "name": 36301, "carat": 0.32, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 60.4, "table": 57, "price": 936, "x": 4.46, "y": 4.42, "z": 2.68 }, { "name": 21272, "carat": 1.2, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.4, "table": 55, "price": 9424, "x": 6.78, "y": 6.87, "z": 4.19 }, { "name": 53353, "carat": 1, "cut": "Good", "color": "D", "clarity": "I1", "depth": 57.8, "table": 62, "price": 2657, "x": 6.51, "y": 6.47, "z": 3.75 }, { "name": 19863, "carat": 1.01, "cut": "Premium", "color": "D", "clarity": "VS1", "depth": 62.4, "table": 58, "price": 8416, "x": 6.41, "y": 6.38, "z": 3.99 }, { "name": 49842, "carat": 0.71, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 61.3, "table": 58, "price": 2169, "x": 5.76, "y": 5.82, "z": 3.55 }, { "name": 12867, "carat": 1.12, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 62.2, "table": 60, "price": 5363, "x": 6.65, "y": 6.59, "z": 4.12 }, { "name": 45455, "carat": 0.5, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 62.7, "table": 56, "price": 1675, "x": 5.09, "y": 5.12, "z": 3.2 }, { "name": 17538, "carat": 1, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.7, "table": 55, "price": 7056, "x": 6.42, "y": 6.39, "z": 3.95 }, { "name": 50586, "carat": 0.56, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 62.3, "table": 54, "price": 2281, "x": 5.29, "y": 5.34, "z": 3.31 }, { "name": 12350, "carat": 1.14, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 62.5, "table": 59, "price": 5228, "x": 6.67, "y": 6.65, "z": 4.16 }, { "name": 24704, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.1, "table": 55, "price": 639, "x": 4.39, "y": 4.43, "z": 2.74 }, { "name": 39854, "carat": 0.57, "cut": "Good", "color": "J", "clarity": "VS2", "depth": 63.3, "table": 56, "price": 1100, "x": 5.24, "y": 5.28, "z": 3.33 }, { "name": 40949, "carat": 0.3, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 63.5, "table": 59, "price": 500, "x": 4.19, "y": 4.22, "z": 2.67 }, { "name": 29620, "carat": 0.3, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 60.4, "table": 59, "price": 439, "x": 4.33, "y": 4.35, "z": 2.62 }, { "name": 15525, "carat": 1.01, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 63, "table": 60, "price": 6221, "x": 6.32, "y": 6.35, "z": 3.99 }, { "name": 52886, "carat": 0.7, "cut": "Good", "color": "D", "clarity": "SI2", "depth": 58.2, "table": 63, "price": 2583, "x": 5.78, "y": 5.83, "z": 3.38 }, { "name": 41653, "carat": 0.59, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 61.8, "table": 56, "price": 1239, "x": 5.39, "y": 5.43, "z": 3.35 }, { "name": 22879, "carat": 1.5, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 62.3, "table": 56, "price": 10920, "x": 7.34, "y": 7.29, "z": 4.56 }, { "name": 13418, "carat": 1.5, "cut": "Ideal", "color": "I", "clarity": "I1", "depth": 61.8, "table": 57, "price": 5510, "x": 7.39, "y": 7.31, "z": 4.54 }, { "name": 7283, "carat": 1, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 62.8, "table": 59, "price": 4200, "x": 6.34, "y": 6.3, "z": 3.97 }, { "name": 19217, "carat": 1.51, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 63.6, "table": 60, "price": 7957, "x": 7.27, "y": 7.23, "z": 4.61 }, { "name": 11040, "carat": 1.01, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 60.7, "table": 61, "price": 4921, "x": 6.47, "y": 6.39, "z": 3.9 }, { "name": 45136, "carat": 0.5, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.4, "table": 55, "price": 1653, "x": 5.09, "y": 5.1, "z": 3.18 }, { "name": 37894, "carat": 0.41, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 62.9, "table": 56, "price": 1007, "x": 4.7, "y": 4.74, "z": 2.97 }, { "name": 46392, "carat": 0.37, "cut": "Ideal", "color": "D", "clarity": "VVS1", "depth": 61.3, "table": 56, "price": 1764, "x": 4.6, "y": 4.63, "z": 2.83 }, { "name": 28687, "carat": 0.36, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.3, "table": 57, "price": 678, "x": 4.55, "y": 4.57, "z": 2.84 }, { "name": 7453, "carat": 0.9, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 62.7, "table": 60, "price": 4234, "x": 6.12, "y": 6.07, "z": 3.82 }, { "name": 17663, "carat": 1.02, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 62.7, "table": 55, "price": 7118, "x": 6.49, "y": 6.4, "z": 4.04 }, { "name": 50415, "carat": 0.71, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 64.3, "table": 58, "price": 2258, "x": 5.61, "y": 5.55, "z": 3.59 }, { "name": 32993, "carat": 0.38, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 61.5, "table": 58, "price": 812, "x": 4.62, "y": 4.61, "z": 2.84 }, { "name": 29, "carat": 0.23, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 60.5, "table": 61, "price": 357, "x": 3.96, "y": 3.97, "z": 2.4 }, { "name": 5320, "carat": 0.9, "cut": "Good", "color": "D", "clarity": "SI2", "depth": 62.3, "table": 58, "price": 3806, "x": 6.05, "y": 6.27, "z": 3.84 }, { "name": 23642, "carat": 1.51, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 62.8, "table": 59, "price": 11666, "x": 7.31, "y": 7.28, "z": 4.58 }, { "name": 17874, "carat": 1.4, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 61.2, "table": 56, "price": 7213, "x": 7.23, "y": 7.18, "z": 4.41 }, { "name": 51203, "carat": 0.7, "cut": "Fair", "color": "H", "clarity": "VS2", "depth": 67.8, "table": 56, "price": 2351, "x": 5.42, "y": 5.38, "z": 3.66 }, { "name": 22743, "carat": 1.51, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 62.5, "table": 55, "price": 10763, "x": 7.29, "y": 7.34, "z": 4.57 }, { "name": 28569, "carat": 0.3, "cut": "Good", "color": "H", "clarity": "VS1", "depth": 63.9, "table": 55, "price": 675, "x": 4.28, "y": 4.26, "z": 2.73 }, { "name": 51750, "carat": 0.78, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 62.6, "table": 59, "price": 2405, "x": 5.81, "y": 5.85, "z": 3.65 }, { "name": 44363, "carat": 0.56, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 60.9, "table": 56, "price": 1580, "x": 5.32, "y": 5.35, "z": 3.25 }, { "name": 42559, "carat": 0.42, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 62.1, "table": 55, "price": 1326, "x": 4.78, "y": 4.81, "z": 2.98 }, { "name": 32403, "carat": 0.37, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 62.5, "table": 58, "price": 791, "x": 4.57, "y": 4.52, "z": 2.84 }, { "name": 15752, "carat": 1.32, "cut": "Very-Good", "color": "I", "clarity": "SI2", "depth": 61.2, "table": 58, "price": 6300, "x": 7.12, "y": 7.06, "z": 4.34 }, { "name": 46703, "carat": 0.55, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.4, "table": 56, "price": 1792, "x": 5.32, "y": 5.26, "z": 3.25 }, { "name": 2555, "carat": 0.93, "cut": "Very-Good", "color": "J", "clarity": "VS2", "depth": 63.3, "table": 61, "price": 3208, "x": 6.19, "y": 6.14, "z": 3.9 }, { "name": 11773, "carat": 1.21, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 58.2, "table": 59, "price": 5082, "x": 7.05, "y": 7.03, "z": 4.1 }, { "name": 39085, "carat": 0.41, "cut": "Good", "color": "E", "clarity": "VVS2", "depth": 63.1, "table": 58, "price": 1060, "x": 4.72, "y": 4.75, "z": 2.99 }, { "name": 53456, "carat": 0.7, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 61.1, "table": 57, "price": 2677, "x": 5.74, "y": 5.66, "z": 3.48 }, { "name": 44088, "carat": 0.5, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.1, "table": 55, "price": 1554, "x": 5.11, "y": 5.13, "z": 3.18 }, { "name": 8446, "carat": 1.01, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 62.3, "table": 58, "price": 4412, "x": 6.45, "y": 6.36, "z": 3.99 }, { "name": 35862, "carat": 0.4, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.8, "table": 54, "price": 917, "x": 4.75, "y": 4.77, "z": 2.94 }, { "name": 49888, "carat": 0.65, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 62.4, "table": 54, "price": 2177, "x": 5.55, "y": 5.57, "z": 3.47 }, { "name": 30460, "carat": 0.4, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 62.7, "table": 59, "price": 731, "x": 4.63, "y": 4.71, "z": 2.93 }, { "name": 7842, "carat": 0.91, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 62.8, "table": 57, "price": 4303, "x": 6.12, "y": 6.17, "z": 3.86 }, { "name": 36223, "carat": 0.36, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 60, "table": 56, "price": 933, "x": 4.68, "y": 4.66, "z": 2.8 }, { "name": 33553, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 62.3, "table": 52.8, "price": 830, "x": 4.29, "y": 4.33, "z": 2.69 }, { "name": 35961, "carat": 0.3, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 62.6, "table": 59, "price": 476, "x": 4.24, "y": 4.26, "z": 2.66 }, { "name": 42011, "carat": 0.51, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 61.8, "table": 58, "price": 1265, "x": 5.11, "y": 5.08, "z": 3.15 }, { "name": 9296, "carat": 0.91, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 62.5, "table": 61, "price": 4570, "x": 6.17, "y": 6.05, "z": 3.82 }, { "name": 34989, "carat": 0.34, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 62, "table": 57, "price": 881, "x": 4.49, "y": 4.44, "z": 2.77 }, { "name": 51770, "carat": 0.7, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 58.7, "table": 60, "price": 2409, "x": 5.75, "y": 5.81, "z": 3.39 }, { "name": 10157, "carat": 1.02, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 61.6, "table": 58, "price": 4727, "x": 6.49, "y": 6.54, "z": 4.01 }, { "name": 111, "carat": 0.8, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 61.4, "table": 57, "price": 2761, "x": 5.96, "y": 6, "z": 3.67 }, { "name": 42346, "carat": 0.42, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61, "table": 57, "price": 1299, "x": 4.85, "y": 4.89, "z": 2.97 }, { "name": 16255, "carat": 1.2, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.2, "table": 56, "price": 6502, "x": 6.92, "y": 6.84, "z": 4.21 }, { "name": 33850, "carat": 0.3, "cut": "Premium", "color": "F", "clarity": "VS1", "depth": 61.9, "table": 59, "price": 844, "x": 4.3, "y": 4.26, "z": 2.65 }, { "name": 11943, "carat": 1.01, "cut": "Fair", "color": "F", "clarity": "SI1", "depth": 65, "table": 61, "price": 5131, "x": 6.29, "y": 6.23, "z": 4.07 }, { "name": 6954, "carat": 0.93, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 62.3, "table": 58, "price": 4144, "x": 6.2, "y": 6.29, "z": 3.9 }, { "name": 51812, "carat": 0.71, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.6, "table": 56, "price": 2416, "x": 5.71, "y": 5.75, "z": 3.53 }, { "name": 5367, "carat": 0.75, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 60.4, "table": 56, "price": 3817, "x": 5.9, "y": 5.96, "z": 3.58 }, { "name": 40884, "carat": 0.38, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.6, "table": 55, "price": 1176, "x": 4.66, "y": 4.63, "z": 2.86 }, { "name": 28456, "carat": 0.41, "cut": "Good", "color": "G", "clarity": "SI1", "depth": 63.4, "table": 57, "price": 671, "x": 4.7, "y": 4.73, "z": 2.99 }, { "name": 20701, "carat": 0.31, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 62.9, "table": 57, "price": 625, "x": 4.3, "y": 4.32, "z": 2.71 }, { "name": 17288, "carat": 1.12, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 62, "table": 58, "price": 6925, "x": 6.63, "y": 6.69, "z": 4.13 }, { "name": 31557, "carat": 0.38, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 60.4, "table": 57, "price": 766, "x": 4.67, "y": 4.7, "z": 2.83 }, { "name": 47244, "carat": 0.62, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 61.1, "table": 59, "price": 1841, "x": 5.56, "y": 5.5, "z": 3.38 }, { "name": 29351, "carat": 0.31, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62, "table": 57, "price": 698, "x": 4.37, "y": 4.34, "z": 2.7 }, { "name": 29461, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.2, "table": 56, "price": 702, "x": 4.37, "y": 4.41, "z": 2.73 }, { "name": 52358, "carat": 0.74, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 61.7, "table": 57, "price": 2501, "x": 5.78, "y": 5.82, "z": 3.58 }, { "name": 37202, "carat": 0.46, "cut": "Ideal", "color": "I", "clarity": "VVS1", "depth": 61.7, "table": 57, "price": 974, "x": 4.96, "y": 4.99, "z": 3.07 }, { "name": 41766, "carat": 0.52, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.7, "table": 55, "price": 1245, "x": 5.17, "y": 5.21, "z": 3.2 }, { "name": 13395, "carat": 0.32, "cut": "Good", "color": "F", "clarity": "VS2", "depth": 63.3, "table": 57, "price": 602, "x": 4.34, "y": 4.38, "z": 2.76 }, { "name": 15775, "carat": 1.28, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.4, "table": 57, "price": 6308, "x": 7.04, "y": 6.97, "z": 4.3 }, { "name": 30071, "carat": 0.32, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.3, "table": 60, "price": 720, "x": 4.4, "y": 4.37, "z": 2.73 }, { "name": 35305, "carat": 0.3, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 61, "table": 56, "price": 473, "x": 4.35, "y": 4.37, "z": 2.66 }, { "name": 2839, "carat": 0.96, "cut": "Premium", "color": "J", "clarity": "SI1", "depth": 60.3, "table": 59, "price": 3269, "x": 6.4, "y": 6.36, "z": 3.85 }, { "name": 5321, "carat": 0.9, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 61, "table": 59, "price": 3806, "x": 6.14, "y": 6.18, "z": 3.76 }, { "name": 4166, "carat": 0.71, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.6, "table": 56, "price": 3553, "x": 5.73, "y": 5.77, "z": 3.54 }, { "name": 29995, "carat": 0.43, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.5, "table": 57, "price": 716, "x": 4.79, "y": 4.84, "z": 3.01 }, { "name": 44224, "carat": 0.5, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 63, "table": 57, "price": 1571, "x": 5.06, "y": 5, "z": 3.17 }, { "name": 17403, "carat": 1.09, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.4, "table": 56, "price": 6970, "x": 6.61, "y": 6.64, "z": 4.07 }, { "name": 47978, "carat": 0.38, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 62, "table": 55, "price": 532, "x": 4.66, "y": 4.69, "z": 2.9 }, { "name": 13226, "carat": 1.01, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62.1, "table": 56, "price": 5461, "x": 6.43, "y": 6.48, "z": 4.01 }, { "name": 47074, "carat": 0.52, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.3, "table": 56, "price": 1822, "x": 5.11, "y": 5.16, "z": 3.2 }, { "name": 47372, "carat": 0.54, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.8, "table": 55, "price": 1847, "x": 5.26, "y": 5.24, "z": 3.24 }, { "name": 11837, "carat": 1, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 60.4, "table": 64, "price": 5096, "x": 6.39, "y": 6.3, "z": 3.83 }, { "name": 29997, "carat": 0.43, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 62.6, "table": 58, "price": 716, "x": 4.79, "y": 4.82, "z": 3.01 }, { "name": 23705, "carat": 0.4, "cut": "Good", "color": "J", "clarity": "VS1", "depth": 63.2, "table": 57, "price": 631, "x": 4.7, "y": 4.73, "z": 2.98 }, { "name": 32085, "carat": 0.33, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 60.9, "table": 55, "price": 781, "x": 4.47, "y": 4.5, "z": 2.73 }, { "name": 47038, "carat": 0.55, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 60.6, "table": 56, "price": 1819, "x": 5.32, "y": 5.27, "z": 3.21 }, { "name": 18340, "carat": 1.29, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 60.9, "table": 59, "price": 7463, "x": 6.99, "y": 7.04, "z": 4.27 }, { "name": 40778, "carat": 0.5, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 61.9, "table": 56, "price": 1167, "x": 5.09, "y": 5.14, "z": 3.16 }, { "name": 17448, "carat": 1.07, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 60.9, "table": 55, "price": 6998, "x": 6.6, "y": 6.64, "z": 4.03 }, { "name": 53543, "carat": 0.78, "cut": "Fair", "color": "H", "clarity": "VS2", "depth": 54.7, "table": 67, "price": 2691, "x": 6.25, "y": 6.15, "z": 3.4 }, { "name": 33882, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.5, "table": 56, "price": 844, "x": 4.33, "y": 4.29, "z": 2.65 }, { "name": 9332, "carat": 0.9, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 62.2, "table": 59, "price": 4580, "x": 6.13, "y": 6.18, "z": 3.83 }, { "name": 52271, "carat": 0.76, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 62.7, "table": 55, "price": 2491, "x": 5.83, "y": 5.74, "z": 3.63 }, { "name": 28016, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.3, "table": 56, "price": 658, "x": 4.3, "y": 4.34, "z": 2.69 }, { "name": 29765, "carat": 0.35, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 61.8, "table": 56, "price": 709, "x": 4.58, "y": 4.54, "z": 2.82 }, { "name": 43461, "carat": 0.55, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 64.2, "table": 55, "price": 1417, "x": 5.18, "y": 5.2, "z": 3.33 }, { "name": 11508, "carat": 1.01, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 62.5, "table": 56, "price": 5020, "x": 6.4, "y": 6.36, "z": 3.99 }, { "name": 19105, "carat": 1.22, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 61.2, "table": 58, "price": 7870, "x": 6.91, "y": 6.81, "z": 4.2 }, { "name": 33733, "carat": 0.39, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 60.9, "table": 55, "price": 839, "x": 4.73, "y": 4.76, "z": 2.89 }, { "name": 22264, "carat": 1.54, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 62.7, "table": 58, "price": 10314, "x": 7.37, "y": 7.3, "z": 4.6 }, { "name": 21692, "carat": 0.34, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 63.1, "table": 57, "price": 626, "x": 4.44, "y": 4.46, "z": 2.81 }, { "name": 4129, "carat": 1.52, "cut": "Premium", "color": "I", "clarity": "I1", "depth": 61.2, "table": 58, "price": 3541, "x": 7.43, "y": 7.35, "z": 4.52 }, { "name": 49854, "carat": 0.71, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 62.4, "table": 54, "price": 2171, "x": 5.72, "y": 5.76, "z": 3.58 }, { "name": 37817, "carat": 0.36, "cut": "Very-Good", "color": "G", "clarity": "IF", "depth": 60.4, "table": 62, "price": 1002, "x": 4.6, "y": 4.64, "z": 2.79 }, { "name": 39821, "carat": 0.3, "cut": "Premium", "color": "E", "clarity": "IF", "depth": 61.9, "table": 58, "price": 1097, "x": 4.3, "y": 4.26, "z": 2.65 }, { "name": 26386, "carat": 1.23, "cut": "Very-Good", "color": "E", "clarity": "VVS1", "depth": 61.2, "table": 59, "price": 15878, "x": 6.9, "y": 6.98, "z": 4.25 }, { "name": 19879, "carat": 1.12, "cut": "Good", "color": "F", "clarity": "VVS2", "depth": 57.9, "table": 57, "price": 8430, "x": 6.86, "y": 6.83, "z": 3.96 }, { "name": 1205, "carat": 0.7, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 62.6, "table": 54, "price": 2936, "x": 5.69, "y": 5.72, "z": 3.57 }, { "name": 53509, "carat": 0.71, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 59.6, "table": 59, "price": 2686, "x": 5.81, "y": 5.77, "z": 3.45 }, { "name": 46313, "carat": 0.3, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 62.3, "table": 55, "price": 526, "x": 4.29, "y": 4.34, "z": 2.69 }, { "name": 21203, "carat": 1.57, "cut": "Ideal", "color": "J", "clarity": "VVS2", "depth": 61.4, "table": 57, "price": 9346, "x": 7.45, "y": 7.5, "z": 4.59 }, { "name": 47536, "carat": 0.51, "cut": "Very-Good", "color": "G", "clarity": "VVS1", "depth": 63.2, "table": 59, "price": 1871, "x": 5.04, "y": 5.09, "z": 3.2 }, { "name": 34885, "carat": 0.38, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62, "table": 57, "price": 879, "x": 4.64, "y": 4.66, "z": 2.89 }, { "name": 18260, "carat": 1.55, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 61.7, "table": 57, "price": 7416, "x": 7.37, "y": 7.42, "z": 4.56 }, { "name": 13936, "carat": 1.25, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 62.7, "table": 56, "price": 5670, "x": 6.92, "y": 6.87, "z": 4.32 }, { "name": 21943, "carat": 1.51, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.3, "table": 56, "price": 10012, "x": 7.44, "y": 7.4, "z": 4.55 }, { "name": 13677, "carat": 1.02, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 62.8, "table": 59, "price": 5598, "x": 6.34, "y": 6.47, "z": 4.02 }, { "name": 38367, "carat": 0.43, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 62.4, "table": 60, "price": 1022, "x": 4.82, "y": 4.79, "z": 3 }, { "name": 28449, "carat": 0.31, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 61.3, "table": 56, "price": 671, "x": 4.36, "y": 4.39, "z": 2.68 }, { "name": 17279, "carat": 1.29, "cut": "Ideal", "color": "J", "clarity": "VVS1", "depth": 61.2, "table": 56, "price": 6918, "x": 7.01, "y": 7.05, "z": 4.3 }, { "name": 26427, "carat": 2.01, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 62.3, "table": 58, "price": 15955, "x": 8.03, "y": 8.01, "z": 5 }, { "name": 16905, "carat": 1.03, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 62.2, "table": 59, "price": 6749, "x": 6.46, "y": 6.41, "z": 4 }, { "name": 51360, "carat": 0.72, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 59.3, "table": 57, "price": 2364, "x": 5.89, "y": 5.85, "z": 3.48 }, { "name": 23591, "carat": 1.02, "cut": "Ideal", "color": "E", "clarity": "IF", "depth": 62.6, "table": 57, "price": 11605, "x": 6.47, "y": 6.41, "z": 4.03 }, { "name": 39676, "carat": 0.42, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.6, "table": 57, "price": 1087, "x": 4.8, "y": 4.76, "z": 2.99 }, { "name": 50879, "carat": 0.7, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.1, "table": 60, "price": 2314, "x": 5.71, "y": 5.65, "z": 3.53 }, { "name": 50743, "carat": 0.5, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.8, "table": 53.6, "price": 2297, "x": 5.1, "y": 5.13, "z": 3.16 }, { "name": 51754, "carat": 0.72, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.3, "table": 59, "price": 2405, "x": 5.77, "y": 5.69, "z": 3.57 }, { "name": 34118, "carat": 0.31, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 62.1, "table": 55, "price": 853, "x": 4.34, "y": 4.36, "z": 2.7 }, { "name": 27836, "carat": 0.31, "cut": "Good", "color": "H", "clarity": "VS1", "depth": 59.2, "table": 65, "price": 651, "x": 4.42, "y": 4.33, "z": 2.59 }, { "name": 10935, "carat": 0.9, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 62.1, "table": 58, "price": 4898, "x": 6.15, "y": 6.19, "z": 3.83 }, { "name": 51879, "carat": 0.71, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 59.2, "table": 63, "price": 2428, "x": 5.81, "y": 5.85, "z": 3.45 }, { "name": 52880, "carat": 0.78, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 62.8, "table": 56, "price": 2583, "x": 5.88, "y": 5.84, "z": 3.68 }, { "name": 18591, "carat": 1.51, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 61.3, "table": 61, "price": 7585, "x": 7.41, "y": 7.34, "z": 4.52 }, { "name": 41668, "carat": 0.4, "cut": "Ideal", "color": "I", "clarity": "VVS2", "depth": 62, "table": 56, "price": 1240, "x": 4.74, "y": 4.77, "z": 2.95 }, { "name": 31414, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 62, "table": 58, "price": 764, "x": 4.28, "y": 4.3, "z": 2.66 }, { "name": 18767, "carat": 1.22, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 62.4, "table": 59, "price": 7673, "x": 6.91, "y": 6.85, "z": 4.29 }, { "name": 170, "carat": 0.71, "cut": "Good", "color": "E", "clarity": "VS2", "depth": 59.2, "table": 61, "price": 2772, "x": 5.8, "y": 5.88, "z": 3.46 }, { "name": 50007, "carat": 0.7, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 60.7, "table": 58, "price": 2195, "x": 5.73, "y": 5.77, "z": 3.49 }, { "name": 17670, "carat": 1.59, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 62.2, "table": 58, "price": 7123, "x": 7.49, "y": 7.45, "z": 4.64 }, { "name": 5549, "carat": 1.02, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 62, "table": 59, "price": 3856, "x": 6.45, "y": 6.42, "z": 3.99 }, { "name": 21449, "carat": 2, "cut": "Fair", "color": "H", "clarity": "SI2", "depth": 68.7, "table": 55, "price": 9549, "x": 7.9, "y": 7.67, "z": 5.35 }, { "name": 41066, "carat": 0.52, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 61.5, "table": 60, "price": 1191, "x": 5.15, "y": 5.16, "z": 3.17 }, { "name": 18494, "carat": 1.72, "cut": "Premium", "color": "F", "clarity": "I1", "depth": 60.1, "table": 58, "price": 7532, "x": 7.77, "y": 7.74, "z": 4.66 }, { "name": 27874, "carat": 0.42, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 60.1, "table": 58, "price": 653, "x": 4.87, "y": 4.91, "z": 2.94 }, { "name": 19620, "carat": 1.03, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 62.8, "table": 54, "price": 8237, "x": 6.48, "y": 6.39, "z": 4.05 }, { "name": 45404, "carat": 0.51, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 62.5, "table": 58, "price": 1668, "x": 5.12, "y": 5.18, "z": 3.22 }, { "name": 49824, "carat": 0.7, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 63.1, "table": 64, "price": 2167, "x": 5.61, "y": 5.58, "z": 3.53 }, { "name": 32115, "carat": 0.43, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.9, "table": 55, "price": 783, "x": 4.84, "y": 4.88, "z": 3.01 }, { "name": 15385, "carat": 0.32, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 64, "table": 55, "price": 607, "x": 4.31, "y": 4.35, "z": 2.77 }, { "name": 46742, "carat": 0.54, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 62.2, "table": 55, "price": 1799, "x": 5.23, "y": 5.25, "z": 3.26 }, { "name": 45000, "carat": 0.31, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 63.3, "table": 54, "price": 523, "x": 4.34, "y": 4.29, "z": 2.73 }, { "name": 43432, "carat": 0.54, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 60.7, "table": 56.5, "price": 1415, "x": 5.24, "y": 5.28, "z": 3.19 }, { "name": 36115, "carat": 0.42, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61.5, "table": 58, "price": 926, "x": 4.84, "y": 4.78, "z": 2.96 }, { "name": 15582, "carat": 1.22, "cut": "Good", "color": "H", "clarity": "SI2", "depth": 63.5, "table": 56, "price": 6250, "x": 6.84, "y": 6.77, "z": 4.32 }, { "name": 50665, "carat": 0.31, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62.7, "table": 58, "price": 544, "x": 4.31, "y": 4.33, "z": 2.71 }, { "name": 21280, "carat": 1.06, "cut": "Very-Good", "color": "F", "clarity": "IF", "depth": 60.6, "table": 56, "price": 9433, "x": 6.62, "y": 6.69, "z": 4.03 }, { "name": 39346, "carat": 0.38, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62.2, "table": 53.8, "price": 1073, "x": 4.62, "y": 4.66, "z": 2.88 }, { "name": 53798, "carat": 0.72, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.3, "table": 56, "price": 2731, "x": 5.77, "y": 5.81, "z": 3.55 }, { "name": 15335, "carat": 1.36, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 58.4, "table": 59, "price": 6157, "x": 7.4, "y": 7.27, "z": 4.28 }, { "name": 29219, "carat": 0.34, "cut": "Ideal", "color": "I", "clarity": "IF", "depth": 61.6, "table": 54, "price": 695, "x": 4.5, "y": 4.53, "z": 2.78 }, { "name": 49795, "carat": 0.53, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.8, "table": 55, "price": 2163, "x": 5.21, "y": 5.24, "z": 3.23 }, { "name": 7118, "carat": 0.73, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 61.1, "table": 56, "price": 4171, "x": 5.83, "y": 5.86, "z": 3.57 }, { "name": 47672, "carat": 0.51, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.7, "table": 55, "price": 1882, "x": 5.14, "y": 5.11, "z": 3.16 }, { "name": 22618, "carat": 1.62, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 60.1, "table": 59, "price": 10669, "x": 7.63, "y": 7.6, "z": 4.58 }, { "name": 18267, "carat": 1.51, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 62.3, "table": 59, "price": 7418, "x": 7.31, "y": 7.35, "z": 4.57 }, { "name": 4350, "carat": 0.72, "cut": "Premium", "color": "D", "clarity": "VS1", "depth": 62.7, "table": 56, "price": 3601, "x": 5.76, "y": 5.69, "z": 3.59 }, { "name": 18997, "carat": 1.01, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 60.8, "table": 59, "price": 7821, "x": 6.42, "y": 6.46, "z": 3.92 }, { "name": 1669, "carat": 0.72, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 60.1, "table": 63, "price": 3024, "x": 5.86, "y": 5.82, "z": 3.51 }, { "name": 37291, "carat": 0.32, "cut": "Good", "color": "F", "clarity": "VVS1", "depth": 63.8, "table": 54, "price": 977, "x": 4.38, "y": 4.31, "z": 2.77 }, { "name": 25360, "carat": 0.31, "cut": "Very-Good", "color": "G", "clarity": "VVS1", "depth": 61.9, "table": 55, "price": 642, "x": 4.36, "y": 4.4, "z": 2.71 }, { "name": 44405, "carat": 0.55, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 60.8, "table": 56, "price": 1584, "x": 5.3, "y": 5.33, "z": 3.23 }, { "name": 50759, "carat": 0.72, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 60.5, "table": 59, "price": 2298, "x": 5.83, "y": 5.8, "z": 3.52 }, { "name": 40304, "carat": 0.4, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 61.2, "table": 57, "price": 1125, "x": 4.77, "y": 4.74, "z": 2.91 }, { "name": 342, "carat": 0.91, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 62.2, "table": 57, "price": 2803, "x": 6.21, "y": 6.15, "z": 3.85 }, { "name": 28375, "carat": 0.24, "cut": "Premium", "color": "E", "clarity": "VVS1", "depth": 60.6, "table": 59, "price": 668, "x": 4.02, "y": 4, "z": 2.43 }, { "name": 2939, "carat": 0.9, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 63, "table": 59, "price": 3292, "x": 6.1, "y": 6.06, "z": 3.83 }, { "name": 33426, "carat": 0.32, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 61.2, "table": 56, "price": 828, "x": 4.43, "y": 4.4, "z": 2.7 }, { "name": 1246, "carat": 0.78, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 62.4, "table": 58, "price": 2945, "x": 5.86, "y": 5.9, "z": 3.67 }, { "name": 42039, "carat": 0.54, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.1, "table": 56, "price": 1268, "x": 5.25, "y": 5.27, "z": 3.21 }, { "name": 51318, "carat": 0.31, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61.1, "table": 57, "price": 544, "x": 4.35, "y": 4.39, "z": 2.67 }, { "name": 16702, "carat": 0.3, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.6, "table": 55, "price": 421, "x": 4.28, "y": 4.32, "z": 2.69 }, { "name": 48199, "carat": 0.53, "cut": "Very-Good", "color": "G", "clarity": "VVS1", "depth": 61.7, "table": 57, "price": 1948, "x": 5.19, "y": 5.22, "z": 3.21 }, { "name": 12936, "carat": 1.13, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.3, "table": 56, "price": 5384, "x": 6.66, "y": 6.69, "z": 4.16 }, { "name": 42560, "carat": 0.42, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 62.5, "table": 57, "price": 1326, "x": 4.77, "y": 4.8, "z": 2.99 }, { "name": 51354, "carat": 0.72, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 62, "table": 60, "price": 2364, "x": 5.74, "y": 5.77, "z": 3.57 }, { "name": 22497, "carat": 1.71, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 63, "table": 57, "price": 10534, "x": 7.57, "y": 7.53, "z": 4.76 }, { "name": 41128, "carat": 0.52, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 61.5, "table": 59, "price": 1196, "x": 5.19, "y": 5.15, "z": 3.18 }, { "name": 35047, "carat": 0.42, "cut": "Ideal", "color": "I", "clarity": "VVS1", "depth": 62.7, "table": 55, "price": 884, "x": 4.77, "y": 4.8, "z": 3 }, { "name": 28537, "carat": 0.3, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 63.5, "table": 55, "price": 675, "x": 4.25, "y": 4.22, "z": 2.69 }, { "name": 46474, "carat": 0.51, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 61.8, "table": 55, "price": 1776, "x": 5.15, "y": 5.18, "z": 3.19 }, { "name": 28473, "carat": 0.32, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 58.4, "table": 57, "price": 672, "x": 4.53, "y": 4.51, "z": 2.64 }, { "name": 5605, "carat": 0.96, "cut": "Good", "color": "F", "clarity": "VS2", "depth": 63.7, "table": 54, "price": 3871, "x": 6.24, "y": 6.19, "z": 3.96 }, { "name": 30472, "carat": 0.41, "cut": "Good", "color": "G", "clarity": "SI2", "depth": 63.7, "table": 55, "price": 732, "x": 4.75, "y": 4.7, "z": 3.01 }, { "name": 49406, "carat": 0.5, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 59.1, "table": 61, "price": 2106, "x": 5.19, "y": 5.23, "z": 3.08 }, { "name": 12230, "carat": 1, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 61.6, "table": 61, "price": 5197, "x": 6.3, "y": 6.37, "z": 3.9 }, { "name": 24964, "carat": 1.5, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.6, "table": 59, "price": 13445, "x": 7.4, "y": 7.3, "z": 4.53 }, { "name": 20225, "carat": 1.04, "cut": "Very-Good", "color": "G", "clarity": "IF", "depth": 60.7, "table": 58, "price": 8655, "x": 6.52, "y": 6.65, "z": 4 }, { "name": 42851, "carat": 0.41, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 61.8, "table": 57, "price": 1356, "x": 4.79, "y": 4.75, "z": 2.95 }, { "name": 44114, "carat": 0.46, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.6, "table": 54, "price": 1558, "x": 4.97, "y": 5, "z": 3.07 }, { "name": 43852, "carat": 0.5, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 60.5, "table": 57, "price": 1447, "x": 5.1, "y": 5.14, "z": 3.1 }, { "name": 28924, "carat": 0.3, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 61.9, "table": 55, "price": 684, "x": 4.32, "y": 4.34, "z": 2.68 }, { "name": 37886, "carat": 0.42, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 61.4, "table": 55, "price": 1006, "x": 4.8, "y": 4.9, "z": 2.98 }, { "name": 27862, "carat": 0.31, "cut": "Ideal", "color": "I", "clarity": "IF", "depth": 61.3, "table": 57, "price": 652, "x": 4.34, "y": 4.4, "z": 2.68 }, { "name": 11672, "carat": 0.91, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 62.8, "table": 60, "price": 5057, "x": 6.08, "y": 6.11, "z": 3.83 }, { "name": 9250, "carat": 1.07, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 61.8, "table": 59, "price": 4560, "x": 6.53, "y": 6.57, "z": 4.05 }, { "name": 23105, "carat": 1.02, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 61.3, "table": 57, "price": 11128, "x": 6.47, "y": 6.54, "z": 3.99 }, { "name": 53587, "carat": 0.8, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 60.8, "table": 57, "price": 2699, "x": 6.02, "y": 6.05, "z": 3.67 }, { "name": 32473, "carat": 0.33, "cut": "Very-Good", "color": "G", "clarity": "VVS1", "depth": 61.2, "table": 57, "price": 795, "x": 4.47, "y": 4.5, "z": 2.74 }, { "name": 2113, "carat": 1.16, "cut": "Fair", "color": "H", "clarity": "SI2", "depth": 68.2, "table": 55, "price": 3118, "x": 6.47, "y": 6.37, "z": 4.38 }, { "name": 51281, "carat": 0.7, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 60.8, "table": 61, "price": 2360, "x": 5.72, "y": 5.76, "z": 3.49 }, { "name": 26223, "carat": 2.01, "cut": "Fair", "color": "D", "clarity": "SI2", "depth": 59.4, "table": 66, "price": 15627, "x": 8.2, "y": 8.17, "z": 4.86 }, { "name": 50152, "carat": 0.71, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 62.8, "table": 61, "price": 2215, "x": 5.64, "y": 5.59, "z": 3.53 }, { "name": 16946, "carat": 1.16, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62.6, "table": 58, "price": 6768, "x": 6.68, "y": 6.73, "z": 4.2 }, { "name": 46080, "carat": 0.64, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.6, "table": 55, "price": 1737, "x": 5.55, "y": 5.59, "z": 3.43 }, { "name": 42924, "carat": 0.41, "cut": "Very-Good", "color": "D", "clarity": "VVS2", "depth": 61.2, "table": 55, "price": 1364, "x": 4.79, "y": 4.82, "z": 2.95 }, { "name": 16551, "carat": 1.02, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 59.2, "table": 58, "price": 6612, "x": 6.52, "y": 6.58, "z": 3.88 }, { "name": 22487, "carat": 1.5, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 59.9, "table": 62, "price": 10517, "x": 7.4, "y": 7.37, "z": 4.42 }, { "name": 30915, "carat": 0.34, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.4, "table": 55, "price": 745, "x": 4.48, "y": 4.53, "z": 2.81 }, { "name": 3792, "carat": 0.73, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 61.6, "table": 56, "price": 3463, "x": 5.8, "y": 5.82, "z": 3.57 }, { "name": 1845, "carat": 0.7, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 62.2, "table": 57, "price": 3063, "x": 5.63, "y": 5.68, "z": 3.52 }, { "name": 51932, "carat": 0.78, "cut": "Good", "color": "H", "clarity": "VS2", "depth": 63.7, "table": 60, "price": 2440, "x": 5.77, "y": 5.73, "z": 3.66 }, { "name": 35346, "carat": 0.42, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 63.1, "table": 57, "price": 898, "x": 4.78, "y": 4.76, "z": 3.01 }, { "name": 15601, "carat": 1.01, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 61.9, "table": 58, "price": 6257, "x": 6.38, "y": 6.48, "z": 3.98 }, { "name": 52282, "carat": 0.84, "cut": "Ideal", "color": "J", "clarity": "SI1", "depth": 61.8, "table": 56, "price": 2493, "x": 6.04, "y": 6.07, "z": 3.74 }, { "name": 31240, "carat": 0.38, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.9, "table": 54.1, "price": 757, "x": 4.66, "y": 4.69, "z": 2.89 }, { "name": 6245, "carat": 1.03, "cut": "Ideal", "color": "J", "clarity": "SI2", "depth": 62.1, "table": 54, "price": 4008, "x": 6.47, "y": 6.51, "z": 4.03 }, { "name": 13751, "carat": 1.1, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 58.8, "table": 61, "price": 5606, "x": 6.73, "y": 6.67, "z": 3.94 }, { "name": 16558, "carat": 1.33, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 59.9, "table": 60, "price": 6614, "x": 7.13, "y": 7.09, "z": 4.26 }, { "name": 12471, "carat": 1.08, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 62.1, "table": 58, "price": 5250, "x": 6.63, "y": 6.51, "z": 4.08 }, { "name": 48006, "carat": 0.52, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.6, "table": 55, "price": 1919, "x": 5.14, "y": 5.12, "z": 3.21 }, { "name": 46658, "carat": 0.51, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.6, "table": 56, "price": 1787, "x": 5.15, "y": 5.17, "z": 3.18 }, { "name": 22186, "carat": 1.22, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.3, "table": 56, "price": 10221, "x": 6.84, "y": 6.81, "z": 4.25 }, { "name": 3612, "carat": 0.9, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 62.7, "table": 55, "price": 3428, "x": 6.11, "y": 6.17, "z": 3.85 }, { "name": 20791, "carat": 1.52, "cut": "Good", "color": "F", "clarity": "SI2", "depth": 58.2, "table": 60, "price": 9028, "x": 7.52, "y": 7.63, "z": 4.41 }, { "name": 51092, "carat": 0.73, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 62.2, "table": 54, "price": 2335, "x": 5.76, "y": 5.78, "z": 3.59 }, { "name": 19807, "carat": 1.5, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 62.3, "table": 56, "price": 8371, "x": 7.35, "y": 7.41, "z": 4.6 }, { "name": 39840, "carat": 0.52, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.9, "table": 56, "price": 1098, "x": 5.16, "y": 5.22, "z": 3.2 }, { "name": 14694, "carat": 1, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 59.9, "table": 56, "price": 5929, "x": 6.51, "y": 6.54, "z": 3.91 }, { "name": 48874, "carat": 0.61, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 60, "table": 57, "price": 2036, "x": 5.52, "y": 5.55, "z": 3.32 }, { "name": 25599, "carat": 2.14, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 63.8, "table": 57, "price": 14452, "x": 8.17, "y": 8.14, "z": 5.2 }, { "name": 45086, "carat": 0.5, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 61.1, "table": 58, "price": 1646, "x": 5.07, "y": 5.11, "z": 3.11 }, { "name": 10001, "carat": 1, "cut": "Fair", "color": "D", "clarity": "SI1", "depth": 65.9, "table": 54, "price": 4704, "x": 6.24, "y": 6.2, "z": 4.1 }, { "name": 49271, "carat": 0.64, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 62, "table": 56, "price": 2089, "x": 5.57, "y": 5.53, "z": 3.44 }, { "name": 42549, "carat": 0.59, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 60.5, "table": 58, "price": 1325, "x": 5.43, "y": 5.51, "z": 3.31 }, { "name": 52180, "carat": 0.7, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62.3, "table": 58, "price": 2476, "x": 5.6, "y": 5.67, "z": 3.51 }, { "name": 41354, "carat": 0.53, "cut": "Ideal", "color": "J", "clarity": "VS1", "depth": 61.4, "table": 55.2, "price": 1218, "x": 5.2, "y": 5.22, "z": 3.2 }, { "name": 4748, "carat": 0.92, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 62.6, "table": 59, "price": 3684, "x": 6.23, "y": 6.19, "z": 3.89 }, { "name": 18772, "carat": 1.03, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 62.8, "table": 55, "price": 7677, "x": 6.4, "y": 6.52, "z": 4.06 }, { "name": 51178, "carat": 0.75, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 63.1, "table": 58, "price": 2347, "x": 5.7, "y": 5.74, "z": 3.61 }, { "name": 2423, "carat": 0.95, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 62.6, "table": 58, "price": 3181, "x": 6.22, "y": 6.18, "z": 3.88 }, { "name": 19659, "carat": 1.4, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 61.8, "table": 54, "price": 8268, "x": 7.16, "y": 7.21, "z": 4.44 }, { "name": 45684, "carat": 0.5, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.2, "table": 56, "price": 1695, "x": 5.13, "y": 5.17, "z": 3.15 }, { "name": 25903, "carat": 2.19, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 60.8, "table": 60, "price": 15032, "x": 8.34, "y": 8.38, "z": 5.08 }, { "name": 32989, "carat": 0.38, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 61.1, "table": 56, "price": 812, "x": 4.71, "y": 4.65, "z": 2.86 }, { "name": 47257, "carat": 0.51, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62, "table": 57, "price": 1842, "x": 5.13, "y": 5.1, "z": 3.17 }, { "name": 49516, "carat": 0.75, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 62.5, "table": 58, "price": 2122, "x": 5.77, "y": 5.82, "z": 3.62 }, { "name": 24658, "carat": 1.72, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.4, "table": 59, "price": 12998, "x": 7.71, "y": 7.64, "z": 4.71 }, { "name": 39746, "carat": 0.53, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 62.4, "table": 56, "price": 1093, "x": 5.18, "y": 5.14, "z": 3.22 }, { "name": 9185, "carat": 1.1, "cut": "Very-Good", "color": "J", "clarity": "VS1", "depth": 60.9, "table": 59, "price": 4545, "x": 6.65, "y": 6.74, "z": 4.08 }, { "name": 44901, "carat": 0.5, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 62.6, "table": 60, "price": 1629, "x": 5.03, "y": 5, "z": 3.14 }, { "name": 33962, "carat": 0.4, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 63.3, "table": 58, "price": 845, "x": 4.63, "y": 4.66, "z": 2.94 }, { "name": 14450, "carat": 1.31, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 60.4, "table": 59, "price": 5832, "x": 7.16, "y": 7.05, "z": 4.29 }, { "name": 40656, "carat": 0.5, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 61.4, "table": 58, "price": 1154, "x": 5.09, "y": 5.11, "z": 3.13 }, { "name": 22254, "carat": 1.18, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.3, "table": 55, "price": 10308, "x": 6.86, "y": 6.81, "z": 4.19 }, { "name": 242, "carat": 1.01, "cut": "Fair", "color": "E", "clarity": "I1", "depth": 64.5, "table": 58, "price": 2788, "x": 6.29, "y": 6.21, "z": 4.03 }, { "name": 36145, "carat": 0.33, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.3, "table": 55, "price": 928, "x": 4.46, "y": 4.43, "z": 2.77 }, { "name": 36050, "carat": 0.31, "cut": "Very-Good", "color": "G", "clarity": "IF", "depth": 61.6, "table": 55, "price": 924, "x": 4.38, "y": 4.42, "z": 2.71 }, { "name": 17226, "carat": 1.22, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 61.8, "table": 59, "price": 6887, "x": 6.86, "y": 6.83, "z": 4.23 }, { "name": 35075, "carat": 0.3, "cut": "Very-Good", "color": "F", "clarity": "IF", "depth": 62.4, "table": 56, "price": 886, "x": 4.28, "y": 4.31, "z": 2.68 }, { "name": 26131, "carat": 2.14, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 59.3, "table": 59, "price": 15418, "x": 8.39, "y": 8.43, "z": 5 }, { "name": 11008, "carat": 0.97, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61, "table": 61, "price": 4915, "x": 6.32, "y": 6.28, "z": 3.84 }, { "name": 45652, "carat": 0.38, "cut": "Ideal", "color": "J", "clarity": "SI1", "depth": 62, "table": 54, "price": 525, "x": 4.67, "y": 4.71, "z": 2.91 }, { "name": 45451, "carat": 0.51, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.5, "table": 56, "price": 1674, "x": 5.21, "y": 5.17, "z": 3.19 }, { "name": 49282, "carat": 0.57, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 61.7, "table": 56, "price": 2091, "x": 5.31, "y": 5.33, "z": 3.28 }, { "name": 7262, "carat": 1.01, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 64.2, "table": 58, "price": 4199, "x": 6.31, "y": 6.33, "z": 4.06 }, { "name": 28479, "carat": 0.32, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 63.1, "table": 54, "price": 672, "x": 4.41, "y": 4.37, "z": 2.77 }, { "name": 38658, "carat": 0.42, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.4, "table": 57, "price": 1040, "x": 4.84, "y": 4.77, "z": 3 }, { "name": 40260, "carat": 0.4, "cut": "Premium", "color": "H", "clarity": "VVS2", "depth": 60.6, "table": 60, "price": 1125, "x": 4.79, "y": 4.75, "z": 2.89 }, { "name": 8662, "carat": 1.16, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 59.6, "table": 59, "price": 4455, "x": 6.85, "y": 6.87, "z": 4.09 }, { "name": 37789, "carat": 0.3, "cut": "Ideal", "color": "D", "clarity": "VVS1", "depth": 61.3, "table": 57, "price": 1000, "x": 4.29, "y": 4.32, "z": 2.64 }, { "name": 5169, "carat": 0.91, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 63, "table": 56, "price": 3772, "x": 6.12, "y": 6.16, "z": 3.87 }, { "name": 13961, "carat": 1.51, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 61.2, "table": 62, "price": 5682, "x": 7.28, "y": 7.19, "z": 4.43 }, { "name": 3082, "carat": 0.57, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 61.3, "table": 56, "price": 3313, "x": 5.37, "y": 5.4, "z": 3.3 }, { "name": 2546, "carat": 0.7, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.4, "table": 55, "price": 3206, "x": 5.71, "y": 5.76, "z": 3.53 }, { "name": 16242, "carat": 1.01, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 62.6, "table": 59, "price": 6499, "x": 6.38, "y": 6.46, "z": 4.02 }, { "name": 1973, "carat": 0.72, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 60.8, "table": 57, "price": 3091, "x": 5.79, "y": 5.82, "z": 3.53 }, { "name": 548, "carat": 0.75, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 61.9, "table": 57, "price": 2829, "x": 5.88, "y": 5.82, "z": 3.62 }, { "name": 8034, "carat": 0.91, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 62.5, "table": 58, "price": 4334, "x": 6.1, "y": 6.16, "z": 3.83 }, { "name": 37127, "carat": 0.52, "cut": "Ideal", "color": "D", "clarity": "I1", "depth": 61.1, "table": 57, "price": 971, "x": 5.18, "y": 5.2, "z": 3.17 }, { "name": 34755, "carat": 0.41, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 60.9, "table": 60, "price": 876, "x": 4.83, "y": 4.79, "z": 2.93 }, { "name": 19801, "carat": 1.71, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 59, "table": 60, "price": 8366, "x": 7.86, "y": 7.83, "z": 4.63 }, { "name": 28129, "carat": 0.29, "cut": "Very-Good", "color": "F", "clarity": "VVS2", "depth": 62.7, "table": 58, "price": 664, "x": 4.22, "y": 4.26, "z": 2.66 }, { "name": 15985, "carat": 1.02, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.1, "table": 58, "price": 6397, "x": 6.5, "y": 6.44, "z": 4.02 }, { "name": 45202, "carat": 0.51, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 61.9, "table": 59, "price": 1656, "x": 5.06, "y": 5.11, "z": 3.15 }, { "name": 25904, "carat": 1.83, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.5, "table": 56, "price": 15032, "x": 7.87, "y": 7.81, "z": 4.82 }, { "name": 51466, "carat": 0.72, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.5, "table": 59, "price": 2376, "x": 5.71, "y": 5.67, "z": 3.5 }, { "name": 33422, "carat": 0.32, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 61.7, "table": 56, "price": 828, "x": 4.42, "y": 4.37, "z": 2.71 }, { "name": 27707, "carat": 0.36, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 61.6, "table": 58, "price": 648, "x": 4.57, "y": 4.52, "z": 2.8 }, { "name": 21334, "carat": 1.53, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 58.4, "table": 59, "price": 9476, "x": 7.62, "y": 7.55, "z": 4.43 }, { "name": 21363, "carat": 0.33, "cut": "Good", "color": "D", "clarity": "VS2", "depth": 63.6, "table": 56, "price": 625, "x": 4.38, "y": 4.42, "z": 2.8 }, { "name": 48897, "carat": 0.52, "cut": "Very-Good", "color": "G", "clarity": "VVS1", "depth": 62.3, "table": 55, "price": 2040, "x": 5.13, "y": 5.15, "z": 3.2 }, { "name": 18390, "carat": 0.32, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 60.1, "table": 60, "price": 619, "x": 4.38, "y": 4.4, "z": 2.64 }, { "name": 7304, "carat": 1.05, "cut": "Good", "color": "E", "clarity": "SI2", "depth": 63.2, "table": 59, "price": 4204, "x": 6.36, "y": 6.43, "z": 4.04 }, { "name": 33212, "carat": 0.36, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 60.7, "table": 57.1, "price": 821, "x": 4.57, "y": 4.65, "z": 2.79 }, { "name": 11747, "carat": 1.06, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61, "table": 58, "price": 5075, "x": 6.61, "y": 6.57, "z": 4.02 }, { "name": 31566, "carat": 0.31, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 62, "table": 56, "price": 766, "x": 4.34, "y": 4.37, "z": 2.7 }, { "name": 19784, "carat": 1.15, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 58.4, "table": 59, "price": 8349, "x": 6.84, "y": 6.92, "z": 4.02 }, { "name": 2897, "carat": 0.91, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 63.3, "table": 57, "price": 3282, "x": 6.12, "y": 6.08, "z": 3.86 }, { "name": 3884, "carat": 1.01, "cut": "Good", "color": "I", "clarity": "VS1", "depth": 64.2, "table": 60, "price": 3484, "x": 6.35, "y": 6.27, "z": 4.05 }, { "name": 24333, "carat": 1.54, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 61, "table": 59, "price": 12592, "x": 7.43, "y": 7.38, "z": 4.52 }, { "name": 40761, "carat": 0.4, "cut": "Very-Good", "color": "E", "clarity": "VVS1", "depth": 63.4, "table": 57, "price": 1164, "x": 4.64, "y": 4.66, "z": 2.95 }, { "name": 17619, "carat": 1.56, "cut": "Good", "color": "J", "clarity": "VS2", "depth": 57.6, "table": 65, "price": 7094, "x": 7.62, "y": 7.6, "z": 4.38 }, { "name": 17354, "carat": 1.33, "cut": "Good", "color": "I", "clarity": "VS1", "depth": 63.7, "table": 56, "price": 6963, "x": 6.92, "y": 6.96, "z": 4.42 }, { "name": 47923, "carat": 0.56, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 60.5, "table": 59, "price": 1915, "x": 5.31, "y": 5.26, "z": 3.2 }, { "name": 37149, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 61.8, "table": 55, "price": 972, "x": 4.43, "y": 4.4, "z": 2.73 }, { "name": 27961, "carat": 0.3, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 59.9, "table": 59, "price": 658, "x": 4.33, "y": 4.38, "z": 2.61 }, { "name": 1445, "carat": 0.83, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 61.6, "table": 59, "price": 2975, "x": 6.02, "y": 5.99, "z": 3.7 }, { "name": 12764, "carat": 1.21, "cut": "Ideal", "color": "J", "clarity": "VS1", "depth": 62.3, "table": 55, "price": 5324, "x": 6.81, "y": 6.86, "z": 4.26 }, { "name": 23038, "carat": 0.33, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 59.5, "table": 59, "price": 631, "x": 4.5, "y": 4.48, "z": 2.67 }, { "name": 19647, "carat": 1.52, "cut": "Premium", "color": "J", "clarity": "VS1", "depth": 62.4, "table": 59, "price": 8258, "x": 7.36, "y": 7.31, "z": 4.58 }, { "name": 34090, "carat": 0.41, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 63.4, "table": 58, "price": 852, "x": 4.75, "y": 4.68, "z": 2.99 }, { "name": 8265, "carat": 0.9, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 63.5, "table": 57, "price": 4381, "x": 6.11, "y": 6.15, "z": 3.89 }, { "name": 38481, "carat": 0.42, "cut": "Premium", "color": "F", "clarity": "VS1", "depth": 61.8, "table": 59, "price": 1031, "x": 4.81, "y": 4.83, "z": 2.98 }, { "name": 40980, "carat": 0.41, "cut": "Premium", "color": "D", "clarity": "VVS2", "depth": 62.2, "table": 58, "price": 1181, "x": 4.8, "y": 4.78, "z": 2.98 }, { "name": 9617, "carat": 1.01, "cut": "Fair", "color": "F", "clarity": "SI1", "depth": 65.5, "table": 57, "price": 4634, "x": 6.12, "y": 6.22, "z": 4.04 }, { "name": 12104, "carat": 1.22, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 62.9, "table": 56, "price": 5165, "x": 6.84, "y": 6.79, "z": 4.29 }, { "name": 18829, "carat": 1.27, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 62.6, "table": 57, "price": 7715, "x": 6.91, "y": 6.95, "z": 4.34 }, { "name": 3016, "carat": 0.53, "cut": "Very-Good", "color": "D", "clarity": "VVS1", "depth": 61.2, "table": 55, "price": 3307, "x": 5.21, "y": 5.26, "z": 3.21 }, { "name": 20984, "carat": 1.63, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 61.9, "table": 60, "price": 9199, "x": 7.51, "y": 7.55, "z": 4.66 }, { "name": 2226, "carat": 0.7, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.6, "table": 55, "price": 3145, "x": 5.71, "y": 5.76, "z": 3.53 }, { "name": 39260, "carat": 0.3, "cut": "Ideal", "color": "D", "clarity": "VVS1", "depth": 61.3, "table": 57, "price": 1069, "x": 4.32, "y": 4.29, "z": 2.64 }, { "name": 52713, "carat": 0.52, "cut": "Premium", "color": "D", "clarity": "VVS1", "depth": 58.8, "table": 61, "price": 2553, "x": 5.31, "y": 5.27, "z": 3.11 }, { "name": 1783, "carat": 0.66, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 61.6, "table": 57, "price": 3049, "x": 5.64, "y": 5.57, "z": 3.45 }, { "name": 19774, "carat": 1.52, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 62.3, "table": 59, "price": 8342, "x": 7.37, "y": 7.33, "z": 4.58 }, { "name": 17061, "carat": 0.32, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 62, "table": 55, "price": 612, "x": 4.43, "y": 4.41, "z": 2.74 }, { "name": 30335, "carat": 0.38, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 60.5, "table": 60, "price": 727, "x": 4.68, "y": 4.64, "z": 2.82 }, { "name": 47019, "carat": 0.56, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 62.4, "table": 58, "price": 1819, "x": 5.22, "y": 5.3, "z": 3.28 }, { "name": 34634, "carat": 0.31, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.3, "table": 58, "price": 872, "x": 4.42, "y": 4.37, "z": 2.65 }, { "name": 17141, "carat": 1, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 63.8, "table": 56.9, "price": 6841, "x": 6.29, "y": 6.36, "z": 4.04 }, { "name": 51614, "carat": 0.73, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 59.3, "table": 57, "price": 2395, "x": 5.88, "y": 5.95, "z": 3.51 }, { "name": 31682, "carat": 0.26, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62, "table": 56, "price": 769, "x": 4.13, "y": 4.1, "z": 2.55 }, { "name": 47056, "carat": 0.61, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.4, "table": 55.7, "price": 1821, "x": 5.43, "y": 5.53, "z": 3.37 }, { "name": 34323, "carat": 0.4, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.1, "table": 58, "price": 859, "x": 4.68, "y": 4.72, "z": 2.92 }, { "name": 19197, "carat": 1.25, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 61.2, "table": 57, "price": 7948, "x": 6.95, "y": 6.91, "z": 4.24 }, { "name": 46802, "carat": 0.52, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 60, "table": 62, "price": 1806, "x": 5.23, "y": 5.19, "z": 3.13 }, { "name": 24274, "carat": 2.3, "cut": "Premium", "color": "J", "clarity": "SI1", "depth": 59.6, "table": 59, "price": 12499, "x": 8.61, "y": 8.56, "z": 5.12 }, { "name": 11748, "carat": 1.03, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 60.6, "table": 60, "price": 5076, "x": 6.52, "y": 6.46, "z": 3.93 }, { "name": 8951, "carat": 1.19, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 59.5, "table": 59, "price": 4498, "x": 6.95, "y": 6.89, "z": 4.12 }, { "name": 23224, "carat": 1.51, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 60.5, "table": 59, "price": 11230, "x": 7.49, "y": 7.41, "z": 4.51 }, { "name": 46517, "carat": 0.53, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 60.8, "table": 56, "price": 1781, "x": 5.24, "y": 5.26, "z": 3.19 }, { "name": 5902, "carat": 0.92, "cut": "Premium", "color": "I", "clarity": "VVS1", "depth": 62.4, "table": 59, "price": 3932, "x": 6.17, "y": 6.14, "z": 3.84 }, { "name": 13724, "carat": 0.32, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 56.7, "table": 64, "price": 603, "x": 4.52, "y": 4.55, "z": 2.57 }, { "name": 44842, "carat": 0.42, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 61.3, "table": 56, "price": 1625, "x": 4.83, "y": 4.86, "z": 2.97 }, { "name": 32610, "carat": 0.31, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 62.3, "table": 55, "price": 802, "x": 4.37, "y": 4.36, "z": 2.72 }, { "name": 32729, "carat": 0.31, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62, "table": 60, "price": 802, "x": 4.34, "y": 4.3, "z": 2.68 }, { "name": 40293, "carat": 0.4, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 62.2, "table": 56, "price": 1125, "x": 4.75, "y": 4.7, "z": 2.94 }, { "name": 22281, "carat": 1.56, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.8, "table": 56, "price": 10333, "x": 7.41, "y": 7.45, "z": 4.59 }, { "name": 39900, "carat": 0.42, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.2, "table": 56, "price": 1103, "x": 4.84, "y": 4.8, "z": 2.95 }, { "name": 2657, "carat": 0.7, "cut": "Premium", "color": "G", "clarity": "VVS1", "depth": 62.8, "table": 58, "price": 3234, "x": 5.68, "y": 5.62, "z": 3.55 }, { "name": 39750, "carat": 0.5, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 62.3, "table": 59, "price": 1094, "x": 5.02, "y": 4.99, "z": 3.12 }, { "name": 8576, "carat": 1, "cut": "Fair", "color": "G", "clarity": "VS2", "depth": 69.8, "table": 54, "price": 4435, "x": 6.03, "y": 5.94, "z": 4.18 }, { "name": 46613, "carat": 0.51, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.7, "table": 55, "price": 1787, "x": 5.09, "y": 5.12, "z": 3.2 }, { "name": 35533, "carat": 0.36, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 59.4, "table": 56, "price": 905, "x": 4.71, "y": 4.69, "z": 2.79 }, { "name": 23870, "carat": 1.63, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.8, "table": 56, "price": 11963, "x": 7.56, "y": 7.59, "z": 4.68 }, { "name": 5281, "carat": 0.82, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.5, "table": 57, "price": 3798, "x": 6.01, "y": 6.05, "z": 3.71 }, { "name": 45257, "carat": 0.6, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 60.6, "table": 57, "price": 1661, "x": 5.46, "y": 5.5, "z": 3.32 }, { "name": 36946, "carat": 0.23, "cut": "Good", "color": "D", "clarity": "VVS1", "depth": 64.8, "table": 58, "price": 478, "x": 3.83, "y": 3.85, "z": 2.49 }, { "name": 27120, "carat": 2.35, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 61.1, "table": 58, "price": 17294, "x": 8.63, "y": 8.56, "z": 5.25 }, { "name": 20765, "carat": 1.22, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 60.7, "table": 57, "price": 9002, "x": 6.93, "y": 6.94, "z": 4.21 }, { "name": 35706, "carat": 0.3, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62, "table": 56, "price": 911, "x": 4.35, "y": 4.33, "z": 2.69 }, { "name": 24232, "carat": 2.02, "cut": "Premium", "color": "J", "clarity": "SI1", "depth": 61.6, "table": 58, "price": 12431, "x": 8.14, "y": 8.1, "z": 5 }, { "name": 20284, "carat": 1.52, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 62.6, "table": 60, "price": 8703, "x": 7.3, "y": 7.33, "z": 4.58 }, { "name": 51292, "carat": 0.75, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 59.8, "table": 60, "price": 2360, "x": 5.9, "y": 5.84, "z": 3.51 }, { "name": 13615, "carat": 1, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62.4, "table": 59, "price": 5571, "x": 6.36, "y": 6.42, "z": 3.99 }, { "name": 34302, "carat": 0.4, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 62.9, "table": 59, "price": 858, "x": 4.7, "y": 4.75, "z": 2.97 }, { "name": 12363, "carat": 0.26, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 62.6, "table": 58, "price": 597, "x": 4.07, "y": 4.11, "z": 2.56 }, { "name": 5119, "carat": 1.01, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 60.5, "table": 61, "price": 3761, "x": 6.47, "y": 6.42, "z": 3.9 }, { "name": 48839, "carat": 0.55, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 61.3, "table": 60, "price": 2030, "x": 5.29, "y": 5.28, "z": 3.24 }, { "name": 46340, "carat": 0.51, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 62, "table": 61, "price": 1758, "x": 5.14, "y": 5.11, "z": 3.18 }, { "name": 41877, "carat": 0.5, "cut": "Fair", "color": "G", "clarity": "VS1", "depth": 65.7, "table": 63, "price": 1257, "x": 4.97, "y": 4.87, "z": 3.23 }, { "name": 40539, "carat": 0.36, "cut": "Premium", "color": "G", "clarity": "IF", "depth": 62.5, "table": 60, "price": 1148, "x": 4.53, "y": 4.49, "z": 2.82 }, { "name": 31176, "carat": 0.35, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 62, "table": 55, "price": 756, "x": 4.52, "y": 4.54, "z": 2.81 }, { "name": 26640, "carat": 2.03, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 63.7, "table": 58, "price": 16412, "x": 7.91, "y": 7.94, "z": 5.05 }, { "name": 41700, "carat": 0.41, "cut": "Premium", "color": "E", "clarity": "VVS1", "depth": 61.2, "table": 62, "price": 1241, "x": 4.78, "y": 4.76, "z": 2.92 }, { "name": 45694, "carat": 0.7, "cut": "Good", "color": "H", "clarity": "SI2", "depth": 64.2, "table": 58, "price": 1697, "x": 5.56, "y": 5.6, "z": 3.58 }, { "name": 40284, "carat": 0.34, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.1, "table": 55, "price": 495, "x": 4.51, "y": 4.55, "z": 2.77 }, { "name": 33029, "carat": 0.3, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 60.7, "table": 58, "price": 814, "x": 4.3, "y": 4.33, "z": 2.62 }, { "name": 11496, "carat": 1.03, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 59.8, "table": 57, "price": 5018, "x": 6.64, "y": 6.57, "z": 3.95 }, { "name": 20438, "carat": 1.51, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 60.8, "table": 57, "price": 8794, "x": 7.44, "y": 7.39, "z": 4.51 }, { "name": 17076, "carat": 1.24, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 60.2, "table": 60, "price": 6808, "x": 6.94, "y": 6.91, "z": 4.17 }, { "name": 16525, "carat": 1.33, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 62, "table": 59, "price": 6603, "x": 7.1, "y": 7.04, "z": 4.38 }, { "name": 28064, "carat": 0.31, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.1, "table": 56, "price": 660, "x": 4.39, "y": 4.41, "z": 2.69 }, { "name": 21288, "carat": 1.7, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 61.2, "table": 56, "price": 9444, "x": 7.71, "y": 7.64, "z": 4.7 }, { "name": 40319, "carat": 0.5, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 59.9, "table": 60, "price": 1125, "x": 5.22, "y": 5.16, "z": 3.11 }, { "name": 6229, "carat": 0.9, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 63.3, "table": 55, "price": 4004, "x": 6.05, "y": 6.08, "z": 3.84 }, { "name": 20362, "carat": 1.09, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.8, "table": 56, "price": 8753, "x": 6.58, "y": 6.62, "z": 4.08 }, { "name": 27719, "carat": 0.32, "cut": "Premium", "color": "I", "clarity": "VS1", "depth": 59.8, "table": 60, "price": 648, "x": 4.46, "y": 4.44, "z": 2.66 }, { "name": 13355, "carat": 0.24, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 62.1, "table": 58, "price": 419, "x": 4, "y": 4.02, "z": 2.49 }, { "name": 23211, "carat": 1.26, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.7, "table": 56, "price": 11218, "x": 6.96, "y": 6.98, "z": 4.3 }, { "name": 8072, "carat": 0.74, "cut": "Good", "color": "F", "clarity": "VVS1", "depth": 58.4, "table": 60, "price": 4336, "x": 6.03, "y": 6.06, "z": 3.53 }, { "name": 50355, "carat": 0.8, "cut": "Fair", "color": "G", "clarity": "SI2", "depth": 61.2, "table": 58, "price": 2246, "x": 5.96, "y": 5.93, "z": 3.64 }, { "name": 29236, "carat": 0.43, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 62.3, "table": 53, "price": 696, "x": 4.84, "y": 4.86, "z": 3.02 }, { "name": 15462, "carat": 1.21, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 62, "table": 57, "price": 6190, "x": 6.81, "y": 6.83, "z": 4.23 }, { "name": 37924, "carat": 0.23, "cut": "Very-Good", "color": "D", "clarity": "VVS1", "depth": 61.7, "table": 59, "price": 485, "x": 3.94, "y": 3.97, "z": 2.44 }, { "name": 38438, "carat": 0.49, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 62.5, "table": 58, "price": 1026, "x": 5.03, "y": 4.98, "z": 3.13 }, { "name": 53845, "carat": 0.74, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 61.5, "table": 59, "price": 2740, "x": 5.79, "y": 5.82, "z": 3.57 }, { "name": 42942, "carat": 0.3, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 61.3, "table": 58, "price": 506, "x": 4.33, "y": 4.28, "z": 2.64 }, { "name": 30233, "carat": 0.33, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 60.5, "table": 56, "price": 723, "x": 4.48, "y": 4.51, "z": 2.72 }, { "name": 12447, "carat": 1.3, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 60.3, "table": 60, "price": 5242, "x": 7.01, "y": 6.99, "z": 4.22 }, { "name": 39528, "carat": 0.4, "cut": "Very-Good", "color": "I", "clarity": "VVS1", "depth": 63.5, "table": 57, "price": 1080, "x": 4.68, "y": 4.65, "z": 2.96 }, { "name": 14827, "carat": 1.21, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.2, "table": 57, "price": 5973, "x": 6.86, "y": 6.93, "z": 4.22 }, { "name": 23609, "carat": 1.52, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 62.6, "table": 59, "price": 11637, "x": 7.27, "y": 7.36, "z": 4.58 }, { "name": 52759, "carat": 0.72, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62, "table": 57, "price": 2562, "x": 5.73, "y": 5.76, "z": 3.56 }, { "name": 38309, "carat": 0.31, "cut": "Good", "color": "I", "clarity": "SI1", "depth": 64.3, "table": 55, "price": 488, "x": 4.29, "y": 4.27, "z": 2.75 }, { "name": 17027, "carat": 1.02, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 62.1, "table": 56, "price": 6797, "x": 6.5, "y": 6.45, "z": 4.02 }, { "name": 17159, "carat": 1.51, "cut": "Very-Good", "color": "J", "clarity": "SI1", "depth": 61.2, "table": 62, "price": 6851, "x": 7.32, "y": 7.36, "z": 4.49 }, { "name": 51702, "carat": 0.7, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 62.9, "table": 56, "price": 2400, "x": 5.66, "y": 5.73, "z": 3.58 }, { "name": 16966, "carat": 1.22, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.8, "table": 57, "price": 6776, "x": 6.86, "y": 6.82, "z": 4.23 }, { "name": 11068, "carat": 0.34, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 62, "table": 57, "price": 596, "x": 4.46, "y": 4.48, "z": 2.77 }, { "name": 28424, "carat": 0.38, "cut": "Ideal", "color": "J", "clarity": "VVS2", "depth": 61.7, "table": 54.6, "price": 670, "x": 4.65, "y": 4.69, "z": 2.89 }, { "name": 28283, "carat": 0.23, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 62, "table": 54, "price": 364, "x": 3.95, "y": 3.99, "z": 2.46 }, { "name": 44763, "carat": 0.52, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 59.5, "table": 58, "price": 1621, "x": 5.21, "y": 5.28, "z": 3.12 }, { "name": 47921, "carat": 0.76, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 60.9, "table": 59, "price": 1915, "x": 5.91, "y": 5.86, "z": 3.58 }, { "name": 45809, "carat": 0.52, "cut": "Good", "color": "F", "clarity": "VS1", "depth": 61.2, "table": 62, "price": 1710, "x": 5.12, "y": 5.05, "z": 3.11 }, { "name": 2789, "carat": 0.81, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61.8, "table": 58, "price": 3257, "x": 5.97, "y": 6.04, "z": 3.71 }, { "name": 25299, "carat": 2.08, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 63.8, "table": 58, "price": 13956, "x": 8.02, "y": 8.1, "z": 5.14 }, { "name": 27405, "carat": 1.93, "cut": "Fair", "color": "F", "clarity": "VS1", "depth": 58.9, "table": 62, "price": 17995, "x": 8.17, "y": 7.97, "z": 4.75 }, { "name": 18129, "carat": 1.41, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 58.5, "table": 57, "price": 7339, "x": 7.36, "y": 7.44, "z": 4.33 }, { "name": 39532, "carat": 0.4, "cut": "Good", "color": "I", "clarity": "VVS1", "depth": 63.9, "table": 56, "price": 1080, "x": 4.68, "y": 4.64, "z": 2.98 }, { "name": 674, "carat": 0.76, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.1, "table": 59, "price": 2847, "x": 5.93, "y": 5.88, "z": 3.61 }, { "name": 53665, "carat": 0.72, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 63.1, "table": 57, "price": 2708, "x": 5.71, "y": 5.74, "z": 3.61 }, { "name": 14068, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.6, "table": 57, "price": 605, "x": 4.27, "y": 4.29, "z": 2.68 }, { "name": 15754, "carat": 1.29, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 61.6, "table": 54, "price": 6300, "x": 7, "y": 7.02, "z": 4.32 }, { "name": 39855, "carat": 0.33, "cut": "Ideal", "color": "D", "clarity": "VVS1", "depth": 61, "table": 55, "price": 1100, "x": 4.47, "y": 4.52, "z": 2.74 }, { "name": 47231, "carat": 0.7, "cut": "Fair", "color": "H", "clarity": "SI1", "depth": 66, "table": 56, "price": 1840, "x": 5.5, "y": 5.53, "z": 3.64 }, { "name": 35265, "carat": 0.34, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 62.1, "table": 55, "price": 895, "x": 4.46, "y": 4.49, "z": 2.78 }, { "name": 35740, "carat": 0.3, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 61.1, "table": 59, "price": 911, "x": 4.31, "y": 4.26, "z": 2.62 }, { "name": 9811, "carat": 1.21, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 61.6, "table": 61, "price": 4669, "x": 6.86, "y": 6.8, "z": 4.21 }, { "name": 16780, "carat": 1.02, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.2, "table": 56, "price": 6683, "x": 6.46, "y": 6.4, "z": 4 }, { "name": 9127, "carat": 1.13, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 61.8, "table": 59, "price": 4536, "x": 6.65, "y": 6.68, "z": 4.12 }, { "name": 12726, "carat": 0.9, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 59.5, "table": 58, "price": 5312, "x": 6.33, "y": 6.28, "z": 3.75 }, { "name": 25205, "carat": 2.07, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 61.5, "table": 59, "price": 13800, "x": 8.2, "y": 8.16, "z": 5.03 }, { "name": 29275, "carat": 0.31, "cut": "Premium", "color": "I", "clarity": "VVS2", "depth": 59.4, "table": 59, "price": 698, "x": 4.44, "y": 4.41, "z": 2.63 }, { "name": 18402, "carat": 1.06, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.9, "table": 57, "price": 7479, "x": 6.55, "y": 6.53, "z": 4.05 }, { "name": 42611, "carat": 0.32, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 62.1, "table": 56, "price": 505, "x": 4.37, "y": 4.42, "z": 2.73 }, { "name": 50928, "carat": 0.71, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 61.6, "table": 55, "price": 2319, "x": 5.72, "y": 5.74, "z": 3.53 }, { "name": 29951, "carat": 0.33, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 61.3, "table": 59, "price": 445, "x": 4.46, "y": 4.51, "z": 2.75 }, { "name": 26314, "carat": 2.34, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 61.7, "table": 60, "price": 15818, "x": 8.59, "y": 8.53, "z": 5.28 }, { "name": 3457, "carat": 0.78, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.2, "table": 55, "price": 3389, "x": 5.92, "y": 5.95, "z": 3.69 }, { "name": 49097, "carat": 0.52, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.6, "table": 55, "price": 2063, "x": 5.14, "y": 5.18, "z": 3.18 }, { "name": 4156, "carat": 0.72, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.7, "table": 54.8, "price": 3548, "x": 5.73, "y": 5.77, "z": 3.55 }, { "name": 9566, "carat": 1.12, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 61.8, "table": 58, "price": 4624, "x": 6.62, "y": 6.68, "z": 4.11 }, { "name": 52609, "carat": 0.7, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 62.5, "table": 59, "price": 2545, "x": 5.69, "y": 5.73, "z": 3.57 }, { "name": 17441, "carat": 1.24, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 60.5, "table": 60, "price": 6994, "x": 6.97, "y": 6.91, "z": 4.2 }, { "name": 7345, "carat": 1.01, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 62.7, "table": 56, "price": 4212, "x": 6.36, "y": 6.43, "z": 4.01 }, { "name": 42696, "carat": 0.46, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 62.4, "table": 53.4, "price": 1338, "x": 4.95, "y": 5.01, "z": 3.1 }, { "name": 47851, "carat": 0.77, "cut": "Good", "color": "J", "clarity": "SI1", "depth": 63.3, "table": 57, "price": 1909, "x": 5.79, "y": 5.84, "z": 3.68 }, { "name": 25534, "carat": 1.5, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 61, "table": 58, "price": 14352, "x": 7.37, "y": 7.31, "z": 4.48 }, { "name": 16092, "carat": 1.32, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 62.2, "table": 57, "price": 6431, "x": 7.07, "y": 7.01, "z": 4.38 }, { "name": 31166, "carat": 0.41, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 60.1, "table": 60, "price": 755, "x": 4.79, "y": 4.83, "z": 2.89 }, { "name": 51790, "carat": 0.7, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 60.9, "table": 57, "price": 2415, "x": 5.79, "y": 5.77, "z": 3.52 }, { "name": 88, "carat": 0.24, "cut": "Premium", "color": "H", "clarity": "VVS1", "depth": 60.8, "table": 59, "price": 554, "x": 4.02, "y": 4, "z": 2.44 }, { "name": 25451, "carat": 1.51, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 63.1, "table": 62, "price": 14205, "x": 7.24, "y": 7.22, "z": 4.56 }, { "name": 31204, "carat": 0.32, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 60.4, "table": 58, "price": 756, "x": 4.47, "y": 4.44, "z": 2.69 }, { "name": 31959, "carat": 0.31, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 62.3, "table": 54, "price": 452, "x": 4.37, "y": 4.4, "z": 2.73 }, { "name": 38340, "carat": 0.32, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.8, "table": 55, "price": 1020, "x": 4.43, "y": 4.41, "z": 2.73 }, { "name": 2594, "carat": 0.64, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 60.9, "table": 56, "price": 3217, "x": 5.57, "y": 5.59, "z": 3.4 }, { "name": 24570, "carat": 1.01, "cut": "Ideal", "color": "E", "clarity": "IF", "depth": 61.4, "table": 57, "price": 12865, "x": 6.53, "y": 6.46, "z": 3.99 }, { "name": 53212, "carat": 0.85, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 61.8, "table": 54, "price": 2635, "x": 6.07, "y": 6.1, "z": 3.76 }, { "name": 39773, "carat": 0.5, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 63.5, "table": 58, "price": 1094, "x": 5.03, "y": 4.98, "z": 3.18 }, { "name": 42305, "carat": 0.5, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 61.4, "table": 57, "price": 1295, "x": 5.08, "y": 5.12, "z": 3.13 }, { "name": 39063, "carat": 0.52, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 64, "table": 55, "price": 1059, "x": 5.07, "y": 5.11, "z": 3.26 }, { "name": 1060, "carat": 0.31, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 63.2, "table": 55, "price": 558, "x": 4.4, "y": 4.3, "z": 2.75 }, { "name": 41268, "carat": 0.31, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 61.9, "table": 54.5, "price": 502, "x": 4.33, "y": 4.36, "z": 2.69 }, { "name": 13499, "carat": 0.7, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 61.3, "table": 56, "price": 5539, "x": 5.72, "y": 5.76, "z": 3.52 }, { "name": 9650, "carat": 1.12, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.2, "table": 59, "price": 4641, "x": 6.69, "y": 6.65, "z": 4.08 }, { "name": 46896, "carat": 0.6, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.5, "table": 52, "price": 1814, "x": 5.5, "y": 5.43, "z": 3.36 }, { "name": 4117, "carat": 0.79, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 61.2, "table": 56, "price": 3539, "x": 6, "y": 5.96, "z": 3.66 }, { "name": 39352, "carat": 0.52, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 62.5, "table": 59, "price": 1073, "x": 5.12, "y": 5.06, "z": 3.18 }, { "name": 40808, "carat": 0.5, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 62.8, "table": 55, "price": 1170, "x": 5.03, "y": 5.07, "z": 3.17 }, { "name": 17708, "carat": 0.3, "cut": "Very-Good", "color": "F", "clarity": "VVS2", "depth": 64.2, "table": 56, "price": 613, "x": 4.22, "y": 4.26, "z": 2.72 }, { "name": 34501, "carat": 0.42, "cut": "Good", "color": "I", "clarity": "VVS1", "depth": 59.2, "table": 61, "price": 867, "x": 4.88, "y": 4.91, "z": 2.9 }, { "name": 33837, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 62, "table": 57, "price": 844, "x": 4.29, "y": 4.32, "z": 2.67 }, { "name": 35374, "carat": 0.41, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 62.4, "table": 57, "price": 899, "x": 4.71, "y": 4.74, "z": 2.95 }, { "name": 320, "carat": 0.71, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62.1, "table": 58, "price": 2801, "x": 5.7, "y": 5.67, "z": 3.53 }, { "name": 11930, "carat": 0.93, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 60.1, "table": 57, "price": 5126, "x": 6.33, "y": 6.41, "z": 3.83 }, { "name": 10079, "carat": 0.32, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61.6, "table": 56, "price": 592, "x": 4.42, "y": 4.46, "z": 2.73 }, { "name": 15112, "carat": 1, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.7, "table": 57, "price": 6073, "x": 6.34, "y": 6.38, "z": 3.99 }, { "name": 49356, "carat": 0.71, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 63.6, "table": 56, "price": 2098, "x": 5.58, "y": 5.67, "z": 3.58 }, { "name": 17755, "carat": 1.33, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.1, "table": 54, "price": 7148, "x": 7.14, "y": 7.15, "z": 4.37 }, { "name": 34192, "carat": 0.33, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.6, "table": 56, "price": 854, "x": 4.46, "y": 4.44, "z": 2.74 }, { "name": 42409, "carat": 0.42, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 61.1, "table": 56, "price": 1310, "x": 4.86, "y": 4.9, "z": 2.98 }, { "name": 37858, "carat": 0.44, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.4, "table": 58, "price": 1003, "x": 4.87, "y": 4.93, "z": 2.96 }, { "name": 31467, "carat": 0.34, "cut": "Premium", "color": "I", "clarity": "VVS2", "depth": 61.5, "table": 60, "price": 765, "x": 4.49, "y": 4.45, "z": 2.75 }, { "name": 39215, "carat": 0.42, "cut": "Very-Good", "color": "D", "clarity": "VS1", "depth": 60.7, "table": 60, "price": 1066, "x": 4.81, "y": 4.88, "z": 2.94 }, { "name": 29220, "carat": 0.34, "cut": "Ideal", "color": "I", "clarity": "IF", "depth": 61.9, "table": 55, "price": 695, "x": 4.5, "y": 4.52, "z": 2.79 }, { "name": 37440, "carat": 0.33, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 61.7, "table": 56, "price": 984, "x": 4.42, "y": 4.46, "z": 2.74 }, { "name": 4536, "carat": 0.76, "cut": "Very-Good", "color": "F", "clarity": "VVS2", "depth": 62.9, "table": 58, "price": 3640, "x": 5.76, "y": 5.85, "z": 3.65 }, { "name": 3091, "carat": 0.93, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 61.3, "table": 62, "price": 3317, "x": 6.26, "y": 6.17, "z": 3.81 }, { "name": 8882, "carat": 0.9, "cut": "Good", "color": "G", "clarity": "VVS2", "depth": 62.6, "table": 63, "price": 4485, "x": 6.1, "y": 6.14, "z": 3.83 }, { "name": 13302, "carat": 1.05, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62.2, "table": 56, "price": 5494, "x": 6.49, "y": 6.56, "z": 4.06 }, { "name": 43088, "carat": 0.51, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 62.4, "table": 59, "price": 1381, "x": 5.07, "y": 5.12, "z": 3.18 }, { "name": 15091, "carat": 1.21, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 58.8, "table": 58, "price": 6065, "x": 7.07, "y": 6.91, "z": 4.11 }, { "name": 52428, "carat": 0.75, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 59.3, "table": 59, "price": 2513, "x": 5.87, "y": 6, "z": 3.52 }, { "name": 40412, "carat": 0.55, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 61.3, "table": 55, "price": 1134, "x": 5.3, "y": 5.33, "z": 3.26 }, { "name": 10498, "carat": 1.02, "cut": "Fair", "color": "D", "clarity": "SI1", "depth": 66.4, "table": 60, "price": 4798, "x": 6.29, "y": 6.21, "z": 4.15 }, { "name": 36997, "carat": 0.41, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.6, "table": 55, "price": 964, "x": 4.81, "y": 4.84, "z": 2.97 }, { "name": 34210, "carat": 0.33, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62.1, "table": 59, "price": 854, "x": 4.45, "y": 4.4, "z": 2.75 }, { "name": 48645, "carat": 0.27, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 60.8, "table": 56, "price": 537, "x": 4.25, "y": 4.23, "z": 2.58 }, { "name": 20802, "carat": 1.5, "cut": "Very-Good", "color": "I", "clarity": "VS1", "depth": 62.8, "table": 58, "price": 9033, "x": 7.17, "y": 7.23, "z": 4.52 }, { "name": 4618, "carat": 0.9, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 60.1, "table": 59, "price": 3663, "x": 6.37, "y": 6.25, "z": 3.79 }, { "name": 10955, "carat": 1.03, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.6, "table": 57, "price": 4900, "x": 6.53, "y": 6.46, "z": 4 }, { "name": 3797, "carat": 0.73, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.6, "table": 56, "price": 3464, "x": 5.78, "y": 5.82, "z": 3.57 }, { "name": 16221, "carat": 1.03, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62, "table": 58, "price": 6484, "x": 6.5, "y": 6.46, "z": 4.02 }, { "name": 12627, "carat": 1.25, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 63.3, "table": 56, "price": 5292, "x": 6.87, "y": 6.83, "z": 4.34 }, { "name": 41967, "carat": 0.23, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 61.1, "table": 58, "price": 505, "x": 3.93, "y": 3.99, "z": 2.42 }, { "name": 6493, "carat": 1.06, "cut": "Good", "color": "H", "clarity": "SI1", "depth": 57.2, "table": 60, "price": 4060, "x": 6.84, "y": 6.74, "z": 3.88 }, { "name": 15854, "carat": 1.02, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 62.6, "table": 57, "price": 6342, "x": 6.41, "y": 6.44, "z": 4.02 }, { "name": 36269, "carat": 0.32, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.9, "table": 57, "price": 936, "x": 4.41, "y": 4.38, "z": 2.72 }, { "name": 7956, "carat": 1.07, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 62.9, "table": 59, "price": 4321, "x": 6.51, "y": 6.58, "z": 4.12 }, { "name": 50816, "carat": 0.75, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 60.3, "table": 61, "price": 2307, "x": 5.88, "y": 5.86, "z": 3.54 }, { "name": 33151, "carat": 0.31, "cut": "Premium", "color": "G", "clarity": "VVS1", "depth": 61.4, "table": 58, "price": 816, "x": 4.32, "y": 4.35, "z": 2.66 }, { "name": 37024, "carat": 0.33, "cut": "Premium", "color": "G", "clarity": "VVS2", "depth": 61.9, "table": 58, "price": 965, "x": 4.43, "y": 4.39, "z": 2.73 }, { "name": 6022, "carat": 1.18, "cut": "Very-Good", "color": "E", "clarity": "I1", "depth": 63.3, "table": 57, "price": 3965, "x": 6.7, "y": 6.64, "z": 4.22 }, { "name": 31531, "carat": 0.34, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 62.2, "table": 55, "price": 765, "x": 4.49, "y": 4.45, "z": 2.78 }, { "name": 25949, "carat": 1.51, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.8, "table": 57, "price": 15118, "x": 7.36, "y": 7.31, "z": 4.53 }, { "name": 2426, "carat": 0.95, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 59.8, "table": 60, "price": 3181, "x": 6.36, "y": 6.34, "z": 3.8 }, { "name": 35436, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62, "table": 55, "price": 900, "x": 4.41, "y": 4.39, "z": 2.73 }, { "name": 41220, "carat": 0.43, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.5, "table": 56, "price": 1207, "x": 4.85, "y": 4.87, "z": 2.99 }, { "name": 33773, "carat": 0.48, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 61.9, "table": 53, "price": 841, "x": 5.06, "y": 5.08, "z": 3.14 }, { "name": 16566, "carat": 1.01, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 62.8, "table": 59, "price": 6618, "x": 6.37, "y": 6.34, "z": 3.99 }, { "name": 9385, "carat": 0.32, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 61.5, "table": 56, "price": 589, "x": 4.39, "y": 4.42, "z": 2.71 }, { "name": 22896, "carat": 1.56, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.2, "table": 58, "price": 10934, "x": 7.37, "y": 7.42, "z": 4.6 }, { "name": 15350, "carat": 1, "cut": "Good", "color": "E", "clarity": "VS2", "depth": 57.4, "table": 58, "price": 6160, "x": 6.61, "y": 6.57, "z": 3.78 }, { "name": 20496, "carat": 1.2, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 62.4, "table": 58, "price": 8829, "x": 6.75, "y": 6.81, "z": 4.23 }, { "name": 26237, "carat": 1.71, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 59.3, "table": 60, "price": 15671, "x": 7.86, "y": 7.81, "z": 4.65 }, { "name": 21635, "carat": 1.02, "cut": "Very-Good", "color": "F", "clarity": "VVS2", "depth": 63.7, "table": 59, "price": 9728, "x": 6.34, "y": 6.38, "z": 4.05 }, { "name": 413, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.3, "table": 56, "price": 555, "x": 4.29, "y": 4.31, "z": 2.68 }, { "name": 4229, "carat": 0.74, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.5, "table": 56, "price": 3572, "x": 5.79, "y": 5.82, "z": 3.57 }, { "name": 10579, "carat": 1.23, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 62.1, "table": 57, "price": 4819, "x": 6.83, "y": 6.8, "z": 4.23 }, { "name": 40264, "carat": 0.33, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 61.1, "table": 57, "price": 492, "x": 4.47, "y": 4.5, "z": 2.74 }, { "name": 19797, "carat": 1.74, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 61.9, "table": 62, "price": 8364, "x": 7.62, "y": 7.54, "z": 4.7 }, { "name": 41748, "carat": 0.52, "cut": "Good", "color": "G", "clarity": "SI1", "depth": 63.6, "table": 56, "price": 1244, "x": 5.07, "y": 5.09, "z": 3.23 }, { "name": 2696, "carat": 0.9, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 63.4, "table": 59, "price": 3246, "x": 6.08, "y": 6.04, "z": 3.84 }, { "name": 13216, "carat": 0.91, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.9, "table": 55, "price": 5458, "x": 6.21, "y": 6.23, "z": 3.85 }, { "name": 6925, "carat": 0.91, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 63.5, "table": 57, "price": 4138, "x": 6.11, "y": 6.07, "z": 3.87 }, { "name": 41236, "carat": 0.39, "cut": "Premium", "color": "E", "clarity": "VVS2", "depth": 61.1, "table": 59, "price": 1207, "x": 4.74, "y": 4.68, "z": 2.88 }, { "name": 51977, "carat": 0.26, "cut": "Very-Good", "color": "E", "clarity": "VVS1", "depth": 62.9, "table": 61, "price": 547, "x": 4.01, "y": 4.06, "z": 2.54 }, { "name": 44527, "carat": 0.5, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.2, "table": 54.1, "price": 1601, "x": 5.07, "y": 5.12, "z": 3.17 }, { "name": 442, "carat": 0.89, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 60.2, "table": 59, "price": 2815, "x": 6.26, "y": 6.23, "z": 3.76 }, { "name": 6065, "carat": 1.01, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 62.1, "table": 61, "price": 3966, "x": 6.27, "y": 6.38, "z": 3.93 }, { "name": 50812, "carat": 0.54, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.6, "table": 55, "price": 2307, "x": 5.25, "y": 5.27, "z": 3.24 }, { "name": 28616, "carat": 0.3, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 62.5, "table": 60, "price": 675, "x": 4.27, "y": 4.24, "z": 2.66 }, { "name": 3714, "carat": 0.9, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 63.1, "table": 55, "price": 3452, "x": 6.16, "y": 6.13, "z": 3.88 }, { "name": 48054, "carat": 0.72, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 60.7, "table": 60, "price": 1927, "x": 5.75, "y": 5.78, "z": 3.5 }, { "name": 31482, "carat": 0.34, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 60.2, "table": 58, "price": 765, "x": 4.55, "y": 4.52, "z": 2.73 }, { "name": 43479, "carat": 0.5, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.1, "table": 61, "price": 1420, "x": 5.2, "y": 5.15, "z": 3.11 }, { "name": 49421, "carat": 0.55, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 61.2, "table": 57, "price": 2107, "x": 5.3, "y": 5.28, "z": 3.24 }, { "name": 26852, "carat": 2.01, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 61, "table": 61, "price": 16778, "x": 8.15, "y": 7.99, "z": 4.92 }, { "name": 50683, "carat": 0.76, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 63, "table": 56, "price": 2288, "x": 5.81, "y": 5.84, "z": 3.67 }, { "name": 51574, "carat": 0.74, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 61.8, "table": 60, "price": 2391, "x": 5.78, "y": 5.8, "z": 3.58 }, { "name": 4490, "carat": 1.01, "cut": "Good", "color": "G", "clarity": "SI2", "depth": 63.7, "table": 58, "price": 3626, "x": 6.31, "y": 6.35, "z": 4.03 }, { "name": 14321, "carat": 1.18, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.8, "table": 58, "price": 5801, "x": 6.79, "y": 6.74, "z": 4.18 }, { "name": 32399, "carat": 0.31, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62, "table": 54, "price": 791, "x": 4.38, "y": 4.4, "z": 2.72 }, { "name": 48692, "carat": 0.58, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 61.6, "table": 56, "price": 2006, "x": 5.35, "y": 5.39, "z": 3.31 }, { "name": 28458, "carat": 0.32, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 61.9, "table": 57, "price": 672, "x": 4.39, "y": 4.41, "z": 2.73 }, { "name": 15645, "carat": 1, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.3, "table": 54, "price": 6272, "x": 6.42, "y": 6.38, "z": 3.99 }, { "name": 30606, "carat": 0.34, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 61.8, "table": 57, "price": 447, "x": 4.46, "y": 4.51, "z": 2.77 }, { "name": 8079, "carat": 1.01, "cut": "Good", "color": "D", "clarity": "SI2", "depth": 57.6, "table": 62, "price": 4338, "x": 6.66, "y": 6.56, "z": 3.81 }, { "name": 50346, "carat": 0.7, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 60.5, "table": 58, "price": 2245, "x": 5.73, "y": 5.77, "z": 3.48 }, { "name": 5859, "carat": 0.91, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 59.6, "table": 60, "price": 3921, "x": 6.25, "y": 6.29, "z": 3.74 }, { "name": 6230, "carat": 0.9, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 58.8, "table": 60, "price": 4004, "x": 6.22, "y": 6.26, "z": 3.67 }, { "name": 33140, "carat": 0.31, "cut": "Premium", "color": "G", "clarity": "VVS1", "depth": 62.1, "table": 59, "price": 816, "x": 4.34, "y": 4.39, "z": 2.71 }, { "name": 991, "carat": 0.77, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 60.9, "table": 58, "price": 2896, "x": 5.94, "y": 5.88, "z": 3.6 }, { "name": 11591, "carat": 1.07, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 61.7, "table": 58, "price": 5042, "x": 6.54, "y": 6.61, "z": 4.06 }, { "name": 1034, "carat": 0.71, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 62.1, "table": 58, "price": 2905, "x": 5.65, "y": 5.71, "z": 3.53 }, { "name": 23396, "carat": 0.36, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 60.9, "table": 60, "price": 631, "x": 4.56, "y": 4.61, "z": 2.79 }, { "name": 13821, "carat": 1.26, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61, "table": 55, "price": 5631, "x": 7, "y": 6.97, "z": 4.26 }, { "name": 4418, "carat": 1.01, "cut": "Good", "color": "E", "clarity": "SI2", "depth": 63.9, "table": 58, "price": 3611, "x": 6.37, "y": 6.31, "z": 4.05 }, { "name": 110, "carat": 0.59, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62, "table": 55, "price": 2761, "x": 5.38, "y": 5.43, "z": 3.35 }, { "name": 46385, "carat": 0.57, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 62, "table": 58, "price": 1763, "x": 5.38, "y": 5.33, "z": 3.32 }, { "name": 36517, "carat": 0.3, "cut": "Premium", "color": "F", "clarity": "VVS2", "depth": 62.4, "table": 58, "price": 945, "x": 4.28, "y": 4.25, "z": 2.66 }, { "name": 50692, "carat": 0.53, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.6, "table": 56, "price": 2290, "x": 5.26, "y": 5.23, "z": 3.23 }, { "name": 16356, "carat": 0.3, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 62.6, "table": 58, "price": 608, "x": 4.28, "y": 4.22, "z": 2.66 }, { "name": 30090, "carat": 0.32, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 60.5, "table": 59, "price": 720, "x": 4.42, "y": 4.41, "z": 2.67 }, { "name": 47490, "carat": 0.72, "cut": "Ideal", "color": "J", "clarity": "SI1", "depth": 62.3, "table": 56, "price": 1864, "x": 5.75, "y": 5.78, "z": 3.59 }, { "name": 34950, "carat": 0.31, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 61, "table": 56, "price": 379, "x": 4.39, "y": 4.43, "z": 2.69 }, { "name": 19144, "carat": 1.6, "cut": "Very-Good", "color": "I", "clarity": "SI2", "depth": 62.2, "table": 59, "price": 7906, "x": 7.42, "y": 7.46, "z": 4.63 }, { "name": 14123, "carat": 1.05, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 61.7, "table": 57, "price": 5728, "x": 6.52, "y": 6.55, "z": 4.03 }, { "name": 32105, "carat": 0.33, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.1, "table": 55, "price": 781, "x": 4.43, "y": 4.46, "z": 2.76 }, { "name": 18898, "carat": 1.07, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 61.3, "table": 59, "price": 7751, "x": 6.61, "y": 6.53, "z": 4.03 }, { "name": 29023, "carat": 0.31, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.4, "table": 54, "price": 687, "x": 4.37, "y": 4.38, "z": 2.73 }, { "name": 35086, "carat": 0.3, "cut": "Ideal", "color": "F", "clarity": "IF", "depth": 61.1, "table": 58, "price": 886, "x": 4.32, "y": 4.36, "z": 2.65 }, { "name": 2621, "carat": 0.74, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 61.7, "table": 57, "price": 3226, "x": 5.79, "y": 5.85, "z": 3.59 }, { "name": 50578, "carat": 0.56, "cut": "Premium", "color": "E", "clarity": "VVS2", "depth": 61.5, "table": 58, "price": 2279, "x": 5.3, "y": 5.33, "z": 3.27 }, { "name": 27907, "carat": 0.41, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 62.6, "table": 57, "price": 656, "x": 4.72, "y": 4.77, "z": 2.97 }, { "name": 46212, "carat": 0.51, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 62.5, "table": 54, "price": 1751, "x": 5.13, "y": 5.15, "z": 3.21 }, { "name": 27876, "carat": 0.44, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 62.3, "table": 54, "price": 654, "x": 4.89, "y": 4.93, "z": 3.06 }, { "name": 39269, "carat": 0.38, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 61.9, "table": 59, "price": 1069, "x": 4.67, "y": 4.63, "z": 2.88 }, { "name": 25518, "carat": 2.14, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 61.9, "table": 56, "price": 14321, "x": 8.22, "y": 8.26, "z": 5.1 }, { "name": 32774, "carat": 0.34, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.2, "table": 58, "price": 803, "x": 4.49, "y": 4.47, "z": 2.74 }, { "name": 44438, "carat": 0.51, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 62.5, "table": 60, "price": 1590, "x": 5.08, "y": 5.1, "z": 3.18 }, { "name": 2369, "carat": 0.9, "cut": "Good", "color": "I", "clarity": "SI1", "depth": 63.5, "table": 59, "price": 3176, "x": 6.05, "y": 6.1, "z": 3.86 }, { "name": 34537, "carat": 0.33, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.7, "table": 57, "price": 868, "x": 4.41, "y": 4.44, "z": 2.73 }, { "name": 41755, "carat": 0.5, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 62.5, "table": 55, "price": 1244, "x": 5.05, "y": 5.09, "z": 3.17 }, { "name": 41188, "carat": 0.5, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 60.6, "table": 56, "price": 1202, "x": 5.13, "y": 5.16, "z": 3.12 }, { "name": 38319, "carat": 0.52, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 62, "table": 54, "price": 1019, "x": 5.17, "y": 5.19, "z": 3.21 }, { "name": 13565, "carat": 1.16, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.2, "table": 55, "price": 5554, "x": 6.79, "y": 6.74, "z": 4.21 }, { "name": 3909, "carat": 0.71, "cut": "Very-Good", "color": "F", "clarity": "VVS2", "depth": 60.6, "table": 58, "price": 3494, "x": 5.76, "y": 5.79, "z": 3.5 }, { "name": 48366, "carat": 0.56, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 61.1, "table": 58, "price": 1963, "x": 5.3, "y": 5.34, "z": 3.25 }, { "name": 6629, "carat": 0.8, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 62.1, "table": 56, "price": 4086, "x": 5.92, "y": 5.97, "z": 3.69 }, { "name": 51713, "carat": 0.78, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 63.7, "table": 55.9, "price": 2401, "x": 5.82, "y": 5.85, "z": 3.72 }, { "name": 11921, "carat": 1.22, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 62.5, "table": 56, "price": 5124, "x": 6.82, "y": 6.79, "z": 4.25 }, { "name": 30835, "carat": 0.33, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 60.2, "table": 57, "price": 743, "x": 4.54, "y": 4.5, "z": 2.72 }, { "name": 4295, "carat": 0.82, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.8, "table": 55, "price": 3588, "x": 5.97, "y": 6.01, "z": 3.7 }, { "name": 423, "carat": 0.71, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.4, "table": 57, "price": 2812, "x": 5.69, "y": 5.72, "z": 3.56 }, { "name": 22043, "carat": 0.31, "cut": "Very-Good", "color": "I", "clarity": "VS1", "depth": 63.2, "table": 56, "price": 628, "x": 4.33, "y": 4.28, "z": 2.72 }, { "name": 53028, "carat": 0.82, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 60.5, "table": 58, "price": 2602, "x": 6.01, "y": 6.08, "z": 3.66 }, { "name": 41363, "carat": 0.52, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 63.1, "table": 57, "price": 1219, "x": 5.14, "y": 5.09, "z": 3.23 }, { "name": 2400, "carat": 0.31, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.7, "table": 55, "price": 562, "x": 4.37, "y": 4.39, "z": 2.7 }, { "name": 39296, "carat": 0.3, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 62.5, "table": 57, "price": 491, "x": 4.26, "y": 4.29, "z": 2.67 }, { "name": 13143, "carat": 1.01, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 61.5, "table": 55, "price": 5437, "x": 6.44, "y": 6.51, "z": 3.98 }, { "name": 44041, "carat": 0.53, "cut": "Very-Good", "color": "H", "clarity": "VVS2", "depth": 61.3, "table": 61, "price": 1548, "x": 5.15, "y": 5.2, "z": 3.17 }, { "name": 38296, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 60.6, "table": 57, "price": 487, "x": 4.34, "y": 4.37, "z": 2.63 }, { "name": 44394, "carat": 0.51, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 60.6, "table": 57, "price": 1583, "x": 5.17, "y": 5.2, "z": 3.14 }, { "name": 28735, "carat": 0.31, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62, "table": 56, "price": 680, "x": 4.34, "y": 4.37, "z": 2.7 }, { "name": 14912, "carat": 1.07, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 60.2, "table": 55, "price": 6002, "x": 6.64, "y": 6.68, "z": 4.01 }, { "name": 18648, "carat": 1.03, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 59, "table": 55, "price": 7613, "x": 6.62, "y": 6.67, "z": 3.92 }, { "name": 48841, "carat": 0.55, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.8, "table": 54, "price": 2030, "x": 5.29, "y": 5.26, "z": 3.26 }, { "name": 22540, "carat": 2.02, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 62.3, "table": 55, "price": 10577, "x": 8.1, "y": 8.06, "z": 5.03 }, { "name": 1752, "carat": 0.81, "cut": "Good", "color": "I", "clarity": "VS1", "depth": 59.4, "table": 56, "price": 3042, "x": 5.97, "y": 6.11, "z": 3.59 }, { "name": 14997, "carat": 1.07, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.2, "table": 58, "price": 6040, "x": 6.54, "y": 6.48, "z": 4.05 }, { "name": 8429, "carat": 0.92, "cut": "Good", "color": "E", "clarity": "VS2", "depth": 58.9, "table": 57, "price": 4406, "x": 6.35, "y": 6.38, "z": 3.75 }, { "name": 43254, "carat": 0.42, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 62.1, "table": 55, "price": 1400, "x": 4.78, "y": 4.81, "z": 2.98 }, { "name": 38577, "carat": 0.4, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.8, "table": 61, "price": 1035, "x": 4.67, "y": 4.63, "z": 2.92 }, { "name": 45190, "carat": 0.51, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.5, "table": 57, "price": 1656, "x": 5.07, "y": 5.14, "z": 3.19 }, { "name": 28080, "carat": 0.4, "cut": "Ideal", "color": "J", "clarity": "VVS2", "depth": 62.5, "table": 53, "price": 662, "x": 4.74, "y": 4.79, "z": 2.98 }, { "name": 14187, "carat": 1.01, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 58.9, "table": 61, "price": 5756, "x": 6.46, "y": 6.55, "z": 3.83 }, { "name": 18522, "carat": 1.6, "cut": "Premium", "color": "J", "clarity": "SI1", "depth": 62.2, "table": 58, "price": 7550, "x": 7.48, "y": 7.54, "z": 4.67 }, { "name": 18046, "carat": 0.3, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 62.6, "table": 62, "price": 614, "x": 4.21, "y": 4.25, "z": 2.65 }, { "name": 30370, "carat": 0.36, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 63.5, "table": 54, "price": 729, "x": 4.59, "y": 4.55, "z": 2.9 }, { "name": 3507, "carat": 0.76, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.2, "table": 56, "price": 3401, "x": 5.88, "y": 5.91, "z": 3.61 }, { "name": 21699, "carat": 0.34, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 62.4, "table": 58, "price": 626, "x": 4.42, "y": 4.46, "z": 2.77 }, { "name": 15698, "carat": 0.35, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.5, "table": 54, "price": 607, "x": 4.57, "y": 4.6, "z": 2.82 }, { "name": 44791, "carat": 0.5, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 61.4, "table": 59, "price": 1624, "x": 5.09, "y": 5.13, "z": 3.14 }, { "name": 22790, "carat": 1.62, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.3, "table": 60, "price": 10813, "x": 7.48, "y": 7.53, "z": 4.6 }, { "name": 19285, "carat": 1.11, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 63.2, "table": 57, "price": 8006, "x": 6.64, "y": 6.61, "z": 4.18 }, { "name": 14736, "carat": 1.25, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 62.2, "table": 55.4, "price": 5932, "x": 6.89, "y": 6.94, "z": 4.29 }, { "name": 46196, "carat": 0.5, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 60.9, "table": 57, "price": 1749, "x": 5.14, "y": 5.16, "z": 3.14 }, { "name": 37954, "carat": 0.41, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 58.6, "table": 61, "price": 1007, "x": 4.83, "y": 4.87, "z": 2.84 }, { "name": 48989, "carat": 0.36, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.7, "table": 54, "price": 538, "x": 4.56, "y": 4.62, "z": 2.83 }, { "name": 29695, "carat": 0.31, "cut": "Very-Good", "color": "H", "clarity": "VVS1", "depth": 63, "table": 58, "price": 707, "x": 4.33, "y": 4.37, "z": 2.74 }, { "name": 30585, "carat": 0.31, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.5, "table": 56, "price": 734, "x": 4.34, "y": 4.37, "z": 2.68 }, { "name": 28251, "carat": 0.33, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 60.8, "table": 58, "price": 666, "x": 4.44, "y": 4.47, "z": 2.71 }, { "name": 18984, "carat": 1.09, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.1, "table": 57, "price": 7813, "x": 6.62, "y": 6.56, "z": 4.09 }, { "name": 36046, "carat": 0.34, "cut": "Very-Good", "color": "G", "clarity": "IF", "depth": 61, "table": 56, "price": 924, "x": 4.5, "y": 4.54, "z": 2.76 }, { "name": 3, "carat": 0.23, "cut": "Good", "color": "E", "clarity": "VS1", "depth": 56.9, "table": 65, "price": 327, "x": 4.05, "y": 4.07, "z": 2.31 }, { "name": 33592, "carat": 0.37, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 60.9, "table": 60, "price": 833, "x": 4.63, "y": 4.6, "z": 2.81 }, { "name": 20738, "carat": 1.4, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 63, "table": 56, "price": 8977, "x": 7.13, "y": 7.07, "z": 4.47 }, { "name": 10220, "carat": 1, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 61.8, "table": 57, "price": 4743, "x": 6.39, "y": 6.43, "z": 3.96 }, { "name": 41632, "carat": 0.32, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 63.2, "table": 55, "price": 504, "x": 4.36, "y": 4.34, "z": 2.75 }, { "name": 41443, "carat": 0.4, "cut": "Very-Good", "color": "G", "clarity": "IF", "depth": 61.4, "table": 54, "price": 1229, "x": 4.76, "y": 4.79, "z": 2.93 }, { "name": 2473, "carat": 0.76, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.5, "table": 56, "price": 3192, "x": 5.92, "y": 5.89, "z": 3.63 }, { "name": 22363, "carat": 0.31, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 61.3, "table": 60, "price": 628, "x": 4.36, "y": 4.32, "z": 2.66 }, { "name": 2615, "carat": 0.72, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.3, "table": 57, "price": 3223, "x": 5.76, "y": 5.79, "z": 3.54 }, { "name": 49975, "carat": 0.29, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 60.9, "table": 57, "price": 541, "x": 4.28, "y": 4.32, "z": 2.61 }, { "name": 26857, "carat": 2.1, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 62.9, "table": 59, "price": 16783, "x": 8.18, "y": 8.13, "z": 5.13 }, { "name": 5333, "carat": 1.04, "cut": "Very-Good", "color": "J", "clarity": "SI2", "depth": 63.5, "table": 59, "price": 3810, "x": 6.37, "y": 6.42, "z": 4.06 }, { "name": 52202, "carat": 0.67, "cut": "Good", "color": "F", "clarity": "VS1", "depth": 59.8, "table": 60.3, "price": 2479, "x": 5.62, "y": 5.69, "z": 3.38 }, { "name": 30749, "carat": 0.34, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 62.2, "table": 54, "price": 740, "x": 4.48, "y": 4.53, "z": 2.8 }, { "name": 28454, "carat": 0.41, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 62.2, "table": 56, "price": 671, "x": 4.75, "y": 4.77, "z": 2.96 }, { "name": 20320, "carat": 1.22, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62, "table": 58, "price": 8733, "x": 6.89, "y": 6.86, "z": 4.26 }, { "name": 5571, "carat": 1.08, "cut": "Fair", "color": "E", "clarity": "SI2", "depth": 64.9, "table": 60, "price": 3861, "x": 6.43, "y": 6.39, "z": 4.16 }, { "name": 41709, "carat": 0.51, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 62.7, "table": 59, "price": 1243, "x": 5.07, "y": 5.13, "z": 3.2 }, { "name": 33087, "carat": 0.46, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 62.6, "table": 58, "price": 815, "x": 4.88, "y": 4.96, "z": 3.08 }, { "name": 7344, "carat": 1.18, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 61.8, "table": 58, "price": 4211, "x": 6.83, "y": 6.7, "z": 4.19 }, { "name": 1949, "carat": 0.72, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 62.4, "table": 56, "price": 3084, "x": 5.76, "y": 5.72, "z": 3.58 }, { "name": 46642, "carat": 0.3, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62.9, "table": 57, "price": 526, "x": 4.25, "y": 4.3, "z": 2.69 }, { "name": 38126, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 62.3, "table": 54, "price": 1013, "x": 4.33, "y": 4.31, "z": 2.69 }, { "name": 18465, "carat": 1.07, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 62, "table": 56, "price": 7513, "x": 6.51, "y": 6.55, "z": 4.05 }, { "name": 31404, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.9, "table": 57, "price": 764, "x": 4.28, "y": 4.31, "z": 2.66 }, { "name": 31274, "carat": 0.32, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.6, "table": 56, "price": 449, "x": 4.37, "y": 4.39, "z": 2.7 }, { "name": 23938, "carat": 1.5, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 62.4, "table": 58, "price": 12069, "x": 7.27, "y": 7.31, "z": 4.55 }, { "name": 14586, "carat": 1.05, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 60.1, "table": 57, "price": 5886, "x": 6.62, "y": 6.59, "z": 3.97 }, { "name": 29105, "carat": 0.34, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 61.4, "table": 57, "price": 689, "x": 4.55, "y": 4.48, "z": 2.77 }, { "name": 35835, "carat": 0.32, "cut": "Ideal", "color": "F", "clarity": "IF", "depth": 61.9, "table": 55, "price": 915, "x": 4.38, "y": 4.44, "z": 2.73 }, { "name": 42875, "carat": 0.45, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.7, "table": 56, "price": 1358, "x": 4.96, "y": 4.93, "z": 3.05 }, { "name": 23957, "carat": 1.44, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.6, "table": 57, "price": 12093, "x": 7.21, "y": 7.19, "z": 4.51 }, { "name": 7756, "carat": 1.05, "cut": "Fair", "color": "I", "clarity": "VS1", "depth": 58.9, "table": 66, "price": 4281, "x": 6.71, "y": 6.6, "z": 3.92 }, { "name": 28871, "carat": 0.32, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 59.3, "table": 58, "price": 684, "x": 4.5, "y": 4.47, "z": 2.66 }, { "name": 47900, "carat": 0.54, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.7, "table": 57, "price": 1914, "x": 5.23, "y": 5.26, "z": 3.23 }, { "name": 5586, "carat": 1, "cut": "Fair", "color": "F", "clarity": "SI2", "depth": 65.5, "table": 54, "price": 3864, "x": 6.2, "y": 6.16, "z": 4.05 }, { "name": 25711, "carat": 2.11, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 58.4, "table": 62, "price": 14615, "x": 8.43, "y": 8.39, "z": 4.91 }, { "name": 33428, "carat": 0.32, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.3, "table": 55, "price": 828, "x": 4.46, "y": 4.42, "z": 2.72 }, { "name": 23684, "carat": 1.55, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 60.7, "table": 59, "price": 11738, "x": 7.46, "y": 7.5, "z": 4.54 }, { "name": 8434, "carat": 1.08, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 62.6, "table": 56, "price": 4407, "x": 6.55, "y": 6.61, "z": 4.12 }, { "name": 21746, "carat": 1, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 59.1, "table": 58, "price": 9815, "x": 6.5, "y": 6.57, "z": 3.86 }, { "name": 8729, "carat": 0.27, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 62, "table": 56, "price": 586, "x": 4.16, "y": 4.19, "z": 2.59 }, { "name": 2088, "carat": 0.79, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.4, "table": 59, "price": 3112, "x": 5.89, "y": 5.96, "z": 3.64 }, { "name": 13055, "carat": 1.03, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 60.5, "table": 61, "price": 5410, "x": 6.47, "y": 6.43, "z": 3.9 }, { "name": 35133, "carat": 0.41, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 59.1, "table": 60, "price": 889, "x": 4.84, "y": 4.87, "z": 2.87 }, { "name": 31658, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.4, "table": 56, "price": 768, "x": 4.45, "y": 4.41, "z": 2.72 }, { "name": 48599, "carat": 0.7, "cut": "Fair", "color": "I", "clarity": "VS2", "depth": 64.4, "table": 55, "price": 1996, "x": 5.6, "y": 5.55, "z": 3.59 }, { "name": 36281, "carat": 0.32, "cut": "Good", "color": "G", "clarity": "SI1", "depth": 63.5, "table": 56, "price": 477, "x": 4.35, "y": 4.38, "z": 2.77 }, { "name": 35578, "carat": 0.35, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62, "table": 59, "price": 906, "x": 4.55, "y": 4.51, "z": 2.81 }, { "name": 11700, "carat": 1.29, "cut": "Very-Good", "color": "J", "clarity": "VS2", "depth": 61.3, "table": 60, "price": 5068, "x": 6.96, "y": 6.98, "z": 4.27 }, { "name": 34365, "carat": 0.41, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.1, "table": 56, "price": 863, "x": 4.8, "y": 4.83, "z": 2.94 }, { "name": 29341, "carat": 0.31, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 59.2, "table": 60, "price": 698, "x": 4.47, "y": 4.42, "z": 2.63 }, { "name": 2854, "carat": 0.73, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 60.2, "table": 56, "price": 3273, "x": 5.86, "y": 5.9, "z": 3.54 }, { "name": 17409, "carat": 1.36, "cut": "Ideal", "color": "J", "clarity": "VVS2", "depth": 61.9, "table": 56, "price": 6973, "x": 7.16, "y": 7.13, "z": 4.42 }, { "name": 34443, "carat": 0.31, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.3, "table": 55, "price": 864, "x": 4.34, "y": 4.37, "z": 2.67 }, { "name": 52563, "carat": 0.7, "cut": "Ideal", "color": "I", "clarity": "VVS1", "depth": 62.3, "table": 55, "price": 2536, "x": 5.7, "y": 5.64, "z": 3.53 }, { "name": 12988, "carat": 1, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 62.3, "table": 55, "price": 5396, "x": 6.41, "y": 6.34, "z": 3.97 }, { "name": 14853, "carat": 1.07, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62.7, "table": 56, "price": 5982, "x": 6.47, "y": 6.53, "z": 4.08 }, { "name": 940, "carat": 0.9, "cut": "Fair", "color": "D", "clarity": "SI2", "depth": 66.9, "table": 57, "price": 2885, "x": 6.02, "y": 5.9, "z": 3.99 }, { "name": 26708, "carat": 0.32, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 61.8, "table": 60, "price": 645, "x": 4.35, "y": 4.36, "z": 2.69 }, { "name": 44127, "carat": 0.5, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62, "table": 56, "price": 1559, "x": 5.06, "y": 5.1, "z": 3.15 }, { "name": 34450, "carat": 0.4, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 61.7, "table": 61, "price": 864, "x": 4.68, "y": 4.63, "z": 2.87 }, { "name": 30140, "carat": 0.32, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.6, "table": 60, "price": 720, "x": 4.36, "y": 4.33, "z": 2.72 }, { "name": 4853, "carat": 0.71, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.3, "table": 56, "price": 3710, "x": 5.69, "y": 5.75, "z": 3.51 }, { "name": 47541, "carat": 0.58, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 62.1, "table": 58, "price": 1872, "x": 5.35, "y": 5.4, "z": 3.34 }, { "name": 12751, "carat": 1, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 63.2, "table": 59, "price": 5320, "x": 6.29, "y": 6.4, "z": 4.01 }, { "name": 34555, "carat": 0.52, "cut": "Premium", "color": "F", "clarity": "I1", "depth": 63, "table": 56, "price": 870, "x": 5.18, "y": 5.11, "z": 3.24 }, { "name": 50137, "carat": 0.7, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 62.1, "table": 59, "price": 2213, "x": 5.62, "y": 5.66, "z": 3.5 }, { "name": 25189, "carat": 2.01, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 62.5, "table": 55, "price": 13777, "x": 8.12, "y": 8.08, "z": 5.06 }, { "name": 34915, "carat": 0.34, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.9, "table": 55, "price": 880, "x": 4.48, "y": 4.46, "z": 2.81 }, { "name": 26431, "carat": 2, "cut": "Good", "color": "E", "clarity": "SI2", "depth": 60.1, "table": 54, "price": 15962, "x": 8.01, "y": 8.15, "z": 4.86 }, { "name": 22682, "carat": 0.38, "cut": "Ideal", "color": "J", "clarity": "VVS2", "depth": 62, "table": 55, "price": 629, "x": 4.67, "y": 4.69, "z": 2.9 }, { "name": 52236, "carat": 0.57, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 60, "table": 61, "price": 2485, "x": 5.36, "y": 5.44, "z": 3.24 }, { "name": 32203, "carat": 0.35, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61.1, "table": 59, "price": 788, "x": 4.56, "y": 4.5, "z": 2.77 }, { "name": 7958, "carat": 1, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 59.8, "table": 58, "price": 4321, "x": 6.47, "y": 6.53, "z": 3.89 }, { "name": 14904, "carat": 1.01, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 59.2, "table": 59, "price": 5999, "x": 6.52, "y": 6.59, "z": 3.88 }, { "name": 18768, "carat": 1.35, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 62.4, "table": 58, "price": 7673, "x": 7.03, "y": 6.95, "z": 4.36 }, { "name": 12175, "carat": 1.18, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 61.2, "table": 57, "price": 5182, "x": 6.81, "y": 6.86, "z": 4.18 }, { "name": 13522, "carat": 1.01, "cut": "Good", "color": "H", "clarity": "SI1", "depth": 60.1, "table": 61, "price": 5544, "x": 6.5, "y": 6.47, "z": 3.9 }, { "name": 40220, "carat": 0.4, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 62.4, "table": 57, "price": 1123, "x": 4.74, "y": 4.78, "z": 2.97 }, { "name": 324, "carat": 1.04, "cut": "Premium", "color": "G", "clarity": "I1", "depth": 62.2, "table": 58, "price": 2801, "x": 6.46, "y": 6.41, "z": 4 }, { "name": 2955, "carat": 0.83, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 63.8, "table": 54, "price": 3295, "x": 5.96, "y": 6.04, "z": 3.83 }, { "name": 38930, "carat": 0.36, "cut": "Very-Good", "color": "E", "clarity": "IF", "depth": 59.5, "table": 57, "price": 1053, "x": 4.68, "y": 4.73, "z": 2.8 }, { "name": 903, "carat": 0.72, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 62.2, "table": 54, "price": 2877, "x": 5.74, "y": 5.76, "z": 3.57 }, { "name": 35534, "carat": 0.3, "cut": "Premium", "color": "G", "clarity": "VVS1", "depth": 62.4, "table": 59, "price": 905, "x": 4.31, "y": 4.25, "z": 2.67 }, { "name": 48135, "carat": 0.6, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 59.5, "table": 57.8, "price": 1940, "x": 5.48, "y": 5.56, "z": 3.28 }, { "name": 15376, "carat": 0.4, "cut": "Ideal", "color": "J", "clarity": "VS1", "depth": 61.3, "table": 56, "price": 606, "x": 4.77, "y": 4.79, "z": 2.93 }, { "name": 15711, "carat": 0.24, "cut": "Very-Good", "color": "F", "clarity": "VVS1", "depth": 60.4, "table": 56, "price": 608, "x": 4.05, "y": 4.07, "z": 2.45 }, { "name": 49465, "carat": 1, "cut": "Fair", "color": "I", "clarity": "I1", "depth": 65.4, "table": 57, "price": 2112, "x": 6.28, "y": 6.2, "z": 4.08 }, { "name": 25591, "carat": 2, "cut": "Fair", "color": "H", "clarity": "SI1", "depth": 65.1, "table": 56, "price": 14430, "x": 7.86, "y": 7.77, "z": 5.09 }, { "name": 27807, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.9, "table": 57, "price": 650, "x": 4.3, "y": 4.33, "z": 2.66 }, { "name": 45354, "carat": 0.55, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 59.1, "table": 62, "price": 1664, "x": 5.37, "y": 5.32, "z": 3.16 }, { "name": 39716, "carat": 0.5, "cut": "Good", "color": "E", "clarity": "SI1", "depth": 64, "table": 56, "price": 1090, "x": 5.03, "y": 4.97, "z": 3.2 }, { "name": 42245, "carat": 0.52, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 61.7, "table": 55, "price": 1292, "x": 5.17, "y": 5.2, "z": 3.2 }, { "name": 3519, "carat": 0.81, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 62.3, "table": 57, "price": 3404, "x": 5.95, "y": 5.99, "z": 3.72 }, { "name": 32008, "carat": 0.37, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.4, "table": 56, "price": 777, "x": 4.65, "y": 4.6, "z": 2.84 }, { "name": 15982, "carat": 1.02, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.4, "table": 58, "price": 6397, "x": 6.51, "y": 6.47, "z": 3.92 }, { "name": 2392, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.8, "table": 55, "price": 561, "x": 4.42, "y": 4.45, "z": 2.74 }, { "name": 5981, "carat": 1.05, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 60.9, "table": 61, "price": 3951, "x": 6.61, "y": 6.55, "z": 4.01 }, { "name": 37131, "carat": 0.37, "cut": "Premium", "color": "E", "clarity": "VVS2", "depth": 59.6, "table": 60, "price": 971, "x": 4.75, "y": 4.68, "z": 2.81 }, { "name": 19201, "carat": 1.56, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 58.8, "table": 59, "price": 7950, "x": 7.76, "y": 7.61, "z": 4.52 }, { "name": 39933, "carat": 0.3, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 62.1, "table": 59, "price": 491, "x": 4.25, "y": 4.28, "z": 2.65 }, { "name": 41555, "carat": 0.5, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 62.1, "table": 59, "price": 1237, "x": 5.09, "y": 5.12, "z": 3.17 }, { "name": 31100, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 62.6, "table": 55, "price": 753, "x": 4.27, "y": 4.32, "z": 2.69 }, { "name": 50763, "carat": 0.75, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 63.7, "table": 56, "price": 2300, "x": 5.73, "y": 5.77, "z": 3.66 }, { "name": 53179, "carat": 0.71, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.8, "table": 57, "price": 2630, "x": 5.7, "y": 5.73, "z": 3.53 }, { "name": 36142, "carat": 0.33, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 61, "table": 60, "price": 928, "x": 4.46, "y": 4.43, "z": 2.71 }, { "name": 45935, "carat": 0.51, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 63.2, "table": 56, "price": 1722, "x": 5.04, "y": 5.08, "z": 3.2 }, { "name": 39645, "carat": 0.41, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.4, "table": 58, "price": 1085, "x": 4.77, "y": 4.75, "z": 2.97 }, { "name": 24054, "carat": 0.31, "cut": "Ideal", "color": "I", "clarity": "IF", "depth": 61.7, "table": 55, "price": 635, "x": 4.36, "y": 4.39, "z": 2.7 }, { "name": 6604, "carat": 1, "cut": "Good", "color": "F", "clarity": "SI2", "depth": 62.7, "table": 57, "price": 4081, "x": 6.29, "y": 6.34, "z": 3.96 }, { "name": 35952, "carat": 0.3, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.9, "table": 56, "price": 475, "x": 4.29, "y": 4.33, "z": 2.67 }, { "name": 137, "carat": 0.71, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 60.1, "table": 62, "price": 2765, "x": 5.74, "y": 5.77, "z": 3.46 }, { "name": 51854, "carat": 0.7, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 59.5, "table": 60, "price": 2423, "x": 5.78, "y": 5.73, "z": 3.43 }, { "name": 26187, "carat": 1.51, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 61.7, "table": 58, "price": 15531, "x": 7.33, "y": 7.29, "z": 4.51 }, { "name": 53325, "carat": 0.78, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 59.8, "table": 58, "price": 2652, "x": 5.98, "y": 6.02, "z": 3.59 }, { "name": 22143, "carat": 1.01, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 63.6, "table": 56, "price": 10181, "x": 6.31, "y": 6.24, "z": 3.99 }, { "name": 28418, "carat": 0.43, "cut": "Good", "color": "E", "clarity": "SI2", "depth": 63.6, "table": 55, "price": 669, "x": 4.8, "y": 4.83, "z": 3.06 }, { "name": 30531, "carat": 0.38, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 62.2, "table": 58, "price": 733, "x": 4.57, "y": 4.63, "z": 2.86 }, { "name": 32824, "carat": 0.34, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62, "table": 55, "price": 805, "x": 4.45, "y": 4.49, "z": 2.77 }, { "name": 38499, "carat": 0.42, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.2, "table": 56, "price": 1031, "x": 4.77, "y": 4.81, "z": 2.98 }, { "name": 45547, "carat": 0.51, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 60.3, "table": 59, "price": 1687, "x": 5.22, "y": 5.2, "z": 3.14 }, { "name": 46473, "carat": 0.53, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 63, "table": 56, "price": 1776, "x": 5.13, "y": 5.16, "z": 3.24 }, { "name": 16413, "carat": 1, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 63.2, "table": 58, "price": 6552, "x": 6.32, "y": 6.27, "z": 3.98 }, { "name": 21297, "carat": 1.5, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 63.5, "table": 59, "price": 9450, "x": 7.28, "y": 7.25, "z": 4.61 }, { "name": 17233, "carat": 1.55, "cut": "Premium", "color": "J", "clarity": "SI2", "depth": 62.6, "table": 57, "price": 6890, "x": 7.37, "y": 7.32, "z": 4.6 }, { "name": 13247, "carat": 1.2, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 62.1, "table": 59, "price": 5474, "x": 6.77, "y": 6.72, "z": 4.19 }, { "name": 45554, "carat": 0.51, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 60.1, "table": 60, "price": 1687, "x": 5.18, "y": 5.14, "z": 3.1 }, { "name": 32388, "carat": 0.32, "cut": "Very-Good", "color": "D", "clarity": "VVS2", "depth": 60.1, "table": 58, "price": 791, "x": 4.41, "y": 4.44, "z": 2.66 }, { "name": 11905, "carat": 1, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 62.9, "table": 57, "price": 5121, "x": 6.31, "y": 6.35, "z": 3.98 }, { "name": 43427, "carat": 0.53, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 59.7, "table": 59, "price": 1415, "x": 5.27, "y": 5.29, "z": 3.15 }, { "name": 32366, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.6, "table": 55, "price": 790, "x": 4.42, "y": 4.45, "z": 2.73 }, { "name": 3899, "carat": 0.89, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 60.5, "table": 59, "price": 3489, "x": 6.22, "y": 6.17, "z": 3.75 }, { "name": 52850, "carat": 0.7, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61, "table": 56, "price": 2576, "x": 5.75, "y": 5.69, "z": 3.49 }, { "name": 19587, "carat": 1.51, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 62.8, "table": 59, "price": 8214, "x": 7.17, "y": 7.26, "z": 4.53 }, { "name": 35213, "carat": 0.35, "cut": "Very-Good", "color": "G", "clarity": "IF", "depth": 62.1, "table": 54, "price": 892, "x": 4.53, "y": 4.57, "z": 2.82 }, { "name": 25268, "carat": 2.28, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 61.6, "table": 57, "price": 13907, "x": 8.44, "y": 8.37, "z": 5.18 }, { "name": 22737, "carat": 1.15, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 62.7, "table": 57, "price": 10757, "x": 6.69, "y": 6.65, "z": 4.18 }, { "name": 15167, "carat": 1.44, "cut": "Ideal", "color": "G", "clarity": "I1", "depth": 63.2, "table": 55, "price": 6096, "x": 7.21, "y": 7.18, "z": 4.54 }, { "name": 44124, "carat": 0.5, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 62, "table": 58, "price": 1559, "x": 5.07, "y": 5.09, "z": 3.15 }, { "name": 8245, "carat": 1.07, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 60.6, "table": 60, "price": 4374, "x": 6.66, "y": 6.63, "z": 4.03 }, { "name": 30401, "carat": 0.32, "cut": "Premium", "color": "H", "clarity": "VVS1", "depth": 61.4, "table": 58, "price": 730, "x": 4.37, "y": 4.42, "z": 2.7 }, { "name": 11998, "carat": 1.06, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 60.9, "table": 57, "price": 5147, "x": 6.58, "y": 6.62, "z": 4.02 }, { "name": 16655, "carat": 1.21, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.1, "table": 55, "price": 6659, "x": 6.87, "y": 6.85, "z": 4.19 }, { "name": 37749, "carat": 0.43, "cut": "Very-Good", "color": "I", "clarity": "IF", "depth": 61, "table": 56, "price": 998, "x": 4.9, "y": 4.93, "z": 3 }, { "name": 9074, "carat": 1.14, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 62.6, "table": 58, "price": 4520, "x": 6.64, "y": 6.58, "z": 4.14 }, { "name": 46353, "carat": 0.57, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.9, "table": 56, "price": 1759, "x": 5.33, "y": 5.37, "z": 3.31 }, { "name": 14516, "carat": 1, "cut": "Good", "color": "G", "clarity": "VS1", "depth": 64.2, "table": 61, "price": 5863, "x": 6.23, "y": 6.29, "z": 4.02 }, { "name": 12239, "carat": 1.04, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 62.4, "table": 57, "price": 5199, "x": 6.44, "y": 6.48, "z": 4.03 }, { "name": 37788, "carat": 0.5, "cut": "Good", "color": "E", "clarity": "SI2", "depth": 63.2, "table": 61, "price": 1000, "x": 5.02, "y": 5.05, "z": 3.18 }, { "name": 42551, "carat": 0.52, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 61, "table": 59, "price": 1326, "x": 5.18, "y": 5.21, "z": 3.17 }, { "name": 22835, "carat": 1.5, "cut": "Good", "color": "E", "clarity": "SI1", "depth": 61.3, "table": 65, "price": 10868, "x": 7.17, "y": 7.23, "z": 4.41 }, { "name": 46144, "carat": 0.5, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 61.3, "table": 59, "price": 1746, "x": 5.1, "y": 5.05, "z": 3.11 }, { "name": 42806, "carat": 0.59, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 60.8, "table": 57, "price": 1352, "x": 5.47, "y": 5.42, "z": 3.31 }, { "name": 12802, "carat": 0.7, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 61.8, "table": 55, "price": 5338, "x": 5.69, "y": 5.73, "z": 3.53 }, { "name": 302, "carat": 0.83, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 58, "table": 62, "price": 2799, "x": 6.19, "y": 6.25, "z": 3.61 }, { "name": 2664, "carat": 0.72, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.1, "table": 57, "price": 3235, "x": 5.73, "y": 5.76, "z": 3.57 }, { "name": 5843, "carat": 1, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 60.2, "table": 61, "price": 3920, "x": 6.48, "y": 6.44, "z": 3.89 }, { "name": 2251, "carat": 1.03, "cut": "Premium", "color": "J", "clarity": "SI2", "depth": 62.2, "table": 59, "price": 3149, "x": 6.42, "y": 6.4, "z": 3.99 }, { "name": 12178, "carat": 1.2, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 62.1, "table": 56, "price": 5183, "x": 6.79, "y": 6.87, "z": 4.24 }, { "name": 13593, "carat": 1.01, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 61, "table": 59, "price": 5560, "x": 6.39, "y": 6.46, "z": 3.92 }, { "name": 2337, "carat": 1.09, "cut": "Fair", "color": "F", "clarity": "SI2", "depth": 66.3, "table": 56, "price": 3170, "x": 6.47, "y": 6.39, "z": 4.27 }, { "name": 8570, "carat": 1.2, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 58, "table": 59, "price": 4435, "x": 6.98, "y": 6.92, "z": 4.03 }, { "name": 27867, "carat": 0.3, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 60.2, "table": 57, "price": 653, "x": 4.37, "y": 4.3, "z": 2.61 }, { "name": 15184, "carat": 1, "cut": "Good", "color": "F", "clarity": "VS2", "depth": 63.8, "table": 58, "price": 6098, "x": 6.28, "y": 6.32, "z": 4.02 }, { "name": 50207, "carat": 0.58, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.9, "table": 56, "price": 2227, "x": 5.36, "y": 5.33, "z": 3.31 }, { "name": 32622, "carat": 0.3, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 62, "table": 57, "price": 457, "x": 4.26, "y": 4.29, "z": 2.65 }, { "name": 34268, "carat": 0.29, "cut": "Very-Good", "color": "H", "clarity": "VVS2", "depth": 62.2, "table": 54, "price": 466, "x": 4.23, "y": 4.26, "z": 2.64 }, { "name": 18789, "carat": 1.08, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 61.2, "table": 60, "price": 7683, "x": 6.61, "y": 6.63, "z": 4.05 }, { "name": 22426, "carat": 1.5, "cut": "Fair", "color": "F", "clarity": "SI1", "depth": 64.3, "table": 58, "price": 10450, "x": 7.04, "y": 7.09, "z": 4.54 }, { "name": 1449, "carat": 0.72, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61, "table": 56, "price": 2976, "x": 5.82, "y": 5.85, "z": 3.56 }, { "name": 25619, "carat": 1.5, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 60.3, "table": 58, "price": 14486, "x": 7.47, "y": 7.39, "z": 4.48 }, { "name": 48417, "carat": 0.61, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 62.9, "table": 58, "price": 1971, "x": 5.33, "y": 5.39, "z": 3.37 }, { "name": 48684, "carat": 0.53, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.2, "table": 55, "price": 2005, "x": 5.19, "y": 5.23, "z": 3.19 }, { "name": 35461, "carat": 0.33, "cut": "Premium", "color": "F", "clarity": "VVS2", "depth": 62.3, "table": 60, "price": 901, "x": 4.43, "y": 4.4, "z": 2.75 }, { "name": 16657, "carat": 1.06, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.2, "table": 56, "price": 6660, "x": 6.51, "y": 6.54, "z": 4.06 }, { "name": 46366, "carat": 0.54, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.7, "table": 56, "price": 1760, "x": 5.32, "y": 5.29, "z": 3.22 }, { "name": 23433, "carat": 1.25, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 60.7, "table": 56, "price": 11422, "x": 6.97, "y": 6.99, "z": 4.24 }, { "name": 9968, "carat": 1, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.5, "table": 58, "price": 4702, "x": 6.37, "y": 6.45, "z": 3.94 }, { "name": 4346, "carat": 0.78, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.7, "table": 55, "price": 3601, "x": 5.92, "y": 6, "z": 3.68 }, { "name": 33198, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.2, "table": 54, "price": 819, "x": 4.33, "y": 4.29, "z": 2.68 }, { "name": 13886, "carat": 1.03, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 63, "table": 59, "price": 5653, "x": 6.44, "y": 6.39, "z": 4.04 }, { "name": 45744, "carat": 0.52, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 59.4, "table": 61, "price": 1701, "x": 5.23, "y": 5.24, "z": 3.11 }, { "name": 27368, "carat": 0.28, "cut": "Premium", "color": "E", "clarity": "VVS1", "depth": 61.3, "table": 60, "price": 646, "x": 4.18, "y": 4.21, "z": 2.57 }, { "name": 29516, "carat": 0.39, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 58.9, "table": 61, "price": 703, "x": 4.74, "y": 4.76, "z": 2.8 }, { "name": 14540, "carat": 1.21, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 63.1, "table": 60, "price": 5871, "x": 6.74, "y": 6.69, "z": 4.24 }, { "name": 11338, "carat": 1.01, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 59.5, "table": 62, "price": 4989, "x": 6.53, "y": 6.45, "z": 3.86 }, { "name": 48507, "carat": 0.7, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 61.7, "table": 58, "price": 1982, "x": 5.72, "y": 5.69, "z": 3.52 }, { "name": 38406, "carat": 0.35, "cut": "Premium", "color": "H", "clarity": "VVS1", "depth": 61.2, "table": 60, "price": 1024, "x": 4.55, "y": 4.5, "z": 2.77 }, { "name": 29098, "carat": 0.36, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 61.5, "table": 60, "price": 689, "x": 4.6, "y": 4.54, "z": 2.81 }, { "name": 39110, "carat": 0.41, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61.9, "table": 56, "price": 1061, "x": 4.78, "y": 4.75, "z": 2.95 }, { "name": 47525, "carat": 0.54, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.4, "table": 55, "price": 1868, "x": 5.26, "y": 5.3, "z": 3.24 }, { "name": 14780, "carat": 1.2, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 61.5, "table": 61, "price": 5947, "x": 6.84, "y": 6.78, "z": 4.19 }, { "name": 7968, "carat": 1.16, "cut": "Very-Good", "color": "J", "clarity": "VS2", "depth": 63.7, "table": 56, "price": 4323, "x": 6.63, "y": 6.68, "z": 4.24 }, { "name": 30555, "carat": 0.31, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.3, "table": 55, "price": 734, "x": 4.33, "y": 4.37, "z": 2.71 }, { "name": 3705, "carat": 1, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 62.9, "table": 56, "price": 3450, "x": 6.32, "y": 6.3, "z": 3.97 }, { "name": 25884, "carat": 2.01, "cut": "Good", "color": "I", "clarity": "SI1", "depth": 58.5, "table": 62, "price": 14998, "x": 8.24, "y": 8.31, "z": 4.84 }, { "name": 11447, "carat": 1.01, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 60.6, "table": 57, "price": 5006, "x": 6.52, "y": 6.49, "z": 3.94 }, { "name": 40236, "carat": 0.44, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 61.1, "table": 57, "price": 1124, "x": 4.87, "y": 4.92, "z": 2.99 }, { "name": 38630, "carat": 0.31, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 62.5, "table": 54, "price": 489, "x": 4.35, "y": 4.39, "z": 2.73 }, { "name": 8467, "carat": 1.03, "cut": "Good", "color": "F", "clarity": "SI2", "depth": 59, "table": 59, "price": 4414, "x": 6.55, "y": 6.6, "z": 3.88 }, { "name": 33011, "carat": 0.31, "cut": "Good", "color": "E", "clarity": "IF", "depth": 64.2, "table": 60, "price": 813, "x": 4.22, "y": 4.28, "z": 2.73 }, { "name": 43649, "carat": 0.51, "cut": "Good", "color": "E", "clarity": "SI1", "depth": 63.6, "table": 58, "price": 1434, "x": 5, "y": 4.97, "z": 3.17 }, { "name": 27151, "carat": 2.04, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 58.3, "table": 58, "price": 17379, "x": 8.35, "y": 8.31, "z": 4.86 }, { "name": 5855, "carat": 1, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 61.5, "table": 58, "price": 3920, "x": 6.41, "y": 6.38, "z": 3.93 }, { "name": 22842, "carat": 1.64, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 59.2, "table": 58, "price": 10874, "x": 7.76, "y": 7.68, "z": 4.57 }, { "name": 37890, "carat": 0.36, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 62, "table": 57, "price": 1006, "x": 4.54, "y": 4.58, "z": 2.82 }, { "name": 37874, "carat": 0.39, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 62.7, "table": 53.6, "price": 1004, "x": 4.67, "y": 4.69, "z": 2.93 }, { "name": 39457, "carat": 0.39, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.6, "table": 55, "price": 1077, "x": 4.69, "y": 4.66, "z": 2.93 }, { "name": 41002, "carat": 0.43, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.8, "table": 55, "price": 1183, "x": 4.87, "y": 4.9, "z": 3.02 }, { "name": 11878, "carat": 1.25, "cut": "Good", "color": "J", "clarity": "SI1", "depth": 63.6, "table": 57, "price": 5110, "x": 6.86, "y": 6.81, "z": 4.35 }, { "name": 45647, "carat": 0.25, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 60.2, "table": 56, "price": 525, "x": 4.1, "y": 4.11, "z": 2.47 }, { "name": 18406, "carat": 1.32, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 61.2, "table": 57, "price": 7480, "x": 7.06, "y": 7.12, "z": 4.34 }, { "name": 31880, "carat": 0.3, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 62.8, "table": 57, "price": 776, "x": 4.25, "y": 4.22, "z": 2.66 }, { "name": 23734, "carat": 1.52, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 61.4, "table": 59, "price": 11776, "x": 7.39, "y": 7.46, "z": 4.56 }, { "name": 24975, "carat": 2.04, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 61.4, "table": 59, "price": 13477, "x": 8.04, "y": 8.14, "z": 4.97 }, { "name": 51931, "carat": 0.72, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 62.6, "table": 55, "price": 2440, "x": 5.71, "y": 5.76, "z": 3.59 }, { "name": 20742, "carat": 1.55, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 60.5, "table": 60, "price": 8981, "x": 7.46, "y": 7.49, "z": 4.52 }, { "name": 5324, "carat": 0.9, "cut": "Fair", "color": "G", "clarity": "VS1", "depth": 65.7, "table": 58, "price": 3806, "x": 6.02, "y": 5.97, "z": 3.94 }, { "name": 905, "carat": 0.74, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.3, "table": 55, "price": 2877, "x": 5.8, "y": 5.83, "z": 3.62 }, { "name": 37676, "carat": 0.7, "cut": "Fair", "color": "F", "clarity": "I1", "depth": 65.4, "table": 59, "price": 992, "x": 5.6, "y": 5.49, "z": 3.63 }, { "name": 35199, "carat": 0.43, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 61.8, "table": 60.7, "price": 891, "x": 4.8, "y": 4.84, "z": 2.99 }, { "name": 27971, "carat": 0.3, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 62, "table": 59, "price": 658, "x": 4.27, "y": 4.31, "z": 2.66 }, { "name": 22375, "carat": 0.31, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 63, "table": 57, "price": 628, "x": 4.34, "y": 4.32, "z": 2.73 }, { "name": 52787, "carat": 0.72, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 63, "table": 57, "price": 2567, "x": 5.74, "y": 5.69, "z": 3.6 }, { "name": 17958, "carat": 1.01, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 62.8, "table": 57, "price": 7258, "x": 6.34, "y": 6.44, "z": 4.01 }, { "name": 34836, "carat": 0.3, "cut": "Premium", "color": "H", "clarity": "VVS1", "depth": 62, "table": 59, "price": 878, "x": 4.29, "y": 4.26, "z": 2.65 }, { "name": 34114, "carat": 0.35, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.8, "table": 54.5, "price": 853, "x": 4.54, "y": 4.58, "z": 2.82 }, { "name": 25777, "carat": 2.01, "cut": "Good", "color": "G", "clarity": "SI2", "depth": 63, "table": 60, "price": 14745, "x": 7.92, "y": 7.99, "z": 5.01 }, { "name": 27538, "carat": 2.01, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.1, "table": 55, "price": 18295, "x": 8.12, "y": 8.07, "z": 5.03 }, { "name": 23409, "carat": 2, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 64.2, "table": 52, "price": 11400, "x": 7.91, "y": 7.88, "z": 5.07 }, { "name": 32430, "carat": 0.33, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.7, "table": 55, "price": 792, "x": 4.45, "y": 4.47, "z": 2.75 }, { "name": 22801, "carat": 1.52, "cut": "Premium", "color": "I", "clarity": "VVS2", "depth": 61.6, "table": 58, "price": 10824, "x": 7.37, "y": 7.41, "z": 4.55 }, { "name": 33937, "carat": 0.3, "cut": "Ideal", "color": "J", "clarity": "VVS1", "depth": 60.4, "table": 57, "price": 464, "x": 4.36, "y": 4.38, "z": 2.64 }, { "name": 2082, "carat": 1.01, "cut": "Good", "color": "H", "clarity": "I1", "depth": 63.2, "table": 58, "price": 3110, "x": 6.33, "y": 6.39, "z": 4.02 }, { "name": 3478, "carat": 1.01, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 60.9, "table": 59, "price": 3394, "x": 6.42, "y": 6.35, "z": 3.89 }, { "name": 11382, "carat": 0.34, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 62.5, "table": 57, "price": 596, "x": 4.43, "y": 4.46, "z": 2.78 }, { "name": 50658, "carat": 0.31, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62, "table": 58, "price": 544, "x": 4.3, "y": 4.35, "z": 2.68 }, { "name": 36357, "carat": 0.34, "cut": "Very-Good", "color": "F", "clarity": "VVS1", "depth": 61, "table": 56, "price": 939, "x": 4.52, "y": 4.53, "z": 2.76 }, { "name": 51116, "carat": 0.7, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 63.4, "table": 58, "price": 2338, "x": 5.63, "y": 5.57, "z": 3.55 }, { "name": 43034, "carat": 0.5, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 61.1, "table": 64, "price": 1374, "x": 5.05, "y": 5.07, "z": 3.09 }, { "name": 13135, "carat": 1.11, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.1, "table": 60, "price": 5433, "x": 6.68, "y": 6.62, "z": 4.06 }, { "name": 10922, "carat": 1.2, "cut": "Very-Good", "color": "J", "clarity": "SI1", "depth": 61.3, "table": 59, "price": 4891, "x": 6.83, "y": 6.9, "z": 4.21 }, { "name": 28822, "carat": 0.41, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 62.6, "table": 59, "price": 683, "x": 4.72, "y": 4.77, "z": 2.97 }, { "name": 3106, "carat": 0.72, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.2, "table": 56, "price": 3322, "x": 5.77, "y": 5.74, "z": 3.58 }, { "name": 31819, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 62.2, "table": 54, "price": 775, "x": 4.28, "y": 4.3, "z": 2.67 }, { "name": 14218, "carat": 1.23, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 61.7, "table": 57, "price": 5763, "x": 6.87, "y": 6.8, "z": 4.22 }, { "name": 50596, "carat": 0.71, "cut": "Good", "color": "I", "clarity": "VVS2", "depth": 63.7, "table": 56, "price": 2283, "x": 5.68, "y": 5.63, "z": 3.6 }, { "name": 46694, "carat": 0.56, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 60.8, "table": 55, "price": 1791, "x": 5.37, "y": 5.32, "z": 3.25 }, { "name": 11156, "carat": 1.21, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 63.5, "table": 58, "price": 4944, "x": 6.73, "y": 6.63, "z": 4.24 }, { "name": 46259, "carat": 0.54, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.3, "table": 57, "price": 1754, "x": 5.25, "y": 5.28, "z": 3.23 }, { "name": 11307, "carat": 1.09, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 61.2, "table": 57, "price": 4981, "x": 6.64, "y": 6.6, "z": 4.05 }, { "name": 20502, "carat": 1.66, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 63.3, "table": 59, "price": 8831, "x": 7.48, "y": 7.45, "z": 4.72 }, { "name": 14963, "carat": 1.21, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 59.5, "table": 58, "price": 6025, "x": 7.02, "y": 6.96, "z": 4.16 }, { "name": 48215, "carat": 0.57, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 60.9, "table": 56, "price": 1949, "x": 5.36, "y": 5.38, "z": 3.27 }, { "name": 52469, "carat": 0.8, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 62, "table": 56, "price": 2517, "x": 5.98, "y": 5.92, "z": 3.69 }, { "name": 27892, "carat": 0.32, "cut": "Ideal", "color": "I", "clarity": "IF", "depth": 62.1, "table": 54, "price": 655, "x": 4.39, "y": 4.43, "z": 2.74 }, { "name": 37944, "carat": 0.33, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 58.8, "table": 62, "price": 486, "x": 4.49, "y": 4.53, "z": 2.65 }, { "name": 39931, "carat": 0.35, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 61.7, "table": 57, "price": 491, "x": 4.52, "y": 4.56, "z": 2.8 }, { "name": 2695, "carat": 0.9, "cut": "Good", "color": "G", "clarity": "SI2", "depth": 63.8, "table": 59, "price": 3246, "x": 6.05, "y": 6.02, "z": 3.85 }, { "name": 21323, "carat": 1.35, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.8, "table": 59, "price": 9471, "x": 7.04, "y": 7.01, "z": 4.41 }, { "name": 21796, "carat": 1, "cut": "Very-Good", "color": "F", "clarity": "VVS1", "depth": 61.1, "table": 57, "price": 9870, "x": 6.36, "y": 6.51, "z": 3.93 }, { "name": 33669, "carat": 0.34, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62.3, "table": 57, "price": 835, "x": 4.44, "y": 4.48, "z": 2.78 }, { "name": 42502, "carat": 0.57, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 60.7, "table": 57, "price": 1320, "x": 5.42, "y": 5.35, "z": 3.27 }, { "name": 7634, "carat": 1.11, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 62.6, "table": 59, "price": 4265, "x": 6.6, "y": 6.56, "z": 4.12 }, { "name": 43833, "carat": 0.59, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 60.3, "table": 59, "price": 1445, "x": 5.41, "y": 5.43, "z": 3.27 }, { "name": 15310, "carat": 1.1, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.4, "table": 55, "price": 6146, "x": 6.65, "y": 6.68, "z": 4.09 }, { "name": 32268, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.7, "table": 55, "price": 789, "x": 4.28, "y": 4.31, "z": 2.65 }, { "name": 2373, "carat": 0.32, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62, "table": 57, "price": 561, "x": 4.39, "y": 4.41, "z": 2.73 }, { "name": 35160, "carat": 0.32, "cut": "Premium", "color": "G", "clarity": "IF", "depth": 61, "table": 59, "price": 891, "x": 4.38, "y": 4.41, "z": 2.68 }, { "name": 5039, "carat": 0.9, "cut": "Good", "color": "F", "clarity": "VS1", "depth": 63.8, "table": 56, "price": 3750, "x": 5.99, "y": 5.92, "z": 3.8 }, { "name": 31680, "carat": 0.26, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62.3, "table": 57, "price": 769, "x": 4.09, "y": 4.06, "z": 2.54 }, { "name": 50106, "carat": 0.51, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 60.9, "table": 57, "price": 2208, "x": 5.16, "y": 5.21, "z": 3.16 }, { "name": 10246, "carat": 1.01, "cut": "Good", "color": "H", "clarity": "SI1", "depth": 63.4, "table": 59, "price": 4749, "x": 6.28, "y": 6.34, "z": 4 }, { "name": 13452, "carat": 1.03, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 62, "table": 59, "price": 5523, "x": 6.45, "y": 6.48, "z": 4.01 }, { "name": 29000, "carat": 0.34, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.6, "table": 54, "price": 686, "x": 4.46, "y": 4.48, "z": 2.8 }, { "name": 14240, "carat": 1.09, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62, "table": 56, "price": 5768, "x": 6.61, "y": 6.56, "z": 4.08 }, { "name": 48404, "carat": 0.64, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 62.3, "table": 58, "price": 1969, "x": 5.49, "y": 5.53, "z": 3.43 }, { "name": 23822, "carat": 2.08, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 62, "table": 56, "price": 11886, "x": 8.21, "y": 8.1, "z": 5.06 }, { "name": 5353, "carat": 0.74, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 61.7, "table": 55, "price": 3813, "x": 5.79, "y": 5.85, "z": 3.59 }, { "name": 16160, "carat": 1.5, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 62.1, "table": 58, "price": 6458, "x": 7.31, "y": 7.21, "z": 4.51 }, { "name": 28516, "carat": 0.32, "cut": "Ideal", "color": "I", "clarity": "IF", "depth": 60.8, "table": 54, "price": 673, "x": 4.44, "y": 4.47, "z": 2.71 }, { "name": 42134, "carat": 0.5, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.3, "table": 60, "price": 1279, "x": 5.15, "y": 5.1, "z": 3.14 }, { "name": 6813, "carat": 1.01, "cut": "Fair", "color": "E", "clarity": "SI2", "depth": 55.2, "table": 65, "price": 4118, "x": 6.78, "y": 6.67, "z": 3.71 }, { "name": 16962, "carat": 1.12, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62, "table": 56, "price": 6774, "x": 6.69, "y": 6.64, "z": 4.13 }, { "name": 13956, "carat": 1.16, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 60.7, "table": 59, "price": 5678, "x": 6.74, "y": 6.87, "z": 4.13 }, { "name": 16756, "carat": 1.45, "cut": "Very-Good", "color": "J", "clarity": "VS2", "depth": 62.8, "table": 57, "price": 6671, "x": 7.14, "y": 7.17, "z": 4.49 }, { "name": 37782, "carat": 0.38, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 61.5, "table": 58, "price": 1000, "x": 4.64, "y": 4.69, "z": 2.87 }, { "name": 47332, "carat": 0.23, "cut": "Very-Good", "color": "E", "clarity": "VVS1", "depth": 61.3, "table": 59, "price": 530, "x": 3.93, "y": 3.97, "z": 2.42 }, { "name": 7328, "carat": 0.9, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61.9, "table": 58, "price": 4209, "x": 6.17, "y": 6.1, "z": 3.8 }, { "name": 31834, "carat": 0.34, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.9, "table": 57, "price": 775, "x": 4.44, "y": 4.48, "z": 2.76 }, { "name": 66, "carat": 0.28, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.4, "table": 56, "price": 553, "x": 4.19, "y": 4.22, "z": 2.58 }, { "name": 21826, "carat": 1.26, "cut": "Premium", "color": "F", "clarity": "VS1", "depth": 62.7, "table": 58, "price": 9896, "x": 6.86, "y": 6.93, "z": 4.32 }, { "name": 40205, "carat": 0.53, "cut": "Good", "color": "J", "clarity": "VS2", "depth": 63.8, "table": 57, "price": 1122, "x": 5.12, "y": 5.1, "z": 3.26 }, { "name": 26027, "carat": 0.32, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.2, "table": 57, "price": 645, "x": 4.4, "y": 4.43, "z": 2.7 }, { "name": 5966, "carat": 0.9, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.8, "table": 57, "price": 3950, "x": 6.19, "y": 6.21, "z": 3.83 }, { "name": 32163, "carat": 0.47, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.1, "table": 55, "price": 787, "x": 5.04, "y": 5.07, "z": 3.09 }, { "name": 332, "carat": 0.71, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.3, "table": 56, "price": 2803, "x": 5.75, "y": 5.71, "z": 3.51 }, { "name": 22181, "carat": 1.54, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 61.3, "table": 59, "price": 10219, "x": 7.41, "y": 7.38, "z": 4.53 }, { "name": 18741, "carat": 1.55, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 61.3, "table": 58, "price": 7656, "x": 7.48, "y": 7.44, "z": 4.57 }, { "name": 52489, "carat": 0.73, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 63.3, "table": 60, "price": 2523, "x": 5.65, "y": 5.7, "z": 3.59 }, { "name": 4115, "carat": 0.78, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 62.2, "table": 58, "price": 3538, "x": 5.9, "y": 5.86, "z": 3.66 }, { "name": 22331, "carat": 1.7, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 61.8, "table": 60, "price": 10377, "x": 7.64, "y": 7.56, "z": 4.7 }, { "name": 41660, "carat": 0.5, "cut": "Good", "color": "H", "clarity": "VS2", "depth": 56.3, "table": 65, "price": 1239, "x": 5.21, "y": 5.24, "z": 2.94 }, { "name": 17321, "carat": 1.19, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 61.1, "table": 58, "price": 6944, "x": 6.83, "y": 6.78, "z": 4.16 }, { "name": 27840, "carat": 0.39, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 61.6, "table": 56, "price": 651, "x": 4.69, "y": 4.72, "z": 2.9 }, { "name": 26341, "carat": 0.32, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 61.7, "table": 56, "price": 645, "x": 4.37, "y": 4.42, "z": 2.71 }, { "name": 1757, "carat": 0.77, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 59.6, "table": 60, "price": 3044, "x": 5.95, "y": 5.97, "z": 3.55 }, { "name": 7671, "carat": 1.11, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 62.4, "table": 55, "price": 4273, "x": 6.6, "y": 6.64, "z": 4.13 }, { "name": 20313, "carat": 1.24, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 61.8, "table": 55, "price": 8726, "x": 6.91, "y": 6.95, "z": 4.28 }, { "name": 40866, "carat": 0.55, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 62.4, "table": 56, "price": 1175, "x": 5.22, "y": 5.26, "z": 3.27 }, { "name": 29196, "carat": 0.33, "cut": "Premium", "color": "I", "clarity": "IF", "depth": 62.1, "table": 58, "price": 694, "x": 4.39, "y": 4.43, "z": 2.74 }, { "name": 11543, "carat": 1.21, "cut": "Good", "color": "J", "clarity": "VVS2", "depth": 63.7, "table": 56, "price": 5028, "x": 6.71, "y": 6.67, "z": 4.26 }, { "name": 46413, "carat": 0.54, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 57.9, "table": 60, "price": 1767, "x": 5.36, "y": 5.39, "z": 3.11 }, { "name": 5619, "carat": 1, "cut": "Good", "color": "H", "clarity": "SI2", "depth": 63.2, "table": 59, "price": 3874, "x": 6.24, "y": 6.29, "z": 3.96 }, { "name": 46222, "carat": 0.5, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 61.9, "table": 58, "price": 1752, "x": 5.04, "y": 5.1, "z": 3.14 }, { "name": 11794, "carat": 1.12, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 62.5, "table": 58, "price": 5088, "x": 6.6, "y": 6.64, "z": 4.14 }, { "name": 28962, "carat": 0.31, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 60.7, "table": 61, "price": 435, "x": 4.32, "y": 4.34, "z": 2.63 }, { "name": 25313, "carat": 2.07, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 62.7, "table": 58, "price": 13993, "x": 8.14, "y": 8.09, "z": 5.09 }, { "name": 33556, "carat": 0.41, "cut": "Ideal", "color": "J", "clarity": "VS1", "depth": 60.2, "table": 57, "price": 830, "x": 4.85, "y": 4.81, "z": 2.91 }, { "name": 7949, "carat": 1.16, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 62, "table": 59, "price": 4320, "x": 6.74, "y": 6.62, "z": 4.14 }, { "name": 49142, "carat": 1.05, "cut": "Good", "color": "E", "clarity": "I1", "depth": 64.1, "table": 58, "price": 2066, "x": 6.46, "y": 6.32, "z": 4.09 }, { "name": 16341, "carat": 1.11, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 61.4, "table": 58, "price": 6534, "x": 6.7, "y": 6.66, "z": 4.1 }, { "name": 5849, "carat": 1, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 61.3, "table": 58, "price": 3920, "x": 6.45, "y": 6.41, "z": 3.94 }, { "name": 45428, "carat": 0.51, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 61.2, "table": 57, "price": 1669, "x": 5.14, "y": 5.19, "z": 3.16 }, { "name": 19274, "carat": 1.34, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 60.8, "table": 55, "price": 7999, "x": 7.18, "y": 7.12, "z": 4.35 }, { "name": 50899, "carat": 0.71, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 62.7, "table": 55, "price": 2317, "x": 5.68, "y": 5.64, "z": 3.56 }, { "name": 53908, "carat": 0.7, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 61, "table": 57, "price": 2753, "x": 5.68, "y": 5.73, "z": 3.48 }, { "name": 30970, "carat": 0.38, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 60.5, "table": 58, "price": 746, "x": 4.72, "y": 4.67, "z": 2.84 }, { "name": 40324, "carat": 0.42, "cut": "Ideal", "color": "H", "clarity": "IF", "depth": 61.6, "table": 56, "price": 1126, "x": 4.84, "y": 4.87, "z": 2.99 }, { "name": 37208, "carat": 0.34, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61, "table": 55, "price": 974, "x": 4.51, "y": 4.54, "z": 2.76 }, { "name": 4921, "carat": 1.21, "cut": "Good", "color": "E", "clarity": "I1", "depth": 63.3, "table": 63, "price": 3726, "x": 6.67, "y": 6.72, "z": 4.24 }, { "name": 44263, "carat": 0.52, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 62, "table": 55.4, "price": 1575, "x": 5.16, "y": 5.21, "z": 3.21 }, { "name": 8563, "carat": 1.04, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 62.9, "table": 57, "price": 4435, "x": 6.39, "y": 6.45, "z": 4.04 }, { "name": 11406, "carat": 1.08, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.6, "table": 56, "price": 5000, "x": 6.63, "y": 6.59, "z": 4.07 }, { "name": 17873, "carat": 1.15, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.1, "table": 53, "price": 7213, "x": 6.83, "y": 6.76, "z": 4.15 }, { "name": 8704, "carat": 0.4, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 62.9, "table": 59, "price": 585, "x": 4.68, "y": 4.63, "z": 2.93 }, { "name": 21185, "carat": 1.51, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.8, "table": 55, "price": 9336, "x": 7.38, "y": 7.42, "z": 4.57 }, { "name": 24189, "carat": 2.18, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 63.3, "table": 59, "price": 12377, "x": 8.25, "y": 8.2, "z": 5.2 }, { "name": 15396, "carat": 1.08, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 62, "table": 57, "price": 6168, "x": 6.52, "y": 6.55, "z": 4.05 }, { "name": 16040, "carat": 0.3, "cut": "Good", "color": "I", "clarity": "VS1", "depth": 63.7, "table": 58, "price": 608, "x": 4.25, "y": 4.23, "z": 2.7 }, { "name": 17057, "carat": 0.28, "cut": "Good", "color": "E", "clarity": "IF", "depth": 64.6, "table": 58, "price": 612, "x": 4.09, "y": 4.12, "z": 2.65 }, { "name": 45024, "carat": 0.54, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61.5, "table": 56, "price": 1637, "x": 5.24, "y": 5.23, "z": 3.22 }, { "name": 19987, "carat": 1.53, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.3, "table": 57, "price": 8529, "x": 7.42, "y": 7.32, "z": 4.52 }, { "name": 38294, "carat": 0.28, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 61.2, "table": 57, "price": 487, "x": 4.2, "y": 4.23, "z": 2.58 }, { "name": 771, "carat": 0.9, "cut": "Fair", "color": "G", "clarity": "SI2", "depth": 64.5, "table": 56, "price": 2858, "x": 6.06, "y": 6, "z": 3.89 }, { "name": 48545, "carat": 0.52, "cut": "Ideal", "color": "I", "clarity": "IF", "depth": 60.2, "table": 56, "price": 1988, "x": 5.23, "y": 5.27, "z": 3.16 }, { "name": 12222, "carat": 1, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62, "table": 57, "price": 5197, "x": 6.37, "y": 6.43, "z": 3.97 }, { "name": 5540, "carat": 0.91, "cut": "Fair", "color": "D", "clarity": "SI1", "depth": 64.4, "table": 60, "price": 3855, "x": 6.08, "y": 6.04, "z": 3.9 }, { "name": 51049, "carat": 0.73, "cut": "Fair", "color": "I", "clarity": "VS1", "depth": 55.9, "table": 66, "price": 2330, "x": 6.11, "y": 6.01, "z": 3.39 }, { "name": 14583, "carat": 1.13, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 62.4, "table": 58, "price": 5885, "x": 6.66, "y": 6.61, "z": 4.14 }, { "name": 21195, "carat": 1.51, "cut": "Very-Good", "color": "I", "clarity": "VS1", "depth": 63, "table": 59, "price": 9343, "x": 7.28, "y": 7.3, "z": 4.59 }, { "name": 38780, "carat": 0.31, "cut": "Premium", "color": "E", "clarity": "VVS2", "depth": 61.3, "table": 60, "price": 1046, "x": 4.35, "y": 4.33, "z": 2.66 }, { "name": 24542, "carat": 2.01, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 60.5, "table": 58, "price": 12829, "x": 8.2, "y": 8.06, "z": 4.92 }, { "name": 45710, "carat": 0.56, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.7, "table": 56, "price": 1698, "x": 5.34, "y": 5.3, "z": 3.28 }, { "name": 20987, "carat": 1.2, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 61.6, "table": 61, "price": 9203, "x": 6.81, "y": 6.86, "z": 4.21 }, { "name": 24439, "carat": 1.5, "cut": "Good", "color": "F", "clarity": "VS2", "depth": 60.2, "table": 58, "price": 12693, "x": 7.31, "y": 7.35, "z": 4.41 }, { "name": 20964, "carat": 1.21, "cut": "Good", "color": "E", "clarity": "VS2", "depth": 62.7, "table": 61, "price": 9176, "x": 6.67, "y": 6.72, "z": 4.2 }, { "name": 33240, "carat": 0.36, "cut": "Ideal", "color": "I", "clarity": "VVS1", "depth": 61.7, "table": 56, "price": 824, "x": 4.59, "y": 4.62, "z": 2.84 }, { "name": 50267, "carat": 0.5, "cut": "Very-Good", "color": "F", "clarity": "IF", "depth": 61.4, "table": 60, "price": 2238, "x": 5.07, "y": 5.1, "z": 3.12 }, { "name": 26992, "carat": 2.05, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 59.7, "table": 59, "price": 17081, "x": 8.27, "y": 8.39, "z": 4.97 }, { "name": 25844, "carat": 1.71, "cut": "Very-Good", "color": "H", "clarity": "VVS2", "depth": 61.2, "table": 62, "price": 14893, "x": 7.59, "y": 7.65, "z": 4.66 }, { "name": 28144, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.6, "table": 53, "price": 665, "x": 4.31, "y": 4.35, "z": 2.71 }, { "name": 53423, "carat": 0.71, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 60.3, "table": 60, "price": 2671, "x": 5.76, "y": 5.81, "z": 3.49 }, { "name": 40317, "carat": 0.4, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 62.2, "table": 55, "price": 1125, "x": 4.76, "y": 4.72, "z": 2.95 }, { "name": 48669, "carat": 0.61, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.4, "table": 55, "price": 2002, "x": 5.42, "y": 5.45, "z": 3.39 }, { "name": 26549, "carat": 1.87, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61.9, "table": 58, "price": 16232, "x": 7.94, "y": 7.88, "z": 4.9 }, { "name": 18629, "carat": 1.02, "cut": "Good", "color": "E", "clarity": "VS1", "depth": 63.9, "table": 56, "price": 7602, "x": 6.33, "y": 6.38, "z": 4.06 }, { "name": 44994, "carat": 0.31, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 60.7, "table": 60, "price": 523, "x": 4.37, "y": 4.33, "z": 2.64 }, { "name": 10513, "carat": 1.03, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.4, "table": 56, "price": 4800, "x": 6.45, "y": 6.5, "z": 4.04 }, { "name": 21820, "carat": 1.51, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 62.6, "table": 55, "price": 9891, "x": 7.29, "y": 7.34, "z": 4.58 }, { "name": 51070, "carat": 0.54, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.3, "table": 57, "price": 2333, "x": 5.29, "y": 5.24, "z": 3.23 }, { "name": 25447, "carat": 2, "cut": "Fair", "color": "H", "clarity": "VS1", "depth": 66, "table": 56, "price": 14199, "x": 7.79, "y": 7.72, "z": 5.12 }, { "name": 11880, "carat": 1.21, "cut": "Very-Good", "color": "I", "clarity": "SI2", "depth": 62, "table": 56, "price": 5111, "x": 6.79, "y": 6.86, "z": 4.23 }, { "name": 29934, "carat": 0.34, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 59.6, "table": 62, "price": 714, "x": 4.56, "y": 4.54, "z": 2.71 }, { "name": 33722, "carat": 0.42, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 60.1, "table": 58, "price": 838, "x": 4.91, "y": 4.87, "z": 2.94 }, { "name": 6090, "carat": 1.02, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 59.6, "table": 59, "price": 3974, "x": 6.51, "y": 6.54, "z": 3.89 }, { "name": 10643, "carat": 0.93, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.2, "table": 59, "price": 4834, "x": 6.21, "y": 6.26, "z": 3.88 }, { "name": 17714, "carat": 0.41, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 61.7, "table": 55, "price": 613, "x": 4.8, "y": 4.82, "z": 2.97 }, { "name": 48418, "carat": 0.7, "cut": "Very-Good", "color": "I", "clarity": "VS1", "depth": 62.4, "table": 58, "price": 1971, "x": 5.62, "y": 5.67, "z": 3.52 }, { "name": 52256, "carat": 0.7, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 64.3, "table": 56, "price": 2488, "x": 5.51, "y": 5.58, "z": 3.57 }, { "name": 42073, "carat": 0.55, "cut": "Good", "color": "D", "clarity": "SI2", "depth": 63.3, "table": 56, "price": 1272, "x": 5.21, "y": 5.24, "z": 3.31 }, { "name": 7421, "carat": 1, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 62.9, "table": 60, "price": 4227, "x": 6.35, "y": 6.3, "z": 3.98 }, { "name": 52345, "carat": 0.72, "cut": "Fair", "color": "E", "clarity": "SI1", "depth": 56.9, "table": 61, "price": 2498, "x": 5.91, "y": 5.97, "z": 3.38 }, { "name": 21919, "carat": 1.5, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 62.9, "table": 55, "price": 9996, "x": 7.28, "y": 7.26, "z": 4.57 }, { "name": 44416, "carat": 0.52, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61, "table": 55, "price": 1586, "x": 5.19, "y": 5.23, "z": 3.18 }, { "name": 6044, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 62, "table": 55, "price": 576, "x": 4.41, "y": 4.36, "z": 2.72 }, { "name": 42202, "carat": 0.51, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.7, "table": 58, "price": 1287, "x": 5.12, "y": 5.15, "z": 3.17 }, { "name": 29510, "carat": 0.32, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.5, "table": 59, "price": 702, "x": 4.39, "y": 4.43, "z": 2.67 }, { "name": 24096, "carat": 1.91, "cut": "Fair", "color": "I", "clarity": "VS1", "depth": 59.5, "table": 68, "price": 12244, "x": 8.1, "y": 7.91, "z": 4.78 }, { "name": 28544, "carat": 0.3, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61.8, "table": 60, "price": 675, "x": 4.28, "y": 4.23, "z": 2.63 }, { "name": 14459, "carat": 1.06, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.9, "table": 57, "price": 5834, "x": 6.57, "y": 6.54, "z": 4.06 }, { "name": 1152, "carat": 0.87, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.5, "table": 57, "price": 2923, "x": 6.13, "y": 6.06, "z": 3.81 }, { "name": 37812, "carat": 0.35, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.3, "table": 55, "price": 1001, "x": 4.57, "y": 4.6, "z": 2.81 }, { "name": 23616, "carat": 1.34, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 62.2, "table": 56, "price": 11640, "x": 7.11, "y": 7.04, "z": 4.4 }, { "name": 24784, "carat": 1.51, "cut": "Good", "color": "G", "clarity": "VVS2", "depth": 63.8, "table": 59, "price": 13155, "x": 7.24, "y": 7.28, "z": 4.63 }, { "name": 10890, "carat": 1, "cut": "Good", "color": "G", "clarity": "SI1", "depth": 64.4, "table": 54, "price": 4882, "x": 6.29, "y": 6.32, "z": 4.06 }, { "name": 21135, "carat": 1, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.1, "table": 58, "price": 9294, "x": 6.43, "y": 6.47, "z": 3.94 }, { "name": 10217, "carat": 1.21, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 60.5, "table": 60, "price": 4743, "x": 6.81, "y": 6.72, "z": 4.09 }, { "name": 10169, "carat": 0.91, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.9, "table": 56, "price": 4731, "x": 6.22, "y": 6.18, "z": 3.84 }, { "name": 15177, "carat": 1.01, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 63, "table": 58, "price": 6097, "x": 6.43, "y": 6.36, "z": 4.03 }, { "name": 20708, "carat": 0.31, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.1, "table": 57, "price": 625, "x": 4.34, "y": 4.36, "z": 2.7 }, { "name": 17157, "carat": 1.24, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 61.2, "table": 59, "price": 6850, "x": 6.89, "y": 6.93, "z": 4.23 }, { "name": 12185, "carat": 1.21, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 59.1, "table": 55, "price": 5184, "x": 7.04, "y": 6.98, "z": 4.14 }, { "name": 37681, "carat": 0.42, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 62.5, "table": 57, "price": 992, "x": 4.81, "y": 4.76, "z": 2.99 }, { "name": 9804, "carat": 0.9, "cut": "Good", "color": "G", "clarity": "VVS2", "depth": 62.6, "table": 58, "price": 4668, "x": 6.1, "y": 6.13, "z": 3.83 }, { "name": 27382, "carat": 0.41, "cut": "Good", "color": "J", "clarity": "VS1", "depth": 63.7, "table": 56, "price": 647, "x": 4.68, "y": 4.71, "z": 2.99 }, { "name": 37287, "carat": 0.24, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 64.4, "table": 53, "price": 485, "x": 3.92, "y": 3.94, "z": 2.53 }, { "name": 5300, "carat": 1.01, "cut": "Fair", "color": "E", "clarity": "SI2", "depth": 60, "table": 60, "price": 3801, "x": 6.48, "y": 6.38, "z": 3.86 }, { "name": 18937, "carat": 1.12, "cut": "Premium", "color": "F", "clarity": "VS1", "depth": 62.1, "table": 60, "price": 7781, "x": 6.62, "y": 6.58, "z": 4.1 }, { "name": 29097, "carat": 0.36, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 61.2, "table": 59, "price": 689, "x": 4.59, "y": 4.56, "z": 2.8 }, { "name": 5319, "carat": 1.08, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 62.7, "table": 57, "price": 3805, "x": 6.57, "y": 6.53, "z": 4.11 }, { "name": 53268, "carat": 0.7, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62.2, "table": 59, "price": 2648, "x": 5.68, "y": 5.64, "z": 3.52 }, { "name": 29858, "carat": 0.3, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 62.6, "table": 61, "price": 710, "x": 4.22, "y": 4.25, "z": 2.65 }, { "name": 15204, "carat": 1.01, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 63.1, "table": 60, "price": 6108, "x": 6.36, "y": 6.31, "z": 4 }, { "name": 50101, "carat": 0.71, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 63.1, "table": 57, "price": 2207, "x": 5.65, "y": 5.61, "z": 3.55 }, { "name": 21674, "carat": 1.58, "cut": "Good", "color": "I", "clarity": "VS1", "depth": 58.6, "table": 62, "price": 9775, "x": 7.59, "y": 7.66, "z": 4.47 }, { "name": 16732, "carat": 0.4, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 58.7, "table": 57, "price": 611, "x": 4.88, "y": 4.94, "z": 2.88 }, { "name": 2543, "carat": 0.75, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 62.8, "table": 55, "price": 3206, "x": 5.77, "y": 5.79, "z": 3.63 }, { "name": 6773, "carat": 0.9, "cut": "Good", "color": "G", "clarity": "VS1", "depth": 65.8, "table": 59, "price": 4108, "x": 6, "y": 6.04, "z": 3.96 }, { "name": 50497, "carat": 0.53, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 61, "table": 57, "price": 2269, "x": 5.23, "y": 5.26, "z": 3.22 }, { "name": 41671, "carat": 0.4, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.1, "table": 56, "price": 1240, "x": 4.74, "y": 4.78, "z": 2.91 }, { "name": 41419, "carat": 0.55, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 60.7, "table": 56, "price": 1226, "x": 5.38, "y": 5.32, "z": 3.25 }, { "name": 42262, "carat": 0.49, "cut": "Good", "color": "F", "clarity": "VS1", "depth": 59.2, "table": 60.9, "price": 1294, "x": 5.08, "y": 5.18, "z": 3.04 }, { "name": 439, "carat": 0.7, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.4, "table": 56, "price": 2815, "x": 5.72, "y": 5.77, "z": 3.53 }, { "name": 47145, "carat": 0.53, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 62.4, "table": 57, "price": 1832, "x": 5.18, "y": 5.21, "z": 3.24 }, { "name": 10387, "carat": 0.38, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 61.8, "table": 54, "price": 593, "x": 4.66, "y": 4.7, "z": 2.89 }, { "name": 44982, "carat": 0.31, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 61.8, "table": 59, "price": 523, "x": 4.34, "y": 4.3, "z": 2.67 }, { "name": 307, "carat": 0.7, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 62.2, "table": 58, "price": 2800, "x": 5.6, "y": 5.66, "z": 3.5 }, { "name": 26546, "carat": 2.03, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 60.3, "table": 56, "price": 16224, "x": 8.27, "y": 8.21, "z": 4.97 }, { "name": 49312, "carat": 0.34, "cut": "Ideal", "color": "G", "clarity": "SI1", "depth": 61.9, "table": 55, "price": 540, "x": 4.5, "y": 4.52, "z": 2.79 }, { "name": 39638, "carat": 0.34, "cut": "Premium", "color": "G", "clarity": "IF", "depth": 62.3, "table": 59, "price": 1084, "x": 4.49, "y": 4.46, "z": 2.79 }, { "name": 2569, "carat": 0.9, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 63.1, "table": 54, "price": 3211, "x": 6.13, "y": 6.16, "z": 3.88 }, { "name": 35272, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.4, "table": 57, "price": 895, "x": 4.33, "y": 4.37, "z": 2.67 }, { "name": 30391, "carat": 0.33, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 62.1, "table": 53, "price": 730, "x": 4.48, "y": 4.5, "z": 2.79 }, { "name": 36335, "carat": 0.32, "cut": "Premium", "color": "G", "clarity": "VVS2", "depth": 62.3, "table": 54, "price": 936, "x": 4.45, "y": 4.38, "z": 2.75 }, { "name": 24170, "carat": 1.71, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.9, "table": 54, "price": 12342, "x": 7.65, "y": 7.75, "z": 4.77 }, { "name": 26579, "carat": 2.02, "cut": "Ideal", "color": "F", "clarity": "SI2", "depth": 61.3, "table": 57, "price": 16290, "x": 8.11, "y": 8.16, "z": 4.99 }, { "name": 16650, "carat": 1.26, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 61.3, "table": 58, "price": 6657, "x": 6.99, "y": 6.91, "z": 4.26 }, { "name": 7684, "carat": 1.03, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 63, "table": 59, "price": 4274, "x": 6.43, "y": 6.4, "z": 4.04 }, { "name": 8344, "carat": 1.02, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 60.5, "table": 58, "price": 4398, "x": 6.54, "y": 6.58, "z": 3.97 }, { "name": 13850, "carat": 1.2, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 63.3, "table": 55, "price": 5645, "x": 6.77, "y": 6.73, "z": 4.27 }, { "name": 21762, "carat": 1.5, "cut": "Good", "color": "I", "clarity": "VS1", "depth": 57.9, "table": 60, "price": 9828, "x": 7.48, "y": 7.44, "z": 4.32 }, { "name": 15491, "carat": 1.04, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.3, "table": 54, "price": 6206, "x": 6.55, "y": 6.49, "z": 4.06 }, { "name": 15416, "carat": 1.05, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 59.3, "table": 58, "price": 6174, "x": 6.74, "y": 6.68, "z": 3.98 }, { "name": 6738, "carat": 0.4, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 62.6, "table": 53, "price": 579, "x": 4.7, "y": 4.75, "z": 2.96 }, { "name": 15410, "carat": 1.32, "cut": "Premium", "color": "I", "clarity": "SI1", "depth": 62.2, "table": 58, "price": 6171, "x": 6.99, "y": 7.04, "z": 4.36 }, { "name": 7972, "carat": 0.9, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 62.2, "table": 57, "price": 4324, "x": 6.1, "y": 6.15, "z": 3.81 }, { "name": 52768, "carat": 0.77, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 62, "table": 54, "price": 2563, "x": 5.89, "y": 5.92, "z": 3.66 }, { "name": 2171, "carat": 0.94, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 63.8, "table": 60, "price": 3134, "x": 6.14, "y": 6.21, "z": 3.94 }, { "name": 40706, "carat": 0.58, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 61.3, "table": 56, "price": 1158, "x": 5.38, "y": 5.45, "z": 3.32 }, { "name": 30640, "carat": 0.36, "cut": "Ideal", "color": "I", "clarity": "IF", "depth": 61.8, "table": 55, "price": 735, "x": 4.58, "y": 4.61, "z": 2.84 }, { "name": 234, "carat": 0.51, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 62, "table": 57, "price": 2787, "x": 5.11, "y": 5.15, "z": 3.18 }, { "name": 9490, "carat": 1.11, "cut": "Good", "color": "H", "clarity": "SI1", "depth": 64.2, "table": 58, "price": 4606, "x": 6.53, "y": 6.47, "z": 4.17 }, { "name": 593, "carat": 0.7, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 61.8, "table": 56, "price": 2837, "x": 5.74, "y": 5.69, "z": 3.53 }, { "name": 34805, "carat": 0.31, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 62, "table": 54, "price": 877, "x": 4.36, "y": 4.35, "z": 2.7 }, { "name": 38939, "carat": 0.4, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 62, "table": 54, "price": 1053, "x": 4.74, "y": 4.77, "z": 2.95 }, { "name": 13667, "carat": 1.02, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.9, "table": 58, "price": 5593, "x": 6.41, "y": 6.37, "z": 4.02 }, { "name": 39302, "carat": 0.38, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 60.2, "table": 58, "price": 1069, "x": 4.71, "y": 4.66, "z": 2.82 }, { "name": 21379, "carat": 0.34, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 59.6, "table": 61, "price": 626, "x": 4.5, "y": 4.53, "z": 2.69 }, { "name": 42357, "carat": 0.51, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 61.8, "table": 56, "price": 1301, "x": 5.1, "y": 5.13, "z": 3.16 }, { "name": 51831, "carat": 0.7, "cut": "Good", "color": "H", "clarity": "VS1", "depth": 59.4, "table": 62, "price": 2421, "x": 5.71, "y": 5.74, "z": 3.4 }, { "name": 47340, "carat": 0.23, "cut": "Very-Good", "color": "E", "clarity": "VVS1", "depth": 62.1, "table": 58, "price": 530, "x": 3.9, "y": 3.93, "z": 2.43 }, { "name": 13017, "carat": 1.2, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 62.2, "table": 55, "price": 5408, "x": 6.75, "y": 6.92, "z": 4.25 }, { "name": 53751, "carat": 0.72, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.7, "table": 55, "price": 2724, "x": 5.71, "y": 5.68, "z": 3.57 }, { "name": 33789, "carat": 0.32, "cut": "Ideal", "color": "H", "clarity": "IF", "depth": 60.9, "table": 56, "price": 842, "x": 4.41, "y": 4.42, "z": 2.69 }, { "name": 5813, "carat": 0.91, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 63.4, "table": 59, "price": 3911, "x": 6.12, "y": 6.15, "z": 3.89 }, { "name": 53023, "carat": 0.74, "cut": "Very-Good", "color": "I", "clarity": "VVS2", "depth": 62.8, "table": 55, "price": 2600, "x": 5.75, "y": 5.78, "z": 3.62 }, { "name": 46596, "carat": 0.54, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.4, "table": 57, "price": 1786, "x": 5.25, "y": 5.2, "z": 3.21 }, { "name": 51908, "carat": 0.7, "cut": "Good", "color": "E", "clarity": "SI2", "depth": 63.7, "table": 55, "price": 2435, "x": 5.63, "y": 5.58, "z": 3.57 }, { "name": 25242, "carat": 1.6, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 60.1, "table": 57, "price": 13853, "x": 7.65, "y": 7.59, "z": 4.58 }, { "name": 43627, "carat": 0.38, "cut": "Ideal", "color": "E", "clarity": "IF", "depth": 61.9, "table": 56, "price": 1433, "x": 4.65, "y": 4.66, "z": 2.88 }, { "name": 5997, "carat": 0.91, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 61.2, "table": 58, "price": 3958, "x": 6.21, "y": 6.25, "z": 3.81 }, { "name": 26004, "carat": 1.02, "cut": "Premium", "color": "D", "clarity": "IF", "depth": 61.5, "table": 60, "price": 15231, "x": 6.45, "y": 6.52, "z": 3.99 }, { "name": 46049, "carat": 0.5, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61, "table": 56, "price": 1731, "x": 5.14, "y": 5.15, "z": 3.14 }, { "name": 47761, "carat": 0.52, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 61.7, "table": 53, "price": 1893, "x": 5.19, "y": 5.25, "z": 3.22 }, { "name": 47770, "carat": 0.7, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 63.5, "table": 59, "price": 1894, "x": 5.63, "y": 5.51, "z": 3.53 }, { "name": 26719, "carat": 0.32, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.1, "table": 57, "price": 645, "x": 4.4, "y": 4.44, "z": 2.7 }, { "name": 46039, "carat": 0.57, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.8, "table": 57, "price": 1728, "x": 5.33, "y": 5.28, "z": 3.28 }, { "name": 27603, "carat": 2.16, "cut": "Ideal", "color": "J", "clarity": "VS1", "depth": 61.4, "table": 55, "price": 18462, "x": 8.34, "y": 8.27, "z": 5.1 }, { "name": 25203, "carat": 2.26, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 63.1, "table": 58, "price": 13797, "x": 8.3, "y": 8.22, "z": 5.21 }, { "name": 5980, "carat": 1, "cut": "Fair", "color": "I", "clarity": "VS1", "depth": 64, "table": 49, "price": 3951, "x": 6.43, "y": 6.39, "z": 4.1 }, { "name": 10972, "carat": 1.2, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 59.6, "table": 60, "price": 4906, "x": 6.91, "y": 6.84, "z": 4.1 }, { "name": 44419, "carat": 0.53, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 61.2, "table": 57, "price": 1587, "x": 5.19, "y": 5.24, "z": 3.19 }, { "name": 977, "carat": 0.82, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 59.9, "table": 59, "price": 2893, "x": 6.09, "y": 6.06, "z": 3.64 }, { "name": 10234, "carat": 1.19, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 62.6, "table": 58, "price": 4745, "x": 6.75, "y": 6.7, "z": 4.21 }, { "name": 44874, "carat": 0.64, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 62.8, "table": 54, "price": 1629, "x": 5.5, "y": 5.52, "z": 3.46 }, { "name": 665, "carat": 1.01, "cut": "Good", "color": "H", "clarity": "I1", "depth": 64.2, "table": 61, "price": 2846, "x": 6.25, "y": 6.18, "z": 3.99 }, { "name": 53847, "carat": 0.82, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 63.2, "table": 57, "price": 2741, "x": 5.92, "y": 5.97, "z": 3.76 }, { "name": 42703, "carat": 0.52, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 62.8, "table": 61, "price": 1338, "x": 5.14, "y": 5.11, "z": 3.22 }, { "name": 26603, "carat": 2.07, "cut": "Ideal", "color": "I", "clarity": "SI2", "depth": 62, "table": 55, "price": 16337, "x": 8.22, "y": 8.12, "z": 5.07 }, { "name": 33470, "carat": 0.32, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 59.7, "table": 59, "price": 828, "x": 4.44, "y": 4.41, "z": 2.64 }, { "name": 47000, "carat": 0.62, "cut": "Very-Good", "color": "I", "clarity": "VS1", "depth": 61.8, "table": 55, "price": 1818, "x": 5.5, "y": 5.53, "z": 3.41 }, { "name": 9368, "carat": 0.32, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 63.7, "table": 55, "price": 589, "x": 4.35, "y": 4.38, "z": 2.78 }, { "name": 27741, "carat": 1.71, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62.3, "table": 59, "price": 18791, "x": 7.57, "y": 7.53, "z": 4.7 }, { "name": 25501, "carat": 1.51, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.8, "table": 56, "price": 14294, "x": 7.32, "y": 7.27, "z": 4.58 }, { "name": 48210, "carat": 0.62, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 61.3, "table": 58, "price": 1949, "x": 5.47, "y": 5.49, "z": 3.36 }, { "name": 27312, "carat": 1.63, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.3, "table": 55, "price": 17825, "x": 7.6, "y": 7.63, "z": 4.67 }, { "name": 17574, "carat": 1.08, "cut": "Fair", "color": "G", "clarity": "VS1", "depth": 64.7, "table": 60, "price": 7076, "x": 6.44, "y": 6.41, "z": 4.16 }, { "name": 33092, "carat": 0.31, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 61.7, "table": 54, "price": 815, "x": 4.38, "y": 4.43, "z": 2.72 }, { "name": 5681, "carat": 1.01, "cut": "Good", "color": "F", "clarity": "SI2", "depth": 62.5, "table": 59, "price": 3886, "x": 6.31, "y": 6.37, "z": 3.96 }, { "name": 39210, "carat": 0.54, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62, "table": 54, "price": 1065, "x": 5.23, "y": 5.28, "z": 3.26 }, { "name": 11982, "carat": 1.06, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 61, "table": 58, "price": 5142, "x": 6.6, "y": 6.65, "z": 4.04 }, { "name": 33775, "carat": 0.41, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 62.6, "table": 57, "price": 841, "x": 4.77, "y": 4.72, "z": 2.97 }, { "name": 33646, "carat": 0.38, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 60.8, "table": 56, "price": 833, "x": 4.66, "y": 4.71, "z": 2.85 }, { "name": 14360, "carat": 1.21, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 62, "table": 54.5, "price": 5814, "x": 6.81, "y": 6.87, "z": 4.25 }, { "name": 928, "carat": 0.54, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 61.8, "table": 56, "price": 2882, "x": 5.23, "y": 5.26, "z": 3.24 }, { "name": 9392, "carat": 0.9, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 63, "table": 62, "price": 4586, "x": 6.13, "y": 6.06, "z": 3.84 }, { "name": 40223, "carat": 0.4, "cut": "Very-Good", "color": "G", "clarity": "VVS1", "depth": 60.9, "table": 57, "price": 1123, "x": 4.76, "y": 4.8, "z": 2.91 }, { "name": 30517, "carat": 0.31, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 63.5, "table": 55, "price": 732, "x": 4.3, "y": 4.27, "z": 2.72 }, { "name": 7478, "carat": 1.07, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 58.9, "table": 59, "price": 4235, "x": 6.76, "y": 6.71, "z": 3.97 }, { "name": 28014, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 61.8, "table": 56, "price": 658, "x": 4.3, "y": 4.34, "z": 2.67 }, { "name": 28205, "carat": 0.4, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 62.8, "table": 56, "price": 666, "x": 4.7, "y": 4.73, "z": 2.96 }, { "name": 12423, "carat": 1, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62, "table": 55, "price": 5239, "x": 6.39, "y": 6.44, "z": 3.98 }, { "name": 27138, "carat": 2.01, "cut": "Premium", "color": "H", "clarity": "SI1", "depth": 61.8, "table": 58, "price": 17347, "x": 8.13, "y": 8.06, "z": 5 }, { "name": 45511, "carat": 0.55, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 60.3, "table": 57, "price": 1682, "x": 5.32, "y": 5.37, "z": 3.23 }, { "name": 52391, "carat": 0.71, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 63.1, "table": 56, "price": 2508, "x": 5.66, "y": 5.62, "z": 3.56 }, { "name": 29757, "carat": 0.3, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 62.6, "table": 56, "price": 709, "x": 4.29, "y": 4.24, "z": 2.67 }, { "name": 41446, "carat": 0.53, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 61.2, "table": 55, "price": 1229, "x": 5.23, "y": 5.26, "z": 3.21 }, { "name": 39341, "carat": 0.37, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 60.7, "table": 55, "price": 1073, "x": 4.66, "y": 4.7, "z": 2.84 }, { "name": 15246, "carat": 1.22, "cut": "Premium", "color": "I", "clarity": "VS1", "depth": 61.1, "table": 58, "price": 6121, "x": 6.91, "y": 6.84, "z": 4.2 }, { "name": 48026, "carat": 0.71, "cut": "Good", "color": "J", "clarity": "VS2", "depth": 60.6, "table": 61, "price": 1922, "x": 5.7, "y": 5.79, "z": 3.48 }, { "name": 16395, "carat": 1.05, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 62, "table": 56, "price": 6545, "x": 6.48, "y": 6.52, "z": 4.03 }, { "name": 34875, "carat": 0.3, "cut": "Premium", "color": "G", "clarity": "VVS2", "depth": 62.1, "table": 59, "price": 878, "x": 4.27, "y": 4.23, "z": 2.64 }, { "name": 31575, "carat": 0.4, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62.3, "table": 54, "price": 767, "x": 4.74, "y": 4.77, "z": 2.96 }, { "name": 17618, "carat": 1.01, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 60.9, "table": 55, "price": 7094, "x": 6.48, "y": 6.58, "z": 3.98 }, { "name": 10761, "carat": 1.01, "cut": "Fair", "color": "E", "clarity": "SI1", "depth": 69.5, "table": 55, "price": 4853, "x": 6, "y": 5.94, "z": 4.15 }, { "name": 47980, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 62.1, "table": 54, "price": 532, "x": 4.4, "y": 4.42, "z": 2.74 }, { "name": 41412, "carat": 0.47, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 59.6, "table": 58.1, "price": 1226, "x": 5.07, "y": 5.11, "z": 3.03 }, { "name": 21455, "carat": 1.04, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 62, "table": 58, "price": 9552, "x": 6.54, "y": 6.46, "z": 4.03 }, { "name": 15036, "carat": 0.3, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.9, "table": 55, "price": 605, "x": 4.31, "y": 4.32, "z": 2.67 }, { "name": 44462, "carat": 0.55, "cut": "Premium", "color": "I", "clarity": "VVS1", "depth": 61.3, "table": 59, "price": 1593, "x": 5.27, "y": 5.3, "z": 3.24 }, { "name": 24456, "carat": 1.56, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 60.5, "table": 57, "price": 12717, "x": 7.56, "y": 7.5, "z": 4.56 }, { "name": 37334, "carat": 0.43, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 61.2, "table": 56, "price": 981, "x": 4.89, "y": 4.94, "z": 3.01 }, { "name": 9236, "carat": 1.01, "cut": "Good", "color": "H", "clarity": "SI1", "depth": 63.3, "table": 58, "price": 4559, "x": 6.37, "y": 6.4, "z": 4.04 }, { "name": 4936, "carat": 0.9, "cut": "Premium", "color": "I", "clarity": "VVS2", "depth": 60.9, "table": 59, "price": 3730, "x": 6.25, "y": 6.22, "z": 3.8 }, { "name": 15874, "carat": 1.26, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 61.3, "table": 57, "price": 6350, "x": 6.96, "y": 6.87, "z": 4.24 }, { "name": 40705, "carat": 0.4, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 61.8, "table": 55, "price": 1158, "x": 4.74, "y": 4.78, "z": 2.94 }, { "name": 38587, "carat": 0.39, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 61.9, "table": 54.8, "price": 1036, "x": 4.68, "y": 4.69, "z": 2.9 }, { "name": 38474, "carat": 0.38, "cut": "Ideal", "color": "H", "clarity": "VVS2", "depth": 62.1, "table": 56, "price": 1031, "x": 4.64, "y": 4.67, "z": 2.89 }, { "name": 18994, "carat": 1.5, "cut": "Fair", "color": "J", "clarity": "VS1", "depth": 60.1, "table": 61, "price": 7819, "x": 7.25, "y": 7.3, "z": 4.37 }, { "name": 2343, "carat": 0.78, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.2, "table": 57, "price": 3171, "x": 5.87, "y": 5.9, "z": 3.66 }, { "name": 1827, "carat": 0.72, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 62.1, "table": 59, "price": 3059, "x": 5.69, "y": 5.74, "z": 3.55 }, { "name": 48630, "carat": 0.77, "cut": "Very-Good", "color": "J", "clarity": "SI2", "depth": 61.3, "table": 58, "price": 2001, "x": 5.84, "y": 5.91, "z": 3.6 }, { "name": 42340, "carat": 0.73, "cut": "Very-Good", "color": "G", "clarity": "I1", "depth": 62.5, "table": 58, "price": 1298, "x": 5.74, "y": 5.82, "z": 3.61 }, { "name": 27555, "carat": 1.7, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 58.6, "table": 62, "price": 18342, "x": 7.92, "y": 7.84, "z": 4.62 }, { "name": 46863, "carat": 0.53, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.8, "table": 55, "price": 1813, "x": 5.22, "y": 5.17, "z": 3.21 }, { "name": 22475, "carat": 1.01, "cut": "Very-Good", "color": "D", "clarity": "VVS2", "depth": 59.8, "table": 57, "price": 10499, "x": 6.49, "y": 6.58, "z": 3.91 }, { "name": 7511, "carat": 0.9, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 60.8, "table": 56, "price": 4241, "x": 6.24, "y": 6.26, "z": 3.8 }, { "name": 51698, "carat": 0.7, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 60.5, "table": 57, "price": 2400, "x": 5.74, "y": 5.79, "z": 3.49 }, { "name": 44899, "carat": 0.5, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 63.2, "table": 56, "price": 1629, "x": 5.06, "y": 5.03, "z": 3.19 }, { "name": 45346, "carat": 0.53, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 62.2, "table": 59, "price": 1664, "x": 5.14, "y": 5.18, "z": 3.21 }, { "name": 44242, "carat": 0.51, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62.4, "table": 58, "price": 1574, "x": 5.13, "y": 5.1, "z": 3.19 }, { "name": 43146, "carat": 0.52, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62.9, "table": 59, "price": 1389, "x": 5.12, "y": 5.15, "z": 3.23 }, { "name": 41310, "carat": 0.5, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 60.2, "table": 62, "price": 1213, "x": 5.1, "y": 5.13, "z": 3.08 }, { "name": 29288, "carat": 0.31, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 62, "table": 54, "price": 436, "x": 4.38, "y": 4.42, "z": 2.73 }, { "name": 140, "carat": 0.64, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.9, "table": 56, "price": 2766, "x": 5.53, "y": 5.56, "z": 3.43 }, { "name": 11560, "carat": 1.01, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 59.6, "table": 58, "price": 5034, "x": 6.61, "y": 6.54, "z": 3.92 }, { "name": 51397, "carat": 0.73, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 62.2, "table": 57, "price": 2369, "x": 5.75, "y": 5.76, "z": 3.58 }, { "name": 26898, "carat": 2.01, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 61.3, "table": 61, "price": 16881, "x": 8.11, "y": 8.01, "z": 4.94 }, { "name": 39894, "carat": 0.42, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.9, "table": 57, "price": 1103, "x": 4.81, "y": 4.79, "z": 2.97 }, { "name": 47036, "carat": 0.55, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.1, "table": 56, "price": 1819, "x": 5.31, "y": 5.27, "z": 3.23 }, { "name": 18573, "carat": 1.51, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 59.7, "table": 59, "price": 7577, "x": 7.48, "y": 7.46, "z": 4.46 }, { "name": 41674, "carat": 0.33, "cut": "Ideal", "color": "F", "clarity": "IF", "depth": 60.8, "table": 55, "price": 1240, "x": 4.49, "y": 4.53, "z": 2.74 }, { "name": 28291, "carat": 0.27, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 62.2, "table": 55, "price": 432, "x": 4.15, "y": 4.18, "z": 2.59 }, { "name": 21301, "carat": 1.51, "cut": "Fair", "color": "H", "clarity": "VS2", "depth": 65, "table": 64, "price": 9452, "x": 7.1, "y": 7.03, "z": 4.59 }, { "name": 17613, "carat": 1.3, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 62.5, "table": 59, "price": 7092, "x": 6.93, "y": 6.96, "z": 4.34 }, { "name": 349, "carat": 0.82, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 61.5, "table": 56, "price": 2804, "x": 6.01, "y": 6.08, "z": 3.72 }, { "name": 28406, "carat": 0.35, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 60.8, "table": 58, "price": 669, "x": 4.57, "y": 4.51, "z": 2.76 }, { "name": 32137, "carat": 0.36, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 60.5, "table": 57, "price": 786, "x": 4.61, "y": 4.65, "z": 2.8 }, { "name": 45350, "carat": 0.59, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.6, "table": 54, "price": 1664, "x": 5.32, "y": 5.38, "z": 3.35 }, { "name": 24214, "carat": 2.05, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 63.1, "table": 58, "price": 12401, "x": 8.05, "y": 8, "z": 5.07 }, { "name": 15534, "carat": 1.47, "cut": "Premium", "color": "J", "clarity": "SI2", "depth": 60, "table": 58, "price": 6223, "x": 7.36, "y": 7.31, "z": 4.4 }, { "name": 3654, "carat": 1.01, "cut": "Ideal", "color": "F", "clarity": "I1", "depth": 62.2, "table": 54, "price": 3439, "x": 6.44, "y": 6.42, "z": 4 }, { "name": 16404, "carat": 1.28, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 61.1, "table": 58, "price": 6548, "x": 6.98, "y": 7.03, "z": 4.28 }, { "name": 49276, "carat": 0.54, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.1, "table": 56, "price": 2090, "x": 5.22, "y": 5.19, "z": 3.23 }, { "name": 46982, "carat": 0.55, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.9, "table": 60, "price": 1815, "x": 5.23, "y": 5.14, "z": 3.21 }, { "name": 42945, "carat": 0.3, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 62.6, "table": 61, "price": 506, "x": 4.24, "y": 4.2, "z": 2.64 }, { "name": 50405, "carat": 0.58, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.3, "table": 56, "price": 2256, "x": 5.36, "y": 5.4, "z": 3.3 }, { "name": 17138, "carat": 1.5, "cut": "Fair", "color": "H", "clarity": "SI1", "depth": 65, "table": 57, "price": 6838, "x": 7.1, "y": 7.06, "z": 4.6 }, { "name": 36607, "carat": 0.32, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 63, "table": 56, "price": 477, "x": 4.35, "y": 4.38, "z": 2.75 }, { "name": 28900, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 61.5, "table": 57, "price": 684, "x": 4.29, "y": 4.33, "z": 2.65 }, { "name": 45007, "carat": 0.54, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 61.1, "table": 60, "price": 1637, "x": 5.23, "y": 5.28, "z": 3.21 }, { "name": 27114, "carat": 1.86, "cut": "Very-Good", "color": "H", "clarity": "VVS2", "depth": 58.6, "table": 62, "price": 17267, "x": 8.07, "y": 8.14, "z": 4.75 }, { "name": 7342, "carat": 0.91, "cut": "Good", "color": "E", "clarity": "SI1", "depth": 63.5, "table": 57, "price": 4211, "x": 6.07, "y": 6.11, "z": 3.87 }, { "name": 31233, "carat": 0.44, "cut": "Good", "color": "F", "clarity": "SI1", "depth": 63.8, "table": 54, "price": 756, "x": 4.8, "y": 4.85, "z": 3.08 }, { "name": 51634, "carat": 0.31, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 61.4, "table": 61, "price": 544, "x": 4.33, "y": 4.36, "z": 2.67 }, { "name": 24304, "carat": 1.51, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 58.7, "table": 63, "price": 12551, "x": 7.45, "y": 7.4, "z": 4.36 }, { "name": 22297, "carat": 1.27, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.4, "table": 53.3, "price": 10342, "x": 6.94, "y": 6.95, "z": 4.33 }, { "name": 42196, "carat": 0.59, "cut": "Very-Good", "color": "J", "clarity": "VS2", "depth": 61.9, "table": 58, "price": 1287, "x": 5.35, "y": 5.38, "z": 3.32 }, { "name": 11989, "carat": 1.06, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.2, "table": 57, "price": 5143, "x": 6.56, "y": 6.49, "z": 4.06 }, { "name": 41670, "carat": 0.46, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.4, "table": 56, "price": 1240, "x": 4.95, "y": 4.98, "z": 3.1 }, { "name": 21492, "carat": 1.25, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 62, "table": 55, "price": 9586, "x": 6.91, "y": 6.95, "z": 4.3 }, { "name": 41253, "carat": 0.3, "cut": "Very-Good", "color": "F", "clarity": "SI1", "depth": 62.8, "table": 56, "price": 500, "x": 4.24, "y": 4.26, "z": 2.67 }, { "name": 35901, "carat": 0.32, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.9, "table": 55, "price": 918, "x": 4.38, "y": 4.44, "z": 2.73 }, { "name": 26509, "carat": 1.73, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 62.1, "table": 57, "price": 16131, "x": 7.73, "y": 7.64, "z": 4.77 }, { "name": 28158, "carat": 0.3, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 62.3, "table": 55, "price": 665, "x": 4.3, "y": 4.33, "z": 2.69 }, { "name": 43075, "carat": 0.6, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 60.4, "table": 63, "price": 1378, "x": 5.45, "y": 5.41, "z": 3.28 }, { "name": 12275, "carat": 1.21, "cut": "Very-Good", "color": "J", "clarity": "VS2", "depth": 61.5, "table": 58, "price": 5211, "x": 6.85, "y": 6.9, "z": 4.23 }, { "name": 40070, "carat": 0.43, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.3, "table": 58, "price": 1113, "x": 4.85, "y": 4.81, "z": 3.01 }, { "name": 13646, "carat": 1.24, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 60, "table": 59, "price": 5584, "x": 6.98, "y": 7.01, "z": 4.2 }, { "name": 48842, "carat": 0.55, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.3, "table": 55, "price": 2030, "x": 5.29, "y": 5.24, "z": 3.28 }, { "name": 19463, "carat": 1.56, "cut": "Good", "color": "J", "clarity": "VS2", "depth": 62.3, "table": 64, "price": 8107, "x": 7.41, "y": 7.36, "z": 4.6 }, { "name": 44205, "carat": 0.51, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 61, "table": 58, "price": 1569, "x": 5.1, "y": 5.17, "z": 3.13 }, { "name": 32537, "carat": 0.27, "cut": "Premium", "color": "E", "clarity": "VVS2", "depth": 59, "table": 59, "price": 799, "x": 4.27, "y": 4.24, "z": 2.51 }, { "name": 28079, "carat": 0.4, "cut": "Ideal", "color": "J", "clarity": "VVS2", "depth": 61.9, "table": 55, "price": 662, "x": 4.74, "y": 4.79, "z": 2.95 }, { "name": 11605, "carat": 1.95, "cut": "Premium", "color": "H", "clarity": "I1", "depth": 60.3, "table": 59, "price": 5045, "x": 8.1, "y": 8.05, "z": 4.87 }, { "name": 16213, "carat": 1.03, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 62.1, "table": 59, "price": 6479, "x": 6.48, "y": 6.4, "z": 4 }, { "name": 198, "carat": 0.7, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 61, "table": 58, "price": 2777, "x": 5.78, "y": 5.72, "z": 3.51 }, { "name": 51777, "carat": 0.7, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62.6, "table": 55, "price": 2410, "x": 5.67, "y": 5.7, "z": 3.56 }, { "name": 13350, "carat": 1.02, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 63.1, "table": 61, "price": 5508, "x": 6.42, "y": 6.35, "z": 4.03 }, { "name": 46324, "carat": 0.69, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 62.5, "table": 57.6, "price": 1757, "x": 5.66, "y": 5.72, "z": 3.55 }, { "name": 48186, "carat": 0.72, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 60.2, "table": 59, "price": 1944, "x": 5.85, "y": 5.81, "z": 3.51 }, { "name": 15375, "carat": 0.36, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 61.8, "table": 57.8, "price": 606, "x": 4.52, "y": 4.58, "z": 2.81 }, { "name": 4511, "carat": 1.02, "cut": "Good", "color": "F", "clarity": "SI2", "depth": 59.6, "table": 64, "price": 3633, "x": 6.58, "y": 6.55, "z": 3.91 }, { "name": 9850, "carat": 1.01, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 61.9, "table": 58, "price": 4676, "x": 6.39, "y": 6.34, "z": 3.94 }, { "name": 9359, "carat": 1.16, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 62.9, "table": 58, "price": 4586, "x": 6.64, "y": 6.69, "z": 4.19 }, { "name": 29610, "carat": 0.35, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 61.2, "table": 58, "price": 706, "x": 4.51, "y": 4.54, "z": 2.77 }, { "name": 8030, "carat": 0.96, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.7, "table": 56, "price": 4333, "x": 6.4, "y": 6.34, "z": 3.93 }, { "name": 15824, "carat": 1.26, "cut": "Ideal", "color": "J", "clarity": "VS1", "depth": 62.2, "table": 58, "price": 6332, "x": 6.88, "y": 6.92, "z": 4.29 }, { "name": 8842, "carat": 0.9, "cut": "Good", "color": "G", "clarity": "VS1", "depth": 63.9, "table": 60, "price": 4479, "x": 6.09, "y": 6.14, "z": 3.91 }, { "name": 30086, "carat": 0.32, "cut": "Ideal", "color": "H", "clarity": "VS1", "depth": 61.3, "table": 55, "price": 720, "x": 4.43, "y": 4.41, "z": 2.71 }, { "name": 16383, "carat": 1.04, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 63.2, "table": 56, "price": 6541, "x": 6.39, "y": 6.46, "z": 4.06 }, { "name": 4945, "carat": 1.19, "cut": "Ideal", "color": "H", "clarity": "I1", "depth": 61.5, "table": 57, "price": 3732, "x": 6.83, "y": 6.79, "z": 4.19 }, { "name": 27563, "carat": 2.06, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 60.3, "table": 56, "price": 18371, "x": 8.29, "y": 8.25, "z": 4.99 }, { "name": 22585, "carat": 1.25, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.5, "table": 54, "price": 10636, "x": 6.88, "y": 6.93, "z": 4.31 }, { "name": 2199, "carat": 0.72, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.4, "table": 57, "price": 3139, "x": 5.71, "y": 5.76, "z": 3.58 }, { "name": 11107, "carat": 1.05, "cut": "Ideal", "color": "D", "clarity": "SI2", "depth": 60.2, "table": 57, "price": 4932, "x": 6.58, "y": 6.65, "z": 3.98 }, { "name": 30544, "carat": 0.31, "cut": "Ideal", "color": "D", "clarity": "VS2", "depth": 62.5, "table": 56, "price": 734, "x": 4.29, "y": 4.32, "z": 2.69 }, { "name": 15196, "carat": 1.02, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 61.5, "table": 57, "price": 6104, "x": 6.4, "y": 6.44, "z": 3.95 }, { "name": 53439, "carat": 0.7, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.8, "table": 58, "price": 2673, "x": 5.7, "y": 5.74, "z": 3.48 }, { "name": 44886, "carat": 0.5, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.2, "table": 56, "price": 1629, "x": 5.12, "y": 5.11, "z": 3.18 }, { "name": 4021, "carat": 0.9, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 61.2, "table": 57, "price": 3521, "x": 6.24, "y": 6.28, "z": 3.83 }, { "name": 25537, "carat": 2.14, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 62.9, "table": 56, "price": 14359, "x": 8.18, "y": 8.14, "z": 5.13 }, { "name": 44606, "carat": 0.53, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62, "table": 58, "price": 1607, "x": 5.21, "y": 5.18, "z": 3.22 }, { "name": 7821, "carat": 1, "cut": "Fair", "color": "G", "clarity": "SI1", "depth": 66.2, "table": 58, "price": 4295, "x": 6.25, "y": 6.15, "z": 4.11 }, { "name": 21578, "carat": 1.51, "cut": "Good", "color": "H", "clarity": "SI1", "depth": 61.8, "table": 62, "price": 9681, "x": 7.25, "y": 7.29, "z": 4.49 }, { "name": 21402, "carat": 1.5, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 62.2, "table": 58, "price": 9515, "x": 7.21, "y": 7.28, "z": 4.51 }, { "name": 359, "carat": 0.72, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.8, "table": 56, "price": 2805, "x": 5.74, "y": 5.7, "z": 3.59 }, { "name": 43045, "carat": 0.51, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 61.6, "table": 55, "price": 1375, "x": 5.16, "y": 5.19, "z": 3.19 }, { "name": 31316, "carat": 0.32, "cut": "Premium", "color": "D", "clarity": "VS2", "depth": 61.7, "table": 58, "price": 758, "x": 4.34, "y": 4.38, "z": 2.69 }, { "name": 26487, "carat": 2.16, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 58.6, "table": 60, "price": 16080, "x": 8.48, "y": 8.55, "z": 4.99 }, { "name": 37415, "carat": 0.38, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.2, "table": 56, "price": 983, "x": 4.64, "y": 4.62, "z": 2.88 }, { "name": 24653, "carat": 1.7, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 61.9, "table": 60, "price": 12992, "x": 7.61, "y": 7.57, "z": 4.7 }, { "name": 44128, "carat": 0.5, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 62.1, "table": 62, "price": 1559, "x": 5.1, "y": 5.08, "z": 3.16 }, { "name": 53043, "carat": 0.73, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.5, "table": 55, "price": 2605, "x": 5.79, "y": 5.84, "z": 3.57 }, { "name": 28087, "carat": 0.3, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 63.1, "table": 56, "price": 662, "x": 4.28, "y": 4.24, "z": 2.69 }, { "name": 8018, "carat": 1.04, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 58.2, "table": 59, "price": 4330, "x": 6.67, "y": 6.62, "z": 3.87 }, { "name": 33934, "carat": 0.33, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 62, "table": 60, "price": 463, "x": 4.41, "y": 4.46, "z": 2.75 }, { "name": 18975, "carat": 1.59, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 62.6, "table": 59, "price": 7811, "x": 7.43, "y": 7.45, "z": 4.66 }, { "name": 41641, "carat": 0.4, "cut": "Ideal", "color": "H", "clarity": "IF", "depth": 62.7, "table": 57, "price": 1238, "x": 4.7, "y": 4.68, "z": 2.94 }, { "name": 11851, "carat": 0.9, "cut": "Very-Good", "color": "G", "clarity": "VVS2", "depth": 59.8, "table": 60, "price": 5102, "x": 6.23, "y": 6.28, "z": 3.74 }, { "name": 3599, "carat": 0.9, "cut": "Good", "color": "D", "clarity": "SI2", "depth": 63.5, "table": 62, "price": 3425, "x": 6.09, "y": 6.13, "z": 3.88 }, { "name": 18389, "carat": 0.29, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 59.2, "table": 58, "price": 619, "x": 4.36, "y": 4.39, "z": 2.59 }, { "name": 15110, "carat": 1.01, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 62.3, "table": 59, "price": 6073, "x": 6.37, "y": 6.44, "z": 3.99 }, { "name": 7929, "carat": 0.93, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 61.7, "table": 55, "price": 4317, "x": 6.26, "y": 6.29, "z": 3.87 }, { "name": 522, "carat": 0.71, "cut": "Premium", "color": "G", "clarity": "VS1", "depth": 62.2, "table": 59, "price": 2825, "x": 5.73, "y": 5.66, "z": 3.54 }, { "name": 51041, "carat": 0.82, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 60, "table": 56, "price": 2329, "x": 6.11, "y": 6.08, "z": 3.66 }, { "name": 8110, "carat": 1.13, "cut": "Very-Good", "color": "I", "clarity": "VS2", "depth": 61.6, "table": 57, "price": 4348, "x": 6.73, "y": 6.78, "z": 4.16 }, { "name": 19815, "carat": 1.2, "cut": "Good", "color": "E", "clarity": "VS2", "depth": 63.6, "table": 57, "price": 8380, "x": 6.74, "y": 6.68, "z": 4.27 }, { "name": 574, "carat": 0.85, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 62.5, "table": 57, "price": 2833, "x": 6.02, "y": 6.07, "z": 3.78 }, { "name": 40660, "carat": 0.38, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 61.5, "table": 56, "price": 1154, "x": 4.67, "y": 4.7, "z": 2.88 }, { "name": 12900, "carat": 0.9, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61.9, "table": 54, "price": 5373, "x": 6.19, "y": 6.22, "z": 3.84 }, { "name": 22739, "carat": 1.01, "cut": "Very-Good", "color": "E", "clarity": "VVS1", "depth": 63.1, "table": 59, "price": 10760, "x": 6.34, "y": 6.31, "z": 3.99 }, { "name": 13187, "carat": 1.24, "cut": "Ideal", "color": "J", "clarity": "VS2", "depth": 62.8, "table": 56, "price": 5451, "x": 6.83, "y": 6.8, "z": 4.28 }, { "name": 19103, "carat": 1.01, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.1, "table": 59, "price": 7870, "x": 6.46, "y": 6.5, "z": 3.96 }, { "name": 40688, "carat": 0.5, "cut": "Fair", "color": "F", "clarity": "SI2", "depth": 61.1, "table": 67, "price": 1156, "x": 5.07, "y": 5.04, "z": 3.09 }, { "name": 22319, "carat": 1.31, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62, "table": 58, "price": 10359, "x": 6.97, "y": 7.02, "z": 4.34 }, { "name": 53810, "carat": 0.7, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 61.4, "table": 56, "price": 2733, "x": 5.72, "y": 5.75, "z": 3.52 }, { "name": 19096, "carat": 1.11, "cut": "Good", "color": "D", "clarity": "VS2", "depth": 63.2, "table": 57, "price": 7863, "x": 6.61, "y": 6.64, "z": 4.18 }, { "name": 8031, "carat": 1, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 62.9, "table": 56, "price": 4333, "x": 6.42, "y": 6.36, "z": 4.02 }, { "name": 36299, "carat": 0.34, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 61.7, "table": 58, "price": 477, "x": 4.5, "y": 4.54, "z": 2.79 }, { "name": 23883, "carat": 2, "cut": "Premium", "color": "H", "clarity": "SI2", "depth": 62.8, "table": 57, "price": 11975, "x": 8.05, "y": 8.01, "z": 5.04 }, { "name": 41216, "carat": 0.4, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 61.5, "table": 56, "price": 1206, "x": 4.77, "y": 4.73, "z": 2.92 }, { "name": 9608, "carat": 1.02, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 62.3, "table": 59, "price": 4633, "x": 6.4, "y": 6.44, "z": 4 }, { "name": 19038, "carat": 0.3, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.6, "table": 54, "price": 621, "x": 4.32, "y": 4.35, "z": 2.67 }, { "name": 5632, "carat": 0.9, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 62.8, "table": 58, "price": 3878, "x": 6.13, "y": 6.17, "z": 3.86 }, { "name": 49156, "carat": 0.5, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 62.7, "table": 57, "price": 2070, "x": 5.1, "y": 5.07, "z": 3.19 }, { "name": 5298, "carat": 0.71, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 62.1, "table": 57, "price": 3801, "x": 5.7, "y": 5.73, "z": 3.55 }, { "name": 2119, "carat": 1.02, "cut": "Fair", "color": "J", "clarity": "SI2", "depth": 65, "table": 59, "price": 3119, "x": 6.34, "y": 6.24, "z": 4.08 }, { "name": 51094, "carat": 0.71, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 60.9, "table": 56, "price": 2335, "x": 5.79, "y": 5.81, "z": 3.53 }, { "name": 47439, "carat": 0.7, "cut": "Very-Good", "color": "J", "clarity": "VS1", "depth": 59.6, "table": 62, "price": 1855, "x": 5.7, "y": 5.77, "z": 3.42 }, { "name": 25418, "carat": 2.01, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 63.2, "table": 57, "price": 14150, "x": 8.02, "y": 7.97, "z": 5.05 }, { "name": 13123, "carat": 1.01, "cut": "Fair", "color": "D", "clarity": "SI1", "depth": 64.7, "table": 57, "price": 5430, "x": 6.33, "y": 6.25, "z": 4.07 }, { "name": 18873, "carat": 1.02, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 61.3, "table": 58, "price": 7740, "x": 6.46, "y": 6.52, "z": 3.98 }, { "name": 42092, "carat": 0.7, "cut": "Fair", "color": "E", "clarity": "I1", "depth": 66.1, "table": 58, "price": 1273, "x": 5.61, "y": 5.51, "z": 3.67 }, { "name": 50627, "carat": 0.3, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 60.9, "table": 59, "price": 401, "x": 4.29, "y": 4.32, "z": 2.62 }, { "name": 47097, "carat": 0.53, "cut": "Very-Good", "color": "D", "clarity": "VS2", "depth": 63.4, "table": 55, "price": 1825, "x": 5.23, "y": 5.11, "z": 3.28 }, { "name": 10005, "carat": 0.91, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 61, "table": 57, "price": 4706, "x": 6.27, "y": 6.32, "z": 3.84 }, { "name": 1113, "carat": 0.77, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 63.6, "table": 57, "price": 2915, "x": 5.79, "y": 5.88, "z": 3.71 }, { "name": 23701, "carat": 0.36, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 62.1, "table": 56, "price": 631, "x": 4.56, "y": 4.59, "z": 2.84 }, { "name": 24794, "carat": 1.31, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 60.3, "table": 56, "price": 13168, "x": 7.09, "y": 7.15, "z": 4.29 }, { "name": 44441, "carat": 0.59, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 62.6, "table": 61, "price": 1590, "x": 5.33, "y": 5.27, "z": 3.32 }, { "name": 46988, "carat": 0.46, "cut": "Ideal", "color": "E", "clarity": "VVS1", "depth": 62.6, "table": 53, "price": 1816, "x": 4.93, "y": 4.97, "z": 3.1 }, { "name": 12448, "carat": 1.12, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 59.3, "table": 59, "price": 5243, "x": 6.76, "y": 6.8, "z": 4.02 }, { "name": 19749, "carat": 1.5, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 62.7, "table": 59, "price": 8316, "x": 7.3, "y": 7.22, "z": 4.55 }, { "name": 45142, "carat": 0.46, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 62.1, "table": 56, "price": 1654, "x": 4.93, "y": 4.96, "z": 3.07 }, { "name": 47696, "carat": 0.5, "cut": "Ideal", "color": "G", "clarity": "VVS1", "depth": 61.9, "table": 58, "price": 1883, "x": 5.06, "y": 5.09, "z": 3.14 }, { "name": 49860, "carat": 0.77, "cut": "Premium", "color": "E", "clarity": "SI2", "depth": 62.5, "table": 60, "price": 2171, "x": 5.84, "y": 5.8, "z": 3.64 }, { "name": 7552, "carat": 1.01, "cut": "Very-Good", "color": "G", "clarity": "SI2", "depth": 62, "table": 58, "price": 4249, "x": 6.37, "y": 6.41, "z": 3.96 }, { "name": 17985, "carat": 1.07, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 61.9, "table": 55, "price": 7275, "x": 6.55, "y": 6.57, "z": 4.06 }, { "name": 16685, "carat": 0.31, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 61.1, "table": 56, "price": 421, "x": 4.4, "y": 4.42, "z": 2.69 }, { "name": 15057, "carat": 0.3, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.4, "table": 57, "price": 605, "x": 4.29, "y": 4.34, "z": 2.65 }, { "name": 35526, "carat": 0.32, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 61.3, "table": 56, "price": 905, "x": 4.42, "y": 4.45, "z": 2.72 }, { "name": 53148, "carat": 0.73, "cut": "Very-Good", "color": "I", "clarity": "VVS1", "depth": 61.9, "table": 57, "price": 2623, "x": 5.75, "y": 5.79, "z": 3.57 }, { "name": 31634, "carat": 0.3, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62, "table": 56, "price": 450, "x": 4.29, "y": 4.32, "z": 2.67 }, { "name": 44034, "carat": 0.42, "cut": "Ideal", "color": "D", "clarity": "VVS1", "depth": 61.8, "table": 55, "price": 1547, "x": 4.83, "y": 4.85, "z": 2.99 }, { "name": 27518, "carat": 3.01, "cut": "Good", "color": "I", "clarity": "SI2", "depth": 63.9, "table": 60, "price": 18242, "x": 9.06, "y": 9.01, "z": 5.77 }, { "name": 53135, "carat": 0.93, "cut": "Very-Good", "color": "D", "clarity": "I1", "depth": 63.4, "table": 60, "price": 2618, "x": 6.18, "y": 6.15, "z": 3.91 }, { "name": 28628, "carat": 0.28, "cut": "Very-Good", "color": "E", "clarity": "VS1", "depth": 62.8, "table": 60, "price": 434, "x": 4.16, "y": 4.21, "z": 2.63 }, { "name": 15574, "carat": 1.3, "cut": "Premium", "color": "I", "clarity": "VS2", "depth": 62.7, "table": 58, "price": 6246, "x": 6.97, "y": 6.9, "z": 4.35 }, { "name": 52834, "carat": 0.7, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 62, "table": 56, "price": 2573, "x": 5.72, "y": 5.67, "z": 3.53 }, { "name": 7347, "carat": 1.09, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 61.5, "table": 55, "price": 4212, "x": 6.65, "y": 6.68, "z": 4.1 }, { "name": 53637, "carat": 0.3, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 61.6, "table": 57, "price": 552, "x": 4.28, "y": 4.32, "z": 2.65 }, { "name": 32902, "carat": 0.36, "cut": "Fair", "color": "F", "clarity": "VS1", "depth": 55.3, "table": 67, "price": 810, "x": 4.79, "y": 4.72, "z": 2.63 }, { "name": 39665, "carat": 0.42, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 60.1, "table": 61, "price": 1087, "x": 4.84, "y": 4.81, "z": 2.9 }, { "name": 47149, "carat": 0.53, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.7, "table": 57, "price": 1832, "x": 5.23, "y": 5.21, "z": 3.22 }, { "name": 46510, "carat": 0.57, "cut": "Ideal", "color": "I", "clarity": "IF", "depth": 61, "table": 55, "price": 1779, "x": 5.38, "y": 5.41, "z": 3.29 }, { "name": 2072, "carat": 0.9, "cut": "Good", "color": "I", "clarity": "VS2", "depth": 62.4, "table": 65, "price": 3107, "x": 6.12, "y": 6.09, "z": 3.81 }, { "name": 12517, "carat": 1.01, "cut": "Very-Good", "color": "H", "clarity": "VS2", "depth": 63.1, "table": 59, "price": 5260, "x": 6.34, "y": 6.3, "z": 3.99 }, { "name": 15094, "carat": 1.01, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.4, "table": 56, "price": 6066, "x": 6.37, "y": 6.42, "z": 3.99 }, { "name": 24659, "carat": 1.5, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 61.9, "table": 60, "price": 13001, "x": 7.29, "y": 7.32, "z": 4.52 }, { "name": 6714, "carat": 0.3, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 60.1, "table": 58, "price": 413, "x": 4.31, "y": 4.34, "z": 2.6 }, { "name": 33485, "carat": 0.32, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 61.4, "table": 60, "price": 828, "x": 4.42, "y": 4.38, "z": 2.7 }, { "name": 48763, "carat": 0.6, "cut": "Premium", "color": "E", "clarity": "SI1", "depth": 59.6, "table": 59, "price": 2016, "x": 5.52, "y": 5.48, "z": 3.28 }, { "name": 4583, "carat": 1, "cut": "Good", "color": "G", "clarity": "SI2", "depth": 57.8, "table": 64, "price": 3651, "x": 6.55, "y": 6.5, "z": 3.77 }, { "name": 26154, "carat": 2.18, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 60.1, "table": 58, "price": 15465, "x": 8.46, "y": 8.41, "z": 5.07 }, { "name": 8085, "carat": 1.01, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 62.6, "table": 60, "price": 4338, "x": 6.4, "y": 6.37, "z": 4 }, { "name": 51826, "carat": 0.64, "cut": "Ideal", "color": "H", "clarity": "IF", "depth": 60.5, "table": 57, "price": 2420, "x": 5.58, "y": 5.62, "z": 3.39 }, { "name": 1117, "carat": 0.93, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 62, "table": 57, "price": 2917, "x": 6.22, "y": 6.26, "z": 3.87 }, { "name": 52893, "carat": 0.73, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 60.6, "table": 59, "price": 2585, "x": 5.83, "y": 5.85, "z": 3.54 }, { "name": 19444, "carat": 1.06, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.7, "table": 57, "price": 8093, "x": 6.52, "y": 6.57, "z": 4.04 }, { "name": 49022, "carat": 0.5, "cut": "Good", "color": "F", "clarity": "VVS2", "depth": 58.5, "table": 62, "price": 2052, "x": 5.23, "y": 5.27, "z": 3.07 }, { "name": 4410, "carat": 0.31, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 61.5, "table": 56, "price": 571, "x": 4.33, "y": 4.35, "z": 2.67 }, { "name": 11949, "carat": 1.01, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 58.2, "table": 59, "price": 5132, "x": 6.54, "y": 6.59, "z": 3.82 }, { "name": 35367, "carat": 0.38, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 63, "table": 56, "price": 898, "x": 4.61, "y": 4.57, "z": 2.89 }, { "name": 44863, "carat": 0.51, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 62.3, "table": 56, "price": 1628, "x": 5.1, "y": 5.13, "z": 3.18 }, { "name": 9286, "carat": 0.91, "cut": "Good", "color": "H", "clarity": "VS1", "depth": 57.8, "table": 61, "price": 4566, "x": 6.4, "y": 6.36, "z": 3.69 }, { "name": 17140, "carat": 1.24, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 61.4, "table": 59, "price": 6840, "x": 6.87, "y": 6.91, "z": 4.23 }, { "name": 12365, "carat": 0.26, "cut": "Very-Good", "color": "D", "clarity": "VVS2", "depth": 60.4, "table": 59, "price": 597, "x": 4.15, "y": 4.19, "z": 2.52 }, { "name": 4309, "carat": 1.05, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 59.4, "table": 62, "price": 3593, "x": 6.66, "y": 6.58, "z": 3.93 }, { "name": 43274, "carat": 0.3, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 63.3, "table": 59, "price": 506, "x": 4.3, "y": 4.23, "z": 2.7 }, { "name": 37781, "carat": 0.39, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 57.1, "table": 61, "price": 1000, "x": 4.86, "y": 4.91, "z": 2.79 }, { "name": 11263, "carat": 0.91, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 62.8, "table": 60, "price": 4969, "x": 6.11, "y": 6.08, "z": 3.83 }, { "name": 4558, "carat": 0.9, "cut": "Good", "color": "I", "clarity": "VS1", "depth": 63.3, "table": 59, "price": 3644, "x": 6.06, "y": 6.1, "z": 3.85 }, { "name": 5082, "carat": 0.9, "cut": "Fair", "color": "D", "clarity": "SI1", "depth": 65.7, "table": 65, "price": 3751, "x": 6.06, "y": 5.94, "z": 3.94 }, { "name": 47326, "carat": 0.23, "cut": "Very-Good", "color": "D", "clarity": "VVS2", "depth": 62.6, "table": 58, "price": 530, "x": 3.89, "y": 3.94, "z": 2.45 }, { "name": 6256, "carat": 0.92, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 62.1, "table": 58, "price": 4011, "x": 6.18, "y": 6.22, "z": 3.85 }, { "name": 42144, "carat": 0.5, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 60.7, "table": 59, "price": 1281, "x": 5.09, "y": 5.13, "z": 3.1 }, { "name": 418, "carat": 0.36, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.9, "table": 56, "price": 556, "x": 4.54, "y": 4.57, "z": 2.82 }, { "name": 14065, "carat": 0.3, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.8, "table": 57, "price": 605, "x": 4.31, "y": 4.33, "z": 2.67 }, { "name": 24984, "carat": 2.07, "cut": "Very-Good", "color": "J", "clarity": "VS2", "depth": 61.3, "table": 56, "price": 13495, "x": 8.16, "y": 8.2, "z": 5.02 }, { "name": 14917, "carat": 1.23, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 58.8, "table": 60, "price": 6005, "x": 7.01, "y": 7.08, "z": 4.14 }, { "name": 21186, "carat": 1.5, "cut": "Good", "color": "H", "clarity": "SI1", "depth": 60.8, "table": 60, "price": 9336, "x": 7.28, "y": 7.38, "z": 4.46 }, { "name": 50869, "carat": 0.71, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.1, "table": 57, "price": 2313, "x": 5.68, "y": 5.73, "z": 3.54 }, { "name": 48614, "carat": 0.51, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 61.7, "table": 56, "price": 1998, "x": 5.12, "y": 5.15, "z": 3.17 }, { "name": 19810, "carat": 1, "cut": "Good", "color": "D", "clarity": "VVS2", "depth": 60.2, "table": 62, "price": 8374, "x": 6.42, "y": 6.46, "z": 3.88 }, { "name": 53178, "carat": 0.71, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 61.3, "table": 59, "price": 2630, "x": 5.7, "y": 5.76, "z": 3.51 }, { "name": 3942, "carat": 0.7, "cut": "Premium", "color": "D", "clarity": "VS1", "depth": 61, "table": 59, "price": 3501, "x": 5.79, "y": 5.72, "z": 3.51 }, { "name": 33350, "carat": 0.41, "cut": "Ideal", "color": "G", "clarity": "VS2", "depth": 62.4, "table": 55, "price": 827, "x": 4.73, "y": 4.76, "z": 2.96 }, { "name": 16355, "carat": 0.3, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 62.7, "table": 59, "price": 608, "x": 4.27, "y": 4.22, "z": 2.66 }, { "name": 48815, "carat": 0.56, "cut": "Ideal", "color": "D", "clarity": "VS1", "depth": 61.7, "table": 56, "price": 2026, "x": 5.33, "y": 5.3, "z": 3.28 }, { "name": 36379, "carat": 0.34, "cut": "Ideal", "color": "F", "clarity": "IF", "depth": 62.2, "table": 55, "price": 941, "x": 4.47, "y": 4.5, "z": 2.79 }, { "name": 23233, "carat": 1.52, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 63.3, "table": 57, "price": 11235, "x": 7.27, "y": 7.32, "z": 4.62 }, { "name": 16735, "carat": 0.41, "cut": "Premium", "color": "J", "clarity": "VS2", "depth": 61.9, "table": 59, "price": 611, "x": 4.69, "y": 4.74, "z": 2.92 }, { "name": 3305, "carat": 0.8, "cut": "Very-Good", "color": "F", "clarity": "VS2", "depth": 63.2, "table": 55, "price": 3369, "x": 5.9, "y": 5.88, "z": 3.72 }, { "name": 32639, "carat": 0.32, "cut": "Ideal", "color": "G", "clarity": "SI2", "depth": 61.6, "table": 56, "price": 459, "x": 4.4, "y": 4.43, "z": 2.72 }, { "name": 16684, "carat": 0.31, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 61.2, "table": 55, "price": 421, "x": 4.36, "y": 4.4, "z": 2.68 }, { "name": 3527, "carat": 0.9, "cut": "Very-Good", "color": "I", "clarity": "SI1", "depth": 61.8, "table": 56, "price": 3407, "x": 6.19, "y": 6.24, "z": 3.84 }, { "name": 19343, "carat": 1.06, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 63, "table": 58, "price": 8044, "x": 6.49, "y": 6.46, "z": 4.08 }, { "name": 26878, "carat": 1.4, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 61.9, "table": 57, "price": 16808, "x": 7.2, "y": 7.14, "z": 4.44 }, { "name": 8751, "carat": 1.09, "cut": "Ideal", "color": "J", "clarity": "SI1", "depth": 62.7, "table": 57, "price": 4465, "x": 6.53, "y": 6.59, "z": 4.11 }, { "name": 8286, "carat": 1, "cut": "Very-Good", "color": "F", "clarity": "SI2", "depth": 62.2, "table": 55, "price": 4383, "x": 6.39, "y": 6.44, "z": 3.99 }, { "name": 51952, "carat": 0.56, "cut": "Very-Good", "color": "E", "clarity": "VVS2", "depth": 60.5, "table": 57, "price": 2442, "x": 5.32, "y": 5.36, "z": 3.23 }, { "name": 34442, "carat": 0.31, "cut": "Ideal", "color": "E", "clarity": "VVS2", "depth": 60.9, "table": 55, "price": 864, "x": 4.42, "y": 4.45, "z": 2.7 }, { "name": 7014, "carat": 0.9, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 61.2, "table": 59, "price": 4158, "x": 6.19, "y": 6.16, "z": 3.78 }, { "name": 13269, "carat": 1, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 63.7, "table": 57, "price": 5484, "x": 6.32, "y": 6.28, "z": 4.01 }, { "name": 49554, "carat": 0.77, "cut": "Premium", "color": "G", "clarity": "SI2", "depth": 61.3, "table": 58, "price": 2129, "x": 5.94, "y": 5.88, "z": 3.62 }, { "name": 52752, "carat": 0.7, "cut": "Fair", "color": "D", "clarity": "VS2", "depth": 65.2, "table": 59, "price": 2560, "x": 5.58, "y": 5.55, "z": 3.63 }, { "name": 12404, "carat": 1.01, "cut": "Good", "color": "E", "clarity": "SI1", "depth": 57.9, "table": 57, "price": 5233, "x": 6.6, "y": 6.67, "z": 3.84 }, { "name": 35073, "carat": 0.38, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 57.1, "table": 63, "price": 886, "x": 4.77, "y": 4.86, "z": 2.75 }, { "name": 37003, "carat": 0.55, "cut": "Very-Good", "color": "J", "clarity": "SI1", "depth": 62.5, "table": 57, "price": 965, "x": 5.22, "y": 5.24, "z": 3.27 }, { "name": 31874, "carat": 0.3, "cut": "Very-Good", "color": "H", "clarity": "VVS2", "depth": 63.1, "table": 60, "price": 776, "x": 4.28, "y": 4.24, "z": 2.69 }, { "name": 51509, "carat": 0.55, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.1, "table": 57, "price": 2383, "x": 5.26, "y": 5.31, "z": 3.23 }, { "name": 24459, "carat": 2.14, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 63, "table": 55, "price": 12720, "x": 8.25, "y": 8.23, "z": 5.19 }, { "name": 14906, "carat": 1.01, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 62.4, "table": 58, "price": 5999, "x": 6.38, "y": 6.41, "z": 3.99 }, { "name": 39677, "carat": 0.41, "cut": "Ideal", "color": "E", "clarity": "VS2", "depth": 62.2, "table": 56, "price": 1087, "x": 4.8, "y": 4.75, "z": 2.97 }, { "name": 31151, "carat": 0.41, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 62.7, "table": 57, "price": 755, "x": 4.7, "y": 4.74, "z": 2.96 }, { "name": 40816, "carat": 0.32, "cut": "Ideal", "color": "E", "clarity": "IF", "depth": 62.6, "table": 55, "price": 1170, "x": 4.41, "y": 4.38, "z": 2.75 }, { "name": 8358, "carat": 1.02, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 60.7, "table": 57, "price": 4398, "x": 6.54, "y": 6.51, "z": 3.96 }, { "name": 13997, "carat": 1.19, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 63.3, "table": 55, "price": 5698, "x": 6.76, "y": 6.69, "z": 4.26 }, { "name": 37791, "carat": 0.38, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 60.2, "table": 58, "price": 1000, "x": 4.66, "y": 4.71, "z": 2.82 }, { "name": 29983, "carat": 0.43, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 62, "table": 55, "price": 716, "x": 4.84, "y": 4.87, "z": 3.01 }, { "name": 8025, "carat": 1.04, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 60.2, "table": 60, "price": 4332, "x": 6.52, "y": 6.57, "z": 3.94 }, { "name": 19245, "carat": 1, "cut": "Ideal", "color": "G", "clarity": "VVS2", "depth": 62.8, "table": 57, "price": 7979, "x": 6.37, "y": 6.43, "z": 4.02 }, { "name": 7650, "carat": 0.9, "cut": "Very-Good", "color": "G", "clarity": "VS2", "depth": 61.9, "table": 56, "price": 4269, "x": 6.17, "y": 6.23, "z": 3.84 }, { "name": 7293, "carat": 0.91, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 61.9, "table": 59, "price": 4201, "x": 6.18, "y": 6.23, "z": 3.84 }, { "name": 38677, "carat": 0.3, "cut": "Ideal", "color": "D", "clarity": "VVS2", "depth": 61.4, "table": 55, "price": 1041, "x": 4.34, "y": 4.36, "z": 2.67 }, { "name": 7857, "carat": 0.9, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 62.7, "table": 58, "price": 4304, "x": 6.15, "y": 6.09, "z": 3.84 }, { "name": 26152, "carat": 1.59, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 60.2, "table": 60, "price": 15461, "x": 7.59, "y": 7.62, "z": 4.58 }, { "name": 33184, "carat": 0.41, "cut": "Very-Good", "color": "D", "clarity": "SI2", "depth": 63.1, "table": 54, "price": 818, "x": 4.75, "y": 4.72, "z": 2.99 }, { "name": 50219, "carat": 0.7, "cut": "Premium", "color": "F", "clarity": "SI1", "depth": 61.9, "table": 58, "price": 2230, "x": 5.69, "y": 5.74, "z": 3.54 }, { "name": 953, "carat": 0.74, "cut": "Ideal", "color": "F", "clarity": "SI1", "depth": 61.2, "table": 56, "price": 2889, "x": 5.83, "y": 5.87, "z": 3.58 }, { "name": 36020, "carat": 0.39, "cut": "Premium", "color": "J", "clarity": "VVS1", "depth": 62.8, "table": 58, "price": 921, "x": 4.66, "y": 4.61, "z": 2.91 }, { "name": 22495, "carat": 2, "cut": "Premium", "color": "I", "clarity": "SI2", "depth": 62.3, "table": 57, "price": 10528, "x": 8.12, "y": 8.05, "z": 5.03 }, { "name": 49933, "carat": 0.7, "cut": "Premium", "color": "H", "clarity": "VS2", "depth": 62.2, "table": 58, "price": 2184, "x": 5.74, "y": 5.68, "z": 3.55 }, { "name": 45578, "carat": 0.52, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 61.7, "table": 56, "price": 1689, "x": 5.17, "y": 5.21, "z": 3.2 }, { "name": 36476, "carat": 0.43, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 61.3, "table": 57, "price": 943, "x": 4.85, "y": 4.88, "z": 2.98 }, { "name": 46118, "carat": 0.56, "cut": "Premium", "color": "I", "clarity": "VVS1", "depth": 60.6, "table": 59, "price": 1743, "x": 5.33, "y": 5.29, "z": 3.22 }, { "name": 18425, "carat": 1, "cut": "Good", "color": "G", "clarity": "VVS2", "depth": 60.9, "table": 56, "price": 7492, "x": 6.49, "y": 6.52, "z": 3.96 }, { "name": 20052, "carat": 0.31, "cut": "Very-Good", "color": "G", "clarity": "VS1", "depth": 62.9, "table": 58, "price": 625, "x": 4.3, "y": 4.35, "z": 2.72 }, { "name": 23070, "carat": 1.18, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 61.4, "table": 57, "price": 11104, "x": 6.77, "y": 6.81, "z": 4.17 }, { "name": 5621, "carat": 0.9, "cut": "Fair", "color": "E", "clarity": "VS2", "depth": 65.2, "table": 61, "price": 3875, "x": 6.01, "y": 5.98, "z": 3.91 }, { "name": 23086, "carat": 1.22, "cut": "Ideal", "color": "G", "clarity": "IF", "depth": 61.7, "table": 56, "price": 11111, "x": 6.87, "y": 6.91, "z": 4.25 }, { "name": 32452, "carat": 0.39, "cut": "Very-Good", "color": "E", "clarity": "VS2", "depth": 60.9, "table": 58, "price": 793, "x": 4.72, "y": 4.77, "z": 2.89 }, { "name": 51242, "carat": 0.71, "cut": "Very-Good", "color": "H", "clarity": "SI1", "depth": 62.1, "table": 61, "price": 2354, "x": 5.63, "y": 5.71, "z": 3.52 }, { "name": 29987, "carat": 0.32, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 61.9, "table": 57, "price": 716, "x": 4.38, "y": 4.41, "z": 2.72 }, { "name": 33731, "carat": 0.35, "cut": "Ideal", "color": "H", "clarity": "VVS1", "depth": 60.5, "table": 57, "price": 839, "x": 4.58, "y": 4.59, "z": 2.77 }, { "name": 26961, "carat": 1.54, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61, "table": 56, "price": 17029, "x": 7.44, "y": 7.49, "z": 4.55 }, { "name": 18070, "carat": 1.03, "cut": "Ideal", "color": "F", "clarity": "VS1", "depth": 60.7, "table": 56, "price": 7296, "x": 6.54, "y": 6.6, "z": 3.99 }, { "name": 26610, "carat": 2.1, "cut": "Premium", "color": "F", "clarity": "SI2", "depth": 62.1, "table": 59, "price": 16357, "x": 8.16, "y": 8.18, "z": 5.07 }, { "name": 6364, "carat": 0.32, "cut": "Ideal", "color": "I", "clarity": "VS2", "depth": 63, "table": 55, "price": 576, "x": 4.39, "y": 4.34, "z": 2.75 }, { "name": 25341, "carat": 2, "cut": "Good", "color": "H", "clarity": "VS2", "depth": 57.3, "table": 59, "price": 14042, "x": 8.27, "y": 8.24, "z": 4.73 }, { "name": 51779, "carat": 0.61, "cut": "Very-Good", "color": "G", "clarity": "IF", "depth": 63, "table": 58, "price": 2411, "x": 5.36, "y": 5.43, "z": 3.4 }, { "name": 16733, "carat": 0.4, "cut": "Very-Good", "color": "E", "clarity": "SI2", "depth": 61.6, "table": 55, "price": 611, "x": 4.75, "y": 4.83, "z": 2.95 }, { "name": 35767, "carat": 0.4, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.7, "table": 60, "price": 912, "x": 4.7, "y": 4.75, "z": 2.87 }, { "name": 50150, "carat": 0.71, "cut": "Good", "color": "E", "clarity": "SI2", "depth": 57.8, "table": 60, "price": 2215, "x": 5.86, "y": 5.83, "z": 3.38 }, { "name": 31875, "carat": 0.3, "cut": "Good", "color": "H", "clarity": "VVS2", "depth": 63.6, "table": 55, "price": 776, "x": 4.28, "y": 4.24, "z": 2.71 }, { "name": 45135, "carat": 0.56, "cut": "Premium", "color": "H", "clarity": "VS1", "depth": 59.8, "table": 62, "price": 1653, "x": 5.36, "y": 5.31, "z": 3.19 }, { "name": 6666, "carat": 1.11, "cut": "Premium", "color": "G", "clarity": "SI1", "depth": 60.9, "table": 59, "price": 4096, "x": 6.69, "y": 6.64, "z": 4.07 }, { "name": 16061, "carat": 1.01, "cut": "Premium", "color": "F", "clarity": "VS2", "depth": 59.2, "table": 60, "price": 6416, "x": 6.51, "y": 6.54, "z": 3.86 }, { "name": 31800, "carat": 0.42, "cut": "Ideal", "color": "I", "clarity": "VS1", "depth": 62, "table": 55, "price": 773, "x": 4.83, "y": 4.85, "z": 3 }, { "name": 43689, "carat": 0.5, "cut": "Good", "color": "D", "clarity": "SI1", "depth": 62.9, "table": 59, "price": 1436, "x": 4.94, "y": 5.01, "z": 3.13 }, { "name": 4105, "carat": 1, "cut": "Good", "color": "J", "clarity": "SI2", "depth": 57.8, "table": 61, "price": 3536, "x": 6.54, "y": 6.58, "z": 3.79 }, { "name": 51131, "carat": 0.58, "cut": "Ideal", "color": "F", "clarity": "VVS2", "depth": 62, "table": 55, "price": 2340, "x": 5.32, "y": 5.4, "z": 3.31 }, { "name": 8914, "carat": 1.05, "cut": "Ideal", "color": "I", "clarity": "SI1", "depth": 61, "table": 57, "price": 4494, "x": 6.55, "y": 6.62, "z": 4.02 }, { "name": 40374, "carat": 0.43, "cut": "Premium", "color": "E", "clarity": "VS1", "depth": 62.3, "table": 58, "price": 1131, "x": 4.78, "y": 4.82, "z": 2.99 }, { "name": 22527, "carat": 1.01, "cut": "Good", "color": "E", "clarity": "VVS1", "depth": 63.1, "table": 59, "price": 10567, "x": 6.31, "y": 6.34, "z": 3.99 }, { "name": 51692, "carat": 0.7, "cut": "Fair", "color": "F", "clarity": "VS1", "depth": 55.9, "table": 62, "price": 2399, "x": 5.94, "y": 5.83, "z": 3.29 }, { "name": 35824, "carat": 0.31, "cut": "Ideal", "color": "F", "clarity": "IF", "depth": 62.2, "table": 54, "price": 914, "x": 4.37, "y": 4.41, "z": 2.73 }, { "name": 10987, "carat": 1.01, "cut": "Very-Good", "color": "E", "clarity": "SI1", "depth": 62.6, "table": 57, "price": 4912, "x": 6.36, "y": 6.41, "z": 4 }, { "name": 52052, "carat": 0.72, "cut": "Good", "color": "I", "clarity": "VS1", "depth": 61.3, "table": 63, "price": 2451, "x": 5.67, "y": 5.75, "z": 3.5 }, { "name": 22500, "carat": 1.28, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.1, "table": 56, "price": 10537, "x": 6.97, "y": 6.94, "z": 4.32 }, { "name": 31124, "carat": 0.43, "cut": "Very-Good", "color": "G", "clarity": "SI1", "depth": 60.4, "table": 58, "price": 754, "x": 4.87, "y": 4.9, "z": 2.95 }, { "name": 48333, "carat": 0.62, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 62.2, "table": 55, "price": 1959, "x": 5.45, "y": 5.51, "z": 3.41 }, { "name": 29226, "carat": 0.31, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.7, "table": 57, "price": 695, "x": 4.34, "y": 4.31, "z": 2.71 }, { "name": 33982, "carat": 0.41, "cut": "Good", "color": "G", "clarity": "VS1", "depth": 63.3, "table": 62, "price": 847, "x": 4.67, "y": 4.71, "z": 2.97 }, { "name": 1025, "carat": 0.72, "cut": "Premium", "color": "D", "clarity": "SI1", "depth": 61.4, "table": 59, "price": 2903, "x": 5.79, "y": 5.71, "z": 3.53 }, { "name": 17902, "carat": 1.01, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 61.6, "table": 56, "price": 7229, "x": 6.48, "y": 6.45, "z": 3.98 }, { "name": 43848, "carat": 0.52, "cut": "Premium", "color": "G", "clarity": "VS2", "depth": 60.9, "table": 58, "price": 1447, "x": 5.19, "y": 5.22, "z": 3.17 }, { "name": 42493, "carat": 0.52, "cut": "Very-Good", "color": "H", "clarity": "VS1", "depth": 59.6, "table": 57, "price": 1320, "x": 5.25, "y": 5.34, "z": 3.15 }, { "name": 4932, "carat": 0.9, "cut": "Good", "color": "H", "clarity": "SI1", "depth": 61.4, "table": 60, "price": 3730, "x": 6.06, "y": 6.12, "z": 3.74 }, { "name": 9558, "carat": 1.1, "cut": "Ideal", "color": "H", "clarity": "SI2", "depth": 62.6, "table": 56, "price": 4620, "x": 6.65, "y": 6.57, "z": 4.14 }, { "name": 30468, "carat": 0.31, "cut": "Very-Good", "color": "D", "clarity": "SI1", "depth": 63.1, "table": 57, "price": 732, "x": 4.32, "y": 4.3, "z": 2.72 }, { "name": 16197, "carat": 1.2, "cut": "Ideal", "color": "H", "clarity": "SI1", "depth": 62.2, "table": 56, "price": 6471, "x": 6.8, "y": 6.77, "z": 4.23 }, { "name": 27606, "carat": 2.09, "cut": "Good", "color": "F", "clarity": "SI2", "depth": 63.4, "table": 55, "price": 18472, "x": 8.11, "y": 8.18, "z": 5.16 }, { "name": 32054, "carat": 0.35, "cut": "Ideal", "color": "D", "clarity": "SI1", "depth": 61.1, "table": 56, "price": 780, "x": 4.55, "y": 4.59, "z": 2.79 }, { "name": 21823, "carat": 1.51, "cut": "Premium", "color": "D", "clarity": "SI2", "depth": 63, "table": 62, "price": 9894, "x": 7.28, "y": 7.23, "z": 4.57 }, { "name": 5928, "carat": 0.92, "cut": "Ideal", "color": "E", "clarity": "SI2", "depth": 62.1, "table": 53, "price": 3941, "x": 6.25, "y": 6.22, "z": 3.87 }, { "name": 746, "carat": 0.33, "cut": "Premium", "color": "J", "clarity": "VS1", "depth": 61.5, "table": 61, "price": 557, "x": 4.46, "y": 4.39, "z": 2.72 }, { "name": 28751, "carat": 0.31, "cut": "Premium", "color": "E", "clarity": "VS2", "depth": 60.3, "table": 58, "price": 680, "x": 4.37, "y": 4.42, "z": 2.65 }, { "name": 49323, "carat": 0.72, "cut": "Very-Good", "color": "J", "clarity": "VVS1", "depth": 61.4, "table": 61, "price": 2093, "x": 5.7, "y": 5.77, "z": 3.52 }, { "name": 15282, "carat": 1.04, "cut": "Ideal", "color": "H", "clarity": "VS2", "depth": 62.2, "table": 57, "price": 6133, "x": 6.46, "y": 6.49, "z": 4.03 }, { "name": 13423, "carat": 0.9, "cut": "Very-Good", "color": "D", "clarity": "VS1", "depth": 63.4, "table": 58, "price": 5511, "x": 6.15, "y": 6.09, "z": 3.88 }, { "name": 42237, "carat": 0.64, "cut": "Very-Good", "color": "H", "clarity": "SI2", "depth": 64.2, "table": 58, "price": 1292, "x": 5.43, "y": 5.48, "z": 3.5 }, { "name": 32596, "carat": 0.3, "cut": "Ideal", "color": "F", "clarity": "VVS1", "depth": 61.2, "table": 55, "price": 802, "x": 4.33, "y": 4.36, "z": 2.66 }, { "name": 1348, "carat": 0.71, "cut": "Ideal", "color": "G", "clarity": "VS1", "depth": 62.2, "table": 56, "price": 2962, "x": 5.69, "y": 5.72, "z": 3.55 }, { "name": 16066, "carat": 1.01, "cut": "Ideal", "color": "F", "clarity": "VS2", "depth": 62, "table": 56, "price": 6416, "x": 6.46, "y": 6.51, "z": 4.02 }, { "name": 7871, "carat": 0.9, "cut": "Good", "color": "G", "clarity": "VS2", "depth": 63.7, "table": 60, "price": 4309, "x": 6.02, "y": 5.98, "z": 3.82 }, { "name": 34729, "carat": 0.34, "cut": "Ideal", "color": "E", "clarity": "VS1", "depth": 60.3, "table": 57, "price": 875, "x": 4.52, "y": 4.54, "z": 2.73 }, { "name": 45616, "carat": 0.5, "cut": "Very-Good", "color": "F", "clarity": "VS1", "depth": 62, "table": 58, "price": 1692, "x": 5.08, "y": 5.11, "z": 3.16 }, { "name": 6640, "carat": 0.85, "cut": "Ideal", "color": "E", "clarity": "SI1", "depth": 63, "table": 56, "price": 4089, "x": 6, "y": 6.04, "z": 3.79 }];
+exports.dataMapping = [
+    {
+        dataKey: 'carat',
         mark: 'column',
-      },
-      {
-        dataKey: 'y',
+    }, {
+        dataKey: 'price',
         mark: 'row',
-      },
-      {
-        dataKey: 'name',
+    }, {
+        dataKey: 'cut',
         mark: 'color',
-      },
-    ],
-    series: [{
-      position: 'x*y',
-      gemo: 'polygon',
-      style: {
-        stroke: '#ccc'
-      },
-      label: {
-        show: true,
-        dataKey: 'name',
-        textStyle: {
-          fill: 'black',
-          textAlign: 'left'
-        },
-        offset: 0,
-      }
-    }],
-  }],
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 500,
-  },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
-
-
-/***/ }),
-/* 236 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = [
-  {gender: 'female', height: 42.2, weight: 51.6, value: 2},
-  {gender: 'female', height: 181.2, weight: 61.6, value: 22},
-  {gender: 'female', height: 161.2, weight: 51.6, value: 2},
-  {gender: 'female', height: 171.2, weight: 51.6, value: 2},
-  {gender: 'male', height: 179.2, weight: 69.3, value: 42},
-  {gender: 'male', height: 190.2, weight: 82.3, value: 2},
-  {gender: 'male', height: 170.2, weight: 62.3, value: 12},
-  {gender: 'male', height: 168.2, weight: 56.3, value: 2},
-  {gender: 'male', height: 188.2, weight: 72.3, value: 2},
-];
-
-const dataMapping = [
-  {
-    dataKey: 'gender',
-    mark: 'color',
-  }, {
-    dataKey: 'height',
-    mark: 'column',
-  }, {
-    dataKey: 'weight',
-    mark: 'row',
-  }, {
-    dataKey: 'value',
-    mark: 'size',
-  }
-];
-
-const config = {
-  data,
-  dataMapping,
-  tooltip: true,
-  legend: {
-    dataKey: 'gender',
-    marker: 'circle',
-  },
-  series: [{
-    position: ['height', 'weight'],
-    quickType: 'point',
-  }],
-  axis: [{
-    dataKey: 'weight',
-    show: true,
-    position: 'left',
-  }, {
-    dataKey: 'height',
-    show: true,
-    position: 'bottom',
-  }],
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 400,
-  },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
-
-
-/***/ }),
-/* 237 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const data = {
-  name: 'root',
-  children: [
-    { name: '分类 1', value: 560 },
-    { name: '分类 2', value: 500 },
-    { name: '分类 3', value: 150 },
-    { name: '分类 4', value: 140 },
-    { name: '分类 5', value: 115 },
-    { name: '分类 6', value: 95 },
-    { name: '分类 7', value: 90 },
-    { name: '分类 8', value: 75 },
-    { name: '分类 9', value: 98 },
-    { name: '分类 10', value: 60 },
-    { name: '分类 11', value: 45 },
-    { name: '分类 12', value: 40 },
-    { name: '分类 13', value: 40 },
-    { name: '分类 14', value: 35 },
-    { name: '分类 15', value: 40 },
-    { name: '分类 16', value: 40 },
-    { name: '分类 17', value: 40 },
-    { name: '分类 18', value: 30 },
-    { name: '分类 19', value: 28 },
-    { name: '分类 20', value: 16 }
-  ]
-};
-
-const dataPre = {
-  connector: 'hierarchy',
-  transform: {
-    type: 'hierarchy.treemap', field: 'value', tile: 'treemapResquarify', as: ['x', 'y'], nameKey: 'name', valueKey: 'value'
-  },
-};
-
-const dataMapping = [
-  {
-    dataKey: 'x',
-    mark: 'column',
-  },
-  {
-    dataKey: 'y',
-    mark: 'row',
-  },
-  {
-    dataKey: 'name',
-    mark: 'color',
-  },
-];
-const config = {
-  data,
-  dataPre,
-  dataMapping,
-  tooltip: {
-    title: 'hahah',
-    offset: 0,
-    crossHairs: {
-      show: false,
-    },
-  },
-  series: {
-    position: 'x*y',
-    gemo: 'polygon',
-    tooltip: {
-      dataKey: 'name*value'
-    },
-    style: {
-      lineWidth: 1,
-      stroke: '#fff',
-    },
-    label: {
-      dataKey: 'name',
-      textStyle: {
-        textBaseline: 'middle'
-      },
-      formatter(val) {
-        if (val !== 'root') {
-          return val;
-        }
-      },
     }
-  },
-  chart: {
-    container: 'example1',
-    forceFit: true,
-    height: 400,
-  },
-};
-/* harmony export (immutable) */ __webpack_exports__["config"] = config;
-
-
+];
+exports.scale = [{
+        dataKey: 'carat',
+        sync: true
+    }, {
+        dataKey: 'price',
+        sync: true,
+        tickCount: 3
+    }, {
+        dataKey: 'cut',
+        sync: true,
+    }];
 
 
 /***/ }),
-/* 238 */
+
+/***/ 228:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./area/example1/reactCode.js": 239,
-	"./bar/example1/reactCode.js": 240,
-	"./facet/example1/reactCode.js": 241,
-	"./funnel/example1/reactCode.js": 242,
-	"./line/example1/reactCode.js": 243,
-	"./pie/example1/reactCode.js": 244,
-	"./radar/example1/reactCode.js": 245,
-	"./scatter/example1/reactCode.js": 246
+	"./bar/example1/react.js": 229,
+	"./facet/example1/react.js": 230
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -13868,212 +12138,230 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 238;
+webpackContext.id = 228;
 
 /***/ }),
-/* 239 */
+
+/***/ 229:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const script = `const { Chart, Tooltip, Axis, Legend, Area } = ViserReact`;
-/* harmony export (immutable) */ __webpack_exports__["script"] = script;
-
 const template = `
-<div>
-  <Chart forceFit height={400} data={config.data} dataPre={config.dataPre} dataMapping={config.dataMapping} scale={config.scale}>
-    <Tooltip />
-    <Axis />
-    <Legend />
-    <Area style={{}} />
-  </Chart>
-</div>
+import { Chart, Tooltip, Axis, StackBar, LiteChart } from '../../../packages/viser-react/src/index';
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import { data, dataMapping, dataPre, scale } from './data'
+
+class App extends React.Component {
+  state = {
+    height: 400,
+    lineWidth: 1
+  }
+
+  constructor(props) {
+    super(props);
+  }
+
+  handleClick = () => {
+    this.setState({
+      height: 600,
+      lineWidth: 10,
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {/* <button onClick={this.handleClick}>Click</button> */}
+        <Chart forceFit height={this.state.height} data={data} dataPre={dataPre} dataMapping={dataMapping} scale={scale}>
+          <Tooltip />
+          <Axis />
+          <StackBar style={{ stroke: '#fff', lineWidth: this.state.lineWidth }} />
+        </Chart>
+        {/* <LiteChart height={400} data={data} dataPre={dataPre} dataMapping={dataMapping} forceFit stackBar /> */}
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('mount'));
 `;
 /* harmony export (immutable) */ __webpack_exports__["template"] = template;
 
 
 
 /***/ }),
-/* 240 */
+
+/***/ 230:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const script = `const { Chart, Axis, Tooltip, StackBar } = ViserReact`;
-/* harmony export (immutable) */ __webpack_exports__["script"] = script;
-
 const template = `
+import { Chart, Facet, View, Tooltip, Legend, Axis, Point, FacetView } from '../../../packages/viser-react/src/index';
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import { chartData, dataMapping, scale } from './data'
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Chart forceFit={true} height={600} data={chartData} dataMapping={dataMapping} scale={scale}>
+          <Tooltip />
+          <Facet type="rect" fields={['cut', 'clarity']}>
+            <FacetView>
+              <Tooltip />
+              <Axis />
+              <Point opacity={0.3} size={3} />
+            </FacetView>
+          </Facet>
+        </Chart>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('mount'));
+`;
+/* harmony export (immutable) */ __webpack_exports__["template"] = template;
+
+
+
+
+/***/ }),
+
+/***/ 231:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./bar/example1/vue.js": 232,
+	"./facet/example1/vue.js": 233
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 231;
+
+/***/ }),
+
+/***/ 232:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+const template = `
+<template>
   <div>
-    <Chart forceFit height={400} data={config.data} dataPre={config.dataPre} dataMapping={config.dataMapping} scale={config.scale}>
-      <Tooltip />
-      <Axis />
-      <StackBar style={{ stroke: '#fff', lineWidth: 2 }} />
-    </Chart>
+    <!-- <button v-on:click="handleClick">Click</button> -->
+    <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :data-mapping="dataMapping" :scale="scale">
+      <v-tooltip />
+      <v-axis />
+      <v-stack-bar :v-style="stackBarStyle" />
+    </v-chart>
+    <!-- <v-lite-chart :stack-bar="true" :height="400" :data="data" :data-pre="dataPre" :dataMapping="dataMapping" :forceFit="true" /> -->
   </div>
-`;
-/* harmony export (immutable) */ __webpack_exports__["template"] = template;
+</template>
 
+<script>
+import { data, dataMapping, dataPre, scale } from "./data";
 
-
-/***/ }),
-/* 241 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const script = `const { Chart, Facet, FacetView, Tooltip, Axis, Point } = ViserReact`;
-/* harmony export (immutable) */ __webpack_exports__["script"] = script;
-
-const template = `
-<div>
-  <Chart forceFit={true} height={600} data={config.chartData} dataMapping={config.dataMapping} scale={config.scale}>
-    <Facet type="rect" fields={['cut', 'clarity']}>
-      <FacetView>
-        <Axis />
-        <Tooltip />
-        <Point opacity={0.3} size={3} />
-      </FacetView>
-    </Facet>
-  </Chart>
-</div>
-`;
-/* harmony export (immutable) */ __webpack_exports__["template"] = template;
-
-
-
-/***/ }),
-/* 242 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const template = `
-<div>
-
-</div>
-`;
-/* harmony export (immutable) */ __webpack_exports__["template"] = template;
-
-
-
-/***/ }),
-/* 243 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const script = `const { Chart, Tooltip, Axis, Line } = ViserReact`;
-/* harmony export (immutable) */ __webpack_exports__["script"] = script;
-
-const template = `
-<div>
-  <Chart forceFit height={400} data={config.data} dataPre={config.dataPre} dataMapping={config.dataMapping} scale={config.scale}>
-    <Tooltip />
-    <Axis />
-    <Line style={{ stroke: 'red', lineWidth: 1 }} />
-  </Chart>
-</div>
-`;
-/* harmony export (immutable) */ __webpack_exports__["template"] = template;
-
-
-
-/***/ }),
-/* 244 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const script = `const { Chart, Coord, Tooltip, Axis, Pie, Legend } = ViserReact`;
-/* harmony export (immutable) */ __webpack_exports__["script"] = script;
-
-const template = `
-<div>
-  <Chart width={400} height={300} data={config.data} dataMapping={config.dataMapping}>
-    <Coord radius={1} innerRadius={0.6} />
-    <Pie label={true} />
-    <Tooltip />
-    <Legend />
-    <Axis />
-  </Chart>
-</div>
-`;
-/* harmony export (immutable) */ __webpack_exports__["template"] = template;
-
-
-
-/***/ }),
-/* 245 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const script = `
-const { Chart, Coord, Series, Axis, Tooltip, Legend } = ViserReact
-const axisGridStyle1 = {
-  hideFirstLine: false,
-  lineStyle: {
-    lineDash: null,
+export default {
+  data() {
+    return {
+      data,
+      dataMapping,
+      dataPre,
+      scale,
+      height: 400,
+      stackBarStyle: {
+        stroke: "#fff",
+        lineWidth: 1
+      }
+    };
+  },
+  methods: {
+    handleClick: function() {
+      this.height = 600;
+      this.stackBarStyle.lineWidth = 10;
+    }
   }
 };
-const axisGridStyle2 = {
-  alternateColor: "rgba(0, 0, 0, 0.04)",
-  lineStyle: {
-    lineDash: null,
-  },
-  type: "polygon"
-};
-`;
-/* harmony export (immutable) */ __webpack_exports__["script"] = script;
+</script>
 
-const template = `
-  <div>
-    <Chart width={400} height={300} data={config.data} dataPre={config.dataPre} dataMapping={config.dataMapping} scale={config.scale}>
-      <Coord type="polar"/>
-      <Series geom={'line'} position={['item', 'score']} size={2}></Series>
-      <Series geom={'line'} position={['item', 'score']} size={2}></Series>
-      <Series geom={'point'} position={['item', 'score']} style={{lineWidth: 1, fillOpacity: 1}} shape={'circle'}></Series>
-      <Tooltip />
-      <Legend dataKey={'user'} marker={'circle'}/>
-      <Axis dataKey={'item'} show={true} grid={axisGridStyle1}/>
-      <Axis dataKey={'score'} show={true} grid={axisGridStyle2}/>
-    </Chart>
-  </div>
+<style scoped>
+
+</style>
 `;
 /* harmony export (immutable) */ __webpack_exports__["template"] = template;
 
 
-
 /***/ }),
-/* 246 */
+
+/***/ 233:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const script = `const { Chart, Tooltip, Axis, Legend, Series } = ViserReact`;
-/* harmony export (immutable) */ __webpack_exports__["script"] = script;
-
 const template = `
-<div>
-  <Chart forceFit height={400} data={config.data} dataMapping={config.dataMapping}>
-    <Tooltip />
-    <Axis dataKey={'weight'} show={true} position={'left'}/>
-    <Axis dataKey={'height'} show={true} position={'bottom'}/>
-    <Legend dataKey={'gender'} marker={'circle'}/>
-    <Series geom={'point'} postion={['height', 'weight']} quickType={'point'} shape={'circle'}></Series>
-  </Chart>
-</div>
+<template>
+  <div>
+    <v-chart :force-fit="true" :height="600" :data="chartData" :data-mapping="dataMapping" :scale="scale">
+      <v-tooltip />
+      <v-facet :type="'rect'" :fields="['cut', 'clarity']">
+        <v-facet-view>
+          <v-axis />
+          <v-tooltip />
+          <v-point :opacity="0.3" :size="3" />
+        </v-facet-view>
+      </v-facet>
+    </v-chart>
+  </div>
+</template>
+
+<script>
+import { chartData, dataMapping, scale } from "./data";
+
+export default {
+  data() {
+    return {
+      chartData,
+      dataMapping,
+      scale
+    };
+  },
+  methods: {}
+};
+</script>
+
+<style scoped>
+
+</style>
 `;
 /* harmony export (immutable) */ __webpack_exports__["template"] = template;
 
 
 
 /***/ }),
-/* 247 */
+
+/***/ 234:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./line/example1/vueCode.js": 248
+	"./bar/example1/angular.js": 235,
+	"./facet/example1/angular.js": 236
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -14089,38 +12377,902 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 247;
+webpackContext.id = 234;
 
 /***/ }),
-/* 248 */
+
+/***/ 235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const template = `
-  <v-chart :width="500" :height="400" :data="config.data" :data-pre="config.dataPre" :data-def="config.dataDef">
-    <v-smooth-line :size="2" />
-    <v-point :size="4" :v-style="{stroke: '#fff', lineWidth: 1}" />
-    <v-tooltip :crosshairs="{type: 'line'}" />
-    <v-legend />
-    <v-axis data-key="temperature" />
-  </v-chart>
+import 'zone.js';
+import 'reflect-metadata';
+import { Component, enableProdMode, NgModule } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { ViserModule } from '../../../packages/viser-ng/src/index';
+import { data, dataMapping, dataPre, scale } from './data'
+
+@Component({
+  selector: '#mount',
+  template: \`
+  <div>
+    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [dataMapping]="dataMapping" [scale]="scale">
+      <Tooltip></Tooltip>
+      <Axis></Axis>
+      <StackBar [ngStyle]="{ stroke: '#fff', lineWidth: 1 }" ></StackBar>
+    </Chart>
+    <LiteChart stackBar="true" [height]="height" [data]="data" [dataMapping]="dataMapping" [forceFit]="forceFit"></LiteChart>
+  </div>
+  \`
+})
+
+class AppComponent {
+  forceFit: boolean= true;
+  height: number = 400;
+  data = data;
+  dataPre = dataPre;
+  dataMapping = dataMapping;
+  scale = scale;
+  fields = ['cut', 'clarity'];
+}
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ViserModule
+  ],
+  providers: [],
+  bootstrap: [
+    AppComponent
+  ]
+})
+export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);
 `;
 /* harmony export (immutable) */ __webpack_exports__["template"] = template;
 
 
 
 /***/ }),
-/* 249 */
+
+/***/ 236:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+const template = `
+import 'zone.js';
+import 'reflect-metadata';
+import { Component, enableProdMode, NgModule } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { ViserModule } from '../../../packages/viser-ng/src/index';
+import { chartData, dataMapping, scale } from './data'
+
+@Component({
+  selector: '#mount',
+  template: \`
+  <div>
+    <Chart [forceFit]="forceFit" [height]="600" [data]="chartData" [dataMapping]="dataMapping" [scale]="scale">
+      <Tooltip></Tooltip>
+      <Facet type="rect" [fields]="fields">
+        <FacetView>
+          <Axis></Axis>
+          <Tooltip></Tooltip>
+          <Point opacity="0.3" size="3"></Point>
+        </FacetView>
+      </Facet>
+    </Chart>
+  </div>
+  \`
+})
+
+export class AppComponent {
+  forceFit: boolean= true;
+  height: number = 600;
+  chartData = chartData;
+  dataMapping = dataMapping;
+  scale = scale;
+  fields = ['cut', 'clarity'];
+}
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ViserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);
+`;
+/* harmony export (immutable) */ __webpack_exports__["template"] = template;
+
+
+
+/***/ }),
+
+/***/ 24:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.extend = extend;
+exports.indexOf = indexOf;
+exports.escapeExpression = escapeExpression;
+exports.isEmpty = isEmpty;
+exports.createFrame = createFrame;
+exports.blockParams = blockParams;
+exports.appendContextPath = appendContextPath;
+var escape = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#x27;',
+  '`': '&#x60;',
+  '=': '&#x3D;'
+};
+
+var badChars = /[&<>"'`=]/g,
+    possible = /[&<>"'`=]/;
+
+function escapeChar(chr) {
+  return escape[chr];
+}
+
+function extend(obj /* , ...source */) {
+  for (var i = 1; i < arguments.length; i++) {
+    for (var key in arguments[i]) {
+      if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
+        obj[key] = arguments[i][key];
+      }
+    }
+  }
+
+  return obj;
+}
+
+var toString = Object.prototype.toString;
+
+exports.toString = toString;
+// Sourced from lodash
+// https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
+/* eslint-disable func-style */
+var isFunction = function isFunction(value) {
+  return typeof value === 'function';
+};
+// fallback for older versions of Chrome and Safari
+/* istanbul ignore next */
+if (isFunction(/x/)) {
+  exports.isFunction = isFunction = function (value) {
+    return typeof value === 'function' && toString.call(value) === '[object Function]';
+  };
+}
+exports.isFunction = isFunction;
+
+/* eslint-enable func-style */
+
+/* istanbul ignore next */
+var isArray = Array.isArray || function (value) {
+  return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
+};
+
+exports.isArray = isArray;
+// Older IE versions do not directly support indexOf so we must implement our own, sadly.
+
+function indexOf(array, value) {
+  for (var i = 0, len = array.length; i < len; i++) {
+    if (array[i] === value) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function escapeExpression(string) {
+  if (typeof string !== 'string') {
+    // don't escape SafeStrings, since they're already safe
+    if (string && string.toHTML) {
+      return string.toHTML();
+    } else if (string == null) {
+      return '';
+    } else if (!string) {
+      return string + '';
+    }
+
+    // Force a string conversion as this will be done by the append regardless and
+    // the regex test will do this transparently behind the scenes, causing issues if
+    // an object's to string has escaped characters in it.
+    string = '' + string;
+  }
+
+  if (!possible.test(string)) {
+    return string;
+  }
+  return string.replace(badChars, escapeChar);
+}
+
+function isEmpty(value) {
+  if (!value && value !== 0) {
+    return true;
+  } else if (isArray(value) && value.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function createFrame(object) {
+  var frame = extend({}, object);
+  frame._parent = object;
+  return frame;
+}
+
+function blockParams(params, ids) {
+  params.path = ids;
+  return params;
+}
+
+function appendContextPath(contextPath, id) {
+  return (contextPath ? contextPath + '.' : '') + id;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL3V0aWxzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxJQUFNLE1BQU0sR0FBRztBQUNiLEtBQUcsRUFBRSxPQUFPO0FBQ1osS0FBRyxFQUFFLE1BQU07QUFDWCxLQUFHLEVBQUUsTUFBTTtBQUNYLEtBQUcsRUFBRSxRQUFRO0FBQ2IsS0FBRyxFQUFFLFFBQVE7QUFDYixLQUFHLEVBQUUsUUFBUTtBQUNiLEtBQUcsRUFBRSxRQUFRO0NBQ2QsQ0FBQzs7QUFFRixJQUFNLFFBQVEsR0FBRyxZQUFZO0lBQ3ZCLFFBQVEsR0FBRyxXQUFXLENBQUM7O0FBRTdCLFNBQVMsVUFBVSxDQUFDLEdBQUcsRUFBRTtBQUN2QixTQUFPLE1BQU0sQ0FBQyxHQUFHLENBQUMsQ0FBQztDQUNwQjs7QUFFTSxTQUFTLE1BQU0sQ0FBQyxHQUFHLG9CQUFtQjtBQUMzQyxPQUFLLElBQUksQ0FBQyxHQUFHLENBQUMsRUFBRSxDQUFDLEdBQUcsU0FBUyxDQUFDLE1BQU0sRUFBRSxDQUFDLEVBQUUsRUFBRTtBQUN6QyxTQUFLLElBQUksR0FBRyxJQUFJLFNBQVMsQ0FBQyxDQUFDLENBQUMsRUFBRTtBQUM1QixVQUFJLE1BQU0sQ0FBQyxTQUFTLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsQ0FBQyxDQUFDLEVBQUUsR0FBRyxDQUFDLEVBQUU7QUFDM0QsV0FBRyxDQUFDLEdBQUcsQ0FBQyxHQUFHLFNBQVMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQztPQUM5QjtLQUNGO0dBQ0Y7O0FBRUQsU0FBTyxHQUFHLENBQUM7Q0FDWjs7QUFFTSxJQUFJLFFBQVEsR0FBRyxNQUFNLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQzs7Ozs7O0FBS2hELElBQUksVUFBVSxHQUFHLG9CQUFTLEtBQUssRUFBRTtBQUMvQixTQUFPLE9BQU8sS0FBSyxLQUFLLFVBQVUsQ0FBQztDQUNwQyxDQUFDOzs7QUFHRixJQUFJLFVBQVUsQ0FBQyxHQUFHLENBQUMsRUFBRTtBQUNuQixVQUlNLFVBQVUsR0FKaEIsVUFBVSxHQUFHLFVBQVMsS0FBSyxFQUFFO0FBQzNCLFdBQU8sT0FBTyxLQUFLLEtBQUssVUFBVSxJQUFJLFFBQVEsQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLEtBQUssbUJBQW1CLENBQUM7R0FDcEYsQ0FBQztDQUNIO1FBQ08sVUFBVSxHQUFWLFVBQVU7Ozs7O0FBSVgsSUFBTSxPQUFPLEdBQUcsS0FBSyxDQUFDLE9BQU8sSUFBSSxVQUFTLEtBQUssRUFBRTtBQUN0RCxTQUFPLEFBQUMsS0FBSyxJQUFJLE9BQU8sS0FBSyxLQUFLLFFBQVEsR0FBSSxRQUFRLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxLQUFLLGdCQUFnQixHQUFHLEtBQUssQ0FBQztDQUNqRyxDQUFDOzs7OztBQUdLLFNBQVMsT0FBTyxDQUFDLEtBQUssRUFBRSxLQUFLLEVBQUU7QUFDcEMsT0FBSyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsR0FBRyxHQUFHLEtBQUssQ0FBQyxNQUFNLEVBQUUsQ0FBQyxHQUFHLEdBQUcsRUFBRSxDQUFDLEVBQUUsRUFBRTtBQUNoRCxRQUFJLEtBQUssQ0FBQyxDQUFDLENBQUMsS0FBSyxLQUFLLEVBQUU7QUFDdEIsYUFBTyxDQUFDLENBQUM7S0FDVjtHQUNGO0FBQ0QsU0FBTyxDQUFDLENBQUMsQ0FBQztDQUNYOztBQUdNLFNBQVMsZ0JBQWdCLENBQUMsTUFBTSxFQUFFO0FBQ3ZDLE1BQUksT0FBTyxNQUFNLEtBQUssUUFBUSxFQUFFOztBQUU5QixRQUFJLE1BQU0sSUFBSSxNQUFNLENBQUMsTUFBTSxFQUFFO0FBQzNCLGFBQU8sTUFBTSxDQUFDLE1BQU0sRUFBRSxDQUFDO0tBQ3hCLE1BQU0sSUFBSSxNQUFNLElBQUksSUFBSSxFQUFFO0FBQ3pCLGFBQU8sRUFBRSxDQUFDO0tBQ1gsTUFBTSxJQUFJLENBQUMsTUFBTSxFQUFFO0FBQ2xCLGFBQU8sTUFBTSxHQUFHLEVBQUUsQ0FBQztLQUNwQjs7Ozs7QUFLRCxVQUFNLEdBQUcsRUFBRSxHQUFHLE1BQU0sQ0FBQztHQUN0Qjs7QUFFRCxNQUFJLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsRUFBRTtBQUFFLFdBQU8sTUFBTSxDQUFDO0dBQUU7QUFDOUMsU0FBTyxNQUFNLENBQUMsT0FBTyxDQUFDLFFBQVEsRUFBRSxVQUFVLENBQUMsQ0FBQztDQUM3Qzs7QUFFTSxTQUFTLE9BQU8sQ0FBQyxLQUFLLEVBQUU7QUFDN0IsTUFBSSxDQUFDLEtBQUssSUFBSSxLQUFLLEtBQUssQ0FBQyxFQUFFO0FBQ3pCLFdBQU8sSUFBSSxDQUFDO0dBQ2IsTUFBTSxJQUFJLE9BQU8sQ0FBQyxLQUFLLENBQUMsSUFBSSxLQUFLLENBQUMsTUFBTSxLQUFLLENBQUMsRUFBRTtBQUMvQyxXQUFPLElBQUksQ0FBQztHQUNiLE1BQU07QUFDTCxXQUFPLEtBQUssQ0FBQztHQUNkO0NBQ0Y7O0FBRU0sU0FBUyxXQUFXLENBQUMsTUFBTSxFQUFFO0FBQ2xDLE1BQUksS0FBSyxHQUFHLE1BQU0sQ0FBQyxFQUFFLEVBQUUsTUFBTSxDQUFDLENBQUM7QUFDL0IsT0FBSyxDQUFDLE9BQU8sR0FBRyxNQUFNLENBQUM7QUFDdkIsU0FBTyxLQUFLLENBQUM7Q0FDZDs7QUFFTSxTQUFTLFdBQVcsQ0FBQyxNQUFNLEVBQUUsR0FBRyxFQUFFO0FBQ3ZDLFFBQU0sQ0FBQyxJQUFJLEdBQUcsR0FBRyxDQUFDO0FBQ2xCLFNBQU8sTUFBTSxDQUFDO0NBQ2Y7O0FBRU0sU0FBUyxpQkFBaUIsQ0FBQyxXQUFXLEVBQUUsRUFBRSxFQUFFO0FBQ2pELFNBQU8sQ0FBQyxXQUFXLEdBQUcsV0FBVyxHQUFHLEdBQUcsR0FBRyxFQUFFLENBQUEsR0FBSSxFQUFFLENBQUM7Q0FDcEQiLCJmaWxlIjoidXRpbHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBlc2NhcGUgPSB7XG4gICcmJzogJyZhbXA7JyxcbiAgJzwnOiAnJmx0OycsXG4gICc+JzogJyZndDsnLFxuICAnXCInOiAnJnF1b3Q7JyxcbiAgXCInXCI6ICcmI3gyNzsnLFxuICAnYCc6ICcmI3g2MDsnLFxuICAnPSc6ICcmI3gzRDsnXG59O1xuXG5jb25zdCBiYWRDaGFycyA9IC9bJjw+XCInYD1dL2csXG4gICAgICBwb3NzaWJsZSA9IC9bJjw+XCInYD1dLztcblxuZnVuY3Rpb24gZXNjYXBlQ2hhcihjaHIpIHtcbiAgcmV0dXJuIGVzY2FwZVtjaHJdO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gZXh0ZW5kKG9iai8qICwgLi4uc291cmNlICovKSB7XG4gIGZvciAobGV0IGkgPSAxOyBpIDwgYXJndW1lbnRzLmxlbmd0aDsgaSsrKSB7XG4gICAgZm9yIChsZXQga2V5IGluIGFyZ3VtZW50c1tpXSkge1xuICAgICAgaWYgKE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbChhcmd1bWVudHNbaV0sIGtleSkpIHtcbiAgICAgICAgb2JqW2tleV0gPSBhcmd1bWVudHNbaV1ba2V5XTtcbiAgICAgIH1cbiAgICB9XG4gIH1cblxuICByZXR1cm4gb2JqO1xufVxuXG5leHBvcnQgbGV0IHRvU3RyaW5nID0gT2JqZWN0LnByb3RvdHlwZS50b1N0cmluZztcblxuLy8gU291cmNlZCBmcm9tIGxvZGFzaFxuLy8gaHR0cHM6Ly9naXRodWIuY29tL2Jlc3RpZWpzL2xvZGFzaC9ibG9iL21hc3Rlci9MSUNFTlNFLnR4dFxuLyogZXNsaW50LWRpc2FibGUgZnVuYy1zdHlsZSAqL1xubGV0IGlzRnVuY3Rpb24gPSBmdW5jdGlvbih2YWx1ZSkge1xuICByZXR1cm4gdHlwZW9mIHZhbHVlID09PSAnZnVuY3Rpb24nO1xufTtcbi8vIGZhbGxiYWNrIGZvciBvbGRlciB2ZXJzaW9ucyBvZiBDaHJvbWUgYW5kIFNhZmFyaVxuLyogaXN0YW5idWwgaWdub3JlIG5leHQgKi9cbmlmIChpc0Z1bmN0aW9uKC94LykpIHtcbiAgaXNGdW5jdGlvbiA9IGZ1bmN0aW9uKHZhbHVlKSB7XG4gICAgcmV0dXJuIHR5cGVvZiB2YWx1ZSA9PT0gJ2Z1bmN0aW9uJyAmJiB0b1N0cmluZy5jYWxsKHZhbHVlKSA9PT0gJ1tvYmplY3QgRnVuY3Rpb25dJztcbiAgfTtcbn1cbmV4cG9ydCB7aXNGdW5jdGlvbn07XG4vKiBlc2xpbnQtZW5hYmxlIGZ1bmMtc3R5bGUgKi9cblxuLyogaXN0YW5idWwgaWdub3JlIG5leHQgKi9cbmV4cG9ydCBjb25zdCBpc0FycmF5ID0gQXJyYXkuaXNBcnJheSB8fCBmdW5jdGlvbih2YWx1ZSkge1xuICByZXR1cm4gKHZhbHVlICYmIHR5cGVvZiB2YWx1ZSA9PT0gJ29iamVjdCcpID8gdG9TdHJpbmcuY2FsbCh2YWx1ZSkgPT09ICdbb2JqZWN0IEFycmF5XScgOiBmYWxzZTtcbn07XG5cbi8vIE9sZGVyIElFIHZlcnNpb25zIGRvIG5vdCBkaXJlY3RseSBzdXBwb3J0IGluZGV4T2Ygc28gd2UgbXVzdCBpbXBsZW1lbnQgb3VyIG93biwgc2FkbHkuXG5leHBvcnQgZnVuY3Rpb24gaW5kZXhPZihhcnJheSwgdmFsdWUpIHtcbiAgZm9yIChsZXQgaSA9IDAsIGxlbiA9IGFycmF5Lmxlbmd0aDsgaSA8IGxlbjsgaSsrKSB7XG4gICAgaWYgKGFycmF5W2ldID09PSB2YWx1ZSkge1xuICAgICAgcmV0dXJuIGk7XG4gICAgfVxuICB9XG4gIHJldHVybiAtMTtcbn1cblxuXG5leHBvcnQgZnVuY3Rpb24gZXNjYXBlRXhwcmVzc2lvbihzdHJpbmcpIHtcbiAgaWYgKHR5cGVvZiBzdHJpbmcgIT09ICdzdHJpbmcnKSB7XG4gICAgLy8gZG9uJ3QgZXNjYXBlIFNhZmVTdHJpbmdzLCBzaW5jZSB0aGV5J3JlIGFscmVhZHkgc2FmZVxuICAgIGlmIChzdHJpbmcgJiYgc3RyaW5nLnRvSFRNTCkge1xuICAgICAgcmV0dXJuIHN0cmluZy50b0hUTUwoKTtcbiAgICB9IGVsc2UgaWYgKHN0cmluZyA9PSBudWxsKSB7XG4gICAgICByZXR1cm4gJyc7XG4gICAgfSBlbHNlIGlmICghc3RyaW5nKSB7XG4gICAgICByZXR1cm4gc3RyaW5nICsgJyc7XG4gICAgfVxuXG4gICAgLy8gRm9yY2UgYSBzdHJpbmcgY29udmVyc2lvbiBhcyB0aGlzIHdpbGwgYmUgZG9uZSBieSB0aGUgYXBwZW5kIHJlZ2FyZGxlc3MgYW5kXG4gICAgLy8gdGhlIHJlZ2V4IHRlc3Qgd2lsbCBkbyB0aGlzIHRyYW5zcGFyZW50bHkgYmVoaW5kIHRoZSBzY2VuZXMsIGNhdXNpbmcgaXNzdWVzIGlmXG4gICAgLy8gYW4gb2JqZWN0J3MgdG8gc3RyaW5nIGhhcyBlc2NhcGVkIGNoYXJhY3RlcnMgaW4gaXQuXG4gICAgc3RyaW5nID0gJycgKyBzdHJpbmc7XG4gIH1cblxuICBpZiAoIXBvc3NpYmxlLnRlc3Qoc3RyaW5nKSkgeyByZXR1cm4gc3RyaW5nOyB9XG4gIHJldHVybiBzdHJpbmcucmVwbGFjZShiYWRDaGFycywgZXNjYXBlQ2hhcik7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBpc0VtcHR5KHZhbHVlKSB7XG4gIGlmICghdmFsdWUgJiYgdmFsdWUgIT09IDApIHtcbiAgICByZXR1cm4gdHJ1ZTtcbiAgfSBlbHNlIGlmIChpc0FycmF5KHZhbHVlKSAmJiB2YWx1ZS5sZW5ndGggPT09IDApIHtcbiAgICByZXR1cm4gdHJ1ZTtcbiAgfSBlbHNlIHtcbiAgICByZXR1cm4gZmFsc2U7XG4gIH1cbn1cblxuZXhwb3J0IGZ1bmN0aW9uIGNyZWF0ZUZyYW1lKG9iamVjdCkge1xuICBsZXQgZnJhbWUgPSBleHRlbmQoe30sIG9iamVjdCk7XG4gIGZyYW1lLl9wYXJlbnQgPSBvYmplY3Q7XG4gIHJldHVybiBmcmFtZTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIGJsb2NrUGFyYW1zKHBhcmFtcywgaWRzKSB7XG4gIHBhcmFtcy5wYXRoID0gaWRzO1xuICByZXR1cm4gcGFyYW1zO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gYXBwZW5kQ29udGV4dFBhdGgoY29udGV4dFBhdGgsIGlkKSB7XG4gIHJldHVybiAoY29udGV4dFBhdGggPyBjb250ZXh0UGF0aCArICcuJyA6ICcnKSArIGlkO1xufVxuIl19
+
+
+/***/ }),
+
+/***/ 41:
 /***/ (function(module, exports) {
 
-function webpackEmptyContext(req) {
-	throw new Error("Cannot find module '" + req + "'.");
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
 }
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 249;
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(selector) {
+		if (typeof memo[selector] === "undefined") {
+			memo[selector] = fn.call(this, selector);
+		}
+
+		return memo[selector]
+	};
+})(function (target) {
+	return document.querySelector(target)
+});
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(43);
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton) options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+	if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else {
+		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	options.attrs.type = "text/css";
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	options.attrs.type = "text/css";
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = options.transform(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ 43:
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
+/***/ 44:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
+
+function Exception(message, node) {
+  var loc = node && node.loc,
+      line = undefined,
+      column = undefined;
+  if (loc) {
+    line = loc.start.line;
+    column = loc.start.column;
+
+    message += ' - ' + line + ':' + column;
+  }
+
+  var tmp = Error.prototype.constructor.call(this, message);
+
+  // Unfortunately errors are not enumerable in Chrome (at least), so `for prop in tmp` doesn't work.
+  for (var idx = 0; idx < errorProps.length; idx++) {
+    this[errorProps[idx]] = tmp[errorProps[idx]];
+  }
+
+  /* istanbul ignore else */
+  if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, Exception);
+  }
+
+  try {
+    if (loc) {
+      this.lineNumber = line;
+
+      // Work around issue under safari where we can't directly set the column value
+      /* istanbul ignore next */
+      if (Object.defineProperty) {
+        Object.defineProperty(this, 'column', {
+          value: column,
+          enumerable: true
+        });
+      } else {
+        this.column = column;
+      }
+    }
+  } catch (nop) {
+    /* Ignore if the browser is very particular */
+  }
+}
+
+Exception.prototype = new Error();
+
+exports['default'] = Exception;
+module.exports = exports['default'];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2V4Y2VwdGlvbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQ0EsSUFBTSxVQUFVLEdBQUcsQ0FBQyxhQUFhLEVBQUUsVUFBVSxFQUFFLFlBQVksRUFBRSxTQUFTLEVBQUUsTUFBTSxFQUFFLFFBQVEsRUFBRSxPQUFPLENBQUMsQ0FBQzs7QUFFbkcsU0FBUyxTQUFTLENBQUMsT0FBTyxFQUFFLElBQUksRUFBRTtBQUNoQyxNQUFJLEdBQUcsR0FBRyxJQUFJLElBQUksSUFBSSxDQUFDLEdBQUc7TUFDdEIsSUFBSSxZQUFBO01BQ0osTUFBTSxZQUFBLENBQUM7QUFDWCxNQUFJLEdBQUcsRUFBRTtBQUNQLFFBQUksR0FBRyxHQUFHLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQztBQUN0QixVQUFNLEdBQUcsR0FBRyxDQUFDLEtBQUssQ0FBQyxNQUFNLENBQUM7O0FBRTFCLFdBQU8sSUFBSSxLQUFLLEdBQUcsSUFBSSxHQUFHLEdBQUcsR0FBRyxNQUFNLENBQUM7R0FDeEM7O0FBRUQsTUFBSSxHQUFHLEdBQUcsS0FBSyxDQUFDLFNBQVMsQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLElBQUksRUFBRSxPQUFPLENBQUMsQ0FBQzs7O0FBRzFELE9BQUssSUFBSSxHQUFHLEdBQUcsQ0FBQyxFQUFFLEdBQUcsR0FBRyxVQUFVLENBQUMsTUFBTSxFQUFFLEdBQUcsRUFBRSxFQUFFO0FBQ2hELFFBQUksQ0FBQyxVQUFVLENBQUMsR0FBRyxDQUFDLENBQUMsR0FBRyxHQUFHLENBQUMsVUFBVSxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUM7R0FDOUM7OztBQUdELE1BQUksS0FBSyxDQUFDLGlCQUFpQixFQUFFO0FBQzNCLFNBQUssQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLEVBQUUsU0FBUyxDQUFDLENBQUM7R0FDMUM7O0FBRUQsTUFBSTtBQUNGLFFBQUksR0FBRyxFQUFFO0FBQ1AsVUFBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLENBQUM7Ozs7QUFJdkIsVUFBSSxNQUFNLENBQUMsY0FBYyxFQUFFO0FBQ3pCLGNBQU0sQ0FBQyxjQUFjLENBQUMsSUFBSSxFQUFFLFFBQVEsRUFBRTtBQUNwQyxlQUFLLEVBQUUsTUFBTTtBQUNiLG9CQUFVLEVBQUUsSUFBSTtTQUNqQixDQUFDLENBQUM7T0FDSixNQUFNO0FBQ0wsWUFBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUM7T0FDdEI7S0FDRjtHQUNGLENBQUMsT0FBTyxHQUFHLEVBQUU7O0dBRWI7Q0FDRjs7QUFFRCxTQUFTLENBQUMsU0FBUyxHQUFHLElBQUksS0FBSyxFQUFFLENBQUM7O3FCQUVuQixTQUFTIiwiZmlsZSI6ImV4Y2VwdGlvbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIlxuY29uc3QgZXJyb3JQcm9wcyA9IFsnZGVzY3JpcHRpb24nLCAnZmlsZU5hbWUnLCAnbGluZU51bWJlcicsICdtZXNzYWdlJywgJ25hbWUnLCAnbnVtYmVyJywgJ3N0YWNrJ107XG5cbmZ1bmN0aW9uIEV4Y2VwdGlvbihtZXNzYWdlLCBub2RlKSB7XG4gIGxldCBsb2MgPSBub2RlICYmIG5vZGUubG9jLFxuICAgICAgbGluZSxcbiAgICAgIGNvbHVtbjtcbiAgaWYgKGxvYykge1xuICAgIGxpbmUgPSBsb2Muc3RhcnQubGluZTtcbiAgICBjb2x1bW4gPSBsb2Muc3RhcnQuY29sdW1uO1xuXG4gICAgbWVzc2FnZSArPSAnIC0gJyArIGxpbmUgKyAnOicgKyBjb2x1bW47XG4gIH1cblxuICBsZXQgdG1wID0gRXJyb3IucHJvdG90eXBlLmNvbnN0cnVjdG9yLmNhbGwodGhpcywgbWVzc2FnZSk7XG5cbiAgLy8gVW5mb3J0dW5hdGVseSBlcnJvcnMgYXJlIG5vdCBlbnVtZXJhYmxlIGluIENocm9tZSAoYXQgbGVhc3QpLCBzbyBgZm9yIHByb3AgaW4gdG1wYCBkb2Vzbid0IHdvcmsuXG4gIGZvciAobGV0IGlkeCA9IDA7IGlkeCA8IGVycm9yUHJvcHMubGVuZ3RoOyBpZHgrKykge1xuICAgIHRoaXNbZXJyb3JQcm9wc1tpZHhdXSA9IHRtcFtlcnJvclByb3BzW2lkeF1dO1xuICB9XG5cbiAgLyogaXN0YW5idWwgaWdub3JlIGVsc2UgKi9cbiAgaWYgKEVycm9yLmNhcHR1cmVTdGFja1RyYWNlKSB7XG4gICAgRXJyb3IuY2FwdHVyZVN0YWNrVHJhY2UodGhpcywgRXhjZXB0aW9uKTtcbiAgfVxuXG4gIHRyeSB7XG4gICAgaWYgKGxvYykge1xuICAgICAgdGhpcy5saW5lTnVtYmVyID0gbGluZTtcblxuICAgICAgLy8gV29yayBhcm91bmQgaXNzdWUgdW5kZXIgc2FmYXJpIHdoZXJlIHdlIGNhbid0IGRpcmVjdGx5IHNldCB0aGUgY29sdW1uIHZhbHVlXG4gICAgICAvKiBpc3RhbmJ1bCBpZ25vcmUgbmV4dCAqL1xuICAgICAgaWYgKE9iamVjdC5kZWZpbmVQcm9wZXJ0eSkge1xuICAgICAgICBPYmplY3QuZGVmaW5lUHJvcGVydHkodGhpcywgJ2NvbHVtbicsIHtcbiAgICAgICAgICB2YWx1ZTogY29sdW1uLFxuICAgICAgICAgIGVudW1lcmFibGU6IHRydWVcbiAgICAgICAgfSk7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICB0aGlzLmNvbHVtbiA9IGNvbHVtbjtcbiAgICAgIH1cbiAgICB9XG4gIH0gY2F0Y2ggKG5vcCkge1xuICAgIC8qIElnbm9yZSBpZiB0aGUgYnJvd3NlciBpcyB2ZXJ5IHBhcnRpY3VsYXIgKi9cbiAgfVxufVxuXG5FeGNlcHRpb24ucHJvdG90eXBlID0gbmV3IEVycm9yKCk7XG5cbmV4cG9ydCBkZWZhdWx0IEV4Y2VwdGlvbjtcbiJdfQ==
+
+
+/***/ }),
+
+/***/ 77:
+/***/ (function(module, exports, __webpack_require__) {
+
+// Create a simple path alias to allow browserify to resolve
+// the runtime on a supported path.
+module.exports = __webpack_require__(205)['default'];
+
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
 
 /***/ })
-/******/ ]));
+
+/******/ });
