@@ -16,7 +16,6 @@ import { data, dataMapping, dataPre, scale } from './data'
       <Axis></Axis>
       <StackBar [ngStyle]="{ stroke: '#fff', lineWidth: 1 }" ></StackBar>
     </Chart>
-    <LiteChart stackBar="true" [height]="height" [data]="data" [dataMapping]="dataMapping" [forceFit]="forceFit"></LiteChart>
   </div>
   \`
 })
