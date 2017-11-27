@@ -1,30 +1,11 @@
 const allData = require('./data');
-const { chartData } = allData;
+const { chartData, dataMapping, scale } = allData;
 
 export const config = {
   data: chartData,
   tooltip: true,
-  dataMapping: [{
-    dataKey: 'carat',
-    mark: 'column',
-  }, {
-    dataKey: 'price',
-    mark: 'row',
-  }, {
-    dataKey: 'cut',
-    mark: 'color',
-  }],
-  scale: [{
-    dataKey: 'carat',
-    sync: true
-  }, {
-    dataKey: 'price',
-    sync: true,
-    tickCount: 3
-  }, {
-    dataKey: 'cut',
-    sync: true,
-  }],
+  dataMapping,
+  scale,
   facet: {
     type: 'rect',
     fields: ['cut', 'clarity'],
