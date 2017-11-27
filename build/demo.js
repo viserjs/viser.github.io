@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 198);
+/******/ 	return __webpack_require__(__webpack_require__.s = 197);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 122:
+/***/ 121:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91,7 +91,7 @@ var _logger = __webpack_require__(216);
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var VERSION = '4.0.10';
+var VERSION = '4.0.11';
 exports.VERSION = VERSION;
 var COMPILER_REVISION = 7;
 
@@ -172,96 +172,98 @@ var log = _logger2['default'].log;
 exports.log = log;
 exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2Jhc2UuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7cUJBQTRDLFNBQVM7O3lCQUMvQixhQUFhOzs7O3VCQUNFLFdBQVc7OzBCQUNSLGNBQWM7O3NCQUNuQyxVQUFVOzs7O0FBRXRCLElBQU0sT0FBTyxHQUFHLFFBQVEsQ0FBQzs7QUFDekIsSUFBTSxpQkFBaUIsR0FBRyxDQUFDLENBQUM7OztBQUU1QixJQUFNLGdCQUFnQixHQUFHO0FBQzlCLEdBQUMsRUFBRSxhQUFhO0FBQ2hCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxVQUFVO0FBQ2IsR0FBQyxFQUFFLGtCQUFrQjtBQUNyQixHQUFDLEVBQUUsaUJBQWlCO0FBQ3BCLEdBQUMsRUFBRSxVQUFVO0NBQ2QsQ0FBQzs7O0FBRUYsSUFBTSxVQUFVLEdBQUcsaUJBQWlCLENBQUM7O0FBRTlCLFNBQVMscUJBQXFCLENBQUMsT0FBTyxFQUFFLFFBQVEsRUFBRSxVQUFVLEVBQUU7QUFDbkUsTUFBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLElBQUksRUFBRSxDQUFDO0FBQzdCLE1BQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxJQUFJLEVBQUUsQ0FBQztBQUMvQixNQUFJLENBQUMsVUFBVSxHQUFHLFVBQVUsSUFBSSxFQUFFLENBQUM7O0FBRW5DLGtDQUF1QixJQUFJLENBQUMsQ0FBQztBQUM3Qix3Q0FBMEIsSUFBSSxDQUFDLENBQUM7Q0FDakM7O0FBRUQscUJBQXFCLENBQUMsU0FBUyxHQUFHO0FBQ2hDLGFBQVcsRUFBRSxxQkFBcUI7O0FBRWxDLFFBQU0scUJBQVE7QUFDZCxLQUFHLEVBQUUsb0JBQU8sR0FBRzs7QUFFZixnQkFBYyxFQUFFLHdCQUFTLElBQUksRUFBRSxFQUFFLEVBQUU7QUFDakMsUUFBSSxnQkFBUyxJQUFJLENBQUMsSUFBSSxDQUFDLEtBQUssVUFBVSxFQUFFO0FBQ3RDLFVBQUksRUFBRSxFQUFFO0FBQUUsY0FBTSwyQkFBYyx5Q0FBeUMsQ0FBQyxDQUFDO09BQUU7QUFDM0Usb0JBQU8sSUFBSSxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsQ0FBQztLQUM1QixNQUFNO0FBQ0wsVUFBSSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsR0FBRyxFQUFFLENBQUM7S0FDekI7R0FDRjtBQUNELGtCQUFnQixFQUFFLDBCQUFTLElBQUksRUFBRTtBQUMvQixXQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDM0I7O0FBRUQsaUJBQWUsRUFBRSx5QkFBUyxJQUFJLEVBQUUsT0FBTyxFQUFFO0FBQ3ZDLFFBQUksZ0JBQVMsSUFBSSxDQUFDLElBQUksQ0FBQyxLQUFLLFVBQVUsRUFBRTtBQUN0QyxvQkFBTyxJQUFJLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQzdCLE1BQU07QUFDTCxVQUFJLE9BQU8sT0FBTyxLQUFLLFdBQVcsRUFBRTtBQUNsQyxjQUFNLHlFQUEwRCxJQUFJLG9CQUFpQixDQUFDO09BQ3ZGO0FBQ0QsVUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsR0FBRyxPQUFPLENBQUM7S0FDL0I7R0FDRjtBQUNELG1CQUFpQixFQUFFLDJCQUFTLElBQUksRUFBRTtBQUNoQyxXQUFPLElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDNUI7O0FBRUQsbUJBQWlCLEVBQUUsMkJBQVMsSUFBSSxFQUFFLEVBQUUsRUFBRTtBQUNwQyxRQUFJLGdCQUFTLElBQUksQ0FBQyxJQUFJLENBQUMsS0FBSyxVQUFVLEVBQUU7QUFDdEMsVUFBSSxFQUFFLEVBQUU7QUFBRSxjQUFNLDJCQUFjLDRDQUE0QyxDQUFDLENBQUM7T0FBRTtBQUM5RSxvQkFBTyxJQUFJLENBQUMsVUFBVSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQy9CLE1BQU07QUFDTCxVQUFJLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUUsQ0FBQztLQUM1QjtHQUNGO0FBQ0QscUJBQW1CLEVBQUUsNkJBQVMsSUFBSSxFQUFFO0FBQ2xDLFdBQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQztHQUM5QjtDQUNGLENBQUM7O0FBRUssSUFBSSxHQUFHLEdBQUcsb0JBQU8sR0FBRyxDQUFDOzs7UUFFcEIsV0FBVztRQUFFLE1BQU0iLCJmaWxlIjoiYmFzZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Y3JlYXRlRnJhbWUsIGV4dGVuZCwgdG9TdHJpbmd9IGZyb20gJy4vdXRpbHMnO1xuaW1wb3J0IEV4Y2VwdGlvbiBmcm9tICcuL2V4Y2VwdGlvbic7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdEhlbHBlcnN9IGZyb20gJy4vaGVscGVycyc7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdERlY29yYXRvcnN9IGZyb20gJy4vZGVjb3JhdG9ycyc7XG5pbXBvcnQgbG9nZ2VyIGZyb20gJy4vbG9nZ2VyJztcblxuZXhwb3J0IGNvbnN0IFZFUlNJT04gPSAnNC4wLjEwJztcbmV4cG9ydCBjb25zdCBDT01QSUxFUl9SRVZJU0lPTiA9IDc7XG5cbmV4cG9ydCBjb25zdCBSRVZJU0lPTl9DSEFOR0VTID0ge1xuICAxOiAnPD0gMS4wLnJjLjInLCAvLyAxLjAucmMuMiBpcyBhY3R1YWxseSByZXYyIGJ1dCBkb2Vzbid0IHJlcG9ydCBpdFxuICAyOiAnPT0gMS4wLjAtcmMuMycsXG4gIDM6ICc9PSAxLjAuMC1yYy40JyxcbiAgNDogJz09IDEueC54JyxcbiAgNTogJz09IDIuMC4wLWFscGhhLngnLFxuICA2OiAnPj0gMi4wLjAtYmV0YS4xJyxcbiAgNzogJz49IDQuMC4wJ1xufTtcblxuY29uc3Qgb2JqZWN0VHlwZSA9ICdbb2JqZWN0IE9iamVjdF0nO1xuXG5leHBvcnQgZnVuY3Rpb24gSGFuZGxlYmFyc0Vudmlyb25tZW50KGhlbHBlcnMsIHBhcnRpYWxzLCBkZWNvcmF0b3JzKSB7XG4gIHRoaXMuaGVscGVycyA9IGhlbHBlcnMgfHwge307XG4gIHRoaXMucGFydGlhbHMgPSBwYXJ0aWFscyB8fCB7fTtcbiAgdGhpcy5kZWNvcmF0b3JzID0gZGVjb3JhdG9ycyB8fCB7fTtcblxuICByZWdpc3RlckRlZmF1bHRIZWxwZXJzKHRoaXMpO1xuICByZWdpc3RlckRlZmF1bHREZWNvcmF0b3JzKHRoaXMpO1xufVxuXG5IYW5kbGViYXJzRW52aXJvbm1lbnQucHJvdG90eXBlID0ge1xuICBjb25zdHJ1Y3RvcjogSGFuZGxlYmFyc0Vudmlyb25tZW50LFxuXG4gIGxvZ2dlcjogbG9nZ2VyLFxuICBsb2c6IGxvZ2dlci5sb2csXG5cbiAgcmVnaXN0ZXJIZWxwZXI6IGZ1bmN0aW9uKG5hbWUsIGZuKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGlmIChmbikgeyB0aHJvdyBuZXcgRXhjZXB0aW9uKCdBcmcgbm90IHN1cHBvcnRlZCB3aXRoIG11bHRpcGxlIGhlbHBlcnMnKTsgfVxuICAgICAgZXh0ZW5kKHRoaXMuaGVscGVycywgbmFtZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMuaGVscGVyc1tuYW1lXSA9IGZuO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlckhlbHBlcjogZnVuY3Rpb24obmFtZSkge1xuICAgIGRlbGV0ZSB0aGlzLmhlbHBlcnNbbmFtZV07XG4gIH0sXG5cbiAgcmVnaXN0ZXJQYXJ0aWFsOiBmdW5jdGlvbihuYW1lLCBwYXJ0aWFsKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGV4dGVuZCh0aGlzLnBhcnRpYWxzLCBuYW1lKTtcbiAgICB9IGVsc2Uge1xuICAgICAgaWYgKHR5cGVvZiBwYXJ0aWFsID09PSAndW5kZWZpbmVkJykge1xuICAgICAgICB0aHJvdyBuZXcgRXhjZXB0aW9uKGBBdHRlbXB0aW5nIHRvIHJlZ2lzdGVyIGEgcGFydGlhbCBjYWxsZWQgXCIke25hbWV9XCIgYXMgdW5kZWZpbmVkYCk7XG4gICAgICB9XG4gICAgICB0aGlzLnBhcnRpYWxzW25hbWVdID0gcGFydGlhbDtcbiAgICB9XG4gIH0sXG4gIHVucmVnaXN0ZXJQYXJ0aWFsOiBmdW5jdGlvbihuYW1lKSB7XG4gICAgZGVsZXRlIHRoaXMucGFydGlhbHNbbmFtZV07XG4gIH0sXG5cbiAgcmVnaXN0ZXJEZWNvcmF0b3I6IGZ1bmN0aW9uKG5hbWUsIGZuKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGlmIChmbikgeyB0aHJvdyBuZXcgRXhjZXB0aW9uKCdBcmcgbm90IHN1cHBvcnRlZCB3aXRoIG11bHRpcGxlIGRlY29yYXRvcnMnKTsgfVxuICAgICAgZXh0ZW5kKHRoaXMuZGVjb3JhdG9ycywgbmFtZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMuZGVjb3JhdG9yc1tuYW1lXSA9IGZuO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlckRlY29yYXRvcjogZnVuY3Rpb24obmFtZSkge1xuICAgIGRlbGV0ZSB0aGlzLmRlY29yYXRvcnNbbmFtZV07XG4gIH1cbn07XG5cbmV4cG9ydCBsZXQgbG9nID0gbG9nZ2VyLmxvZztcblxuZXhwb3J0IHtjcmVhdGVGcmFtZSwgbG9nZ2VyfTtcbiJdfQ==
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2Jhc2UuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7cUJBQTRDLFNBQVM7O3lCQUMvQixhQUFhOzs7O3VCQUNFLFdBQVc7OzBCQUNSLGNBQWM7O3NCQUNuQyxVQUFVOzs7O0FBRXRCLElBQU0sT0FBTyxHQUFHLFFBQVEsQ0FBQzs7QUFDekIsSUFBTSxpQkFBaUIsR0FBRyxDQUFDLENBQUM7OztBQUU1QixJQUFNLGdCQUFnQixHQUFHO0FBQzlCLEdBQUMsRUFBRSxhQUFhO0FBQ2hCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxVQUFVO0FBQ2IsR0FBQyxFQUFFLGtCQUFrQjtBQUNyQixHQUFDLEVBQUUsaUJBQWlCO0FBQ3BCLEdBQUMsRUFBRSxVQUFVO0NBQ2QsQ0FBQzs7O0FBRUYsSUFBTSxVQUFVLEdBQUcsaUJBQWlCLENBQUM7O0FBRTlCLFNBQVMscUJBQXFCLENBQUMsT0FBTyxFQUFFLFFBQVEsRUFBRSxVQUFVLEVBQUU7QUFDbkUsTUFBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLElBQUksRUFBRSxDQUFDO0FBQzdCLE1BQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxJQUFJLEVBQUUsQ0FBQztBQUMvQixNQUFJLENBQUMsVUFBVSxHQUFHLFVBQVUsSUFBSSxFQUFFLENBQUM7O0FBRW5DLGtDQUF1QixJQUFJLENBQUMsQ0FBQztBQUM3Qix3Q0FBMEIsSUFBSSxDQUFDLENBQUM7Q0FDakM7O0FBRUQscUJBQXFCLENBQUMsU0FBUyxHQUFHO0FBQ2hDLGFBQVcsRUFBRSxxQkFBcUI7O0FBRWxDLFFBQU0scUJBQVE7QUFDZCxLQUFHLEVBQUUsb0JBQU8sR0FBRzs7QUFFZixnQkFBYyxFQUFFLHdCQUFTLElBQUksRUFBRSxFQUFFLEVBQUU7QUFDakMsUUFBSSxnQkFBUyxJQUFJLENBQUMsSUFBSSxDQUFDLEtBQUssVUFBVSxFQUFFO0FBQ3RDLFVBQUksRUFBRSxFQUFFO0FBQUUsY0FBTSwyQkFBYyx5Q0FBeUMsQ0FBQyxDQUFDO09BQUU7QUFDM0Usb0JBQU8sSUFBSSxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsQ0FBQztLQUM1QixNQUFNO0FBQ0wsVUFBSSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsR0FBRyxFQUFFLENBQUM7S0FDekI7R0FDRjtBQUNELGtCQUFnQixFQUFFLDBCQUFTLElBQUksRUFBRTtBQUMvQixXQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDM0I7O0FBRUQsaUJBQWUsRUFBRSx5QkFBUyxJQUFJLEVBQUUsT0FBTyxFQUFFO0FBQ3ZDLFFBQUksZ0JBQVMsSUFBSSxDQUFDLElBQUksQ0FBQyxLQUFLLFVBQVUsRUFBRTtBQUN0QyxvQkFBTyxJQUFJLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQzdCLE1BQU07QUFDTCxVQUFJLE9BQU8sT0FBTyxLQUFLLFdBQVcsRUFBRTtBQUNsQyxjQUFNLHlFQUEwRCxJQUFJLG9CQUFpQixDQUFDO09BQ3ZGO0FBQ0QsVUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsR0FBRyxPQUFPLENBQUM7S0FDL0I7R0FDRjtBQUNELG1CQUFpQixFQUFFLDJCQUFTLElBQUksRUFBRTtBQUNoQyxXQUFPLElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDNUI7O0FBRUQsbUJBQWlCLEVBQUUsMkJBQVMsSUFBSSxFQUFFLEVBQUUsRUFBRTtBQUNwQyxRQUFJLGdCQUFTLElBQUksQ0FBQyxJQUFJLENBQUMsS0FBSyxVQUFVLEVBQUU7QUFDdEMsVUFBSSxFQUFFLEVBQUU7QUFBRSxjQUFNLDJCQUFjLDRDQUE0QyxDQUFDLENBQUM7T0FBRTtBQUM5RSxvQkFBTyxJQUFJLENBQUMsVUFBVSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQy9CLE1BQU07QUFDTCxVQUFJLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUUsQ0FBQztLQUM1QjtHQUNGO0FBQ0QscUJBQW1CLEVBQUUsNkJBQVMsSUFBSSxFQUFFO0FBQ2xDLFdBQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQztHQUM5QjtDQUNGLENBQUM7O0FBRUssSUFBSSxHQUFHLEdBQUcsb0JBQU8sR0FBRyxDQUFDOzs7UUFFcEIsV0FBVztRQUFFLE1BQU0iLCJmaWxlIjoiYmFzZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Y3JlYXRlRnJhbWUsIGV4dGVuZCwgdG9TdHJpbmd9IGZyb20gJy4vdXRpbHMnO1xuaW1wb3J0IEV4Y2VwdGlvbiBmcm9tICcuL2V4Y2VwdGlvbic7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdEhlbHBlcnN9IGZyb20gJy4vaGVscGVycyc7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdERlY29yYXRvcnN9IGZyb20gJy4vZGVjb3JhdG9ycyc7XG5pbXBvcnQgbG9nZ2VyIGZyb20gJy4vbG9nZ2VyJztcblxuZXhwb3J0IGNvbnN0IFZFUlNJT04gPSAnNC4wLjExJztcbmV4cG9ydCBjb25zdCBDT01QSUxFUl9SRVZJU0lPTiA9IDc7XG5cbmV4cG9ydCBjb25zdCBSRVZJU0lPTl9DSEFOR0VTID0ge1xuICAxOiAnPD0gMS4wLnJjLjInLCAvLyAxLjAucmMuMiBpcyBhY3R1YWxseSByZXYyIGJ1dCBkb2Vzbid0IHJlcG9ydCBpdFxuICAyOiAnPT0gMS4wLjAtcmMuMycsXG4gIDM6ICc9PSAxLjAuMC1yYy40JyxcbiAgNDogJz09IDEueC54JyxcbiAgNTogJz09IDIuMC4wLWFscGhhLngnLFxuICA2OiAnPj0gMi4wLjAtYmV0YS4xJyxcbiAgNzogJz49IDQuMC4wJ1xufTtcblxuY29uc3Qgb2JqZWN0VHlwZSA9ICdbb2JqZWN0IE9iamVjdF0nO1xuXG5leHBvcnQgZnVuY3Rpb24gSGFuZGxlYmFyc0Vudmlyb25tZW50KGhlbHBlcnMsIHBhcnRpYWxzLCBkZWNvcmF0b3JzKSB7XG4gIHRoaXMuaGVscGVycyA9IGhlbHBlcnMgfHwge307XG4gIHRoaXMucGFydGlhbHMgPSBwYXJ0aWFscyB8fCB7fTtcbiAgdGhpcy5kZWNvcmF0b3JzID0gZGVjb3JhdG9ycyB8fCB7fTtcblxuICByZWdpc3RlckRlZmF1bHRIZWxwZXJzKHRoaXMpO1xuICByZWdpc3RlckRlZmF1bHREZWNvcmF0b3JzKHRoaXMpO1xufVxuXG5IYW5kbGViYXJzRW52aXJvbm1lbnQucHJvdG90eXBlID0ge1xuICBjb25zdHJ1Y3RvcjogSGFuZGxlYmFyc0Vudmlyb25tZW50LFxuXG4gIGxvZ2dlcjogbG9nZ2VyLFxuICBsb2c6IGxvZ2dlci5sb2csXG5cbiAgcmVnaXN0ZXJIZWxwZXI6IGZ1bmN0aW9uKG5hbWUsIGZuKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGlmIChmbikgeyB0aHJvdyBuZXcgRXhjZXB0aW9uKCdBcmcgbm90IHN1cHBvcnRlZCB3aXRoIG11bHRpcGxlIGhlbHBlcnMnKTsgfVxuICAgICAgZXh0ZW5kKHRoaXMuaGVscGVycywgbmFtZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMuaGVscGVyc1tuYW1lXSA9IGZuO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlckhlbHBlcjogZnVuY3Rpb24obmFtZSkge1xuICAgIGRlbGV0ZSB0aGlzLmhlbHBlcnNbbmFtZV07XG4gIH0sXG5cbiAgcmVnaXN0ZXJQYXJ0aWFsOiBmdW5jdGlvbihuYW1lLCBwYXJ0aWFsKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGV4dGVuZCh0aGlzLnBhcnRpYWxzLCBuYW1lKTtcbiAgICB9IGVsc2Uge1xuICAgICAgaWYgKHR5cGVvZiBwYXJ0aWFsID09PSAndW5kZWZpbmVkJykge1xuICAgICAgICB0aHJvdyBuZXcgRXhjZXB0aW9uKGBBdHRlbXB0aW5nIHRvIHJlZ2lzdGVyIGEgcGFydGlhbCBjYWxsZWQgXCIke25hbWV9XCIgYXMgdW5kZWZpbmVkYCk7XG4gICAgICB9XG4gICAgICB0aGlzLnBhcnRpYWxzW25hbWVdID0gcGFydGlhbDtcbiAgICB9XG4gIH0sXG4gIHVucmVnaXN0ZXJQYXJ0aWFsOiBmdW5jdGlvbihuYW1lKSB7XG4gICAgZGVsZXRlIHRoaXMucGFydGlhbHNbbmFtZV07XG4gIH0sXG5cbiAgcmVnaXN0ZXJEZWNvcmF0b3I6IGZ1bmN0aW9uKG5hbWUsIGZuKSB7XG4gICAgaWYgKHRvU3RyaW5nLmNhbGwobmFtZSkgPT09IG9iamVjdFR5cGUpIHtcbiAgICAgIGlmIChmbikgeyB0aHJvdyBuZXcgRXhjZXB0aW9uKCdBcmcgbm90IHN1cHBvcnRlZCB3aXRoIG11bHRpcGxlIGRlY29yYXRvcnMnKTsgfVxuICAgICAgZXh0ZW5kKHRoaXMuZGVjb3JhdG9ycywgbmFtZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMuZGVjb3JhdG9yc1tuYW1lXSA9IGZuO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlckRlY29yYXRvcjogZnVuY3Rpb24obmFtZSkge1xuICAgIGRlbGV0ZSB0aGlzLmRlY29yYXRvcnNbbmFtZV07XG4gIH1cbn07XG5cbmV4cG9ydCBsZXQgbG9nID0gbG9nZ2VyLmxvZztcblxuZXhwb3J0IHtjcmVhdGVGcmFtZSwgbG9nZ2VyfTtcbiJdfQ==
 
 
 /***/ }),
 
-/***/ 198:
+/***/ 197:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-__webpack_require__(199);
-const $ = __webpack_require__(201);
+__webpack_require__(198);
+const $ = __webpack_require__(200);
 
-const CONS = __webpack_require__(202);
+const CONS = __webpack_require__(201);
 
-const codeConfig = __webpack_require__(203);
+const codeConfig = __webpack_require__(202);
 
-const navTpl = __webpack_require__(204);
-const rightPanelTpl = __webpack_require__(221);
-const caseBoxJsonTpl = __webpack_require__(222);
+const navTpl = __webpack_require__(203);
+
+const ALL_FRAMEWORK = ['react', 'vue', 'angular'];
 
 class App {
   constructor() {
     this.attrs = {
-      codes: [],
-      language: 'react',
-      chartType: 'line',
+      code: {},
+      framework: 'react',
+      chartType: 'bar',
     };
   }
   init() {
     // 根据 url 路由转发
-    // const langReg = new RegExp('(^|&)language=([^&]*)(&|$)');
-    const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
     const search = window.location.search.substr(1);
 
-    // const langResult = search.match(langReg);
-    const typeResult = search.match(typeReg);
-    // const lang = langResult ? langResult[2] : 'react';
-    const chartType = typeResult? typeResult[2] : Object.keys(codeConfig)[0];
-    // this.attrs.language = lang;
-    this.attrs.chartType = chartType;
-    const exampleFolders = codeConfig[chartType].examples || [];
-    exampleFolders.forEach((folder) => {
-      let jsonCode = '';
-      let reactCode = '';
-      let vueCode = '';
-      let angularCode = '';
-      try {
-        jsonCode = __webpack_require__(223)(`./${chartType}/${folder}/json.js`);
-        reactCode = __webpack_require__(228)(`./${chartType}/${folder}/react.js`);
-        vueCode = __webpack_require__(231)(`./${chartType}/${folder}/vue.js`);
-        angularCode = __webpack_require__(234)(`./${chartType}/${folder}/angular.js`);
-      } catch(e) {
-        console.log('exception:', e);
-      } finally {
-        this.attrs.codes.push({
-          jsonCode, reactCode, vueCode, angularCode
-        });
-      }
 
-    });
+    const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
+    const typeResult = search.match(typeReg);
+    const chartType = typeResult ? typeResult[2] : Object.keys(codeConfig)[0];
+    this.attrs.chartType = chartType;
+
+    const exampleReg = new RegExp('(^|&)example=([^&]*)(&|$)');
+    const exampleResult = search.match(exampleReg);
+    const exampleIndex = exampleResult ? parseInt(exampleResult[2], 10) : 0;
+
+    const example = codeConfig[chartType].examples[exampleIndex] || codeConfig[chartType].examples[0] || {};
+    const { path, cnName, enName } = example;
+
+    let jsonCode = '';
+    let reactCode = '';
+    let vueCode = '';
+    let angularCode = '';
+    try {
+      jsonCode = __webpack_require__(220)(`./${chartType}/${path}/json.js`);
+      reactCode = __webpack_require__(225)(`./${chartType}/${path}/react.js`);
+      vueCode = __webpack_require__(228)(`./${chartType}/${path}/vue.js`);
+      angularCode = __webpack_require__(231)(`./${chartType}/${path}/angular.js`);
+    } catch(e) {
+      console.log('exception:', e);
+    } finally {
+      this.attrs.code = {
+        jsonCode, reactCode, vueCode, angularCode,
+        cnName, enName,
+      };
+    }
 
     this.render();
+    this.refreshCase(this.attrs.framework);
     this.bindEvent();
   }
 
   render() {
-    this.renderNav();
-    this.renderRightPanel();
-    this.renderExample();
-  }
-
-  renderNav() {
-    $('#nav').empty();
-    $('#nav').append(navTpl({
+    $('.left-panel').append(navTpl({
       codeConfig,
-      language: this.attrs.language,
       chartType: this.attrs.chartType,
     }));
-  }
-  renderRightPanel() {
-    $('#rightPanel').empty();
-    $('#rightPanel').append(rightPanelTpl({noCodes: this.attrs.codes.length ? false : true}));
+
+    const code = this.attrs.code;
+    $('.case-type').html(code.enName);
+
+    const runCode = code['jsonCode'];
+    runCode.config.chart.container = 'case-mount-node';
+    Viser.default(runCode.config);
+
+    ALL_FRAMEWORK.forEach((framework) => {
+      this.presetEditor(framework, code);
+    });
   }
 
   bindEvent() {
-    var _this = this;
+    const self = this;
     $('.case-box .op .run').on('click', function() {
       const index = $(this).attr('data-index');
 
-      const data = _this.getJsfiddleData(index);
+      const data = self.getJsfiddleData(index);
       const formAttributes = {
         method: 'post',
         action: 'https://jsfiddle.net/api/post/library/pure/',
@@ -286,24 +288,43 @@ class App {
       form.submit();
       document.body.removeChild(form);
     });
-    $('.case-box .case-code-switch .case-code-switch-item').on('click', function () {
-      const lang = $(this).attr('data-lang');
-      _this.attrs.language = lang;
 
-      _this.unbindEvent();
-      _this.render();
-      _this.bindEvent();
+    $('.case-box .case-code-switch .case-code-switch-item').on('click', function() {
+      const framework = $(this).attr('data-framework');
+      self.attrs.framework = framework;
+      self.refreshCase(framework);
     })
   }
 
-  unbindEvent() {
-    $('.case-box .op .run').off('click');
-    $('.case-box .case-code-switch .case-code-switch-item').off('click');
+  refreshCase(framework) {
+    $('.case-box .case-code-switch-item').each(function () {
+      $(this).removeClass('active');
+      if (framework === $(this).attr('data-framework')) {
+        $(this).addClass('active');
+      }
+    });
+    $('.case-box .case-code-detail').each(function () {
+      $(this).removeClass('active');
+      if (framework === $(this).attr('data-framework')) {
+        $(this).addClass('active');
+      }
+    });
+  }
+
+  presetEditor(framework, code) {
+    const editor = ace.edit(`${framework}-editor`);
+    editor.setTheme("ace/theme/github");
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.setHighlightActiveLine(true);
+    editor.setShowPrintMargin(false);
+    editor.env.editor.setReadOnly(true);
+    editor.renderer.setShowGutter(false);
+    editor.env.editor.setValue(code[`${framework}Code`].template, 1);
   }
 
   getJsfiddleData(index) {
-    const language = this.attrs.language;
-    switch(language) {
+    const framework = this.attrs.framework;
+    switch(framework) {
       case 'json':
         return this.getJsfiddleJsonData(index);
       case 'react':
@@ -318,93 +339,6 @@ class App {
       default:
         return;
     }
-  }
-
-  renderExample() {
-    const _this = this;
-    const enName = this.attrs.chartType + ' Chart';
-
-    if (!this.attrs.codes.length) {
-      return;
-    }
-    $('.case-list').empty();
-    this.attrs.codes.forEach((code, i) => {
-      $('.case-list').append(caseBoxJsonTpl({
-        name: enName,
-        i,
-        reactClass: _this.attrs.language === 'react' ? ' active' : '',
-        vueClass: _this.attrs.language === 'vue' ? ' active' : '',
-        angularClass: _this.attrs.language === 'angular' ? ' active' : '',
-      }));
-      const runCode = code['jsonCode'];
-      runCode.config.chart.container = `example${i}`;
-      Viser.default(runCode.config);
-
-      var reactEditor = ace.edit(`react-${i}`);
-      const showReactCode = _this.getReactCode(code);
-      reactEditor.setTheme("ace/theme/github");
-      reactEditor.getSession().setMode("ace/mode/javascript");
-      reactEditor.setHighlightActiveLine(true);
-      reactEditor.setShowPrintMargin(false);
-      reactEditor.env.editor.setReadOnly(true);
-      reactEditor.renderer.setShowGutter(false);
-      reactEditor.env.editor.setValue(showReactCode, 1);
-
-      var vueEditor = ace.edit(`vue-${i}`);
-      const showVueCode = _this.getVueCode(code);
-      vueEditor.setTheme("ace/theme/github");
-      vueEditor.getSession().setMode("ace/mode/javascript");
-      vueEditor.setHighlightActiveLine(true);
-      vueEditor.setShowPrintMargin(false);
-      vueEditor.env.editor.setReadOnly(true);
-      vueEditor.renderer.setShowGutter(false);
-      vueEditor.env.editor.setValue(showVueCode, 1);
-
-      var angularEditor = ace.edit(`angular-${i}`);
-      const showAngularCode = this.getAngularCode(code);
-      angularEditor.setTheme("ace/theme/github");
-      angularEditor.getSession().setMode("ace/mode/javascript");
-      angularEditor.setHighlightActiveLine(true);
-      angularEditor.setShowPrintMargin(false);
-      angularEditor.env.editor.setReadOnly(true);
-      angularEditor.renderer.setShowGutter(false);
-      angularEditor.env.editor.setValue(showAngularCode, 1);
-    });
-  }
-
-  getJsonCode(code) {
-    return JSON.stringify(code['jsonCode'].config, null, 2);
-  }
-  getReactCode(code) {
-    const languageCode = code[`reactCode`];
-    return languageCode.template;
-//     const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
-//     return `
-// var config = ${jsonCode};
-// ${languageCode.script || ''}
-// ReactDOM.render(${languageCode.template}, document.getElementById('example'))`;
-  }
-
-  getVueCode(code) {
-    const languageCode = code[`vueCode`];
-    return languageCode.template;
-//     const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
-//     let vueTpl = `<div id="example">${languageCode.template}</div>`;
-//     let scriptCode = `
-// var config = ${jsonCode}
-// new Vue({
-//   el: '#example',
-//   data: {
-//     config,
-//   }
-// });
-// `;
-//     return `${vueTpl}${scriptCode}`;
-  }
-
-  getAngularCode(code) {
-    const languageCode = code[`angularCode`];
-    return languageCode.template;
   }
 
   getJsfiddleJsonData(index) {
@@ -474,13 +408,13 @@ new App().init();
 
 /***/ }),
 
-/***/ 199:
+/***/ 198:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(200);
+var content = __webpack_require__(199);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -494,8 +428,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
-			var newContent = require("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss");
+		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
+			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -506,7 +440,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 200:
+/***/ 199:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(41)(undefined);
@@ -514,14 +448,14 @@ exports = module.exports = __webpack_require__(41)(undefined);
 
 
 // module
-exports.push([module.i, ".common-header {\n  height: 60px;\n  line-height: 60px;\n  display: block;\n  outline: 0;\n  list-style: none;\n  color: #666;\n  font-size: 14px;\n  position: relative;\n  background: #00c49f;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }\n  .common-header .common-title {\n    float: left;\n    padding-left: 30px;\n    color: #fff;\n    text-decoration: none;\n    font-size: 36px;\n    font-weight: 100;\n    height: 60px;\n    line-height: 60px;\n    display: block;\n    background: #0088fe;\n    width: 200px;\n    box-sizing: border-box; }\n    .common-header .common-title::after {\n      content: ' ';\n      display: block;\n      position: absolute;\n      top: -28px;\n      left: 163px;\n      width: 80px;\n      height: 80px;\n      transform: rotate(-30deg);\n      background: #0088fe;\n      border-radius: 20px; }\n  .common-header .common-header-nav {\n    width: 500px;\n    height: 60px;\n    box-sizing: border-box;\n    padding-top: 13px;\n    float: right;\n    margin-right: 126px; }\n  .common-header .common-header-nav-item {\n    color: white;\n    display: block;\n    width: 130px;\n    height: 34px;\n    line-height: 34px;\n    border-radius: 34px;\n    font-size: 14px;\n    float: right;\n    text-decoration: none;\n    text-align: center;\n    transition: background .3s, color .3s;\n    position: relative;\n    cursor: pointer; }\n    .common-header .common-header-nav-item a {\n      text-decoration: none;\n      color: #fff; }\n    .common-header .common-header-nav-item:hover {\n      background: white;\n      color: #00c49f; }\n      .common-header .common-header-nav-item:hover a,\n      .common-header .common-header-nav-item:hover i {\n        color: #00c49f; }\n\n* {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  overflow-x: hidden; }\n\nul, ol {\n  display: block;\n  list-style-type: none;\n  -webkit-margin-before: 0;\n  -webkit-margin-after: 0;\n  -webkit-margin-start: 0px;\n  -webkit-margin-end: 0px;\n  -webkit-padding-start: 0; }\n\na {\n  text-decoration: none; }\n\n.github-link {\n  color: white;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  display: block;\n  float: right;\n  margin-left: 48px; }\n  .github-link .iconfont {\n    height: 29px;\n    width: 29px;\n    overflow: hidden;\n    font-size: 28px; }\n  .github-link .icon-gh {\n    display: none; }\n  .github-link .icon-gh-o {\n    display: block; }\n  .github-link:hover .icon-gh {\n    display: block; }\n  .github-link:hover .icon-gh-o {\n    display: none; }\n\n@font-face {\n  font-family: 'iconfont';\n  /* project id 473307 */\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot\");\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot?#iefix\") format(\"embedded-opentype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.woff\") format(\"woff\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.ttf\") format(\"truetype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.svg#iconfont\") format(\"svg\"); }\n\n.iconfont {\n  font-family: \"iconfont\" !important;\n  font-size: 16px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.icon-bingtu:before {\n  content: \"\\E600\"; }\n\n.icon-gh:before {\n  content: \"\\E719\"; }\n\n.icon-fuzhi:before {\n  content: \"\\E644\"; }\n\n.icon-relitu:before {\n  content: \"\\E650\"; }\n\n.icon-jizuobiao:before {\n  content: \"\\E830\"; }\n\n.icon-loudoutu:before {\n  content: \"\\E645\"; }\n\n.icon-mianjitu:before {\n  content: \"\\E6E7\"; }\n\n.icon-gh-o:before {\n  content: \"\\EEA9\"; }\n\n.icon-leidatu:before {\n  content: \"\\E626\"; }\n\n.icon-yibiaopan:before {\n  content: \"\\E66C\"; }\n\n.icon-fenmian:before {\n  content: \"\\E6EA\"; }\n\n.icon-zhuzhuangtu:before {\n  content: \"\\E6B4\"; }\n\n.icon-diantu:before {\n  content: \"\\E61E\"; }\n\n.icon-infinite:before {\n  content: \"\\E6CE\"; }\n\n.icon-one:before {\n  content: \"\\E687\"; }\n\n.icon-xiangxiantu:before {\n  content: \"\\E62B\"; }\n\n.icon-ditu:before {\n  content: \"\\E882\"; }\n\n.icon-github:before {\n  content: \"\\E601\"; }\n\n.icon-guanxitu:before {\n  content: \"\\E615\"; }\n\n.icon-down-triangle:before {\n  content: \"\\E610\"; }\n\n.icon-yunxing:before {\n  content: \"\\E66D\"; }\n\n.icon-xianxingtu:before {\n  content: \"\\E660\"; }\n\n.icon-contain:before {\n  content: \"\\E614\"; }\n\n.icon-juzhentu:before {\n  content: \"\\E740\"; }\n\n.icon-gupiaotu:before {\n  content: \"\\E73B\"; }\n\n.icon-meiguitu:before {\n  content: \"\\E60B\"; }\n\n#main-content {\n  position: relative;\n  height: calc(100% - 60px); }\n  #main-content .left-panel {\n    float: left;\n    width: 200px;\n    height: 100%;\n    background: #fff;\n    border-right: 1px solid #ddd;\n    padding-top: 20px;\n    box-sizing: border-box; }\n  #main-content .right-panel {\n    overflow: hidden;\n    height: 100%;\n    padding: 20px;\n    box-sizing: border-box; }\n\n.common-nav-folder {\n  margin-bottom: 20px;\n  padding-left: 30px;\n  line-height: 40px; }\n\n.common-nav-item {\n  cursor: pointer;\n  padding-left: 60px;\n  margin-left: -30px; }\n  .common-nav-item:hover, .common-nav-item.active {\n    background: #edf1f5; }\n\n.common-nav-title {\n  color: #999;\n  font-weight: 100; }\n\n.common-nav-link {\n  color: #666;\n  display: block;\n  width: 100%;\n  height: 34px;\n  line-height: 34px;\n  font-size: 16px;\n  text-transform: capitalize; }\n\n#main-content .case-type {\n  background: #fff;\n  color: #333;\n  margin-bottom: 10px;\n  font-size: 20px;\n  text-transform: capitalize;\n  width: calc(100% - 460px);\n  position: absolute; }\n\n#main-content .case-box {\n  margin-bottom: 10px;\n  background: #fff;\n  position: relative;\n  transition: all .2s ease-in-out; }\n  #main-content .case-box .op {\n    position: absolute;\n    top: 0;\n    right: 15px;\n    z-index: 11;\n    line-height: 28px;\n    color: #666; }\n    #main-content .case-box .op a {\n      cursor: pointer;\n      margin-top: 3px;\n      padding: 3px 16px;\n      display: inline-block;\n      background: #0088fe;\n      border-radius: 4px;\n      font-size: 14px;\n      line-height: 22px;\n      color: #fff; }\n      #main-content .case-box .op a i {\n        font-size: 14px;\n        line-height: 22px;\n        color: #fff; }\n\n#main-content .case-demo {\n  padding: 50px 15px 0 0;\n  width: calc(100% - 430px);\n  border-right: 1px dashed #eee; }\n\n#main-content .case-code {\n  padding-left: 15px;\n  width: 415px; }\n\n#main-content .case-demo,\n#main-content .case-code {\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  box-sizing: border-box; }\n  #main-content .case-demo .case-code-switch,\n  #main-content .case-code .case-code-switch {\n    width: 100%;\n    height: 40px;\n    position: relative; }\n  #main-content .case-demo .case-code-detail,\n  #main-content .case-code .case-code-detail {\n    display: none;\n    height: calc(100% - 40px);\n    width: 100%;\n    overflow-y: auto;\n    position: relative; }\n    #main-content .case-demo .case-code-detail.active,\n    #main-content .case-code .case-code-detail.active {\n      display: block; }\n    #main-content .case-demo .case-code-detail pre,\n    #main-content .case-code .case-code-detail pre {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0; }\n\n#main-content .case-code-switch {\n  height: 36px;\n  width: 100%;\n  display: block;\n  padding-top: 4px; }\n  #main-content .case-code-switch .case-code-switch-item {\n    float: left;\n    display: block;\n    width: 80px;\n    margin: 0 10px;\n    font-size: 14px;\n    height: 28px;\n    text-align: center;\n    padding-bottom: 2px;\n    color: #999;\n    cursor: pointer; }\n    #main-content .case-code-switch .case-code-switch-item:hover {\n      color: #666; }\n    #main-content .case-code-switch .case-code-switch-item.active, #main-content .case-code-switch .case-code-switch-item.active:hover {\n      color: #0088fe;\n      padding-bottom: 0;\n      border-bottom: 2px solid #0088fe; }\n\n#main-content .case-box.no-code {\n  padding: 15px; }\n", ""]);
+exports.push([module.i, ".common-header {\n  height: 60px;\n  line-height: 60px;\n  display: block;\n  outline: 0;\n  list-style: none;\n  color: #666;\n  font-size: 14px;\n  position: relative;\n  background: #00c49f;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }\n  .common-header .common-title {\n    float: left;\n    padding-left: 30px;\n    color: #fff;\n    text-decoration: none;\n    font-size: 36px;\n    font-weight: 100;\n    height: 60px;\n    line-height: 60px;\n    display: block;\n    background: #0088fe;\n    width: 200px;\n    box-sizing: border-box; }\n    .common-header .common-title::after {\n      content: ' ';\n      display: block;\n      position: absolute;\n      top: -28px;\n      left: 163px;\n      width: 80px;\n      height: 80px;\n      transform: rotate(-30deg);\n      background: #0088fe;\n      border-radius: 20px; }\n  .common-header .common-header-nav {\n    width: 500px;\n    height: 60px;\n    box-sizing: border-box;\n    padding-top: 13px;\n    float: right;\n    margin-right: 126px; }\n  .common-header .common-header-nav-item {\n    color: white;\n    display: block;\n    width: 130px;\n    height: 34px;\n    line-height: 34px;\n    border-radius: 34px;\n    font-size: 14px;\n    float: right;\n    text-decoration: none;\n    text-align: center;\n    transition: background .3s, color .3s;\n    position: relative;\n    cursor: pointer; }\n    .common-header .common-header-nav-item a {\n      text-decoration: none;\n      color: #fff; }\n    .common-header .common-header-nav-item:hover {\n      background: white;\n      color: #00c49f; }\n      .common-header .common-header-nav-item:hover a,\n      .common-header .common-header-nav-item:hover i {\n        color: #00c49f; }\n\n* {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  overflow-x: hidden; }\n\nul, ol {\n  display: block;\n  list-style-type: none;\n  -webkit-margin-before: 0;\n  -webkit-margin-after: 0;\n  -webkit-margin-start: 0px;\n  -webkit-margin-end: 0px;\n  -webkit-padding-start: 0; }\n\na {\n  text-decoration: none; }\n\n.github-link {\n  color: white;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  display: block;\n  float: right;\n  margin-left: 48px; }\n  .github-link .iconfont {\n    height: 29px;\n    width: 29px;\n    overflow: hidden;\n    font-size: 28px; }\n  .github-link .icon-gh {\n    display: none; }\n  .github-link .icon-gh-o {\n    display: block; }\n  .github-link:hover .icon-gh {\n    display: block; }\n  .github-link:hover .icon-gh-o {\n    display: none; }\n\n@font-face {\n  font-family: 'iconfont';\n  /* project id 473307 */\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot\");\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot?#iefix\") format(\"embedded-opentype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.woff\") format(\"woff\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.ttf\") format(\"truetype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.svg#iconfont\") format(\"svg\"); }\n\n.iconfont {\n  font-family: \"iconfont\" !important;\n  font-size: 16px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.icon-bingtu:before {\n  content: \"\\E600\"; }\n\n.icon-gh:before {\n  content: \"\\E719\"; }\n\n.icon-fuzhi:before {\n  content: \"\\E644\"; }\n\n.icon-relitu:before {\n  content: \"\\E650\"; }\n\n.icon-jizuobiao:before {\n  content: \"\\E830\"; }\n\n.icon-loudoutu:before {\n  content: \"\\E645\"; }\n\n.icon-mianjitu:before {\n  content: \"\\E6E7\"; }\n\n.icon-gh-o:before {\n  content: \"\\EEA9\"; }\n\n.icon-leidatu:before {\n  content: \"\\E626\"; }\n\n.icon-yibiaopan:before {\n  content: \"\\E66C\"; }\n\n.icon-fenmian:before {\n  content: \"\\E6EA\"; }\n\n.icon-zhuzhuangtu:before {\n  content: \"\\E6B4\"; }\n\n.icon-diantu:before {\n  content: \"\\E61E\"; }\n\n.icon-infinite:before {\n  content: \"\\E6CE\"; }\n\n.icon-one:before {\n  content: \"\\E687\"; }\n\n.icon-xiangxiantu:before {\n  content: \"\\E62B\"; }\n\n.icon-ditu:before {\n  content: \"\\E882\"; }\n\n.icon-github:before {\n  content: \"\\E601\"; }\n\n.icon-guanxitu:before {\n  content: \"\\E615\"; }\n\n.icon-down-triangle:before {\n  content: \"\\E610\"; }\n\n.icon-yunxing:before {\n  content: \"\\E66D\"; }\n\n.icon-xianxingtu:before {\n  content: \"\\E660\"; }\n\n.icon-contain:before {\n  content: \"\\E614\"; }\n\n.icon-juzhentu:before {\n  content: \"\\E740\"; }\n\n.icon-gupiaotu:before {\n  content: \"\\E73B\"; }\n\n.icon-meiguitu:before {\n  content: \"\\E60B\"; }\n\n#main-content {\n  position: relative;\n  height: calc(100% - 60px); }\n  #main-content .left-panel {\n    float: left;\n    width: 200px;\n    height: 100%;\n    background: #fff;\n    border-right: 1px solid #ddd;\n    padding-top: 20px;\n    box-sizing: border-box; }\n  #main-content .right-panel {\n    overflow: hidden;\n    height: 100%;\n    padding: 20px;\n    box-sizing: border-box; }\n\n.common-nav-folder {\n  margin-bottom: 20px;\n  padding-left: 30px;\n  line-height: 40px; }\n\n.common-nav-item {\n  cursor: pointer;\n  padding-left: 60px;\n  margin-left: -30px; }\n  .common-nav-item:hover, .common-nav-item.active {\n    background: #edf1f5; }\n\n.common-nav-title {\n  color: #999;\n  font-weight: 100; }\n\n.common-nav-link {\n  color: #666;\n  display: block;\n  width: 100%;\n  height: 34px;\n  line-height: 34px;\n  font-size: 16px;\n  text-transform: capitalize; }\n\n#main-content .case-type {\n  background: #fff;\n  color: #333;\n  margin-bottom: 10px;\n  font-size: 20px;\n  text-transform: capitalize;\n  width: calc(100% - 460px);\n  position: absolute; }\n\n#main-content .op {\n  position: absolute;\n  top: 0;\n  right: 15px;\n  z-index: 11;\n  line-height: 28px;\n  color: #666; }\n  #main-content .op a {\n    cursor: pointer;\n    margin-top: 3px;\n    padding: 3px 16px;\n    display: inline-block;\n    background: #0088fe;\n    border-radius: 4px;\n    font-size: 14px;\n    line-height: 22px;\n    color: #fff; }\n    #main-content .op a i {\n      font-size: 14px;\n      line-height: 22px;\n      color: #fff; }\n\n#main-content .case-demo {\n  padding: 50px 15px 0 0;\n  width: calc(100% - 430px);\n  border-right: 1px dashed #eee; }\n\n#main-content .case-code {\n  padding-left: 15px;\n  width: 415px; }\n\n#main-content .case-demo,\n#main-content .case-code {\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  box-sizing: border-box; }\n  #main-content .case-demo .case-code-switch,\n  #main-content .case-code .case-code-switch {\n    width: 100%;\n    height: 40px;\n    position: relative; }\n  #main-content .case-demo .case-code-detail,\n  #main-content .case-code .case-code-detail {\n    display: none;\n    height: calc(100% - 40px);\n    width: 100%;\n    overflow-y: auto;\n    position: relative; }\n    #main-content .case-demo .case-code-detail.active,\n    #main-content .case-code .case-code-detail.active {\n      display: block; }\n    #main-content .case-demo .case-code-detail pre,\n    #main-content .case-code .case-code-detail pre {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0; }\n\n#main-content .case-code-switch {\n  height: 36px;\n  width: 100%;\n  display: block;\n  padding-top: 4px; }\n  #main-content .case-code-switch .case-code-switch-item {\n    float: left;\n    display: block;\n    width: 80px;\n    margin: 0 10px;\n    font-size: 14px;\n    height: 28px;\n    text-align: center;\n    padding-bottom: 2px;\n    color: #999;\n    cursor: pointer; }\n    #main-content .case-code-switch .case-code-switch-item:hover {\n      color: #666; }\n    #main-content .case-code-switch .case-code-switch-item.active, #main-content .case-code-switch .case-code-switch-item.active:hover {\n      color: #0088fe;\n      padding-bottom: 0;\n      border-bottom: 2px solid #0088fe; }\n\n#main-content .case-box.no-code {\n  padding: 15px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 201:
+/***/ 200:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10782,7 +10716,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 202:
+/***/ 201:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10803,7 +10737,7 @@ const URL = {
 
 /***/ }),
 
-/***/ 203:
+/***/ 202:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -10818,9 +10752,28 @@ module.exports = {
   //   icon: 'mianjitu'
   // },
   bar: {
+    enName: 'Bar',
     cnName: '柱状图',
-    examples: ['example1'],
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Simple Bar',
+        cnName: '简单柱状图',
+      },
+    ],
     icon: 'zhuzhuangtu'
+  },
+  facet: {
+    enName: 'Facet',
+    cnName: '分面图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Simple Facet',
+        cnName: '简单分面图',
+      },
+    ],
+    icon: 'fenmian'
   },
   // pie: {
   //   cnName: '饼图',
@@ -10852,11 +10805,7 @@ module.exports = {
   //   examples: ['example1'],
   //   icon: 'loudoutu'
   // },
-  facet: {
-    cnName: '分面图',
-    examples: ['example1'],
-    icon: 'fenmian'
-  },
+
   // sankey: {
   //   cnName: '桑基图',
   //   examples: ['example1'],
@@ -10872,30 +10821,47 @@ module.exports = {
 
 /***/ }),
 
+/***/ 203:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(204);
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data,blockParams) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.escapeExpression;
+
+  return "  <div class=\"common-nav-folder\">\n    <h3 class=\"common-nav-title\">\n      <i class=\"iconfont icon-"
+    + alias2(((helper = (helper = helpers.icon || (depth0 != null ? depth0.icon : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"icon","hash":{},"data":data,"blockParams":blockParams}) : helper)))
+    + "\"></i>\n      "
+    + alias2(container.lambda(blockParams[0][1], depth0))
+    + "\n    </h3>\n    <ul class=\"common-nav-list\">\n"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.examples : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 2, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams})) != null ? stack1 : "")
+    + "    </ul>\n  </div>\n";
+},"2":function(container,depth0,helpers,partials,data,blockParams) {
+    var helper, alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "        <li class=\"common-nav-item\">\n          <a class=\"common-nav-link\" href=\"/demo.html?type="
+    + alias2(alias1(blockParams[1][1], depth0))
+    + "&example="
+    + alias2(alias1(blockParams[0][1], depth0))
+    + "\">"
+    + alias2(((helper = (helper = helpers.enName || (depth0 != null ? depth0.enName : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"enName","hash":{},"data":data,"blockParams":blockParams}) : helper)))
+    + "</a>\n        </li>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
+    var stack1;
+
+  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.codeConfig : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 2, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams})) != null ? stack1 : "")
+    + "\n\n";
+},"useData":true,"useBlockParams":true});
+
+/***/ }),
+
 /***/ 204:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(77);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
-    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+// Create a simple path alias to allow browserify to resolve
+// the runtime on a supported path.
+module.exports = __webpack_require__(205)['default'];
 
-  return "  <li class=\"common-nav-item\" class=\""
-    + ((stack1 = __default(__webpack_require__(220)).call(depth0 != null ? depth0 : (container.nullContext || {}),(depths[1] != null ? depths[1].chartType : depths[1]),(data && data.key),{"name":"active","hash":{},"fn":container.program(2, data, 0, blockParams, depths),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\">\n    <a class=\"common-nav-link\" href=\"/demo.html?type="
-    + alias2(alias1((data && data.key), depth0))
-    + "\">\n      <i class=\"iconfont icon-"
-    + alias2(alias1((depth0 != null ? depth0.icon : depth0), depth0))
-    + "\"></i>\n      "
-    + alias2(alias1((data && data.key), depth0))
-    + " Chart\n    </a>\n  </li>\n";
-},"2":function(container,depth0,helpers,partials,data) {
-    return "";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data,blockParams,depths) {
-    var stack1;
-
-  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.codeConfig : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0, blockParams, depths),"inverse":container.noop,"data":data})) != null ? stack1 : "");
-},"useData":true,"useDepths":true});
 
 /***/ }),
 
@@ -10914,7 +10880,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
-var _handlebarsBase = __webpack_require__(122);
+var _handlebarsBase = __webpack_require__(121);
 
 var base = _interopRequireWildcard(_handlebarsBase);
 
@@ -11509,7 +11475,7 @@ var _exception = __webpack_require__(44);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _base = __webpack_require__(122);
+var _base = __webpack_require__(121);
 
 function checkRevision(compilerInfo) {
   var compilerRevision = compilerInfo && compilerInfo[0] || 1,
@@ -11820,78 +11786,16 @@ exports['default'] = function (Handlebars) {
 module.exports = exports['default'];
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL25vLWNvbmZsaWN0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O3FCQUNlLFVBQVMsVUFBVSxFQUFFOztBQUVsQyxNQUFJLElBQUksR0FBRyxPQUFPLE1BQU0sS0FBSyxXQUFXLEdBQUcsTUFBTSxHQUFHLE1BQU07TUFDdEQsV0FBVyxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUM7O0FBRWxDLFlBQVUsQ0FBQyxVQUFVLEdBQUcsWUFBVztBQUNqQyxRQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssVUFBVSxFQUFFO0FBQ2xDLFVBQUksQ0FBQyxVQUFVLEdBQUcsV0FBVyxDQUFDO0tBQy9CO0FBQ0QsV0FBTyxVQUFVLENBQUM7R0FDbkIsQ0FBQztDQUNIIiwiZmlsZSI6Im5vLWNvbmZsaWN0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyogZ2xvYmFsIHdpbmRvdyAqL1xuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24oSGFuZGxlYmFycykge1xuICAvKiBpc3RhbmJ1bCBpZ25vcmUgbmV4dCAqL1xuICBsZXQgcm9vdCA9IHR5cGVvZiBnbG9iYWwgIT09ICd1bmRlZmluZWQnID8gZ2xvYmFsIDogd2luZG93LFxuICAgICAgJEhhbmRsZWJhcnMgPSByb290LkhhbmRsZWJhcnM7XG4gIC8qIGlzdGFuYnVsIGlnbm9yZSBuZXh0ICovXG4gIEhhbmRsZWJhcnMubm9Db25mbGljdCA9IGZ1bmN0aW9uKCkge1xuICAgIGlmIChyb290LkhhbmRsZWJhcnMgPT09IEhhbmRsZWJhcnMpIHtcbiAgICAgIHJvb3QuSGFuZGxlYmFycyA9ICRIYW5kbGViYXJzO1xuICAgIH1cbiAgICByZXR1cm4gSGFuZGxlYmFycztcbiAgfTtcbn1cbiJdfQ==
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(78)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(77)))
 
 /***/ }),
 
 /***/ 220:
-/***/ (function(module, exports) {
-
-module.exports = function (a, b) {
-  return a === b ? 'active' : '';
-}
-
-
-/***/ }),
-
-/***/ 221:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Handlebars = __webpack_require__(77);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
-    return "    <div class=\"case-box no-code\">\n      Coming soon...\n    </div>\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return "<div class=\"case-list\">\n"
-    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.noCodes : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div>\n";
-},"useData":true});
-
-/***/ }),
-
-/***/ 222:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Handlebars = __webpack_require__(77);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-  return "<div class=\"case-box\">\n  <div class=\"case-type\">\n    <h3>"
-    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h3>\n  </div>\n  <div class=\"case-demo\">\n    <div id=\"example"
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\"></div>\n  </div>\n  <div class=\"case-code\">\n    <ul class=\"case-code-switch\">\n      <li data-lang=\"react\" class=\"case-code-switch-item"
-    + alias4(((helper = (helper = helpers.reactClass || (depth0 != null ? depth0.reactClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"reactClass","hash":{},"data":data}) : helper)))
-    + "\">React</li>\n      <li data-lang=\"vue\" class=\"case-code-switch-item"
-    + alias4(((helper = (helper = helpers.vueClass || (depth0 != null ? depth0.vueClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"vueClass","hash":{},"data":data}) : helper)))
-    + "\">Vue</li>\n      <li data-lang=\"angular\" class=\"case-code-switch-item"
-    + alias4(((helper = (helper = helpers.angularClass || (depth0 != null ? depth0.angularClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"angularClass","hash":{},"data":data}) : helper)))
-    + "\">Angular</li>\n    </ul>\n    <pre class=\"case-code-detail"
-    + alias4(((helper = (helper = helpers.reactClass || (depth0 != null ? depth0.reactClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"reactClass","hash":{},"data":data}) : helper)))
-    + "\" id=\"react-"
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\"></pre>\n    <pre class=\"case-code-detail"
-    + alias4(((helper = (helper = helpers.vueClass || (depth0 != null ? depth0.vueClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"vueClass","hash":{},"data":data}) : helper)))
-    + "\" id=\"vue-"
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\"></pre>\n    <pre class=\"case-code-detail"
-    + alias4(((helper = (helper = helpers.angularClass || (depth0 != null ? depth0.angularClass : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"angularClass","hash":{},"data":data}) : helper)))
-    + "\" id=\"angular-"
-    + alias4(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"i","hash":{},"data":data}) : helper)))
-    + "\"></pre>\n  </div>\n</div>\n";
-},"useData":true});
-
-/***/ }),
-
-/***/ 223:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/json.js": 224,
-	"./facet/example1/json.js": 226
+	"./bar/example1/json.js": 221,
+	"./facet/example1/json.js": 223
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -11907,16 +11811,16 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 223;
+webpackContext.id = 220;
 
 /***/ }),
 
-/***/ 224:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const allData = __webpack_require__(225);
+const allData = __webpack_require__(222);
 const { data, dataMapping, dataPre, scale } = allData;
 
 const config = {
@@ -11958,7 +11862,7 @@ const config = {
 
 /***/ }),
 
-/***/ 225:
+/***/ 222:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12020,12 +11924,12 @@ exports.scale = [{
 
 /***/ }),
 
-/***/ 226:
+/***/ 223:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const allData = __webpack_require__(227);
+const allData = __webpack_require__(224);
 const { chartData, dataMapping, scale } = allData;
 
 const config = {
@@ -12058,7 +11962,7 @@ const config = {
 
 /***/ }),
 
-/***/ 227:
+/***/ 224:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12085,12 +11989,12 @@ exports.scale = [{
 
 /***/ }),
 
-/***/ 228:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/react.js": 229,
-	"./facet/example1/react.js": 230
+	"./bar/example1/react.js": 226,
+	"./facet/example1/react.js": 227
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -12106,11 +12010,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 228;
+webpackContext.id = 225;
 
 /***/ }),
 
-/***/ 229:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12159,7 +12063,7 @@ ReactDOM.render(<App />, document.getElementById('mount'));
 
 /***/ }),
 
-/***/ 230:
+/***/ 227:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12198,12 +12102,12 @@ ReactDOM.render(<App />, document.getElementById('mount'));
 
 /***/ }),
 
-/***/ 231:
+/***/ 228:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/vue.js": 232,
-	"./facet/example1/vue.js": 233
+	"./bar/example1/vue.js": 229,
+	"./facet/example1/vue.js": 230
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -12219,11 +12123,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 231;
+webpackContext.id = 228;
 
 /***/ }),
 
-/***/ 232:
+/***/ 229:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12274,7 +12178,7 @@ export default {
 
 /***/ }),
 
-/***/ 233:
+/***/ 230:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12320,12 +12224,12 @@ export default {
 
 /***/ }),
 
-/***/ 234:
+/***/ 231:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/angular.js": 235,
-	"./facet/example1/angular.js": 236
+	"./bar/example1/angular.js": 232,
+	"./facet/example1/angular.js": 233
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -12341,11 +12245,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 234;
+webpackContext.id = 231;
 
 /***/ }),
 
-/***/ 235:
+/***/ 232:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12404,7 +12308,7 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 
 /***/ }),
 
-/***/ 236:
+/***/ 233:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13201,16 +13105,6 @@ module.exports = exports['default'];
 /***/ }),
 
 /***/ 77:
-/***/ (function(module, exports, __webpack_require__) {
-
-// Create a simple path alias to allow browserify to resolve
-// the runtime on a supported path.
-module.exports = __webpack_require__(205)['default'];
-
-
-/***/ }),
-
-/***/ 78:
 /***/ (function(module, exports) {
 
 var g;

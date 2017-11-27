@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 630);
+/******/ 	return __webpack_require__(__webpack_require__.s = 627);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -604,10 +604,10 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ 630:
+/***/ 627:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(631);
+__webpack_require__(628);
 
 const GDP_JSON = [
   { "year": '2006', "gdp": 21.94385 },
@@ -688,13 +688,13 @@ window.onload = renderChart;
 
 /***/ }),
 
-/***/ 631:
+/***/ 628:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(632);
+var content = __webpack_require__(629);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -708,8 +708,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
-			var newContent = require("!!../../node_modules/.0.28.7@css-loader/index.js!../../node_modules/.6.0.6@sass-loader/lib/loader.js!./index.scss");
+		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
+			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -720,7 +720,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 632:
+/***/ 629:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(41)(undefined);
