@@ -10,9 +10,28 @@ module.exports = {
   //   icon: 'mianjitu'
   // },
   bar: {
+    enName: 'Bar',
     cnName: '柱状图',
-    examples: ['example1'],
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Simple Bar',
+        cnName: '简单柱状图',
+      },
+    ],
     icon: 'zhuzhuangtu'
+  },
+  facet: {
+    enName: 'Facet',
+    cnName: '分面图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Simple Facet',
+        cnName: '简单分面图',
+      },
+    ],
+    icon: 'fenmian'
   },
   // pie: {
   //   cnName: '饼图',
@@ -44,11 +63,7 @@ module.exports = {
   //   examples: ['example1'],
   //   icon: 'loudoutu'
   // },
-  facet: {
-    cnName: '分面图',
-    examples: ['example1'],
-    icon: 'fenmian'
-  },
+
   // sankey: {
   //   cnName: '桑基图',
   //   examples: ['example1'],

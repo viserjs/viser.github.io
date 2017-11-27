@@ -7,79 +7,81 @@ const CONS = require('../constants');
 const codeConfig = require('../../examples/index');
 
 const navTpl = require('./tpl/nav.tpl');
-const rightPanelTpl = require('./tpl/rightPanel.tpl');
-const caseBoxJsonTpl = require('./tpl/caseBoxJson.tpl');
+
+const ALL_FRAMEWORK = ['react', 'vue', 'angular'];
 
 class App {
   constructor() {
     this.attrs = {
-      codes: [],
-      language: 'react',
-      chartType: 'line',
+      code: {},
+      framework: 'react',
+      chartType: 'bar',
     };
   }
   init() {
     // 根据 url 路由转发
-    // const langReg = new RegExp('(^|&)language=([^&]*)(&|$)');
-    const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
     const search = window.location.search.substr(1);
 
-    // const langResult = search.match(langReg);
-    const typeResult = search.match(typeReg);
-    // const lang = langResult ? langResult[2] : 'react';
-    const chartType = typeResult? typeResult[2] : Object.keys(codeConfig)[0];
-    // this.attrs.language = lang;
-    this.attrs.chartType = chartType;
-    const exampleFolders = codeConfig[chartType].examples || [];
-    exampleFolders.forEach((folder) => {
-      let jsonCode = '';
-      let reactCode = '';
-      let vueCode = '';
-      let angularCode = '';
-      try {
-        jsonCode = require(`../../examples/${chartType}/${folder}/json.js`);
-        reactCode = require(`../../examples/${chartType}/${folder}/react.js`);
-        vueCode = require(`../../examples/${chartType}/${folder}/vue.js`);
-        angularCode = require(`../../examples/${chartType}/${folder}/angular.js`);
-      } catch(e) {
-        console.log('exception:', e);
-      } finally {
-        this.attrs.codes.push({
-          jsonCode, reactCode, vueCode, angularCode
-        });
-      }
 
-    });
+    const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
+    const typeResult = search.match(typeReg);
+    const chartType = typeResult ? typeResult[2] : Object.keys(codeConfig)[0];
+    this.attrs.chartType = chartType;
+
+    const exampleReg = new RegExp('(^|&)example=([^&]*)(&|$)');
+    const exampleResult = search.match(exampleReg);
+    const exampleIndex = exampleResult ? parseInt(exampleResult[2], 10) : 0;
+
+    const example = codeConfig[chartType].examples[exampleIndex] || codeConfig[chartType].examples[0] || {};
+    const { path, cnName, enName } = example;
+
+    let jsonCode = '';
+    let reactCode = '';
+    let vueCode = '';
+    let angularCode = '';
+    try {
+      jsonCode = require(`../../examples/${chartType}/${path}/json.js`);
+      reactCode = require(`../../examples/${chartType}/${path}/react.js`);
+      vueCode = require(`../../examples/${chartType}/${path}/vue.js`);
+      angularCode = require(`../../examples/${chartType}/${path}/angular.js`);
+    } catch(e) {
+      console.log('exception:', e);
+    } finally {
+      this.attrs.code = {
+        jsonCode, reactCode, vueCode, angularCode,
+        cnName, enName,
+      };
+    }
 
     this.render();
+    this.refreshCase(this.attrs.framework);
     this.bindEvent();
   }
 
   render() {
-    this.renderNav();
-    this.renderRightPanel();
-    this.renderExample();
-  }
-
-  renderNav() {
-    $('#nav').empty();
-    $('#nav').append(navTpl({
+    $('.left-panel').append(navTpl({
       codeConfig,
-      language: this.attrs.language,
       chartType: this.attrs.chartType,
     }));
-  }
-  renderRightPanel() {
-    $('#rightPanel').empty();
-    $('#rightPanel').append(rightPanelTpl({noCodes: this.attrs.codes.length ? false : true}));
+
+    const code = this.attrs.code;
+    $('.case-type').html(code.enName);
+
+    const runCode = code['jsonCode'];
+    runCode.config.chart.container = 'case-mount-node';
+    Viser.default(runCode.config);
+
+    ALL_FRAMEWORK.forEach((framework) => {
+      this.presetEditor(framework, code);
+    });
   }
 
   bindEvent() {
-    var _this = this;
+    const self = this;
     $('.case-box .op .run').on('click', function() {
       const index = $(this).attr('data-index');
 
-      const data = _this.getJsfiddleData(index);
+      const data = self.getJsfiddleData(index);
       const formAttributes = {
         method: 'post',
         action: 'https://jsfiddle.net/api/post/library/pure/',
@@ -104,24 +106,43 @@ class App {
       form.submit();
       document.body.removeChild(form);
     });
-    $('.case-box .case-code-switch .case-code-switch-item').on('click', function () {
-      const lang = $(this).attr('data-lang');
-      _this.attrs.language = lang;
 
-      _this.unbindEvent();
-      _this.render();
-      _this.bindEvent();
+    $('.case-box .case-code-switch .case-code-switch-item').on('click', function() {
+      const framework = $(this).attr('data-framework');
+      self.attrs.framework = framework;
+      self.refreshCase(framework);
     })
   }
 
-  unbindEvent() {
-    $('.case-box .op .run').off('click');
-    $('.case-box .case-code-switch .case-code-switch-item').off('click');
+  refreshCase(framework) {
+    $('.case-box .case-code-switch-item').each(function () {
+      $(this).removeClass('active');
+      if (framework === $(this).attr('data-framework')) {
+        $(this).addClass('active');
+      }
+    });
+    $('.case-box .case-code-detail').each(function () {
+      $(this).removeClass('active');
+      if (framework === $(this).attr('data-framework')) {
+        $(this).addClass('active');
+      }
+    });
+  }
+
+  presetEditor(framework, code) {
+    const editor = ace.edit(`${framework}-editor`);
+    editor.setTheme("ace/theme/github");
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.setHighlightActiveLine(true);
+    editor.setShowPrintMargin(false);
+    editor.env.editor.setReadOnly(true);
+    editor.renderer.setShowGutter(false);
+    editor.env.editor.setValue(code[`${framework}Code`].template, 1);
   }
 
   getJsfiddleData(index) {
-    const language = this.attrs.language;
-    switch(language) {
+    const framework = this.attrs.framework;
+    switch(framework) {
       case 'json':
         return this.getJsfiddleJsonData(index);
       case 'react':
@@ -136,93 +157,6 @@ class App {
       default:
         return;
     }
-  }
-
-  renderExample() {
-    const _this = this;
-    const enName = this.attrs.chartType + ' Chart';
-
-    if (!this.attrs.codes.length) {
-      return;
-    }
-    $('.case-list').empty();
-    this.attrs.codes.forEach((code, i) => {
-      $('.case-list').append(caseBoxJsonTpl({
-        name: enName,
-        i,
-        reactClass: _this.attrs.language === 'react' ? ' active' : '',
-        vueClass: _this.attrs.language === 'vue' ? ' active' : '',
-        angularClass: _this.attrs.language === 'angular' ? ' active' : '',
-      }));
-      const runCode = code['jsonCode'];
-      runCode.config.chart.container = `example${i}`;
-      Viser.default(runCode.config);
-
-      var reactEditor = ace.edit(`react-${i}`);
-      const showReactCode = _this.getReactCode(code);
-      reactEditor.setTheme("ace/theme/github");
-      reactEditor.getSession().setMode("ace/mode/javascript");
-      reactEditor.setHighlightActiveLine(true);
-      reactEditor.setShowPrintMargin(false);
-      reactEditor.env.editor.setReadOnly(true);
-      reactEditor.renderer.setShowGutter(false);
-      reactEditor.env.editor.setValue(showReactCode, 1);
-
-      var vueEditor = ace.edit(`vue-${i}`);
-      const showVueCode = _this.getVueCode(code);
-      vueEditor.setTheme("ace/theme/github");
-      vueEditor.getSession().setMode("ace/mode/javascript");
-      vueEditor.setHighlightActiveLine(true);
-      vueEditor.setShowPrintMargin(false);
-      vueEditor.env.editor.setReadOnly(true);
-      vueEditor.renderer.setShowGutter(false);
-      vueEditor.env.editor.setValue(showVueCode, 1);
-
-      var angularEditor = ace.edit(`angular-${i}`);
-      const showAngularCode = this.getAngularCode(code);
-      angularEditor.setTheme("ace/theme/github");
-      angularEditor.getSession().setMode("ace/mode/javascript");
-      angularEditor.setHighlightActiveLine(true);
-      angularEditor.setShowPrintMargin(false);
-      angularEditor.env.editor.setReadOnly(true);
-      angularEditor.renderer.setShowGutter(false);
-      angularEditor.env.editor.setValue(showAngularCode, 1);
-    });
-  }
-
-  getJsonCode(code) {
-    return JSON.stringify(code['jsonCode'].config, null, 2);
-  }
-  getReactCode(code) {
-    const languageCode = code[`reactCode`];
-    return languageCode.template;
-//     const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
-//     return `
-// var config = ${jsonCode};
-// ${languageCode.script || ''}
-// ReactDOM.render(${languageCode.template}, document.getElementById('example'))`;
-  }
-
-  getVueCode(code) {
-    const languageCode = code[`vueCode`];
-    return languageCode.template;
-//     const jsonCode = JSON.stringify(code['jsonCode'].config, null, 2);
-//     let vueTpl = `<div id="example">${languageCode.template}</div>`;
-//     let scriptCode = `
-// var config = ${jsonCode}
-// new Vue({
-//   el: '#example',
-//   data: {
-//     config,
-//   }
-// });
-// `;
-//     return `${vueTpl}${scriptCode}`;
-  }
-
-  getAngularCode(code) {
-    const languageCode = code[`angularCode`];
-    return languageCode.template;
   }
 
   getJsfiddleJsonData(index) {

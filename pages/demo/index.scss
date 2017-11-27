@@ -14,38 +14,33 @@
     width: calc(100% - 460px);
     position: absolute;
   }
-  .case-box {
-    margin-bottom: 10px;
-    background: #fff;
-    position: relative;
-    transition: all .2s ease-in-out;
 
-    .op {
-      position: absolute;
-      top: 0;
-      right: 15px;
-      z-index: 11;
-      line-height: 28px;
-      color: #666;
+  .op {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 11;
+    line-height: 28px;
+    color: #666;
 
-      a {
-        cursor: pointer;
-        margin-top: 3px;
-        padding: 3px 16px;
-        display: inline-block;
-        background: $primary;
-        border-radius: 4px;
+    a {
+      cursor: pointer;
+      margin-top: 3px;
+      padding: 3px 16px;
+      display: inline-block;
+      background: $primary;
+      border-radius: 4px;
+      font-size: 14px;
+      line-height: 22px;
+      color: #fff;
+      i {
         font-size: 14px;
         line-height: 22px;
         color: #fff;
-        i {
-          font-size: 14px;
-          line-height: 22px;
-          color: #fff;
-        }
       }
     }
   }
+
   .case-demo {
     padding: 50px 15px 0 0;
     width: calc(100% - 430px);

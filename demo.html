@@ -23,10 +23,25 @@
       </nav>
     </div>
     <div class="main-content" id="main-content">
-      <div class="left-panel">
-        <ul class="common-nav-list" id="nav"></ul>
+      <div class="left-panel"></div>
+      <div class="right-panel">
+        <div class="case-box">
+          <div class="case-type">Name</div>
+          <div class="case-demo">
+            <div id="case-mount-node"></div>
+          </div>
+          <div class="case-code">
+            <ul class="case-code-switch">
+              <li data-framework="react" class="case-code-switch-item">React</li>
+              <li data-framework="vue" class="case-code-switch-item">Vue</li>
+              <li data-framework="angular" class="case-code-switch-item">Angular</li>
+            </ul>
+            <pre data-framework="react" class="case-code-detail" id="react-editor"></pre>
+            <pre data-framework="vue" class="case-code-detail" id="vue-editor"></pre>
+            <pre data-framework="angular" class="case-code-detail" id="angular-editor"></pre>
+          </div>
+        </div>
       </div>
-      <div class="right-panel" id="rightPanel"></div>
     </div>
     <script src="./build/demo.js" type="text/javascript" ></script>
   </body>

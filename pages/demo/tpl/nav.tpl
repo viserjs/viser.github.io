@@ -1,8 +1,17 @@
-{{#each codeConfig}}
-  <li class="common-nav-item" class="{{#active ../chartType @key}}{{/active}}">
-    <a class="common-nav-link" href="/demo.html?type={{@key}}">
+{{#each codeConfig as |value key|}}
+  <div class="common-nav-folder">
+    <h3 class="common-nav-title">
       <i class="iconfont icon-{{icon}}"></i>
-      {{@key}} Chart
-    </a>
-  </li>
+      {{@key}}
+    </h3>
+    <ul class="common-nav-list">
+      {{#each examples as |childValue childKey|}}
+        <li class="common-nav-item">
+          <a class="common-nav-link" href="/demo.html?type={{@key}}&example={{childKey}}">{{enName}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 {{/each}}
+
+
