@@ -2,9 +2,9 @@ import { setTimeout } from 'timers';
 
 require('./index.scss');
 const $ = require('jquery');
-const CONS = require('../constants');
-const codeConfig = require('../../examples/index');
-const navTpl = require('./tpl/nav.tpl');
+const CONS = require('./constants');
+const codeConfig = require('./examples/index');
+const navTpl = require('./nav.tpl');
 
 const ALL_FRAMEWORK = ['react', 'vue', 'angular'];
 
@@ -38,10 +38,10 @@ class App {
     let vueCode = '';
     let angularCode = '';
     try {
-      jsonCode = require(`../../examples/${chartType}/${path}/json.js`);
-      reactCode = require(`../../examples/${chartType}/${path}/react.js`);
-      vueCode = require(`../../examples/${chartType}/${path}/vue.js`);
-      angularCode = require(`../../examples/${chartType}/${path}/angular.js`);
+      jsonCode = require(`./examples/${chartType}/${path}/json.js`);
+      reactCode = require(`./examples/${chartType}/${path}/react.js`);
+      vueCode = require(`./examples/${chartType}/${path}/vue.js`);
+      angularCode = require(`./examples/${chartType}/${path}/angular.js`);
     } catch(e) {
       console.log('exception:', e);
     } finally {
@@ -58,7 +58,7 @@ class App {
 
   render() {
     $('.left-panel').append(navTpl({
-      codeConfig,
+      menuList: codeConfig,
       chartType: this.attrs.chartType,
     }));
 
