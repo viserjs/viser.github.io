@@ -64,13 +64,15 @@
       position: relative;
     }
     .case-code-detail {
-      display: none;
+      display: block;
       height: calc(100% - 40px);
       width: 100%;
       overflow-y: auto;
-      position: relative;
+      position: absolute;
+      transform: translate(100%);
       &.active {
         display: block;
+        transform: translate(0);
       }
       pre {
         position: absolute;

@@ -1,17 +1,33 @@
-export const template = `
-import 'zone.js';
+export const template =
+`import 'zone.js';
 import 'reflect-metadata';
-import { Component, enableProdMode, NgModule } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { BrowserModule } from '@angular/platform-browser';
-import { ViserModule } from '../../../packages/viser-ng/src/index';
-import { chartData, dataMapping, scale } from './data'
+import {
+  Component, enableProdMode, NgModule
+} from '@angular/core';
+import {
+  platformBrowserDynamic
+} from '@angular/platform-browser-dynamic';
+import {
+  BrowserModule
+} from '@angular/platform-browser';
+import {
+  ViserModule
+} from '../../../packages/viser-ng/src/index';
+import {
+  chartData, dataMapping, scale
+} from './data'
 
 @Component({
   selector: '#mount',
   template: \`
   <div>
-    <Chart [forceFit]="forceFit" [height]="600" [data]="chartData" [dataMapping]="dataMapping" [scale]="scale">
+    <Chart
+      [forceFit]="forceFit"
+      [height]="600"
+      [data]="chartData"
+      [dataMapping]="dataMapping"
+      [scale]="scale"
+    >
       <Tooltip></Tooltip>
       <Facet type="rect" [fields]="fields">
         <FacetView>

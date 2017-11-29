@@ -1,11 +1,10 @@
+import { setTimeout } from 'timers';
 
 require('./index.scss');
 const $ = require('jquery');
 
 const CONS = require('../constants');
-
 const codeConfig = require('../../examples/index');
-
 const navTpl = require('./tpl/nav.tpl');
 
 const ALL_FRAMEWORK = ['react', 'vue', 'angular'];
@@ -130,14 +129,18 @@ class App {
   }
 
   presetEditor(framework, code) {
-    const editor = ace.edit(`${framework}-editor`);
-    editor.setTheme("ace/theme/github");
-    editor.getSession().setMode("ace/mode/javascript");
-    editor.setHighlightActiveLine(true);
-    editor.setShowPrintMargin(false);
-    editor.env.editor.setReadOnly(true);
-    editor.renderer.setShowGutter(false);
-    editor.env.editor.setValue(code[`${framework}Code`].template, 1);
+    window.monaco.editor.create(document.getElementById(`${framework}-editor`), {
+      value: code[`${framework}Code`].template,
+      language: framework === 'vue' ? 'html' : 'javascript',
+
+      lineNumbers: false,
+      scrollBeyondLastLine: false,
+      readOnly: true,
+      theme: 'vs',
+      minimap: {
+        enabled: false,
+      }
+    });
   }
 
   getJsfiddleData(index) {
@@ -220,5 +223,34 @@ ReactDOM.render(${reactCode.template},document.getElementById('example'));`,
   }
 }
 
+/**
+ * @method 方法用于加载 Monaco-editor
+ * @author 五灵
+ */
+const load = require('load-script');
+const loadEditor = () => {
+  const self = this;
+  return new Promise((resolve, reject) => {
+    load('/lib/monaco-editor/min/vs/loader.js', (err) => {
+      if (!err) {
+        window['require'].config({
+          paths: { vs: '/lib/monaco-editor/min/vs' }
+        });
+        window['require'](['vs/editor/editor.main'], function () {
+          resolve(this);
+        });
+      } else {
+        reject(err);
+      }
+    });
+  });
+};
+loadEditor().then(
+  monaco => {
+    new App().init();
+  },
+  err => {
+    console.log(err);
+  }
+)
 
-new App().init();
