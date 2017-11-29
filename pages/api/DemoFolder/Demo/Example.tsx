@@ -1,5 +1,5 @@
 import * as React from 'react';
-// import { Chart, Line, Tooltip, Legend, Axis } from '../../../../lib/rechart-core';
+import { Chart, Tooltip, Legend, Axis, Line } from 'viser-react';
 
 const config = {
   data: [
@@ -24,33 +24,27 @@ const config = {
     { age: '45', gender: '男性', mean: 182, lower: 166, upper: 188 },
     { age: '50', gender: '男性', mean: 177, lower: 163, upper: 192 },
   ],
-  dataDef: [
-    {
-      key: 'age',
-      mark: 'column',
-      scale: {},
-    }, {
-      key: 'gender',
-      mark: 'color',
-      scale: {},
-    },
-    {
-      key: 'mean',
-      mark: 'row',
-      scale: {},
-    },
-  ],
+  dataMapping: {
+    column: 'age',
+    color: 'gender',
+    row: 'mean',
+  },
 };
 
 export class Example extends React.Component {
   render() {
     return (
       <div className="example-4526731">
-        <Chart width={800} height={400} data={config.data} dataDef={config.dataDef}>
+        <Chart
+          width={800}
+          height={400}
+          data={config.data}
+          dataMapping={config.dataMapping}
+        >
           <Line position={['age', 'mean']} />
           <Tooltip />
           <Legend />
-          <Axis dataKey={'mean'} show />
+          <Axis dataKey={'mean'} />
         </Chart>
       </div>
     );

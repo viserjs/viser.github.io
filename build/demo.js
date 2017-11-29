@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 197);
+/******/ 	return __webpack_require__(__webpack_require__.s = 212);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 121:
+/***/ 128:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79,17 +79,17 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _utils = __webpack_require__(24);
+var _utils = __webpack_require__(25);
 
-var _exception = __webpack_require__(45);
+var _exception = __webpack_require__(48);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _helpers = __webpack_require__(209);
+var _helpers = __webpack_require__(223);
 
-var _decorators = __webpack_require__(217);
+var _decorators = __webpack_require__(231);
 
-var _logger = __webpack_require__(219);
+var _logger = __webpack_require__(233);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -177,7 +177,7 @@ exports.logger = _logger2['default'];
 
 /***/ }),
 
-/***/ 197:
+/***/ 212:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -185,7 +185,7 @@ exports.logger = _logger2['default'];
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _timers = __webpack_require__(198);
+var _timers = __webpack_require__(213);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -194,12 +194,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 }, 0);
 
 
-__webpack_require__(200);
-var $ = __webpack_require__(202);
-
-var CONS = __webpack_require__(204);
-var codeConfig = __webpack_require__(205);
-var navTpl = __webpack_require__(206);
+__webpack_require__(215);
+var $ = __webpack_require__(217);
+var CONS = __webpack_require__(218);
+var codeConfig = __webpack_require__(219);
+var navTpl = __webpack_require__(220);
 
 var ALL_FRAMEWORK = ['react', 'vue', 'angular'];
 
@@ -240,10 +239,10 @@ var App = function () {
       var vueCode = '';
       var angularCode = '';
       try {
-        jsonCode = __webpack_require__(223)("./" + chartType + '/' + path + '/json.js');
-        reactCode = __webpack_require__(228)("./" + chartType + '/' + path + '/react.js');
-        vueCode = __webpack_require__(231)("./" + chartType + '/' + path + '/vue.js');
-        angularCode = __webpack_require__(234)("./" + chartType + '/' + path + '/angular.js');
+        jsonCode = __webpack_require__(237)("./" + chartType + '/' + path + '/json.js');
+        reactCode = __webpack_require__(242)("./" + chartType + '/' + path + '/react.js');
+        vueCode = __webpack_require__(245)("./" + chartType + '/' + path + '/vue.js');
+        angularCode = __webpack_require__(248)("./" + chartType + '/' + path + '/angular.js');
       } catch (e) {
         console.log('exception:', e);
       } finally {
@@ -338,8 +337,7 @@ var App = function () {
     value: function presetEditor(framework, code) {
       window.monaco.editor.create(document.getElementById(framework + '-editor'), {
         value: code[framework + 'Code'].template,
-        language: framework === 'vue' ? 'html' : 'javascript',
-
+        language: framework !== 'vue' ? 'javascript' : 'html',
         lineNumbers: false,
         scrollBeyondLastLine: false,
         renderLineHighlight: 'none',
@@ -362,9 +360,6 @@ var App = function () {
         case 'vue':
           return this.getJsfiddleVueData(index);
         case 'angular':
-          return;
-        case 'rax':
-          // todo
           return;
         default:
           return;
@@ -428,7 +423,7 @@ var App = function () {
  */
 
 
-var load = __webpack_require__(237);
+var load = __webpack_require__(251);
 var loadEditor = function loadEditor() {
   var self = undefined;
   return new Promise(function (resolve, reject) {
@@ -454,7 +449,7 @@ loadEditor().then(function (monaco) {
 
 /***/ }),
 
-/***/ 198:
+/***/ 213:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -508,13 +503,13 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(199);
+__webpack_require__(214);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 /***/ }),
 
-/***/ 199:
+/***/ 214:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -702,17 +697,17 @@ exports.clearImmediate = clearImmediate;
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
 })(typeof self === "undefined" ? typeof global === "undefined" ? undefined : global : self);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(57), __webpack_require__(36)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43), __webpack_require__(37)))
 
 /***/ }),
 
-/***/ 200:
+/***/ 215:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(201);
+var content = __webpack_require__(216);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -720,7 +715,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(43)(content, options);
+var update = __webpack_require__(45)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -738,10 +733,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 201:
+/***/ 216:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(42)(undefined);
+exports = module.exports = __webpack_require__(44)(undefined);
 // imports
 
 
@@ -753,7 +748,7 @@ exports.push([module.i, ".common-header {\n  height: 60px;\n  line-height: 60px;
 
 /***/ }),
 
-/***/ 202:
+/***/ 217:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10586,42 +10581,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	return jQuery;
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(203)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)(module)))
 
 /***/ }),
 
-/***/ 203:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function () {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function get() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function get() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-/***/ }),
-
-/***/ 204:
+/***/ 218:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10643,7 +10607,7 @@ var URL = exports.URL = {
 
 /***/ }),
 
-/***/ 205:
+/***/ 219:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10725,10 +10689,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ 206:
+/***/ 220:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(207);
+var Handlebars = __webpack_require__(221);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.escapeExpression;
@@ -10759,7 +10723,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
 /***/ }),
 
-/***/ 207:
+/***/ 221:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10767,11 +10731,11 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
-module.exports = __webpack_require__(208)['default'];
+module.exports = __webpack_require__(222)['default'];
 
 /***/ }),
 
-/***/ 208:
+/***/ 222:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10798,30 +10762,30 @@ function _interopRequireWildcard(obj) {
   }
 }
 
-var _handlebarsBase = __webpack_require__(121);
+var _handlebarsBase = __webpack_require__(128);
 
 var base = _interopRequireWildcard(_handlebarsBase);
 
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
 
-var _handlebarsSafeString = __webpack_require__(220);
+var _handlebarsSafeString = __webpack_require__(234);
 
 var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
-var _handlebarsException = __webpack_require__(45);
+var _handlebarsException = __webpack_require__(48);
 
 var _handlebarsException2 = _interopRequireDefault(_handlebarsException);
 
-var _handlebarsUtils = __webpack_require__(24);
+var _handlebarsUtils = __webpack_require__(25);
 
 var Utils = _interopRequireWildcard(_handlebarsUtils);
 
-var _handlebarsRuntime = __webpack_require__(221);
+var _handlebarsRuntime = __webpack_require__(235);
 
 var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
-var _handlebarsNoConflict = __webpack_require__(222);
+var _handlebarsNoConflict = __webpack_require__(236);
 
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
@@ -10855,7 +10819,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 209:
+/***/ 223:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10869,31 +10833,31 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _helpersBlockHelperMissing = __webpack_require__(210);
+var _helpersBlockHelperMissing = __webpack_require__(224);
 
 var _helpersBlockHelperMissing2 = _interopRequireDefault(_helpersBlockHelperMissing);
 
-var _helpersEach = __webpack_require__(211);
+var _helpersEach = __webpack_require__(225);
 
 var _helpersEach2 = _interopRequireDefault(_helpersEach);
 
-var _helpersHelperMissing = __webpack_require__(212);
+var _helpersHelperMissing = __webpack_require__(226);
 
 var _helpersHelperMissing2 = _interopRequireDefault(_helpersHelperMissing);
 
-var _helpersIf = __webpack_require__(213);
+var _helpersIf = __webpack_require__(227);
 
 var _helpersIf2 = _interopRequireDefault(_helpersIf);
 
-var _helpersLog = __webpack_require__(214);
+var _helpersLog = __webpack_require__(228);
 
 var _helpersLog2 = _interopRequireDefault(_helpersLog);
 
-var _helpersLookup = __webpack_require__(215);
+var _helpersLookup = __webpack_require__(229);
 
 var _helpersLookup2 = _interopRequireDefault(_helpersLookup);
 
-var _helpersWith = __webpack_require__(216);
+var _helpersWith = __webpack_require__(230);
 
 var _helpersWith2 = _interopRequireDefault(_helpersWith);
 
@@ -10909,7 +10873,7 @@ function registerDefaultHelpers(instance) {
 
 /***/ }),
 
-/***/ 210:
+/***/ 224:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10917,7 +10881,7 @@ function registerDefaultHelpers(instance) {
 
 exports.__esModule = true;
 
-var _utils = __webpack_require__(24);
+var _utils = __webpack_require__(25);
 
 exports['default'] = function (instance) {
   instance.registerHelper('blockHelperMissing', function (context, options) {
@@ -10954,7 +10918,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 211:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10969,9 +10933,9 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _utils = __webpack_require__(24);
+var _utils = __webpack_require__(25);
 
-var _exception = __webpack_require__(45);
+var _exception = __webpack_require__(48);
 
 var _exception2 = _interopRequireDefault(_exception);
 
@@ -11058,7 +11022,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 212:
+/***/ 226:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11071,7 +11035,7 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _exception = __webpack_require__(45);
+var _exception = __webpack_require__(48);
 
 var _exception2 = _interopRequireDefault(_exception);
 
@@ -11091,7 +11055,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 213:
+/***/ 227:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11099,7 +11063,7 @@ module.exports = exports['default'];
 
 exports.__esModule = true;
 
-var _utils = __webpack_require__(24);
+var _utils = __webpack_require__(25);
 
 exports['default'] = function (instance) {
   instance.registerHelper('if', function (conditional, options) {
@@ -11126,7 +11090,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 214:
+/***/ 228:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11158,7 +11122,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 215:
+/***/ 229:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11176,7 +11140,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 216:
+/***/ 230:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11184,7 +11148,7 @@ module.exports = exports['default'];
 
 exports.__esModule = true;
 
-var _utils = __webpack_require__(24);
+var _utils = __webpack_require__(25);
 
 exports['default'] = function (instance) {
   instance.registerHelper('with', function (context, options) {
@@ -11215,7 +11179,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 217:
+/***/ 231:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11229,7 +11193,7 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _decoratorsInline = __webpack_require__(218);
+var _decoratorsInline = __webpack_require__(232);
 
 var _decoratorsInline2 = _interopRequireDefault(_decoratorsInline);
 
@@ -11239,7 +11203,7 @@ function registerDefaultDecorators(instance) {
 
 /***/ }),
 
-/***/ 218:
+/***/ 232:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11247,7 +11211,7 @@ function registerDefaultDecorators(instance) {
 
 exports.__esModule = true;
 
-var _utils = __webpack_require__(24);
+var _utils = __webpack_require__(25);
 
 exports['default'] = function (instance) {
   instance.registerDecorator('inline', function (fn, props, container, options) {
@@ -11274,7 +11238,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 219:
+/***/ 233:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11282,7 +11246,7 @@ module.exports = exports['default'];
 
 exports.__esModule = true;
 
-var _utils = __webpack_require__(24);
+var _utils = __webpack_require__(25);
 
 var logger = {
   methodMap: ['debug', 'info', 'warn', 'error'],
@@ -11327,7 +11291,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 220:
+/***/ 234:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11348,7 +11312,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 221:
+/***/ 235:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11383,15 +11347,15 @@ function _interopRequireWildcard(obj) {
   }
 }
 
-var _utils = __webpack_require__(24);
+var _utils = __webpack_require__(25);
 
 var Utils = _interopRequireWildcard(_utils);
 
-var _exception = __webpack_require__(45);
+var _exception = __webpack_require__(48);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _base = __webpack_require__(121);
+var _base = __webpack_require__(128);
 
 function checkRevision(compilerInfo) {
   var compilerRevision = compilerInfo && compilerInfo[0] || 1,
@@ -11675,7 +11639,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 
 /***/ }),
 
-/***/ 222:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11698,16 +11662,16 @@ exports['default'] = function (Handlebars) {
 };
 
 module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(57)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)))
 
 /***/ }),
 
-/***/ 223:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/json.js": 224,
-	"./facet/example1/json.js": 226
+	"./bar/example1/json.js": 238,
+	"./facet/example1/json.js": 240
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -11723,11 +11687,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 223;
+webpackContext.id = 237;
 
 /***/ }),
 
-/***/ 224:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11736,7 +11700,7 @@ webpackContext.id = 223;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(225);
+var allData = __webpack_require__(239);
 var data = allData.data,
     dataMapping = allData.dataMapping,
     dataPre = allData.dataPre,
@@ -11777,7 +11741,7 @@ var config = exports.config = {
 
 /***/ }),
 
-/***/ 225:
+/***/ 239:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11839,7 +11803,7 @@ exports.scale = [{
 
 /***/ }),
 
-/***/ 226:
+/***/ 240:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11848,7 +11812,7 @@ exports.scale = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(227);
+var allData = __webpack_require__(241);
 var chartData = allData.chartData,
     dataMapping = allData.dataMapping,
     scale = allData.scale;
@@ -11879,7 +11843,7 @@ var config = exports.config = {
 
 /***/ }),
 
-/***/ 227:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11906,12 +11870,12 @@ exports.scale = [{
 
 /***/ }),
 
-/***/ 228:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/react.js": 229,
-	"./facet/example1/react.js": 230
+	"./bar/example1/react.js": 243,
+	"./facet/example1/react.js": 244
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -11927,11 +11891,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 228;
+webpackContext.id = 242;
 
 /***/ }),
 
-/***/ 229:
+/***/ 243:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11944,7 +11908,7 @@ var template = exports.template = "import {\n  Chart, Tooltip, Axis, StackBar\n}
 
 /***/ }),
 
-/***/ 230:
+/***/ 244:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11957,12 +11921,12 @@ var template = exports.template = "import {\n  Chart, Facet, View, Tooltip,\n  L
 
 /***/ }),
 
-/***/ 231:
+/***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/vue.js": 232,
-	"./facet/example1/vue.js": 233
+	"./bar/example1/vue.js": 246,
+	"./facet/example1/vue.js": 247
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -11978,11 +11942,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 231;
+webpackContext.id = 245;
 
 /***/ }),
 
-/***/ 232:
+/***/ 246:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11995,7 +11959,7 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart\n      :for
 
 /***/ }),
 
-/***/ 233:
+/***/ 247:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12008,12 +11972,12 @@ var template = exports.template = "\n<template>\n  <div>\n    <v-chart\n      :f
 
 /***/ }),
 
-/***/ 234:
+/***/ 248:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/angular.js": 235,
-	"./facet/example1/angular.js": 236
+	"./bar/example1/angular.js": 249,
+	"./facet/example1/angular.js": 250
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -12029,11 +11993,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 234;
+webpackContext.id = 248;
 
 /***/ }),
 
-/***/ 235:
+/***/ 249:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12046,93 +12010,7 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 
 /***/ }),
 
-/***/ 236:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport {\n  Component, enableProdMode, NgModule\n} from '@angular/core';\nimport {\n  platformBrowserDynamic\n} from '@angular/platform-browser-dynamic';\nimport {\n  BrowserModule\n} from '@angular/platform-browser';\nimport {\n  ViserModule\n} from '../../../packages/viser-ng/src/index';\nimport {\n  chartData, dataMapping, scale\n} from './data'\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart\n      [forceFit]=\"forceFit\"\n      [height]=\"600\"\n      [data]=\"chartData\"\n      [dataMapping]=\"dataMapping\"\n      [scale]=\"scale\"\n    >\n      <Tooltip></Tooltip>\n      <Facet type=\"rect\" [fields]=\"fields\">\n        <FacetView>\n          <Axis></Axis>\n          <Tooltip></Tooltip>\n          <Point opacity=\"0.3\" size=\"3\"></Point>\n        </FacetView>\n      </Facet>\n    </Chart>\n  </div>\n  `\n})\n\nexport class AppComponent {\n  forceFit: boolean= true;\n  height: number = 600;\n  chartData = chartData;\n  dataMapping = dataMapping;\n  scale = scale;\n  fields = ['cut', 'clarity'];\n}\n\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\n\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
-
-/***/ }),
-
-/***/ 237:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function load(src, opts, cb) {
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var script = document.createElement('script');
-
-  if (typeof opts === 'function') {
-    cb = opts;
-    opts = {};
-  }
-
-  opts = opts || {};
-  cb = cb || function () {};
-
-  script.type = opts.type || 'text/javascript';
-  script.charset = opts.charset || 'utf8';
-  script.async = 'async' in opts ? !!opts.async : true;
-  script.src = src;
-
-  if (opts.attrs) {
-    setAttributes(script, opts.attrs);
-  }
-
-  if (opts.text) {
-    script.text = '' + opts.text;
-  }
-
-  var onend = 'onload' in script ? stdOnEnd : ieOnEnd;
-  onend(script, cb);
-
-  // some good legacy browsers (firefox) fail the 'in' detection above
-  // so as a fallback we always set onload
-  // old IE will ignore this and new IE will set onload
-  if (!script.onload) {
-    stdOnEnd(script, cb);
-  }
-
-  head.appendChild(script);
-};
-
-function setAttributes(script, attrs) {
-  for (var attr in attrs) {
-    script.setAttribute(attr, attrs[attr]);
-  }
-}
-
-function stdOnEnd(script, cb) {
-  script.onload = function () {
-    this.onerror = this.onload = null;
-    cb(null, script);
-  };
-  script.onerror = function () {
-    // this.onload = null here is necessary
-    // because even IE9 works not like others
-    this.onerror = this.onload = null;
-    cb(new Error('Failed to load ' + this.src), script);
-  };
-}
-
-function ieOnEnd(script, cb) {
-  script.onreadystatechange = function () {
-    if (this.readyState != 'complete' && this.readyState != 'loaded') return;
-    this.onreadystatechange = null;
-    cb(null, script); // there is no way to catch loading errors in IE8
-  };
-}
-
-/***/ }),
-
-/***/ 24:
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12264,7 +12142,93 @@ function appendContextPath(contextPath, id) {
 
 /***/ }),
 
-/***/ 36:
+/***/ 250:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport {\n  Component, enableProdMode, NgModule\n} from '@angular/core';\nimport {\n  platformBrowserDynamic\n} from '@angular/platform-browser-dynamic';\nimport {\n  BrowserModule\n} from '@angular/platform-browser';\nimport {\n  ViserModule\n} from '../../../packages/viser-ng/src/index';\nimport {\n  chartData, dataMapping, scale\n} from './data'\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart\n      [forceFit]=\"forceFit\"\n      [height]=\"600\"\n      [data]=\"chartData\"\n      [dataMapping]=\"dataMapping\"\n      [scale]=\"scale\"\n    >\n      <Tooltip></Tooltip>\n      <Facet type=\"rect\" [fields]=\"fields\">\n        <FacetView>\n          <Axis></Axis>\n          <Tooltip></Tooltip>\n          <Point opacity=\"0.3\" size=\"3\"></Point>\n        </FacetView>\n      </Facet>\n    </Chart>\n  </div>\n  `\n})\n\nexport class AppComponent {\n  forceFit: boolean= true;\n  height: number = 600;\n  chartData = chartData;\n  dataMapping = dataMapping;\n  scale = scale;\n  fields = ['cut', 'clarity'];\n}\n\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\n\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+
+/***/ 251:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function load(src, opts, cb) {
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+
+  if (typeof opts === 'function') {
+    cb = opts;
+    opts = {};
+  }
+
+  opts = opts || {};
+  cb = cb || function () {};
+
+  script.type = opts.type || 'text/javascript';
+  script.charset = opts.charset || 'utf8';
+  script.async = 'async' in opts ? !!opts.async : true;
+  script.src = src;
+
+  if (opts.attrs) {
+    setAttributes(script, opts.attrs);
+  }
+
+  if (opts.text) {
+    script.text = '' + opts.text;
+  }
+
+  var onend = 'onload' in script ? stdOnEnd : ieOnEnd;
+  onend(script, cb);
+
+  // some good legacy browsers (firefox) fail the 'in' detection above
+  // so as a fallback we always set onload
+  // old IE will ignore this and new IE will set onload
+  if (!script.onload) {
+    stdOnEnd(script, cb);
+  }
+
+  head.appendChild(script);
+};
+
+function setAttributes(script, attrs) {
+  for (var attr in attrs) {
+    script.setAttribute(attr, attrs[attr]);
+  }
+}
+
+function stdOnEnd(script, cb) {
+  script.onload = function () {
+    this.onerror = this.onload = null;
+    cb(null, script);
+  };
+  script.onerror = function () {
+    // this.onload = null here is necessary
+    // because even IE9 works not like others
+    this.onerror = this.onload = null;
+    cb(new Error('Failed to load ' + this.src), script);
+  };
+}
+
+function ieOnEnd(script, cb) {
+  script.onreadystatechange = function () {
+    if (this.readyState != 'complete' && this.readyState != 'loaded') return;
+    this.onreadystatechange = null;
+    cb(null, script); // there is no way to catch loading errors in IE8
+  };
+}
+
+/***/ }),
+
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12458,7 +12422,38 @@ process.umask = function () {
 
 /***/ }),
 
-/***/ 42:
+/***/ 43:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+	return this;
+}();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
+
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12541,7 +12536,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 43:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -12587,7 +12582,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(44);
+var	fixUrls = __webpack_require__(46);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -12901,7 +12896,7 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 
-/***/ 44:
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12997,7 +12992,38 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ 45:
+/***/ 47:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function () {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function get() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function get() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+/***/ }),
+
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13054,37 +13080,6 @@ Exception.prototype = new Error();
 
 exports['default'] = Exception;
 module.exports = exports['default'];
-
-/***/ }),
-
-/***/ 57:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var g;
-
-// This works in non-strict mode
-g = function () {
-	return this;
-}();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
-} catch (e) {
-	// This works if the window reference is available
-	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
 
 /***/ })
 

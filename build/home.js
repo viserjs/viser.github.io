@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 631);
+/******/ 	return __webpack_require__(__webpack_require__.s = 679);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 42:
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -148,7 +148,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 43:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -194,7 +194,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(44);
+var	fixUrls = __webpack_require__(46);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -508,7 +508,7 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 
-/***/ 44:
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -604,13 +604,13 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ 631:
+/***/ 679:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(632);
+__webpack_require__(680);
 
 var GDP_JSON = [{ "year": '2006', "gdp": 21.94385 }, { "year": '2007', "gdp": 27.02323 }, { "year": '2008', "gdp": 31.95155 }, { "year": '2009', "gdp": 34.90814 }, { "year": '2010', "gdp": 41.30303 }, { "year": '2011', "gdp": 48.93006 }, { "year": '2012', "gdp": 54.03674 }, { "year": '2013', "gdp": 59.52444 }, { "year": '2014', "gdp": 64.39740 }, { "year": '2015', "gdp": 68.90521 }];
 
@@ -691,13 +691,13 @@ window.onload = renderChart;
 
 /***/ }),
 
-/***/ 632:
+/***/ 680:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(633);
+var content = __webpack_require__(681);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -705,7 +705,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(43)(content, options);
+var update = __webpack_require__(45)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -723,10 +723,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 633:
+/***/ 681:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(42)(undefined);
+exports = module.exports = __webpack_require__(44)(undefined);
 // imports
 
 

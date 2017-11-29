@@ -2,7 +2,6 @@ import { setTimeout } from 'timers';
 
 require('./index.scss');
 const $ = require('jquery');
-
 const CONS = require('../constants');
 const codeConfig = require('../../examples/index');
 const navTpl = require('./tpl/nav.tpl');
