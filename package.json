@@ -6,7 +6,8 @@
   "author": "alibaba dt",
   "scripts": {
     "start": "node ./run.js",
-    "build": "webpack"
+    "build": "webpack",
+    "publish": "npm run build&&git add .&&git commmit -m 'publish viserjs.github.io'&&git push origin master"
   },
   "pre-commit": [
     "tslint"

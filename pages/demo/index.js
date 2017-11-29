@@ -131,8 +131,7 @@ class App {
   presetEditor(framework, code) {
     window.monaco.editor.create(document.getElementById(`${framework}-editor`), {
       value: code[`${framework}Code`].template,
-      language: framework === 'vue' ? 'html' : 'javascript',
-
+      language: framework !== 'vue' ? 'javascript' : 'html',
       lineNumbers: false,
       scrollBeyondLastLine: false,
       renderLineHighlight: 'none',
@@ -154,9 +153,6 @@ class App {
       case 'vue':
         return this.getJsfiddleVueData(index);
       case 'angular':
-        return;
-      case 'rax':
-        // todo
         return;
       default:
         return;
