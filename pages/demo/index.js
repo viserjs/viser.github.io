@@ -135,6 +135,7 @@ class App {
 
       lineNumbers: false,
       scrollBeyondLastLine: false,
+      renderLineHighlight: 'none',
       readOnly: true,
       theme: 'vs',
       minimap: {

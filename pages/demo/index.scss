@@ -70,16 +70,17 @@
       overflow-y: auto;
       position: absolute;
       transform: translate(100%);
+      opacity: 0;
+      transition: transform .2s, opacity .1s;
+
       &.active {
         display: block;
         transform: translate(0);
+        opacity: 1;
       }
-      pre {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+
+      .cigr {
+        opacity: 0;
       }
     }
   }
