@@ -1,4 +1,5 @@
 require('./index.scss');
+const Viser = require('viser');
 
 const GDP_JSON = [
   { "year": '2006', "gdp": 21.94385 },
@@ -16,28 +17,26 @@ const GDP_JSON = [
 function renderChart() {
   Viser.default({
     data: GDP_JSON,
-    dataMapping: { column: 'year', row: 'gdp' },
     tooltip: true,
     axis: true,
-    series: [{ quickType: 'bar', color: '#0088fe' }],
+    series: [{ quickType: 'bar', color: '#0088fe', position: 'year*gdp' }],
     chart: { width: 700, height: 400, container: 'viser-mount-1-1' },
   });
 
   Viser.default({
     data: GDP_JSON,
-    dataMapping: { column: 'year', row: 'gdp' },
     tooltip: true,
     axis: true,
-    series: [{ quickType: 'line', color: '#0088fe' }],
+    series: [{ quickType: 'line', color: '#0088fe', position: 'year*gdp' }],
     chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
   });
   Viser.default({
     data: GDP_JSON,
-    dataMapping: { column: 'year', row: 'gdp' },
     tooltip: { showTitle: false },
     axis: true,
     series: [{
       quickType: 'pie',
+      position: 'gdp',
       style: {
         lineWidth: 1,
         stroke: '#fff',
@@ -49,36 +48,52 @@ function renderChart() {
   });
   Viser.default({
     data: GDP_JSON,
-    dataMapping: { column: 'year', row: 'gdp' },
     tooltip: true,
     axis: true,
-    series: [{ quickType: 'area', color: '#0088fe' }],
+    series: [{ quickType: 'area', color: '#0088fe', position: 'year*gdp' }],
     chart: { width: 380, height: 230, container: 'viser-mount-2-3' },
   });
   Viser.default({
-    data: { name: 'root', children: GDP_JSON },
-    dataMapping: { column: 'x', row: 'y', color: 'year' },
-    dataPre: {
-      connector: 'hierarchy',
-      transform: [{
-        field: 'gdp',
-        nameKey: 'year',
-        valueKey: 'gdp',
-      }],
-    },
-    tooltip: { showTitle: false },
+    // data: { name: 'root', children: GDP_JSON },
+    // dataPre: {
+    //   connector: {
+    //     type: 'hierarchy',
+    //   },
+    //   transform: {
+    //     field: 'gdp',
+    //     type: 'hierarchy.treemap',
+    //     tile: 'treemapResquarify',
+    //     as: ['x', 'y'],
+    //   },
+    // },
+    // dataView: 'treeNodes',
+    // tooltip: { showTitle: false },
+    // axis: false,
+    // series: [{
+    //   quickType: 'polygon',
+    //   position: 'x*y',
+    //   style: {
+    //     lineWidth: 1,
+    //     stroke: '#fff',
+    //     fill: '#0088fe',
+    //   },
+    //   tooltip: [
+    //     'name*value',
+    //     (name, value) => ({ name, value }),
+    //   ],
+    // }],
+    data: GDP_JSON,
+    tooltip: true,
     axis: false,
     series: [{
-      quickType: 'polygon',
+      quickType: 'sector',
+      color: '#0088fe',
       style: {
         lineWidth: 1,
         stroke: '#fff',
         fill: '#0088fe',
       },
-      tooltip: {
-        dataKey: 'name*value',
-        callback: (name, value) => ({ name, value }),
-      },
+      position: 'year*gdp',
     }],
     chart: { width: 400, height: 270, container: 'viser-mount-2-4' },
   });
