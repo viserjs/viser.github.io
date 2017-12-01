@@ -53,6 +53,26 @@ module.exports = {
         enName: 'Histogram binwidth',
         cnName: '直方图范围刻度',
       },
+      {
+        path: 'example10',
+        enName: 'Basic bar',
+        cnName: '基础条形图',
+      },
+      {
+        path: 'example11',
+        enName: 'Grouped bar',
+        cnName: '分组条形图',
+      },
+      {
+        path: 'example12',
+        enName: 'Stacked bar',
+        cnName: '堆叠条形图',
+      }, 
+      {
+        path: 'example13',
+        enName: 'Ranged bar',
+        cnName: '区间条形图',
+      },
     ],
     icon: 'zhuzhuangtu'
   },
