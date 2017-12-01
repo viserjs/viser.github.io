@@ -15,13 +15,33 @@ module.exports = {
     examples: [
       {
         path: 'example1',
-        enName: 'Simple bar',
+        enName: 'Basic column',
         cnName: '简单柱状图',
       },
       {
+        path: 'example2',
+        enName: 'Grouped column',
+        cnName: '分组柱状图',
+      },
+      {
+        path: 'example3',
+        enName: 'Stacked column',
+        cnName: '堆叠柱状图',
+      },
+      {
         path: 'example4',
-        enName: 'Percent dodge bar',
+        enName: 'Stacked percentage column',
         cnName: '百分比堆叠柱状图',
+      },
+      {
+        path: 'example5',
+        enName: 'Ranged column',
+        cnName: '区间柱状图',
+      },
+      {
+        path: 'example7',
+        enName: 'Histogram',
+        cnName: '直方图',
       },
     ],
     icon: 'zhuzhuangtu'

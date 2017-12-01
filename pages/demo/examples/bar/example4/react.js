@@ -41,10 +41,10 @@ const scale = [{
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit height={this.state.height} data={data} dataPre={dataPre} scale={scale}>
+      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
         <Tooltip />
         <Axis />
-        <StackBar position='year*percent' color='country' style={{ stroke: '#fff', lineWidth: this.state.lineWidth }} />
+        <StackBar position="year*percent" color="country" style={{ stroke: '#fff', lineWidth: this.state.lineWidth }} />
       </Chart>
     );
   }

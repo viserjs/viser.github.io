@@ -25,7 +25,7 @@ class App extends React.Component {
       <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip />
         <Axis />
-        <Bar position='year*sales' />
+        <Bar position="year*sales" />
       </Chart>
     );
   }
