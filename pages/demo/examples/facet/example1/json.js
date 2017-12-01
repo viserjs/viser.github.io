@@ -1,11 +1,11 @@
 const allData = require('./data');
-const { chartData, dataMapping, scale } = allData;
+const { chartData, scale } = allData;
 
 export const config = {
   data: chartData,
   tooltip: true,
-  dataMapping,
   scale,
+  legend: true,
   facet: {
     type: 'rect',
     fields: ['cut', 'clarity'],
@@ -14,6 +14,8 @@ export const config = {
       tooltip: true,
       series: {
         quickType: 'point',
+        position: 'carat*price',
+        color: 'cut',
         opacity: 0.3,
         size: 3,
       }

@@ -1,34 +1,33 @@
 export const template =
-`import {
-  Chart, Facet, View, Tooltip,
-  Legend, Axis, Point, FacetView
-} from '../../../packages/viser-react/src/index';
+`import { Chart, Facet, View, Tooltip, Legend, Axis, Point, FacetView } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  chartData, dataMapping, scale
-} from './data'
+import { chartData } from './data'
+
+const scale = [{
+  dataKey: 'carat',
+  sync: true
+}, {
+  dataKey: 'price',
+  sync: true,
+  tickCount: 3
+}, {
+  dataKey: 'cut',
+  sync: true,
+}];
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart
-          forceFit={true}
-          height={600}
-          data={chartData}
-          dataMapping={dataMapping}
-          scale={scale}
-        >
+        <Chart forceFit={true} height={600} data={chartData} scale={scale}>
           <Tooltip />
-          <Facet
-            type="rect"
-            fields={['cut', 'clarity']}
-          >
+          <Legend />
+          <Facet type="rect" fields={['cut', 'clarity']}>
             <FacetView>
               <Tooltip />
               <Axis />
-              <Point opacity={0.3} size={3} />
+              <Point position="carat*price" color="cut" opacity={0.3} size={3} />
             </FacetView>
           </Facet>
         </Chart>

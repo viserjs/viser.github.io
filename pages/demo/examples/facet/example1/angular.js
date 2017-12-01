@@ -1,39 +1,36 @@
 export const template =
 `import 'zone.js';
 import 'reflect-metadata';
-import {
-  Component, enableProdMode, NgModule
-} from '@angular/core';
-import {
-  platformBrowserDynamic
-} from '@angular/platform-browser-dynamic';
-import {
-  BrowserModule
-} from '@angular/platform-browser';
-import {
-  ViserModule
-} from '../../../packages/viser-ng/src/index';
-import {
-  chartData, dataMapping, scale
-} from './data'
+import { Component, enableProdMode, NgModule } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { ViserModule } from 'viser-ng';
+import { chartData } from './data'
+
+const scale = [{
+  dataKey: 'carat',
+  sync: true
+}, {
+  dataKey: 'price',
+  sync: true,
+  tickCount: 3
+}, {
+  dataKey: 'cut',
+  sync: true,
+}];
 
 @Component({
   selector: '#mount',
   template: \`
   <div>
-    <Chart
-      [forceFit]="forceFit"
-      [height]="600"
-      [data]="chartData"
-      [dataMapping]="dataMapping"
-      [scale]="scale"
-    >
+    <Chart [forceFit]="forceFit" [height]="600" [data]="chartData" [scale]="scale">
       <Tooltip></Tooltip>
+      <Legend></Legend>
       <Facet type="rect" [fields]="fields">
         <FacetView>
           <Axis></Axis>
           <Tooltip></Tooltip>
-          <Point opacity="0.3" size="3"></Point>
+          <Point position="carat*price" color="cut" opacity="0.3" size="3"></Point>
         </FacetView>
       </Facet>
     </Chart>
@@ -45,7 +42,6 @@ export class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
   chartData = chartData;
-  dataMapping = dataMapping;
   scale = scale;
   fields = ['cut', 'clarity'];
 }
