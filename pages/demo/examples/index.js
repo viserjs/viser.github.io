@@ -43,6 +43,16 @@ module.exports = {
         enName: 'Histogram',
         cnName: '直方图',
       },
+      {
+        path: 'example8',
+        enName: 'Stacked histogram',
+        cnName: '层叠直方图',
+      },
+      {
+        path: 'example9',
+        enName: 'Histogram binwidth',
+        cnName: '直方图范围刻度',
+      },
     ],
     icon: 'zhuzhuangtu'
   },

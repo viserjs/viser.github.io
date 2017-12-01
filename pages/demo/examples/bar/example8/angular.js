@@ -6,25 +6,27 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 
-const data = [
-  { x: '分类一', y: [ 76, 100 ] },
-  { x: '分类二', y: [ 56, 108 ] },
-  { x: '分类三', y: [ 38, 129 ] },
-  { x: '分类四', y: [ 58, 155 ] },
-  { x: '分类五', y: [ 45, 120 ] },
-  { x: '分类六', y: [ 23, 99 ] },
-  { x: '分类七', y: [ 18, 56 ] },
-  { x: '分类八', y: [ 18, 34 ] },
-];
+// https://antv.alipay.com/assets/data/diamond.json
+const data = [];
+
+const dataPre = {
+  transform: {
+    type: 'bin.histogram',
+    field: 'depth',
+    binWidth: 1,
+    groupBy: [ 'cut' ],
+    as: ['depth', 'count'],
+  },
+};
 
 @Component({
   selector: '#mount',
   template: \`
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data">
+    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
       <Tooltip crosshairs="false" inPlot="false" position="top"></Tooltip>
       <Axis></Axis>
-      <Bar position="x*y"></Bar>
+      <StackBar position="depth*count" color="cut"></StackBar>
     </Chart>
   </div>
   \`
@@ -34,6 +36,7 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
+  dataPre = dataPre;
 }
 
 @NgModule({
