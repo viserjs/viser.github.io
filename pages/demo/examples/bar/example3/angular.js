@@ -27,6 +27,7 @@ const dataPre = {
     <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
       <Tooltip></Tooltip>
       <Axis></Axis>
+      <Legend></Legend>
       <StackBar position="月份*月均降雨量" color="name"></StackBar>
     </Chart>
   </div>

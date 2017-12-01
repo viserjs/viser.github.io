@@ -26,6 +26,7 @@ const dataPre = {
     <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
       <Tooltip crosshairs="false" inPlot="false" position="top"></Tooltip>
       <Axis></Axis>
+      <Legend></Legend>
       <StackBar position="depth*count" color="cut"></StackBar>
     </Chart>
   </div>

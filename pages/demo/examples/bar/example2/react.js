@@ -1,5 +1,5 @@
 export const template =
-`import { Chart, Tooltip, Axis, Bar } from 'viser-react';
+`import { Chart, Tooltip, Axis, Legend, Bar } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -23,6 +23,7 @@ class App extends React.Component {
       <Chart forceFit height={400} data={data} dataPre={dataPre}>
         <Tooltip />
         <Axis />
+        <Legend />
         <Bar position="月份*月均降雨量" color="name" adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]} />
       </Chart>
     );

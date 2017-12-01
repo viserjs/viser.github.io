@@ -48,6 +48,7 @@ const scale = [{
     <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
       <Tooltip></Tooltip>
       <Axis></Axis>
+      <Legend></Legend>
       <StackBar position="year*percent" color="country" [ngStyle]="{ stroke: '#fff', lineWidth: 1 }"></StackBar>
     </Chart>
   </div>

@@ -1,5 +1,5 @@
 export const template =
-`import { Chart, Tooltip, Axis, StackBar } from 'viser-react';
+`import { Chart, Tooltip, Axis, Legend, StackBar } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -44,6 +44,7 @@ class App extends React.Component {
       <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
         <Tooltip />
         <Axis />
+        <Legend />
         <StackBar position="year*percent" color="country" style={{ stroke: '#fff', lineWidth: this.state.lineWidth }} />
       </Chart>
     );

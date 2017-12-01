@@ -4,6 +4,7 @@ export const template =
     <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre">
       <v-tooltip />
       <v-axis />
+      <v-legend />
       <v-bar :position="'月份*月均降雨量'" :color="'name'" :adjust="adjust" />
     </v-chart>
   </div>

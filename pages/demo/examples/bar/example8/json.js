@@ -5,6 +5,7 @@ export const config = {
   data,
   dataPre,
   axis: true,
+  legend: true,
   tooltip: {
     crosshairs: false,
     inPlot: false,

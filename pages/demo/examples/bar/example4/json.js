@@ -15,6 +15,7 @@ export const config = {
   scale: scale,
   axis: true,
   tooltip: true,
+  legend: true,
   series: [{
     quickType: 'stackBar',
     style: {

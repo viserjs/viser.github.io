@@ -4,6 +4,7 @@ export const template =
     <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre">
       <v-tooltip :crosshairs="false" :in-plot="false" :position="'top'" />
       <v-axis />
+      <v-legend />
       <v-stack-bar :position="'depth*count'" :color="'cut'" />
     </v-chart>
   </div>

@@ -4,6 +4,7 @@ export const template =
     <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
       <v-tooltip />
       <v-axis />
+      <v-legend />
       <v-stack-bar :position="'year*percent'" :color="'country'" :v-style="stackBarStyle" />
     </v-chart>
   </div>

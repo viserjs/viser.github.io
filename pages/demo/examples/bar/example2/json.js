@@ -6,6 +6,7 @@ export const config = {
   dataPre: dataPre,
   axis: true,
   tooltip: true,
+  legend: true,
   series: [{
     quickType: 'bar',
     position: '月份*月均降雨量',
