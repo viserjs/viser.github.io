@@ -1,39 +1,35 @@
 export const template =
 `import 'zone.js';
 import 'reflect-metadata';
-import {
-  Component, enableProdMode, NgModule
-} from '@angular/core';
-import {
-  platformBrowserDynamic
-} from '@angular/platform-browser-dynamic';
-import {
-  BrowserModule
-} from '@angular/platform-browser';
-import {
-  ViserModule
-} from '../../../packages/viser-ng/src/index';
-import {
-  data, dataMapping, dataPre, scale
-} from './data'
+import { Component, enableProdMode, NgModule } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { ViserModule } from 'viser-ng';
+
+const data = [
+  { year: '1951 年', sales: 38 },
+  { year: '1952 年', sales: 52 },
+  { year: '1956 年', sales: 61 },
+  { year: '1957 年', sales: 145 },
+  { year: '1958 年', sales: 48 },
+  { year: '1959 年', sales: 38 },
+  { year: '1960 年', sales: 38 },
+  { year: '1962 年', sales: 38 },
+];
+
+const scale = [{
+  dataKey: 'sales',
+  tickInterval: 20,
+}];
 
 @Component({
   selector: '#mount',
   template: \`
   <div>
-    <Chart
-      [forceFit]="forceFit"
-      [height]="height"
-      [data]="data"
-      [dataPre]="dataPre"
-      [dataMapping]="dataMapping"
-      [scale]="scale"
-    >
+    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <Tooltip></Tooltip>
       <Axis></Axis>
-      <StackBar
-        [ngStyle]="{ stroke: '#fff', lineWidth: 1 }"
-      ></StackBar>
+      <Bar position="year*sales"></Bar>
     </Chart>
   </div>
   \`
@@ -43,10 +39,7 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
-  dataPre = dataPre;
-  dataMapping = dataMapping;
   scale = scale;
-  fields = ['cut', 'clarity'];
 }
 
 @NgModule({

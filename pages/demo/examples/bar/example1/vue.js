@@ -1,49 +1,39 @@
 export const template =
 `<template>
   <div>
-    <v-chart
-      :force-fit="true"
-      :height="height"
-      :data="data"
-      :data-pre="dataPre"
-      :data-mapping="dataMapping"
-      :scale="scale"
-    >
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
-      <v-stack-bar :v-style="stackBarStyle" />
+      <v-bar :position="'year*sales'" />
     </v-chart>
   </div>
 </template>
 
 <script>
-  import {
-    data, dataMapping, dataPre, scale
-  } from "./data";
+  const data = [
+    { year: '1951 年', sales: 38 },
+    { year: '1952 年', sales: 52 },
+    { year: '1956 年', sales: 61 },
+    { year: '1957 年', sales: 145 },
+    { year: '1958 年', sales: 48 },
+    { year: '1959 年', sales: 38 },
+    { year: '1960 年', sales: 38 },
+    { year: '1962 年', sales: 38 },
+  ];
+  
+  const scale = [{
+    dataKey: 'sales',
+    tickInterval: 20,
+  }];
 
   export default {
     data() {
       return {
         data,
-        dataMapping,
-        dataPre,
         scale,
         height: 400,
-        stackBarStyle: {
-          stroke: "#fff",
-          lineWidth: 1
-        }
       };
-    },
-    methods: {
-      handleClick: function() {
-        this.height = 600;
-        this.stackBarStyle.lineWidth = 10;
-      }
     }
   };
 </script>
-
-<style scoped>
-</style>
 `;

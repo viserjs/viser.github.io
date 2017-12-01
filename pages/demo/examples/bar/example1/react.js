@@ -1,51 +1,32 @@
 export const template =
-`import {
-  Chart, Tooltip, Axis, StackBar
-} from '../../../packages/viser-react/src/index';
+`import { Chart, Tooltip, Axis, Bar } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  data, dataMapping, dataPre, scale
-} from './data'
+
+const data = [
+  { year: '1951 年', sales: 38 },
+  { year: '1952 年', sales: 52 },
+  { year: '1956 年', sales: 61 },
+  { year: '1957 年', sales: 145 },
+  { year: '1958 年', sales: 48 },
+  { year: '1959 年', sales: 38 },
+  { year: '1960 年', sales: 38 },
+  { year: '1962 年', sales: 38 },
+];
+
+const scale = [{
+  dataKey: 'sales',
+  tickInterval: 20,
+}];
 
 class App extends React.Component {
-  state = {
-    height: 400,
-    lineWidth: 1
-  }
-
-  constructor(props) {
-    super(props);
-  }
-
-  handleClick = () => {
-    this.setState({
-      height: 600,
-      lineWidth: 10,
-    })
-  }
-
   render() {
     return (
-      <div>
-        <Chart
-          forceFit
-          height={this.state.height}
-          data={data}
-          dataPre={dataPre}
-          dataMapping={dataMapping}
-          scale={scale}
-        >
-          <Tooltip />
-          <Axis />
-          <StackBar
-            style={{
-              stroke: '#fff',
-              lineWidth: this.state.lineWidth
-            }}
-          />
-        </Chart>
-      </div>
+      <Chart forceFit height={400} data={data} scale={scale}>
+        <Tooltip />
+        <Axis />
+        <Bar position='year*sales' />
+      </Chart>
     );
   }
 }

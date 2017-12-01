@@ -15,8 +15,13 @@ module.exports = {
     examples: [
       {
         path: 'example1',
-        enName: 'Simple Bar',
+        enName: 'Simple bar',
         cnName: '简单柱状图',
+      },
+      {
+        path: 'example4',
+        enName: 'Percent dodge bar',
+        cnName: '百分比堆叠柱状图',
       },
     ],
     icon: 'zhuzhuangtu'
