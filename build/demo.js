@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 212);
+/******/ 	return __webpack_require__(__webpack_require__.s = 210);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 128:
+/***/ 127:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85,11 +85,11 @@ var _exception = __webpack_require__(48);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _helpers = __webpack_require__(223);
+var _helpers = __webpack_require__(221);
 
-var _decorators = __webpack_require__(231);
+var _decorators = __webpack_require__(229);
 
-var _logger = __webpack_require__(233);
+var _logger = __webpack_require__(231);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -177,7 +177,7 @@ exports.logger = _logger2['default'];
 
 /***/ }),
 
-/***/ 212:
+/***/ 210:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -185,7 +185,7 @@ exports.logger = _logger2['default'];
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _timers = __webpack_require__(213);
+var _timers = __webpack_require__(211);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -194,11 +194,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 }, 0);
 
 
-__webpack_require__(215);
-var $ = __webpack_require__(217);
-var CONS = __webpack_require__(218);
-var codeConfig = __webpack_require__(219);
-var navTpl = __webpack_require__(220);
+__webpack_require__(213);
+var $ = __webpack_require__(215);
+var CONS = __webpack_require__(216);
+var codeConfig = __webpack_require__(217);
+var navTpl = __webpack_require__(218);
 
 var ALL_FRAMEWORK = ['react', 'vue', 'angular'];
 
@@ -239,10 +239,10 @@ var App = function () {
       var vueCode = '';
       var angularCode = '';
       try {
-        jsonCode = __webpack_require__(237)("./" + chartType + '/' + path + '/json.js');
+        jsonCode = __webpack_require__(235)("./" + chartType + '/' + path + '/json.js');
         reactCode = __webpack_require__(242)("./" + chartType + '/' + path + '/react.js');
-        vueCode = __webpack_require__(245)("./" + chartType + '/' + path + '/vue.js');
-        angularCode = __webpack_require__(248)("./" + chartType + '/' + path + '/angular.js');
+        vueCode = __webpack_require__(246)("./" + chartType + '/' + path + '/vue.js');
+        angularCode = __webpack_require__(250)("./" + chartType + '/' + path + '/angular.js');
       } catch (e) {
         console.log('exception:', e);
       } finally {
@@ -423,7 +423,7 @@ var App = function () {
  */
 
 
-var load = __webpack_require__(251);
+var load = __webpack_require__(254);
 var loadEditor = function loadEditor() {
   var self = undefined;
   return new Promise(function (resolve, reject) {
@@ -449,7 +449,7 @@ loadEditor().then(function (monaco) {
 
 /***/ }),
 
-/***/ 213:
+/***/ 211:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -503,13 +503,13 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(214);
+__webpack_require__(212);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 /***/ }),
 
-/***/ 214:
+/***/ 212:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -701,13 +701,13 @@ exports.clearImmediate = clearImmediate;
 
 /***/ }),
 
-/***/ 215:
+/***/ 213:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(216);
+var content = __webpack_require__(214);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -721,8 +721,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
-			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss");
+		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./index.scss", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./index.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -733,7 +733,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 216:
+/***/ 214:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(44)(undefined);
@@ -741,14 +741,14 @@ exports = module.exports = __webpack_require__(44)(undefined);
 
 
 // module
-exports.push([module.i, ".common-header {\n  height: 60px;\n  line-height: 60px;\n  display: block;\n  outline: 0;\n  list-style: none;\n  color: #666;\n  font-size: 14px;\n  position: relative;\n  background: #00c49f;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }\n  .common-header .common-title {\n    float: left;\n    padding-left: 30px;\n    color: #fff;\n    text-decoration: none;\n    font-size: 36px;\n    font-weight: 100;\n    height: 60px;\n    line-height: 60px;\n    display: block;\n    background: #0088fe;\n    width: 200px;\n    box-sizing: border-box; }\n    .common-header .common-title::after {\n      content: ' ';\n      display: block;\n      position: absolute;\n      top: -28px;\n      left: 163px;\n      width: 80px;\n      height: 80px;\n      transform: rotate(-30deg);\n      background: #0088fe;\n      border-radius: 20px; }\n  .common-header .common-header-nav {\n    width: 500px;\n    height: 60px;\n    box-sizing: border-box;\n    padding-top: 13px;\n    float: right;\n    margin-right: 126px; }\n  .common-header .common-header-nav-item {\n    color: white;\n    display: block;\n    width: 130px;\n    height: 34px;\n    line-height: 34px;\n    border-radius: 34px;\n    font-size: 14px;\n    float: right;\n    text-decoration: none;\n    text-align: center;\n    transition: background .3s, color .3s;\n    position: relative;\n    cursor: pointer; }\n    .common-header .common-header-nav-item a {\n      text-decoration: none;\n      color: #fff; }\n    .common-header .common-header-nav-item:hover {\n      background: white;\n      color: #00c49f; }\n      .common-header .common-header-nav-item:hover a,\n      .common-header .common-header-nav-item:hover i {\n        color: #00c49f; }\n\n* {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  overflow-x: hidden; }\n\nul, ol {\n  display: block;\n  list-style-type: none;\n  -webkit-margin-before: 0;\n  -webkit-margin-after: 0;\n  -webkit-margin-start: 0px;\n  -webkit-margin-end: 0px;\n  -webkit-padding-start: 0; }\n\na {\n  text-decoration: none; }\n\n.github-link {\n  color: white;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  display: block;\n  float: right;\n  margin-left: 48px; }\n  .github-link .iconfont {\n    height: 29px;\n    width: 29px;\n    overflow: hidden;\n    font-size: 28px; }\n  .github-link .icon-gh {\n    display: none; }\n  .github-link .icon-gh-o {\n    display: block; }\n  .github-link:hover .icon-gh {\n    display: block; }\n  .github-link:hover .icon-gh-o {\n    display: none; }\n\n@font-face {\n  font-family: 'iconfont';\n  /* project id 473307 */\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot\");\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot?#iefix\") format(\"embedded-opentype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.woff\") format(\"woff\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.ttf\") format(\"truetype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.svg#iconfont\") format(\"svg\"); }\n\n.iconfont {\n  font-family: \"iconfont\" !important;\n  font-size: 16px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.icon-bingtu:before {\n  content: \"\\E600\"; }\n\n.icon-gh:before {\n  content: \"\\E719\"; }\n\n.icon-fuzhi:before {\n  content: \"\\E644\"; }\n\n.icon-relitu:before {\n  content: \"\\E650\"; }\n\n.icon-jizuobiao:before {\n  content: \"\\E830\"; }\n\n.icon-loudoutu:before {\n  content: \"\\E645\"; }\n\n.icon-mianjitu:before {\n  content: \"\\E6E7\"; }\n\n.icon-gh-o:before {\n  content: \"\\EEA9\"; }\n\n.icon-leidatu:before {\n  content: \"\\E626\"; }\n\n.icon-yibiaopan:before {\n  content: \"\\E66C\"; }\n\n.icon-fenmian:before {\n  content: \"\\E6EA\"; }\n\n.icon-zhuzhuangtu:before {\n  content: \"\\E6B4\"; }\n\n.icon-diantu:before {\n  content: \"\\E61E\"; }\n\n.icon-infinite:before {\n  content: \"\\E6CE\"; }\n\n.icon-one:before {\n  content: \"\\E687\"; }\n\n.icon-xiangxiantu:before {\n  content: \"\\E62B\"; }\n\n.icon-ditu:before {\n  content: \"\\E882\"; }\n\n.icon-github:before {\n  content: \"\\E601\"; }\n\n.icon-guanxitu:before {\n  content: \"\\E615\"; }\n\n.icon-down-triangle:before {\n  content: \"\\E610\"; }\n\n.icon-yunxing:before {\n  content: \"\\E66D\"; }\n\n.icon-xianxingtu:before {\n  content: \"\\E660\"; }\n\n.icon-contain:before {\n  content: \"\\E614\"; }\n\n.icon-juzhentu:before {\n  content: \"\\E740\"; }\n\n.icon-gupiaotu:before {\n  content: \"\\E73B\"; }\n\n.icon-meiguitu:before {\n  content: \"\\E60B\"; }\n\n#main-content {\n  position: relative;\n  height: calc(100% - 60px); }\n  #main-content .left-panel {\n    float: left;\n    width: 200px;\n    height: 100%;\n    background: #fff;\n    border-right: 1px solid #eee;\n    padding-top: 20px;\n    box-sizing: border-box; }\n  #main-content .right-panel {\n    overflow: hidden;\n    height: 100%;\n    padding: 20px;\n    box-sizing: border-box; }\n\n.common-nav-folder {\n  margin-bottom: 20px;\n  padding-left: 30px;\n  line-height: 40px; }\n\n.common-nav-item {\n  cursor: pointer;\n  padding-left: 60px;\n  margin-left: -30px; }\n  .common-nav-item:hover, .common-nav-item.active {\n    background: #edf1f5; }\n\n.common-nav-title {\n  color: #666;\n  font-weight: 100;\n  text-transform: capitalize; }\n\n.common-nav-link {\n  color: #666;\n  display: block;\n  width: 100%;\n  height: 34px;\n  line-height: 34px;\n  font-size: 16px;\n  text-transform: capitalize; }\n\n#main-content .case-type {\n  background: #fff;\n  color: #333;\n  margin-bottom: 10px;\n  font-size: 20px;\n  text-transform: capitalize;\n  width: calc(100% - 460px);\n  position: absolute; }\n\n#main-content .op {\n  position: absolute;\n  top: 0;\n  right: 15px;\n  z-index: 11;\n  line-height: 28px;\n  color: #666; }\n  #main-content .op a {\n    cursor: pointer;\n    margin-top: 3px;\n    padding: 3px 16px;\n    display: inline-block;\n    background: #0088fe;\n    border-radius: 4px;\n    font-size: 14px;\n    line-height: 22px;\n    color: #fff; }\n    #main-content .op a i {\n      font-size: 14px;\n      line-height: 22px;\n      color: #fff; }\n\n#main-content .case-demo {\n  padding: 50px 15px 0 0;\n  width: calc(100% - 430px);\n  border-right: 1px dashed #eee; }\n\n#main-content .case-code {\n  padding-left: 15px;\n  width: 415px; }\n\n#main-content .case-demo,\n#main-content .case-code {\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  box-sizing: border-box; }\n  #main-content .case-demo .case-code-switch,\n  #main-content .case-code .case-code-switch {\n    width: 100%;\n    height: 40px;\n    position: relative; }\n  #main-content .case-demo .case-code-detail,\n  #main-content .case-code .case-code-detail {\n    display: block;\n    height: calc(100% - 40px);\n    width: 100%;\n    overflow-y: auto;\n    position: absolute;\n    transform: translate(100%);\n    opacity: 0;\n    transition: transform .2s, opacity .1s; }\n    #main-content .case-demo .case-code-detail.active,\n    #main-content .case-code .case-code-detail.active {\n      display: block;\n      transform: translate(0);\n      opacity: 1; }\n    #main-content .case-demo .case-code-detail .cigr,\n    #main-content .case-code .case-code-detail .cigr {\n      opacity: 0; }\n\n#main-content .case-code-switch {\n  height: 36px;\n  width: 100%;\n  display: block;\n  padding-top: 4px; }\n  #main-content .case-code-switch .case-code-switch-item {\n    float: left;\n    display: block;\n    width: 80px;\n    margin: 0 10px;\n    font-size: 14px;\n    height: 28px;\n    text-align: center;\n    padding-bottom: 2px;\n    color: #999;\n    cursor: pointer; }\n    #main-content .case-code-switch .case-code-switch-item:hover {\n      color: #666; }\n    #main-content .case-code-switch .case-code-switch-item.active, #main-content .case-code-switch .case-code-switch-item.active:hover {\n      color: #0088fe;\n      padding-bottom: 0;\n      border-bottom: 2px solid #0088fe; }\n\n#main-content .case-box.no-code {\n  padding: 15px; }\n", ""]);
+exports.push([module.i, ".common-header {\n  height: 60px;\n  line-height: 60px;\n  display: block;\n  outline: 0;\n  list-style: none;\n  color: #666;\n  font-size: 14px;\n  position: relative;\n  background: #00c49f;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }\n  .common-header .common-title {\n    float: left;\n    padding-left: 30px;\n    color: #fff;\n    text-decoration: none;\n    font-size: 36px;\n    font-weight: 100;\n    height: 60px;\n    line-height: 60px;\n    display: block;\n    background: #0088fe;\n    width: 200px;\n    box-sizing: border-box; }\n    .common-header .common-title::after {\n      content: ' ';\n      display: block;\n      position: absolute;\n      top: -28px;\n      left: 163px;\n      width: 80px;\n      height: 80px;\n      transform: rotate(-30deg);\n      background: #0088fe;\n      border-radius: 20px; }\n  .common-header .common-header-nav {\n    width: 500px;\n    height: 60px;\n    box-sizing: border-box;\n    padding-top: 13px;\n    float: right;\n    margin-right: 126px; }\n  .common-header .common-header-nav-item {\n    color: white;\n    display: block;\n    width: 130px;\n    height: 34px;\n    line-height: 34px;\n    border-radius: 34px;\n    font-size: 14px;\n    float: right;\n    text-decoration: none;\n    text-align: center;\n    transition: background .3s, color .3s;\n    position: relative;\n    cursor: pointer; }\n    .common-header .common-header-nav-item a {\n      text-decoration: none;\n      color: #fff; }\n    .common-header .common-header-nav-item:hover {\n      background: white;\n      color: #00c49f; }\n      .common-header .common-header-nav-item:hover a,\n      .common-header .common-header-nav-item:hover i {\n        color: #00c49f; }\n\n* {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  overflow-x: hidden; }\n\nul, ol {\n  display: block;\n  list-style-type: none;\n  -webkit-margin-before: 0;\n  -webkit-margin-after: 0;\n  -webkit-margin-start: 0px;\n  -webkit-margin-end: 0px;\n  -webkit-padding-start: 0; }\n\na {\n  text-decoration: none; }\n\n.github-link {\n  color: white;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  display: block;\n  float: right;\n  margin-left: 48px; }\n  .github-link .iconfont {\n    height: 29px;\n    width: 29px;\n    overflow: hidden;\n    font-size: 28px; }\n  .github-link .icon-gh {\n    display: none; }\n  .github-link .icon-gh-o {\n    display: block; }\n  .github-link:hover .icon-gh {\n    display: block; }\n  .github-link:hover .icon-gh-o {\n    display: none; }\n\n@font-face {\n  font-family: 'iconfont';\n  /* project id 473307 */\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot\");\n  src: url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.eot?#iefix\") format(\"embedded-opentype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.woff\") format(\"woff\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.ttf\") format(\"truetype\"), url(\"//at.alicdn.com/t/font_473307_kle8ui3d448ia4i.svg#iconfont\") format(\"svg\"); }\n\n.iconfont {\n  font-family: \"iconfont\" !important;\n  font-size: 16px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.icon-bingtu:before {\n  content: \"\\E600\"; }\n\n.icon-gh:before {\n  content: \"\\E719\"; }\n\n.icon-fuzhi:before {\n  content: \"\\E644\"; }\n\n.icon-relitu:before {\n  content: \"\\E650\"; }\n\n.icon-jizuobiao:before {\n  content: \"\\E830\"; }\n\n.icon-loudoutu:before {\n  content: \"\\E645\"; }\n\n.icon-mianjitu:before {\n  content: \"\\E6E7\"; }\n\n.icon-gh-o:before {\n  content: \"\\EEA9\"; }\n\n.icon-leidatu:before {\n  content: \"\\E626\"; }\n\n.icon-yibiaopan:before {\n  content: \"\\E66C\"; }\n\n.icon-fenmian:before {\n  content: \"\\E6EA\"; }\n\n.icon-zhuzhuangtu:before {\n  content: \"\\E6B4\"; }\n\n.icon-diantu:before {\n  content: \"\\E61E\"; }\n\n.icon-infinite:before {\n  content: \"\\E6CE\"; }\n\n.icon-one:before {\n  content: \"\\E687\"; }\n\n.icon-xiangxiantu:before {\n  content: \"\\E62B\"; }\n\n.icon-ditu:before {\n  content: \"\\E882\"; }\n\n.icon-github:before {\n  content: \"\\E601\"; }\n\n.icon-guanxitu:before {\n  content: \"\\E615\"; }\n\n.icon-down-triangle:before {\n  content: \"\\E610\"; }\n\n.icon-yunxing:before {\n  content: \"\\E66D\"; }\n\n.icon-xianxingtu:before {\n  content: \"\\E660\"; }\n\n.icon-contain:before {\n  content: \"\\E614\"; }\n\n.icon-juzhentu:before {\n  content: \"\\E740\"; }\n\n.icon-gupiaotu:before {\n  content: \"\\E73B\"; }\n\n.icon-meiguitu:before {\n  content: \"\\E60B\"; }\n\n#main-content {\n  position: relative;\n  height: calc(100% - 60px); }\n  #main-content .left-panel {\n    float: left;\n    width: 200px;\n    height: 100%;\n    background: #fff;\n    border-right: 1px solid #eee;\n    padding-top: 20px;\n    box-sizing: border-box; }\n  #main-content .right-panel {\n    overflow: hidden;\n    height: 100%;\n    padding: 20px;\n    box-sizing: border-box; }\n\n.common-nav-folder {\n  margin-bottom: 20px;\n  padding-left: 30px;\n  line-height: 40px; }\n\n.common-nav-item {\n  cursor: pointer;\n  padding-left: 60px;\n  margin-left: -38px; }\n  .common-nav-item:hover, .common-nav-item.active {\n    background: #edf1f5; }\n\n.common-nav-title {\n  color: #666;\n  font-weight: 100;\n  text-transform: capitalize; }\n\n.common-nav-link {\n  color: #666;\n  display: block;\n  width: 100%;\n  height: 34px;\n  line-height: 34px;\n  font-size: 14px;\n  text-transform: capitalize; }\n\n#main-content .case-type {\n  background: #fff;\n  color: #333;\n  margin-bottom: 10px;\n  font-size: 20px;\n  text-transform: capitalize;\n  width: calc(100% - 460px);\n  position: absolute; }\n\n#main-content .op {\n  position: absolute;\n  top: 0;\n  right: 15px;\n  z-index: 11;\n  line-height: 28px;\n  color: #666; }\n  #main-content .op a {\n    cursor: pointer;\n    margin-top: 3px;\n    padding: 3px 16px;\n    display: inline-block;\n    background: #0088fe;\n    border-radius: 4px;\n    font-size: 14px;\n    line-height: 22px;\n    color: #fff; }\n    #main-content .op a i {\n      font-size: 14px;\n      line-height: 22px;\n      color: #fff; }\n\n#main-content .case-demo {\n  padding: 50px 15px 0 0;\n  width: calc(100% - 430px);\n  border-right: 1px dashed #eee; }\n\n#main-content .case-code {\n  padding-left: 15px;\n  width: 415px; }\n\n#main-content .case-demo,\n#main-content .case-code {\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  box-sizing: border-box; }\n  #main-content .case-demo .case-code-switch,\n  #main-content .case-code .case-code-switch {\n    width: 100%;\n    height: 40px;\n    position: relative; }\n  #main-content .case-demo .case-code-detail,\n  #main-content .case-code .case-code-detail {\n    display: block;\n    height: calc(100% - 40px);\n    width: 100%;\n    overflow-y: auto;\n    position: absolute;\n    transform: translate(100%);\n    opacity: 0;\n    transition: transform .2s, opacity .1s; }\n    #main-content .case-demo .case-code-detail.active,\n    #main-content .case-code .case-code-detail.active {\n      display: block;\n      transform: translate(0);\n      opacity: 1; }\n    #main-content .case-demo .case-code-detail .cigr,\n    #main-content .case-code .case-code-detail .cigr {\n      opacity: 0; }\n\n#main-content .case-code-switch {\n  height: 36px;\n  width: 100%;\n  display: block;\n  padding-top: 4px; }\n  #main-content .case-code-switch .case-code-switch-item {\n    float: left;\n    display: block;\n    width: 80px;\n    margin: 0 10px;\n    font-size: 14px;\n    height: 28px;\n    text-align: center;\n    padding-bottom: 2px;\n    color: #999;\n    cursor: pointer; }\n    #main-content .case-code-switch .case-code-switch-item:hover {\n      color: #666; }\n    #main-content .case-code-switch .case-code-switch-item.active, #main-content .case-code-switch .case-code-switch-item.active:hover {\n      color: #0088fe;\n      padding-bottom: 0;\n      border-bottom: 2px solid #0088fe; }\n\n#main-content .case-box.no-code {\n  padding: 15px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 217:
+/***/ 215:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10545,9 +10545,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	// https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon
 
 	if (true) {
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return jQuery;
-		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	}
 
@@ -10585,7 +10585,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 
-/***/ 218:
+/***/ 216:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10607,7 +10607,7 @@ var URL = exports.URL = {
 
 /***/ }),
 
-/***/ 219:
+/***/ 217:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10629,8 +10629,12 @@ module.exports = {
     cnName: '柱状图',
     examples: [{
       path: 'example1',
-      enName: 'Simple Bar',
+      enName: 'Simple bar',
       cnName: '简单柱状图'
+    }, {
+      path: 'example4',
+      enName: 'Percent dodge bar',
+      cnName: '百分比堆叠柱状图'
     }],
     icon: 'zhuzhuangtu'
   },
@@ -10689,10 +10693,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ 220:
+/***/ 218:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(221);
+var Handlebars = __webpack_require__(219);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
@@ -10725,7 +10729,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
 /***/ }),
 
-/***/ 221:
+/***/ 219:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10733,11 +10737,11 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
-module.exports = __webpack_require__(222)['default'];
+module.exports = __webpack_require__(220)['default'];
 
 /***/ }),
 
-/***/ 222:
+/***/ 220:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10764,14 +10768,14 @@ function _interopRequireWildcard(obj) {
   }
 }
 
-var _handlebarsBase = __webpack_require__(128);
+var _handlebarsBase = __webpack_require__(127);
 
 var base = _interopRequireWildcard(_handlebarsBase);
 
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
 
-var _handlebarsSafeString = __webpack_require__(234);
+var _handlebarsSafeString = __webpack_require__(232);
 
 var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
@@ -10783,11 +10787,11 @@ var _handlebarsUtils = __webpack_require__(25);
 
 var Utils = _interopRequireWildcard(_handlebarsUtils);
 
-var _handlebarsRuntime = __webpack_require__(235);
+var _handlebarsRuntime = __webpack_require__(233);
 
 var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
-var _handlebarsNoConflict = __webpack_require__(236);
+var _handlebarsNoConflict = __webpack_require__(234);
 
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
@@ -10821,7 +10825,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 223:
+/***/ 221:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10835,31 +10839,31 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _helpersBlockHelperMissing = __webpack_require__(224);
+var _helpersBlockHelperMissing = __webpack_require__(222);
 
 var _helpersBlockHelperMissing2 = _interopRequireDefault(_helpersBlockHelperMissing);
 
-var _helpersEach = __webpack_require__(225);
+var _helpersEach = __webpack_require__(223);
 
 var _helpersEach2 = _interopRequireDefault(_helpersEach);
 
-var _helpersHelperMissing = __webpack_require__(226);
+var _helpersHelperMissing = __webpack_require__(224);
 
 var _helpersHelperMissing2 = _interopRequireDefault(_helpersHelperMissing);
 
-var _helpersIf = __webpack_require__(227);
+var _helpersIf = __webpack_require__(225);
 
 var _helpersIf2 = _interopRequireDefault(_helpersIf);
 
-var _helpersLog = __webpack_require__(228);
+var _helpersLog = __webpack_require__(226);
 
 var _helpersLog2 = _interopRequireDefault(_helpersLog);
 
-var _helpersLookup = __webpack_require__(229);
+var _helpersLookup = __webpack_require__(227);
 
 var _helpersLookup2 = _interopRequireDefault(_helpersLookup);
 
-var _helpersWith = __webpack_require__(230);
+var _helpersWith = __webpack_require__(228);
 
 var _helpersWith2 = _interopRequireDefault(_helpersWith);
 
@@ -10875,7 +10879,7 @@ function registerDefaultHelpers(instance) {
 
 /***/ }),
 
-/***/ 224:
+/***/ 222:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10920,7 +10924,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 225:
+/***/ 223:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11024,7 +11028,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 226:
+/***/ 224:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11057,7 +11061,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 227:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11092,7 +11096,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 228:
+/***/ 226:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11124,7 +11128,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 229:
+/***/ 227:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11142,7 +11146,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 230:
+/***/ 228:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11181,7 +11185,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 231:
+/***/ 229:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11195,7 +11199,7 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _decoratorsInline = __webpack_require__(232);
+var _decoratorsInline = __webpack_require__(230);
 
 var _decoratorsInline2 = _interopRequireDefault(_decoratorsInline);
 
@@ -11205,7 +11209,7 @@ function registerDefaultDecorators(instance) {
 
 /***/ }),
 
-/***/ 232:
+/***/ 230:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11240,7 +11244,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 233:
+/***/ 231:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11293,7 +11297,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 234:
+/***/ 232:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11314,7 +11318,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 235:
+/***/ 233:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11357,7 +11361,7 @@ var _exception = __webpack_require__(48);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _base = __webpack_require__(128);
+var _base = __webpack_require__(127);
 
 function checkRevision(compilerInfo) {
   var compilerRevision = compilerInfo && compilerInfo[0] || 1,
@@ -11641,7 +11645,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 
 /***/ }),
 
-/***/ 236:
+/***/ 234:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11668,11 +11672,12 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 237:
+/***/ 235:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/json.js": 238,
+	"./bar/example1/json.js": 236,
+	"./bar/example4/json.js": 238,
 	"./facet/example1/json.js": 240
 };
 function webpackContext(req) {
@@ -11689,7 +11694,61 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 237;
+webpackContext.id = 235;
+
+/***/ }),
+
+/***/ 236:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var allData = __webpack_require__(237);
+var data = allData.data,
+    scale = allData.scale;
+var config = exports.config = {
+  data: data,
+  scale: scale,
+  axis: true,
+  tooltip: true,
+  series: [{
+    quickType: 'stackBar',
+    position: 'year*sales'
+  }],
+  chart: {
+    container: 'mount',
+    forceFit: true,
+    height: 400
+  }
+};
+
+/***/ }),
+
+/***/ 237:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.data = [
+    { year: '1951 年', sales: 38 },
+    { year: '1952 年', sales: 52 },
+    { year: '1956 年', sales: 61 },
+    { year: '1957 年', sales: 145 },
+    { year: '1958 年', sales: 48 },
+    { year: '1959 年', sales: 38 },
+    { year: '1960 年', sales: 38 },
+    { year: '1962 年', sales: 38 },
+];
+exports.scale = [{
+        dataKey: 'sales',
+        tickInterval: 20,
+    }];
+
 
 /***/ }),
 
@@ -11704,18 +11763,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var allData = __webpack_require__(239);
 var data = allData.data,
-    dataMapping = allData.dataMapping,
     dataPre = allData.dataPre,
     scale = allData.scale;
 var config = exports.config = {
   data: data,
   dataPre: {
-    transform: [
-    // {
-    //   exchangeType: 'type-3',
-    //   fields: ['country', 'year', 'value'],
-    // },
-    {
+    transform: [{
       type: 'percent',
       field: 'value',
       dimension: 'country',
@@ -11723,7 +11776,6 @@ var config = exports.config = {
       as: 'percent'
     }]
   },
-  dataMapping: dataMapping,
   scale: scale,
   axis: true,
   tooltip: true,
@@ -11732,7 +11784,9 @@ var config = exports.config = {
     style: {
       stroke: '#fff',
       lineWidth: 1
-    }
+    },
+    position: 'year*percent',
+    color: 'country'
   }],
   chart: {
     container: 'mount',
@@ -11767,21 +11821,6 @@ exports.data = [
     { country: 'Asia', year: '2050', value: 5268 },
     { country: 'Asia', year: '2100', value: 7268 }
 ];
-exports.data1 = {
-    'country': ['Europe', 'Europe', 'Europe', 'Asia', 'Asia', 'Asia'],
-    'year': ['1750', '1800', '1850', '1750', '1800', '1850'],
-    'value': [163, 203, 276, 502, 635, 809],
-};
-exports.data2 = [
-    ['country', 'Europe', 'Europe', 'Europe', 'Asia', 'Asia', 'Asia'],
-    ['year', '1750', '1800', '1850', '1750', '1800', '1850'],
-    ['value', 163, 203, 276, 502, 635, 809],
-];
-exports.data3 = [
-    ['Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Europe', 'Asia', 'Asia', 'Asia', 'Asia', 'Asia', 'Asia', 'Asia', 'Asia'],
-    ['1750', '1800', '1850', '1900', '1950', '1999', '2050', '2100', '1750', '1800', '1850', '1900', '1950', '1999', '2050', '2100'],
-    [163, 203, 276, 408, 547, 729, 628, 828, 502, 635, 809, 947, 1402, 3634, 5268, 7268],
-];
 exports.dataPre = {
     transform: {
         type: 'percent',
@@ -11790,11 +11829,6 @@ exports.dataPre = {
         groupBy: ['year'],
         as: 'percent'
     }
-};
-exports.dataMapping = {
-    column: 'year',
-    row: 'percent',
-    color: 'country'
 };
 exports.scale = [{
         dataKey: 'percent',
@@ -11877,7 +11911,8 @@ exports.scale = [{
 
 var map = {
 	"./bar/example1/react.js": 243,
-	"./facet/example1/react.js": 244
+	"./bar/example4/react.js": 244,
+	"./facet/example1/react.js": 245
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -11906,7 +11941,7 @@ webpackContext.id = 242;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import {\n  Chart, Tooltip, Axis, StackBar\n} from '../../../packages/viser-react/src/index';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\nimport {\n  data, dataMapping, dataPre, scale\n} from './data'\n\nclass App extends React.Component {\n  state = {\n    height: 400,\n    lineWidth: 1\n  }\n\n  constructor(props) {\n    super(props);\n  }\n\n  handleClick = () => {\n    this.setState({\n      height: 600,\n      lineWidth: 10,\n    })\n  }\n\n  render() {\n    return (\n      <div>\n        <Chart\n          forceFit\n          height={this.state.height}\n          data={data}\n          dataPre={dataPre}\n          dataMapping={dataMapping}\n          scale={scale}\n        >\n          <Tooltip />\n          <Axis />\n          <StackBar\n            style={{\n              stroke: '#fff',\n              lineWidth: this.state.lineWidth\n            }}\n          />\n        </Chart>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { year: '1951 \u5E74', sales: 38 },\n  { year: '1952 \u5E74', sales: 52 },\n  { year: '1956 \u5E74', sales: 61 },\n  { year: '1957 \u5E74', sales: 145 },\n  { year: '1958 \u5E74', sales: 48 },\n  { year: '1959 \u5E74', sales: 38 },\n  { year: '1960 \u5E74', sales: 38 },\n  { year: '1962 \u5E74', sales: 38 },\n];\n\nconst scale = [{\n  dataKey: 'sales',\n  tickInterval: 20,\n}];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} scale={scale}>\n        <Tooltip />\n        <Axis />\n        <Bar position='year*sales' />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 
@@ -11919,16 +11954,30 @@ var template = exports.template = "import {\n  Chart, Tooltip, Axis, StackBar\n}
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import {\n  Chart, Facet, View, Tooltip,\n  Legend, Axis, Point, FacetView\n} from '../../../packages/viser-react/src/index';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\nimport {\n  chartData, dataMapping, scale\n} from './data'\n\nclass App extends React.Component {\n  render() {\n    return (\n      <div>\n        <Chart\n          forceFit={true}\n          height={600}\n          data={chartData}\n          dataMapping={dataMapping}\n          scale={scale}\n        >\n          <Tooltip />\n          <Facet\n            type=\"rect\"\n            fields={['cut', 'clarity']}\n          >\n            <FacetView>\n              <Tooltip />\n              <Axis />\n              <Point opacity={0.3} size={3} />\n            </FacetView>\n          </Facet>\n        </Chart>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, StackBar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { country: 'Europe', year: '1750', value: 163 },\n  { country: 'Europe', year: '1800', value: 203 },\n  { country: 'Europe', year: '1850', value: 276 },\n  { country: 'Europe', year: '1900', value: 408 },\n  { country: 'Europe', year: '1950', value: 547 },\n  { country: 'Europe', year: '1999', value: 729 },\n  { country: 'Europe', year: '2050', value: 628 },\n  { country: 'Europe', year: '2100', value: 828 },\n  { country: 'Asia', year: '1750', value: 502 },\n  { country: 'Asia', year: '1800', value: 635 },\n  { country: 'Asia', year: '1850', value: 809 },\n  { country: 'Asia', year: '1900', value: 947 },\n  { country: 'Asia', year: '1950', value: 1402 },\n  { country: 'Asia', year: '1999', value: 3634 },\n  { country: 'Asia', year: '2050', value: 5268 },\n  { country: 'Asia', year: '2100', value: 7268 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'percent',\n    field: 'value',\n    dimension: 'country',\n    groupBy: ['year'],\n    as: 'percent'\n  }\n};\n\nconst scale = [{\n  dataKey: 'percent',\n  min: 0,\n  formatter: '.2%',\n}];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={this.state.height} data={data} dataPre={dataPre} scale={scale}>\n        <Tooltip />\n        <Axis />\n        <StackBar position='year*percent' color='country' style={{ stroke: '#fff', lineWidth: this.state.lineWidth }} />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 
 /***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import {\n  Chart, Facet, View, Tooltip,\n  Legend, Axis, Point, FacetView\n} from '../../../packages/viser-react/src/index';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\nimport {\n  chartData, dataMapping, scale\n} from './data'\n\nclass App extends React.Component {\n  render() {\n    return (\n      <div>\n        <Chart\n          forceFit={true}\n          height={600}\n          data={chartData}\n          dataMapping={dataMapping}\n          scale={scale}\n        >\n          <Tooltip />\n          <Facet\n            type=\"rect\"\n            fields={['cut', 'clarity']}\n          >\n            <FacetView>\n              <Tooltip />\n              <Axis />\n              <Point opacity={0.3} size={3} />\n            </FacetView>\n          </Facet>\n        </Chart>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
+
+/***/ }),
+
+/***/ 246:
+/***/ (function(module, exports, __webpack_require__) {
+
 var map = {
-	"./bar/example1/vue.js": 246,
-	"./facet/example1/vue.js": 247
+	"./bar/example1/vue.js": 247,
+	"./bar/example4/vue.js": 248,
+	"./facet/example1/vue.js": 249
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -11944,20 +11993,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 245;
-
-/***/ }),
-
-/***/ 246:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var template = exports.template = "<template>\n  <div>\n    <v-chart\n      :force-fit=\"true\"\n      :height=\"height\"\n      :data=\"data\"\n      :data-pre=\"dataPre\"\n      :data-mapping=\"dataMapping\"\n      :scale=\"scale\"\n    >\n      <v-tooltip />\n      <v-axis />\n      <v-stack-bar :v-style=\"stackBarStyle\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  import {\n    data, dataMapping, dataPre, scale\n  } from \"./data\";\n\n  export default {\n    data() {\n      return {\n        data,\n        dataMapping,\n        dataPre,\n        scale,\n        height: 400,\n        stackBarStyle: {\n          stroke: \"#fff\",\n          lineWidth: 1\n        }\n      };\n    },\n    methods: {\n      handleClick: function() {\n        this.height = 600;\n        this.stackBarStyle.lineWidth = 10;\n      }\n    }\n  };\n</script>\n\n<style scoped>\n</style>\n";
+webpackContext.id = 246;
 
 /***/ }),
 
@@ -11970,32 +12006,20 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart\n      :for
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "\n<template>\n  <div>\n    <v-chart\n      :force-fit=\"true\"\n      :height=\"600\"\n      :data=\"chartData\"\n      :data-mapping=\"dataMapping\"\n      :scale=\"scale\"\n    >\n      <v-tooltip />\n      <v-facet\n        :type=\"'rect'\"\n        :fields=\"['cut', 'clarity']\"\n      >\n        <v-facet-view>\n          <v-axis />\n          <v-tooltip />\n          <v-point :opacity=\"0.3\" :size=\"3\" />\n        </v-facet-view>\n      </v-facet>\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  import {\n    chartData, dataMapping, scale\n  } from \"./data\";\n\n  export default {\n    data() {\n      return {\n        chartData,\n        dataMapping,\n        scale\n      };\n    },\n    methods: {}\n  };\n</script>\n\n<style scoped>\n</style>\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :scale=\"scale\">\n      <v-tooltip />\n      <v-axis />\n      <v-bar :position=\"'year*sales'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { year: '1951 \u5E74', sales: 38 },\n    { year: '1952 \u5E74', sales: 52 },\n    { year: '1956 \u5E74', sales: 61 },\n    { year: '1957 \u5E74', sales: 145 },\n    { year: '1958 \u5E74', sales: 48 },\n    { year: '1959 \u5E74', sales: 38 },\n    { year: '1960 \u5E74', sales: 38 },\n    { year: '1962 \u5E74', sales: 38 },\n  ];\n  \n  const scale = [{\n    dataKey: 'sales',\n    tickInterval: 20,\n  }];\n\n  export default {\n    data() {\n      return {\n        data,\n        scale,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 
 /***/ 248:
 /***/ (function(module, exports, __webpack_require__) {
 
-var map = {
-	"./bar/example1/angular.js": 249,
-	"./facet/example1/angular.js": 250
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 248;
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\" :scale=\"scale\">\n      <v-tooltip />\n      <v-axis />\n      <v-stack-bar :position=\"'year*percent'\" :color=\"'country'\" :v-style=\"stackBarStyle\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { country: 'Europe', year: '1750', value: 163 },\n    { country: 'Europe', year: '1800', value: 203 },\n    { country: 'Europe', year: '1850', value: 276 },\n    { country: 'Europe', year: '1900', value: 408 },\n    { country: 'Europe', year: '1950', value: 547 },\n    { country: 'Europe', year: '1999', value: 729 },\n    { country: 'Europe', year: '2050', value: 628 },\n    { country: 'Europe', year: '2100', value: 828 },\n    { country: 'Asia', year: '1750', value: 502 },\n    { country: 'Asia', year: '1800', value: 635 },\n    { country: 'Asia', year: '1850', value: 809 },\n    { country: 'Asia', year: '1900', value: 947 },\n    { country: 'Asia', year: '1950', value: 1402 },\n    { country: 'Asia', year: '1999', value: 3634 },\n    { country: 'Asia', year: '2050', value: 5268 },\n    { country: 'Asia', year: '2100', value: 7268 }\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'percent',\n      field: 'value',\n      dimension: 'country',\n      groupBy: ['year'],\n      as: 'percent'\n    }\n  };\n\n  const scale = [{\n    dataKey: 'percent',\n    min: 0,\n    formatter: '.2%',\n  }];\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        scale,\n        height: 400,\n        stackBarStyle: {\n          stroke: \"#fff\",\n          lineWidth: 1\n        }\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 
@@ -12008,7 +12032,7 @@ webpackContext.id = 248;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport {\n  Component, enableProdMode, NgModule\n} from '@angular/core';\nimport {\n  platformBrowserDynamic\n} from '@angular/platform-browser-dynamic';\nimport {\n  BrowserModule\n} from '@angular/platform-browser';\nimport {\n  ViserModule\n} from '../../../packages/viser-ng/src/index';\nimport {\n  data, dataMapping, dataPre, scale\n} from './data'\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart\n      [forceFit]=\"forceFit\"\n      [height]=\"height\"\n      [data]=\"data\"\n      [dataPre]=\"dataPre\"\n      [dataMapping]=\"dataMapping\"\n      [scale]=\"scale\"\n    >\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <StackBar\n        [ngStyle]=\"{ stroke: '#fff', lineWidth: 1 }\"\n      ></StackBar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  dataMapping = dataMapping;\n  scale = scale;\n  fields = ['cut', 'clarity'];\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "\n<template>\n  <div>\n    <v-chart\n      :force-fit=\"true\"\n      :height=\"600\"\n      :data=\"chartData\"\n      :data-mapping=\"dataMapping\"\n      :scale=\"scale\"\n    >\n      <v-tooltip />\n      <v-facet\n        :type=\"'rect'\"\n        :fields=\"['cut', 'clarity']\"\n      >\n        <v-facet-view>\n          <v-axis />\n          <v-tooltip />\n          <v-point :opacity=\"0.3\" :size=\"3\" />\n        </v-facet-view>\n      </v-facet>\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  import {\n    chartData, dataMapping, scale\n  } from \"./data\";\n\n  export default {\n    data() {\n      return {\n        chartData,\n        dataMapping,\n        scale\n      };\n    },\n    methods: {}\n  };\n</script>\n\n<style scoped>\n</style>\n";
 
 /***/ }),
 
@@ -12147,6 +12171,58 @@ function appendContextPath(contextPath, id) {
 /***/ 250:
 /***/ (function(module, exports, __webpack_require__) {
 
+var map = {
+	"./bar/example1/angular.js": 251,
+	"./bar/example4/angular.js": 252,
+	"./facet/example1/angular.js": 253
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 250;
+
+/***/ }),
+
+/***/ 251:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { year: '1951 \u5E74', sales: 38 },\n  { year: '1952 \u5E74', sales: 52 },\n  { year: '1956 \u5E74', sales: 61 },\n  { year: '1957 \u5E74', sales: 145 },\n  { year: '1958 \u5E74', sales: 48 },\n  { year: '1959 \u5E74', sales: 38 },\n  { year: '1960 \u5E74', sales: 38 },\n  { year: '1962 \u5E74', sales: 38 },\n];\n\nconst scale = [{\n  dataKey: 'sales',\n  tickInterval: 20,\n}];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [scale]=\"scale\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"year*sales\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  scale = scale;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+
+/***/ 252:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { country: 'Europe', year: '1750', value: 163 },\n  { country: 'Europe', year: '1800', value: 203 },\n  { country: 'Europe', year: '1850', value: 276 },\n  { country: 'Europe', year: '1900', value: 408 },\n  { country: 'Europe', year: '1950', value: 547 },\n  { country: 'Europe', year: '1999', value: 729 },\n  { country: 'Europe', year: '2050', value: 628 },\n  { country: 'Europe', year: '2100', value: 828 },\n  { country: 'Asia', year: '1750', value: 502 },\n  { country: 'Asia', year: '1800', value: 635 },\n  { country: 'Asia', year: '1850', value: 809 },\n  { country: 'Asia', year: '1900', value: 947 },\n  { country: 'Asia', year: '1950', value: 1402 },\n  { country: 'Asia', year: '1999', value: 3634 },\n  { country: 'Asia', year: '2050', value: 5268 },\n  { country: 'Asia', year: '2100', value: 7268 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'percent',\n    field: 'value',\n    dimension: 'country',\n    groupBy: ['year'],\n    as: 'percent'\n  }\n};\n\nconst scale = [{\n  dataKey: 'percent',\n  min: 0,\n  formatter: '.2%',\n}];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\" [scale]=\"scale\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <StackBar position=\"year*percent\" color=\"country\" [ngStyle]=\"{ stroke: '#fff', lineWidth: 1 }\"></StackBar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  scale = scale;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+
+/***/ 253:
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -12157,7 +12233,7 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 
 /***/ }),
 
-/***/ 251:
+/***/ 254:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
