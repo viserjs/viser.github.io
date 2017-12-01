@@ -7,7 +7,7 @@
     <ul class="common-nav-list">
       {{#each examples as |childValue childKey|}}
         <li class="common-nav-item {{activeClass}}">
-          <a class="common-nav-link" href="/demo.html?type={{@key}}&example={{childKey}}">{{enName}}</a>
+          <a class="common-nav-link" href="/demo.html?type={{@key}}&example={{childKey}}" title="{{enName}}">{{enName}}</a>
         </li>
       {{/each}}
     </ul>
