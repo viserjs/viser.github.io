@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 700);
+/******/ 	return __webpack_require__(__webpack_require__.s = 710);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -25785,13 +25785,44 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 700:
+/***/ 71:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(701);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (grouping, thousands) {
+  return function (value, width) {
+    var i = value.length,
+        t = [],
+        j = 0,
+        g = grouping[0],
+        length = 0;
+
+    while (i > 0 && g > 0) {
+      if (length + g + 1 > width) g = Math.max(1, width - length);
+      t.push(value.substring(i -= g, i + g));
+      if ((length += g + 1) > width) break;
+      g = grouping[j = (j + 1) % grouping.length];
+    }
+
+    return t.reverse().join(thousands);
+  };
+};
+
+/***/ }),
+
+/***/ 710:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(711);
 var Viser = __webpack_require__(50);
 
 var GDP_JSON = [{ "year": '2006', "gdp": 21.94385 }, { "year": '2007', "gdp": 27.02323 }, { "year": '2008', "gdp": 31.95155 }, { "year": '2009', "gdp": 34.90814 }, { "year": '2010', "gdp": 41.30303 }, { "year": '2011', "gdp": 48.93006 }, { "year": '2012', "gdp": 54.03674 }, { "year": '2013', "gdp": 59.52444 }, { "year": '2014', "gdp": 64.39740 }, { "year": '2015', "gdp": 68.90521 }];
@@ -25885,13 +25916,13 @@ window.onload = renderChart;
 
 /***/ }),
 
-/***/ 701:
+/***/ 711:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(702);
+var content = __webpack_require__(712);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -25917,7 +25948,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 702:
+/***/ 712:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(56)(undefined);
@@ -25929,37 +25960,6 @@ exports.push([module.i, "* {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  overflo
 
 // exports
 
-
-/***/ }),
-
-/***/ 71:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (grouping, thousands) {
-  return function (value, width) {
-    var i = value.length,
-        t = [],
-        j = 0,
-        g = grouping[0],
-        length = 0;
-
-    while (i > 0 && g > 0) {
-      if (length + g + 1 > width) g = Math.max(1, width - length);
-      t.push(value.substring(i -= g, i + g));
-      if ((length += g + 1) > width) break;
-      g = grouping[j = (j + 1) % grouping.length];
-    }
-
-    return t.reverse().join(thousands);
-  };
-};
 
 /***/ }),
 
