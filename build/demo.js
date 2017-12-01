@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 238);
+/******/ 	return __webpack_require__(__webpack_require__.s = 236);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -26960,11 +26960,11 @@ var _exception = __webpack_require__(85);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _helpers = __webpack_require__(247);
+var _helpers = __webpack_require__(245);
 
-var _decorators = __webpack_require__(255);
+var _decorators = __webpack_require__(253);
 
-var _logger = __webpack_require__(257);
+var _logger = __webpack_require__(255);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -27125,9 +27125,7 @@ exports.logger = _logger2['default'];
 /* 233 */,
 /* 234 */,
 /* 235 */,
-/* 236 */,
-/* 237 */,
-/* 238 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27137,12 +27135,12 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-__webpack_require__(239);
-var $ = __webpack_require__(241);
+__webpack_require__(237);
+var $ = __webpack_require__(239);
 var Viser = __webpack_require__(50);
-var CONS = __webpack_require__(242);
-var codeConfig = __webpack_require__(243);
-var navTpl = __webpack_require__(244);
+var CONS = __webpack_require__(240);
+var codeConfig = __webpack_require__(241);
+var navTpl = __webpack_require__(242);
 
 var ALL_FRAMEWORK = ['react', 'vue', 'angular'];
 
@@ -27183,10 +27181,10 @@ var App = function () {
       var vueCode = '';
       var angularCode = '';
       try {
-        jsonCode = __webpack_require__(261)("./" + chartType + '/' + path + '/json.js');
-        reactCode = __webpack_require__(280)("./" + chartType + '/' + path + '/react.js');
-        vueCode = __webpack_require__(290)("./" + chartType + '/' + path + '/vue.js');
-        angularCode = __webpack_require__(300)("./" + chartType + '/' + path + '/angular.js');
+        jsonCode = __webpack_require__(259)("./" + chartType + '/' + path + '/json.js');
+        reactCode = __webpack_require__(286)("./" + chartType + '/' + path + '/react.js');
+        vueCode = __webpack_require__(300)("./" + chartType + '/' + path + '/vue.js');
+        angularCode = __webpack_require__(314)("./" + chartType + '/' + path + '/angular.js');
       } catch (e) {
         console.log('exception:', e);
       } finally {
@@ -27367,7 +27365,7 @@ var App = function () {
  */
 
 
-var load = __webpack_require__(310);
+var load = __webpack_require__(328);
 var loadEditor = function loadEditor() {
   var self = undefined;
   return new Promise(function (resolve, reject) {
@@ -27392,13 +27390,13 @@ loadEditor().then(function (monaco) {
 });
 
 /***/ }),
-/* 239 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(240);
+var content = __webpack_require__(238);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -27412,8 +27410,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss", function() {
-			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!./index.scss");
+		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./index.scss", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./index.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -27423,7 +27421,7 @@ if(false) {
 }
 
 /***/ }),
-/* 240 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(56)(undefined);
@@ -27437,7 +27435,7 @@ exports.push([module.i, ".common-header {\n  height: 60px;\n  line-height: 60px;
 
 
 /***/ }),
-/* 241 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37273,7 +37271,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)(module)))
 
 /***/ }),
-/* 242 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37294,7 +37292,7 @@ var URL = exports.URL = {
 };
 
 /***/ }),
-/* 243 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37346,6 +37344,22 @@ module.exports = {
       path: 'example9',
       enName: 'Histogram binwidth',
       cnName: '直方图范围刻度'
+    }, {
+      path: 'example10',
+      enName: 'Basic bar',
+      cnName: '基础条形图'
+    }, {
+      path: 'example11',
+      enName: 'Grouped bar',
+      cnName: '分组条形图'
+    }, {
+      path: 'example12',
+      enName: 'Stacked bar',
+      cnName: '堆叠条形图'
+    }, {
+      path: 'example13',
+      enName: 'Ranged bar',
+      cnName: '区间条形图'
     }],
     icon: 'zhuzhuangtu'
   },
@@ -37403,10 +37417,10 @@ module.exports = {
 };
 
 /***/ }),
-/* 244 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(245);
+var Handlebars = __webpack_require__(243);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
@@ -37440,7 +37454,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 },"useData":true,"useBlockParams":true});
 
 /***/ }),
-/* 245 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37448,10 +37462,10 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
-module.exports = __webpack_require__(246)['default'];
+module.exports = __webpack_require__(244)['default'];
 
 /***/ }),
-/* 246 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37485,7 +37499,7 @@ var base = _interopRequireWildcard(_handlebarsBase);
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
 
-var _handlebarsSafeString = __webpack_require__(258);
+var _handlebarsSafeString = __webpack_require__(256);
 
 var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
@@ -37497,11 +37511,11 @@ var _handlebarsUtils = __webpack_require__(30);
 
 var Utils = _interopRequireWildcard(_handlebarsUtils);
 
-var _handlebarsRuntime = __webpack_require__(259);
+var _handlebarsRuntime = __webpack_require__(257);
 
 var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
-var _handlebarsNoConflict = __webpack_require__(260);
+var _handlebarsNoConflict = __webpack_require__(258);
 
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
@@ -37534,7 +37548,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 /***/ }),
-/* 247 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37548,31 +37562,31 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _helpersBlockHelperMissing = __webpack_require__(248);
+var _helpersBlockHelperMissing = __webpack_require__(246);
 
 var _helpersBlockHelperMissing2 = _interopRequireDefault(_helpersBlockHelperMissing);
 
-var _helpersEach = __webpack_require__(249);
+var _helpersEach = __webpack_require__(247);
 
 var _helpersEach2 = _interopRequireDefault(_helpersEach);
 
-var _helpersHelperMissing = __webpack_require__(250);
+var _helpersHelperMissing = __webpack_require__(248);
 
 var _helpersHelperMissing2 = _interopRequireDefault(_helpersHelperMissing);
 
-var _helpersIf = __webpack_require__(251);
+var _helpersIf = __webpack_require__(249);
 
 var _helpersIf2 = _interopRequireDefault(_helpersIf);
 
-var _helpersLog = __webpack_require__(252);
+var _helpersLog = __webpack_require__(250);
 
 var _helpersLog2 = _interopRequireDefault(_helpersLog);
 
-var _helpersLookup = __webpack_require__(253);
+var _helpersLookup = __webpack_require__(251);
 
 var _helpersLookup2 = _interopRequireDefault(_helpersLookup);
 
-var _helpersWith = __webpack_require__(254);
+var _helpersWith = __webpack_require__(252);
 
 var _helpersWith2 = _interopRequireDefault(_helpersWith);
 
@@ -37587,7 +37601,7 @@ function registerDefaultHelpers(instance) {
 }
 
 /***/ }),
-/* 248 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37631,7 +37645,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 249 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37734,7 +37748,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 250 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37766,7 +37780,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 251 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37800,7 +37814,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 252 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37831,7 +37845,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 253 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37848,7 +37862,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 254 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37886,7 +37900,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 255 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37900,7 +37914,7 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _decoratorsInline = __webpack_require__(256);
+var _decoratorsInline = __webpack_require__(254);
 
 var _decoratorsInline2 = _interopRequireDefault(_decoratorsInline);
 
@@ -37909,7 +37923,7 @@ function registerDefaultDecorators(instance) {
 }
 
 /***/ }),
-/* 256 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37943,7 +37957,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 257 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37995,7 +38009,7 @@ exports['default'] = logger;
 module.exports = exports['default'];
 
 /***/ }),
-/* 258 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38015,7 +38029,7 @@ exports['default'] = SafeString;
 module.exports = exports['default'];
 
 /***/ }),
-/* 259 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38341,7 +38355,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 }
 
 /***/ }),
-/* 260 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38367,19 +38381,23 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)))
 
 /***/ }),
-/* 261 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/json.js": 262,
-	"./bar/example2/json.js": 264,
-	"./bar/example3/json.js": 266,
-	"./bar/example4/json.js": 268,
-	"./bar/example5/json.js": 270,
-	"./bar/example7/json.js": 272,
-	"./bar/example8/json.js": 274,
-	"./bar/example9/json.js": 276,
-	"./facet/example1/json.js": 278
+	"./bar/example1/json.js": 260,
+	"./bar/example10/json.js": 262,
+	"./bar/example11/json.js": 264,
+	"./bar/example12/json.js": 266,
+	"./bar/example13/json.js": 268,
+	"./bar/example2/json.js": 270,
+	"./bar/example3/json.js": 272,
+	"./bar/example4/json.js": 274,
+	"./bar/example5/json.js": 276,
+	"./bar/example7/json.js": 278,
+	"./bar/example8/json.js": 280,
+	"./bar/example9/json.js": 282,
+	"./facet/example1/json.js": 284
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -38395,10 +38413,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 261;
+webpackContext.id = 259;
 
 /***/ }),
-/* 262 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38407,7 +38425,7 @@ webpackContext.id = 261;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(263);
+var allData = __webpack_require__(261);
 var data = allData.data,
     scale = allData.scale;
 var config = exports.config = {
@@ -38427,7 +38445,7 @@ var config = exports.config = {
 };
 
 /***/ }),
-/* 263 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38450,6 +38468,68 @@ exports.scale = [{
 
 
 /***/ }),
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var allData = __webpack_require__(263);
+var data = allData.data,
+    dataPre = allData.dataPre;
+var config = exports.config = {
+  data: data,
+  dataPre: dataPre,
+  axis: {
+    dataKey: 'country',
+    label: {
+      offset: 12
+    }
+  },
+  coord: {
+    type: 'rect',
+    direction: 'LB'
+  },
+  tooltip: true,
+  series: [{
+    quickType: 'stackBar',
+    position: 'country*population'
+  }],
+  chart: {
+    container: 'mount',
+    forceFit: true,
+    height: 400
+  }
+};
+
+/***/ }),
+/* 263 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.data = [
+    { country: '中国', population: 131744 },
+    { country: '印度', population: 104970 },
+    { country: '美国', population: 29034 },
+    { country: '印尼', population: 23489 },
+    { country: '巴西', population: 18203 }
+];
+exports.dataPre = {
+    transform: {
+        type: 'sort',
+        callback(a, b) {
+            return a.population - b.population > 0;
+        },
+    },
+};
+
+
+/***/ }),
 /* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38460,6 +38540,205 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var allData = __webpack_require__(265);
+var data = allData.data,
+    dataPre = allData.dataPre;
+var config = exports.config = {
+  data: data,
+  dataPre: dataPre,
+  axis: [{
+    dataKey: 'value',
+    position: 'right'
+  }, {
+    dataKey: 'label',
+    label: {
+      offset: 12
+    }
+  }],
+  coord: {
+    type: 'rect',
+    direction: 'LT'
+  },
+  legend: true,
+  tooltip: true,
+  series: [{
+    quickType: 'bar',
+    position: 'label*value',
+    color: 'type',
+    adjust: [{
+      type: 'dodge',
+      marginRatio: 1 / 32
+    }]
+  }],
+  chart: {
+    container: 'mount',
+    forceFit: true,
+    height: 400
+  }
+};
+
+/***/ }),
+/* 265 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.data = [
+    { label: 'Mon.', series1: 2800, series2: 2260 },
+    { label: 'Tues.', series1: 1800, series2: 1300 },
+    { label: 'Wed.', series1: 950, series2: 900 },
+    { label: 'Thur.', series1: 500, series2: 390 },
+    { label: 'Fri.', series1: 170, series2: 100 },
+];
+exports.dataPre = {
+    transform: {
+        type: 'fold',
+        fields: ['series1', 'series2'],
+        key: 'type',
+        value: 'value',
+    },
+};
+
+
+/***/ }),
+/* 266 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var allData = __webpack_require__(267);
+var data = allData.data,
+    dataPre = allData.dataPre;
+var config = exports.config = {
+  data: data,
+  dataPre: dataPre,
+  axis: [{
+    dataKey: 'State',
+    label: {
+      offset: 12
+    }
+  }],
+  coord: {
+    type: 'rect',
+    direction: 'LB'
+  },
+  legend: true,
+  tooltip: true,
+  series: [{
+    quickType: 'stackBar',
+    position: 'State*人口数量',
+    color: '年龄段'
+  }],
+  chart: {
+    container: 'mount',
+    forceFit: true,
+    height: 400
+  }
+};
+
+/***/ }),
+/* 267 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.data = [
+    { 'State': 'WY', '小于5岁': 25635, '5至13岁': 1890, '14至17岁': 9314 },
+    { 'State': 'DC', '小于5岁': 30352, '5至13岁': 20439, '14至17岁': 10225 },
+    { 'State': 'VT', '小于5岁': 38253, '5至13岁': 42538, '14至17岁': 15757 },
+    { 'State': 'ND', '小于5岁': 51896, '5至13岁': 67358, '14至17岁': 18794 },
+    { 'State': 'AK', '小于5岁': 72083, '5至13岁': 85640, '14至17岁': 22153 }
+];
+exports.dataPre = {
+    transform: {
+        type: 'fold',
+        fields: ['小于5岁', '5至13岁', '14至17岁'],
+        key: '年龄段',
+        value: '人口数量',
+        retains: ['State'],
+    },
+};
+
+
+/***/ }),
+/* 268 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var allData = __webpack_require__(269);
+var data = allData.data,
+    dataPre = allData.dataPre;
+var config = exports.config = {
+  data: data,
+  dataPre: dataPre,
+  axis: [{
+    dataKey: 'profession',
+    label: {
+      offset: 12
+    }
+  }],
+  coord: {
+    type: 'rect',
+    direction: 'LB'
+  },
+  legend: true,
+  tooltip: true,
+  series: [{
+    quickType: 'bar',
+    position: 'profession*range'
+  }],
+  chart: {
+    container: 'mount',
+    forceFit: true,
+    height: 400,
+    padding: [20, 80, 50, 110]
+  }
+};
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.data = [
+    { profession: '两年制副学士学位', highest: 110000, minimum: 23000, mean: 56636 },
+    { profession: '执法与救火', highest: 120000, minimum: 18000, mean: 66625 },
+    { profession: '教育学', highest: 125000, minimum: 24000, mean: 72536 },
+    { profession: '心理学', highest: 130000, minimum: 22500, mean: 75256 },
+    { profession: '计算机科学', highest: 131000, minimum: 23000, mean: 77031 }
+];
+exports.dataPre = {
+    transform: {
+        type: 'merge',
+        fields: ['minimum', 'highest'],
+        as: 'range',
+    },
+};
+
+
+/***/ }),
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var allData = __webpack_require__(271);
 var data = allData.data,
     dataPre = allData.dataPre;
 var config = exports.config = {
@@ -38484,7 +38763,7 @@ var config = exports.config = {
 };
 
 /***/ }),
-/* 265 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38505,7 +38784,7 @@ exports.dataPre = {
 
 
 /***/ }),
-/* 266 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38514,7 +38793,7 @@ exports.dataPre = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(267);
+var allData = __webpack_require__(273);
 var data = allData.data,
     dataPre = allData.dataPre;
 var config = exports.config = {
@@ -38535,7 +38814,7 @@ var config = exports.config = {
 };
 
 /***/ }),
-/* 267 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38556,7 +38835,7 @@ exports.dataPre = {
 
 
 /***/ }),
-/* 268 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38565,7 +38844,7 @@ exports.dataPre = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(269);
+var allData = __webpack_require__(275);
 var data = allData.data,
     dataPre = allData.dataPre,
     scale = allData.scale;
@@ -38600,7 +38879,7 @@ var config = exports.config = {
 };
 
 /***/ }),
-/* 269 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38641,7 +38920,7 @@ exports.scale = [{
 
 
 /***/ }),
-/* 270 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38650,7 +38929,7 @@ exports.scale = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(271);
+var allData = __webpack_require__(277);
 var data = allData.data;
 var config = exports.config = {
   data: data,
@@ -38668,7 +38947,7 @@ var config = exports.config = {
 };
 
 /***/ }),
-/* 271 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38687,7 +38966,7 @@ exports.data = [
 
 
 /***/ }),
-/* 272 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38696,7 +38975,7 @@ exports.data = [
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(273);
+var allData = __webpack_require__(279);
 var data = allData.data,
     dataPre = allData.dataPre,
     scale = allData.scale;
@@ -38732,7 +39011,7 @@ var config = exports.config = {
 };
 
 /***/ }),
-/* 273 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38766,7 +39045,7 @@ exports.scale = [{
 
 
 /***/ }),
-/* 274 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38775,7 +39054,7 @@ exports.scale = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(275);
+var allData = __webpack_require__(281);
 var data = allData.data,
     dataPre = allData.dataPre;
 var config = exports.config = {
@@ -38800,7 +39079,7 @@ var config = exports.config = {
 };
 
 /***/ }),
-/* 275 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38819,7 +39098,7 @@ exports.dataPre = {
 
 
 /***/ }),
-/* 276 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38828,7 +39107,7 @@ exports.dataPre = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(277);
+var allData = __webpack_require__(283);
 var data = allData.data,
     dataPre = allData.dataPre,
     scale = allData.scale;
@@ -38854,7 +39133,7 @@ var config = exports.config = {
 };
 
 /***/ }),
-/* 277 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38876,7 +39155,7 @@ exports.scale = [{
 
 
 /***/ }),
-/* 278 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38885,7 +39164,7 @@ exports.scale = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var allData = __webpack_require__(279);
+var allData = __webpack_require__(285);
 var chartData = allData.chartData,
     dataMapping = allData.dataMapping,
     scale = allData.scale;
@@ -38915,7 +39194,7 @@ var config = exports.config = {
 };
 
 /***/ }),
-/* 279 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38941,19 +39220,23 @@ exports.scale = [{
 
 
 /***/ }),
-/* 280 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/react.js": 281,
-	"./bar/example2/react.js": 282,
-	"./bar/example3/react.js": 283,
-	"./bar/example4/react.js": 284,
-	"./bar/example5/react.js": 285,
-	"./bar/example7/react.js": 286,
-	"./bar/example8/react.js": 287,
-	"./bar/example9/react.js": 288,
-	"./facet/example1/react.js": 289
+	"./bar/example1/react.js": 287,
+	"./bar/example10/react.js": 288,
+	"./bar/example11/react.js": 289,
+	"./bar/example12/react.js": 290,
+	"./bar/example13/react.js": 291,
+	"./bar/example2/react.js": 292,
+	"./bar/example3/react.js": 293,
+	"./bar/example4/react.js": 294,
+	"./bar/example5/react.js": 295,
+	"./bar/example7/react.js": 296,
+	"./bar/example8/react.js": 297,
+	"./bar/example9/react.js": 298,
+	"./facet/example1/react.js": 299
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -38969,79 +39252,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 280;
-
-/***/ }),
-/* 281 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { year: '1951 \u5E74', sales: 38 },\n  { year: '1952 \u5E74', sales: 52 },\n  { year: '1956 \u5E74', sales: 61 },\n  { year: '1957 \u5E74', sales: 145 },\n  { year: '1958 \u5E74', sales: 48 },\n  { year: '1959 \u5E74', sales: 38 },\n  { year: '1960 \u5E74', sales: 38 },\n  { year: '1962 \u5E74', sales: 38 },\n];\n\nconst scale = [{\n  dataKey: 'sales',\n  tickInterval: 20,\n}];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} scale={scale}>\n        <Tooltip />\n        <Axis />\n        <Bar position=\"year*sales\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
-
-/***/ }),
-/* 282 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n  { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n    key: '\u6708\u4EFD',\n    value: '\u6708\u5747\u964D\u96E8\u91CF',\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre}>\n        <Tooltip />\n        <Axis />\n        <Bar position=\"\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF\" color=\"name\" adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]} />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
-
-/***/ }),
-/* 283 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var template = exports.template = "import { Chart, Tooltip, Axis, StackBar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n  { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n    key: '\u6708\u4EFD',\n    value: '\u6708\u5747\u964D\u96E8\u91CF',\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre}>\n        <Tooltip />\n        <Axis />\n        <StackBar position=\"\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF\" color=\"name\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
-
-/***/ }),
-/* 284 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var template = exports.template = "import { Chart, Tooltip, Axis, StackBar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { country: 'Europe', year: '1750', value: 163 },\n  { country: 'Europe', year: '1800', value: 203 },\n  { country: 'Europe', year: '1850', value: 276 },\n  { country: 'Europe', year: '1900', value: 408 },\n  { country: 'Europe', year: '1950', value: 547 },\n  { country: 'Europe', year: '1999', value: 729 },\n  { country: 'Europe', year: '2050', value: 628 },\n  { country: 'Europe', year: '2100', value: 828 },\n  { country: 'Asia', year: '1750', value: 502 },\n  { country: 'Asia', year: '1800', value: 635 },\n  { country: 'Asia', year: '1850', value: 809 },\n  { country: 'Asia', year: '1900', value: 947 },\n  { country: 'Asia', year: '1950', value: 1402 },\n  { country: 'Asia', year: '1999', value: 3634 },\n  { country: 'Asia', year: '2050', value: 5268 },\n  { country: 'Asia', year: '2100', value: 7268 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'percent',\n    field: 'value',\n    dimension: 'country',\n    groupBy: ['year'],\n    as: 'percent'\n  }\n};\n\nconst scale = [{\n  dataKey: 'percent',\n  min: 0,\n  formatter: '.2%',\n}];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>\n        <Tooltip />\n        <Axis />\n        <StackBar position=\"year*percent\" color=\"country\" style={{ stroke: '#fff', lineWidth: this.state.lineWidth }} />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
-
-/***/ }),
-/* 285 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { x: '\u5206\u7C7B\u4E00', y: [ 76, 100 ] },\n  { x: '\u5206\u7C7B\u4E8C', y: [ 56, 108 ] },\n  { x: '\u5206\u7C7B\u4E09', y: [ 38, 129 ] },\n  { x: '\u5206\u7C7B\u56DB', y: [ 58, 155 ] },\n  { x: '\u5206\u7C7B\u4E94', y: [ 45, 120 ] },\n  { x: '\u5206\u7C7B\u516D', y: [ 23, 99 ] },\n  { x: '\u5206\u7C7B\u4E03', y: [ 18, 56 ] },\n  { x: '\u5206\u7C7B\u516B', y: [ 18, 34 ] },\n];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data}>\n        <Tooltip />\n        <Axis />\n        <Bar position=\"x*y\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
-
-/***/ }),
-/* 286 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst values = [ 1.2, 3.4, 3.7, 4.3, 5.2, 5.8, 6.1, 6.5, 6.8, 7.1, 7.3, 7.7, 8.3, 8.6, 8.8, 9.1, 9.2, 9.4, 9.5, 9.7, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11.3, 11.4, 11.4, 11.7, 12.0, 12.9, 12.9, 13.3, 13.7, 13.8, 13.9, 14.0, 14.2, 14.5, 15, 15.2, 15.6, 16.0, 16.3, 17.3, 17.5, 17.9, 18.0, 18.0, 20.6, 21, 23.4 ];\n\nconst data = [];\nfor (let i = 0; i < values.length; i++) {\n  const obj: any = {};\n  obj.value = values[i];\n  data.push(obj);\n}\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'value',\n    binWidth: 2,\n    as: ['value', 'count'],\n  },\n};\n\nconst scale = [{\n  dataKey: 'value',\n  nice: false,\n  min: 0,\n  tickInterval: 1,\n}, {\n  dataKey: 'count',\n  max: 14,\n}];\n\nclass App extends React.Component {\n  render() {\n    const formatter = val => {\n      if ((val % 2)) {\n       return val;\n      }\n      return '';\n    };\n\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>\n        <Tooltip crosshairs={false} inPlot={false} position=\"top\" />\n        <Axis dataKey=\"value\" label={{ formatter: formatter }} />\n        <Bar position=\"value*count\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
+webpackContext.id = 286;
 
 /***/ }),
 /* 287 */
@@ -39053,7 +39264,7 @@ var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'vi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import { Chart, Tooltip, Axis, StackBar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\n// https://antv.alipay.com/assets/data/diamond.json\nconst data = [];\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'depth',\n    binWidth: 1,\n    groupBy: [ 'cut' ],\n    as: ['depth', 'count'],\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre}>\n        <Tooltip crosshairs={false} inPlot={false} position=\"top\" />\n        <Axis />\n        <StackBar position=\"depth*count\" color=\"cut\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { year: '1951 \u5E74', sales: 38 },\n  { year: '1952 \u5E74', sales: 52 },\n  { year: '1956 \u5E74', sales: 61 },\n  { year: '1957 \u5E74', sales: 145 },\n  { year: '1958 \u5E74', sales: 48 },\n  { year: '1959 \u5E74', sales: 38 },\n  { year: '1960 \u5E74', sales: 38 },\n  { year: '1962 \u5E74', sales: 38 },\n];\n\nconst scale = [{\n  dataKey: 'sales',\n  tickInterval: 20,\n}];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} scale={scale}>\n        <Tooltip />\n        <Axis />\n        <Bar position=\"year*sales\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 288 */
@@ -39065,7 +39276,7 @@ var template = exports.template = "import { Chart, Tooltip, Axis, StackBar } fro
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\n// https://antv.alipay.com/assets/data/diamond.json\nconst data = [];\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'depth',\n    binWidth: 1,\n    groupBy: [ 'cut' ],\n    as: ['depth', 'count'],\n  },\n};\n\nconst scale = [{\n  dataKey: 'depth',\n  tickInterval: 4\n}];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>\n        <Tooltip crosshairs={false} inPlot={false} position=\"top\" />\n        <Axis />\n        <Bar position=\"depth*count\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, Bar, Coord } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { country: '\u4E2D\u56FD', population: 131744 },\n  { country: '\u5370\u5EA6', population: 104970 },\n  { country: '\u7F8E\u56FD', population: 29034 },\n  { country: '\u5370\u5C3C', population: 23489 },\n  { country: '\u5DF4\u897F', population: 18203 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'sort',\n    callback(a, b) {\n      return a.population - b.population > 0;\n    },\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre}>\n        <Coord type=\"rect\" direction=\"LB\" />\n        <Tooltip />\n        <Axis dataKey=\"country\" label={{ offset: 12 }} />\n        <Bar position=\"country*population\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 289 */
@@ -39077,38 +39288,19 @@ var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'vi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import {\n  Chart, Facet, View, Tooltip,\n  Legend, Axis, Point, FacetView\n} from '../../../packages/viser-react/src/index';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\nimport {\n  chartData, dataMapping, scale\n} from './data'\n\nclass App extends React.Component {\n  render() {\n    return (\n      <div>\n        <Chart\n          forceFit={true}\n          height={600}\n          data={chartData}\n          dataMapping={dataMapping}\n          scale={scale}\n        >\n          <Tooltip />\n          <Facet\n            type=\"rect\"\n            fields={['cut', 'clarity']}\n          >\n            <FacetView>\n              <Tooltip />\n              <Axis />\n              <Point opacity={0.3} size={3} />\n            </FacetView>\n          </Facet>\n        </Chart>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, Bar, Coord, Legend } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { label: 'Mon.', series1: 2800, series2: 2260 },\n  { label: 'Tues.', series1: 1800, series2: 1300 },\n  { label: 'Wed.', series1: 950, series2: 900 },\n  { label: 'Thur.', series1: 500, series2: 390 },\n  { label: 'Fri.', series1: 170, series2: 100 },\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'series1', 'series2' ],\n    key: 'type',\n    value: 'value',\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre}>\n        <Coord type=\"rect\" direction=\"LT\" />\n        <Tooltip />\n        <Legend />\n        <Axis dataKey=\"value\" position=\"right\" />\n        <Axis dataKey=\"label\" label={{ offset: 12 }} />\n        <Bar position=\"label*value\" adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]} />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var map = {
-	"./bar/example1/vue.js": 291,
-	"./bar/example2/vue.js": 292,
-	"./bar/example3/vue.js": 293,
-	"./bar/example4/vue.js": 294,
-	"./bar/example5/vue.js": 295,
-	"./bar/example7/vue.js": 296,
-	"./bar/example8/vue.js": 297,
-	"./bar/example9/vue.js": 298,
-	"./facet/example1/vue.js": 299
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 290;
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import { Chart, Tooltip, Axis, StackBar, Coord, Legend } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { 'State': 'WY', '\u5C0F\u4E8E5\u5C81': 25635, '5\u81F313\u5C81': 1890, '14\u81F317\u5C81': 9314 },\n  { 'State': 'DC', '\u5C0F\u4E8E5\u5C81': 30352, '5\u81F313\u5C81': 20439, '14\u81F317\u5C81': 10225 },\n  { 'State': 'VT', '\u5C0F\u4E8E5\u5C81': 38253, '5\u81F313\u5C81': 42538, '14\u81F317\u5C81': 15757 },\n  { 'State': 'ND', '\u5C0F\u4E8E5\u5C81': 51896, '5\u81F313\u5C81': 67358, '14\u81F317\u5C81': 18794 },\n  { 'State': 'AK', '\u5C0F\u4E8E5\u5C81': 72083, '5\u81F313\u5C81': 85640, '14\u81F317\u5C81': 22153 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: ['\u5C0F\u4E8E5\u5C81', '5\u81F313\u5C81', '14\u81F317\u5C81'],\n    key: '\u5E74\u9F84\u6BB5',\n    value: '\u4EBA\u53E3\u6570\u91CF',\n    retains: ['State'],\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre}>\n        <Coord type=\"rect\" direction=\"LB\" />\n        <Tooltip />\n        <Legend />\n        <Axis dataKey=\"State\" label={{ offset: 12 }} />\n        <StackBar position=\"State*\u4EBA\u53E3\u6570\u91CF\" color=\"\u5E74\u9F84\u6BB5\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 291 */
@@ -39120,7 +39312,7 @@ webpackContext.id = 290;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :scale=\"scale\">\n      <v-tooltip />\n      <v-axis />\n      <v-bar :position=\"'year*sales'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { year: '1951 \u5E74', sales: 38 },\n    { year: '1952 \u5E74', sales: 52 },\n    { year: '1956 \u5E74', sales: 61 },\n    { year: '1957 \u5E74', sales: 145 },\n    { year: '1958 \u5E74', sales: 48 },\n    { year: '1959 \u5E74', sales: 38 },\n    { year: '1960 \u5E74', sales: 38 },\n    { year: '1962 \u5E74', sales: 38 },\n  ];\n  \n  const scale = [{\n    dataKey: 'sales',\n    tickInterval: 20,\n  }];\n\n  export default {\n    data() {\n      return {\n        data,\n        scale,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, Bar, Coord, Legend } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { profession: '\u4E24\u5E74\u5236\u526F\u5B66\u58EB\u5B66\u4F4D', highest: 110000, minimum: 23000, mean: 56636 },\n  { profession: '\u6267\u6CD5\u4E0E\u6551\u706B', highest: 120000, minimum: 18000, mean: 66625 },\n  { profession: '\u6559\u80B2\u5B66', highest: 125000, minimum: 24000, mean: 72536 },\n  { profession: '\u5FC3\u7406\u5B66', highest: 130000, minimum: 22500, mean: 75256 },\n  { profession: '\u8BA1\u7B97\u673A\u79D1\u5B66', highest: 131000, minimum: 23000, mean: 77031 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'merge',\n    fields: ['minimum', 'highest'],\n    as: 'range',\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} padding={[20, 80, 50, 110]} data={data} dataPre={dataPre}>\n        <Coord type=\"rect\" direction=\"LB\" />\n        <Tooltip />\n        <Legend />\n        <Axis dataKey=\"profession\" label={{ offset: 12 }} />\n        <Bar position=\"profession*range\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 292 */
@@ -39132,7 +39324,7 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-tooltip />\n      <v-axis />\n      <v-bar :position=\"'\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF'\" :color=\"'name'\" :adjust=\"adjust\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n    { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'fold',\n      fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n      key: '\u6708\u4EFD',\n      value: '\u6708\u5747\u964D\u96E8\u91CF',\n    },\n  };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n        adjust: [{ \n          type: 'dodge', \n          marginRatio: 1 / 32,\n        }],\n      };\n    }\n  };\n</script>\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n  { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n    key: '\u6708\u4EFD',\n    value: '\u6708\u5747\u964D\u96E8\u91CF',\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre}>\n        <Tooltip />\n        <Axis />\n        <Bar position=\"\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF\" color=\"name\" adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]} />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 293 */
@@ -39144,7 +39336,7 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-tooltip />\n      <v-axis />\n      <v-stack-bar :position=\"'\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF'\" :color=\"'name'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n    { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'fold',\n      fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n      key: '\u6708\u4EFD',\n      value: '\u6708\u5747\u964D\u96E8\u91CF',\n    },\n  };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, StackBar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n  { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n    key: '\u6708\u4EFD',\n    value: '\u6708\u5747\u964D\u96E8\u91CF',\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre}>\n        <Tooltip />\n        <Axis />\n        <StackBar position=\"\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF\" color=\"name\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 294 */
@@ -39156,7 +39348,7 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\" :scale=\"scale\">\n      <v-tooltip />\n      <v-axis />\n      <v-stack-bar :position=\"'year*percent'\" :color=\"'country'\" :v-style=\"stackBarStyle\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { country: 'Europe', year: '1750', value: 163 },\n    { country: 'Europe', year: '1800', value: 203 },\n    { country: 'Europe', year: '1850', value: 276 },\n    { country: 'Europe', year: '1900', value: 408 },\n    { country: 'Europe', year: '1950', value: 547 },\n    { country: 'Europe', year: '1999', value: 729 },\n    { country: 'Europe', year: '2050', value: 628 },\n    { country: 'Europe', year: '2100', value: 828 },\n    { country: 'Asia', year: '1750', value: 502 },\n    { country: 'Asia', year: '1800', value: 635 },\n    { country: 'Asia', year: '1850', value: 809 },\n    { country: 'Asia', year: '1900', value: 947 },\n    { country: 'Asia', year: '1950', value: 1402 },\n    { country: 'Asia', year: '1999', value: 3634 },\n    { country: 'Asia', year: '2050', value: 5268 },\n    { country: 'Asia', year: '2100', value: 7268 }\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'percent',\n      field: 'value',\n      dimension: 'country',\n      groupBy: ['year'],\n      as: 'percent'\n    }\n  };\n\n  const scale = [{\n    dataKey: 'percent',\n    min: 0,\n    formatter: '.2%',\n  }];\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        scale,\n        height: 400,\n        stackBarStyle: {\n          stroke: \"#fff\",\n          lineWidth: 1\n        }\n      };\n    }\n  };\n</script>\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, StackBar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { country: 'Europe', year: '1750', value: 163 },\n  { country: 'Europe', year: '1800', value: 203 },\n  { country: 'Europe', year: '1850', value: 276 },\n  { country: 'Europe', year: '1900', value: 408 },\n  { country: 'Europe', year: '1950', value: 547 },\n  { country: 'Europe', year: '1999', value: 729 },\n  { country: 'Europe', year: '2050', value: 628 },\n  { country: 'Europe', year: '2100', value: 828 },\n  { country: 'Asia', year: '1750', value: 502 },\n  { country: 'Asia', year: '1800', value: 635 },\n  { country: 'Asia', year: '1850', value: 809 },\n  { country: 'Asia', year: '1900', value: 947 },\n  { country: 'Asia', year: '1950', value: 1402 },\n  { country: 'Asia', year: '1999', value: 3634 },\n  { country: 'Asia', year: '2050', value: 5268 },\n  { country: 'Asia', year: '2100', value: 7268 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'percent',\n    field: 'value',\n    dimension: 'country',\n    groupBy: ['year'],\n    as: 'percent'\n  }\n};\n\nconst scale = [{\n  dataKey: 'percent',\n  min: 0,\n  formatter: '.2%',\n}];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>\n        <Tooltip />\n        <Axis />\n        <StackBar position=\"year*percent\" color=\"country\" style={{ stroke: '#fff', lineWidth: this.state.lineWidth }} />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 295 */
@@ -39168,7 +39360,7 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\">\n      <v-tooltip />\n      <v-axis />\n      <v-bar :position=\"'x*y'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { x: '\u5206\u7C7B\u4E00', y: [ 76, 100 ] },\n    { x: '\u5206\u7C7B\u4E8C', y: [ 56, 108 ] },\n    { x: '\u5206\u7C7B\u4E09', y: [ 38, 129 ] },\n    { x: '\u5206\u7C7B\u56DB', y: [ 58, 155 ] },\n    { x: '\u5206\u7C7B\u4E94', y: [ 45, 120 ] },\n    { x: '\u5206\u7C7B\u516D', y: [ 23, 99 ] },\n    { x: '\u5206\u7C7B\u4E03', y: [ 18, 56 ] },\n    { x: '\u5206\u7C7B\u516B', y: [ 18, 34 ] },\n  ];\n\n  export default {\n    data() {\n      return {\n        data,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst data = [\n  { x: '\u5206\u7C7B\u4E00', y: [ 76, 100 ] },\n  { x: '\u5206\u7C7B\u4E8C', y: [ 56, 108 ] },\n  { x: '\u5206\u7C7B\u4E09', y: [ 38, 129 ] },\n  { x: '\u5206\u7C7B\u56DB', y: [ 58, 155 ] },\n  { x: '\u5206\u7C7B\u4E94', y: [ 45, 120 ] },\n  { x: '\u5206\u7C7B\u516D', y: [ 23, 99 ] },\n  { x: '\u5206\u7C7B\u4E03', y: [ 18, 56 ] },\n  { x: '\u5206\u7C7B\u516B', y: [ 18, 34 ] },\n];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data}>\n        <Tooltip />\n        <Axis />\n        <Bar position=\"x*y\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 296 */
@@ -39180,7 +39372,7 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\" :scale=\"scale\">\n      <v-tooltip :crosshairs=\"false\" :in-plot=\"false\" :position=\"'top'\" />\n      <v-axis :data-key=\"'value'\" :label=\"label\" />\n      <v-bar :position=\"'value*count'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const values = [ 1.2, 3.4, 3.7, 4.3, 5.2, 5.8, 6.1, 6.5, 6.8, 7.1, 7.3, 7.7, 8.3, 8.6, 8.8, 9.1, 9.2, 9.4, 9.5, 9.7, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11.3, 11.4, 11.4, 11.7, 12.0, 12.9, 12.9, 13.3, 13.7, 13.8, 13.9, 14.0, 14.2, 14.5, 15, 15.2, 15.6, 16.0, 16.3, 17.3, 17.5, 17.9, 18.0, 18.0, 20.6, 21, 23.4 ];\n\n  const data = [];\n  for (let i = 0; i < values.length; i++) {\n    const obj: any = {};\n    obj.value = values[i];\n    data.push(obj);\n  }\n\n  const dataPre = {\n    transform: {\n      type: 'bin.histogram',\n      field: 'value',\n      binWidth: 2,\n      as: ['value', 'count'],\n    },\n  };\n\n  const scale = [{\n    dataKey: 'value',\n    nice: false,\n    min: 0,\n    tickInterval: 1,\n  }, {\n    dataKey: 'count',\n    max: 14,\n  }];\n\n  const formatter = val => {\n    if ((val % 2)) {\n     return val;\n    }\n    return '';\n  };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        scale,\n        height: 400,\n        label: { formatter: formatter },\n      };\n    }\n  };\n</script>\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\nconst values = [ 1.2, 3.4, 3.7, 4.3, 5.2, 5.8, 6.1, 6.5, 6.8, 7.1, 7.3, 7.7, 8.3, 8.6, 8.8, 9.1, 9.2, 9.4, 9.5, 9.7, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11.3, 11.4, 11.4, 11.7, 12.0, 12.9, 12.9, 13.3, 13.7, 13.8, 13.9, 14.0, 14.2, 14.5, 15, 15.2, 15.6, 16.0, 16.3, 17.3, 17.5, 17.9, 18.0, 18.0, 20.6, 21, 23.4 ];\n\nconst data = [];\nfor (let i = 0; i < values.length; i++) {\n  const obj: any = {};\n  obj.value = values[i];\n  data.push(obj);\n}\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'value',\n    binWidth: 2,\n    as: ['value', 'count'],\n  },\n};\n\nconst scale = [{\n  dataKey: 'value',\n  nice: false,\n  min: 0,\n  tickInterval: 1,\n}, {\n  dataKey: 'count',\n  max: 14,\n}];\n\nclass App extends React.Component {\n  render() {\n    const formatter = val => {\n      if ((val % 2)) {\n       return val;\n      }\n      return '';\n    };\n\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>\n        <Tooltip crosshairs={false} inPlot={false} position=\"top\" />\n        <Axis dataKey=\"value\" label={{ formatter: formatter }} />\n        <Bar position=\"value*count\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 297 */
@@ -39192,7 +39384,7 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-tooltip :crosshairs=\"false\" :in-plot=\"false\" :position=\"'top'\" />\n      <v-axis />\n      <v-stack-bar :position=\"'depth*count'\" :color=\"'cut'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  // https://antv.alipay.com/assets/data/diamond.json\n  const data = [];\n\n  const dataPre = {\n    transform: {\n      type: 'bin.histogram',\n      field: 'depth',\n      binWidth: 1,\n      groupBy: [ 'cut' ],\n      as: ['depth', 'count'],\n    },\n  };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, StackBar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\n// https://antv.alipay.com/assets/data/diamond.json\nconst data = [];\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'depth',\n    binWidth: 1,\n    groupBy: [ 'cut' ],\n    as: ['depth', 'count'],\n  },\n};\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre}>\n        <Tooltip crosshairs={false} inPlot={false} position=\"top\" />\n        <Axis />\n        <StackBar position=\"depth*count\" color=\"cut\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 298 */
@@ -39204,7 +39396,7 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\" :scale=\"scale\">\n      <v-tooltip :crosshairs=\"false\" :in-plot=\"false\" :position=\"'top'\" />\n      <v-axis />\n      <v-bar :position=\"'depth*count'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  // https://antv.alipay.com/assets/data/diamond.json\n  const data = [];\n\n  const dataPre = {\n    transform: {\n      type: 'bin.histogram',\n      field: 'depth',\n      binWidth: 1,\n      groupBy: [ 'cut' ],\n      as: ['depth', 'count'],\n    },\n  };\n\n  const scale = [{\n    dataKey: 'depth',\n    tickInterval: 4\n  }];\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        scale,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
+var template = exports.template = "import { Chart, Tooltip, Axis, Bar } from 'viser-react';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\n\n// https://antv.alipay.com/assets/data/diamond.json\nconst data = [];\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'depth',\n    binWidth: 1,\n    groupBy: [ 'cut' ],\n    as: ['depth', 'count'],\n  },\n};\n\nconst scale = [{\n  dataKey: 'depth',\n  tickInterval: 4\n}];\n\nclass App extends React.Component {\n  render() {\n    return (\n      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>\n        <Tooltip crosshairs={false} inPlot={false} position=\"top\" />\n        <Axis />\n        <Bar position=\"depth*count\" />\n      </Chart>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 299 */
@@ -39216,22 +39408,26 @@ var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "\n<template>\n  <div>\n    <v-chart\n      :force-fit=\"true\"\n      :height=\"600\"\n      :data=\"chartData\"\n      :data-mapping=\"dataMapping\"\n      :scale=\"scale\"\n    >\n      <v-tooltip />\n      <v-facet\n        :type=\"'rect'\"\n        :fields=\"['cut', 'clarity']\"\n      >\n        <v-facet-view>\n          <v-axis />\n          <v-tooltip />\n          <v-point :opacity=\"0.3\" :size=\"3\" />\n        </v-facet-view>\n      </v-facet>\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  import {\n    chartData, dataMapping, scale\n  } from \"./data\";\n\n  export default {\n    data() {\n      return {\n        chartData,\n        dataMapping,\n        scale\n      };\n    },\n    methods: {}\n  };\n</script>\n\n<style scoped>\n</style>\n";
+var template = exports.template = "import {\n  Chart, Facet, View, Tooltip,\n  Legend, Axis, Point, FacetView\n} from '../../../packages/viser-react/src/index';\nimport * as ReactDOM from 'react-dom';\nimport * as React from 'react';\nimport {\n  chartData, dataMapping, scale\n} from './data'\n\nclass App extends React.Component {\n  render() {\n    return (\n      <div>\n        <Chart\n          forceFit={true}\n          height={600}\n          data={chartData}\n          dataMapping={dataMapping}\n          scale={scale}\n        >\n          <Tooltip />\n          <Facet\n            type=\"rect\"\n            fields={['cut', 'clarity']}\n          >\n            <FacetView>\n              <Tooltip />\n              <Axis />\n              <Point opacity={0.3} size={3} />\n            </FacetView>\n          </Facet>\n        </Chart>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(\n  <App />,\n  document.getElementById('mount')\n);\n";
 
 /***/ }),
 /* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bar/example1/angular.js": 301,
-	"./bar/example2/angular.js": 302,
-	"./bar/example3/angular.js": 303,
-	"./bar/example4/angular.js": 304,
-	"./bar/example5/angular.js": 305,
-	"./bar/example7/angular.js": 306,
-	"./bar/example8/angular.js": 307,
-	"./bar/example9/angular.js": 308,
-	"./facet/example1/angular.js": 309
+	"./bar/example1/vue.js": 301,
+	"./bar/example10/vue.js": 302,
+	"./bar/example11/vue.js": 303,
+	"./bar/example12/vue.js": 304,
+	"./bar/example13/vue.js": 305,
+	"./bar/example2/vue.js": 306,
+	"./bar/example3/vue.js": 307,
+	"./bar/example4/vue.js": 308,
+	"./bar/example5/vue.js": 309,
+	"./bar/example7/vue.js": 310,
+	"./bar/example8/vue.js": 311,
+	"./bar/example9/vue.js": 312,
+	"./facet/example1/vue.js": 313
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -39259,7 +39455,7 @@ webpackContext.id = 300;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { year: '1951 \u5E74', sales: 38 },\n  { year: '1952 \u5E74', sales: 52 },\n  { year: '1956 \u5E74', sales: 61 },\n  { year: '1957 \u5E74', sales: 145 },\n  { year: '1958 \u5E74', sales: 48 },\n  { year: '1959 \u5E74', sales: 38 },\n  { year: '1960 \u5E74', sales: 38 },\n  { year: '1962 \u5E74', sales: 38 },\n];\n\nconst scale = [{\n  dataKey: 'sales',\n  tickInterval: 20,\n}];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [scale]=\"scale\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"year*sales\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  scale = scale;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :scale=\"scale\">\n      <v-tooltip />\n      <v-axis />\n      <v-bar :position=\"'year*sales'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { year: '1951 \u5E74', sales: 38 },\n    { year: '1952 \u5E74', sales: 52 },\n    { year: '1956 \u5E74', sales: 61 },\n    { year: '1957 \u5E74', sales: 145 },\n    { year: '1958 \u5E74', sales: 48 },\n    { year: '1959 \u5E74', sales: 38 },\n    { year: '1960 \u5E74', sales: 38 },\n    { year: '1962 \u5E74', sales: 38 },\n  ];\n  \n  const scale = [{\n    dataKey: 'sales',\n    tickInterval: 20,\n  }];\n\n  export default {\n    data() {\n      return {\n        data,\n        scale,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 /* 302 */
@@ -39271,7 +39467,7 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n  { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n    key: '\u6708\u4EFD',\n    value: '\u6708\u5747\u964D\u96E8\u91CF',\n  },\n};\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF\" color=\"name\" [adjust]=\"adjust\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  adjust = [{ \n    type: 'dodge', \n    marginRatio: 1 / 32,\n  }];\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-coord :type=\"'rect'\" :direction=\"'LB'\" />\n      <v-tooltip />\n      <v-axis :data-key=\"'country'\" :label=\"label\" />\n      <v-bar :position=\"'country*population'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { country: '\u4E2D\u56FD', population: 131744 },\n    { country: '\u5370\u5EA6', population: 104970 },\n    { country: '\u7F8E\u56FD', population: 29034 },\n    { country: '\u5370\u5C3C', population: 23489 },\n    { country: '\u5DF4\u897F', population: 18203 },\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'sort',\n      callback(a, b) {\n        return a.population - b.population > 0;\n      },\n    },\n  };\n\n  const label = { offset: 12 };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n        label: label,\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 /* 303 */
@@ -39283,7 +39479,7 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n  { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n    key: '\u6708\u4EFD',\n    value: '\u6708\u5747\u964D\u96E8\u91CF',\n  },\n};\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <StackBar position=\"\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF\" color=\"name\"></StackBar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-coord :type=\"'rect'\" :direction=\"'LT'\" />\n      <v-tooltip />\n      <v-legend />\n      <v-axis :data-key=\"'value'\" :position=\"right\" />\n      <v-axis :data-key=\"'label'\" :label=\"label\" />\n      <v-bar :position=\"'label*value'\" :adjust=\"adjust\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { label: 'Mon.', series1: 2800, series2: 2260 },\n    { label: 'Tues.', series1: 1800, series2: 1300 },\n    { label: 'Wed.', series1: 950, series2: 900 },\n    { label: 'Thur.', series1: 500, series2: 390 },\n    { label: 'Fri.', series1: 170, series2: 100 },\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'fold',\n      fields: [ 'series1', 'series2' ],\n      key: 'type',\n      value: 'value',\n    },\n  };\n\n  const label = { offset: 12 };\n  const adjust = [{ type: 'dodge', marginRatio: 1 / 32 }];\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n        label: label,\n        adjust: adjust,\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 /* 304 */
@@ -39295,7 +39491,7 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { country: 'Europe', year: '1750', value: 163 },\n  { country: 'Europe', year: '1800', value: 203 },\n  { country: 'Europe', year: '1850', value: 276 },\n  { country: 'Europe', year: '1900', value: 408 },\n  { country: 'Europe', year: '1950', value: 547 },\n  { country: 'Europe', year: '1999', value: 729 },\n  { country: 'Europe', year: '2050', value: 628 },\n  { country: 'Europe', year: '2100', value: 828 },\n  { country: 'Asia', year: '1750', value: 502 },\n  { country: 'Asia', year: '1800', value: 635 },\n  { country: 'Asia', year: '1850', value: 809 },\n  { country: 'Asia', year: '1900', value: 947 },\n  { country: 'Asia', year: '1950', value: 1402 },\n  { country: 'Asia', year: '1999', value: 3634 },\n  { country: 'Asia', year: '2050', value: 5268 },\n  { country: 'Asia', year: '2100', value: 7268 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'percent',\n    field: 'value',\n    dimension: 'country',\n    groupBy: ['year'],\n    as: 'percent'\n  }\n};\n\nconst scale = [{\n  dataKey: 'percent',\n  min: 0,\n  formatter: '.2%',\n}];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\" [scale]=\"scale\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <StackBar position=\"year*percent\" color=\"country\" [ngStyle]=\"{ stroke: '#fff', lineWidth: 1 }\"></StackBar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  scale = scale;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-coord :type=\"'rect'\" :direction=\"'LB'\" />\n      <v-tooltip />\n      <v-legend />\n      <v-axis :data-key=\"'State'\" :label=\"label\" />\n      <v-stack-bar :position=\"'State*\u4EBA\u53E3\u6570\u91CF'\" :color=\"'\u5E74\u9F84\u6BB5'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { 'State': 'WY', '\u5C0F\u4E8E5\u5C81': 25635, '5\u81F313\u5C81': 1890, '14\u81F317\u5C81': 9314 },\n    { 'State': 'DC', '\u5C0F\u4E8E5\u5C81': 30352, '5\u81F313\u5C81': 20439, '14\u81F317\u5C81': 10225 },\n    { 'State': 'VT', '\u5C0F\u4E8E5\u5C81': 38253, '5\u81F313\u5C81': 42538, '14\u81F317\u5C81': 15757 },\n    { 'State': 'ND', '\u5C0F\u4E8E5\u5C81': 51896, '5\u81F313\u5C81': 67358, '14\u81F317\u5C81': 18794 },\n    { 'State': 'AK', '\u5C0F\u4E8E5\u5C81': 72083, '5\u81F313\u5C81': 85640, '14\u81F317\u5C81': 22153 }\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'fold',\n      fields: ['\u5C0F\u4E8E5\u5C81', '5\u81F313\u5C81', '14\u81F317\u5C81'],\n      key: '\u5E74\u9F84\u6BB5',\n      value: '\u4EBA\u53E3\u6570\u91CF',\n      retains: ['State'],\n    },\n  };\n\n  const label = { offset: 12 };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n        label: label,\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 /* 305 */
@@ -39307,7 +39503,7 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { x: '\u5206\u7C7B\u4E00', y: [ 76, 100 ] },\n  { x: '\u5206\u7C7B\u4E8C', y: [ 56, 108 ] },\n  { x: '\u5206\u7C7B\u4E09', y: [ 38, 129 ] },\n  { x: '\u5206\u7C7B\u56DB', y: [ 58, 155 ] },\n  { x: '\u5206\u7C7B\u4E94', y: [ 45, 120 ] },\n  { x: '\u5206\u7C7B\u516D', y: [ 23, 99 ] },\n  { x: '\u5206\u7C7B\u4E03', y: [ 18, 56 ] },\n  { x: '\u5206\u7C7B\u516B', y: [ 18, 34 ] },\n];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"x*y\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :padding=\"padding\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-coord :type=\"'rect'\" :direction=\"'LB'\" />\n      <v-tooltip />\n      <v-legend />\n      <v-axis :data-key=\"'profession'\" :label=\"label\" />\n      <v-bar :position=\"'profession*range'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { profession: '\u4E24\u5E74\u5236\u526F\u5B66\u58EB\u5B66\u4F4D', highest: 110000, minimum: 23000, mean: 56636 },\n    { profession: '\u6267\u6CD5\u4E0E\u6551\u706B', highest: 120000, minimum: 18000, mean: 66625 },\n    { profession: '\u6559\u80B2\u5B66', highest: 125000, minimum: 24000, mean: 72536 },\n    { profession: '\u5FC3\u7406\u5B66', highest: 130000, minimum: 22500, mean: 75256 },\n    { profession: '\u8BA1\u7B97\u673A\u79D1\u5B66', highest: 131000, minimum: 23000, mean: 77031 }\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'merge',\n      fields: ['minimum', 'highest'],\n      as: 'range',\n    },\n  };\n\n  const label = { offset: 12 };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n        label: label,\n        padding: [20, 80, 50, 110],\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 /* 306 */
@@ -39319,7 +39515,7 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { x: '\u5206\u7C7B\u4E00', y: [ 76, 100 ] },\n  { x: '\u5206\u7C7B\u4E8C', y: [ 56, 108 ] },\n  { x: '\u5206\u7C7B\u4E09', y: [ 38, 129 ] },\n  { x: '\u5206\u7C7B\u56DB', y: [ 58, 155 ] },\n  { x: '\u5206\u7C7B\u4E94', y: [ 45, 120 ] },\n  { x: '\u5206\u7C7B\u516D', y: [ 23, 99 ] },\n  { x: '\u5206\u7C7B\u4E03', y: [ 18, 56 ] },\n  { x: '\u5206\u7C7B\u516B', y: [ 18, 34 ] },\n];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\">\n      <Tooltip crosshairs=\"false\" inPlot=\"false\" position=\"top\"></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"x*y\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-tooltip />\n      <v-axis />\n      <v-bar :position=\"'\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF'\" :color=\"'name'\" :adjust=\"adjust\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n    { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'fold',\n      fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n      key: '\u6708\u4EFD',\n      value: '\u6708\u5747\u964D\u96E8\u91CF',\n    },\n  };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n        adjust: [{ \n          type: 'dodge', \n          marginRatio: 1 / 32,\n        }],\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 /* 307 */
@@ -39331,7 +39527,7 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\n// https://antv.alipay.com/assets/data/diamond.json\nconst data = [];\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'depth',\n    binWidth: 1,\n    groupBy: [ 'cut' ],\n    as: ['depth', 'count'],\n  },\n};\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Tooltip crosshairs=\"false\" inPlot=\"false\" position=\"top\"></Tooltip>\n      <Axis></Axis>\n      <StackBar position=\"depth*count\" color=\"cut\"></StackBar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-tooltip />\n      <v-axis />\n      <v-stack-bar :position=\"'\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF'\" :color=\"'name'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n    { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'fold',\n      fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n      key: '\u6708\u4EFD',\n      value: '\u6708\u5747\u964D\u96E8\u91CF',\n    },\n  };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 /* 308 */
@@ -39343,7 +39539,7 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\n// https://antv.alipay.com/assets/data/diamond.json\nconst data = [];\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'depth',\n    binWidth: 1,\n    groupBy: [ 'cut' ],\n    as: ['depth', 'count'],\n  },\n};\n\nconst scale = [{\n  dataKey: 'depth',\n  tickInterval: 4\n}];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\" [scale]=\"scale\">\n      <Tooltip crosshairs=\"false\" inPlot=\"false\" position=\"top\"></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"depth*count\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  scale = scale;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\" :scale=\"scale\">\n      <v-tooltip />\n      <v-axis />\n      <v-stack-bar :position=\"'year*percent'\" :color=\"'country'\" :v-style=\"stackBarStyle\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { country: 'Europe', year: '1750', value: 163 },\n    { country: 'Europe', year: '1800', value: 203 },\n    { country: 'Europe', year: '1850', value: 276 },\n    { country: 'Europe', year: '1900', value: 408 },\n    { country: 'Europe', year: '1950', value: 547 },\n    { country: 'Europe', year: '1999', value: 729 },\n    { country: 'Europe', year: '2050', value: 628 },\n    { country: 'Europe', year: '2100', value: 828 },\n    { country: 'Asia', year: '1750', value: 502 },\n    { country: 'Asia', year: '1800', value: 635 },\n    { country: 'Asia', year: '1850', value: 809 },\n    { country: 'Asia', year: '1900', value: 947 },\n    { country: 'Asia', year: '1950', value: 1402 },\n    { country: 'Asia', year: '1999', value: 3634 },\n    { country: 'Asia', year: '2050', value: 5268 },\n    { country: 'Asia', year: '2100', value: 7268 }\n  ];\n\n  const dataPre = {\n    transform: {\n      type: 'percent',\n      field: 'value',\n      dimension: 'country',\n      groupBy: ['year'],\n      as: 'percent'\n    }\n  };\n\n  const scale = [{\n    dataKey: 'percent',\n    min: 0,\n    formatter: '.2%',\n  }];\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        scale,\n        height: 400,\n        stackBarStyle: {\n          stroke: \"#fff\",\n          lineWidth: 1\n        }\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 /* 309 */
@@ -39355,10 +39551,249 @@ var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport {\n  Component, enableProdMode, NgModule\n} from '@angular/core';\nimport {\n  platformBrowserDynamic\n} from '@angular/platform-browser-dynamic';\nimport {\n  BrowserModule\n} from '@angular/platform-browser';\nimport {\n  ViserModule\n} from '../../../packages/viser-ng/src/index';\nimport {\n  chartData, dataMapping, scale\n} from './data'\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart\n      [forceFit]=\"forceFit\"\n      [height]=\"600\"\n      [data]=\"chartData\"\n      [dataMapping]=\"dataMapping\"\n      [scale]=\"scale\"\n    >\n      <Tooltip></Tooltip>\n      <Facet type=\"rect\" [fields]=\"fields\">\n        <FacetView>\n          <Axis></Axis>\n          <Tooltip></Tooltip>\n          <Point opacity=\"0.3\" size=\"3\"></Point>\n        </FacetView>\n      </Facet>\n    </Chart>\n  </div>\n  `\n})\n\nexport class AppComponent {\n  forceFit: boolean= true;\n  height: number = 600;\n  chartData = chartData;\n  dataMapping = dataMapping;\n  scale = scale;\n  fields = ['cut', 'clarity'];\n}\n\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\n\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\">\n      <v-tooltip />\n      <v-axis />\n      <v-bar :position=\"'x*y'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const data = [\n    { x: '\u5206\u7C7B\u4E00', y: [ 76, 100 ] },\n    { x: '\u5206\u7C7B\u4E8C', y: [ 56, 108 ] },\n    { x: '\u5206\u7C7B\u4E09', y: [ 38, 129 ] },\n    { x: '\u5206\u7C7B\u56DB', y: [ 58, 155 ] },\n    { x: '\u5206\u7C7B\u4E94', y: [ 45, 120 ] },\n    { x: '\u5206\u7C7B\u516D', y: [ 23, 99 ] },\n    { x: '\u5206\u7C7B\u4E03', y: [ 18, 56 ] },\n    { x: '\u5206\u7C7B\u516B', y: [ 18, 34 ] },\n  ];\n\n  export default {\n    data() {\n      return {\n        data,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
 
 /***/ }),
 /* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\" :scale=\"scale\">\n      <v-tooltip :crosshairs=\"false\" :in-plot=\"false\" :position=\"'top'\" />\n      <v-axis :data-key=\"'value'\" :label=\"label\" />\n      <v-bar :position=\"'value*count'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  const values = [ 1.2, 3.4, 3.7, 4.3, 5.2, 5.8, 6.1, 6.5, 6.8, 7.1, 7.3, 7.7, 8.3, 8.6, 8.8, 9.1, 9.2, 9.4, 9.5, 9.7, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11.3, 11.4, 11.4, 11.7, 12.0, 12.9, 12.9, 13.3, 13.7, 13.8, 13.9, 14.0, 14.2, 14.5, 15, 15.2, 15.6, 16.0, 16.3, 17.3, 17.5, 17.9, 18.0, 18.0, 20.6, 21, 23.4 ];\n\n  const data = [];\n  for (let i = 0; i < values.length; i++) {\n    const obj: any = {};\n    obj.value = values[i];\n    data.push(obj);\n  }\n\n  const dataPre = {\n    transform: {\n      type: 'bin.histogram',\n      field: 'value',\n      binWidth: 2,\n      as: ['value', 'count'],\n    },\n  };\n\n  const scale = [{\n    dataKey: 'value',\n    nice: false,\n    min: 0,\n    tickInterval: 1,\n  }, {\n    dataKey: 'count',\n    max: 14,\n  }];\n\n  const formatter = val => {\n    if ((val % 2)) {\n     return val;\n    }\n    return '';\n  };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        scale,\n        height: 400,\n        label: { formatter: formatter },\n      };\n    }\n  };\n</script>\n";
+
+/***/ }),
+/* 311 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\">\n      <v-tooltip :crosshairs=\"false\" :in-plot=\"false\" :position=\"'top'\" />\n      <v-axis />\n      <v-stack-bar :position=\"'depth*count'\" :color=\"'cut'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  // https://antv.alipay.com/assets/data/diamond.json\n  const data = [];\n\n  const dataPre = {\n    transform: {\n      type: 'bin.histogram',\n      field: 'depth',\n      binWidth: 1,\n      groupBy: [ 'cut' ],\n      as: ['depth', 'count'],\n    },\n  };\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "<template>\n  <div>\n    <v-chart :force-fit=\"true\" :height=\"height\" :data=\"data\" :data-pre=\"dataPre\" :scale=\"scale\">\n      <v-tooltip :crosshairs=\"false\" :in-plot=\"false\" :position=\"'top'\" />\n      <v-axis />\n      <v-bar :position=\"'depth*count'\" />\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  // https://antv.alipay.com/assets/data/diamond.json\n  const data = [];\n\n  const dataPre = {\n    transform: {\n      type: 'bin.histogram',\n      field: 'depth',\n      binWidth: 1,\n      groupBy: [ 'cut' ],\n      as: ['depth', 'count'],\n    },\n  };\n\n  const scale = [{\n    dataKey: 'depth',\n    tickInterval: 4\n  }];\n\n  export default {\n    data() {\n      return {\n        data,\n        dataPre,\n        scale,\n        height: 400,\n      };\n    }\n  };\n</script>\n";
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "\n<template>\n  <div>\n    <v-chart\n      :force-fit=\"true\"\n      :height=\"600\"\n      :data=\"chartData\"\n      :data-mapping=\"dataMapping\"\n      :scale=\"scale\"\n    >\n      <v-tooltip />\n      <v-facet\n        :type=\"'rect'\"\n        :fields=\"['cut', 'clarity']\"\n      >\n        <v-facet-view>\n          <v-axis />\n          <v-tooltip />\n          <v-point :opacity=\"0.3\" :size=\"3\" />\n        </v-facet-view>\n      </v-facet>\n    </v-chart>\n  </div>\n</template>\n\n<script>\n  import {\n    chartData, dataMapping, scale\n  } from \"./data\";\n\n  export default {\n    data() {\n      return {\n        chartData,\n        dataMapping,\n        scale\n      };\n    },\n    methods: {}\n  };\n</script>\n\n<style scoped>\n</style>\n";
+
+/***/ }),
+/* 314 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./bar/example1/angular.js": 315,
+	"./bar/example10/angular.js": 316,
+	"./bar/example11/angular.js": 317,
+	"./bar/example12/angular.js": 318,
+	"./bar/example13/angular.js": 319,
+	"./bar/example2/angular.js": 320,
+	"./bar/example3/angular.js": 321,
+	"./bar/example4/angular.js": 322,
+	"./bar/example5/angular.js": 323,
+	"./bar/example7/angular.js": 324,
+	"./bar/example8/angular.js": 325,
+	"./bar/example9/angular.js": 326,
+	"./facet/example1/angular.js": 327
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 314;
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { year: '1951 \u5E74', sales: 38 },\n  { year: '1952 \u5E74', sales: 52 },\n  { year: '1956 \u5E74', sales: 61 },\n  { year: '1957 \u5E74', sales: 145 },\n  { year: '1958 \u5E74', sales: 48 },\n  { year: '1959 \u5E74', sales: 38 },\n  { year: '1960 \u5E74', sales: 38 },\n  { year: '1962 \u5E74', sales: 38 },\n];\n\nconst scale = [{\n  dataKey: 'sales',\n  tickInterval: 20,\n}];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [scale]=\"scale\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"year*sales\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  scale = scale;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { country: '\u4E2D\u56FD', population: 131744 },\n  { country: '\u5370\u5EA6', population: 104970 },\n  { country: '\u7F8E\u56FD', population: 29034 },\n  { country: '\u5370\u5C3C', population: 23489 },\n  { country: '\u5DF4\u897F', population: 18203 },\n];\n\nconst dataPre = {\n  transform: {\n    type: 'sort',\n    callback(a, b) {\n      return a.population - b.population > 0;\n    },\n  },\n};\n\nconst label = { offset: 12 };\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Coord type=\"rect\" direction=\"LB\"></Coord>\n      <Tooltip></Tooltip>\n      <Axis dataKey=\"coutry\" [label]=\"label\"></Axis>\n      <Bar position=\"country*population\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  label = label;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 317 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { label: 'Mon.', series1: 2800, series2: 2260 },\n  { label: 'Tues.', series1: 1800, series2: 1300 },\n  { label: 'Wed.', series1: 950, series2: 900 },\n  { label: 'Thur.', series1: 500, series2: 390 },\n  { label: 'Fri.', series1: 170, series2: 100 },\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'series1', 'series2' ],\n    key: 'type',\n    value: 'value',\n  },\n};\n\nconst label = { offset: 12 };\nconst adjust = [{ type: 'dodge', marginRatio: 1 / 32 }];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Coord type=\"rect\" direction=\"LT\"></Coord>\n      <Tooltip></Tooltip>\n      <Legend></Legend>\n      <Axis dataKey=\"coutry\" position=\"right\"></Axis>\n      <Axis dataKey=\"label\" [label]=\"label\"></Axis>\n      <Bar position=\"label*value\" [adjust]=\"adjust\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  label = label;\n  adjust = adjust;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { 'State': 'WY', '\u5C0F\u4E8E5\u5C81': 25635, '5\u81F313\u5C81': 1890, '14\u81F317\u5C81': 9314 },\n  { 'State': 'DC', '\u5C0F\u4E8E5\u5C81': 30352, '5\u81F313\u5C81': 20439, '14\u81F317\u5C81': 10225 },\n  { 'State': 'VT', '\u5C0F\u4E8E5\u5C81': 38253, '5\u81F313\u5C81': 42538, '14\u81F317\u5C81': 15757 },\n  { 'State': 'ND', '\u5C0F\u4E8E5\u5C81': 51896, '5\u81F313\u5C81': 67358, '14\u81F317\u5C81': 18794 },\n  { 'State': 'AK', '\u5C0F\u4E8E5\u5C81': 72083, '5\u81F313\u5C81': 85640, '14\u81F317\u5C81': 22153 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: ['\u5C0F\u4E8E5\u5C81', '5\u81F313\u5C81', '14\u81F317\u5C81'],\n    key: '\u5E74\u9F84\u6BB5',\n    value: '\u4EBA\u53E3\u6570\u91CF',\n    retains: ['State'],\n  },\n};\n\nconst label = { offset: 12 };\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Coord type=\"rect\" direction=\"LB\"></Coord>\n      <Tooltip></Tooltip>\n      <Legend></Legend>\n      <Axis dataKey=\"State\" [label]=\"label\"></Axis>\n      <StackBar position=\"State*\u4EBA\u53E3\u6570\u91CF\" color=\"\u5E74\u9F84\u6BB5\"></StackBar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  label = label;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { profession: '\u4E24\u5E74\u5236\u526F\u5B66\u58EB\u5B66\u4F4D', highest: 110000, minimum: 23000, mean: 56636 },\n  { profession: '\u6267\u6CD5\u4E0E\u6551\u706B', highest: 120000, minimum: 18000, mean: 66625 },\n  { profession: '\u6559\u80B2\u5B66', highest: 125000, minimum: 24000, mean: 72536 },\n  { profession: '\u5FC3\u7406\u5B66', highest: 130000, minimum: 22500, mean: 75256 },\n  { profession: '\u8BA1\u7B97\u673A\u79D1\u5B66', highest: 131000, minimum: 23000, mean: 77031 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'merge',\n    fields: ['minimum', 'highest'],\n    as: 'range',\n  },\n};\n\nconst label = { offset: 12 };\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [padding]=\"padding\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Coord type=\"rect\" direction=\"LB\"></Coord>\n      <Tooltip></Tooltip>\n      <Legend></Legend>\n      <Axis dataKey=\"profession\" [label]=\"label\"></Axis>\n      <Bar position=\"profession*range\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  label = label;\n  padding = [20, 80, 50, 110];\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 320 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n  { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n    key: '\u6708\u4EFD',\n    value: '\u6708\u5747\u964D\u96E8\u91CF',\n  },\n};\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF\" color=\"name\" [adjust]=\"adjust\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  adjust = [{ \n    type: 'dodge', \n    marginRatio: 1 / 32,\n  }];\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },\n  { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}\n];\n\nconst dataPre = {\n  transform: {\n    type: 'fold',\n    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ],\n    key: '\u6708\u4EFD',\n    value: '\u6708\u5747\u964D\u96E8\u91CF',\n  },\n};\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <StackBar position=\"\u6708\u4EFD*\u6708\u5747\u964D\u96E8\u91CF\" color=\"name\"></StackBar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { country: 'Europe', year: '1750', value: 163 },\n  { country: 'Europe', year: '1800', value: 203 },\n  { country: 'Europe', year: '1850', value: 276 },\n  { country: 'Europe', year: '1900', value: 408 },\n  { country: 'Europe', year: '1950', value: 547 },\n  { country: 'Europe', year: '1999', value: 729 },\n  { country: 'Europe', year: '2050', value: 628 },\n  { country: 'Europe', year: '2100', value: 828 },\n  { country: 'Asia', year: '1750', value: 502 },\n  { country: 'Asia', year: '1800', value: 635 },\n  { country: 'Asia', year: '1850', value: 809 },\n  { country: 'Asia', year: '1900', value: 947 },\n  { country: 'Asia', year: '1950', value: 1402 },\n  { country: 'Asia', year: '1999', value: 3634 },\n  { country: 'Asia', year: '2050', value: 5268 },\n  { country: 'Asia', year: '2100', value: 7268 }\n];\n\nconst dataPre = {\n  transform: {\n    type: 'percent',\n    field: 'value',\n    dimension: 'country',\n    groupBy: ['year'],\n    as: 'percent'\n  }\n};\n\nconst scale = [{\n  dataKey: 'percent',\n  min: 0,\n  formatter: '.2%',\n}];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\" [scale]=\"scale\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <StackBar position=\"year*percent\" color=\"country\" [ngStyle]=\"{ stroke: '#fff', lineWidth: 1 }\"></StackBar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  scale = scale;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 323 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { x: '\u5206\u7C7B\u4E00', y: [ 76, 100 ] },\n  { x: '\u5206\u7C7B\u4E8C', y: [ 56, 108 ] },\n  { x: '\u5206\u7C7B\u4E09', y: [ 38, 129 ] },\n  { x: '\u5206\u7C7B\u56DB', y: [ 58, 155 ] },\n  { x: '\u5206\u7C7B\u4E94', y: [ 45, 120 ] },\n  { x: '\u5206\u7C7B\u516D', y: [ 23, 99 ] },\n  { x: '\u5206\u7C7B\u4E03', y: [ 18, 56 ] },\n  { x: '\u5206\u7C7B\u516B', y: [ 18, 34 ] },\n];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\">\n      <Tooltip></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"x*y\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 324 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\nconst data = [\n  { x: '\u5206\u7C7B\u4E00', y: [ 76, 100 ] },\n  { x: '\u5206\u7C7B\u4E8C', y: [ 56, 108 ] },\n  { x: '\u5206\u7C7B\u4E09', y: [ 38, 129 ] },\n  { x: '\u5206\u7C7B\u56DB', y: [ 58, 155 ] },\n  { x: '\u5206\u7C7B\u4E94', y: [ 45, 120 ] },\n  { x: '\u5206\u7C7B\u516D', y: [ 23, 99 ] },\n  { x: '\u5206\u7C7B\u4E03', y: [ 18, 56 ] },\n  { x: '\u5206\u7C7B\u516B', y: [ 18, 34 ] },\n];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\">\n      <Tooltip crosshairs=\"false\" inPlot=\"false\" position=\"top\"></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"x*y\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\n// https://antv.alipay.com/assets/data/diamond.json\nconst data = [];\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'depth',\n    binWidth: 1,\n    groupBy: [ 'cut' ],\n    as: ['depth', 'count'],\n  },\n};\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\">\n      <Tooltip crosshairs=\"false\" inPlot=\"false\" position=\"top\"></Tooltip>\n      <Axis></Axis>\n      <StackBar position=\"depth*count\" color=\"cut\"></StackBar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport { Component, enableProdMode, NgModule } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ViserModule } from 'viser-ng';\n\n// https://antv.alipay.com/assets/data/diamond.json\nconst data = [];\n\nconst dataPre = {\n  transform: {\n    type: 'bin.histogram',\n    field: 'depth',\n    binWidth: 1,\n    groupBy: [ 'cut' ],\n    as: ['depth', 'count'],\n  },\n};\n\nconst scale = [{\n  dataKey: 'depth',\n  tickInterval: 4\n}];\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart [forceFit]=\"forceFit\" [height]=\"height\" [data]=\"data\" [dataPre]=\"dataPre\" [scale]=\"scale\">\n      <Tooltip crosshairs=\"false\" inPlot=\"false\" position=\"top\"></Tooltip>\n      <Axis></Axis>\n      <Bar position=\"depth*count\"></Bar>\n    </Chart>\n  </div>\n  `\n})\n\nclass AppComponent {\n  forceFit: boolean= true;\n  height: number = 400;\n  data = data;\n  dataPre = dataPre;\n  scale = scale;\n}\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [\n    AppComponent\n  ]\n})\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var template = exports.template = "import 'zone.js';\nimport 'reflect-metadata';\nimport {\n  Component, enableProdMode, NgModule\n} from '@angular/core';\nimport {\n  platformBrowserDynamic\n} from '@angular/platform-browser-dynamic';\nimport {\n  BrowserModule\n} from '@angular/platform-browser';\nimport {\n  ViserModule\n} from '../../../packages/viser-ng/src/index';\nimport {\n  chartData, dataMapping, scale\n} from './data'\n\n@Component({\n  selector: '#mount',\n  template: `\n  <div>\n    <Chart\n      [forceFit]=\"forceFit\"\n      [height]=\"600\"\n      [data]=\"chartData\"\n      [dataMapping]=\"dataMapping\"\n      [scale]=\"scale\"\n    >\n      <Tooltip></Tooltip>\n      <Facet type=\"rect\" [fields]=\"fields\">\n        <FacetView>\n          <Axis></Axis>\n          <Tooltip></Tooltip>\n          <Point opacity=\"0.3\" size=\"3\"></Point>\n        </FacetView>\n      </Facet>\n    </Chart>\n  </div>\n  `\n})\n\nexport class AppComponent {\n  forceFit: boolean= true;\n  height: number = 600;\n  chartData = chartData;\n  dataMapping = dataMapping;\n  scale = scale;\n  fields = ['cut', 'clarity'];\n}\n\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    ViserModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\n\nexport class AppModule { }\nplatformBrowserDynamic().bootstrapModule(AppModule);\n";
+
+/***/ }),
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
