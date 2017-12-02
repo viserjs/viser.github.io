@@ -6,13 +6,13 @@ import { data } from './data'
 
 const scale = [{
   dataKey: 'carat',
-  sync: true,
+  sync: true
 }, {
   dataKey: 'price',
   sync: true,
-  tickCount: 3,
+  tickCount: 3
 }, {
-  dataKey: 'cut',
+  dataKey: 'clarity',
   sync: true,
 }];
 
@@ -23,11 +23,10 @@ class App extends React.Component {
         <Chart forceFit={true} height={600} data={data} scale={scale}>
           <Tooltip />
           <Legend />
-          <Facet type="rect" fields={['cut', 'clarity']}>
+          <Axis />
+          <Facet type="rect" fields={[null, 'clarity']}>
             <FacetView>
-              <Tooltip />
-              <Axis />
-              <Point position="carat*price" color="cut" opacity={0.3} size={3} />
+              <Point position="carat*price" color="clarity" opacity={0.3} size={3} />
             </FacetView>
           </Facet>
         </Chart>

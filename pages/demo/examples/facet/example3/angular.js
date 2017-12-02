@@ -15,7 +15,7 @@ const scale = [{
   sync: true,
   tickCount: 3,
 }, {
-  dataKey: 'cut',
+  dataKey: 'clarity',
   sync: true,
 }];
 
@@ -26,11 +26,10 @@ const scale = [{
     <Chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
       <Tooltip></Tooltip>
       <Legend></Legend>
+      <Axis></Axis>
       <Facet type="rect" [fields]="fields">
         <FacetView>
-          <Axis></Axis>
-          <Tooltip></Tooltip>
-          <Point position="carat*price" color="cut" opacity="0.3" size="3"></Point>
+          <Point position="carat*price" color="clarity" opacity="0.3" size="3"></Point>
         </FacetView>
       </Facet>
     </Chart>
@@ -43,7 +42,7 @@ export class AppComponent {
   height: number = 600;
   data = data;
   scale = scale;
-  fields = ['cut', 'clarity'];
+  fields = [null, 'clarity'];
 }
 
 @NgModule({

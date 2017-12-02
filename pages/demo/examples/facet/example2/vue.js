@@ -4,11 +4,10 @@ export const template = `
     <v-chart :force-fit="true" :height="600" :data="data" :scale="scale">
       <v-tooltip />
       <v-legend />
-      <v-facet :type="'rect'" :fields="['cut', 'clarity']">
-        <v-facet-view>
-          <v-axis />
+      <v-facet :type="'circle'" :fields="['clarity']">
+        <v-facet-view :data-pre="viewDataPre">
           <v-tooltip />
-          <v-point :position="'carat*price'" :color="'cut'" :opacity="0.3" :size="3" />
+          <v-bar :position="'cut*mean'" :color="'cut'" />
         </v-facet-view>
       </v-facet>
     </v-chart>
@@ -19,24 +18,32 @@ export const template = `
   import { data } from "./data";
 
   const scale = [{
-    dataKey: 'carat',
-    sync: true,
-  }, {
-    dataKey: 'price',
-    sync: true,
-    tickCount: 3,
+    dataKey: 'mean',
+    sync: true
   }, {
     dataKey: 'cut',
     sync: true,
   }];
+  
+  const viewDataPre = {
+    transform: {
+      type: 'aggregate',
+      fields: ['price'],
+      operations: ['mean'],
+      as: ['mean'],
+      groupBy: ['cut'],
+    },
+  };
 
   export default {
     data() {
       return {
         data,
         scale,
+        dataPre: viewDataPre,
       };
     },
+    methods: {}
   };
 </script>
 `;

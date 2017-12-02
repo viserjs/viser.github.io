@@ -8,16 +8,22 @@ import { ViserModule } from 'viser-ng';
 import { data } from './data'
 
 const scale = [{
-  dataKey: 'carat',
-  sync: true,
-}, {
-  dataKey: 'price',
-  sync: true,
-  tickCount: 3,
+  dataKey: 'mean',
+  sync: true
 }, {
   dataKey: 'cut',
   sync: true,
 }];
+
+const viewDataPre = {
+  transform: {
+    type: 'aggregate',
+    fields: ['price'],
+    operations: ['mean'],
+    as: ['mean'],
+    groupBy: ['cut'],
+  },
+};
 
 @Component({
   selector: '#mount',
@@ -26,11 +32,10 @@ const scale = [{
     <Chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
       <Tooltip></Tooltip>
       <Legend></Legend>
-      <Facet type="rect" [fields]="fields">
-        <FacetView>
-          <Axis></Axis>
+      <Facet type="circle" [fields]="fields">
+        <FacetView [dataPre]="viewDataPre">
           <Tooltip></Tooltip>
-          <Point position="carat*price" color="cut" opacity="0.3" size="3"></Point>
+          <Bar position="cut*mean" color="cut"></Bar>
         </FacetView>
       </Facet>
     </Chart>
@@ -43,7 +48,8 @@ export class AppComponent {
   height: number = 600;
   data = data;
   scale = scale;
-  fields = ['cut', 'clarity'];
+  fields = ['clarity'];
+  viewDataPre = viewDataPre;
 }
 
 @NgModule({

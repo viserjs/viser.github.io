@@ -10,6 +10,6 @@ export const scale = [{
   sync: true,
   tickCount: 3
 }, {
-  dataKey: 'cut',
+  dataKey: 'clarity',
   sync: true,
 }];

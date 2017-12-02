@@ -82,8 +82,18 @@ module.exports = {
     examples: [
       {
         path: 'example1',
-        enName: 'Simple Facet',
-        cnName: '简单分面图',
+        enName: 'Rect Facet',
+        cnName: '2 维行列分面',
+      },
+      {
+        path: 'example2',
+        enName: 'Circle Facet',
+        cnName: '圆形分面图',
+      },
+      {
+        path: 'example3',
+        enName: 'Row Facet',
+        cnName: '行分面',
       },
     ],
     icon: 'fenmian'

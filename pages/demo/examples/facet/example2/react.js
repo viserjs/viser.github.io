@@ -1,20 +1,26 @@
 export const template =
-`import { Chart, Facet, View, Tooltip, Legend, Axis, Point, FacetView } from 'viser-react';
+`import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { data } from './data'
 
 const scale = [{
-  dataKey: 'carat',
-  sync: true,
-}, {
-  dataKey: 'price',
-  sync: true,
-  tickCount: 3,
+  dataKey: 'mean',
+  sync: true
 }, {
   dataKey: 'cut',
   sync: true,
 }];
+
+const viewDataPre = {
+  transform: {
+    type: 'aggregate',
+    fields: ['price'],
+    operations: ['mean'],
+    as: ['mean'],
+    groupBy: ['cut'],
+  },
+};
 
 class App extends React.Component {
   render() {
@@ -23,11 +29,10 @@ class App extends React.Component {
         <Chart forceFit={true} height={600} data={data} scale={scale}>
           <Tooltip />
           <Legend />
-          <Facet type="rect" fields={['cut', 'clarity']}>
-            <FacetView>
+          <Facet type="circle" fields={['clarity']}>
+            <FacetView dataPre={viewDataPre}>
               <Tooltip />
-              <Axis />
-              <Point position="carat*price" color="cut" opacity={0.3} size={3} />
+              <Bar position="cut*mean" color="cut" />
             </FacetView>
           </Facet>
         </Chart>
