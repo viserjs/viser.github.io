@@ -159,9 +159,16 @@ module.exports = {
   //   examples: ['example1'],
   //   icon: 'guanxitu'
   // },
-  // treemap: {
-  //   cnName: '矩阵图',
-  //   examples: ['example1'],
+  // relation: {
+  //   enName: 'Relation',
+  //   cnName: '关系图',
+  //   examples: [
+  //     {
+  //       path: 'example8',
+  //       enName: 'Treemap',
+  //       cnName: '矩形树图',
+  //     },
+  //   ],
   //   icon: 'juzhentu'
   // },
 };
