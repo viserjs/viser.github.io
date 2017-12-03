@@ -95,6 +95,16 @@ module.exports = {
         enName: 'Row Facet',
         cnName: '行分面',
       },
+      {
+        path: 'example4',
+        enName: 'Column Facet',
+        cnName: '列分面',
+      },
+      {
+        path: 'example5',
+        enName: 'List Facet',
+        cnName: 'List 分面',
+      },
     ],
     icon: 'fenmian'
   },
