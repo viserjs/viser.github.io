@@ -45,10 +45,6 @@ export const config = {
     size: 2,
     color: 'user',
   },{
-    quickType: 'area',
-    position: 'item*score',
-    color: 'user',
-  },{
     quickType: 'point',
     position: 'item*score',
     size: 4,
