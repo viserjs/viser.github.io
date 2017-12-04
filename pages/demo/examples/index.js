@@ -1,4 +1,21 @@
 module.exports = {
+  radar: {
+    enName: 'Radar',
+    cnName: '雷达图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic radar',
+        cnName: '基础雷达图',
+      },
+      {
+        path: 'example2',
+        enName: 'Basic radar(line)',
+        cnName: '基础雷达图(线)',
+      },
+    ],
+    icon: 'leidatu'
+  },
   line: {
     cnName: '线性图',
     examples: [
@@ -195,11 +212,6 @@ module.exports = {
   //   cnName: '散点图',
   //   examples: ['example1'],
   //   icon: 'diantu'
-  // },
-  // radar: {
-  //   cnName: '雷达图',
-  //   examples: ['example1'],
-  //   icon: 'leidatu'
   // },
   // funnel: {
   //   cnName: '漏斗图',
