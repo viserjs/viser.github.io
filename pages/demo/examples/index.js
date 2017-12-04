@@ -193,11 +193,28 @@ module.exports = {
     ],
     icon: 'fenmian'
   },
-  // pie: {
-  //   cnName: '饼图',
-  //   examples: ['example1'],
-  //   icon: 'bingtu'
-  // },
+  pie: {
+    enName: 'Pie',
+    cnName: '饼图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic Pie',
+        cnName: '基础饼图',
+      },
+      {
+        path: 'example2',
+        enName: 'Inner Label Pie',
+        cnName: '内部文本饼图',
+      },
+      {
+        path: 'example3',
+        enName: 'Basic Donut',
+        cnName: '基础环图',
+      },
+    ],
+    icon: 'bingtu'
+  },
   // rose: {
   //   cnName: '玫瑰图',
   //   examples: ['example1'],
