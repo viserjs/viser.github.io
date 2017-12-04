@@ -1,5 +1,4 @@
 require('./index.scss');
-const Viser = require('viser');
 
 const GDP_JSON = [
   { "year": '2006', "gdp": 21.94385 },
@@ -15,85 +14,62 @@ const GDP_JSON = [
 ];
 
 function renderChart() {
-  Viser.default({
+  RechartCore.ChartBuilder({
     data: GDP_JSON,
+    dataDef: [{ key: 'year', mark: 'column', scale: {} }, { key: 'gdp', mark: 'row', scale: {} }],
     tooltip: true,
     axis: true,
-    series: [{ quickType: 'bar', color: '#0088fe', position: 'year*gdp' }],
+    series: [{ position: ['year', 'gdp'], gemo: 'bar', color: '#0088fe' }],
     chart: { width: 700, height: 400, container: 'viser-mount-1-1' },
   });
 
-  Viser.default({
+  RechartCore.ChartBuilder({
     data: GDP_JSON,
+    dataDef: [{ key: 'year', mark: 'column', scale: {} }, { key: 'gdp', mark: 'row', scale: {} }],
     tooltip: true,
     axis: true,
-    series: [{ quickType: 'line', color: '#0088fe', position: 'year*gdp' }],
+    series: [{ position: ['year', 'gdp'], gemo: 'line', color: '#0088fe' }],
     chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
   });
-  Viser.default({
+  RechartCore.ChartBuilder({
     data: GDP_JSON,
-    tooltip: { showTitle: false },
-    axis: true,
-    series: [{
-      quickType: 'pie',
-      position: 'gdp',
-      style: {
-        lineWidth: 1,
-        stroke: '#fff',
-        fill: '#0088fe',
-      },
-      tooltip: 'year*gdp'
-    }],
-    chart: { width: 380, height: 280, container: 'viser-mount-2-2' },
-  });
-  Viser.default({
-    data: GDP_JSON,
+    dataDef: [{ key: 'year', mark: ['column', 'color'], scale: {} }, { key: 'gdp', mark: 'row', scale: {} }],
     tooltip: true,
     axis: true,
-    series: [{ quickType: 'area', color: '#0088fe', position: 'year*gdp' }],
+    series: [{ position: ['year', 'gdp'], quickType: 'pie', color: '#0088fe' }],
+    chart: { width: 380, height: 300, container: 'viser-mount-2-2' },
+  });
+  RechartCore.ChartBuilder({
+    data: GDP_JSON,
+    dataDef: [{ key: 'year', mark: 'column', scale: {} }, { key: 'gdp', mark: 'row', scale: { min: 0, max: 70 }, }],
+    tooltip: true,
+    axis: true,
+    series: [{ position: ['year', 'gdp'], gemo: 'area', color: '#0088fe' }],
     chart: { width: 380, height: 230, container: 'viser-mount-2-3' },
   });
-  Viser.default({
-    // data: { name: 'root', children: GDP_JSON },
-    // dataPre: {
-    //   connector: {
-    //     type: 'hierarchy',
-    //   },
-    //   transform: {
-    //     field: 'gdp',
-    //     type: 'hierarchy.treemap',
-    //     tile: 'treemapResquarify',
-    //     as: ['x', 'y'],
-    //   },
-    // },
-    // dataView: 'treeNodes',
-    // tooltip: { showTitle: false },
-    // axis: false,
-    // series: [{
-    //   quickType: 'polygon',
-    //   position: 'x*y',
-    //   style: {
-    //     lineWidth: 1,
-    //     stroke: '#fff',
-    //     fill: '#0088fe',
-    //   },
-    //   tooltip: [
-    //     'name*value',
-    //     (name, value) => ({ name, value }),
-    //   ],
-    // }],
-    data: GDP_JSON,
-    tooltip: true,
+  RechartCore.ChartBuilder({
+    data: { name: 'root', children: GDP_JSON },
+    dataDef: [
+      { key: 'x', mark: 'column' },
+      { key: 'y', mark: 'row' },
+      { key: 'year', mark: 'color', scale: {} }
+    ],
+    dataPre: {
+      connector: 'hierarchy',
+      transform: {
+        type: 'hierarchy.treemap', field: 'gdp', tile: 'treemapResquarify', as: ['x', 'y'], nameKey: 'year', valueKey: 'gdp'
+      },
+    },
+    tooltip: false,
     axis: false,
     series: [{
-      quickType: 'sector',
-      color: '#0088fe',
+      position: ['x', 'y'],
+      gemo: 'polygon',
       style: {
         lineWidth: 1,
         stroke: '#fff',
         fill: '#0088fe',
-      },
-      position: 'year*gdp',
+      }
     }],
     chart: { width: 400, height: 270, container: 'viser-mount-2-4' },
   });

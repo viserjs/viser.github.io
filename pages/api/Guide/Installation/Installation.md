@@ -65,7 +65,11 @@ The NPM way is only install by shell:
 $ npm install viser-react
 ```
 
+<<<<<<< HEAD
+### umd
+=======
 #### umd
+>>>>>>> upstream/master
 
 The UMD build is also available on unpkg.com:
 
@@ -74,6 +78,17 @@ The UMD build is also available on unpkg.com:
 ```
 
 Then you can find the library on window.ViserReact.
+<<<<<<< HEAD
+
+### dev build
+
+```shell
+$ git clone https://github.com/viserjs/viser.git
+$ cd viser/packages/viser-react
+$ npm install
+$ cd ../../demo
+$ npm install
+=======
 
 ## Demo
 
@@ -83,5 +98,6 @@ To examine the demos in your local build, open to `demo` directory, and execute
 $ git clone https://github.com/viserjs/viser.git
 $ npm run postinstall
 $ cd ./demo && npm install
+>>>>>>> upstream/master
 $ npm run start
 ```
