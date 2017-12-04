@@ -1,9 +1,35 @@
 module.exports = {
-  // line: {
-  //   cnName: '线性图',
-  //   examples: ['example1'],
-  //   icon: 'xianxingtu'
-  // },
+  line: {
+    cnName: '线性图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic line',
+        cnName: '基础折线图',
+      },
+      {
+        path: 'example2',
+        enName: 'Multi line',
+        cnName: '多条折线图',
+      },
+      {
+        path: 'example3',
+        enName: 'Multi smooth ine',
+        cnName: '曲线折线图',
+      },
+      {
+        path: 'example4',
+        enName: 'Ladders smooth line',
+        cnName: '阶梯折线图',
+      },
+      {
+        path: 'example5',
+        enName: 'Multi ladders smooth line',
+        cnName: '多条阶梯折线图',
+      },
+    ],
+    icon: 'xianxingtu'
+  },
   // area: {
   //   cnName: '面积图',
   //   examples: ['example1'],
@@ -67,7 +93,7 @@ module.exports = {
         path: 'example12',
         enName: 'Stacked bar',
         cnName: '堆叠条形图',
-      }, 
+      },
       {
         path: 'example13',
         enName: 'Ranged bar',
