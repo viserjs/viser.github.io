@@ -1,5 +1,5 @@
 export const template =
-`import { Chart, Tooltip, Axis, Line } from 'viser-react';
+`import { Chart, Tooltip, Axis, Line, Point } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 

@@ -30,11 +30,38 @@ module.exports = {
     ],
     icon: 'xianxingtu'
   },
-  // area: {
-  //   cnName: '面积图',
-  //   examples: ['example1'],
-  //   icon: 'mianjitu'
-  // },
+  area: {
+    enName: 'Area',
+    cnName: '面积图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic area',
+        cnName: '基础面积图',
+      },
+      {
+        path: 'example2',
+        enName: 'Basic area（with negative value）',
+        cnName: '基础面积图',
+      },
+      {
+        path: 'example3',
+        enName: 'Stack area',
+        cnName: '堆叠面积图',
+      },
+      {
+        path: 'example4',
+        enName: 'Percentage stack area',
+        cnName: '百分比堆叠面积图',
+      },
+      {
+        path: 'example5',
+        enName: 'Range area',
+        cnName: '区间面积图',
+      },
+    ],
+    icon: 'mianjitu'
+  },
   bar: {
     enName: 'Bar',
     cnName: '柱状图',
