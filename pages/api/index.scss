@@ -5,3 +5,9 @@
 @import '../styles/nav.scss';
 
 @import './markdown.scss';
+
+#main-content.main-docs {
+  .right-panel {
+    overflow: scroll;
+  }
+}
