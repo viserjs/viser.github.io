@@ -805,3 +805,6 @@ a {
     .prop-list .prop-default .prop-default-title {
       font-weight: 700;
       margin-right: 10px; }
+
+#main-content.main-docs .right-panel {
+  overflow: scroll; }
