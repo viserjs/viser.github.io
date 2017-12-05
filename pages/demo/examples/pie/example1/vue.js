@@ -52,7 +52,6 @@ export const template =
         },
         labelConfig: ['percent', {
           formatter: (val, item) => {
-            console.log(item);
             return item.point.item + ': ' + val;
           }
         }],

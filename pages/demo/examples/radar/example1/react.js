@@ -13,15 +13,15 @@ const data = [
   { item: 'Technology', a: 50, b: 40 },
   { item: 'Support', a: 30, b: 40 },
   { item: 'Sales', a: 60, b: 40 },
-  { item: 'UX', a: 50, b: 60 }
+  { item: 'UX', a: 50, b: 60 },
 ];
 
 const dataPre = {
   transform: {
     type: 'fold',
-    fields: [ 'a', 'b' ], // 展开字段集
-    key: 'user', // key字段
-    value: 'score', // value字段
+    fields: ['a', 'b'],
+    key: 'user',
+    value: 'score',
   }
 };
 
@@ -30,7 +30,6 @@ const scale = [{
   min: 0,
   max: 80,
 }];
-
 
 class App extends React.Component {
   render() {

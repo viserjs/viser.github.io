@@ -30,7 +30,7 @@ class App extends React.Component {
   render() {
     return (
       <Chart forceFit height={500} data={data} dataPre={dataPre} scale={scale}>
-        <Tooltip showTitle={false} dataKey="item*percent"/>
+        <Tooltip showTitle={false} dataKey="item*percent" />
         <Axis />
         <Legend dataKey="item"/>
         <Pie

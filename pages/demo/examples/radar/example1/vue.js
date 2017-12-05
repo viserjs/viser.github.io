@@ -32,10 +32,10 @@ const data = [
 const dataPre = {
   transform: {
     type: 'fold',
-    fields: [ 'a', 'b' ], // 展开字段集
-    key: 'user', // key字段
-    value: 'score', // value字段
-  }
+    fields: ['a', 'b'],
+    key: 'user',
+    value: 'score',
+  },
 };
 
 const scale = [{
@@ -52,7 +52,7 @@ const axis1Opts = {
     lineStyle: {
       lineDash: null
     },
-    hideFirstLine: false
+    hideFirstLine: false,
   }
 };
 const axis2Opts = {
@@ -62,9 +62,9 @@ const axis2Opts = {
   grid: {
     type: 'polygon',
     lineStyle: {
-      lineDash: null
-    }
-  }
+      lineDash: null,
+    },
+  },
 };
 
 export default {

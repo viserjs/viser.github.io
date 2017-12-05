@@ -2,9 +2,9 @@ export const template =
 `<template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
-      <v-tooltip :show-title="false" :data-key="'item*percent'"/>
+      <v-tooltip :show-title="false" :data-key="'item*percent'" />
       <v-axis />
-      <v-legend :data-key="'item'"/>
+      <v-legend :data-key="'item'" />
       <v-pie
         :position="'percent'"
         :color="'item'"

@@ -22,7 +22,6 @@ export const config = {
     color: 'item',
     label: ['percent', {
       formatter: (val, item) => {
-        console.log(item);
         return item.point.item + ': ' + val;
       }
     }],

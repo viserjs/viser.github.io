@@ -22,9 +22,9 @@ const data = [
 const dataPre = {
   transform: {
     type: 'fold',
-    fields: [ 'a', 'b' ], // 展开字段集
-    key: 'user', // key字段
-    value: 'score', // value字段
+    fields: ['a', 'b'],
+    key: 'user',
+    value: 'score',
   }
 };
 
@@ -40,6 +40,7 @@ const axis1GridOpts = {
   },
   hideFirstLine: false
 };
+
 const axis2GridOpts =  {
   type: 'polygon',
   lineStyle: {
@@ -56,7 +57,7 @@ const axis2GridOpts =  {
       <Axis dataKey="item" line="null" tickLine="null" [grid]="axis1GridOpts"></Axis>
       <Axis dataKey="score" line="null" tickLine="null" [grid]="axis2GridOpts"></Axis>
       <Legend></Legend>
-      <Coord type="polar" radius="0.8" ></Coord>
+      <Coord type="polar" radius="0.8"></Coord>
       <Line position="item*score" color="user" size="2"></Line>
       <Point position="item*score" color="user" size="4"></Point>
       <Area position="item*score" color="user" />

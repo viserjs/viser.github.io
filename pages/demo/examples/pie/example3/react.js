@@ -39,7 +39,6 @@ class App extends React.Component {
           style={{ stroke: '#fff', lineWidth: 1 }}
           label={['percent', {
             formatter: (val, item) => {
-              console.log(item);
               return item.point.item + ': ' + val;
             }
           }]}
