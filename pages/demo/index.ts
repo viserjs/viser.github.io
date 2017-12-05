@@ -133,7 +133,7 @@ class App {
     const codePath = code[`${framework}Path`];
 
     if (framework !== 'vue') {
-      delete require.cache[`${codePath}`];
+      delete require.cache[require.resolve(`${codePath}`)];
       require(`${codePath}`);
     } else {
       const VueApp = require(`${codePath}`).default;
