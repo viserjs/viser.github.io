@@ -5,8 +5,8 @@ export const template =
       <v-tooltip />
       <v-axis />
       <v-legend />
-      <v-line :position="'year*percent'" :size="2" :color="country" :adjust="stack" />
-      <v-stack-area :position="'year*percent'" :color="country" />
+      <v-line :position="'year*percent'" :size="2" :color="'country'" :adjust="'stack'" />
+      <v-stack-area :position="'year*percent'" :color="'country'" />
     </v-chart>
   </div>
 </template>

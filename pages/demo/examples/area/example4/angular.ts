@@ -61,13 +61,12 @@ const scale = [{
       <Tooltip></Tooltip>
       <Axis></Axis>
       <Legend></Legend>
-      <Line position="year*percent" size="2" color="country" adjust="stack" ></Line>
-      <Area position="year*percent" color="country"></Area>
+      <Line position="year*percent" size="2" color="country" adjust="stack"></Line>
+      <Area position="year*percent" color="country" />
     </Chart>
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;

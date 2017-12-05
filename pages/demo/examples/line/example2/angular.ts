@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -7,55 +6,56 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 
 const data = [
-  { month: 'Jan', series2: 51, series1: 125 },
-  { month: 'Feb', series2: 91, series1: 132 },
-  { month: 'Mar', series2: 34, series1: 141 },
-  { month: 'Apr', series2: 47, series1: 158 },
-  { month: 'May', series2: 63, series1: 133 },
-  { month: 'June', series2: 58, series1: 143 },
-  { month: 'July', series2: 56, series1: 176 },
-  { month: 'Aug', series2: 77, series1: 194 },
-  { month: 'Sep', series2: 99, series1: 115 },
-  { month: 'Oct', series2: 106, series1: 134 },
-  { month: 'Nov', series2: 88, series1: 110 },
-  { month: 'Dec', series2: 56, series1: 91 }
+  { month: 'Jan', Tokyo: 7.0, London: 3.9 },
+  { month: 'Feb', Tokyo: 6.9, London: 4.2 },
+  { month: 'Mar', Tokyo: 9.5, London: 5.7 },
+  { month: 'Apr', Tokyo: 14.5, London: 8.5 },
+  { month: 'May', Tokyo: 18.4, London: 11.9 },
+  { month: 'Jun', Tokyo: 21.5, London: 15.2 },
+  { month: 'Jul', Tokyo: 25.2, London: 17.0 },
+  { month: 'Aug', Tokyo: 26.5, London: 16.6 },
+  { month: 'Sep', Tokyo: 23.3, London: 14.2 },
+  { month: 'Oct', Tokyo: 18.3, London: 10.3 },
+  { month: 'Nov', Tokyo: 13.9, London: 6.6 },
+  { month: 'Dec', Tokyo: 9.6, London: 4.8 },
 ];
 
-const dataPre = {
+const dataPre= {
   transform: {
     type: 'fold',
-    fields: [ 'series1', 'series2' ], // 展开字段集
-    key: 'key', // key字段
-    value: 'value', // value字段
-  }
+    fields: ['Tokyo', 'London'],
+    key: 'city',
+    value: 'temperature',
+  },
 };
 
 const scale = [{
   dataKey: 'month',
   min: 0,
-  max: 1
+  max: 1,
 }];
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
     <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
       <Tooltip></Tooltip>
       <Axis></Axis>
       <Legend></Legend>
-      <Line position="month*value" shape="hv" color="key" ></Line>
+      <Line position="month*temperature" color="city"></Line>
+      <Point position="month*temperature" color="city" size="4" [style]="style"></Point>
     </Chart>
   </div>
-  \`
+  `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
   dataPre= dataPre;
   scale = scale;
+  style = { stroke: '#fff', lineWidth: 1 };
 }
 
 @NgModule({
@@ -73,4 +73,3 @@ class AppComponent {
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

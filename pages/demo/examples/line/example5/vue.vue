@@ -1,11 +1,10 @@
-export const template =
-`<template>
+<template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
       <v-tooltip />
       <v-axis />
       <v-legend />
-      <v-line :position="'month*value'" shape="'hv'" color="key" />
+      <v-line :position="'month*value'" :shape="'hv'" :color="'key'" />
     </v-chart>
   </div>
 </template>
@@ -23,22 +22,22 @@ export const template =
     { month: 'Sep', series2: 99, series1: 115 },
     { month: 'Oct', series2: 106, series1: 134 },
     { month: 'Nov', series2: 88, series1: 110 },
-    { month: 'Dec', series2: 56, series1: 91 }
+    { month: 'Dec', series2: 56, series1: 91 },
   ];
 
   const dataPre = {
     transform: {
       type: 'fold',
-      fields: [ 'series1', 'series2' ], // 展开字段集
-      key: 'key', // key字段
-      value: 'value', // value字段
-    }
+      fields: ['series1', 'series2'],
+      key: 'key',
+      value: 'value',
+    },
   };
 
   const scale = [{
     dataKey: 'month',
     min: 0,
-    max: 1
+    max: 1,
   }];
 
   export default {
@@ -52,4 +51,3 @@ export const template =
     }
   };
 </script>
-`;

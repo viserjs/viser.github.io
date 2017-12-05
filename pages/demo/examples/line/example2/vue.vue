@@ -1,12 +1,11 @@
-export const template =
-`<template>
+<template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
       <v-tooltip />
       <v-axis />
       <v-legend />
-      <v-line :position="'year*value'" :color="'city'"/>
-      <v-point :position="'year*value'" :color="'city'"/>
+      <v-line :position="'month*temperature'" :color="'city'" />
+      <v-point :position="'month*temperature'" :color="'city'" :size="4" :v-style="style" />
     </v-chart>
   </div>
 </template>
@@ -24,22 +23,22 @@ export const template =
     { month: 'Sep', Tokyo: 23.3, London: 14.2 },
     { month: 'Oct', Tokyo: 18.3, London: 10.3 },
     { month: 'Nov', Tokyo: 13.9, London: 6.6 },
-    { month: 'Dec', Tokyo: 9.6, London: 4.8 }
+    { month: 'Dec', Tokyo: 9.6, London: 4.8 },
   ];
 
   const dataPre= {
     transform: {
       type: 'fold',
-      fields: [ 'Tokyo', 'London' ], // 展开字段集
-      key: 'city', // key字段
-      value: 'temperature', // value字段
-    }
+      fields: ['Tokyo', 'London'],
+      key: 'city',
+      value: 'temperature',
+    },
   };
 
   const scale = [{
     dataKey: 'month',
     min: 0,
-    max: 1
+    max: 1,
   }];
 
   export default {
@@ -49,8 +48,8 @@ export const template =
         dataPre,
         scale,
         height: 400,
+        style: { stroke: '#fff', lineWidth: 1 },
       };
     }
   };
 </script>
-`;

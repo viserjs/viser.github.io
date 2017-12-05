@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -18,39 +17,38 @@ const data = [
   { month: 'Sep', Tokyo: 23.3, London: 14.2 },
   { month: 'Oct', Tokyo: 18.3, London: 10.3 },
   { month: 'Nov', Tokyo: 13.9, London: 6.6 },
-  { month: 'Dec', Tokyo: 9.6, London: 4.8 }
+  { month: 'Dec', Tokyo: 9.6, London: 4.8 },
 ];
 
-const dataPre= {
+const dataPre = {
   transform: {
     type: 'fold',
-    fields: [ 'Tokyo', 'London' ], // 展开字段集
-    key: 'city', // key字段
-    value: 'temperature', // value字段
-  }
+    fields: ['Tokyo', 'London'],
+    key: 'city',
+    value: 'temperature',
+  },
 };
 
 const scale = [{
   dataKey: 'month',
   min: 0,
-  max: 1
+  max: 1,
 }];
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
     <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
       <Tooltip></Tooltip>
       <Axis></Axis>
       <Legend></Legend>
-      <Line position="year*value" color="city" shape="smooth"></Line>
-      <Point position="year*value" color="city"></Point>
+      <SmoothLine position="month*temperature" color="city" shape="smooth"></SmoothLine>
+      <Point position="month*temperature" color="city"></Point>
     </Chart>
   </div>
-  \`
+  `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
@@ -74,4 +72,3 @@ class AppComponent {
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

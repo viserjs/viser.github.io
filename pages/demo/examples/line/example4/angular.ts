@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -7,38 +6,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 
 const data = [
-  { year: '1991', value: 3 },
-  { year: '1992', value: 4 },
-  { year: '1993', value: 3.5 },
-  { year: '1994', value: 5 },
-  { year: '1995', value: 4.9 },
-  { year: '1996', value: 6 },
-  { year: '1997', value: 7 },
-  { year: '1998', value: 9 },
-  { year: '1999', value: 13 }
+  { month: 'Jan', value: 51 },
+  { month: 'Feb', value: 91 },
+  { month: 'Mar', value: 34 },
+  { month: 'Apr', value: 47 },
+  { month: 'May', value: 63 },
+  { month: 'June', value: 58 },
+  { month: 'July', value: 56 },
+  { month: 'Aug', value: 77 },
+  { month: 'Sep', value: 99 },
+  { month: 'Oct', value: 106 },
+  { month: 'Nov', value: 88 },
+  { month: 'Dec', value: 56 }
 ];
 
 const scale = [{
-  dataKey: 'value',
-  min: 0,
-},{
-  dataKey: 'year',
+  dataKey: 'month',
   min: 0,
   max: 1
 }];
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
     <Chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <Tooltip></Tooltip>
       <Axis></Axis>
-      <Line position="year*value"></Line>
-      <Point position="year*value"></Point>
+      <Line position="month*value" shape="hv"></Line>
     </Chart>
   </div>
-  \`
+  `
 })
 
 class AppComponent {
@@ -63,4 +61,3 @@ class AppComponent {
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

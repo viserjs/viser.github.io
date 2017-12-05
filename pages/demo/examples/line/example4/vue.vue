@@ -1,10 +1,9 @@
-export const template =
-`<template>
+<template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
-      <v-line :position="'month*value'" shape="'hv'"/>
+      <v-line :position="'month*value'" :shape="'hv'" />
     </v-chart>
   </div>
 </template>
@@ -22,13 +21,13 @@ export const template =
     { month: 'Sep', value: 99 },
     { month: 'Oct', value: 106 },
     { month: 'Nov', value: 88 },
-    { month: 'Dec', value: 56 }
+    { month: 'Dec', value: 56 },
   ];
 
   const scale = [{
     dataKey: 'month',
     min: 0,
-    max: 1
+    max: 1,
   }];
 
   export default {
@@ -41,4 +40,3 @@ export const template =
     }
   };
 </script>
-`;

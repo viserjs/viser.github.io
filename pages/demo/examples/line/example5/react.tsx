@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Tooltip, Axis, Legend, Line } from 'viser-react';
+import { Chart, Tooltip, Axis, Legend, Line } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -15,22 +14,22 @@ const data = [
   { month: 'Sep', series2: 99, series1: 115 },
   { month: 'Oct', series2: 106, series1: 134 },
   { month: 'Nov', series2: 88, series1: 110 },
-  { month: 'Dec', series2: 56, series1: 91 }
+  { month: 'Dec', series2: 56, series1: 91 },
 ];
 
 const dataPre = {
   transform: {
     type: 'fold',
-    fields: [ 'series1', 'series2' ], // 展开字段集
-    key: 'key', // key字段
-    value: 'value', // value字段
-  }
+    fields: ['series1', 'series2'],
+    key: 'key',
+    value: 'value',
+  },
 };
 
 const scale = [{
   dataKey: 'month',
   min: 0,
-  max: 1
+  max: 1,
 }];
 
 
@@ -41,7 +40,7 @@ class App extends React.Component {
         <Tooltip />
         <Axis />
         <Legend />
-        <Line position="month*value" shape="hv" color="key"/>
+        <Line position="month*value" shape="hv" color="key" />
       </Chart>
     );
   }
@@ -51,4 +50,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-`;

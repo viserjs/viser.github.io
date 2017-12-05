@@ -1,5 +1,4 @@
-export const template =
-`<template>
+<template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
@@ -20,7 +19,7 @@ export const template =
     { year: '1996', value: 6 },
     { year: '1997', value: 7 },
     { year: '1998', value: 9 },
-    { year: '1999', value: 13 }
+    { year: '1999', value: 13 },
   ];
 
   const scale = [{
@@ -29,7 +28,7 @@ export const template =
   },{
     dataKey: 'year',
     min: 0,
-    max: 1
+    max: 1,
   }];
 
   export default {
@@ -42,4 +41,3 @@ export const template =
     }
   };
 </script>
-`;

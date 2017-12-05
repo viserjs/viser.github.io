@@ -1,5 +1,5 @@
-const allData = require('./data');
-const { data, scale } = allData;
+// const allData = require('./data');
+// const { data, scale } = allData;
 
 export const config = {
   data,

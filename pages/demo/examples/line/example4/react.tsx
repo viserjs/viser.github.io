@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Tooltip, Axis, Line } from 'viser-react';
+import { Chart, Tooltip, Axis, Line } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -15,13 +14,13 @@ const data = [
   { month: 'Sep', value: 99 },
   { month: 'Oct', value: 106 },
   { month: 'Nov', value: 88 },
-  { month: 'Dec', value: 56 }
+  { month: 'Dec', value: 56 },
 ];
 
 const scale = [{
   dataKey: 'month',
   min: 0,
-  max: 1
+  max: 1,
 }];
 
 class App extends React.Component {
@@ -30,7 +29,7 @@ class App extends React.Component {
       <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip />
         <Axis />
-        <Line position="month*value" shape="hv"/>
+        <Line position="month*value" shape="hv" />
       </Chart>
     );
   }
@@ -40,4 +39,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-`;

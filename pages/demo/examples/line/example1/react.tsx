@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Tooltip, Axis, Line, Point } from 'viser-react';
+import { Chart, Tooltip, Axis, Line, Point } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -12,7 +11,7 @@ const data = [
   { year: '1996', value: 6 },
   { year: '1997', value: 7 },
   { year: '1998', value: 9 },
-  { year: '1999', value: 13 }
+  { year: '1999', value: 13 },
 ];
 
 const scale = [{
@@ -21,7 +20,7 @@ const scale = [{
 },{
   dataKey: 'year',
   min: 0,
-  max: 1
+  max: 1,
 }];
 
 class App extends React.Component {
@@ -41,4 +40,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-`;
