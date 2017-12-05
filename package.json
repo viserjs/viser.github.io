@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./run.js",
     "build": "webpack",
-    "publish": "npm run build&&git add .&&git commit -m 'publish viserjs.github.io'&&git push origin master"
+    "publish": "npm run build && git add . && git commit -m 'publish viserjs.github.io' && git push origin master"
   },
   "pre-commit": [
     "tslint"
@@ -52,9 +52,9 @@
     "jquery": "^3.2.1",
     "node-sass": "^4.5.3",
     "raw-loader": "^0.5.1",
-    "react": "^15.6.1",
+    "react": "^16.0.0",
     "react-addons-transition-group": "^15.6.2",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.5.3",
     "sass-loader": "^6.0.6",
