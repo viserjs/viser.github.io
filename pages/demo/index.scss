@@ -45,6 +45,12 @@
     padding: 50px 15px 0 0;
     width: calc(100% - 430px);
     border-right: 1px dashed #eee;
+
+    .case-demo-item {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
   }
   .case-code {
     padding-left: 15px;

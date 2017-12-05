@@ -1,7 +1,55 @@
 const path = require('path'); // 导入路径包
 const webpack = require('webpack');
-const env = process.env.NODE_ENV;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const env = process.env.NODE_ENV;
+const isProduction = env === 'production';
+
+const vueCssLoaders = function (options) {
+  options = options || {}
+
+  const cssLoader = {
+    loader: 'css-loader',
+    options: {
+      minimize: isProduction,
+      sourceMap: options.sourceMap
+    }
+  }
+
+  // generate loader string to be used with extract text plugin
+  function generateLoaders(loader, loaderOptions) {
+    const loaders = [cssLoader]
+    if (loader) {
+      loaders.push({
+        loader: loader + '-loader',
+        options: Object.assign({}, loaderOptions, {
+          sourceMap: options.sourceMap
+        })
+      })
+    }
+
+    // Extract CSS when that option is specified
+    // (which is the case during production build)
+    if (options.extract) {
+      return ExtractTextPlugin.extract({
+        use: loaders,
+        fallback: 'vue-style-loader'
+      })
+    } else {
+      return ['vue-style-loader'].concat(loaders)
+    }
+  }
+
+  // https://vue-loader.vuejs.org/en/configurations/extract-css.html
+  return {
+    css: generateLoaders(),
+    postcss: generateLoaders(),
+    less: generateLoaders('less'),
+    sass: generateLoaders('sass', { indentedSyntax: true }),
+    scss: generateLoaders('sass'),
+    stylus: generateLoaders('stylus'),
+    styl: generateLoaders('stylus')
+  }
+}
 
 let config = {
   entry: {
@@ -18,7 +66,10 @@ let config = {
   },
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".scss"]
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".scss", "vue"],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+    },
   },
   // 使用loader模块
   module: {
@@ -28,7 +79,22 @@ let config = {
       { test: /\.tsx?$/, loader: "ts-loader" },
       { test: /\.tpl$/, loader: "handlebars-loader?helperDirs[]="+__dirname+"/helpers"},
       { test: /\.md$/, loader: "babel-loader!remarkdown-loader?Demo=remarkdown-doc" },
-      { test: /\.jsx?$/, loader: "babel-loader" },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: vueCssLoaders({
+            sourceMap: isProduction,
+            extract: isProduction,
+          }),
+          transformToRequire: {
+            video: 'src',
+            source: 'src',
+            img: 'src',
+            image: 'xlink:href'
+          }
+        }
+      },
     ]
   },
   plugins: [
