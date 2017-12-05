@@ -1,4 +1,8 @@
-export const data = [
+import { Chart, Tooltip, Axis, Legend, StackArea, Line } from 'viser-react';
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+
+const data = [
   {country: 'Asia', year: '1750', value: 502},
   {country: 'Asia', year: '1800', value: 635},
   {country: 'Asia', year: '1850', value: 809},
@@ -29,9 +33,27 @@ export const data = [
   {country: 'Oceania', year: '2050', value: 300},
 ];
 
-export const scale = [{
+const scale = [{
   dataKey: 'year',
   type: 'linear',
   tickInterval: 50
 }];
 
+class App extends React.Component {
+  render() {
+    return (
+      <Chart forceFit height={400} data={data} scale={scale}>
+        <Tooltip />
+        <Axis dataKey="value" />
+        <Legend />
+        <Line position="year*value" size="2" color="country" adjust="stack" />
+        <StackArea position="year*value" color="country" />
+      </Chart>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('mount')
+);

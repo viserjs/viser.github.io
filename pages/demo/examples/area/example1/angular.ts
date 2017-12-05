@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -29,16 +28,16 @@ const scale = [{
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
     <Chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <Tooltip></Tooltip>
       <Axis></Axis>
-      <Area position="year*value" />
       <Line position="year*value" size="2"></Line>
+      <Area position="year*value" />
     </Chart>
   </div>
-  \`
+  `
 })
 
 class AppComponent {
@@ -63,4 +62,3 @@ class AppComponent {
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

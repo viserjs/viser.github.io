@@ -1,12 +1,11 @@
-export const template =
-`<template>
+<template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
-      <v-tooltip />
-      <v-axis />
+      <v-tooltip :crosshairs="{ type: 'line' }" />
+      <v-axis :data-key="'value'" />
       <v-legend />
-      <v-line :position="'year*value'" :size="2" :color="type"/>
-      <v-area :position="'year*value'" :color="type"/>
+      <v-line :position="'year*value'" :size="2" :color="'type'" />
+      <v-area :position="'year*value'" :color="'type'" />
     </v-chart>
   </div>
 </template>
@@ -32,15 +31,15 @@ export const template =
     { year: '2012',  north: 344, south: -132 },
     { year: '2013',  north: 366, south: -146 },
     { year: '2014',  north: 389, south: -169 },
-    { year: '2015',  north: 334, south: -184 }
+    { year: '2015',  north: 334, south: -184 },
   ];
 
   const dataPre = {
     transform: {
       type: 'fold',
-      fields: [ 'north', 'south' ], // 展开字段集
-      key: 'type',                  // key字段
-      value: 'value',               // value字段
+      fields: ['north', 'south'],
+      key: 'type',
+      value: 'value',
     }
   };
 
@@ -61,4 +60,3 @@ export const template =
     }
   };
 </script>
-`;

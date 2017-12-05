@@ -1,4 +1,8 @@
-export const data = [
+import { Chart, Tooltip, Axis, Legend, Area, Line } from 'viser-react';
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+
+const data = [
   { year: '1996',  north: 322, south: 162 },
   { year: '1997',  north: 324, south: 90 },
   { year: '1998',  north: 329, south: 50 },
@@ -21,18 +25,36 @@ export const data = [
   { year: '2015',  north: 334, south: -184 }
 ];
 
-export const dataPre = {
+const dataPre = {
   transform: {
     type: 'fold',
-    fields: [ 'north', 'south' ], // 展开字段集
-    key: 'type',                  // key字段
-    value: 'value',               // value字段
-  }
+    fields: [ 'north', 'south' ],
+    key: 'type',
+    value: 'value',
+  },
 };
 
-export const scale = [{
+const scale = [{
   dataKey: 'year',
   min: 0,
   max: 1,
 }];
 
+class App extends React.Component {
+  render() {
+    return (
+      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
+        <Tooltip crosshairs={{ type: 'line' }} />
+        <Axis dataKey="value" />
+        <Legend />
+        <Line position="year*value" size="2" color="type" />
+        <Area position="year*value" color="type" />
+      </Chart>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('mount')
+);

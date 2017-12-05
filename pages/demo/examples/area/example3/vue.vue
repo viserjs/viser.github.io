@@ -1,12 +1,11 @@
-export const template =
-`<template>
+<template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
       <v-legend />
-      <v-line :position="'year*value'" :size="2" :color="country" :adjust="stack"/>
-      <v-stack-area :position="'year*value'" :color="country"/>
+      <v-line :position="'year*value'" :size="2" :color="'country'" :adjust="'stack'"/>
+      <v-stack-area :position="'year*value'" :color="'country'" />
     </v-chart>
   </div>
 </template>
@@ -59,4 +58,3 @@ export const template =
     }
   };
 </script>
-`;

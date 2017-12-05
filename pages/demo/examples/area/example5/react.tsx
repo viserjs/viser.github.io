@@ -1,19 +1,7 @@
-export const template =
-`<template>
-<div>
-  <v-chart :force-fit="true" :height="height" :data="averages" :scale="scale">
-    <v-tooltip />
-    <v-axis />
-    <v-line :position="'time*temperature'" :size="2" />
-    <v-point :position="'time*temperature'" :size="4" :style="pointStyle"/>
-    <v-view :view-id="2" :data="data">
-      <v-area :position="'time*temperature'" />
-    </v-view>
-  </v-chart>
-</div>
-</template>
+import { Chart, Tooltip, Axis, Line, Point, Area, View } from 'viser-react';
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
 
-<script>
 const data = [
   { time: 1246406400000, temperature: [ 14.3, 27.7 ] },
   { time: 1246492800000, temperature: [ 14.5, 27.8 ] },
@@ -45,7 +33,7 @@ const data = [
   { time: 1248739200000, temperature: [ 11.0, 19.3 ] },
   { time: 1248825600000, temperature: [ 10.8, 17.8 ] },
   { time: 1248912000000, temperature: [ 11.8, 18.5 ] },
-  { time: 1248998400000, temperature: [ 10.8, 16.1 ] }
+  { time: 1248998400000, temperature: [ 10.8, 16.1 ] },
 ];
 
 const averages = [
@@ -79,33 +67,42 @@ const averages = [
   { time: 1248739200000, temperature: 14.8 },
   { time: 1248825600000, temperature: 14.4 },
   { time: 1248912000000, temperature: 15 },
-  { time: 1248998400000, temperature: 13.6 }
+  { time: 1248998400000, temperature: 13.6 },
 ];
 
 const scale = [{
   dataKey: 'temperature',
-  sync: true
+  sync: true,
 }, {
   dataKey: 'time',
   type: 'time',
   mask: 'MM-DD',
-  tickInterval: 24 * 3600 * 1000 * 2
+  tickInterval: 24 * 3600 * 1000 * 2,
 }];
-const pointStyle = {
-  stroke: '#fff',
-  lineWidth: 1,
-  fillOpacity: 1
-};
-export default {
-  data() {
-    return {
-      data,
-      averages,
-      scale,
-      pointStyle,
-      height: 400,
+
+class App extends React.Component {
+  render() {
+    const pointStyle = {
+      stroke: '#fff',
+      lineWidth: 1,
+      fillOpacity: 1
     };
+
+    return (
+      <Chart forceFit height={400} data={averages} scale={scale}>
+        <Tooltip />
+        <Axis />
+        <Line position="time*temperature" size="2" />
+        <Point position="time*temperature" size="4" style={pointStyle} />
+        <View viewId="2" data={data}>
+          <Area position="time*temperature" />
+        </View>
+      </Chart>
+    );
   }
-};
-</script>
-`;
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('mount')
+);

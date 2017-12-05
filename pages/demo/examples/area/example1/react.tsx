@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Tooltip, Axis, Area, Line } from 'viser-react';
+import { Chart, Tooltip, Axis, Area, Line } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -30,11 +29,12 @@ class App extends React.Component {
       type: 'y',
       style: {}
     };
+
     return (
       <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip crosshairs={crosshairs}/>
         <Axis dataKey="value" />
-        <Line position="year*value" size="2"/>
+        <Line position="year*value" size={2} />
         <Area position="year*value" />
       </Chart>
     );
@@ -45,5 +45,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-
-`;

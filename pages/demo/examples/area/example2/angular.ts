@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -26,16 +25,16 @@ const data = [
   { year: '2012',  north: 344, south: -132 },
   { year: '2013',  north: 366, south: -146 },
   { year: '2014',  north: 389, south: -169 },
-  { year: '2015',  north: 334, south: -184 }
+  { year: '2015',  north: 334, south: -184 },
 ];
 
 const dataPre = {
   transform: {
     type: 'fold',
-    fields: [ 'north', 'south' ], // 展开字段集
-    key: 'type',                  // key字段
-    value: 'value',               // value字段
-  }
+    fields: ['north', 'south'],
+    key: 'type',
+    value: 'value',
+  },
 };
 
 const scale = [{
@@ -46,25 +45,25 @@ const scale = [{
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
     <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
+      <Tooltip [crosshairs]="crosshairs"></Tooltip>
+      <Axis dataKey="value"></Axis>
       <Legend></Legend>
       <Line position="year*value" size="2" color="type"></Line>
-      <Area position="year*value" color="type"></Area>
+      <Area position="year*value" color="type" />
     </Chart>
   </div>
-  \`
+  `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
   dataPre = dataPre;
   scale = scale;
+  crosshairs = { type: 'line' };
 }
 
 @NgModule({
@@ -82,4 +81,3 @@ class AppComponent {
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

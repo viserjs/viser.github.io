@@ -1,7 +1,9 @@
-export const template =
-`import { Chart, Tooltip, Axis, Line, Point, Area, View } from 'viser-react';
-import * as ReactDOM from 'react-dom';
-import * as React from 'react';
+import 'zone.js';
+import 'reflect-metadata';
+import { Component, enableProdMode, NgModule } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { ViserModule } from 'viser-ng';
 
 const data = [
   { time: 1246406400000, temperature: [ 14.3, 27.7 ] },
@@ -34,7 +36,7 @@ const data = [
   { time: 1248739200000, temperature: [ 11.0, 19.3 ] },
   { time: 1248825600000, temperature: [ 10.8, 17.8 ] },
   { time: 1248912000000, temperature: [ 11.8, 18.5 ] },
-  { time: 1248998400000, temperature: [ 10.8, 16.1 ] }
+  { time: 1248998400000, temperature: [ 10.8, 16.1 ] },
 ];
 
 const averages = [
@@ -68,44 +70,64 @@ const averages = [
   { time: 1248739200000, temperature: 14.8 },
   { time: 1248825600000, temperature: 14.4 },
   { time: 1248912000000, temperature: 15 },
-  { time: 1248998400000, temperature: 13.6 }
+  { time: 1248998400000, temperature: 13.6 },
 ];
 
 const scale = [{
   dataKey: 'temperature',
-  sync: true
+  sync: true,
 }, {
   dataKey: 'time',
   type: 'time',
   mask: 'MM-DD',
-  tickInterval: 24 * 3600 * 1000 * 2
+  tickInterval: 24 * 3600 * 1000 * 2,
 }];
 
-class App extends React.Component {
-  render() {
-    const pointStyle = {
-      stroke: '#fff',
-      lineWidth: 1,
-      fillOpacity: 1
-    };
-    return (
-      <Chart forceFit height={400} data={averages} scale={scale}>
-        <Tooltip />
-        <Axis />
-        <Line position="time*temperature" size="2" />
-        <Point position="time*temperature" size="4" style={pointStyle}/>
-        <View viewId="2" data={data}>
-          <Area position="time*temperature" />
-        </View>
-      </Chart>
-    );
-  }
+const pointStyle = {
+  stroke: '#fff',
+  lineWidth: 1,
+  fillOpacity: 1,
+};
+
+@Component({
+  selector: '#mount',
+  template: `
+  <div>
+    <Chart [forceFit]="forceFit" [height]="height">
+      <View viewId="1" [data]="averages" [scale]="scale">
+        <Tooltip></Tooltip>
+        <Axis></Axis>
+        <Line position="time*temperature" size="2"></Line>
+        <Point position="time*temperature" size="4" [style]="pointStyle"></Point>
+      </View>
+      <View viewId="2" [data]="data"  [scale]="scale">
+        <Area position="time*temperature" />
+      </View>
+    </Chart>
+  </div>
+  `
+})
+class AppComponent {
+  forceFit: boolean= true;
+  height: number = 400;
+  data = data;
+  averages= averages;
+  scale = scale;
+  pointStyle = pointStyle;
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);
-
-
-`;
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ViserModule
+  ],
+  providers: [],
+  bootstrap: [
+    AppComponent
+  ]
+})
+export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);

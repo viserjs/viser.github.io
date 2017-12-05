@@ -29,7 +29,6 @@ class App {
   }
 
   init() {
-    // 根据 url 路由转发
     const search = window.location.search.substr(1);
 
     const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
@@ -44,23 +43,19 @@ class App {
     const example = exampleList[chartType].examples[exampleIndex] || exampleList[chartType].examples[0] || {};
     const { path, cnName, enName } = example;
 
-    let jsonCode = '';
     let reactCode = '';
     let vueCode = '';
     let angularCode = '';
 
-    let jsonPath;
     let reactPath;
     let vuePath;
     let angularPath;
 
     try {
-      jsonCode = require(`!!raw-loader!./examples/${chartType}/${path}/json.ts`);
       reactCode = require(`!!raw-loader!./examples/${chartType}/${path}/react.tsx`);
       vueCode = require(`!!raw-loader!./examples/${chartType}/${path}/vue.vue`);
       angularCode = require(`!!raw-loader!./examples/${chartType}/${path}/angular.ts`);
 
-      jsonPath = `./examples/${chartType}/${path}/json.ts`;
       reactPath = `./examples/${chartType}/${path}/react.tsx`;
       vuePath = `./examples/${chartType}/${path}/vue.vue`;
       angularPath = `./examples/${chartType}/${path}/angular.ts`;
@@ -68,8 +63,8 @@ class App {
       console.error(err);
     } finally {
       this.attrs.code = {
-        jsonCode, reactCode, vueCode, angularCode,
-        jsonPath, reactPath, vuePath, angularPath,
+        reactCode, vueCode, angularCode,
+        reactPath, vuePath, angularPath,
         cnName, enName,
       };
     }
@@ -132,10 +127,10 @@ class App {
 
     const codePath = code[`${framework}Path`];
 
-    if (framework !== 'vue') {
-      delete require.cache[require.resolve(`${codePath}`)];
-      require(`${codePath}`);
-    } else {
+    delete require.cache[require.resolve(`${codePath}`)];
+    require(`${codePath}`);
+
+    if (framework === 'vue') {
       const VueApp = require(`${codePath}`).default;
       const container = document.createElement('div');
       document.getElementById('mount').appendChild(container);
@@ -163,10 +158,6 @@ class App {
   }
 }
 
-/**
- * @method 方法用于加载 Monaco-editor
- * @author 五灵
- */
 const load = require('load-script');
 const loadEditor = () => {
   const self = this;
@@ -185,6 +176,7 @@ const loadEditor = () => {
     });
   });
 };
+
 loadEditor().then(
   monaco => {
     new App();

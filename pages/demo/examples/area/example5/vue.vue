@@ -1,11 +1,18 @@
-export const template =
-`import 'zone.js';
-import 'reflect-metadata';
-import { Component, enableProdMode, NgModule } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { BrowserModule } from '@angular/platform-browser';
-import { ViserModule } from 'viser-ng';
+<template>
+<div>
+  <v-chart :force-fit="true" :height="height" :data="averages" :scale="scale">
+    <v-tooltip />
+    <v-axis />
+    <v-line :position="'time*temperature'" :size="2" />
+    <v-point :position="'time*temperature'" :size="4" :v-style="pointStyle" />
+    <v-view :view-id="2" :data="data">
+      <v-area :position="'time*temperature'" />
+    </v-view>
+  </v-chart>
+</div>
+</template>
 
+<script>
 const data = [
   { time: 1246406400000, temperature: [ 14.3, 27.7 ] },
   { time: 1246492800000, temperature: [ 14.5, 27.8 ] },
@@ -81,55 +88,24 @@ const scale = [{
   dataKey: 'time',
   type: 'time',
   mask: 'MM-DD',
-  tickInterval: 24 * 3600 * 1000 * 2
+  tickInterval: 24 * 3600 * 1000 * 2,
 }];
+
 const pointStyle = {
   stroke: '#fff',
   lineWidth: 1,
-  fillOpacity: 1
+  fillOpacity: 1,
 };
 
-@Component({
-  selector: '#mount',
-  template: \`
-  <div>
-    <Chart [forceFit]="forceFit" [height]="height">
-      <View viewId="1" [data]="averages" [scale]="scale">
-        <Tooltip></Tooltip>
-        <Axis></Axis>
-        <Line position="time*temperature" size="2"></Line>
-        <Point position="time*temperature" size="4" [style]="pointStyle"></Point>
-      </View>
-      <View viewId="2" [data]="data"  [scale]="scale">
-        <Area position="time*temperature" />
-      </View>
-    </Chart>
-  </div>
-  \`
-})
-
-class AppComponent {
-  forceFit: boolean= true;
-  height: number = 400;
-  data = data;
-  averages= averages;
-  scale = scale;
-  pointStyle = pointStyle;
-}
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    ViserModule
-  ],
-  providers: [],
-  bootstrap: [
-    AppComponent
-  ]
-})
-export class AppModule { }
-platformBrowserDynamic().bootstrapModule(AppModule);
-`;
+export default {
+  data() {
+    return {
+      data,
+      averages,
+      scale,
+      pointStyle,
+      height: 400,
+    };
+  }
+};
+</script>
