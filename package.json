@@ -51,6 +51,7 @@
     "handlebars-loader": "^1.6.0",
     "jquery": "^3.2.1",
     "node-sass": "^4.5.3",
+    "raw-loader": "^0.5.1",
     "react": "^15.6.1",
     "react-addons-transition-group": "^15.6.2",
     "react-dom": "^15.6.1",
