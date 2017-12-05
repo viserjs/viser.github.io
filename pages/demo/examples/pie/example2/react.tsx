@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Tooltip, Axis, Legend, Pie } from 'viser-react';
+import { Chart, Tooltip, Axis, Legend, Pie } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -30,7 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <Chart forceFit height={500} data={data} dataPre={dataPre} scale={scale}>
-        <Tooltip showTitle={false} dataKey="item*percent"/>
+        <Tooltip showTitle={false}/>
         <Axis />
         <Legend dataKey="item"/>
         <Pie
@@ -38,9 +37,12 @@ class App extends React.Component {
           color="item"
           style={{ stroke: '#fff', lineWidth: 1 }}
           label={['percent', {
-            formatter: (val, item) => {
-              console.log(item);
-              return item.point.item + ': ' + val;
+            offset: -40,
+            textStyle: {
+              rotate: 0,
+              textAlign: 'center',
+              shadowBlur: 2,
+              shadowColor: 'rgba(0, 0, 0, .45)'
             }
           }]}
         />
@@ -53,4 +55,4 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-`;
+

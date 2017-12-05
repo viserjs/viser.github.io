@@ -11,6 +11,7 @@ export const template =
         :v-style="pieStyle"
         :label="labelConfig"
       />
+      <v-coord :radius="0.75" :inner-radius="0.6" />
     </v-chart>
   </div>
 </template>
@@ -52,7 +53,6 @@ export const template =
         },
         labelConfig: ['percent', {
           formatter: (val, item) => {
-            console.log(item);
             return item.point.item + ': ' + val;
           }
         }],
@@ -60,4 +60,4 @@ export const template =
     }
   };
 </script>
-`;
+;

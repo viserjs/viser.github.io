@@ -1,5 +1,4 @@
-export const template =
-`<template>
+<template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
       <v-tooltip :show-title="false" :data-key="'item*percent'"/>
@@ -10,14 +9,6 @@ export const template =
         :color="'item'"
         :v-style="pieStyle"
         :label="labelConfig"
-      />
-      <v-coord :radius="0.75" :inner-radius="0.6" />
-      <v-guide
-        :type="'html'"
-        :position="['50%', '50%']"
-        :html="guideHtml"
-        :alignX="'middle'"
-        :alignY="'middle'"
       />
     </v-chart>
   </div>
@@ -60,13 +51,10 @@ export const template =
         },
         labelConfig: ['percent', {
           formatter: (val, item) => {
-            console.log(item);
             return item.point.item + ': ' + val;
           }
         }],
-        guideHtml: '< div style = "color:#8c8c8c;font-size: 14px;text-align: center;width: 10em;" > 主机 < br > <span style="color:#8c8c8c;font-size:20px">200</span>台</div>',
       };
     }
   };
 </script>
-`;
