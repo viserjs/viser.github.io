@@ -7,35 +7,58 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 
 const data = [
-  { year: '1991', value: 15468 },
-  { year: '1992', value: 16100 },
-  { year: '1993', value: 15900 },
-  { year: '1994', value: 17409 },
-  { year: '1995', value: 17000 },
-  { year: '1996', value: 31056 },
-  { year: '1997', value: 31982 },
-  { year: '1998', value: 32040 },
-  { year: '1999', value: 33233 }
+  { item: 'Design', a: 70, b: 30 },
+  { item: 'Development', a: 60, b: 70 },
+  { item: 'Marketing', a: 50, b: 60 },
+  { item: 'Users', a: 40, b: 50 },
+  { item: 'Test', a: 60, b: 70 },
+  { item: 'Language', a: 70, b: 50 },
+  { item: 'Technology', a: 50, b: 40 },
+  { item: 'Support', a: 30, b: 40 },
+  { item: 'Sales', a: 60, b: 40 },
+  { item: 'UX', a: 50, b: 60 }
 ];
 
+const dataPre = {
+  transform: {
+    type: 'fold',
+    fields: [ 'a', 'b' ], // 展开字段集
+    key: 'user', // key字段
+    value: 'score', // value字段
+  }
+};
+
 const scale = [{
-  dataKey: 'value',
-  min: 10000,
-}, {
-  dataKey: 'year',
+  dataKey: 'score',
   min: 0,
-  max: 1,
+  max: 80,
 }];
+
+const axis1GridOpts = {
+  lineStyle: {
+    lineDash: null
+  },
+  hideFirstLine: false
+};
+const axis2GridOpts =  {
+  type: 'polygon',
+  lineStyle: {
+    lineDash: null
+  }
+};
 
 @Component({
   selector: '#mount',
   template: \`
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
+    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
       <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Area position="year*value" />
-      <Line position="year*value" size="2"></Line>
+      <Axis dataKey="item" line="null" tickLine="null" [grid]="axis1GridOpts"></Axis>
+      <Axis dataKey="score" line="null" tickLine="null" [grid]="axis2GridOpts"></Axis>
+      <Legend></Legend>
+      <Coord type="polar" radius="0.8" ></Coord>
+      <Line position="item*score" color="user" size="2"></Line>
+      <Point position="item*score" color="user" size="4"></Point>
     </Chart>
   </div>
   \`
@@ -45,7 +68,10 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
+  dataPre = dataPre;
   scale = scale;
+  axis1GridOpts = axis1GridOpts;
+  axis2GridOpts = axis2GridOpts;
 }
 
 @NgModule({

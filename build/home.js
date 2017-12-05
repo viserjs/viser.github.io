@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 831);
+/******/ 	return __webpack_require__(__webpack_require__.s = 836);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -26064,13 +26064,13 @@ var process = exports.process = function process(chart, config) {
 
 /***/ }),
 
-/***/ 831:
+/***/ 836:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(832);
+__webpack_require__(837);
 var Viser = __webpack_require__(50);
 
 var GDP_JSON = [{ "year": '2006', "gdp": 21.94385 }, { "year": '2007', "gdp": 27.02323 }, { "year": '2008', "gdp": 31.95155 }, { "year": '2009', "gdp": 34.90814 }, { "year": '2010', "gdp": 41.30303 }, { "year": '2011', "gdp": 48.93006 }, { "year": '2012', "gdp": 54.03674 }, { "year": '2013', "gdp": 59.52444 }, { "year": '2014', "gdp": 64.39740 }, { "year": '2015', "gdp": 68.90521 }];
@@ -26136,7 +26136,7 @@ window.onload = renderChart;
 
 /***/ }),
 
-/***/ 832:
+/***/ 837:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

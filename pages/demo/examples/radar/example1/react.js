@@ -1,5 +1,5 @@
 export const template =
-`import { Chart, Tooltip, Axis, Area, Line } from 'viser-react';
+`import { Chart, Tooltip, Axis, Legend, Coord, Line, Point, Area } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -34,16 +34,42 @@ const scale = [{
 
 class App extends React.Component {
   render() {
-    const crosshairs: any = {
-      type: 'y',
-      style: {}
+    const axis1Opts: any = {
+      dataKey: 'item',
+      line: null,
+      tickLine: null,
+      grid: {
+        lineStyle: {
+          lineDash: null
+        },
+        hideFirstLine: false
+      }
+    };
+    const axis2Opts: any = {
+      dataKey: 'score',
+      line: null,
+      tickLine: null,
+      grid: {
+        type: 'polygon',
+        lineStyle: {
+          lineDash: null
+        }
+      }
+    };
+    const coordOpts: any = {
+      type: "polar",
+      radius: "0.8",
     };
     return (
-      <Chart forceFit height={400} data={data} scale={scale}>
-        <Tooltip crosshairs={crosshairs}/>
-        <Axis dataKey="value" />
-        <Line position="year*value" size="2"/>
-        <Area position="year*value" />
+      <Chart forceFit height={600} data={data} dataPre={dataPre} scale={scale}>
+        <Tooltip />
+        <Axis {...axis1Opts} />
+        <Axis {...axis2Opts} />
+        <Legend />
+        <Coord {...coordOpts} />
+        <Line position="item*score" color="user" size="2" />
+        <Point position="item*score" color="user" size="4" />
+        <Area position="item*score" color="user"/>
       </Chart>
     );
   }
