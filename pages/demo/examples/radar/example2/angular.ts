@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -25,7 +24,7 @@ const dataPre = {
     fields: ['a', 'b'],
     key: 'user',
     value: 'score',
-  }
+  },
 };
 
 const scale = [{
@@ -41,31 +40,29 @@ const axis1GridOpts = {
   hideFirstLine: false
 };
 
-const axis2GridOpts =  {
+const axis2GridOpts = {
   type: 'polygon',
   lineStyle: {
-    lineDash: null
-  }
+    lineDash: null,
+  },
 };
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Axis dataKey="item" line="null" tickLine="null" [grid]="axis1GridOpts"></Axis>
-      <Axis dataKey="score" line="null" tickLine="null" [grid]="axis2GridOpts"></Axis>
-      <Legend></Legend>
-      <Coord type="polar" radius="0.8"></Coord>
-      <Line position="item*score" color="user" size="2"></Line>
-      <Point position="item*score" color="user" size="4"></Point>
-      <Area position="item*score" color="user" />
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-axis dataKey="item" line="null" tickLine="null" [grid]="axis1GridOpts"></v-axis>
+      <v-axis dataKey="score" line="null" tickLine="null" [grid]="axis2GridOpts"></v-axis>
+      <v-legend></v-legend>
+      <v-coord type="polar" radius="0.8"></v-coord>
+      <v-line position="item*score" color="user" size="2"></v-line>
+      <v-point position="item*score" color="user" size="4"></v-point>
+    </v-chart>
   </div>
-  \`
+  `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
@@ -91,4 +88,3 @@ class AppComponent {
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

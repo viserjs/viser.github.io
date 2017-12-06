@@ -1,20 +1,18 @@
-export const template =
-`<template>
+<template>
 <div>
   <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
     <v-tooltip />
-    <v-axis :dataKey="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid"/>
-    <v-axis :dataKey="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid"/>
+    <v-axis :dataKey="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid" />
+    <v-axis :dataKey="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid" />
     <v-legend />
     <v-coord :type="'polar'" :radius="0.8" />
-    <v-line :position="'item*score'" :color="'user'" :size="2"/>
-    <v-point :position="'item*score'" :color="'user'" :size="4"/>
+    <v-line :position="'item*score'" :color="'user'" :size="2" />
+    <v-point :position="'item*score'" :color="'user'" :size="4" />
   </v-chart>
 </div>
 </template>
 
 <script>
-
 const data = [
   { item: 'Design', a: 70, b: 30 },
   { item: 'Development', a: 60, b: 70 },
@@ -25,16 +23,16 @@ const data = [
   { item: 'Technology', a: 50, b: 40 },
   { item: 'Support', a: 30, b: 40 },
   { item: 'Sales', a: 60, b: 40 },
-  { item: 'UX', a: 50, b: 60 }
+  { item: 'UX', a: 50, b: 60 },
 ];
 
 const dataPre = {
   transform: {
     type: 'fold',
-    fields: [ 'a', 'b' ], // 展开字段集
-    key: 'user', // key字段
-    value: 'score', // value字段
-  }
+    fields: ['a', 'b'],
+    key: 'user',
+    value: 'score',
+  },
 };
 
 const scale = [{
@@ -51,8 +49,8 @@ const axis1Opts = {
     lineStyle: {
       lineDash: null
     },
-    hideFirstLine: false
-  }
+    hideFirstLine: false,
+  },
 };
 const axis2Opts = {
   dataKey: 'score',
@@ -61,9 +59,9 @@ const axis2Opts = {
   grid: {
     type: 'polygon',
     lineStyle: {
-      lineDash: null
-    }
-  }
+      lineDash: null,
+    },
+  },
 };
 
 export default {
@@ -79,4 +77,3 @@ export default {
   }
 };
 </script>
-`;

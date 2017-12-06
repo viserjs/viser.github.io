@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Tooltip, Axis, Legend, Coord, Line, Point, Area } from 'viser-react';
+import { Chart, Tooltip, Axis, Legend, Coord, Line, Point, Area } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -13,16 +12,16 @@ const data = [
   { item: 'Technology', a: 50, b: 40 },
   { item: 'Support', a: 30, b: 40 },
   { item: 'Sales', a: 60, b: 40 },
-  { item: 'UX', a: 50, b: 60 }
+  { item: 'UX', a: 50, b: 60 },
 ];
 
 const dataPre = {
   transform: {
     type: 'fold',
-    fields: [ 'a', 'b' ], // 展开字段集
-    key: 'user', // key字段
-    value: 'score', // value字段
-  }
+    fields: ['a', 'b'],
+    key: 'user',
+    value: 'score',
+  },
 };
 
 const scale = [{
@@ -30,7 +29,6 @@ const scale = [{
   min: 0,
   max: 80,
 }];
-
 
 class App extends React.Component {
   render() {
@@ -42,9 +40,10 @@ class App extends React.Component {
         lineStyle: {
           lineDash: null
         },
-        hideFirstLine: false
+        hideFirstLine: false,
       }
     };
+
     const axis2Opts: any = {
       dataKey: 'score',
       line: null,
@@ -52,16 +51,18 @@ class App extends React.Component {
       grid: {
         type: 'polygon',
         lineStyle: {
-          lineDash: null
-        }
-      }
+          lineDash: null,
+        },
+      },
     };
+
     const coordOpts: any = {
       type: "polar",
       radius: "0.8",
     };
+
     return (
-      <Chart forceFit height={600} data={data} dataPre={dataPre} scale={scale}>
+      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
         <Tooltip />
         <Axis {...axis1Opts} />
         <Axis {...axis2Opts} />
@@ -69,6 +70,7 @@ class App extends React.Component {
         <Coord {...coordOpts} />
         <Line position="item*score" color="user" size="2" />
         <Point position="item*score" color="user" size="4" />
+        <Area position="item*score" color="user"/>
       </Chart>
     );
   }
@@ -78,5 +80,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-
-`;
