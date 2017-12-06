@@ -24,14 +24,10 @@ const data = [
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data">
-      <Tooltip></Tooltip>
-      <Sector
-        [position]="'year*population'"
-        [style]="sectorStyle"
-        [label]="labelConfig"
-      ></Sector>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
+      <v-tooltip></v-tooltip>
+      <v-sector position="year*population" [style]="sectorStyle" [label]="labelConfig"></v-sector>
+    </v-chart>
   </div>
   `
 })

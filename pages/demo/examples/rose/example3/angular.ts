@@ -17,28 +17,19 @@ const data = [
   { year: '2009', population: 38.3 },
   { year: '2010', population: 28 },
   { year: '2011', population: 42.5 },
-  { year: '2012', population: 30.3 }
+  { year: '2012', population: 30.3 },
 ];
 
 @Component({
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data">
-      <Tooltip></Tooltip>
-      <Coord [innerRadius]="0.2"></Coord>
-      <Sector
-        [position]="'year*population'"
-        [style]="sectorStyle"
-        [color]="'year'"
-      ></Sector>
-      <Legend
-        [position]="'right'"
-        [dataKey]="'year'"
-        [offsetY]="-70"
-        [offsetX]="-140"
-      ></Legend>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
+      <v-tooltip></v-tooltip>
+      <v-coord innerRadius="0.2"></v-coord>
+      <v-sector position="year*population" [style]="sectorStyle" color="year"></v-sector>
+      <v-legend position="right" dataKey="year" offsetY="-70" offsetX="-140"></v-legend>
+    </v-chart>
   </div>
   `
 })
@@ -48,7 +39,7 @@ class AppComponent {
   data = data;
   sectorStyle = {
     stroke: "#fff",
-    lineWidth: 1
+    lineWidth: 1,
   };
 }
 
