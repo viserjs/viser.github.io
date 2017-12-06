@@ -17,7 +17,7 @@ const data = [
   { month: 'Sep', series2: 99, series1: 115 },
   { month: 'Oct', series2: 106, series1: 134 },
   { month: 'Nov', series2: 88, series1: 110 },
-  { month: 'Dec', series2: 56, series1: 91 }
+  { month: 'Dec', series2: 56, series1: 91 },
 ];
 
 const dataPre = {
@@ -32,23 +32,22 @@ const dataPre = {
 const scale = [{
   dataKey: 'month',
   min: 0,
-  max: 1
+  max: 1,
 }];
 
 @Component({
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Legend></Legend>
-      <Line position="month*value" shape="hv" color="key"></Line>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-legend></v-legend>
+      <v-line position="month*value" shape="hv" color="key"></v-line>
+    </v-chart>
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;

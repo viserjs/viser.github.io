@@ -32,7 +32,7 @@ const label = { offset: 12 };
       <v-coord type="rect" direction="LB"></v-coord>
       <v-tooltip></v-tooltip>
       <v-axis dataKey="coutry" [label]="label"></v-axis>
-      <v-bar position="country*population"></v-ar>
+      <v-bar position="country*population"></v-bar>
     </v-chart>
   </div>
   `

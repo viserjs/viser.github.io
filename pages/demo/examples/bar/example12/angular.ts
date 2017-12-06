@@ -30,8 +30,8 @@ const label = { offset: 12 };
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
-      <v-coord type="rect" direction="LB"></v-oord>
-      <v-tooltip></v-ooltip>
+      <v-coord type="rect" direction="LB"></v-coord>
+      <v-tooltip></v-tooltip>
       <v-legend></v-legend>
       <v-axis dataKey="State" [label]="label"></v-axis>
       <v-stack-bar position="State*人口数量" color="年龄段"></v-stack-bar>

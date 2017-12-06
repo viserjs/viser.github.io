@@ -41,7 +41,7 @@ const scale = [{
         [style]="pieStyle"
         [label]="labelConfig"
       ></v-pie>
-      <v-legend [dataKey]="'item'"></v-egend>
+      <v-legend [dataKey]="'item'"></v-legend>
     </v-chart>
   </div>
   `

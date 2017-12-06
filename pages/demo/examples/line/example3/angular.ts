@@ -39,13 +39,13 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Legend></Legend>
-      <SmoothLine position="month*temperature" color="city" shape="smooth"></SmoothLine>
-      <Point position="month*temperature" color="city"></Point>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-legend></v-legend>
+      <v-smooth-line position="month*temperature" color="city" shape="smooth"></v-smooth-line>
+      <v-point position="month*temperature" color="city"></v-point>
+    </v-chart>
   </div>
   `
 })
