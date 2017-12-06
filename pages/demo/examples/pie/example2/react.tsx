@@ -7,7 +7,7 @@ const data = [
   { item: '事例二', count: 21 },
   { item: '事例三', count: 17 },
   { item: '事例四', count: 13 },
-  { item: '事例五', count: 9 }
+  { item: '事例五', count: 9 },
 ];
 
 const dataPre = {
@@ -28,7 +28,7 @@ const scale = [{
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit height={500} data={data} dataPre={dataPre} scale={scale}>
+      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
         <Tooltip showTitle={false} />
         <Axis />
         <Legend dataKey="item"/>

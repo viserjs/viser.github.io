@@ -57,12 +57,12 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
       <v-legend></v-legend>
       <v-line position="year*percent" size="2" color="country" adjust="stack"></v-line>
-      <v-area position="year*percent" color="country"></v-area>
+      <v-stack-area position="year*percent" color="country"></v-stack-area>
     </v-chart>
   </div>
   `
@@ -71,6 +71,7 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
+  dataPre = dataPre;
   scale = scale;
 }
 

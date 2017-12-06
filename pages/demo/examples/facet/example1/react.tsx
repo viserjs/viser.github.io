@@ -1,7 +1,7 @@
 import { Chart, Facet, View, Tooltip, Legend, Axis, Point, FacetView } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { data } from './data'
+import { data } from './data';
 
 const scale = [{
   dataKey: 'carat',

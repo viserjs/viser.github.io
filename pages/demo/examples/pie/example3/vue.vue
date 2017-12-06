@@ -1,16 +1,10 @@
-export const template =
-`<template>
+<template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
-      <v-tooltip :show-title="false" :data-key="'item*percent'"/>
+      <v-tooltip :show-title="false" :data-key="'item*percent'" />
       <v-axis />
-      <v-legend :data-key="'item'"/>
-      <v-pie
-        :position="'percent'"
-        :color="'item'"
-        :v-style="pieStyle"
-        :label="labelConfig"
-      />
+      <v-legend :data-key="'item'" />
+      <v-pie :position="'percent'" :color="'item'" :v-style="pieStyle" :label="labelConfig" />
       <v-coord :radius="0.75" :inner-radius="0.6" />
     </v-chart>
   </div>
@@ -22,7 +16,7 @@ export const template =
     { item: '事例二', count: 21 },
     { item: '事例三', count: 17 },
     { item: '事例四', count: 13 },
-    { item: '事例五', count: 9 }
+    { item: '事例五', count: 9 },
   ];
 
   const dataPre = {
@@ -30,8 +24,8 @@ export const template =
       type: 'percent',
       field: 'count',
       dimension: 'item',
-      as: 'percent'
-    }]
+      as: 'percent',
+    }],
   };
 
   const scale = [{
@@ -49,7 +43,7 @@ export const template =
         height: 500,
         pieStyle: {
           stroke: "#fff",
-          lineWidth: 1
+          lineWidth: 1,
         },
         labelConfig: ['percent', {
           formatter: (val, item) => {
@@ -60,4 +54,3 @@ export const template =
     }
   };
 </script>
-;

@@ -1,4 +1,3 @@
-export const template = `
 <template>
   <div>
     <v-chart :force-fit="true" :height="600" :data="data">
@@ -55,4 +54,3 @@ export const template = `
     },
   };
 </script>
-`;

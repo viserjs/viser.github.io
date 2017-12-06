@@ -56,16 +56,16 @@ const dataPre = {
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="600" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Legend></Legend>
-      <Axis></Axis>
-      <Facet type="mirror" [fields]="fields" line="{ stroke: '#c0d0e0' }" lineSmooth="true">
-        <FacetView>
-          <Bar position="age*total_percentage" color="['gender', [ '#1890ff', '#f04864' ]]"></Bar>
-        </FacetView>
-      </Facet>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-legend></v-legend>
+      <v-axis></v-axis>
+      <v-facet type="mirror" [fields]="fields" transpose="true">
+        <v-facet-view>
+          <v-bar position="age*total_percentage" [color]="color"></v-bar>
+        </v-facet-view>
+      </v-facet>
+    </v-chart>
   </div>
   `
 })
@@ -76,6 +76,7 @@ export class AppComponent {
   dataPre = dataPre;
   scale = scale;
   fields = ['gender'];
+  color = ['gender', [ '#1890ff', '#f04864' ]];
 }
 
 @NgModule({

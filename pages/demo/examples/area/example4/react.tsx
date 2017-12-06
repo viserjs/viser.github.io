@@ -23,7 +23,7 @@ const data = [
   {country: 'Europe', year: '1900', value: 408},
   {country: 'Europe', year: '1950', value: 547},
   {country: 'Europe', year: '1999', value: 729},
-  {country: 'Europe', year: '2050', value: 628}
+  {country: 'Europe', year: '2050', value: 628},
 ];
 
 const dataPre = {

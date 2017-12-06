@@ -28,16 +28,16 @@ const viewDataPre = {
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Legend></Legend>
-      <Facet type="circle" [fields]="fields">
-        <FacetView [dataPre]="viewDataPre">
-          <Tooltip></Tooltip>
-          <Bar position="cut*mean" color="cut"></Bar>
-        </FacetView>
-      </Facet>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-legend></v-legend>
+      <v-coord type="polar"></v-coord>
+      <v-facet type="circle" [fields]="fields">
+        <v-facet-view [dataPre]="viewDataPre">
+          <v-bar position="cut*mean" color="cut"></v-bar>
+        </v-facet-view>
+      </v-facet>
+    </v-chart>
   </div>
   `
 })

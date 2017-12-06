@@ -21,7 +21,7 @@ export const template =
     { item: '事例二', count: 21 },
     { item: '事例三', count: 17 },
     { item: '事例四', count: 13 },
-    { item: '事例五', count: 9 }
+    { item: '事例五', count: 9 },
   ];
 
   const dataPre = {
@@ -45,7 +45,7 @@ export const template =
         data,
         dataPre,
         scale,
-        height: 500,
+        height: 400,
         pieStyle: {
           stroke: "#fff",
           lineWidth: 1

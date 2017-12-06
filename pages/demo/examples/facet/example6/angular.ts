@@ -33,7 +33,7 @@ const facetDataPre = {
       <v-tooltip crosshairs="false"></v-tooltip>
       <v-legend dataKey="cut" position="top"></v-legend>
       <v-axis dataKey="cut" label="null" tickLine="null"></v-axis>
-      <v-facet type="tree" [fields]="fields" line="{ stroke: '#c0d0e0' }" lineSmooth="true">
+      <v-facet type="tree" [fields]="fields" [line]="line" lineSmooth="true">
         <v-facet-view dataPre="facetDataPre">
           <v-bar position="cut*mean" color="cut"></v-bar>
         </v-facet-view>
@@ -48,6 +48,7 @@ export class AppComponent {
   data = data;
   scale = scale;
   fields = ['clarity'];
+  line = { stroke: '#c0d0e0' };
   facetDataPre = facetDataPre;
 }
 

@@ -10,7 +10,7 @@ const data = [
   { item: '事例二', count: 21 },
   { item: '事例三', count: 17 },
   { item: '事例四', count: 13 },
-  { item: '事例五', count: 9 }
+  { item: '事例五', count: 9 },
 ];
 
 const dataPre = {
@@ -48,7 +48,7 @@ const scale = [{
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 500;
+  height: number = 400;
   data = data;
   dataPre = dataPre;
   scale = scale;

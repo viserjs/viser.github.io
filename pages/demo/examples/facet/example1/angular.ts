@@ -4,7 +4,7 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-import { data } from './data'
+import { data } from './data';
 
 const scale = [{
   dataKey: 'carat',
@@ -22,7 +22,7 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-legend></v-legend>
       <v-axis></v-axis>
@@ -30,8 +30,8 @@ const scale = [{
         <v-facet-view>
           <v-point position="carat*price" color="cut" opacity="0.3" size="3"></v-point>
         </v-facet-view>
-      </v-acet>
-    </Chart>
+      </v-facet>
+    </v-chart>
   </div>
   `
 })

@@ -1,4 +1,4 @@
-import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser-react';
+import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView, Coord } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { data } from './data'
@@ -26,11 +26,11 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit={true} height={600} data={data} scale={scale}>
-          <Tooltip />
+          <Coord type="polar" />
           <Legend />
+          <Tooltip />
           <Facet type="circle" fields={['clarity']}>
             <FacetView dataPre={viewDataPre}>
-              <Tooltip />
               <Bar position="cut*mean" color="cut" />
             </FacetView>
           </Facet>

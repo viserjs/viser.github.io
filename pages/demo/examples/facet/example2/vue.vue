@@ -3,6 +3,7 @@
     <v-chart :force-fit="true" :height="600" :data="data" :scale="scale">
       <v-tooltip />
       <v-legend />
+      <v-coord :type="'polar'" />
       <v-facet :type="'circle'" :fields="['clarity']">
         <v-facet-view :data-pre="viewDataPre">
           <v-bar :position="'cut*mean'" :color="'cut'" />
@@ -38,7 +39,7 @@
       return {
         data,
         scale,
-        dataPre: viewDataPre,
+        viewDataPre: viewDataPre,
       };
     },
   };

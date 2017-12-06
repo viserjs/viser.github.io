@@ -10,7 +10,7 @@ const data = [
   { item: '事例二', count: 21 },
   { item: '事例三', count: 17 },
   { item: '事例四', count: 13 },
-  { item: '事例五', count: 9 }
+  { item: '事例五', count: 9 },
 ];
 
 const dataPre = {
@@ -18,7 +18,7 @@ const dataPre = {
     type: 'percent',
     field: 'count',
     dimension: 'item',
-    as: 'percent'
+    as: 'percent',
   }]
 };
 
@@ -35,14 +35,9 @@ const scale = [{
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
-      <v-pie
-        [position]="'percent'"
-        [color]="'item'"
-        [style]="pieStyle"
-        [label]="labelConfig"
-      ></v-pie>
-      <v-coord [radius]="0.75" [innerRadius]="0.6"></v-coord>
-      <v-legend [dataKey]="'item'"></v-legend>
+      <v-pie position="percent" color="item" [style]="pieStyle" [label]="labelConfig"></v-pie>
+      <v-coord radius="0.75" innerRadius="0.6"></v-coord>
+      <v-legend dataKey="item"></v-legend>
     </v-chart>
   </div>
   `
@@ -55,7 +50,7 @@ class AppComponent {
   scale = scale;
   pieStyle = {
     stroke: "#fff",
-    lineWidth: 1
+    lineWidth: 1,
   };
   labelConfig = ['percent', {
     formatter: (val, item) => {
