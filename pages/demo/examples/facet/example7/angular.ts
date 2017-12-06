@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -18,7 +17,7 @@ const data = [
   {gender:'男',count:25,'class': '二班',grade: '二年级'},
   {gender:'女',count:32,'class': '二班',grade: '二年级'},
   {gender:'男',count:28,'class': '三班',grade: '二年级'},
-  {gender:'女',count:36,'class': '三班',grade: '二年级'}
+  {gender:'女',count:36,'class': '三班',grade: '二年级'},
 ];
 
 const facetDataPre = {
@@ -26,34 +25,39 @@ const facetDataPre = {
     type: 'percent',
     field: 'count',
     dimension: 'gender',
-    as: 'percent'
+    as: 'percent',
   },
+};
+
+const facetScale = {
+  dataKey: 'percent',
+  formatter: '.2%',
 };
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
-      <Tooltip showTitle="false"></Tooltip>
-      <Legend dataKey="cut" position="top"></Legend>
-      <Coord type="theta"></Axis>
-      <Facet type="tree" [fields]="fields" line="{ stroke: '#00a3d7' }" lineSmooth="true">
-        <FacetView dataPre="facetDataPre">
-          <StackBar position="percent" color="gender"></StackBar>
-        </FacetView>
-      </Facet>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data">
+      <v-tooltip showTitle="false"></v-tooltip>
+      <v-legend dataKey="cut" position="top"></v-legend>
+      <v-coord type="theta"></v-coord>
+      <v-facet type="tree" [fields]="fields" line="{ stroke: '#00a3d7' }" lineSmooth="true">
+        <v-facet-view [dataPre]="facetDataPre" [scale]="facetScale">
+          <v-stack-bar position="percent" color="gender"></v-stack-bar>
+        </v-facet-view>
+      </v-facet>
+    </v-chart>
   </div>
-  \`
+  `
 })
-
 export class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
   data = data;
   fields = ['grade', 'class'];
   facetDataPre = facetDataPre;
+  facetScale = facetScale;
 }
 
 @NgModule({
@@ -70,4 +74,3 @@ export class AppComponent {
 
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

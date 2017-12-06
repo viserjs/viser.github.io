@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Facet, View, Tooltip, Legend, Axis, Point, FacetView } from 'viser-react';
+import { Chart, Facet, View, Tooltip, Legend, Axis, Point, FacetView } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { data } from './data'
@@ -23,10 +22,9 @@ class App extends React.Component {
         <Chart forceFit={true} height={600} data={data} scale={scale}>
           <Tooltip />
           <Legend />
+          <Axis />
           <Facet type="rect" fields={['cut', 'clarity']}>
             <FacetView>
-              <Tooltip />
-              <Axis />
               <Point position="carat*price" color="cut" opacity={0.3} size={3} />
             </FacetView>
           </Facet>
@@ -40,5 +38,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-`;
-

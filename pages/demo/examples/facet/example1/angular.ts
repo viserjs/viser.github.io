@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -15,34 +14,33 @@ const scale = [{
   sync: true,
   tickCount: 3,
 }, {
-  dataKey: 'clarity',
+  dataKey: 'cut',
   sync: true,
 }];
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
     <Chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Legend></Legend>
-      <Axis></Axis>
-      <Facet type="rect" [fields]="fields">
-        <FacetView>
-          <Point position="carat*price" color="clarity" opacity="0.3" size="3"></Point>
-        </FacetView>
-      </Facet>
+      <v-tooltip></v-tooltip>
+      <v-legend></v-legend>
+      <v-axis></v-axis>
+      <v-facet type="rect" [fields]="fields">
+        <v-facet-view>
+          <v-point position="carat*price" color="cut" opacity="0.3" size="3"></v-point>
+        </v-facet-view>
+      </v-acet>
     </Chart>
   </div>
-  \`
+  `
 })
-
 export class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
   data = data;
   scale = scale;
-  fields = [null, 'clarity'];
+  fields = ['cut', 'clarity'];
 }
 
 @NgModule({
@@ -59,4 +57,3 @@ export class AppComponent {
 
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

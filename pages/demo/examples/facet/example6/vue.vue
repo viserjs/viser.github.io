@@ -2,11 +2,11 @@ export const template = `
 <template>
   <div>
     <v-chart :force-fit="true" :height="600" :data="data" :scale="scale">
-      <v-tooltip />
-      <v-legend />
-      <v-facet :type="'circle'" :fields="['clarity']">
-        <v-facet-view :data-pre="viewDataPre">
-          <v-tooltip />
+      <v-tooltip :crosshairs="false" />
+      <v-legend :data-key="'cut'" :position="'top'" />
+      <v-axis :data-key="'cut'" :label="null" :tick-line="null" />
+      <v-facet :type="'tree'" :fields="['clarity']" :line="{ stroke: '#c0d0e0' }" :line-smooth="true">
+        <v-facet-view :data-pre="facetDataPre">
           <v-bar :position="'cut*mean'" :color="'cut'" />
         </v-facet-view>
       </v-facet>
@@ -19,13 +19,14 @@ export const template = `
 
   const scale = [{
     dataKey: 'mean',
-    sync: true
+    tickCount: 5,
+    sync: true,
   }, {
     dataKey: 'cut',
     sync: true,
   }];
   
-  const viewDataPre = {
+  const facetDataPre = {
     transform: {
       type: 'aggregate',
       fields: ['price'],
@@ -40,10 +41,9 @@ export const template = `
       return {
         data,
         scale,
-        dataPre: viewDataPre,
+        facetDataPre,
       };
     },
-    methods: {}
   };
 </script>
 `;

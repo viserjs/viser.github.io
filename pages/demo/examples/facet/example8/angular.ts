@@ -1,11 +1,32 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import { data } from './data'
+
+const tmp = [];
+const dates = [];
+data.male.values.forEach((obj: any) => {
+  if (dates.indexOf(obj.date) === -1) {
+    dates.push(obj.date);
+  }
+  obj.age_groups.forEach((subObject: any) => {
+    subObject.gender = 'male';
+    subObject.date = obj.date;
+    tmp.push(subObject);
+  });
+});
+data.female.values.forEach((obj: any) => {
+  obj.age_groups.forEach((subObject: any) => {
+    subObject.gender = 'female';
+    subObject.date = obj.date;
+    tmp.push(subObject);
+  });
+});
+
+const tmpData = tmp;
 
 const scale = [{
   dataKey: 'age',
@@ -33,7 +54,7 @@ const dataPre = {
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
     <Chart [forceFit]="forceFit" [height]="600" [data]="data" [dataPre]="dataPre" [scale]="scale">
       <Tooltip></Tooltip>
@@ -46,13 +67,12 @@ const dataPre = {
       </Facet>
     </Chart>
   </div>
-  \`
+  `
 })
-
 export class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
-  data = data;
+  data = tmpData;
   dataPre = dataPre;
   scale = scale;
   fields = ['gender'];
@@ -72,4 +92,3 @@ export class AppComponent {
 
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

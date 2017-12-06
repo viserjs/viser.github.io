@@ -1,14 +1,12 @@
-export const template = `
 <template>
   <div>
     <v-chart :force-fit="true" :height="600" :data="data" :scale="scale">
       <v-tooltip />
       <v-legend />
-      <v-facet :type="'rect'" :fields="['cut', 'clarity']">
+      <v-axis />
+      <v-facet :type="'rect'" :fields="['cut']">
         <v-facet-view>
-          <v-axis />
-          <v-tooltip />
-          <v-point :position="'carat*price'" :color="'cut'" :opacity="0.3" :size="3" />
+          <v-point :position="'carat*price'" :color="'clarity'" :opacity="0.3" :size="3" />
         </v-facet-view>
       </v-facet>
     </v-chart>
@@ -26,7 +24,7 @@ export const template = `
     sync: true,
     tickCount: 3,
   }, {
-    dataKey: 'cut',
+    dataKey: 'clarity',
     sync: true,
   }];
 
@@ -39,4 +37,3 @@ export const template = `
     },
   };
 </script>
-`;

@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Facet, View, Tooltip, Legend, Axis, StackBar, FacetView, Coord } from 'viser-react';
+import { Chart, Facet, View, Tooltip, Legend, Axis, StackBar, FacetView, Coord } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { data } from './data'
@@ -24,20 +23,24 @@ const facetDataPre = {
     type: 'percent',
     field: 'count',
     dimension: 'gender',
-    as: 'percent'
+    as: 'percent',
   },
+};
+
+const facetScale = {
+  dataKey: 'percent',
+  formatter: '.2%',
 };
 
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={600} data={data} scale={scale} padding={[60, 90, 80, 80]}>
+      <Chart forceFit={true} height={600} data={data} padding={[60, 90, 80, 80]}>
         <Tooltip showTitle={false} />
         <Coord type="theta" />
-        <Legend dataKey="cut" position="top />
+        <Legend dataKey="cut" position="top" />
         <Facet type="tree" fields={['grade', 'class']} line={{ stroke: '#00a3d7' }} lineSmooth={true}>
-          <FacetView dataPre={facetDataPre}>
-            <Scale dataKey="percent" formatter=".2%" />
+          <FacetView dataPre={facetDataPre} scale={facetScale}>
             <StackBar position="percent" color="gender" />
           </FacetView>
         </Facet>
@@ -50,5 +53,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-`;
-

@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser-react';
+import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { data } from './data'
@@ -44,5 +43,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-`;
-

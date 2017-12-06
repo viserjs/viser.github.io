@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -9,14 +8,13 @@ import { data } from './data'
 
 const scale = [{
   dataKey: 'mean',
-  tickCount: 5,
-  sync: true,
+  sync: true
 }, {
   dataKey: 'cut',
   sync: true,
 }];
 
-const facetDataPre = {
+const viewDataPre = {
   transform: {
     type: 'aggregate',
     fields: ['price'],
@@ -28,29 +26,28 @@ const facetDataPre = {
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
     <Chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
-      <Tooltip crosshairs="false"></Tooltip>
-      <Legend dataKey="cut" position="top"></Legend>
-      <Axis dataKey="cut" label="null" tickLine="null"></Axis>
-      <Facet type="tree" [fields]="fields" line="{ stroke: '#c0d0e0' }" lineSmooth="true">
-        <FacetView dataPre="facetDataPre">
+      <Tooltip></Tooltip>
+      <Legend></Legend>
+      <Facet type="circle" [fields]="fields">
+        <FacetView [dataPre]="viewDataPre">
+          <Tooltip></Tooltip>
           <Bar position="cut*mean" color="cut"></Bar>
         </FacetView>
       </Facet>
     </Chart>
   </div>
-  \`
+  `
 })
-
 export class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
   data = data;
   scale = scale;
   fields = ['clarity'];
-  facetDataPre = facetDataPre;
+  viewDataPre = viewDataPre;
 }
 
 @NgModule({
@@ -67,4 +64,3 @@ export class AppComponent {
 
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;

@@ -1,12 +1,12 @@
 export const template = `
 <template>
   <div>
-    <v-chart :force-fit="true" :height="600" :data="data" :scale="scale">
+    <v-chart :force-fit="true" :height="600" :data="data">
       <v-tooltip :show-title="false" />
-      <v-legend :data-key="'cut'" position="'top'" />
+      <v-legend :data-key="'cut'" :position="'top'" />
       <v-coord :type="'theat'" />
-      <v-facet :type="'tree'" :fields="['grade', 'class']" :line="{ stroke: '#00a3d7' }" :line-smooth="true">
-        <v-facet-view :data-pre="facetDataPre">
+      <v-facet :type="'tree'" :fields="fields" :line="{ stroke: '#00a3d7' }" :line-smooth="true">
+        <v-facet-view :data-pre="facetDataPre" :scale="facetScale">
           <v-stack-bar :position="'percent'" :color="'gender'" />
         </v-facet-view>
       </v-facet>
@@ -27,7 +27,7 @@ export const template = `
     {gender:'男',count:25,'class': '二班',grade: '二年级'},
     {gender:'女',count:32,'class': '二班',grade: '二年级'},
     {gender:'男',count:28,'class': '三班',grade: '二年级'},
-    {gender:'女',count:36,'class': '三班',grade: '二年级'}
+    {gender:'女',count:36,'class': '三班',grade: '二年级'},
   ];
   
   const facetDataPre = {
@@ -35,8 +35,13 @@ export const template = `
       type: 'percent',
       field: 'count',
       dimension: 'gender',
-      as: 'percent'
+      as: 'percent',
     },
+  };
+
+  const facetScale = {
+    dataKey: 'percent',
+    formatter: '.2%',
   };
 
   export default {
@@ -44,6 +49,8 @@ export const template = `
       return {
         data,
         facetDataPre,
+        facetScale,
+        fields: ['grade', 'class'],
       };
     },
   };

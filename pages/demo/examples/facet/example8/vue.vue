@@ -1,7 +1,6 @@
-export const template = `
 <template>
   <div>
-    <v-chart :force-fit="true" :height="600" :data="data" :data-pre:"dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="600" :data="data" :data-pre="dataPre" :scale="scale">
       <v-tooltip />
       <v-legend />
       <v-axis />
@@ -16,6 +15,28 @@ export const template = `
 
 <script>
   import { data } from "./data";
+
+  const tmp = [];
+  const dates = [];
+  data.male.values.forEach((obj) => {
+    if (dates.indexOf(obj.date) === -1) {
+      dates.push(obj.date);
+    }
+    obj.age_groups.forEach((subObject) => {
+      subObject.gender = 'male';
+      subObject.date = obj.date;
+      tmp.push(subObject);
+    });
+  });
+  data.female.values.forEach((obj) => {
+    obj.age_groups.forEach((subObject) => {
+      subObject.gender = 'female';
+      subObject.date = obj.date;
+      tmp.push(subObject);
+    });
+  });
+
+  const tmpData = tmp;
 
   const scale = [{
     dataKey: 'age',
@@ -44,11 +65,10 @@ export const template = `
   export default {
     data() {
       return {
-        data,
+        data: tmpData,
         dataPre,
         scale,
       };
     },
   };
 </script>
-`;

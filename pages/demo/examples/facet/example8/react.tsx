@@ -1,8 +1,29 @@
-export const template =
-`import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser-react';
+import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { data } from './data'
+
+const tmp = [];
+const dates = [];
+data.male.values.forEach((obj: any) => {
+  if (dates.indexOf(obj.date) === -1) {
+    dates.push(obj.date);
+  }
+  obj.age_groups.forEach((subObject: any) => {
+    subObject.gender = 'male';
+    subObject.date = obj.date;
+    tmp.push(subObject);
+  });
+});
+data.female.values.forEach((obj: any) => {
+  obj.age_groups.forEach((subObject: any) => {
+    subObject.gender = 'female';
+    subObject.date = obj.date;
+    tmp.push(subObject);
+  });
+});
+
+const tmpData = tmp;
 
 const scale = [{
   dataKey: 'age',
@@ -31,7 +52,7 @@ const dataPre = {
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={600} data={data} dataPre={dataPre} scale={scale}>
+      <Chart forceFit={true} height={600} data={tmpData} dataPre={dataPre} scale={scale}>
         <Tooltip />
         <Legend />
         <Axis />
@@ -49,5 +70,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-`;
-
