@@ -162,15 +162,17 @@ class App {
   render() {
     const menuList = {};
     Object.keys(exampleList).forEach((key) => {
+      const chartTypeMatched = key === this.attrs.chartType;
       menuList[key] = {
         ...exampleList[key],
         examples: exampleList[key].examples.map((o, i) => {
+          const exampleIndexMatched = i === this.attrs.exampleIndex;
           return {
             ...o,
-            activeClass: i === this.attrs.exampleIndex ? 'active' : ''
+            activeClass: chartTypeMatched && exampleIndexMatched ? 'active' : ''
           };
         }),
-        expanded: key === this.attrs.chartType ? 'expanded' : '',
+        expanded: chartTypeMatched ? 'expanded' : '',
       };
     });
 
