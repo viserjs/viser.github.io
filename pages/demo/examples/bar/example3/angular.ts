@@ -23,12 +23,12 @@ const dataPre = {
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Legend></Legend>
-      <StackBar position="月份*月均降雨量" color="name"></StackBar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-legend></v-legend>
+      <v-stack-bar position="月份*月均降雨量" color="name"></v-stack-bar>
+    </v-chart>
   </div>
   `
 })

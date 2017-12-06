@@ -47,13 +47,13 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip [crosshairs]="crosshairs"></Tooltip>
-      <Axis dataKey="value"></Axis>
-      <Legend></Legend>
-      <Line position="year*value" size="2" color="type"></Line>
-      <Area position="year*value" color="type" />
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip [crosshairs]="crosshairs"></v-tooltip>
+      <v-axis dataKey="value"></v-axis>
+      <v-legend></v-legend>
+      <v-line position="year*value" size="2" color="type"></v-line>
+      <v-area position="year*value" color="type"></v-area>
+    </v-chart>
   </div>
   `
 })

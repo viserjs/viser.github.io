@@ -20,11 +20,11 @@ const data = [
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Bar position="x*y"></Bar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-bar position="x*y"></v-bar>
+    </v-chart>
   </div>
   `
 })

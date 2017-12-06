@@ -32,17 +32,17 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Pie
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-pie
         [position]="'percent'"
         [color]="'item'"
         [style]="pieStyle"
         [label]="labelConfig"
-      ></Pie>
-      <Legend [dataKey]="'item'"></Legend>
-    </Chart>
+      ></v-pie>
+      <v-legend [dataKey]="'item'"></v-egend>
+    </v-chart>
   </div>
   `
 })

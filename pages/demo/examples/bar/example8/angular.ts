@@ -20,12 +20,12 @@ const dataPre = {
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
-      <Tooltip crosshairs="false" inPlot="false" position="top"></Tooltip>
-      <Axis></Axis>
-      <Legend></Legend>
-      <StackBar position="depth*count" color="cut"></StackBar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+      <v-tooltip crosshairs="false" inPlot="false" position="top"></v-tooltip>
+      <v-axis></v-axis>
+      <v-legend></v-legend>
+      <v-stack-bar position="depth*count" color="cut"></v-stack-bar>
+    </v-chart>
   </div>
   `
 })

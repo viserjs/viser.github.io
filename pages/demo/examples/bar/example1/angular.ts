@@ -25,15 +25,14 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Bar position="year*sales"></Bar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-bar position="year*sales"></v-bar>
+    </v-chart>
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;

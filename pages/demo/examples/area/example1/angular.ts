@@ -30,16 +30,15 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Line position="year*value" size="2"></Line>
-      <Area position="year*value" />
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-line position="year*value" size="2"></v-line>
+      <v-area position="year*value"></v-area>
+    </v-chart>
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
