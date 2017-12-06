@@ -220,9 +220,10 @@ a {
   line-height: 40px; }
   .common-nav-folder.expandable {
     overflow: hidden;
-    height: 40px; }
+    max-height: 40px;
+    transition: max-height .3s; }
     .common-nav-folder.expandable.expanded {
-      height: auto; }
+      max-height: 100%; }
       .common-nav-folder.expandable.expanded .common-nav-title::after {
         transform: rotate(180deg); }
     .common-nav-folder.expandable .common-nav-title {
@@ -231,6 +232,7 @@ a {
         color: #999; }
       .common-nav-folder.expandable .common-nav-title::after {
         transform: rotate(0);
+        transition: transform .3s;
         margin-right: 20px;
         display: block;
         float: right;
