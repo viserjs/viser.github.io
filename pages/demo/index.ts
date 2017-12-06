@@ -16,13 +16,15 @@ class App {
     code: any,
     framework: string,
     chartType: string,
+    exampleIndex: number,
   };
 
   constructor() {
     this.attrs = {
       code: {},
       framework: 'react',
-      chartType: 'bar',
+      chartType: 'line',
+      exampleIndex: 0,
     };
 
     this.init();
@@ -39,6 +41,7 @@ class App {
     const exampleReg = new RegExp('(^|&)example=([^&]*)(&|$)');
     const exampleResult = search.match(exampleReg);
     const exampleIndex = exampleResult ? parseInt(exampleResult[2], 10) : 0;
+    this.attrs.exampleIndex = exampleIndex;
 
     const example = exampleList[chartType].examples[exampleIndex] || exampleList[chartType].examples[0] || {};
     const { path, cnName, enName } = example;
@@ -84,7 +87,20 @@ class App {
       const framework = $(this).attr('data-framework');
       self.attrs.framework = framework;
       self.refreshCase(framework);
-    })
+    });
+
+    $('.left-panel .common-nav-folder.expandable .common-nav-title').on('click', function() {
+      if ($(this).parent().hasClass('expanded')) {
+        $('.left-panel .common-nav-folder.expandable').each(function () {
+          $(this).removeClass('expanded');
+        });
+      } else {
+        $('.left-panel .common-nav-folder.expandable').each(function () {
+          $(this).removeClass('expanded');
+        });
+        $(this).parent().addClass('expanded');
+      }
+    });
   }
 
   refreshCase(framework) {
@@ -144,9 +160,22 @@ class App {
   }
 
   render() {
+    const menuList = {};
+    Object.keys(exampleList).forEach((key) => {
+      menuList[key] = {
+        ...exampleList[key],
+        examples: exampleList[key].examples.map((o, i) => {
+          return {
+            ...o,
+            activeClass: i === this.attrs.exampleIndex ? 'active' : ''
+          };
+        }),
+        expanded: key === this.attrs.chartType ? 'expanded' : '',
+      };
+    });
+
     $('.left-panel').append(navTpl({
-      menuList: exampleList,
-      chartType: this.attrs.chartType,
+      menuList,
     }));
 
     const code = this.attrs.code;
