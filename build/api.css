@@ -220,10 +220,9 @@ a {
   line-height: 40px; }
   .common-nav-folder.expandable {
     overflow: hidden;
-    max-height: 40px;
-    transition: max-height .3s; }
+    height: 40px; }
     .common-nav-folder.expandable.expanded {
-      max-height: 100%; }
+      height: auto; }
       .common-nav-folder.expandable.expanded .common-nav-title::after {
         transform: rotate(180deg); }
     .common-nav-folder.expandable .common-nav-title {
