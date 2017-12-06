@@ -17,7 +17,7 @@ const data = [
   { year: '2009', population: 38.3 },
   { year: '2010', population: 28 },
   { year: '2011', population: 42.5 },
-  { year: '2012', population: 30.3 }
+  { year: '2012', population: 30.3 },
 ];
 
 @Component({
@@ -37,7 +37,7 @@ class AppComponent {
   data = data;
   sectorStyle = {
     stroke: "#fff",
-    lineWidth: 1
+    lineWidth: 1,
   };
   labelConfig = ['year', {
     offset: -15,

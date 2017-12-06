@@ -14,7 +14,7 @@ const data = [
   { year: '2009', population: 38.3 },
   { year: '2010', population: 28 },
   { year: '2011', population: 42.5 },
-  { year: '2012', population: 30.3 }
+  { year: '2012', population: 30.3 },
 ];
 
 class App extends React.Component {
@@ -26,7 +26,7 @@ class App extends React.Component {
           position="year*population"
           style={{ stroke: '#fff', lineWidth: 1 }}
           label={['year', {
-            offset: -15
+            offset: -15,
           }]}
         />
       </Chart>

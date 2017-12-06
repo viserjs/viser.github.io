@@ -14,7 +14,7 @@ const data = [
   { year: '1996', value: 31056 },
   { year: '1997', value: 31982 },
   { year: '1998', value: 32040 },
-  { year: '1999', value: 33233 }
+  { year: '1999', value: 33233 },
 ];
 
 const scale = [{

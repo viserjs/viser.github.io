@@ -1,12 +1,8 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data">
-      <v-tooltip/>
-      <v-sector
-        :position="'year*population'"
-        :v-style="sectorStyle"
-        :label="labelConfig"
-      />
+      <v-tooltip />
+      <v-sector :position="'year*population'" :v-style="sectorStyle" :label="labelConfig" />
     </v-chart>
   </div>
 </template>
@@ -24,7 +20,7 @@
     { year: '2009', population: 38.3 },
     { year: '2010', population: 28 },
     { year: '2011', population: 42.5 },
-    { year: '2012', population: 30.3 }
+    { year: '2012', population: 30.3 },
   ];
 
   export default {
@@ -37,7 +33,7 @@
           lineWidth: 1
         },
         labelConfig: ['year', {
-          offset: -15
+          offset: -15,
         }],
       };
     }

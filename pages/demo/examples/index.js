@@ -14,7 +14,7 @@ module.exports = {
       },
       {
         path: 'example3',
-        enName: 'Multi smooth ine',
+        enName: 'Multi smooth line',
         cnName: '曲线折线图',
       },
       {
@@ -41,7 +41,7 @@ module.exports = {
       },
       {
         path: 'example2',
-        enName: 'Basic area（with negative value）',
+        enName: 'Basic area (with negative value)',
         cnName: '基础面积图',
       },
       {
@@ -246,8 +246,8 @@ module.exports = {
       },
       {
         path: 'example2',
-        enName: 'Basic radar(line)',
-        cnName: '基础雷达图(线)',
+        enName: 'Basic radar (line)',
+        cnName: '基础雷达图（线）',
       },
     ],
     icon: 'leidatu'

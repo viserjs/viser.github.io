@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data">
-      <v-tooltip/>
+      <v-tooltip />
       <v-sector :position="'year*population'" :color="'year'" :v-style="sectorStyle" />
       <v-legend :position="'right'" :data-key="'year'" :offset-y="-70" :offset-x="-140" />
     </v-chart>
