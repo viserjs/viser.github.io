@@ -100,7 +100,7 @@ const pointStyle = {
         <v-line position="time*temperature" size="2"></v-line>
         <v-point position="time*temperature" size="4" [style]="pointStyle"></v-point>
       </v-view>
-      <v-view viewId="2" [data]="data"  [scale]="scale">
+      <v-view viewId="2" [data]="data" [scale]="scale">
         <v-area position="time*temperature"></v-area>
       </v-view>
     </v-chart>

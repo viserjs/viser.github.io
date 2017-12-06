@@ -85,7 +85,7 @@ class App extends React.Component {
     const pointStyle = {
       stroke: '#fff',
       lineWidth: 1,
-      fillOpacity: 1
+      fillOpacity: 1,
     };
 
     return (

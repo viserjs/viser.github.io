@@ -39,9 +39,8 @@ const data = [
 const scale = [{
   dataKey: 'year',
   type: 'linear',
-  tickInterval: 50
+  tickInterval: 50,
 }];
-
 
 @Component({
   selector: '#mount',

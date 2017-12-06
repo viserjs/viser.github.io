@@ -44,7 +44,7 @@ const data = [
   { time: 1248739200000, temperature: [ 11.0, 19.3 ] },
   { time: 1248825600000, temperature: [ 10.8, 17.8 ] },
   { time: 1248912000000, temperature: [ 11.8, 18.5 ] },
-  { time: 1248998400000, temperature: [ 10.8, 16.1 ] }
+  { time: 1248998400000, temperature: [ 10.8, 16.1 ] },
 ];
 
 const averages = [
@@ -78,12 +78,12 @@ const averages = [
   { time: 1248739200000, temperature: 14.8 },
   { time: 1248825600000, temperature: 14.4 },
   { time: 1248912000000, temperature: 15 },
-  { time: 1248998400000, temperature: 13.6 }
+  { time: 1248998400000, temperature: 13.6 },
 ];
 
 const scale = [{
   dataKey: 'temperature',
-  sync: true
+  sync: true,
 }, {
   dataKey: 'time',
   type: 'time',

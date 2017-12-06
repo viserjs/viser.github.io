@@ -32,14 +32,14 @@ const dataPre = {
     field: 'value',
     dimension: 'country',
     groupBy: [ 'year' ],
-    as: 'percent'
+    as: 'percent',
   }
 };
 
 const scale = [{
   dataKey: 'year',
   type: 'linear',
-  tickInterval: 50
+  tickInterval: 50,
 }, {
   dataKey: 'percent',
   formatter: (value: any) => {
@@ -47,7 +47,7 @@ const scale = [{
     value = value * 100;
     return parseInt(value);
   },
-  alias: 'percent(%)'
+  alias: 'percent(%)',
 }];
 
 
