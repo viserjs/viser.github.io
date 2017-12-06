@@ -198,11 +198,28 @@ module.exports = {
     ],
     icon: 'bingtu'
   },
-  // rose: {
-  //   cnName: '玫瑰图',
-  //   examples: ['example1'],
-  //   icon: 'meiguitu'
-  // },
+  rose: {
+    enName: 'Rose',
+    cnName: '玫瑰图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic Rose',
+        cnName: '基础玫瑰图',
+      },
+      {
+        path: 'example2',
+        enName: 'Color Rose',
+        cnName: '多色玫瑰图',
+      },
+      {
+        path: 'example3',
+        enName: 'Donut Rose',
+        cnName: '环形玫瑰图',
+      },
+    ],
+    icon: 'meiguitu'
+  },
   // radial: {
   //   cnName: '玉珏图',
   //   examples: ['example1'],
