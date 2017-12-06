@@ -7,11 +7,10 @@
 
   &.expandable {
     overflow: hidden;
-    max-height: 40px;
-    transition: max-height .3s;
+    height: 40px;
 
     &.expanded {
-      max-height: 100%;
+      height: auto;
 
       .common-nav-title::after {
         transform: rotate(180deg);
