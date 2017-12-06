@@ -11,7 +11,7 @@ export const config = {
     tickLine: null,
     grid: {
       lineStyle: {
-        lineDash: null
+        lineDash: null,
       },
       hideFirstLine: false
     }
@@ -22,8 +22,8 @@ export const config = {
     grid: {
       type: 'polygon',
       lineStyle: {
-        lineDash: null
-      }
+        lineDash: null,
+      },
     }
   }],
   coord: {

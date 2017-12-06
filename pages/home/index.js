@@ -1,5 +1,5 @@
 require('./index.scss');
-const Viser = require('viser');
+const Viser = require('viser').default;
 
 const GDP_JSON = [
   { "year": '2006', "gdp": 21.94385 },
@@ -15,7 +15,7 @@ const GDP_JSON = [
 ];
 
 function renderChart() {
-  Viser.default({
+  Viser({
     data: GDP_JSON,
     tooltip: true,
     axis: true,
@@ -23,14 +23,14 @@ function renderChart() {
     chart: { width: 700, height: 400, container: 'viser-mount-1-1' },
   });
 
-  Viser.default({
+  Viser({
     data: GDP_JSON,
     tooltip: true,
     axis: true,
     series: [{ quickType: 'line', color: '#0088fe', position: 'year*gdp' }],
     chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
   });
-  Viser.default({
+  Viser({
     data: GDP_JSON,
     tooltip: { showTitle: false },
     axis: true,
@@ -46,14 +46,14 @@ function renderChart() {
     }],
     chart: { width: 380, height: 280, container: 'viser-mount-2-2' },
   });
-  Viser.default({
+  Viser({
     data: GDP_JSON,
     tooltip: true,
     axis: true,
     series: [{ quickType: 'area', color: '#0088fe', position: 'year*gdp' }],
     chart: { width: 380, height: 230, container: 'viser-mount-2-3' },
   });
-  Viser.default({
+  Viser({
     data: GDP_JSON,
     tooltip: true,
     axis: false,
@@ -67,7 +67,7 @@ function renderChart() {
       },
       position: 'year*gdp',
     }],
-    chart: { width: 400, height: 270, container: 'viser-mount-2-4' },
+    chart: { width: 380, height: 310, container: 'viser-mount-2-4' },
   });
 }
 
