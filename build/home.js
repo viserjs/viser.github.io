@@ -60,15 +60,15 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1047);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1043);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1047:
+/***/ 1043:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1048);
+__webpack_require__(1044);
 const Viser = __webpack_require__(15).default;
 
 const GDP_JSON = [
@@ -145,7 +145,7 @@ window.onload = renderChart;
 
 /***/ }),
 
-/***/ 1048:
+/***/ 1044:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -67310,18 +67310,26 @@ var CommonChart = (function () {
         }
     };
     CommonChart.prototype.repaintData = function (chart, oriConfig, config) {
+        var hasDataChange = false;
         if (!__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](config.data) && !__WEBPACK_IMPORTED_MODULE_1_lodash__["isEqual"](oriConfig.data, config.data)) {
             var viewData = __WEBPACK_IMPORTED_MODULE_3__utils_DataSetUtils__["b" /* getProcessedData */](config.data, config.dataPre);
             var calData = __WEBPACK_IMPORTED_MODULE_3__utils_DataSetUtils__["a" /* getDataContent */](viewData, config.dataView);
+            hasDataChange = true;
             chart.changeData(calData);
         }
-        else {
-            config.calData = oriConfig.calData;
+        return hasDataChange;
+    };
+    CommonChart.prototype.repaintViewData = function (chart, oriConfig, config) {
+        var viewData;
+        if ((__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](config.data) && !__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](oriConfig.data)) ||
+            (!__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](config.data) && !__WEBPACK_IMPORTED_MODULE_1_lodash__["isEqual"](oriConfig.data, config.data))) {
+            viewData = __WEBPACK_IMPORTED_MODULE_3__utils_DataSetUtils__["b" /* getProcessedData */](config.data, config.dataPre);
+            var calData = __WEBPACK_IMPORTED_MODULE_3__utils_DataSetUtils__["a" /* getDataContent */](viewData, config.dataView);
+            chart.changeData(calData);
         }
     };
     CommonChart.prototype.repaintContent = function (chart, oriConfig, config) {
         var hasChartChange = false;
-        this.repaintData(chart, oriConfig, config);
         if (config.scale && !__WEBPACK_IMPORTED_MODULE_1_lodash__["isEqual"](oriConfig.scale, config.scale)) {
             this.setScale(chart, config);
             hasChartChange = true;
@@ -67357,6 +67365,7 @@ var CommonChart = (function () {
                 var view = void 0;
                 if (oriView.length) {
                     view = this_1.viewInstance[item.viewId];
+                    this_1.repaintViewData(view, oriView[0], item);
                     this_1.repaintContent(view, oriView[0], item);
                 }
                 else {
@@ -67377,6 +67386,10 @@ var CommonChart = (function () {
         var chart = this.chartInstance;
         config = this.checkChartConfig(config);
         this.repaintWidthHeight(config);
+        var hasDataChange = this.repaintData(chart, oriConfig, config);
+        if (hasDataChange) {
+            this.mainDataSet = config.data;
+        }
         var hasContentChange = this.repaintContent(chart, oriConfig, config);
         this.repaintViews(chart, oriConfig, config);
         var hasChartPartChange = false;
