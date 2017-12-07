@@ -68,8 +68,8 @@ class App extends React.Component {
         <Axis {...axis2Opts} />
         <Legend />
         <Coord {...coordOpts} />
-        <Line position="item*score" color="user" size="2" />
-        <Point position="item*score" color="user" size="4" />
+        <Line position="item*score" color="user" size={2} />
+        <Point position="item*score" color="user" size={4} />
       </Chart>
     );
   }
