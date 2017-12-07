@@ -30,7 +30,7 @@ const viewDataPre = {
 };
 
 const scale = {
-  dataType: 'percent',
+  dataKey: 'percent',
   formatter: '.2%',
 };
 
