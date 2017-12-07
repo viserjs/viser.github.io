@@ -39,7 +39,7 @@ class App extends React.Component {
     super(props);
   }
   render() {
-    const tooltipOpts: any = {
+    const tooltipOpts = {
       crosshairs: {
         type: 'rect'
       }
@@ -50,7 +50,7 @@ class App extends React.Component {
     const seriesStyle = ['Species', {
       stroke: '#545454',
       fill: val => {
-        return 'red';
+        return colorMap[val];
       },
       fillOpacity: 0.3
     }];

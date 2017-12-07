@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
+    <v-chart :forceFit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
       <v-tooltip :showTitle="tooltipOpts.showTitle" :crosshairs="tooltipOpts.crosshairs" :itemTpl="tooltipOpts.itemTpl"/>
       <v-axis />
-      <v-box :position="'x*range'" :style="boxStyle" :tooltip="boxTooltip" />
-      <v-view :view-id="4" :data="data" :scale="scale">
+      <v-box :position="'x*range'" :vStyle="boxStyle" :tooltip="boxTooltip" />
+      <v-view :view-id="4" :data="data"  :data-pre="dataPre" :scale="scale">
         <v-point :position="'x*range'" :size="3" :active="false"/>
       </v-view>
     </v-chart>
@@ -90,3 +90,7 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+</style>

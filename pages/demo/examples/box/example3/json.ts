@@ -30,7 +30,7 @@ viser({
     style: ['Species', {
       stroke: '#545454',
       fill: val => {
-        return 'red';
+        return colorMap[val];
       },
       fillOpacity: 0.3
     }]

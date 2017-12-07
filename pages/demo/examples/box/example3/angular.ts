@@ -47,7 +47,7 @@ const seriesColor = ['Species', val => {
 const seriesStyle = ['Species', {
   stroke: '#545454',
   fill: val => {
-    return 'red';
+    return colorMap[val];
   },
   fillOpacity: 0.3
 }];
@@ -55,12 +55,12 @@ const seriesStyle = ['Species', {
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip [crosshairs]="tooltipOpts.crosshairs" ></Tooltip>
-      <Axis></Axis>
-      <Legend marker="circle"></Legend>
-      <Box position="type*_bin" adjust="dodge" [style]="seriesStyle" [color]="seriesColor"></Box>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip [crosshairs]="tooltipOpts.crosshairs" ></v-tooltip>
+      <v-axis></v-axis>
+      <v-legend marker="circle"></v-legend>
+      <v-box position="type*_bin" adjust="dodge" [style]="seriesStyle" [color]="seriesColor"></v-box>
+    </v-chart>
   </div>
   `
 })

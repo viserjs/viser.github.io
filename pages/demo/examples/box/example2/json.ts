@@ -1,7 +1,7 @@
 import viser from 'viser';
 import { data, dataPre, scale } from './data'
 
-export const config = {
+viser({
   data: data,
   dataPre,
   scale: scale,
@@ -57,4 +57,4 @@ export const config = {
     forceFit: true,
     height: 400,
   },
-};
+});

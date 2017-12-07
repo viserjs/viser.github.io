@@ -60,10 +60,97 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 980);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1017);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ 1017:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1018);
+const Viser = __webpack_require__(19).default;
+
+const GDP_JSON = [
+  { "year": '2006', "gdp": 21.94385 },
+  { "year": '2007', "gdp": 27.02323 },
+  { "year": '2008', "gdp": 31.95155 },
+  { "year": '2009', "gdp": 34.90814 },
+  { "year": '2010', "gdp": 41.30303 },
+  { "year": '2011', "gdp": 48.93006 },
+  { "year": '2012', "gdp": 54.03674 },
+  { "year": '2013', "gdp": 59.52444 },
+  { "year": '2014', "gdp": 64.39740 },
+  { "year": '2015', "gdp": 68.90521 }
+];
+
+function renderChart() {
+  Viser({
+    data: GDP_JSON,
+    tooltip: true,
+    axis: true,
+    series: [{ quickType: 'bar', color: '#0088fe', position: 'year*gdp' }],
+    chart: { width: 700, height: 400, container: 'viser-mount-1-1' },
+  });
+
+  Viser({
+    data: GDP_JSON,
+    tooltip: true,
+    axis: true,
+    series: [{ quickType: 'line', color: '#0088fe', position: 'year*gdp' }],
+    chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
+  });
+  Viser({
+    data: GDP_JSON,
+    tooltip: { showTitle: false },
+    axis: true,
+    series: [{
+      quickType: 'pie',
+      position: 'gdp',
+      style: {
+        lineWidth: 1,
+        stroke: '#fff',
+        fill: '#0088fe',
+      },
+      tooltip: 'year*gdp'
+    }],
+    chart: { width: 380, height: 280, container: 'viser-mount-2-2' },
+  });
+  Viser({
+    data: GDP_JSON,
+    tooltip: true,
+    axis: true,
+    series: [{ quickType: 'area', color: '#0088fe', position: 'year*gdp' }],
+    chart: { width: 380, height: 230, container: 'viser-mount-2-3' },
+  });
+  Viser({
+    data: GDP_JSON,
+    tooltip: true,
+    axis: false,
+    series: [{
+      quickType: 'sector',
+      color: '#0088fe',
+      style: {
+        lineWidth: 1,
+        stroke: '#fff',
+        fill: '#0088fe',
+      },
+      position: 'year*gdp',
+    }],
+    chart: { width: 380, height: 310, container: 'viser-mount-2-4' },
+  });
+}
+
+window.onload = renderChart;
+
+/***/ }),
+
+/***/ 1018:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 
 /***/ 11:
 /***/ (function(module, exports, __webpack_require__) {
@@ -17154,7 +17241,7 @@
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24), __webpack_require__(71)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25), __webpack_require__(71)(module)))
 
 /***/ }),
 
@@ -17205,7 +17292,32 @@ function setEvent(chart, name, item) {
 
 /***/ }),
 
-/***/ 23:
+/***/ 19:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerAnimation", function() { return registerAnimation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerShape", function() { return registerShape; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Global", function() { return Global; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_CommonChart__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_CustomizeUtils__ = __webpack_require__(28);
+
+
+var G2 = __webpack_require__(29);
+var registerAnimation = __WEBPACK_IMPORTED_MODULE_1__utils_CustomizeUtils__["a" /* registerAnimation */];
+var registerShape = __WEBPACK_IMPORTED_MODULE_1__utils_CustomizeUtils__["b" /* registerShape */];
+var Global = G2.Global;
+/* harmony default export */ __webpack_exports__["default"] = (function (config) {
+    var commonChart = new __WEBPACK_IMPORTED_MODULE_0__core_CommonChart__["a" /* default */](config);
+    commonChart.render();
+    return commonChart;
+});
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 24:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17219,7 +17331,7 @@ function setEvent(chart, name, item) {
 
 /***/ }),
 
-/***/ 24:
+/***/ 25:
 /***/ (function(module, exports) {
 
 var g;
@@ -17244,31 +17356,6 @@ try {
 
 module.exports = g;
 
-
-/***/ }),
-
-/***/ 25:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerAnimation", function() { return registerAnimation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerShape", function() { return registerShape; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Global", function() { return Global; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_CommonChart__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_CustomizeUtils__ = __webpack_require__(28);
-
-
-var G2 = __webpack_require__(29);
-var registerAnimation = __WEBPACK_IMPORTED_MODULE_1__utils_CustomizeUtils__["a" /* registerAnimation */];
-var registerShape = __WEBPACK_IMPORTED_MODULE_1__utils_CustomizeUtils__["b" /* registerShape */];
-var Global = G2.Global;
-/* harmony default export */ __webpack_exports__["default"] = (function (config) {
-    var commonChart = new __WEBPACK_IMPORTED_MODULE_0__core_CommonChart__["a" /* default */](config);
-    commonChart.render();
-    return commonChart;
-});
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 
@@ -66774,7 +66861,7 @@ var supportD3Formatter = function (obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__formatGroup__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__formatNumerals__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__formatSpecifier__ = __webpack_require__(42);
@@ -110188,7 +110275,7 @@ function defaultLocale(definition) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(24);
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (function(step) {
@@ -110202,7 +110289,7 @@ function defaultLocale(definition) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(24);
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (function(step, value) {
@@ -110216,7 +110303,7 @@ function defaultLocale(definition) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(24);
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (function(step, max) {
@@ -110357,14 +110444,14 @@ function setSeriesLabel(chart, currSeries) {
 }
 function setSeriesStyle(chart, currSeries) {
     var style = currSeries.style;
-    if (__WEBPACK_IMPORTED_MODULE_0_lodash__["isObject"](style)) {
-        return chart.style(style);
-    }
     if (__WEBPACK_IMPORTED_MODULE_0_lodash__["isArray"](style) && style.length >= 1) {
         if (style[1]) {
             return chart.style(style[0], style[1]);
         }
         return chart.style(style[0]);
+    }
+    if (__WEBPACK_IMPORTED_MODULE_0_lodash__["isObject"](style)) {
+        return chart.style(style);
     }
     return chart;
 }
@@ -110854,93 +110941,6 @@ var process = function (chart, config) {
     return chart.scale(options);
 };
 //# sourceMappingURL=setScaleConfig.js.map
-
-/***/ }),
-
-/***/ 980:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(981);
-const Viser = __webpack_require__(25).default;
-
-const GDP_JSON = [
-  { "year": '2006', "gdp": 21.94385 },
-  { "year": '2007', "gdp": 27.02323 },
-  { "year": '2008', "gdp": 31.95155 },
-  { "year": '2009', "gdp": 34.90814 },
-  { "year": '2010', "gdp": 41.30303 },
-  { "year": '2011', "gdp": 48.93006 },
-  { "year": '2012', "gdp": 54.03674 },
-  { "year": '2013', "gdp": 59.52444 },
-  { "year": '2014', "gdp": 64.39740 },
-  { "year": '2015', "gdp": 68.90521 }
-];
-
-function renderChart() {
-  Viser({
-    data: GDP_JSON,
-    tooltip: true,
-    axis: true,
-    series: [{ quickType: 'bar', color: '#0088fe', position: 'year*gdp' }],
-    chart: { width: 700, height: 400, container: 'viser-mount-1-1' },
-  });
-
-  Viser({
-    data: GDP_JSON,
-    tooltip: true,
-    axis: true,
-    series: [{ quickType: 'line', color: '#0088fe', position: 'year*gdp' }],
-    chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
-  });
-  Viser({
-    data: GDP_JSON,
-    tooltip: { showTitle: false },
-    axis: true,
-    series: [{
-      quickType: 'pie',
-      position: 'gdp',
-      style: {
-        lineWidth: 1,
-        stroke: '#fff',
-        fill: '#0088fe',
-      },
-      tooltip: 'year*gdp'
-    }],
-    chart: { width: 380, height: 280, container: 'viser-mount-2-2' },
-  });
-  Viser({
-    data: GDP_JSON,
-    tooltip: true,
-    axis: true,
-    series: [{ quickType: 'area', color: '#0088fe', position: 'year*gdp' }],
-    chart: { width: 380, height: 230, container: 'viser-mount-2-3' },
-  });
-  Viser({
-    data: GDP_JSON,
-    tooltip: true,
-    axis: false,
-    series: [{
-      quickType: 'sector',
-      color: '#0088fe',
-      style: {
-        lineWidth: 1,
-        stroke: '#fff',
-        fill: '#0088fe',
-      },
-      position: 'year*gdp',
-    }],
-    chart: { width: 380, height: 310, container: 'viser-mount-2-4' },
-  });
-}
-
-window.onload = renderChart;
-
-/***/ }),
-
-/***/ 981:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 

@@ -1,26 +1,4 @@
 module.exports = {
-  box: {
-    enName: 'Box',
-    cnName: '箱型图',
-    examples: [
-      {
-        path: 'example1',
-        enName: 'Basic box',
-        cnName: '基础箱型图',
-      },
-      {
-        path: 'example2',
-        enName: 'Basic box(with abnormal value)',
-        cnName: '基础箱型图(有异常值)',
-      },
-      {
-        path: 'example3',
-        enName: 'Group box',
-        cnName: '分组箱型图',
-      },
-    ],
-    icon: 'leidatu'
-  },
   line: {
     cnName: '线性图',
     examples: [
@@ -270,6 +248,28 @@ module.exports = {
         path: 'example2',
         enName: 'Basic radar (line)',
         cnName: '基础雷达图（线）',
+      },
+    ],
+    icon: 'leidatu'
+  },
+  box: {
+    enName: 'Box',
+    cnName: '箱型图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic box',
+        cnName: '基础箱型图',
+      },
+      // {
+      //   path: 'example2',
+      //   enName: 'Basic box(with abnormal value)',
+      //   cnName: '基础箱型图(有异常值)',
+      // },
+      {
+        path: 'example3',
+        enName: 'Group box',
+        cnName: '分组箱型图',
       },
     ],
     icon: 'leidatu'

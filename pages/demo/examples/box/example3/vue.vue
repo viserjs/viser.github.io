@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
+    <v-chart :forceFit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
       <v-tooltip :crosshairs="tooltipOpts.crosshairs"/>
       <v-axis />
       <v-legend :marker="'circle'" />
-      <v-box :position="'type*_bin'" :adjust="'dodge'" :style="seriesStyle" :color="seriesColor" />
+      <v-box :position="'type*_bin'" :adjust="'dodge'" :vStyle="seriesStyle" :color="seriesColor" />
     </v-chart>
   </div>
 </template>
@@ -53,7 +53,7 @@ const seriesColor = ['Species', val => {
 const seriesStyle = ['Species', {
   stroke: '#545454',
   fill: val => {
-    return 'red';
+    return colorMap[val];
   },
   fillOpacity: 0.3
 }];
