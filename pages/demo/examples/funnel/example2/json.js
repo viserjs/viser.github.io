@@ -1,7 +1,7 @@
 import viser from 'viser';
 import { data, dataPre, scale } from './data';
 
-console.log(viser({
+viser({
   data,
   dataPre,
   scale,
@@ -46,4 +46,4 @@ console.log(viser({
     forceFit: true,
     height: 400,
   },
-}));
+});

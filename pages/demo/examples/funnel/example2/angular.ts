@@ -49,13 +49,11 @@ const funnelOpts = {
       stroke: 'rgba(0, 0, 0, 0.15)'
     }
   }],
-  tooltip: ['action*pv*percent', (action, pv, percent) => {
-    return {
-      name: action,
-      percent: parseInt((String)(percent * 100)) + '%',
-      pv: pv
-    };
-  }]
+  tooltip: ['action*pv*percent', (action, pv, percent) => ({
+    name: action,
+    percent: Math.floor(percent * 100) + '%',
+    pv: pv,
+  })]
 };
 
 @Component({
