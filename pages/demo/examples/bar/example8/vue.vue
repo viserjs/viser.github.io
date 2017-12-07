@@ -16,7 +16,8 @@
     transform: {
       type: 'bin.histogram',
       field: 'depth',
-      binWidth: 4,
+      binWidth: 1,
+      groupBy: ['cut'],
       as: ['depth', 'count'],
     },
   };
