@@ -15,23 +15,22 @@ const data = [
   { action: '放入购物车', pv: 35000 },
   { action: '生成订单', pv: 25000 },
   { action: '支付订单', pv: 15000 },
-  { action: '完成交易', pv: 8000 }
+  { action: '完成交易', pv: 8000 },
 ];
 
 const dataPre = {
-  transform: [{
+  transform: {
     type: 'percent',
     field: 'pv',
     dimension: 'action',
-    as: 'percent'
-  }]
+    as: 'percent',
+  },
 };
 
-const scale = [{
+const scale = {
   dataKey: 'percent',
   nice: false,
-}];
-
+};
 
 const tooltipOpts = {
   showTitle: false,

@@ -4,6 +4,7 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+
 const data = [
   { action: '浏览网站', pv: 50000 },
   { action: '放入购物车', pv: 35000 },
@@ -25,7 +26,6 @@ const scale = [{
   dataKey: 'percent',
   nice: false,
 }];
-
 
 const tooltipOpts = {
   showTitle: false,

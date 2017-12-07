@@ -7,31 +7,24 @@ const data = [
   { action: '放入购物车', pv: 35000 },
   { action: '生成订单', pv: 25000 },
   { action: '支付订单', pv: 15000 },
-  { action: '完成交易', pv: 8000 }
+  { action: '完成交易', pv: 8000 },
 ];
 
 const dataPre = {
-  transform: [{
+  transform: {
     type: 'percent',
     field: 'pv',
     dimension: 'action',
-    as: 'percent'
-  }]
+    as: 'percent',
+  },
 };
 
-const scale = [{
+const scale = {
   dataKey: 'percent',
   nice: false,
-}];
-
+};
 
 class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-
   render() {
     const tooltipOpts = {
       showTitle: false,
@@ -63,10 +56,10 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
-          <Tooltip {...tooltipOpts}/>
+          <Tooltip {...tooltipOpts} />
           <Legend />
           <Coord type='rect' direction='LT' />
-          <Pyramid {...funnelOpts}/>
+          <Pyramid {...funnelOpts} />
         </Chart>
       </div>
     );

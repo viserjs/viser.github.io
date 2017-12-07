@@ -9,27 +9,22 @@ const expectData = [
   {value: 40, name: '咨询'},
   {value: 30, name: '订单'}
 ];
+
 const actualData = [
   {value: 80, name: '展现'},
   {value: 50, name: '点击'},
   {value: 30, name: '访问'},
   {value: 10, name: '咨询'},
-  {value: 5, name: '订单'}
+  {value: 5, name: '订单'},
 ];
 
-
 class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-
   render() {
     const tooltipOpts = {
       showTitle: false,
       itemTpl: '<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
     };
+
     const pyramidOpts = {
       position: 'name*value',
       color: ['name', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ]],
@@ -48,6 +43,7 @@ class App extends React.Component {
       }],
       opacity: 0.65,
     };
+
     const pyramidOpts1 = {
       quickType: 'pyramid',
       position: 'name*value',
@@ -55,25 +51,26 @@ class App extends React.Component {
       tooltip: ['name*value', (name, value) => {
         return {
           name: '实际' + name,
-          value
+          value,
         };
       }],
       style: {
         lineWidth: 1,
-        stroke: '#fff'
+        stroke: '#fff',
       },
       opacity: 1,
     };
+
     return (
       <div>
         <Chart forceFit height={400} data={expectData}>
-          <Tooltip {...tooltipOpts}/>
+          <Tooltip {...tooltipOpts} />
           <Coord type='rect' direction='LT' />
-          <Pyramid {...pyramidOpts}/>
+          <Pyramid {...pyramidOpts} />
           <View viewId="1" data={actualData}>
-            <Tooltip/>
+            <Tooltip />
             <Coord type='rect' direction='LT' />
-            <Pyramid {...pyramidOpts1}/>
+            <Pyramid {...pyramidOpts1} />
           </View>
         </Chart>
       </div>
