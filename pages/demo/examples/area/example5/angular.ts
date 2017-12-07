@@ -93,12 +93,14 @@ const pointStyle = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="averages" [scale]="scale">
-      <v-tooltip></v-tooltip>
-      <v-axis></v-axis>
-      <v-line position="time*temperature" size="2"></v-line>
-      <v-point position="time*temperature" size="4" [style]="pointStyle"></v-point>
-      <v-view [data]="data">
+    <v-chart [forceFit]="forceFit" [height]="height">
+      <v-view [data]="averages" [scale]="scale">
+        <v-tooltip></v-tooltip>
+        <v-axis></v-axis>
+        <v-line position="time*temperature" size="2"></v-line>
+        <v-point position="time*temperature" size="4" [style]="pointStyle"></v-point>
+      </v-view>
+      <v-view [data]="data" [scale]="scale">
         <v-area position="time*temperature"></v-area>
       </v-view>
     </v-chart>
