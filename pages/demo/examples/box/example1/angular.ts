@@ -49,7 +49,7 @@ const tooltipOpts = {
 const boxStyle = {
   stroke: '#545454',
   fill: '#1890FF',
-  fillOpacity: 0.3
+  fillOpacity: 0.3,
 };
 const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) => {
   return {
@@ -66,11 +66,11 @@ const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) =>
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip [showTitle]="tooltipOpts.showTitle" [crosshairs]="tooltipOpts.crosshairs" [itemTpl]="tooltipOpts.itemTpl"></Tooltip>
-      <Axis></Axis>
-      <Box position="x*range" [style]="boxStyle" [tooltip]="boxTooltip"></Box>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip [showTitle]="tooltipOpts.showTitle" [crosshairs]="tooltipOpts.crosshairs" [itemTpl]="tooltipOpts.itemTpl"></v-tooltip>
+      <v-axis></v-axis>
+      <v-box position="x*range" [style]="boxStyle" [tooltip]="boxTooltip"></v-box>
+    </v-chart>
   </div>
   `
 })
@@ -101,4 +101,3 @@ class AppComponent {
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-

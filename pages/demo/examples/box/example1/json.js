@@ -1,8 +1,8 @@
-const allData = require('./data');
-const { data, dataPre, scale } = allData;
+import viser from 'viser';
+import { data, dataPre, scale } from './data'
 
-export const config = {
-  data,
+viser({
+  data: data,
   dataPre,
   scale: scale,
   axis: true,
@@ -46,4 +46,4 @@ export const config = {
     forceFit: true,
     height: 400,
   },
-};
+});

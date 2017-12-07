@@ -28,11 +28,14 @@ const scale = [{
   max: 35,
 }];
 
+
 class App extends React.Component {
 
   constructor(props) {
     super(props);
   }
+
+
   render() {
     const tooltipOpts = {
       showTitle: false,

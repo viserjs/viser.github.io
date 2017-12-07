@@ -23,4 +23,3 @@ export const scale = [{
   dataKey: 'range',
   max: 35,
 }];
-
