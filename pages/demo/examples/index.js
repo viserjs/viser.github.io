@@ -30,38 +30,6 @@ module.exports = {
     ],
     icon: 'xianxingtu'
   },
-  area: {
-    enName: 'Area',
-    cnName: '面积图',
-    examples: [
-      {
-        path: 'example1',
-        enName: 'Basic area',
-        cnName: '基础面积图',
-      },
-      {
-        path: 'example2',
-        enName: 'Basic area (with negative value)',
-        cnName: '基础面积图',
-      },
-      {
-        path: 'example3',
-        enName: 'Stack area',
-        cnName: '堆叠面积图',
-      },
-      {
-        path: 'example4',
-        enName: 'Percentage stack area',
-        cnName: '百分比堆叠面积图',
-      },
-      {
-        path: 'example5',
-        enName: 'Range area',
-        cnName: '区间面积图',
-      },
-    ],
-    icon: 'mianjitu'
-  },
   bar: {
     enName: 'Bar',
     cnName: '柱状图',
@@ -129,6 +97,146 @@ module.exports = {
     ],
     icon: 'zhuzhuangtu'
   },
+  pie: {
+    enName: 'Pie',
+    cnName: '饼图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic Pie',
+        cnName: '基础饼图',
+      },
+      {
+        path: 'example2',
+        enName: 'Inner Label Pie',
+        cnName: '饼图 - 内部文本',
+      },
+      {
+        path: 'example3',
+        enName: 'Basic Donut',
+        cnName: '基础环图',
+      },
+      {
+        path: 'example4',
+        enName: 'Multi Level Pie',
+        cnName: '多层饼图',
+      },
+      {
+        path: 'example5',
+        enName: 'Basic Rose',
+        cnName: '单色南丁格尔玫瑰图',
+      },
+      {
+        path: 'example6',
+        enName: 'Color Rose',
+        cnName: '多色南丁格尔玫瑰图',
+      },
+      {
+        path: 'example7',
+        enName: 'Donut Rose',
+        cnName: '南丁格尔玫瑰环图',
+      },
+    ],
+    icon: 'bingtu'
+  },
+  area: {
+    enName: 'Area',
+    cnName: '面积图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic area',
+        cnName: '基础面积图',
+      },
+      {
+        path: 'example2',
+        enName: 'Basic area (with negative value)',
+        cnName: '基础面积图',
+      },
+      {
+        path: 'example3',
+        enName: 'Stack area',
+        cnName: '堆叠面积图',
+      },
+      {
+        path: 'example4',
+        enName: 'Percentage stack area',
+        cnName: '百分比堆叠面积图',
+      },
+      {
+        path: 'example5',
+        enName: 'Range area',
+        cnName: '区间面积图',
+      },
+    ],
+    icon: 'mianjitu'
+  },
+  box: {
+    enName: 'Box',
+    cnName: '箱型图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic box',
+        cnName: '基础箱型图',
+      },
+      {
+        path: 'example2',
+        enName: 'Basic box(with abnormal value)',
+        cnName: '基础箱型图(有异常值)',
+      },
+      {
+        path: 'example3',
+        enName: 'Group box',
+        cnName: '分组箱型图',
+      },
+    ],
+    icon: 'leidatu'
+  },
+  // radial: {
+  //   cnName: '玉珏图',
+  //   examples: ['example1'],
+  //   icon: 'jizuobiao'
+  // },
+  // scatter: {
+  //   cnName: '散点图',
+  //   examples: ['example1'],
+  //   icon: 'diantu'
+  // },
+  radar: {
+    enName: 'Radar',
+    cnName: '雷达图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic radar',
+        cnName: '基础雷达图',
+      },
+      {
+        path: 'example2',
+        enName: 'Basic radar (line)',
+        cnName: '基础雷达图（线）',
+      },
+    ],
+    icon: 'leidatu'
+  },
+  funnel: {
+    enName: 'Funnel',
+    cnName: '漏斗',
+    examples: [
+      {
+        path: 'example2',
+        enName: 'Sharp funnel',
+        cnName: '尖底漏斗图',
+      },
+      {
+        path: 'example3',
+        enName: 'Compare funnel',
+        cnName: '对比漏斗图',
+      },
+    ],
+    icon: 'loudoutu'
+  },
   facet: {
     enName: 'Facet',
     cnName: '分面图',
@@ -175,102 +283,6 @@ module.exports = {
       },
     ],
     icon: 'fenmian'
-  },
-  pie: {
-    enName: 'Pie',
-    cnName: '饼图',
-    examples: [
-      {
-        path: 'example1',
-        enName: 'Basic Pie',
-        cnName: '基础饼图',
-      },
-      {
-        path: 'example2',
-        enName: 'Inner Label Pie',
-        cnName: '饼图 - 内部文本',
-      },
-      {
-        path: 'example3',
-        enName: 'Basic Donut',
-        cnName: '基础环图',
-      },
-      {
-        path: 'example4',
-        enName: 'Multi Level Pie',
-        cnName: '多层饼图',
-      },
-      {
-        path: 'example5',
-        enName: 'Basic Rose',
-        cnName: '单色南丁格尔玫瑰图',
-      },
-      {
-        path: 'example6',
-        enName: 'Color Rose',
-        cnName: '多色南丁格尔玫瑰图',
-      },
-      {
-        path: 'example7',
-        enName: 'Donut Rose',
-        cnName: '南丁格尔玫瑰环图',
-      },
-    ],
-    icon: 'bingtu'
-  },
-  // radial: {
-  //   cnName: '玉珏图',
-  //   examples: ['example1'],
-  //   icon: 'jizuobiao'
-  // },
-  // scatter: {
-  //   cnName: '散点图',
-  //   examples: ['example1'],
-  //   icon: 'diantu'
-  // },
-  // funnel: {
-  //   cnName: '漏斗图',
-  //   examples: ['example1'],
-  //   icon: 'loudoutu'
-  // },
-  radar: {
-    enName: 'Radar',
-    cnName: '雷达图',
-    examples: [
-      {
-        path: 'example1',
-        enName: 'Basic radar',
-        cnName: '基础雷达图',
-      },
-      {
-        path: 'example2',
-        enName: 'Basic radar (line)',
-        cnName: '基础雷达图（线）',
-      },
-    ],
-    icon: 'leidatu'
-  },
-  box: {
-    enName: 'Box',
-    cnName: '箱型图',
-    examples: [
-      {
-        path: 'example1',
-        enName: 'Basic box',
-        cnName: '基础箱型图',
-      },
-      // {
-      //   path: 'example2',
-      //   enName: 'Basic box(with abnormal value)',
-      //   cnName: '基础箱型图(有异常值)',
-      // },
-      {
-        path: 'example3',
-        enName: 'Group box',
-        cnName: '分组箱型图',
-      },
-    ],
-    icon: 'leidatu'
   },
   // sankey: {
   //   cnName: '桑基图',

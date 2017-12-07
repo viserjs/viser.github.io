@@ -78,8 +78,8 @@ const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) =>
         <v-axis></v-axis>
         <v-box position="x*range" [style]="boxStyle" [tooltip]="boxTooltip"></v-box>
       </v-view>
-      <v-view viewId="4" [data]="data" [scale]="scale">
-        <v-point [position]="'x*range'" [size]="3" [active]="false"></v-point>
+      <v-view viewId="4" [data]="data" [dataPre]="dataPre" [scale]="scale">
+        <v-point [position]="'x*outliers'" [size]="3" [active]="false"></v-point>
       </v-view>
     </v-chart>
   </div>

@@ -45,6 +45,7 @@ viser({
     viewId: 4,
     axis: false,
     tooltip: false,
+    scale: scale,
     series: [{
       quickType: 'point',
       position: 'x*outliers',
