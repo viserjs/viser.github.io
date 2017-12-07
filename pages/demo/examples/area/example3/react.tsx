@@ -46,7 +46,7 @@ class App extends React.Component {
         <Tooltip />
         <Axis dataKey="value" />
         <Legend />
-        <Line position="year*value" size="2" color="country" adjust="stack" />
+        <Line position="year*value" size={2} color="country" adjust="stack" />
         <StackArea position="year*value" color="country" />
       </Chart>
     );

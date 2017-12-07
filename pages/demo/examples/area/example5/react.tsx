@@ -92,8 +92,8 @@ class App extends React.Component {
       <Chart forceFit height={400} data={averages} scale={scale}>
         <Tooltip />
         <Axis />
-        <Line position="time*temperature" size="2" />
-        <Point position="time*temperature" size="4" style={pointStyle} />
+        <Line position="time*temperature" size={2} />
+        <Point position="time*temperature" size={4} style={pointStyle} />
         <View data={data}>
           <Area position="time*temperature" />
         </View>

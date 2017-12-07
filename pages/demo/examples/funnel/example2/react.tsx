@@ -58,7 +58,7 @@ class App extends React.Component {
       tooltip: ['action*pv*percent', (action, pv, percent) => {
         return {
           name: action,
-          percent: parseInt(percent * 100) + '%',
+          percent: parseInt((String)(percent * 100)) + '%',
           pv: pv
         };
       }]

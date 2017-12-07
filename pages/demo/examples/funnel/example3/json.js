@@ -1,4 +1,4 @@
-import viser from '../../../packages/viser/src/index';
+import viser from 'viser';
 
 const expectData = [
   {value: 100, name: '展现'},

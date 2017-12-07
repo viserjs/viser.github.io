@@ -1,4 +1,4 @@
-import viser from '../../../packages/viser/src/index';
+import viser from 'viser';
 import { data, dataPre, scale } from './data';
 
 console.log(viser({
