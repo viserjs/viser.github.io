@@ -71,7 +71,7 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
-          <Tooltip {...tooltipOpts}/>
+          <Tooltip {...tooltipOpts} />
           <Axis />
           <Box position='x*range' style={boxStyle} tooltip={boxTooltip}/>
           <View viewId="4" data={data} dataPre={dataPre} scale={scale}>

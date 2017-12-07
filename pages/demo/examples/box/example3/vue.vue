@@ -15,41 +15,43 @@ const data = [{"SepalLength":5.1,"SepalWidth":3.5,"PetalLength":1.4,"PetalWidth"
 const dataPre = {
   transform: [{
       type: 'fold',
-      fields: [ 'SepalLength','SepalWidth','PetalLength','PetalWidth' ], // 展开字段集
+      fields: ['SepalLength','SepalWidth','PetalLength','PetalWidth'],
       key: 'type',
       value: 'value'
   }, {
       type: 'bin.quantile',
-      field: 'value',    // 计算分为值的字段
-      as: '_bin',    // 保存分为值的数组字段
-      groupBy: [ 'Species', 'type' ],
+      field: 'value',
+      as: '_bin',
+      groupBy: ['Species', 'type'],
   }]
 };
 
 const scale = [{
   dataKey: 'range',
   min: 0,
-  max: 240000
+  max: 240000,
 }, {
   dataKey: 'outliers',
   min: 0,
-  max: 240000
+  max: 240000,
 }];
 
 const colorMap = {
   'I. setosa': 'red',
   'I. versicolor': 'blue',
   'I. virginica': 'green'
-}
+};
 
 const tooltipOpts = {
   crosshairs: {
-    type: 'rect'
-  }
+    type: 'rect',
+  },
 };
+
 const seriesColor = ['Species', val => {
   return colorMap[val];
 }];
+
 const seriesStyle = ['Species', {
   stroke: '#545454',
   fill: val => {

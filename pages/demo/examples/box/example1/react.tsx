@@ -28,13 +28,10 @@ const scale = [{
   max: 35,
 }];
 
-
 class App extends React.Component {
-
   constructor(props) {
     super(props);
   }
-
 
   render() {
     const tooltipOpts = {
@@ -70,9 +67,9 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
-          <Tooltip {...tooltipOpts}/>
+          <Tooltip {...tooltipOpts} />
           <Axis />
-          <Box position='x*range' style={boxStyle} tooltip={boxTooltip}/>
+          <Box position='x*range' style={boxStyle} tooltip={boxTooltip} />
         </Chart>
       </div>
     );

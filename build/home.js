@@ -60,15 +60,15 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1017);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1025);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1017:
+/***/ 1025:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1018);
+__webpack_require__(1026);
 const Viser = __webpack_require__(19).default;
 
 const GDP_JSON = [
@@ -145,7 +145,7 @@ window.onload = renderChart;
 
 /***/ }),
 
-/***/ 1018:
+/***/ 1026:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

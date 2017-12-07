@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-chart :forceFit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
-      <v-tooltip :showTitle="tooltipOpts.showTitle" :crosshairs="tooltipOpts.crosshairs" :itemTpl="tooltipOpts.itemTpl"/>
+      <v-tooltip :showTitle="tooltipOpts.showTitle" :crosshairs="tooltipOpts.crosshairs" :itemTpl="tooltipOpts.itemTpl" />
       <v-axis />
       <v-box :position="'x*range'" :vStyle="boxStyle" :tooltip="boxTooltip" />
     </v-chart>
