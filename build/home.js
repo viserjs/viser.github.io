@@ -60,16 +60,16 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1043);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1041);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1043:
+/***/ 1041:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1044);
-const Viser = __webpack_require__(15).default;
+__webpack_require__(1042);
+const Viser = __webpack_require__(17).default;
 
 const GDP_JSON = [
   { "year": '2006', "gdp": 21.94385 },
@@ -145,7 +145,7 @@ window.onload = renderChart;
 
 /***/ }),
 
-/***/ 1044:
+/***/ 1042:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -17245,7 +17245,7 @@ window.onload = renderChart;
 
 /***/ }),
 
-/***/ 15:
+/***/ 17:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
