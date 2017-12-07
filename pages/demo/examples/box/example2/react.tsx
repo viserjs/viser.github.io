@@ -73,9 +73,9 @@ class App extends React.Component {
         <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
           <Tooltip {...tooltipOpts} />
           <Axis />
-          <Box position='x*range' style={boxStyle} tooltip={boxTooltip}/>
+          <Box position="x*range" style={boxStyle} tooltip={boxTooltip}/>
           <View viewId="4" data={data} dataPre={dataPre} scale={scale}>
-            <Point position='x*outliers' size="3" active="false"></Point>
+            <Point position="x*outliers" size="3" active={false}></Point>
           </View>
         </Chart>
       </div>
