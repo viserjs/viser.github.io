@@ -1,20 +1,18 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-
 const data = [
-    { x: 'Oceania', low: 1, q1: 9, median: 16, q3: 22, high: 24 },
-    { x: 'East Europe', low: 1, q1: 5, median: 8, q3: 12, high: 16 },
-    { x: 'Australia', low: 1, q1: 8, median: 12, q3: 19, high: 26 },
-    { x: 'South America', low: 2, q1: 8, median: 12, q3: 21, high: 28 },
-    { x: 'North Africa', low: 1, q1: 8, median: 14, q3: 18, high: 24 },
-    { x: 'North America', low: 3, q1: 10, median: 17, q3: 28, high: 30 },
-    { x: 'West Europe', low: 1, q1: 7, median: 10, q3: 17, high: 22 },
-    { x: 'West Africa', low: 1, q1: 6, median: 8, q3: 13, high: 16 }
+    { x: '职业 A', low: 20000, q1: 26000, median: 27000, q3: 32000, high: 38000, outliers: [50000, 52000] },
+    { x: '职业 B', low: 40000, q1: 49000, median: 62000, q3: 73000, high: 88000, outliers: [32000, 29000, 106000] },
+    { x: '职业 C', low: 52000, q1: 59000, median: 65000, q3: 74000, high: 83000, outliers: [91000] },
+    { x: '职业 D', low: 58000, q1: 96000, median: 130000, q3: 170000, high: 200000, outliers: [42000, 210000, 215000] },
+    { x: '职业 E', low: 24000, q1: 28000, median: 32000, q3: 38000, high: 42000, outliers: [48000] },
+    { x: '职业 F', low: 47000, q1: 56000, median: 69000, q3: 85000, high: 100000, outliers: [110000, 115000, 32000] },
+    { x: '职业 G', low: 64000, q1: 74000, median: 83000, q3: 93000, high: 100000, outliers: [110000] },
+    { x: '职业 H', low: 67000, q1: 72000, median: 84000, q3: 95000, high: 110000, outliers: [57000, 54000] }
 ];
 
 const dataPre = {
@@ -29,7 +27,12 @@ const dataPre = {
 
 const scale = [{
   dataKey: 'range',
-  max: 35,
+  min: 0,
+  max: 240000
+}, {
+  dataKey: 'outliers',
+  min: 0,
+  max: 240000
 }];
 
 const tooltipOpts = {
@@ -47,11 +50,13 @@ const tooltipOpts = {
       + '<span style="padding-left: 16px">最小值：{low}</span><br/>'
       + '</li>'
 };
+
 const boxStyle = {
   stroke: '#545454',
   fill: '#1890FF',
   fillOpacity: 0.3
 };
+
 const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) => {
   return {
     name: x,
@@ -65,15 +70,20 @@ const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) =>
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip [showTitle]="tooltipOpts.showTitle" [crosshairs]="tooltipOpts.crosshairs" [itemTpl]="tooltipOpts.itemTpl"></Tooltip>
-      <Axis></Axis>
-      <Box position="x*range" [style]="boxStyle" [tooltip]="boxTooltip"></Box>
+    <Chart [forceFit]="forceFit" [height]="height" >
+      <View viewId="1" [data]="data" [dataPre]="dataPre" [scale]="scale">
+        <Tooltip [showTitle]="tooltipOpts.showTitle" [crosshairs]="tooltipOpts.crosshairs" [itemTpl]="tooltipOpts.itemTpl"></Tooltip>
+        <Axis></Axis>
+        <Box position="x*range" [style]="boxStyle" [tooltip]="boxTooltip"></Box>
+      </View>
+      <View viewId="4" [data]="data" [scale]="scale">
+        <Point [position]="'x*range'" [size]="3" [active]="false"></Point>
+      </View>
     </Chart>
   </div>
-  \`
+  `
 })
 
 class AppComponent {
@@ -102,5 +112,3 @@ class AppComponent {
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-
-`;

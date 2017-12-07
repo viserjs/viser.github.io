@@ -1,10 +1,9 @@
-export const template =
-`<template>
+<template>
   <div>
     <v-chart :forceFit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
       <v-tooltip :showTitle="tooltipOpts.showTitle" :crosshairs="tooltipOpts.crosshairs" :itemTpl="tooltipOpts.itemTpl"/>
       <v-axis />
-      <v-box :position="'x*range'" :style="boxStyle" :tooltip="boxTooltip" />
+      <v-box :position="'x*range'" :vstyle="boxStyle" :tooltip="boxTooltip" />
     </v-chart>
   </div>
 </template>
@@ -82,4 +81,3 @@ export default {
   },
 };
 </script>
-`;

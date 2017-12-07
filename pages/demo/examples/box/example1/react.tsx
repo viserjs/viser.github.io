@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Tooltip, Axis, Box, LiteChart } from '../../../packages/viser-react/src/index';
+import { Chart, Tooltip, Axis, Box, LiteChart } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -78,4 +77,4 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('mount'));
-`;
+
