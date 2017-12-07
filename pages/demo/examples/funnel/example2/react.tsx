@@ -43,7 +43,6 @@ class App extends React.Component {
           + '</li>'
     };
     const funnelOpts = {
-      shape: 'pyramid',
       color: ['action', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ]],
       position: 'action*pv',
       label: ['action*pv', (action, pv) => {
@@ -55,13 +54,11 @@ class App extends React.Component {
           stroke: 'rgba(0, 0, 0, 0.15)'
         }
       }],
-      tooltip: ['action*pv*percent', (action, pv, percent) => {
-        return {
-          name: action,
-          percent: parseInt(percent * 100) + '%',
-          pv: pv
-        };
-      }]
+      tooltip: ['action*pv*percent', (action, pv, percent) => ({
+        name: action,
+        percent: Math.floor(percent * 100) + '%',
+        pv: pv,
+      })]
     };
     return (
       <div>
