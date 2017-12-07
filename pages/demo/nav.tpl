@@ -1,5 +1,5 @@
 {{#each menuList as |value key|}}
-  <div class="common-nav-folder">
+  <div class="common-nav-folder expandable {{expanded}}" data-folder="{{@key}}">
     <h3 class="common-nav-title">
       <i class="iconfont icon-{{icon}}"></i>
       {{@key}}

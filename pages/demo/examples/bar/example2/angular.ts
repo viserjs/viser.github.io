@@ -23,16 +23,15 @@ const dataPre = {
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Legend></Legend>
-      <Bar position="月份*月均降雨量" color="name" [adjust]="adjust"></Bar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-legend></v-legend>
+      <v-bar position="月份*月均降雨量" color="name" [adjust]="adjust"></v-bar>
+    </v-chart>
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;

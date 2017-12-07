@@ -25,11 +25,11 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip crosshairs="false" inPlot="false" position="top"></Tooltip>
-      <Axis></Axis>
-      <Bar position="depth*count"></Bar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip crosshairs="false" inPlot="false" position="top"></v-tooltip>
+      <v-axis></v-axis>
+      <v-bar position="depth*count"></v-bar>
+    </v-chart>
   </div>
   `
 })

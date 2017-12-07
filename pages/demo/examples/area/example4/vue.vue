@@ -33,7 +33,7 @@ export const template =
     {country: 'Europe', year: '1900', value: 408},
     {country: 'Europe', year: '1950', value: 547},
     {country: 'Europe', year: '1999', value: 729},
-    {country: 'Europe', year: '2050', value: 628}
+    {country: 'Europe', year: '2050', value: 628},
   ];
 
   const dataPre = {
@@ -41,15 +41,15 @@ export const template =
       type: 'percent',
       field: 'value',
       dimension: 'country',
-      groupBy: [ 'year' ],
-      as: 'percent'
-    }
+      groupBy: ['year'],
+      as: 'percent',
+    },
   };
 
   const scale = [{
     dataKey: 'year',
     type: 'linear',
-    tickInterval: 50
+    tickInterval: 50,
   }, {
     dataKey: 'percent',
     formatter: function(value) {
@@ -57,7 +57,7 @@ export const template =
       value = value * 100;
       return parseInt(value);
     },
-    alias: 'percent(%)'
+    alias: 'percent(%)',
   }];
 
   export default {

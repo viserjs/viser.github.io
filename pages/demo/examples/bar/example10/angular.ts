@@ -28,12 +28,12 @@ const label = { offset: 12 };
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
-      <Coord type="rect" direction="LB"></Coord>
-      <Tooltip></Tooltip>
-      <Axis dataKey="coutry" [label]="label"></Axis>
-      <Bar position="country*population"></Bar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+      <v-coord type="rect" direction="LB"></v-coord>
+      <v-tooltip></v-tooltip>
+      <v-axis dataKey="coutry" [label]="label"></v-axis>
+      <v-bar position="country*population"></v-bar>
+    </v-chart>
   </div>
   `
 })

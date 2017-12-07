@@ -7,8 +7,7 @@ const dataPre = {
   transform: {
     type: 'bin.histogram',
     field: 'depth',
-    binWidth: 1,
-    groupBy: ['cut'],
+    binWidth: 4,
     as: ['depth', 'count'],
   },
 };

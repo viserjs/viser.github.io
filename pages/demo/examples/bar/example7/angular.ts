@@ -46,11 +46,11 @@ const label = {
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
-      <Tooltip crosshairs="false" inPlot="false" position="top"></Tooltip>
-      <Axis dataKey="value" label="label"></Axis>
-      <Bar position="value*count"></Bar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+      <v-tooltip crosshairs="false" inPlot="false" position="top"></v-tooltip>
+      <v-axis dataKey="value" label="label"></v-axis>
+      <v-bar position="value*count"></v-bar>
+    </v-chart>
   </div>
   `
 })

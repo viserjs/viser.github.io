@@ -28,7 +28,7 @@ class App extends React.Component {
         <Legend />
         <Axis dataKey="value" position="right" />
         <Axis dataKey="label" label={{ offset: 12 }} />
-        <Bar position="label*value" adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]} />
+        <Bar position="label*value" color="type" adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]} />
       </Chart>
     );
   }

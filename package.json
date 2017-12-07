@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./run.js",
     "build": "webpack",
-    "publish": "npm run build && git add . && git commit -m 'publish viserjs.github.io' && git push origin master"
+    "publish": "npm run build || true && git add . && git commit -m 'publish viserjs.github.io' && git push origin master"
   },
   "pre-commit": [
     "tslint"

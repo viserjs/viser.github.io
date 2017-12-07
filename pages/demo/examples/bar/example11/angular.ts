@@ -29,14 +29,14 @@ const adjust = [{ type: 'dodge', marginRatio: 1 / 32 }];
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
-      <Coord type="rect" direction="LT"></Coord>
-      <Tooltip></Tooltip>
-      <Legend></Legend>
-      <Axis dataKey="coutry" position="right"></Axis>
-      <Axis dataKey="label" [label]="label"></Axis>
-      <Bar position="label*value" [adjust]="adjust"></Bar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+      <v-coord type="rect" direction="LT"></v-coord>
+      <v-tooltip></v-tooltip>
+      <v-legend></v-legend>
+      <v-axis dataKey="coutry" position="right"></v-axis>
+      <v-axis dataKey="label" [label]="label"></v-axis>
+      <v-bar position="label*value" color="type" [adjust]="adjust"></v-bar>
+    </v-chart>
   </div>
   `
 })

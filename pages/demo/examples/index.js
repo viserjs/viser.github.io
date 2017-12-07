@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         path: 'example3',
-        enName: 'Multi smooth ine',
+        enName: 'Multi smooth line',
         cnName: '曲线折线图',
       },
       {
@@ -63,7 +63,7 @@ module.exports = {
       },
       {
         path: 'example2',
-        enName: 'Basic area（with negative value）',
+        enName: 'Basic area (with negative value)',
         cnName: '基础面积图',
       },
       {
@@ -220,11 +220,28 @@ module.exports = {
     ],
     icon: 'bingtu'
   },
-  // rose: {
-  //   cnName: '玫瑰图',
-  //   examples: ['example1'],
-  //   icon: 'meiguitu'
-  // },
+  rose: {
+    enName: 'Rose',
+    cnName: '玫瑰图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic Rose',
+        cnName: '基础玫瑰图',
+      },
+      {
+        path: 'example2',
+        enName: 'Color Rose',
+        cnName: '多色玫瑰图',
+      },
+      {
+        path: 'example3',
+        enName: 'Donut Rose',
+        cnName: '环形玫瑰图',
+      },
+    ],
+    icon: 'meiguitu'
+  },
   // radial: {
   //   cnName: '玉珏图',
   //   examples: ['example1'],
@@ -251,8 +268,8 @@ module.exports = {
       },
       {
         path: 'example2',
-        enName: 'Basic radar(line)',
-        cnName: '基础雷达图(线)',
+        enName: 'Basic radar (line)',
+        cnName: '基础雷达图（线）',
       },
     ],
     icon: 'leidatu'

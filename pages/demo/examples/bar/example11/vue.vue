@@ -6,7 +6,7 @@
       <v-legend />
       <v-axis :data-key="'value'" :position="right" />
       <v-axis :data-key="'label'" :label="label" />
-      <v-bar :position="'label*value'" :adjust="adjust" />
+      <v-bar :position="'label*value'" :color="'type'" :adjust="adjust" />
     </v-chart>
   </div>
 </template>

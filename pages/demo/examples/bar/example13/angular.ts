@@ -27,13 +27,13 @@ const label = { offset: 12 };
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [padding]="padding" [height]="height" [data]="data" [dataPre]="dataPre">
-      <Coord type="rect" direction="LB"></Coord>
-      <Tooltip></Tooltip>
-      <Legend></Legend>
-      <Axis dataKey="profession" [label]="label"></Axis>
-      <Bar position="profession*range"></Bar>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [padding]="padding" [height]="height" [data]="data" [dataPre]="dataPre">
+      <v-coord type="rect" direction="LB"></v-coord>
+      <v-tooltip></v-tooltip>
+      <v-legend></v-legend>
+      <v-axis dataKey="profession" [label]="label"></v-axis>
+      <v-bar position="profession*range"></v-bar>
+    </v-chart>
   </div>
   `
 })

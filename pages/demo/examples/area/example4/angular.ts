@@ -26,7 +26,7 @@ const data = [
   {country: 'Europe', year: '1900', value: 408},
   {country: 'Europe', year: '1950', value: 547},
   {country: 'Europe', year: '1999', value: 729},
-  {country: 'Europe', year: '2050', value: 628}
+  {country: 'Europe', year: '2050', value: 628},
 ];
 
 const dataPre = {
@@ -34,15 +34,15 @@ const dataPre = {
     type: 'percent',
     field: 'value',
     dimension: 'country',
-    groupBy: [ 'year' ],
-    as: 'percent'
+    groupBy: ['year'],
+    as: 'percent',
   }
 };
 
 const scale = [{
   dataKey: 'year',
   type: 'linear',
-  tickInterval: 50
+  tickInterval: 50,
 }, {
   dataKey: 'percent',
   formatter: function(value) {
@@ -50,20 +50,20 @@ const scale = [{
     value = value * 100;
     return parseInt(value);
   },
-  alias: 'percent(%)'
+  alias: 'percent(%)',
 }];
 
 @Component({
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Legend></Legend>
-      <Line position="year*percent" size="2" color="country" adjust="stack"></Line>
-      <Area position="year*percent" color="country" />
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-legend></v-legend>
+      <v-line position="year*percent" size="2" color="country" adjust="stack"></v-line>
+      <v-stack-area position="year*percent" color="country"></v-stack-area>
+    </v-chart>
   </div>
   `
 })
@@ -71,6 +71,7 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
+  dataPre = dataPre;
   scale = scale;
 }
 

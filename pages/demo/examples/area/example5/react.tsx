@@ -85,7 +85,7 @@ class App extends React.Component {
     const pointStyle = {
       stroke: '#fff',
       lineWidth: 1,
-      fillOpacity: 1
+      fillOpacity: 1,
     };
 
     return (
@@ -94,7 +94,7 @@ class App extends React.Component {
         <Axis />
         <Line position="time*temperature" size="2" />
         <Point position="time*temperature" size="4" style={pointStyle} />
-        <View viewId="2" data={data}>
+        <View data={data}>
           <Area position="time*temperature" />
         </View>
       </Chart>

@@ -30,12 +30,12 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
-      <Tooltip></Tooltip>
-      <Axis></Axis>
-      <Line position="year*value"></Line>
-      <Point position="year*value"></Point>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
+      <v-tooltip></v-tooltip>
+      <v-axis></v-axis>
+      <v-line position="year*value"></v-line>
+      <v-point position="year*value"></v-point>
+    </v-chart>
   </div>
   `
 })
