@@ -250,6 +250,28 @@ module.exports = {
     ],
     icon: 'leidatu'
   },
+  box: {
+    enName: 'Box',
+    cnName: '箱型图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic box',
+        cnName: '基础箱型图',
+      },
+      // {
+      //   path: 'example2',
+      //   enName: 'Basic box(with abnormal value)',
+      //   cnName: '基础箱型图(有异常值)',
+      // },
+      {
+        path: 'example3',
+        enName: 'Group box',
+        cnName: '分组箱型图',
+      },
+    ],
+    icon: 'leidatu'
+  },
   // sankey: {
   //   cnName: '桑基图',
   //   examples: ['example1'],
