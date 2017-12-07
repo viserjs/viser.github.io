@@ -10,21 +10,21 @@ export const data = [
 ];
 
 export const dataPre = {
-  transform: {
-    type: 'map',
-    callback: (obj) => {
-      obj.range = [ obj.low, obj.q1, obj.median, obj.q3, obj.high ];
-      return obj;
-    }
+transform: {
+  type: 'map',
+  callback: (obj) => {
+    obj.range = [ obj.low, obj.q1, obj.median, obj.q3, obj.high ];
+    return obj;
   }
+}
 };
 
 export const scale = [{
-  dataKey: 'range',
-  min: 0,
-  max: 240000
-  }, {
-  dataKey: 'outliers',
-  min: 0,
-  max: 240000
+dataKey: 'range',
+min: 0,
+max: 240000
+}, {
+dataKey: 'outliers',
+min: 0,
+max: 240000
 }];

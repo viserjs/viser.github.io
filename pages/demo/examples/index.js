@@ -261,11 +261,11 @@ module.exports = {
         enName: 'Basic box',
         cnName: '基础箱型图',
       },
-      // {
-      //   path: 'example2',
-      //   enName: 'Basic box(with abnormal value)',
-      //   cnName: '基础箱型图(有异常值)',
-      // },
+      {
+        path: 'example2',
+        enName: 'Basic box(with abnormal value)',
+        cnName: '基础箱型图(有异常值)',
+      },
       {
         path: 'example3',
         enName: 'Group box',
