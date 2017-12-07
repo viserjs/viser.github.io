@@ -47,7 +47,7 @@ class App extends React.Component {
         <Tooltip crosshairs={{ type: 'line' }} />
         <Axis dataKey="value" />
         <Legend />
-        <Line position="year*value" size="2" color="type" />
+        <Line position="year*value" size={2} color="type" />
         <Area position="year*value" color="type" />
       </Chart>
     );
