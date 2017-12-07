@@ -6,32 +6,32 @@ const data = [{"SepalLength":5.1,"SepalWidth":3.5,"PetalLength":1.4,"PetalWidth"
 
 const dataPre = {
   transform: [{
-      type: 'fold',
-      fields: [ 'SepalLength','SepalWidth','PetalLength','PetalWidth' ], // 展开字段集
-      key: 'type',
-      value: 'value'
+    type: 'fold',
+    fields: ['SepalLength','SepalWidth','PetalLength','PetalWidth'],
+    key: 'type',
+    value: 'value'
   }, {
-      type: 'bin.quantile',
-      field: 'value',    // 计算分为值的字段
-      as: '_bin',    // 保存分为值的数组字段
-      groupBy: [ 'Species', 'type' ],
+    type: 'bin.quantile',
+    field: 'value',
+    as: '_bin',
+    groupBy: [ 'Species', 'type' ],
   }]
 };
 
 const scale = [{
   dataKey: 'range',
   min: 0,
-  max: 240000
+  max: 240000,
 }, {
   dataKey: 'outliers',
   min: 0,
-  max: 240000
+  max: 240000,
 }];
 
 const colorMap = {
   'I. setosa': 'red',
   'I. versicolor': 'blue',
-  'I. virginica': 'green'
+  'I. virginica': 'green',
 }
 
 class App extends React.Component {
@@ -41,8 +41,8 @@ class App extends React.Component {
   render() {
     const tooltipOpts = {
       crosshairs: {
-        type: 'rect'
-      }
+        type: 'rect',
+      },
     };
     const seriesColor = ['Species', val => {
       return colorMap[val];
@@ -54,13 +54,14 @@ class App extends React.Component {
       },
       fillOpacity: 0.3
     }];
+
     return (
       <div>
         <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
-          <Tooltip {...tooltipOpts}/>
+          <Tooltip {...tooltipOpts} />
           <Axis />
-          <Legend marker='circle'/>
-          <Box position='type*_bin' adjust='dodge' style={seriesStyle} color={seriesColor}/>
+          <Legend marker="circle" />
+          <Box position="type*_bin" adjust="dodge" style={seriesStyle} color={seriesColor} />
         </Chart>
       </div>
     );
