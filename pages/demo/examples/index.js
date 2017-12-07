@@ -188,37 +188,35 @@ module.exports = {
       {
         path: 'example2',
         enName: 'Inner Label Pie',
-        cnName: '内部文本饼图',
+        cnName: '饼图 - 内部文本',
       },
       {
         path: 'example3',
         enName: 'Basic Donut',
         cnName: '基础环图',
       },
+      {
+        path: 'example4',
+        enName: 'Multi Level Pie',
+        cnName: '多层饼图',
+      },
+      {
+        path: 'example5',
+        enName: 'Basic Rose',
+        cnName: '单色南丁格尔玫瑰图',
+      },
+      {
+        path: 'example6',
+        enName: 'Color Rose',
+        cnName: '多色南丁格尔玫瑰图',
+      },
+      {
+        path: 'example7',
+        enName: 'Donut Rose',
+        cnName: '南丁格尔玫瑰环图',
+      },
     ],
     icon: 'bingtu'
-  },
-  rose: {
-    enName: 'Rose',
-    cnName: '玫瑰图',
-    examples: [
-      {
-        path: 'example1',
-        enName: 'Basic Rose',
-        cnName: '基础玫瑰图',
-      },
-      {
-        path: 'example2',
-        enName: 'Color Rose',
-        cnName: '多色玫瑰图',
-      },
-      {
-        path: 'example3',
-        enName: 'Donut Rose',
-        cnName: '环形玫瑰图',
-      },
-    ],
-    icon: 'meiguitu'
   },
   // radial: {
   //   cnName: '玉珏图',
