@@ -1,5 +1,4 @@
-export const template =
-`import { Chart, Tooltip, Legend, Polygon } from 'viser-react';
+import { Chart, Tooltip, Legend, Polygon } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -46,23 +45,18 @@ const scale = [{
   nice: false,
 }];
 
-const itemTpl = \`<li data-index={index}>
+const itemTpl = `<li data-index={index}>
   <span style="background-color:{color};" class="g2-tooltip-marker"></span>
   {name}<br/>
   <span style="padding-left: 16px">浏览人数：{count}</span><br/>
-</li>\`;
+</li>`;
 
 const style = {
   lineWidth: 1,
   stroke: '#fff',
 };
 
-const tooltip = ['name', (name, count) => {
-  return {
-    name,
-    count,
-  };
-}]; 
+const tooltip = ['name', (name, count) => ({ name, count })];
 
 const label = ['name', {
   offset: 0,
@@ -81,7 +75,6 @@ class App extends React.Component {
     return (
       <Chart forceFit={true} height={600} data={data} dataView="treeNodes" dataPre={dataPre} scale={scale}>
         <Tooltip showTitle={false} itemTpl={itemTpl} />
-        <Legend />
         <Polygon position="x*y" color="name" tooltip={tooltip} style={style} label={label} />
       </Chart>
     );
@@ -92,5 +85,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('mount')
 );
-`;
-

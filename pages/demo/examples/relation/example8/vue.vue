@@ -1,10 +1,8 @@
-export const template = `
 <template>
   <div>
-    <v-chart :force-fit="true" :height="600" :data="data" :data-view="'treeNodes'" :data-pre:"dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="600" :data="data" :data-view="'treeNodes'" :data-pre="dataPre" :scale="scale">
       <v-tooltip :show-title="false" :item-tpl="itemTpl" />
-      <v-legend />
-      <v-polygon :position="x*y" :color="name" :tooltip="tooltip" :style="style" :label="label" />
+      <v-polygon :position="'x*y'" :color="'name'" :tooltip="tooltip" :v-style="style" :label="label" />
     </v-chart>
   </div>
 </template>
@@ -32,7 +30,7 @@ export const template = `
       { name: '分类 17', value: 40 },
       { name: '分类 18', value: 30 },
       { name: '分类 19', value: 28 },
-      { name: '分类 20', value: 16 }
+      { name: '分类 20', value: 16 },
     ]
   };
 
@@ -53,23 +51,18 @@ export const template = `
     nice: false,
   }];
 
-  const itemTpl = '<li data-index={index}>'
-        + '<span style="background-color:{color};" class="g2-tooltip-marker"></span>'
-        + '{name}<br/>'
-        + '<span style="padding-left: 16px">浏览人数：{count}</span><br/>'
-        + '</li>';
+const itemTpl = `<li data-index={index}>
+  <span style="background-color:{color};" class="g2-tooltip-marker"></span>
+  {name}<br/>
+  <span style="padding-left: 16px">浏览人数：{count}</span><br/>
+</li>`;
 
   const style = {
     lineWidth: 1,
     stroke: '#fff',
   };
 
-  const tooltip = ['name', (name, count) => {
-    return {
-      name,
-      count,
-    };
-  }]; 
+  const tooltip = ['name', (name, count) => ({ name, count })];
 
   const label = ['name', {
     offset: 0,
@@ -80,7 +73,7 @@ export const template = `
       if (val !== 'root') {
         return val;
       }
-    }
+    },
   }];
 
   export default {
@@ -97,4 +90,3 @@ export const template = `
     },
   };
 </script>
-`;

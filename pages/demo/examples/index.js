@@ -145,27 +145,27 @@ module.exports = {
     examples: [
       {
         path: 'example1',
-        enName: 'Basic area',
+        enName: 'Basic Area',
         cnName: '基础面积图',
       },
       {
         path: 'example2',
-        enName: 'Basic area (with negative value)',
+        enName: 'Basic Area (with negative value)',
         cnName: '基础面积图',
       },
       {
         path: 'example3',
-        enName: 'Stack area',
+        enName: 'Stack Area',
         cnName: '堆叠面积图',
       },
       {
         path: 'example4',
-        enName: 'Percentage stack area',
+        enName: 'Percentage Stack Area',
         cnName: '百分比堆叠面积图',
       },
       {
         path: 'example5',
-        enName: 'Range area',
+        enName: 'Range Area',
         cnName: '区间面积图',
       },
     ],
@@ -177,17 +177,17 @@ module.exports = {
     examples: [
       {
         path: 'example1',
-        enName: 'Basic box',
+        enName: 'Basic Box',
         cnName: '基础箱型图',
       },
       {
         path: 'example2',
-        enName: 'Basic box(with abnormal value)',
-        cnName: '基础箱型图(有异常值)',
+        enName: 'Basic Box (with abnormal value)',
+        cnName: '基础箱型图（有异常值）',
       },
       {
         path: 'example3',
-        enName: 'Group box',
+        enName: 'Group Box',
         cnName: '分组箱型图',
       },
     ],
@@ -209,12 +209,12 @@ module.exports = {
     examples: [
       {
         path: 'example1',
-        enName: 'Basic radar',
+        enName: 'Basic Radar',
         cnName: '基础雷达图',
       },
       {
         path: 'example2',
-        enName: 'Basic radar (line)',
+        enName: 'Basic Radar (line)',
         cnName: '基础雷达图（线）',
       },
     ],
@@ -226,12 +226,12 @@ module.exports = {
     examples: [
       {
         path: 'example2',
-        enName: 'Sharp funnel',
+        enName: 'Sharp Funnel',
         cnName: '尖底漏斗图',
       },
       {
         path: 'example3',
-        enName: 'Compare funnel',
+        enName: 'Compare Funnel',
         cnName: '对比漏斗图',
       },
     ],
@@ -243,42 +243,42 @@ module.exports = {
     examples: [
       {
         path: 'example1',
-        enName: 'Rect facet',
+        enName: 'Rect Facet',
         cnName: '2 维行列分面',
       },
       {
         path: 'example2',
-        enName: 'Circle facet',
+        enName: 'Circle Facet',
         cnName: '圆形分面图',
       },
       {
         path: 'example3',
-        enName: 'Row facet',
+        enName: 'Row Facet',
         cnName: '行分面',
       },
       {
         path: 'example4',
-        enName: 'Column facet',
+        enName: 'Column Facet',
         cnName: '列分面',
       },
       {
         path: 'example5',
-        enName: 'List facet',
+        enName: 'List Facet',
         cnName: 'List 分面',
       },
       {
         path: 'example6',
-        enName: 'Tree facet',
+        enName: 'Tree Facet',
         cnName: 'Tree 分面',
       },
       {
         path: 'example7',
-        enName: 'Tree column facet',
+        enName: 'Tree Column Facet',
         cnName: '多级 Tree 分面',
       },
       {
         path: 'example8',
-        enName: 'Mirror facet',
+        enName: 'Mirror Facet',
         cnName: '镜像分面',
       },
     ],
@@ -289,16 +289,16 @@ module.exports = {
   //   examples: ['example1'],
   //   icon: 'guanxitu'
   // },
-  // relation: {
-  //   enName: 'Relation',
-  //   cnName: '关系图',
-  //   examples: [
-  //     {
-  //       path: 'example8',
-  //       enName: 'Treemap',
-  //       cnName: '矩形树图',
-  //     },
-  //   ],
-  //   icon: 'juzhentu'
-  // },
+  relation: {
+    enName: 'Relation',
+    cnName: '关系图',
+    examples: [
+      {
+        path: 'example8',
+        enName: 'Treemap',
+        cnName: '矩形树图',
+      },
+    ],
+    icon: 'juzhentu'
+  },
 };

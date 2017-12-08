@@ -1,5 +1,4 @@
-export const template =
-`import 'zone.js';
+import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -49,23 +48,18 @@ const scale = [{
   nice: false,
 }];
 
-const itemTpl = \`<li data-index={index}>
+const itemTpl = `<li data-index={index}>
   <span style="background-color:{color};" class="g2-tooltip-marker"></span>
   {name}<br/>
   <span style="padding-left: 16px">浏览人数：{count}</span><br/>
-</li>\`;
+</li>`;
 
 const style = {
   lineWidth: 1,
   stroke: '#fff',
 };
 
-const tooltip = ['name', (name, count) => {
-  return {
-    name,
-    count,
-  };
-}]; 
+const tooltip = ['name', (name, count) => ({ name, count })];
 
 const label = ['name', {
   offset: 0,
@@ -81,17 +75,15 @@ const label = ['name', {
 
 @Component({
   selector: '#mount',
-  template: \`
+  template: `
   <div>
-    <Chart [forceFit]="forceFit" [height]="600" [data]="data" dataView="treeNodes" [dataPre]="dataPre" [scale]="scale">
-      <Tooltip showTitle="false" itemTpl="itemTpl"></Tooltip>
-      <Legend></Legend>
-      <Polygon position="x*y" color="name" [tooltip]="tooltip" [style]="style" [label]="label"></Polygon>
-    </Chart>
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" dataView="treeNodes" [dataPre]="dataPre" [scale]="scale">
+      <v-tooltip showTitle="false" itemTpl="itemTpl"></v-tooltip>
+      <v-polygon position="x*y" color="name" [tooltip]="tooltip" [style]="style" [label]="label"></v-polygon>
+    </v-chart>
   </div>
-  \`
+  `
 })
-
 export class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
@@ -117,4 +109,3 @@ export class AppComponent {
 
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-`;
