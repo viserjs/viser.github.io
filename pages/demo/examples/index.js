@@ -347,6 +347,16 @@ module.exports = {
         cnName: 'voronoi 图',
       },
       {
+        path: 'example6',
+        enName: 'Adjacency Diagram',
+        cnName: '相邻层次图',
+      },
+      {
+        path: 'example7',
+        enName: 'Sunburst Diagram',
+        cnName: '旭日图',
+      },
+      {
         path: 'example8',
         enName: 'Treemap Diagram',
         cnName: '矩形树图',
