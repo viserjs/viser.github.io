@@ -198,10 +198,37 @@ module.exports = {
   //   examples: ['example1'],
   //   icon: 'jizuobiao'
   // },
-  // scatter: {
-  //   cnName: '散点图',
+  point: {
+    enName: 'Point',
+    cnName: '点图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Scatter',
+        cnName: '散点图',
+      },
+      {
+        path: 'example2',
+        enName: 'Scatter Series',
+        cnName: '多色散点图',
+      },
+      {
+        path: 'example3',
+        enName: 'Jitter',
+        cnName: '扰动点图',
+      },
+      {
+        path: 'example4',
+        enName: 'Bubble',
+        cnName: '气泡图',
+      },
+    ],
+    icon: 'diantu'
+  },
+  // funnel: {
+  //   cnName: '漏斗图',
   //   examples: ['example1'],
-  //   icon: 'diantu'
+  //   icon: 'loudoutu'
   // },
   radar: {
     enName: 'Radar',
@@ -294,8 +321,33 @@ module.exports = {
     cnName: '关系图',
     examples: [
       {
+        path: 'example1',
+        enName: 'Arc Diagram',
+        cnName: '弧长链接图',
+      },
+      {
+        path: 'example2',
+        enName: 'Arc Polar Diagram',
+        cnName: '极坐标弧长链接图',
+      },
+      {
+        path: 'example3',
+        enName: 'Chord Diagram',
+        cnName: '和弦图',
+      },
+      {
+        path: 'example4',
+        enName: 'Sankey Diagram',
+        cnName: '和弦图',
+      },
+      {
+        path: 'example5',
+        enName: 'Voronoi Diagram',
+        cnName: 'voronoi 图',
+      },
+      {
         path: 'example8',
-        enName: 'Treemap',
+        enName: 'Treemap Diagram',
         cnName: '矩形树图',
       },
     ],

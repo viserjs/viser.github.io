@@ -40,6 +40,12 @@ const dataPre = {
   },
 };
 
+const dataView = ['nodes', node => {
+  node.name = node.data.name;
+  node.value = node.data.value;
+  return node;
+}];
+
 const scale = [{
   dataKey: 'value',
   nice: false,
@@ -73,7 +79,7 @@ const label = ['name', {
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={600} data={data} dataView="treeNodes" dataPre={dataPre} scale={scale}>
+      <Chart forceFit={true} height={600} data={data} dataView={dataView} dataPre={dataPre} scale={scale}>
         <Tooltip showTitle={false} itemTpl={itemTpl} />
         <Polygon position="x*y" color="name" tooltip={tooltip} style={style} label={label} />
       </Chart>
