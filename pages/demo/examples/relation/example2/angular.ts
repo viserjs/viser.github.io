@@ -36,9 +36,11 @@ const style = {
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-view dataView="edges">
+        <v-coord type="polar" direction="yReverse"></v-coord>
         <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target"></v-edge>
       </v-view>
       <v-view dataView="nodes">
+        <v-coord type="polar" direction="yReverse"></v-coord>
         <v-point position="x*y" size="value" color="id" opacity="0.5" [style]="style" [label]="label"></v-point>
       </v-view>
     </v-chart>
