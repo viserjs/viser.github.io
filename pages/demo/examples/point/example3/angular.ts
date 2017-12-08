@@ -11,31 +11,40 @@ import * as $ from 'jquery';
   template: `
   <div>
     <v-chart [forceFit]="true" [height]="500" [data]="data">
-      <v-tooltip [showTitle]="false" [crosshairs]="tooltipCrosshairs" [itemTpl]="tooltipItemTpl"></v-tooltip>
-      <v-axis></v-axis>
-      <v-point position="height*weight" [size]="4" [opacity]="0.65" [tooltip]="pointTooltip"></v-point>
+      <v-legend [reversed]="true"></v-legend>
+      <v-tooltip [crosshairs]="tooltipCrosshairs"></v-tooltip>
+      <v-axis dataKey="Score" [grid]="null"></v-axis>
+      <v-axis
+        dataKey="Class"
+        [tickLine]="null"
+        [subTickCount]="1"
+        [subTickLine]="axisClassSubTickLine"
+        [grid]="axisClassGrid"
+      ></v-axis>
+      <v-point color="Grade" position="Class*Score" adjust="jitter" [size]="4" [opacity]="0.65"></v-point>
     </v-chart>
   </div>
   `
 })
 class AppComponent {
   data = [];
-  pointTooltip = ['gender*height*weight', (gender, height, weight) => {
-    return {
-      name: gender,
-      value: height + '(cm), ' + weight + '(kg)'
-    };
-  }];
   tooltipCrosshairs = { type: 'cross' };
-  tooltipItemTpl = `
-    <li data-index={index} style="margin-bottom:4px;">
-      <span style="background-color:{color};" class="g2-tooltip-marker"></span>
-      {name}<br />{value}
-    </li>
-  `;
+  axisClassGrid = {
+    align: 'center',
+    lineStyle: {
+      stroke: '#8C8C8C',
+      lineWidth: 1,
+      lineDash: [3, 3],
+    }
+  };
+  axisClassSubTickLine = {
+    lineWidth: 1,
+    stroke: '#BFBFBF',
+    length: 4
+  };
 
   constructor() {
-    $.getJSON('/data/scatter.json', (data) => {
+    $.getJSON('/data/dv-grades.json', (data) => {
       this.data = data;
     });
   }

@@ -10,7 +10,7 @@ import * as $ from 'jquery';
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
+    <v-chart [forceFit]="true" [height]="500" [data]="data">
       <v-tooltip [showTitle]="false" [crosshairs]="tooltipCrosshairs" [itemTpl]="tooltipItemTpl"></v-tooltip>
       <v-axis></v-axis>
       <v-point color="gender" position="height*weight" [size]="4" [opacity]="0.65" [tooltip]="pointTooltip"></v-point>
@@ -19,8 +19,6 @@ import * as $ from 'jquery';
   `
 })
 class AppComponent {
-  forceFit: boolean = true;
-  height: number = 400;
   data = [];
   pointTooltip = ['gender*height*weight', (gender, height, weight) => {
     return {

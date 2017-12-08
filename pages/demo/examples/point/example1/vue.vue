@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data">
+    <v-chart :force-fit="true" :height="500" :data="data">
       <v-tooltip :showTitle="false" :crosshairs="tooltipCrosshairs" :item-tpl="tooltipItemTpl" />
       <v-axis />
       <v-point :position="'height*weight'" :size="4" :opacity="0.65" :tooltip="pointTooltip" />
@@ -20,7 +20,7 @@
     data() {
       return {
         data: [],
-        height: 400,
+        height: 500,
         pointTooltip: ['gender*height*weight', (gender, height, weight) => {
           return {
             name: gender,

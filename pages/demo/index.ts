@@ -6,7 +6,8 @@ import Vue from 'vue';
 import ViserVue from 'viser-vue'
 import * as ReactDOM from 'react-dom';
 
-const exampleList = require('./examples/index');
+const exampleOrigin = require('./examples/index');
+
 const navTpl = require('./nav.tpl');
 
 const ALL_FRAMEWORK = ['react', 'vue', 'angular'];
@@ -19,7 +20,23 @@ class App {
     exampleIndex: number,
   };
 
+  exampleList: any;
+
   constructor() {
+    const exampleList = {};
+    Object.keys(exampleOrigin).forEach((key) => {
+      exampleList[key] = {
+        ...exampleOrigin[key],
+        examples: exampleOrigin[key].examples.map((example) => {
+          return {
+            ...example,
+            linkName: example.enName.toLowerCase().replace(/\s/g, '-'),
+          }
+        }),
+      }
+    });
+    this.exampleList = exampleList;
+
     this.attrs = {
       code: {},
       framework: 'react',
@@ -35,15 +52,23 @@ class App {
 
     const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
     const typeResult = search.match(typeReg);
-    const chartType = typeResult ? typeResult[2] : Object.keys(exampleList)[0];
+    const chartType = typeResult ? typeResult[2] : Object.keys(this.exampleList)[0];
     this.attrs.chartType = chartType;
 
     const exampleReg = new RegExp('(^|&)example=([^&]*)(&|$)');
     const exampleResult = search.match(exampleReg);
-    const exampleIndex = exampleResult ? parseInt(exampleResult[2], 10) : 0;
+    const exampleLinkName = exampleResult ? exampleResult[2] : '';
+
+    let exampleIndex = 0;
+    this.exampleList[chartType].examples.forEach((example, i) => {
+      if (example.linkName === exampleLinkName) {
+        exampleIndex = i;
+      }
+    })
+
     this.attrs.exampleIndex = exampleIndex;
 
-    const example = exampleList[chartType].examples[exampleIndex] || exampleList[chartType].examples[0] || {};
+    const example = this.exampleList[chartType].examples[exampleIndex] || {};
     const { path, cnName, enName } = example;
 
     let reactCode = '';
@@ -161,15 +186,15 @@ class App {
 
   render() {
     const menuList = {};
-    Object.keys(exampleList).forEach((key) => {
+    Object.keys(this.exampleList).forEach((key) => {
       const chartTypeMatched = key === this.attrs.chartType;
       menuList[key] = {
-        ...exampleList[key],
-        examples: exampleList[key].examples.map((o, i) => {
+        ...this.exampleList[key],
+        examples: this.exampleList[key].examples.map((o, i) => {
           const exampleIndexMatched = i === this.attrs.exampleIndex;
           return {
             ...o,
-            activeClass: chartTypeMatched && exampleIndexMatched ? 'active' : ''
+            activeClass: chartTypeMatched && exampleIndexMatched ? 'active' : '',
           };
         }),
         expanded: chartTypeMatched ? 'expanded' : '',

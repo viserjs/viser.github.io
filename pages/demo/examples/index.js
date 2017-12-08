@@ -1,5 +1,6 @@
 module.exports = {
   line: {
+    enName: 'Line',
     cnName: '线性图',
     examples: [
       {
