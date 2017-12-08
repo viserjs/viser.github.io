@@ -198,10 +198,37 @@ module.exports = {
   //   examples: ['example1'],
   //   icon: 'jizuobiao'
   // },
-  // scatter: {
-  //   cnName: '散点图',
+  point: {
+    enName: 'Point',
+    cnName: '点图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Scatter',
+        cnName: '散点图',
+      },
+      {
+        path: 'example2',
+        enName: 'Scatter Series',
+        cnName: '多色散点图',
+      },
+      {
+        path: 'example3',
+        enName: 'Jitter',
+        cnName: '扰动点图',
+      },
+      {
+        path: 'example4',
+        enName: 'Bubble',
+        cnName: '气泡图',
+      },
+    ],
+    icon: 'diantu'
+  },
+  // funnel: {
+  //   cnName: '漏斗图',
   //   examples: ['example1'],
-  //   icon: 'diantu'
+  //   icon: 'loudoutu'
   // },
   radar: {
     enName: 'Radar',
