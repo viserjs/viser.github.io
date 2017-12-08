@@ -38,11 +38,11 @@ const facetScale = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="600" [data]="data">
-      <v-tooltip showTitle="false"></v-tooltip>
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [padding]="padding">
+      <v-tooltip [showTitle]="showTitle"></v-tooltip>
       <v-legend dataKey="cut" position="top"></v-legend>
       <v-coord type="theta"></v-coord>
-      <v-facet type="tree" [fields]="fields" line="{ stroke: '#00a3d7' }" lineSmooth="true">
+      <v-facet type="tree" [fields]="fields" [line]="line" lineSmooth="true">
         <v-facet-view [dataPre]="facetDataPre" [scale]="facetScale">
           <v-stack-bar position="percent" color="gender"></v-stack-bar>
         </v-facet-view>
@@ -54,7 +54,10 @@ const facetScale = {
 export class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
+  showTitle: boolean = false;
   data = data;
+  line = { stroke: '#00a3d7' };
+  padding = [60, 90, 80, 80];
   fields = ['grade', 'class'];
   facetDataPre = facetDataPre;
   facetScale = facetScale;
