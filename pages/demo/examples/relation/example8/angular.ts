@@ -43,6 +43,12 @@ const dataPre = {
   },
 };
 
+const dataView = ['nodes', node => {
+  node.name = node.data.name;
+  node.value = node.data.value;
+  return node;
+}];
+
 const scale = [{
   dataKey: 'value',
   nice: false,
@@ -77,7 +83,7 @@ const label = ['name', {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" dataView="treeNodes" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [dataView]="dataView" [dataPre]="dataPre" [scale]="scale">
       <v-tooltip showTitle="false" itemTpl="itemTpl"></v-tooltip>
       <v-polygon position="x*y" color="name" [tooltip]="tooltip" [style]="style" [label]="label"></v-polygon>
     </v-chart>
@@ -85,10 +91,11 @@ const label = ['name', {
   `
 })
 export class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 600;
   data = data;
   dataPre = dataPre;
+  dataView = dataView;
   scale = scale;
   tooltip = tooltip;
   style = style;

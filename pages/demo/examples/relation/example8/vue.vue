@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="600" :data="data" :data-view="'treeNodes'" :data-pre="dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="600" :data="data" :data-view="dataView" :data-pre="dataPre" :scale="scale">
       <v-tooltip :show-title="false" :item-tpl="itemTpl" />
       <v-polygon :position="'x*y'" :color="'name'" :tooltip="tooltip" :v-style="style" :label="label" />
     </v-chart>
@@ -46,16 +46,22 @@
     },
   };
 
+  const dataView = ['nodes', node => {
+    node.name = node.data.name;
+    node.value = node.data.value;
+    return node;
+  }];
+
   const scale = [{
     dataKey: 'value',
     nice: false,
   }];
 
-const itemTpl = `<li data-index={index}>
-  <span style="background-color:{color};" class="g2-tooltip-marker"></span>
-  {name}<br/>
-  <span style="padding-left: 16px">浏览人数：{count}</span><br/>
-</li>`;
+  const itemTpl = `<li data-index={index}>
+    <span style="background-color:{color};" class="g2-tooltip-marker"></span>
+    {name}<br/>
+    <span style="padding-left: 16px">浏览人数：{count}</span><br/>
+  </li>`;
 
   const style = {
     lineWidth: 1,
@@ -81,6 +87,7 @@ const itemTpl = `<li data-index={index}>
       return {
         data,
         dataPre,
+        dataView,
         scale,
         style,
         itemTpl,

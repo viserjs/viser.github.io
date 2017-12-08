@@ -53,7 +53,7 @@ const label = ['name', {
   `
 })
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 500;
   data = data;
   dataPre = dataPre;
