@@ -40,10 +40,12 @@ const dataPre = {
   },
 };
 
-const dataView = ['nodes', node => {
-  node.name = node.data.name;
-  node.value = node.data.value;
-  return node;
+const dataView = ['nodes', (nodes: any) => {
+  return nodes.map((node: any) => ({
+    ...node,
+    name: node.data.name,
+    value: node.data.value,
+  }));
 }];
 
 const scale = [{
@@ -79,7 +81,7 @@ const label = ['name', {
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={600} data={data} dataView={dataView} dataPre={dataPre} scale={scale}>
+      <Chart forceFit={true} height={400} data={data} dataView={dataView} dataPre={dataPre} scale={scale} padding={0}>
         <Tooltip showTitle={false} itemTpl={itemTpl} />
         <Polygon position="x*y" color="name" tooltip={tooltip} style={style} label={label} />
       </Chart>

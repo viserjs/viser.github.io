@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="400" :data="data" :data-view="dataView" :data-pre="dataPre" :scale="scale" :padding="0">
+    <v-chart :force-fit="true" :height="600" :data="data" :data-view="dataView" :data-pre="dataPre" :scale="scale">
       <v-tooltip :show-title="false" :item-tpl="itemTpl" />
       <v-polygon :position="'x*y'" :color="'name'" :tooltip="tooltip" :v-style="style" :label="label" />
     </v-chart>
@@ -46,12 +46,10 @@
     },
   };
 
-  const dataView = ['nodes', nodes => {
-    return nodes.map(node => ({
-      ...node,
-      name: node.data.name,
-      value: node.data.value,
-    }));
+  const dataView = ['nodes', node => {
+    node.name = node.data.name;
+    node.value = node.data.value;
+    return node;
   }];
 
   const scale = [{

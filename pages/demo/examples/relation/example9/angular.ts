@@ -43,12 +43,10 @@ const dataPre = {
   },
 };
 
-const dataView = ['nodes', (nodes: any) => {
-  return nodes.map((node: any) => ({
-    ...node,
-    name: node.data.name,
-    value: node.data.value,
-  }));
+const dataView = ['nodes', node => {
+  node.name = node.data.name;
+  node.value = node.data.value;
+  return node;
 }];
 
 const scale = [{
@@ -85,7 +83,7 @@ const label = ['name', {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="400" [data]="data" [dataView]="dataView" [dataPre]="dataPre" [scale]="scale" padding="0">
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [dataView]="dataView" [dataPre]="dataPre" [scale]="scale">
       <v-tooltip showTitle="false" itemTpl="itemTpl"></v-tooltip>
       <v-polygon position="x*y" color="name" [tooltip]="tooltip" [style]="style" [label]="label"></v-polygon>
     </v-chart>

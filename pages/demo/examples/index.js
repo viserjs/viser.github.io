@@ -312,11 +312,6 @@ module.exports = {
     ],
     icon: 'fenmian'
   },
-  // sankey: {
-  //   cnName: '桑基图',
-  //   examples: ['example1'],
-  //   icon: 'guanxitu'
-  // },
   relation: {
     enName: 'Relation',
     cnName: '关系图',
@@ -361,6 +356,11 @@ module.exports = {
         enName: 'Treemap Diagram',
         cnName: '矩形树图',
       },
+      // {
+      //   path: 'example9',
+      //   enName: 'Radial Dendrogram',
+      //   cnName: '径向系统树图',
+      // },
     ],
     icon: 'juzhentu'
   },
