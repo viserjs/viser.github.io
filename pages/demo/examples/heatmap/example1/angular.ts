@@ -75,6 +75,7 @@ const seriesOpts = {
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale" >
       <v-legend></v-legend>
+      <v-tooltip></v-tooltip>
       <v-axis [tickLine]="axis1Opts.tickLine" [grid]="axis1Opts.grid"></v-axis>
       <v-axis [tickLine]="axis2Opts.tickLine" [grid]="axis2Opts.grid"></v-axis>
       <v-polygon [position]="seriesOpts.position" [color]="seriesOpts.color" [label]="seriesOpts.label" [style]="seriesOpts.style"></v-polygon>

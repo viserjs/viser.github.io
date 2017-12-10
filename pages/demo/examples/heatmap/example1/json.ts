@@ -5,6 +5,7 @@ viser({
   data: source,
   scale,
   legend: true,
+  tooltip: true,
   axis: [{
     dataKey: 'name',
     tickLine: null,

@@ -1,4 +1,4 @@
-import { Chart, Axis, Legend, Polygon } from 'viser-react';
+import { Chart, Axis, Legend, Tooltip, Polygon } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -76,6 +76,7 @@ class App extends React.Component {
       <div>
         <Chart forceFit height={400} data={source} scale={scale}>
           <Legend />
+          <Tooltip />
           <Axis {...axis1Opts}/>
           <Axis {...axis2Opts}/>
           <Polygon {...seriesOpts}/>

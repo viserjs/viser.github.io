@@ -209,12 +209,12 @@ module.exports = {
         cnName: '矩形分箱图',
       },
       {
-        path: 'example3',
+        path: 'example5',
         enName: 'Group box',
         cnName: '分块热力图',
       },
       {
-        path: 'example4',
+        path: 'example7',
         enName: 'Hexagon Box',
         cnName: '六边形分箱',
       },
