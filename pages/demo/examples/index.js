@@ -194,6 +194,33 @@ module.exports = {
     ],
     icon: 'leidatu'
   },
+  heatmap: {
+    enName: 'Heatmap',
+    cnName: '热力图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Color box',
+        cnName: '色块图',
+      },
+      {
+        path: 'example2',
+        enName: 'Rectangle box',
+        cnName: '矩形分箱图',
+      },
+      {
+        path: 'example5',
+        enName: 'Group box',
+        cnName: '分块热力图',
+      },
+      {
+        path: 'example7',
+        enName: 'Hexagon Box',
+        cnName: '六边形分箱',
+      },
+    ],
+    icon: 'leidatu'
+  },
   // radial: {
   //   cnName: '玉珏图',
   //   examples: ['example1'],
