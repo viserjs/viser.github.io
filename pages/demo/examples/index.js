@@ -219,7 +219,7 @@ module.exports = {
         cnName: '六边形分箱',
       },
     ],
-    icon: 'leidatu'
+    icon: 'relitu'
   },
   // radial: {
   //   cnName: '玉珏图',
