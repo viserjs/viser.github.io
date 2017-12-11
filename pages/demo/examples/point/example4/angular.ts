@@ -28,6 +28,10 @@ const colorMap = {
   'Oceania': Global.colors[3]
 };
 
+const laeblFormatter = (value) => {
+  return (value / 1000).toFixed(0) + 'k';
+}; 
+
 @Component({
   selector: '#mount',
   template: `
@@ -38,9 +42,7 @@ const colorMap = {
         [dataKey]="'GDP'"
         [label]="axisLabel"
       ></v-axis>
-      <v-legend
-        [dataKey]="'Population'"
-      ></v-legend>
+      <v-legend [dataKey]="Population" show="false"></v-legend>
       <v-point
         position="GDP*LifeExpectancy"
         [color]="pointColor"
@@ -56,7 +58,7 @@ class AppComponent {
   data = [];
   scale = scale;
   axisLabel = {
-    // formatter: '.0s'
+    formatter: laeblFormatter,
   };
   pointColor = ['continent', val => colorMap[val]];
   pointSize = ['Population', [4, 65]];
