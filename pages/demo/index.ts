@@ -10,9 +10,7 @@ const exampleOrigin = require('./examples/index');
 
 const navTpl = require('./nav.tpl');
 
-const ALL_FRAMEWORKS = ['react', 'vue', 'angular'];
-const ALL_PAGE_LANGUAGES = ['en', 'cn'];
-const DEFAULT_PAGE_LANGUAGE = 'en';
+const ALL_FRAMEWORK = ['react', 'vue', 'angular'];
 
 class App {
   attrs: {
@@ -20,30 +18,11 @@ class App {
     framework: string,
     chartType: string,
     exampleIndex: number,
-    language: string,
-  } = {
-    code: {},
-    framework: 'react',
-    chartType: 'line',
-    exampleIndex: 0,
-    language: DEFAULT_PAGE_LANGUAGE,
   };
 
-  exampleList: any = {};
+  exampleList: any;
 
   constructor() {
-    this.initExampleList();
-    this.initPageLanguage();
-    this.initUrlQuery();
-    this.initCode();
-
-    this.render();
-    this.renderCodeEditor();
-    this.refreshCase(this.attrs.framework);
-    this.bindEvent();
-  }
-
-  initExampleList() {
     const exampleList = {};
     Object.keys(exampleOrigin).forEach((key) => {
       exampleList[key] = {
@@ -57,9 +36,18 @@ class App {
       }
     });
     this.exampleList = exampleList;
+
+    this.attrs = {
+      code: {},
+      framework: 'react',
+      chartType: 'line',
+      exampleIndex: 0,
+    };
+
+    this.init();
   }
 
-  initUrlQuery() {
+  init() {
     const search = window.location.search.substr(1);
 
     const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
@@ -79,10 +67,7 @@ class App {
     })
 
     this.attrs.exampleIndex = exampleIndex;
-  }
 
-  initCode() {
-    const { chartType, exampleIndex } = this.attrs;
     const example = this.exampleList[chartType].examples[exampleIndex] || {};
     const { path, cnName, enName } = example;
 
@@ -111,32 +96,24 @@ class App {
         cnName, enName,
       };
     }
-  }
 
-  initPageLanguage() {
-    const pageLanguageInStore = window.localStorage.getItem('page_laguage');
-    if (pageLanguageInStore && ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) !== -1) {
-      this.attrs.language = pageLanguageInStore;
-    } else {
-      window.localStorage.setItem('page_laguage', DEFAULT_PAGE_LANGUAGE);
-    }
+    this.render();
+    this.refreshCase(this.attrs.framework);
+    this.bindEvent();
   }
 
   bindEvent() {
     const self = this;
-    // TODO: bind JSFiddle event
-    // $('.case-box .op .run').on('click', function() {
-    //   const index = $(this).attr('data-index');
-    // });
+    $('.case-box .op .run').on('click', function() {
+      const index = $(this).attr('data-index');
+    });
 
-    // bind left menu event
     $('.case-box .case-code-switch .case-code-switch-item').on('click', function() {
       const framework = $(this).attr('data-framework');
       self.attrs.framework = framework;
       self.refreshCase(framework);
     });
 
-    // bind framework switch event
     $('.left-panel .common-nav-folder.expandable .common-nav-title').on('click', function() {
       if ($(this).parent().hasClass('expanded')) {
         $('.left-panel .common-nav-folder.expandable').each(function () {
@@ -149,39 +126,15 @@ class App {
         $(this).parent().addClass('expanded');
       }
     });
-
-    // bind page language switch event
-    $('.page-language-switch').on('click', function() {
-      const pageLanguageInStore = window.localStorage.getItem('page_laguage');
-      if (pageLanguageInStore && pageLanguageInStore === 'en') {
-        window.localStorage.setItem('page_laguage', 'cn');
-      } else if (pageLanguageInStore && pageLanguageInStore === 'cn') {
-        window.localStorage.setItem('page_laguage', 'en');
-      } else {
-        window.localStorage.setItem('page_laguage', DEFAULT_PAGE_LANGUAGE);
-      }
-      self.initPageLanguage();
-      self.render();
-      self.unbindEvent();
-      self.bindEvent();
-    });
-  }
-
-  unbindEvent() {
-    $('.case-box .case-code-switch .case-code-switch-item').off('click');
-    $('.left-panel .common-nav-folder.expandable .common-nav-title').off('click');
-    $('.page-language-switch').off('click');
   }
 
   refreshCase(framework) {
-    // change top framework switch
     $('.case-box .case-code-switch-item').each(function () {
       $(this).removeClass('active');
       if (framework === $(this).attr('data-framework')) {
         $(this).addClass('active');
       }
     });
-    // change code editor box
     $('.case-box .case-code-detail').each(function () {
       $(this).removeClass('active');
       if (framework === $(this).attr('data-framework')) {
@@ -231,70 +184,36 @@ class App {
     }
   }
 
-  getNameByLanguage(o) {
-    const { language } = this.attrs;
-    switch(language) {
-      case 'en': {
-        if (o && o.enName) {
-          return o.enName;
-        }
-        return '';
-      }
-      case 'cn': {
-        if (o && o.cnName) {
-          return o.cnName;
-        }
-        return '';
-      }
-      default: {
-        return '';
-      }
-    }
-  }
-
-  renderCodeEditor() {
-    // render code editor
-    ALL_FRAMEWORKS.forEach((framework) => {
-      this.presetEditor(framework);
-    });
-  }
-
   render() {
-    // render page language icon
-    $('body')
-      .removeClass('en').removeClass('cn')
-      .addClass(`${this.attrs.language || DEFAULT_PAGE_LANGUAGE}`);
-
-    // render left menu
     const menuList = {};
     Object.keys(this.exampleList).forEach((key) => {
       const chartTypeMatched = key === this.attrs.chartType;
       menuList[key] = {
         ...this.exampleList[key],
-        folderDisplayName: this.getNameByLanguage(this.exampleList[key]),
         examples: this.exampleList[key].examples.map((o, i) => {
           const exampleIndexMatched = i === this.attrs.exampleIndex;
           return {
             ...o,
-            itemDisplayName: this.getNameByLanguage(o),
             activeClass: chartTypeMatched && exampleIndexMatched ? 'active' : '',
           };
         }),
         expanded: chartTypeMatched ? 'expanded' : '',
       };
     });
-    $('.left-panel').empty();
+
     $('.left-panel').append(navTpl({
       menuList,
     }));
 
-    // render demo title
     const code = this.attrs.code;
-    $('.case-type').html(this.getNameByLanguage(code));
+    $('.case-type').html(code.enName);
+
+    ALL_FRAMEWORK.forEach((framework) => {
+      this.presetEditor(framework);
+    });
   }
 }
 
-// load monaco editor
 const load = require('load-script');
 const loadEditor = () => {
   const self = this;
