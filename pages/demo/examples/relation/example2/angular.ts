@@ -18,11 +18,7 @@ const dataPre = {
 };
 
 const label = ['name', {
-  offset: -10,
-  textStyle: {
-    textAlign: 'left',
-    rotate: 90
-  },
+  labelEmit: true,
 }];
 
 const style = {
@@ -34,7 +30,7 @@ const style = {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
-      <v-tooltip showTitle="false"></v-tooltip>
+      <v-tooltip [showTitle]="showTitle"></v-tooltip>
       <v-view dataView="edges">
         <v-coord type="polar" direction="yReverse"></v-coord>
         <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target"></v-edge>
@@ -48,6 +44,7 @@ const style = {
   `
 })
 export class AppComponent {
+  showTitle: boolean = false;
   forceFit: boolean = true;
   height: number = 500;
   data = data;
