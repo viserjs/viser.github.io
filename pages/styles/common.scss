@@ -94,14 +94,6 @@ a {
 }
 
 body {
-  .page-language-switch {
-    &::before { content: 'EN'; }
-    &:hover::before { content: 'CN'; }
-  }
-
-  .demo-link::before { content: 'Demo' };
-  .docs-link::before { content: 'Docs' };
-
   &.en {
     .page-language-switch {
       &::before { content: 'EN'; }
