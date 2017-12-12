@@ -56,7 +56,7 @@ let config = {
 
   entry: {
     demo: './pages/demo/index',
-    api: './pages/api/index',
+    docs: './pages/docs/index',
     home: './pages/home/index',
   },
 

@@ -81,7 +81,6 @@ class Home {
 
   renderText(selector, text) {
     const selectorDom = document.querySelector(selector);
-    console.log(selectorDom);
 
     if (selectorDom) {
       selectorDom.innerHTML = text;
@@ -110,9 +109,11 @@ class Home {
       }
     }
 
-    locale[pageLanguageInStore].forEach((o) => {
-      this.renderText(o.selector, o.text);
-    });
+    if (locale && locale[pageLanguageInStore] && locale[pageLanguageInStore].length) {
+      locale[pageLanguageInStore].forEach((o) => {
+        this.renderText(o.selector, o.text);
+      });
+    }
   }
 
   handleSwitchPageLanguage = () => {

@@ -5,6 +5,7 @@ import Viser from 'viser';
 import Vue from 'vue';
 import ViserVue from 'viser-vue'
 import * as ReactDOM from 'react-dom';
+import locale from './locale';
 
 const exampleOrigin = require('./examples/index');
 
@@ -261,9 +262,15 @@ class App {
 
   render() {
     // render page language icon
-    $('body')
+    $('.common-header .page-language-switch')
       .removeClass('en').removeClass('cn')
-      .addClass(`${this.attrs.language || DEFAULT_PAGE_LANGUAGE}`);
+      .addClass(this.attrs.language);
+
+    if (locale && locale[this.attrs.language] && locale[this.attrs.language].length) {
+      locale[this.attrs.language].forEach((o) => {
+        $(o.selector).html(o.text);
+      });
+    }
 
     // render left menu
     const menuList = {};
