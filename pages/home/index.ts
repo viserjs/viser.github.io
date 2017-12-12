@@ -4,6 +4,7 @@ import {
   initPageLanguage, getPageLanguage, setPageLanguage, changePageLanguage,
   ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
   addClass, removeClass,
+  on, off
 } from '../common/utils';
 import './index.scss';
 
@@ -125,14 +126,14 @@ class Home {
   unbindEvent() {
     const pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
     if (pageLanguageSwitchDom) {
-      pageLanguageSwitchDom.removeEventListener('click', this.handleSwitchPageLanguage);
+      off(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
     }
   }
 
   bindEvent() {
     const pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
     if (pageLanguageSwitchDom) {
-      pageLanguageSwitchDom.addEventListener('click', this.handleSwitchPageLanguage);
+      on(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
     }
   }
 

@@ -4,7 +4,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const env = process.env.NODE_ENV;
 const isProduction = env === 'production';
 const marked = require("marked");
-const renderer = new marked.Renderer();
+const hljs = require('highlight.js');
 
 const vueCssLoaders = function (options) {
   options = options || {}
@@ -91,7 +91,12 @@ let config = {
             loader: "markdown-loader",
             options: {
               pedantic: true,
-              renderer
+              highlight: (code, lang) => {
+                if (lang) {
+                  hljs.highlightAuto(code, [lang]).value;
+                }
+                return hljs.highlightAuto(code).value;
+              }
             }
           }
         ]
