@@ -1,14 +1,14 @@
 ## Installation
 
-Viser include 3 version which is integrated by react, vue and angular. We provide NPM or UMD to use library.
+Viser include 3 version which is integrated by React, Vue and Angular. We provide NPM or UMD to use library.
 
-NPM is the easiest and fastest way to get started using viser. It is the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.
+NPM is the easiest and fastest way to get started using Viser. It is the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.
 
-UMD is the script way to using viser. It is convenient method when you used quickly.
+UMD is the script way to using Viser. It is convenient method when you used quickly.
 
 ### Vue Version
 
-In vue version, You mush prepare to vue version greater than **2.5** in project.
+In Vue version, You mush prepare to Vue version greater than **2.5** in project.
 
 #### npm
 
@@ -31,7 +31,7 @@ Then you can find the library on window.ViserVue.
 
 ### Angular Version
 
-In angular version, You mush prepare to angular version greater than **2.4** in project. In addition, you also prepare to reflect-metadata version greater than **0.1**, rxjs version greater than **5** and zone.js version greater than **0.7**.
+In Angular version, You mush prepare to Angular version greater than **2.4** in project. In addition, you also prepare to reflect-metadata version greater than **0.1**, rxjs version greater than **5** and zone.js version greater than **0.7**.
 
 #### npm
 
@@ -54,7 +54,7 @@ Then you can find the library on window.ViserNg.
 
 ### React Version
 
-In react version, You mush repare react version greater then **15**, and support **16** certainly.
+In React version, You mush prepare React version greater then **15**, and support **16** certainly.
 
 #### npm
 

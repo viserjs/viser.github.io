@@ -1,8 +1,8 @@
 ## Usage
 
-Viser usage is all comes out of G2. But viser added some syntactic sugar. You should study to using viser from demo.
+Viser usage is all comes out of G2. But Viser added some syntactic sugar. You should study to using viser from demo.
 
-We only talk about some different from G2 and viser.
+We only talk about some different from G2 and Viser.
 
 ### DataPre
 

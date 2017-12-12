@@ -1,18 +1,18 @@
-## Installation
+## 安装
 
-Viser include 3 version which is integrated by react, vue and angular. We provide NPM or UMD to use library.
+Viser 为 React, Vue 和 Angular 提供了3个不同的分发版本。我们同时提供了npm安装和umd引入两种方式来使用Viser。
 
-NPM is the easiest and fastest way to get started using viser. It is the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.
+npm安装是使用 Viser 最简单也是最快捷的方式。我们强烈建议您在开发单页应用(SPA)时采用这种方式进行安装。Viser 可以完美兼容 CommonJS 打包工具，例如我们最常用的 Webpack。
 
-UMD is the script way to using viser. It is convenient method when you used quickly.
+UMD 引入是使用script标签引入来使用 Viser。当你需要快速使用的时候，这是最便捷的方式。
 
-### Vue Version
+### Vue 分发版
 
-In vue version, You mush prepare to vue version greater than **2.5** in project.
+您需要使用版本 **2.5** 及以上的 Vue，来使用 Vue 分发版 Viser。
 
 #### npm
 
-The NPM way is only install by shell:
+在终端使用如下命令来安装 npm 版本：
 
 ```shell
 # latest stable
@@ -21,21 +21,21 @@ $ npm install viser-vue
 
 #### umd
 
-The UMD build is also available on unpkg.com:
+我们在 unpkg.com 上提供了 UMD 的版本:
 
 ```html
  <script src="https://unpkg.com/recharts/umd/viser-vue.min.js"></script>
 ```
 
-Then you can find the library on window.ViserVue.
+然后你可以使用全局变量 ```window.ViserVue``` 来进行调用 Viser。
 
-### Angular Version
+### Angular 分发版
 
-In angular version, You mush prepare to angular version greater than **2.4** in project. In addition, you also prepare to reflect-metadata version greater than **0.1**, rxjs version greater than **5** and zone.js version greater than **0.7**.
+您需要使用版本 **2.4** 及以上的 Angular，来使用 Angular 分发版 Viser。另外，你还需要版本 **0.1** 及以上的 reflect-metadata，版本 **5** 及以上的 rxjs，版本 **0.7** 及以上的 zone.js。
 
 #### npm
 
-The NPM way is only install by shell:
+在终端使用如下命令来安装 npm 版本：
 
 ```shell
 # latest stable
@@ -44,21 +44,21 @@ $ npm install viser-ng
 
 #### umd
 
-The UMD build is also available on unpkg.com:
+我们在 unpkg.com 上提供了 UMD 的版本:
 
 ```html
  <script src="https://unpkg.com/recharts/umd/viser-ng.min.js"></script>
 ```
 
-Then you can find the library on window.ViserNg.
+然后你可以使用全局变量 ```window.ViserNg``` 来进行调用 Viser。
 
-### React Version
+### React 分发版
 
-In react version, You mush repare react version greater then **15**, and support **16** certainly.
+您需要使用版本 **15** 及以上的 React，来使用 React 分发版 Viser。显然，版本 **16** 也是可以的。
 
 #### npm
 
-The NPM way is only install by shell:
+在终端使用如下命令来安装 npm 版本：
 
 ```shell
 # latest stable
@@ -67,13 +67,13 @@ $ npm install viser-react
 
 #### umd
 
-The UMD build is also available on unpkg.com:
+我们在 unpkg.com 上提供了 UMD 引入的版本:
 
 ```html
  <script src="https://unpkg.com/recharts/umd/viser-react.min.js"></script>
 ```
 
-Then you can find the library on window.ViserReact.
+然后你可以使用全局变量 ```window.ViserReact``` 来进行调用 Viser。
 
 ## Demo
 

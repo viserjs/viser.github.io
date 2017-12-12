@@ -1,21 +1,21 @@
-## Usage
+## 用法
 
-Viser usage is all comes out of G2. But viser added some syntactic sugar. You should study to using viser from demo.
+Viser 的使用方法几乎是和 G2 一样的，但是 Viser 增加了更多人性化的语法糖。最快速的了解这些内容的方法，便是学习在我们的“案例”页面中使用 Viser 构建的例子。
 
-We only talk about some different from G2 and viser.
+接下来，我们将讨论这些 Viser 和 G2 的差异之处，以便于您的理解。
 
 ### DataPre
 
-*dataPre* param is *data-set.js* in G2, and it inclued `connector` and `transform` key from *data-set*, so you should read data-set just enough.
+参数 *dataPre* 用于表示 G2 中 *data-set.js* 的相关内容。它包括了 *data-set* 中用到的 `connector` 和 `transform` 两个属性。关于这些属性的使用方法，可以阅读 data-set 的文档。
 
 ### Series
 
-*Series* param is *gemo* in G2, and we used specific name to express the component, like bar, line etc.
+参数 *Series* 用于表示 G2 中 *gemo* 的相关内容。我们直接使用了具体的名称来表示组件，例如 bar 和 line 等。
 
 ### Coord
 
-*Coord* param is *coord* in G2, but we provide *direction* param which using `transpose`, `reflect` and `scale` of G2.
+参数 *Coord* 用于表示 G2 中 *coord* 的相关内容。但是我们提供了 *direction* 这一优化后的参数用来展现 G2 中的 `transpose`, `reflect` 和 `scale` 这几个属性.
 
 ### Formatter
 
-We add *d3-format* to enhance the `label` function.
+我们使用了 *d3-format* 来增强 `label` 的回调函数。

@@ -1,8 +1,12 @@
-## Introduction
+## 简介
 
-A toolkit fit for data vis engineer based on G2. Viser support React, Vue and AngularJS.
+Viser，一个基于 G2 实现的，为数据可视化工程师量身定制的工具。Viser 现已支持几大主流前端框架，例如 React, Vue 和 AngularJS。
 
-The main purpose of this library is to help you to write charts in web applications without any pain. Main principles of Viser are:
+### 核心价值
 
-1. Simply deploy with semantic component with chart, including but not limited to React, Vue and AugularJS.
-2. Lightweight depending only on G2 which is a plotting system for Javascript, based on the grammar of graphics.
+它可以开发网页应用的过程中，为图表开发带来卓越的体验。
+
+### 设计原则
+
+1. 利用语义化组件来组合图表。包括但不限于 React, Vue 和 AugularJS 的组件。
+2. 脱胎于 G2，一套基于可视化编码的图形语法。由此带来了强大的可视化能力。
