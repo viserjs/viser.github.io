@@ -17154,91 +17154,312 @@
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26), __webpack_require__(73)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26), __webpack_require__(72)(module)))
 
 /***/ }),
 
 /***/ 1180:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1181);
-const Viser = __webpack_require__(19).default;
+"use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+const locale_1 = __webpack_require__(1181);
+const viser_1 = __webpack_require__(19);
+__webpack_require__(1182);
+const ALL_PAGE_LANGUAGES = ['en', 'cn'];
+const DEFAULT_PAGE_LANGUAGE = 'en';
 const GDP_JSON = [
-  { "year": '2006', "gdp": 21.94385 },
-  { "year": '2007', "gdp": 27.02323 },
-  { "year": '2008', "gdp": 31.95155 },
-  { "year": '2009', "gdp": 34.90814 },
-  { "year": '2010', "gdp": 41.30303 },
-  { "year": '2011', "gdp": 48.93006 },
-  { "year": '2012', "gdp": 54.03674 },
-  { "year": '2013', "gdp": 59.52444 },
-  { "year": '2014', "gdp": 64.39740 },
-  { "year": '2015', "gdp": 68.90521 }
+    { year: '2006', gdp: 21.94385 },
+    { year: '2007', gdp: 27.02323 },
+    { year: '2008', gdp: 31.95155 },
+    { year: '2009', gdp: 34.90814 },
+    { year: '2010', gdp: 41.30303 },
+    { year: '2011', gdp: 48.93006 },
+    { year: '2012', gdp: 54.03674 },
+    { year: '2013', gdp: 59.52444 },
+    { year: '2014', gdp: 64.39740 },
+    { year: '2015', gdp: 68.90521 }
 ];
-
-function renderChart() {
-  Viser({
-    data: GDP_JSON,
-    tooltip: true,
-    axis: true,
-    series: [{ quickType: 'bar', color: '#0088fe', position: 'year*gdp' }],
-    chart: { width: 700, height: 400, container: 'viser-mount-1-1' },
-  });
-
-  Viser({
-    data: GDP_JSON,
-    tooltip: true,
-    axis: true,
-    series: [{ quickType: 'line', color: '#0088fe', position: 'year*gdp' }],
-    chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
-  });
-  Viser({
-    data: GDP_JSON,
-    tooltip: { showTitle: false },
-    axis: true,
-    series: [{
-      quickType: 'pie',
-      position: 'gdp',
-      style: {
-        lineWidth: 1,
-        stroke: '#fff',
-        fill: '#0088fe',
-      },
-      tooltip: 'year*gdp'
-    }],
-    chart: { width: 380, height: 280, container: 'viser-mount-2-2' },
-  });
-  Viser({
-    data: GDP_JSON,
-    tooltip: true,
-    axis: true,
-    series: [{ quickType: 'area', color: '#0088fe', position: 'year*gdp' }],
-    chart: { width: 380, height: 230, container: 'viser-mount-2-3' },
-  });
-  Viser({
-    data: GDP_JSON,
-    tooltip: true,
-    axis: false,
-    series: [{
-      quickType: 'sector',
-      color: '#0088fe',
-      style: {
-        lineWidth: 1,
-        stroke: '#fff',
-        fill: '#0088fe',
-      },
-      position: 'year*gdp',
-    }],
-    chart: { width: 380, height: 310, container: 'viser-mount-2-4' },
-  });
+class Home {
+    constructor() {
+        this.handleSwitchPageLanguage = () => {
+            const pageLanguageInStore = window.localStorage.getItem('page_language');
+            if (pageLanguageInStore && pageLanguageInStore === 'en') {
+                window.localStorage.setItem('page_language', 'cn');
+            }
+            else if (pageLanguageInStore && pageLanguageInStore === 'cn') {
+                window.localStorage.setItem('page_language', 'en');
+            }
+            else {
+                window.localStorage.setItem('page_language', DEFAULT_PAGE_LANGUAGE);
+            }
+            this.refresh();
+        };
+        this.render();
+    }
+    renderChart() {
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: true,
+            axis: true,
+            series: [{ quickType: 'bar', color: '#0088fe', position: 'year*gdp' }],
+            chart: { width: 700, height: 400, container: 'viser-mount-1-1' },
+        });
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: true,
+            axis: true,
+            series: [{ quickType: 'line', color: '#0088fe', position: 'year*gdp' }],
+            chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
+        });
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: true,
+            axis: true,
+            series: [{ quickType: 'area', color: '#0088fe', position: 'year*gdp' }],
+            chart: { width: 380, height: 230, container: 'viser-mount-2-3' },
+        });
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: { showTitle: false },
+            axis: true,
+            coord: { type: 'theta' },
+            series: [{
+                    quickType: 'pie',
+                    position: 'gdp',
+                    style: {
+                        lineWidth: 1,
+                        stroke: '#fff',
+                        fill: '#0088fe',
+                    },
+                    tooltip: 'year*gdp'
+                }],
+            chart: { width: 380, height: 280, container: 'viser-mount-2-2' },
+        });
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: true,
+            axis: false,
+            coord: { type: 'polar' },
+            series: [{
+                    quickType: 'sector',
+                    color: '#0088fe',
+                    style: {
+                        lineWidth: 1,
+                        stroke: '#fff',
+                        fill: '#0088fe',
+                    },
+                    position: 'year*gdp',
+                }],
+            chart: { width: 380, height: 310, container: 'viser-mount-2-4' },
+        });
+    }
+    renderText(selector, text) {
+        const selectorDom = document.querySelector(selector);
+        if (selectorDom) {
+            selectorDom.innerHTML = text;
+        }
+    }
+    renderContent() {
+        let pageLanguageInStore = window.localStorage.getItem('page_language');
+        if (!pageLanguageInStore || ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) === -1) {
+            pageLanguageInStore = DEFAULT_PAGE_LANGUAGE;
+            window.localStorage.setItem('page_language', pageLanguageInStore);
+        }
+        const pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
+        if (pageLanguageSwitchDom) {
+            if (pageLanguageSwitchDom.classList) {
+                ALL_PAGE_LANGUAGES.forEach((lang) => {
+                    pageLanguageSwitchDom.classList.remove(lang);
+                });
+            }
+            if (pageLanguageSwitchDom.classList) {
+                pageLanguageSwitchDom.classList.add(pageLanguageInStore);
+            }
+            else {
+                pageLanguageSwitchDom.className += ' ' + pageLanguageInStore;
+            }
+        }
+        if (locale_1.default && locale_1.default[pageLanguageInStore] && locale_1.default[pageLanguageInStore].length) {
+            locale_1.default[pageLanguageInStore].forEach((o) => {
+                this.renderText(o.selector, o.text);
+            });
+        }
+    }
+    unbindEvent() {
+        const pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
+        if (pageLanguageSwitchDom) {
+            pageLanguageSwitchDom.removeEventListener('click', this.handleSwitchPageLanguage);
+        }
+    }
+    bindEvent() {
+        const pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
+        if (pageLanguageSwitchDom) {
+            pageLanguageSwitchDom.addEventListener('click', this.handleSwitchPageLanguage);
+        }
+    }
+    render() {
+        this.renderChart();
+        this.renderContent();
+        this.bindEvent();
+    }
+    refresh() {
+        this.unbindEvent();
+        this.render();
+    }
 }
+new Home();
 
-window.onload = renderChart;
 
 /***/ }),
 
 /***/ 1181:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const locale = {
+    cn: [
+        {
+            selector: '.home-header .common-header-nav-item.demo-link',
+            text: '案例',
+        },
+        {
+            selector: '.home-header .common-header-nav-item.docs-link',
+            text: '文档',
+        },
+        {
+            selector: '.main-intro .main-intro-title',
+            text: '再一次发现<br/>你的数据。',
+        },
+        {
+            selector: '.main-intro .main-intro-subtitle',
+            text: '使用Viser进行可视化，让你的数据变得更加直观。',
+        },
+        {
+            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-title',
+            text: '即刻创建图表',
+        },
+        {
+            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-content',
+            text: '只要你拥有一份结构化的数据，就可以在Viser里开始您的可视化探索之旅了。让Viser知道你想要的图表类型并告诉他数据的意义，Viser一定会为你绘制出你想要的图形。',
+        },
+        {
+            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-title',
+            text: '纠结？不存在的',
+        },
+        {
+            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-content',
+            text: '做可视化哪有一步到位的，还不是在不断地调整中，摸索出最合适的表达方式。使用Viser不用害怕随时变动需求带来的麻烦，最小化变动量设计的Viser的参数，让调整图表不再是一件难事。',
+        },
+        {
+            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-title',
+            text: '告别框架烦恼',
+        },
+        {
+            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-content',
+            text: '做可视化就是一件纯粹的事情，选择什么前端框架并不是需要真正关心的事情。不管是React，还是Angular，抑或是Vue，你都能在Viser里找到解决方案。你的框架比较小众？也可以快速定制啊，就是这么贴心。',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-1 .highlight-feature-content',
+            text: '数据可视化，一个就够了',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-2 .highlight-feature-content',
+            text: '语义化组件，无限的可能',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-3 .highlight-feature-content',
+            text: '相似的语法，如你所期待',
+        },
+        {
+            selector: '.try-now .try-content',
+            text: '从现在开始，使用 Viser 为你的数据进行可视化处理',
+        },
+        {
+            selector: '.try-now .try-link',
+            text: '立即使用',
+        },
+        {
+            selector: '.home-footer',
+            text: '与来自 AntV 的 <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> 深度合作<br/>本项目基于 MIT 协议发布<br />Copyright (c) 2017 Viser Group. 版权所有<br />',
+        },
+    ],
+    en: [
+        {
+            selector: '.home-header .common-header-nav-item.demo-link',
+            text: 'Demo',
+        },
+        {
+            selector: '.home-header .common-header-nav-item.docs-link',
+            text: 'Docs',
+        },
+        {
+            selector: '.main-intro .main-intro-title',
+            text: 'The Rediscovery<br/>of Your Data.',
+        },
+        {
+            selector: '.main-intro .main-intro-subtitle',
+            text: 'Use Viser to simplify and beautify your data.',
+        },
+        {
+            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-title',
+            text: 'Create Instantly',
+        },
+        {
+            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-content',
+            text: 'It\'s quite easy to create a chart with Viser.All your need is preparing a set of data and describing the meaning of column and row.',
+        },
+        {
+            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-title',
+            text: 'Modify Easily',
+        },
+        {
+            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-content',
+            text: 'We all know that the most complex thing in data visualization is the detail adjustment. The well designed properties of Viser component make you leave params-phobia away.',
+        },
+        {
+            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-title',
+            text: 'Full Compatibility',
+        },
+        {
+            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-content',
+            text: 'No mater what front-end framework you chose, you can always find a data visualization solution with Viser. Explicitly, React, Angular and Vue are all supported.',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-1 .highlight-feature-content',
+            text: 'One Framework for All Visualization',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-2 .highlight-feature-content',
+            text: 'Infinite Charts by Semantic Component',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-3 .highlight-feature-content',
+            text: 'Lightweight Depending Only on G2',
+        },
+        {
+            selector: '.try-now .try-content',
+            text: 'From now on，using Viser for data visualization.',
+        },
+        {
+            selector: '.try-now .try-link',
+            text: 'Install Now',
+        },
+        {
+            selector: '.home-footer',
+            text: 'Deep cooperation with <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> from AntV.<br/>Released under the MIT License.<br />Copyright (c) 2017 Viser Group. All Rights Reserved.<br />',
+        },
+    ],
+};
+exports.default = locale;
+
+
+/***/ }),
+
+/***/ 1182:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -17300,7 +17521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerAnimation", function() { return registerAnimation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerShape", function() { return registerShape; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Global", function() { return Global; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_CommonChart__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_CommonChart__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_CustomizeUtils__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
@@ -66838,7 +67059,7 @@ setTimeout(function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return supportD3Formatter; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3_format__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3_format__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
 
@@ -66868,12 +67089,12 @@ var supportD3Formatter = function (obj) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__formatGroup__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__formatNumerals__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__formatGroup__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__formatNumerals__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__formatSpecifier__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__formatTypes__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__formatPrefixAuto__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__identity__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__identity__ = __webpack_require__(83);
 
 
 
@@ -67076,9 +67297,9 @@ FormatSpecifier.prototype.toString = function() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__formatDefault__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__formatDefault__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__formatPrefixAuto__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__formatRounded__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__formatRounded__ = __webpack_require__(82);
 
 
 
@@ -67129,22 +67350,22 @@ var prefixExponent;
 
 /***/ }),
 
-/***/ 68:
+/***/ 67:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shapes_loadShapes__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CommonDataSet__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shapes_loadShapes__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CommonDataSet__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_EventUtils__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_setCoordConfig__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_setAxisConfig__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_setSeriesConfig__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_setLengendConfig__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_setGuideConfig__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_setTooltipConfig__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_setScaleConfig__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_setCoordConfig__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_setAxisConfig__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_setSeriesConfig__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_setLengendConfig__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_setGuideConfig__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_setTooltipConfig__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_setScaleConfig__ = __webpack_require__(92);
 
 
 
@@ -67433,12 +67654,12 @@ var CommonChart = (function () {
 
 /***/ }),
 
-/***/ 69:
+/***/ 68:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Sankey__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ErrorBar__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Sankey__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ErrorBar__ = __webpack_require__(70);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
@@ -67449,7 +67670,7 @@ var CommonChart = (function () {
 
 /***/ }),
 
-/***/ 70:
+/***/ 69:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67511,7 +67732,7 @@ var registerShape = function () {
 
 /***/ }),
 
-/***/ 71:
+/***/ 70:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67574,14 +67795,14 @@ var registerShape = function () {
 
 /***/ }),
 
-/***/ 72:
+/***/ 71:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 
-var DataSet = __webpack_require__(74);
+var DataSet = __webpack_require__(73);
 var CommonDataSet = (function () {
     function CommonDataSet() {
         this.dataSet = {};
@@ -67798,7 +68019,7 @@ var CommonDataSet = (function () {
 
 /***/ }),
 
-/***/ 73:
+/***/ 72:
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -67827,7 +68048,7 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 74:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -109982,12 +110203,12 @@ module.exports = {
 
 /***/ }),
 
-/***/ 75:
+/***/ 74:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return process; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_PolarUtils__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_PolarUtils__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
@@ -110091,7 +110312,7 @@ var process = function (chart, config) {
 
 /***/ }),
 
-/***/ 76:
+/***/ 75:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110115,7 +110336,7 @@ var polarToCartesian = function (cx, cy, radius, angle) {
 
 /***/ }),
 
-/***/ 77:
+/***/ 76:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110206,11 +110427,11 @@ var process = function (chart, config) {
 
 /***/ }),
 
-/***/ 78:
+/***/ 77:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_defaultLocale__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_defaultLocale__ = __webpack_require__(78);
 /* unused harmony reexport formatDefaultLocale */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__src_defaultLocale__["a"]; });
 /* unused harmony reexport formatPrefix */
@@ -110218,11 +110439,11 @@ var process = function (chart, config) {
 /* unused harmony reexport formatLocale */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_formatSpecifier__ = __webpack_require__(43);
 /* unused harmony reexport formatSpecifier */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_precisionFixed__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_precisionFixed__ = __webpack_require__(84);
 /* unused harmony reexport precisionFixed */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_precisionPrefix__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_precisionPrefix__ = __webpack_require__(85);
 /* unused harmony reexport precisionPrefix */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_precisionRound__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_precisionRound__ = __webpack_require__(86);
 /* unused harmony reexport precisionRound */
 
 
@@ -110234,7 +110455,7 @@ var process = function (chart, config) {
 
 /***/ }),
 
-/***/ 79:
+/***/ 78:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110265,7 +110486,7 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 80:
+/***/ 79:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110291,7 +110512,7 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 81:
+/***/ 80:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110306,7 +110527,7 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 82:
+/***/ 81:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110328,7 +110549,7 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 83:
+/***/ 82:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110348,7 +110569,7 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 84:
+/***/ 83:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110359,7 +110580,7 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 85:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110373,7 +110594,7 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 86:
+/***/ 85:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110387,7 +110608,7 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 87:
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110402,14 +110623,14 @@ function defaultLocale(definition) {
 
 /***/ }),
 
-/***/ 88:
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return process; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setQuickType__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setQuickType__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_EventUtils__ = __webpack_require__(16);
 
 
@@ -110615,7 +110836,7 @@ var process = function (chart, config) {
 
 /***/ }),
 
-/***/ 89:
+/***/ 88:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110847,7 +111068,7 @@ var process = function (series, coord) {
 
 /***/ }),
 
-/***/ 90:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110902,7 +111123,7 @@ var process = function (chart, config) {
 
 /***/ }),
 
-/***/ 91:
+/***/ 90:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110981,7 +111202,7 @@ var process = function (chart, config) {
 
 /***/ }),
 
-/***/ 92:
+/***/ 91:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -111011,7 +111232,7 @@ var process = function (chart, config) {
 
 /***/ }),
 
-/***/ 93:
+/***/ 92:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
