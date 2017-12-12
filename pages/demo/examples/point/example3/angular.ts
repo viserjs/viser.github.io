@@ -27,7 +27,7 @@ import * as $ from 'jquery';
   `
 })
 class AppComponent {
-  data = [];
+  // data = [];
   tooltipCrosshairs = { type: 'cross' };
   axisClassGrid = {
     align: 'center',
