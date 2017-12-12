@@ -11,67 +11,133 @@
   position: relative;
   background: $secondary;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-  .common-title {
-    float: left;
-    padding-left: 30px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 36px;
-    font-weight: 100;
-    height: 60px;
-    line-height: 60px;
+}
+.common-title {
+  float: left;
+  padding-left: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: 100;
+  height: 60px;
+  line-height: 60px;
+  display: block;
+  background: $primary;
+  width: 200px;
+  box-sizing: border-box;
+
+  &::after {
+    content: ' ';
     display: block;
+    position: absolute;
+    top: -28px;
+    left: 163px;
+    width: 80px;
+    height: 80px;
+    transform: rotate(-30deg);
     background: $primary;
-    width: 200px;
-    box-sizing: border-box;
-
-    &::after {
-      content: ' ';
-      display: block;
-      position: absolute;
-      top: -28px;
-      left: 163px;
-      width: 80px;
-      height: 80px;
-      transform: rotate(-30deg);
-      background: $primary;
-      border-radius: 20px;
-    }
+    border-radius: 20px;
   }
-  .common-header-nav {
-    width: 500px;
-    height: 60px;
-    box-sizing: border-box;
-    padding-top: 13px;
-    float: right;
-    margin-right: 126px;
-  }
-  .common-header-nav-item {
-    color: white;
-    display: block;
-    width: 130px;
-    height: 34px;
-    line-height: 34px;
-    border-radius: 34px;
-    font-size: 14px;
-    float: right;
+}
+.common-header-nav {
+  width: 600px;
+  height: 60px;
+  box-sizing: border-box;
+  padding-top: 13px;
+  float: right;
+  margin-right: 82px;
+}
+.common-header-nav-item {
+  color: white;
+  display: block;
+  width: 100px;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 34px;
+  font-size: 14px;
+  float: right;
+  margin-left: 6px;
+  text-decoration: none;
+  text-align: center;
+  transition: background .3s, color .3s;
+  position: relative;
+  cursor: pointer;
+  a {
     text-decoration: none;
-    text-align: center;
-    transition: background .3s, color .3s;
-    position: relative;
-    cursor: pointer;
-    a {
-      text-decoration: none;
-      color: #fff;
-    }
+    color: #fff;
+  }
 
-    &:hover {
+  &:hover {
+    background: white;
+    color: $secondary;
+    a,
+    i {
+      color: $secondary;
+    }
+  }
+}
+.page-language-switch {
+  color: white;
+  width: 34px;
+  height: 34px;
+  padding: 4px;
+  display: block;
+  float: right;
+  margin-left: 24px;
+  cursor: pointer;
+  &.en {
+    &::before { content: 'EN'; }
+    &:hover::before { content: 'CN'; }
+  }
+  &.cn {
+    &::before { content: '中'; }
+    &:hover::before { content: '英'; }
+  }
+  &::before {
+    content: ' ';
+    display: block;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid white;
+    border-radius: 29px;
+    text-align: center;
+  }
+  &:hover {
+    &::before {
       background: white;
       color: $secondary;
-      a,
-      i {
-        color: $secondary;
-      }
+    }
+  }
+}
+
+.github-link {
+  color: white;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  display: block;
+  float: right;
+  margin-left: 48px;
+  .iconfont {
+    height: 29px;
+    width: 29px;
+    overflow: hidden;
+    font-size: 28px;
+  }
+  .icon-gh {
+    display: none;
+  }
+  .icon-gh-o {
+    display: block;
+  }
+  &:hover {
+    .icon-gh {
+      display: block;
+    }
+    .icon-gh-o {
+      display: none;
     }
   }
 }

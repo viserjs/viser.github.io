@@ -52,11 +52,11 @@ const vueCssLoaders = function (options) {
 }
 
 let config = {
-  // devtool: '#inline-source-map',
+  //devtool: '#inline-source-map',
 
   entry: {
     demo: './pages/demo/index',
-    api: './pages/api/index',
+    docs: './pages/docs/index',
     home: './pages/home/index',
   },
 

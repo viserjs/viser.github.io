@@ -5,12 +5,15 @@ import Viser from 'viser';
 import Vue from 'vue';
 import ViserVue from 'viser-vue'
 import * as ReactDOM from 'react-dom';
+import locale from './locale';
 
 const exampleOrigin = require('./examples/index');
 
 const navTpl = require('./nav.tpl');
 
-const ALL_FRAMEWORK = ['react', 'vue', 'angular'];
+const ALL_FRAMEWORKS = ['react', 'vue', 'angular'];
+const ALL_PAGE_LANGUAGES = ['en', 'cn'];
+const DEFAULT_PAGE_LANGUAGE = 'en';
 
 class App {
   attrs: {
@@ -18,11 +21,30 @@ class App {
     framework: string,
     chartType: string,
     exampleIndex: number,
+    language: string,
+  } = {
+    code: {},
+    framework: 'react',
+    chartType: 'line',
+    exampleIndex: 0,
+    language: DEFAULT_PAGE_LANGUAGE,
   };
 
-  exampleList: any;
+  exampleList: any = {};
 
   constructor() {
+    this.initExampleList();
+    this.initPageLanguage();
+    this.initUrlQuery();
+    this.initCode();
+
+    this.render();
+    this.renderCodeEditor();
+    this.refreshCase(this.attrs.framework);
+    this.bindEvent();
+  }
+
+  initExampleList() {
     const exampleList = {};
     Object.keys(exampleOrigin).forEach((key) => {
       exampleList[key] = {
@@ -36,18 +58,9 @@ class App {
       }
     });
     this.exampleList = exampleList;
-
-    this.attrs = {
-      code: {},
-      framework: 'react',
-      chartType: 'line',
-      exampleIndex: 0,
-    };
-
-    this.init();
   }
 
-  init() {
+  initUrlQuery() {
     const search = window.location.search.substr(1);
 
     const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
@@ -67,7 +80,10 @@ class App {
     })
 
     this.attrs.exampleIndex = exampleIndex;
+  }
 
+  initCode() {
+    const { chartType, exampleIndex } = this.attrs;
     const example = this.exampleList[chartType].examples[exampleIndex] || {};
     const { path, cnName, enName } = example;
 
@@ -96,24 +112,32 @@ class App {
         cnName, enName,
       };
     }
+  }
 
-    this.render();
-    this.refreshCase(this.attrs.framework);
-    this.bindEvent();
+  initPageLanguage() {
+    const pageLanguageInStore = window.localStorage.getItem('page_language');
+    if (pageLanguageInStore && ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) !== -1) {
+      this.attrs.language = pageLanguageInStore;
+    } else {
+      window.localStorage.setItem('page_language', DEFAULT_PAGE_LANGUAGE);
+    }
   }
 
   bindEvent() {
     const self = this;
-    $('.case-box .op .run').on('click', function() {
-      const index = $(this).attr('data-index');
-    });
+    // TODO: bind JSFiddle event
+    // $('.case-box .op .run').on('click', function() {
+    //   const index = $(this).attr('data-index');
+    // });
 
+    // bind left menu event
     $('.case-box .case-code-switch .case-code-switch-item').on('click', function() {
       const framework = $(this).attr('data-framework');
       self.attrs.framework = framework;
       self.refreshCase(framework);
     });
 
+    // bind framework switch event
     $('.left-panel .common-nav-folder.expandable .common-nav-title').on('click', function() {
       if ($(this).parent().hasClass('expanded')) {
         $('.left-panel .common-nav-folder.expandable').each(function () {
@@ -126,15 +150,39 @@ class App {
         $(this).parent().addClass('expanded');
       }
     });
+
+    // bind page language switch event
+    $('.page-language-switch').on('click', function() {
+      const pageLanguageInStore = window.localStorage.getItem('page_language');
+      if (pageLanguageInStore && pageLanguageInStore === 'en') {
+        window.localStorage.setItem('page_language', 'cn');
+      } else if (pageLanguageInStore && pageLanguageInStore === 'cn') {
+        window.localStorage.setItem('page_language', 'en');
+      } else {
+        window.localStorage.setItem('page_language', DEFAULT_PAGE_LANGUAGE);
+      }
+      self.initPageLanguage();
+      self.render();
+      self.unbindEvent();
+      self.bindEvent();
+    });
+  }
+
+  unbindEvent() {
+    $('.case-box .case-code-switch .case-code-switch-item').off('click');
+    $('.left-panel .common-nav-folder.expandable .common-nav-title').off('click');
+    $('.page-language-switch').off('click');
   }
 
   refreshCase(framework) {
+    // change top framework switch
     $('.case-box .case-code-switch-item').each(function () {
       $(this).removeClass('active');
       if (framework === $(this).attr('data-framework')) {
         $(this).addClass('active');
       }
     });
+    // change code editor box
     $('.case-box .case-code-detail').each(function () {
       $(this).removeClass('active');
       if (framework === $(this).attr('data-framework')) {
@@ -184,36 +232,76 @@ class App {
     }
   }
 
+  getNameByLanguage(o) {
+    const { language } = this.attrs;
+    switch(language) {
+      case 'en': {
+        if (o && o.enName) {
+          return o.enName;
+        }
+        return '';
+      }
+      case 'cn': {
+        if (o && o.cnName) {
+          return o.cnName;
+        }
+        return '';
+      }
+      default: {
+        return '';
+      }
+    }
+  }
+
+  renderCodeEditor() {
+    // render code editor
+    ALL_FRAMEWORKS.forEach((framework) => {
+      this.presetEditor(framework);
+    });
+  }
+
   render() {
+    // render page language icon
+    $('.common-header .page-language-switch')
+      .removeClass('en').removeClass('cn')
+      .addClass(this.attrs.language);
+
+    if (locale && locale[this.attrs.language] && locale[this.attrs.language].length) {
+      locale[this.attrs.language].forEach((o) => {
+        $(o.selector).html(o.text);
+      });
+    }
+
+    // render left menu
     const menuList = {};
     Object.keys(this.exampleList).forEach((key) => {
       const chartTypeMatched = key === this.attrs.chartType;
       menuList[key] = {
         ...this.exampleList[key],
+        folderDisplayName: this.getNameByLanguage(this.exampleList[key]),
         examples: this.exampleList[key].examples.map((o, i) => {
           const exampleIndexMatched = i === this.attrs.exampleIndex;
           return {
             ...o,
+            itemDisplayName: this.getNameByLanguage(o),
             activeClass: chartTypeMatched && exampleIndexMatched ? 'active' : '',
           };
         }),
         expanded: chartTypeMatched ? 'expanded' : '',
       };
     });
-
+    $('.left-panel').empty();
     $('.left-panel').append(navTpl({
       menuList,
     }));
 
+    // render demo title
     const code = this.attrs.code;
-    $('.case-type').html(code.enName);
-
-    ALL_FRAMEWORK.forEach((framework) => {
-      this.presetEditor(framework);
-    });
+    $('.case-type').html(this.getNameByLanguage(code));
   }
 }
 
+// load monaco editor
 const load = require('load-script');
 const loadEditor = () => {
   const self = this;

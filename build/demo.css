@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .common-header {
   height: 60px;
   line-height: 60px;
@@ -9,79 +10,95 @@
   position: relative;
   background: #00c49f;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }
-  .common-header .common-title {
-    float: left;
-    padding-left: 30px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 36px;
-    font-weight: 100;
-    height: 60px;
-    line-height: 60px;
-    display: block;
-    background: #0088fe;
-    width: 200px;
-    box-sizing: border-box; }
-    .common-header .common-title::after {
-      content: ' ';
-      display: block;
-      position: absolute;
-      top: -28px;
-      left: 163px;
-      width: 80px;
-      height: 80px;
-      transform: rotate(-30deg);
-      background: #0088fe;
-      border-radius: 20px; }
-  .common-header .common-header-nav {
-    width: 500px;
-    height: 60px;
-    box-sizing: border-box;
-    padding-top: 13px;
-    float: right;
-    margin-right: 126px; }
-  .common-header .common-header-nav-item {
-    color: white;
-    display: block;
-    width: 130px;
-    height: 34px;
-    line-height: 34px;
-    border-radius: 34px;
-    font-size: 14px;
-    float: right;
-    text-decoration: none;
-    text-align: center;
-    transition: background .3s, color .3s;
-    position: relative;
-    cursor: pointer; }
-    .common-header .common-header-nav-item a {
-      text-decoration: none;
-      color: #fff; }
-    .common-header .common-header-nav-item:hover {
-      background: white;
-      color: #00c49f; }
-      .common-header .common-header-nav-item:hover a,
-      .common-header .common-header-nav-item:hover i {
-        color: #00c49f; }
 
-* {
-  margin: 0;
-  padding: 0; }
-
-body {
-  overflow-x: hidden; }
-
-ul, ol {
+.common-title {
+  float: left;
+  padding-left: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: 100;
+  height: 60px;
+  line-height: 60px;
   display: block;
-  list-style-type: none;
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
-  -webkit-padding-start: 0; }
+  background: #0088fe;
+  width: 200px;
+  box-sizing: border-box; }
+  .common-title::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: -28px;
+    left: 163px;
+    width: 80px;
+    height: 80px;
+    transform: rotate(-30deg);
+    background: #0088fe;
+    border-radius: 20px; }
 
-a {
-  text-decoration: none; }
+.common-header-nav {
+  width: 600px;
+  height: 60px;
+  box-sizing: border-box;
+  padding-top: 13px;
+  float: right;
+  margin-right: 82px; }
+
+.common-header-nav-item {
+  color: white;
+  display: block;
+  width: 100px;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 34px;
+  font-size: 14px;
+  float: right;
+  margin-left: 6px;
+  text-decoration: none;
+  text-align: center;
+  transition: background .3s, color .3s;
+  position: relative;
+  cursor: pointer; }
+  .common-header-nav-item a {
+    text-decoration: none;
+    color: #fff; }
+  .common-header-nav-item:hover {
+    background: white;
+    color: #00c49f; }
+    .common-header-nav-item:hover a,
+    .common-header-nav-item:hover i {
+      color: #00c49f; }
+
+.page-language-switch {
+  color: white;
+  width: 34px;
+  height: 34px;
+  padding: 4px;
+  display: block;
+  float: right;
+  margin-left: 24px;
+  cursor: pointer; }
+  .page-language-switch.en::before {
+    content: 'EN'; }
+  .page-language-switch.en:hover::before {
+    content: 'CN'; }
+  .page-language-switch.cn::before {
+    content: '\4E2D'; }
+  .page-language-switch.cn:hover::before {
+    content: '\82F1'; }
+  .page-language-switch::before {
+    content: ' ';
+    display: block;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid white;
+    border-radius: 29px;
+    text-align: center; }
+  .page-language-switch:hover::before {
+    background: white;
+    color: #00c49f; }
 
 .github-link {
   color: white;
@@ -104,6 +121,25 @@ a {
     display: block; }
   .github-link:hover .icon-gh-o {
     display: none; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  overflow-x: hidden; }
+
+ul, ol {
+  display: block;
+  list-style-type: none;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0; }
+
+a {
+  text-decoration: none; }
 
 @font-face {
   font-family: 'iconfont';

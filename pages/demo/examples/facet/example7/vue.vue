@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="600" :data="data">
+    <v-chart :force-fit="true" :height="600" :data="data" padding="padding">
       <v-tooltip :show-title="false" />
       <v-legend :data-key="'cut'" :position="'top'" />
-      <v-coord :type="'theat'" />
+      <v-coord :type="'theta'" />
       <v-facet :type="'tree'" :fields="fields" :line="{ stroke: '#00a3d7' }" :line-smooth="true">
         <v-facet-view :data-pre="facetDataPre" :scale="facetScale">
           <v-stack-bar :position="'percent'" :color="'gender'" />
@@ -47,6 +47,7 @@
     data() {
       return {
         data,
+        padding: [60, 90, 80, 80],
         facetDataPre,
         facetScale,
         fields: ['grade', 'class'],
