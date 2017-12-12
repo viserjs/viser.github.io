@@ -1,5 +1,6 @@
 @import '../styles/common.scss';
 @import '../styles/icon.scss';
+@import '../styles/header.scss';
 
 header.home-header {
   margin: 0 auto;
@@ -43,51 +44,11 @@ header.home-header {
     width: 120px;
     box-sizing: border-box;
   }
-  .home-subtitle {
-    color: white;
-    font-size: 20px;
-    font-weight: 100;
-    margin: 0;
-    line-height: 100px;
-    float: left;
+
+  .common-header-nav {
     height: 100px;
-    width: 380px;
-    box-sizing: border-box;
-    vertical-align: 8px;
-  }
-  .home-nav {
-    width: 500px;
-    height: 100px;
-    box-sizing: border-box;
-    padding-top: 25px;
-    float: right;
-    margin-right: -80px;
-  }
-  .home-nav-item {
-    color: white;
-    display: block;
-    width: 130px;
-    height: 34px;
-    line-height: 34px;
-    border-radius: 34px;
-    font-size: 14px;
-    float: right;
-    text-decoration: none;
-    text-align: center;
-    transition: background .3s, color .3s;
-    position: relative;
-    cursor: pointer;
-    a {
-      text-decoration: none;
-      color: #fff;
-    }
-    &:hover {
-      background: white;
-      color: $secondary;
-      a, i {
-        color: $secondary;
-      }
-    }
+    padding-top: 33px;
+    margin-right: -40px;
   }
 }
 
@@ -100,7 +61,7 @@ section.main-intro {
     width: 500px;
     font-size: 60px;
     line-height: 70px;
-    height: 70px;
+    height: 140px;
     margin: 0;
   }
   .main-intro-subtitle {

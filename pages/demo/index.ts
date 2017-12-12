@@ -114,11 +114,11 @@ class App {
   }
 
   initPageLanguage() {
-    const pageLanguageInStore = window.localStorage.getItem('page_laguage');
+    const pageLanguageInStore = window.localStorage.getItem('page_language');
     if (pageLanguageInStore && ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) !== -1) {
       this.attrs.language = pageLanguageInStore;
     } else {
-      window.localStorage.setItem('page_laguage', DEFAULT_PAGE_LANGUAGE);
+      window.localStorage.setItem('page_language', DEFAULT_PAGE_LANGUAGE);
     }
   }
 
@@ -152,13 +152,13 @@ class App {
 
     // bind page language switch event
     $('.page-language-switch').on('click', function() {
-      const pageLanguageInStore = window.localStorage.getItem('page_laguage');
+      const pageLanguageInStore = window.localStorage.getItem('page_language');
       if (pageLanguageInStore && pageLanguageInStore === 'en') {
-        window.localStorage.setItem('page_laguage', 'cn');
+        window.localStorage.setItem('page_language', 'cn');
       } else if (pageLanguageInStore && pageLanguageInStore === 'cn') {
-        window.localStorage.setItem('page_laguage', 'en');
+        window.localStorage.setItem('page_language', 'en');
       } else {
-        window.localStorage.setItem('page_laguage', DEFAULT_PAGE_LANGUAGE);
+        window.localStorage.setItem('page_language', DEFAULT_PAGE_LANGUAGE);
       }
       self.initPageLanguage();
       self.render();
