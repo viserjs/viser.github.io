@@ -40,7 +40,7 @@ const seriesOpts = {
 
 export default {
   mounted() {
-    $.getJSON('/data/heatmap-5.json', (data) => {
+    $.getJSON('/data/heatmap-7.json', (data) => {
       this.$data.data = data;
     });
   },

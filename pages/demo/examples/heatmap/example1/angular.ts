@@ -83,7 +83,7 @@ class AppComponent {
   axis2Opts = axis2Opts;
   seriesOpts = seriesOpts;
 
-  ngOnInit() {
+  constructor() {
     $.getJSON('/data/heatmap-1.json', (data) => {
       const source = [];
       for (let i = 0; i < data.length; i ++) {
@@ -94,7 +94,6 @@ class AppComponent {
         obj.sales = item[2];
         source.push(obj);
       }
-      console.log(this);
       this.data = source;
     });
   }
