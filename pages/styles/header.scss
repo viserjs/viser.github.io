@@ -67,7 +67,7 @@
     color: #fff;
   }
 
-  &:hover {
+  &:hover, &.active {
     background: white;
     color: $secondary;
     a,

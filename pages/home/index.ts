@@ -1,9 +1,12 @@
 import locale from './locale';
 import Viser from 'viser';
+import {
+  initPageLanguage, getPageLanguage, setPageLanguage, changePageLanguage,
+  ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
+  addClass, removeClass,
+} from '../common/utils';
 import './index.scss';
 
-const ALL_PAGE_LANGUAGES = ['en', 'cn'];
-const DEFAULT_PAGE_LANGUAGE = 'en';
 const GDP_JSON = [
   { year: '2006', gdp: 21.94385 },
   { year: '2007', gdp: 27.02323 },
@@ -19,7 +22,9 @@ const GDP_JSON = [
 
 class Home {
   constructor() {
+    initPageLanguage();
     this.render();
+    this.bindEvent();
   }
 
   renderChart() {
@@ -90,27 +95,19 @@ class Home {
     }
   }
 
-  renderContent() {
-    let pageLanguageInStore = window.localStorage.getItem('page_language');
+  renderLanguage() {
+    let pageLanguageInStore = getPageLanguage();
 
     if (!pageLanguageInStore || ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) === -1) {
       pageLanguageInStore = DEFAULT_PAGE_LANGUAGE;
-      window.localStorage.setItem('page_language', pageLanguageInStore);
+      setPageLanguage(pageLanguageInStore);
     }
 
     const pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
-    if (pageLanguageSwitchDom) {
-      if (pageLanguageSwitchDom.classList) {
-        ALL_PAGE_LANGUAGES.forEach((lang) => {
-          pageLanguageSwitchDom.classList.remove(lang);
-        });
-      }
-      if (pageLanguageSwitchDom.classList) {
-        pageLanguageSwitchDom.classList.add(pageLanguageInStore);
-      } else {
-        pageLanguageSwitchDom.className += ' ' + pageLanguageInStore;
-      }
-    }
+    ALL_PAGE_LANGUAGES.forEach((lang) => {
+      removeClass(pageLanguageSwitchDom, lang);
+    });
+    addClass(pageLanguageSwitchDom, pageLanguageInStore);
 
     if (locale && locale[pageLanguageInStore] && locale[pageLanguageInStore].length) {
       locale[pageLanguageInStore].forEach((o) => {
@@ -120,15 +117,7 @@ class Home {
   }
 
   handleSwitchPageLanguage = () => {
-    const pageLanguageInStore = window.localStorage.getItem('page_language');
-
-    if (pageLanguageInStore && pageLanguageInStore === 'en') {
-      window.localStorage.setItem('page_language', 'cn');
-    } else if (pageLanguageInStore && pageLanguageInStore === 'cn') {
-      window.localStorage.setItem('page_language', 'en');
-    } else {
-      window.localStorage.setItem('page_language', DEFAULT_PAGE_LANGUAGE);
-    }
+    changePageLanguage();
 
     this.refresh();
   }
@@ -149,13 +138,13 @@ class Home {
 
   render() {
     this.renderChart();
-    this.renderContent();
-    this.bindEvent();
+    this.renderLanguage();
   }
 
   refresh() {
     this.unbindEvent();
     this.render();
+    this.bindEvent();
   }
 }
 

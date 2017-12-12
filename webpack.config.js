@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const env = process.env.NODE_ENV;
 const isProduction = env === 'production';
+const marked = require("marked");
+const renderer = new marked.Renderer();
 
 const vueCssLoaders = function (options) {
   options = options || {}
@@ -79,7 +81,21 @@ let config = {
       { test: /\.scss$/, loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'sass-loader'] }) },
       { test: /\.tsx?$/, loader: "ts-loader" },
       { test: /\.tpl$/, loader: "handlebars-loader?helperDirs[]="+__dirname+"/helpers"},
-      { test: /\.md$/, loader: "babel-loader!remarkdown-loader?Demo=remarkdown-doc" },
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: "html-loader"
+          },
+          {
+            loader: "markdown-loader",
+            options: {
+              pedantic: true,
+              renderer
+            }
+          }
+        ]
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
