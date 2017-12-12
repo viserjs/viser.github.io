@@ -236,11 +236,20 @@ module.exports = {
         cnName: '矩形分箱图',
       },
       {
+        path: 'example4',
+        enName: 'Horizontal calendar color box',
+        cnName: '水平日历色块图',
+      },
+      {
         path: 'example5',
-        enName: 'Group box',
+        enName: 'Group Heatmap',
         cnName: '分块热力图',
       },
       {
+        path: 'example6',
+        enName: 'Heatmap',
+        cnName: '热力图',
+      },      {
         path: 'example7',
         enName: 'Hexagon Box',
         cnName: '六边形分箱',
