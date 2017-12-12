@@ -4,10 +4,9 @@ import * as React from 'react';
 import * as $ from 'jquery';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { data: [] };
-  }
+  state = {
+    data: [],
+  };
   componentDidMount() {
     $.getJSON('/data/heatmap-1.json', (data) => {
       const source = [];

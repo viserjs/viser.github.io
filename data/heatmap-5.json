@@ -1,4 +1,4 @@
-const data = [
+[
   {
       "name": 14513,
       "carat": 1.35,
@@ -26000,15 +26000,3 @@ const data = [
       "z": 3.79
   }
 ]
-
-const dataPre = {
-  transform: {
-    type: 'bin.rectangle',
-    fields: [ 'carat', 'price' ]
-  }
-};
-
-export {
-  data,
-  dataPre,
-};

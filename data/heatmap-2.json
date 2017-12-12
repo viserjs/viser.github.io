@@ -1,4 +1,4 @@
-const data = [
+[
   {
       "x": 211.30367873206103,
       "y": 374.011454046156
@@ -8000,16 +8000,3 @@ const data = [
       "y": 654.6360459987827
   }
 ]
-const dataPre = {
-  transform: {
-    sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
-    type: 'bin.hexagon',
-    fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
-    bins: [ 10, 5 ]
-  }
-};
-
-export {
-data,
-dataPre,
-};

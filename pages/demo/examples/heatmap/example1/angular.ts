@@ -75,7 +75,7 @@ const seriesOpts = {
 })
 
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 400;
   data = [];
   scale = scale;
@@ -83,7 +83,7 @@ class AppComponent {
   axis2Opts = axis2Opts;
   seriesOpts = seriesOpts;
 
-  constructor() {
+  ngOnInit() {
     $.getJSON('/data/heatmap-1.json', (data) => {
       const source = [];
       for (let i = 0; i < data.length; i ++) {
@@ -94,6 +94,7 @@ class AppComponent {
         obj.sales = item[2];
         source.push(obj);
       }
+      console.log(this);
       this.data = source;
     });
   }
