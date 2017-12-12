@@ -140,6 +140,33 @@ module.exports = {
     ],
     icon: 'bingtu'
   },
+  point: {
+    enName: 'Point',
+    cnName: '点图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Scatter',
+        cnName: '散点图',
+      },
+      {
+        path: 'example2',
+        enName: 'Scatter Series',
+        cnName: '多色散点图',
+      },
+      {
+        path: 'example3',
+        enName: 'Jitter',
+        cnName: '扰动点图',
+      },
+      {
+        path: 'example4',
+        enName: 'Bubble',
+        cnName: '气泡图',
+      },
+    ],
+    icon: 'diantu'
+  },
   area: {
     enName: 'Area',
     cnName: '面积图',
@@ -192,7 +219,7 @@ module.exports = {
         cnName: '分组箱型图',
       },
     ],
-    icon: 'leidatu'
+    icon: 'xiangxiantu'
   },
   heatmap: {
     enName: 'Heatmap',
@@ -219,45 +246,8 @@ module.exports = {
         cnName: '六边形分箱',
       },
     ],
-    icon: 'leidatu'
+    icon: 'relitu'
   },
-  // radial: {
-  //   cnName: '玉珏图',
-  //   examples: ['example1'],
-  //   icon: 'jizuobiao'
-  // },
-  point: {
-    enName: 'Point',
-    cnName: '点图',
-    examples: [
-      {
-        path: 'example1',
-        enName: 'Scatter',
-        cnName: '散点图',
-      },
-      {
-        path: 'example2',
-        enName: 'Scatter Series',
-        cnName: '多色散点图',
-      },
-      {
-        path: 'example3',
-        enName: 'Jitter',
-        cnName: '扰动点图',
-      },
-      {
-        path: 'example4',
-        enName: 'Bubble',
-        cnName: '气泡图',
-      },
-    ],
-    icon: 'diantu'
-  },
-  // funnel: {
-  //   cnName: '漏斗图',
-  //   examples: ['example1'],
-  //   icon: 'loudoutu'
-  // },
   radar: {
     enName: 'Radar',
     cnName: '雷达图',
