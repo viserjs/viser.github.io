@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1153);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1169);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -17158,15 +17158,15 @@
 
 /***/ }),
 
-/***/ 1153:
+/***/ 1169:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const locale_1 = __webpack_require__(1154);
+const locale_1 = __webpack_require__(1170);
 const viser_1 = __webpack_require__(22);
-__webpack_require__(1155);
+__webpack_require__(1171);
 const ALL_PAGE_LANGUAGES = ['en', 'cn'];
 const DEFAULT_PAGE_LANGUAGE = 'en';
 const GDP_JSON = [
@@ -17314,7 +17314,7 @@ new Home();
 
 /***/ }),
 
-/***/ 1154:
+/***/ 1170:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17459,7 +17459,7 @@ exports.default = locale;
 
 /***/ }),
 
-/***/ 1155:
+/***/ 1171:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
