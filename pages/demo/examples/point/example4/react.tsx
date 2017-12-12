@@ -5,24 +5,24 @@ import * as $ from 'jquery';
 
 const scale = [{
   dataKey: 'LifeExpectancy',
-  alias: '人均寿命（年）'
+  alias: '人均寿命（年）',
 }, {
   dataKey: 'Population',
   type: 'pow',
-  alias: '人口总数'
+  alias: '人口总数',
 }, {
   dataKey: 'GDP',
-  alias: '人均国内生产总值($)'
+  alias: '人均国内生产总值($)',
 }, {
   dataKey: 'Country',
-  alias: '国家/地区'
+  alias: '国家/地区',
 }];
 
 const colorMap = {
   'Asia': Global.colors[0],
   'Americas': Global.colors[1],
   'Europe': Global.colors[2],
-  'Oceania': Global.colors[3]
+  'Oceania': Global.colors[3],
 };
 
 class App extends React.Component {
@@ -38,17 +38,17 @@ class App extends React.Component {
 
   render() {
     const { data } = this.state;
+    const laeblFormatter = (value) => {
+      return (value / 1000).toFixed(0) + 'k';
+    }; 
+
     return (
       <Chart forceFit height={500} data={data}>
-        <Tooltip
-          showTitle={false}
-        />
-        <Legend dataKey="Population" />
+        <Tooltip showTitle={false} />
+        <Legend dataKey="Population" show={false} />
         <Axis
           dataKey="GDP"
-          label={{
-            // formatter: '.0s'
-          }}
+          label={{ formatter: laeblFormatter }}
         />
         <Point
           position="GDP*LifeExpectancy"

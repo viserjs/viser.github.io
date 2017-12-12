@@ -32,9 +32,9 @@ const facetDataPre = {
     <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
       <v-tooltip crosshairs="false"></v-tooltip>
       <v-legend dataKey="cut" position="top"></v-legend>
-      <v-axis dataKey="cut" label="null" tickLine="null"></v-axis>
-      <v-facet type="tree" [fields]="fields" [line]="line" lineSmooth="true">
-        <v-facet-view dataPre="facetDataPre">
+      <v-axis dataKey="cut" [label]="axisNull" [tickLine]="axisNull"></v-axis>
+      <v-facet type="tree" [fields]="fields" [line]="line" [lineSmooth]="lineSmooth">
+        <v-facet-view [dataPre]="facetDataPre">
           <v-bar position="cut*mean" color="cut"></v-bar>
         </v-facet-view>
       </v-facet>
@@ -44,6 +44,8 @@ const facetDataPre = {
 })
 export class AppComponent {
   forceFit: boolean= true;
+  lineSmooth: boolean = true;
+  axisNull: null;
   height: number = 600;
   data = data;
   scale = scale;

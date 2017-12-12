@@ -52,26 +52,27 @@ const vueCssLoaders = function (options) {
 }
 
 let config = {
+  // devtool: '#inline-source-map',
+
   entry: {
     demo: './pages/demo/index',
     api: './pages/api/index',
     home: './pages/home/index',
-  }, // 入口文件
+  },
 
-  // 输出文件 build下的bundle.js
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: "[name].js",
     publicPath: "http://localhost:3000/build/"
   },
+
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".scss", "vue"],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
     },
   },
-  // 使用loader模块
+
   module: {
     loaders: [
       { test: /\.css$/, loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader'] }) },
@@ -97,6 +98,7 @@ let config = {
       },
     ]
   },
+
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
