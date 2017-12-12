@@ -5,7 +5,7 @@
       <v-axis />
       <v-legend :data-key="'item'" />
       <v-pie :position="'percent'" :color="'item'" :v-style="pieStyle" :label="labelConfig" />
-      <v-coord :radius="0.75" :inner-radius="0.6" />
+      <v-coord :type="'theta'" :radius="0.75" :inner-radius="0.6" />
     </v-chart>
   </div>
 </template>

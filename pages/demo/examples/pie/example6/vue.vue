@@ -4,6 +4,7 @@
       <v-tooltip />
       <v-sector :position="'year*population'" :color="'year'" :v-style="sectorStyle" />
       <v-legend :position="'right'" :data-key="'year'" :offset-y="-70" :offset-x="-140" />
+      <v-coord :type="'polar'" />
     </v-chart>
   </div>
 </template>

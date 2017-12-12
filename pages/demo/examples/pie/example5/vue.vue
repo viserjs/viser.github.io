@@ -3,6 +3,7 @@
     <v-chart :force-fit="true" :height="height" :data="data">
       <v-tooltip />
       <v-sector :position="'year*population'" :v-style="sectorStyle" :label="labelConfig" />
+      <v-coord :type="'polar'" />
     </v-chart>
   </div>
 </template>

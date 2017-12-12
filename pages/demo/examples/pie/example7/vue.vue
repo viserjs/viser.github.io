@@ -2,7 +2,7 @@
   <div>
     <v-chart :force-fit="true" :height="height" :data="data">
       <v-tooltip />
-      <v-coord :inner-radius="0.2" />
+      <v-coord :type="'polar'" :inner-radius="0.2" />
       <v-sector :position="'year*population'" :color="'year'" :v-style="sectorStyle" />
       <v-legend :position="'right'" :data-key="'year'" :offset-y="-70" :offset-x="-140" />
     </v-chart>

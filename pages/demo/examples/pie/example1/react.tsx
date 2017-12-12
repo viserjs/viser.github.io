@@ -1,4 +1,4 @@
-import { Chart, Tooltip, Axis, Legend, Pie } from 'viser-react';
+import { Chart, Tooltip, Axis, Legend, Pie, Coord } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -28,10 +28,11 @@ const scale = [{
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
+      <Chart forceFit height={500} data={data} dataPre={dataPre} scale={scale}>
         <Tooltip showTitle={false} />
+        <Coord type="theta" />
         <Axis />
-        <Legend dataKey="item"/>
+        <Legend dataKey="item" />
         <Pie
           position="percent"
           color="item"

@@ -36,7 +36,7 @@ const scale = [{
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
       <v-pie position="percent" color="item" [style]="pieStyle" [label]="labelConfig"></v-pie>
-      <v-coord radius="0.75" innerRadius="0.6"></v-coord>
+      <v-coord  [type]="'theta'" radius="0.75" innerRadius="0.6"></v-coord>
       <v-legend dataKey="item"></v-legend>
     </v-chart>
   </div>
