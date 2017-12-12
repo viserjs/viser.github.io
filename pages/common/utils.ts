@@ -23,7 +23,13 @@ export const setPageLanguage = (language) => {
 export const initPageLanguage = () => {
   const pageLanguageInStore = getPageLanguage();
   if (!pageLanguageInStore) {
-    setPageLanguage(DEFAULT_PAGE_LANGUAGE);
+    // Optimise for Chinese user
+    const navigatorLanguage = (window.navigator.language).toLowerCase();
+    if (navigatorLanguage && navigatorLanguage.indexOf('cn') !== -1) {
+      setPageLanguage('cn');
+    } else {
+      setPageLanguage(DEFAULT_PAGE_LANGUAGE);
+    }
   }
 }
 
