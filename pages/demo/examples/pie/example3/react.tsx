@@ -32,7 +32,7 @@ class App extends React.Component {
         <Tooltip showTitle={false} />
         <Axis />
         <Legend dataKey="item" />
-        <Coord radius={0.75} innerRadius={0.6} />
+        <Coord type="theta" radius={0.75} innerRadius={0.6} />
         <Pie position="percent" color="item" style={{ stroke: '#fff', lineWidth: 1 }}
           label={['percent', {
             formatter: (val, item) => {

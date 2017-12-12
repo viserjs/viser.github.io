@@ -35,6 +35,7 @@ const scale = [{
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
+      <v-coord [type]="'theta'"></v-coord>
       <v-pie
         [position]="'percent'"
         [color]="'item'"
@@ -48,7 +49,7 @@ const scale = [{
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 400;
+  height: number = 500;
   data = data;
   dataPre = dataPre;
   scale = scale;

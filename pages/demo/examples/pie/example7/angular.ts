@@ -26,7 +26,7 @@ const data = [
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-tooltip></v-tooltip>
-      <v-coord innerRadius="0.2"></v-coord>
+      <v-coord type="polar" innerRadius="0.2"></v-coord>
       <v-sector position="year*population" [style]="sectorStyle" color="year"></v-sector>
       <v-legend position="right" dataKey="year" offsetY="-70" offsetX="-140"></v-legend>
     </v-chart>

@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <Chart forceFit height={500} data={data}>
         <Tooltip />
-        <Coord innerRadius={0.2} />
+        <Coord type="polar" innerRadius={0.2} />
         <Legend position="right" dataKey="year" offsetY={-70} offsetX={-140} />
         <Sector position="year*population" color="year" style={{ stroke: '#fff', lineWidth: 1 }} />
       </Chart>
