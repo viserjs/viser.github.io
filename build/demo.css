@@ -62,11 +62,12 @@
   .common-header-nav-item a {
     text-decoration: none;
     color: #fff; }
-  .common-header-nav-item:hover {
+  .common-header-nav-item:hover, .common-header-nav-item.active {
     background: white;
     color: #00c49f; }
     .common-header-nav-item:hover a,
-    .common-header-nav-item:hover i {
+    .common-header-nav-item:hover i, .common-header-nav-item.active a,
+    .common-header-nav-item.active i {
       color: #00c49f; }
 
 .page-language-switch {
