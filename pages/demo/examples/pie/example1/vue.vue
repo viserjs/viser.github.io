@@ -10,6 +10,7 @@
         :v-style="pieStyle"
         :label="labelConfig"
       />
+      <v-coord :type="'theta'" />
     </v-chart>
   </div>
 </template>
@@ -44,7 +45,7 @@
         data,
         dataPre,
         scale,
-        height: 400,
+        height: 500,
         pieStyle: {
           stroke: "#fff",
           lineWidth: 1

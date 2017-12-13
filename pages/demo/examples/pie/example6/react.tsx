@@ -1,4 +1,4 @@
-import { Chart, Tooltip, Legend, Sector } from 'viser-react';
+import { Chart, Tooltip, Legend, Sector, Coord } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 
@@ -23,6 +23,7 @@ class App extends React.Component {
       <Chart forceFit height={500} data={data}>
         <Tooltip />
         <Legend position="right" dataKey="year" offsetY={-70} offsetX={-140} />
+        <Coord type="polar" />
         <Sector position="year*population" color="year" style={{ stroke: '#fff', lineWidth: 1 }} />
       </Chart>
     );

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0; }
@@ -16,28 +17,6 @@ ul, ol {
 
 a {
   text-decoration: none; }
-
-.github-link {
-  color: white;
-  width: 34px;
-  height: 34px;
-  line-height: 34px;
-  display: block;
-  float: right;
-  margin-left: 48px; }
-  .github-link .iconfont {
-    height: 29px;
-    width: 29px;
-    overflow: hidden;
-    font-size: 28px; }
-  .github-link .icon-gh {
-    display: none; }
-  .github-link .icon-gh-o {
-    display: block; }
-  .github-link:hover .icon-gh {
-    display: block; }
-  .github-link:hover .icon-gh-o {
-    display: none; }
 
 @font-face {
   font-family: 'iconfont';
@@ -130,6 +109,130 @@ a {
 .icon-meiguitu:before {
   content: "\E60B"; }
 
+.common-header {
+  height: 60px;
+  line-height: 60px;
+  display: block;
+  outline: 0;
+  list-style: none;
+  color: #666;
+  font-size: 14px;
+  position: relative;
+  background: #00c49f;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }
+
+.common-title {
+  float: left;
+  padding-left: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: 100;
+  height: 60px;
+  line-height: 60px;
+  display: block;
+  background: #0088fe;
+  width: 200px;
+  box-sizing: border-box; }
+  .common-title::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: -28px;
+    left: 163px;
+    width: 80px;
+    height: 80px;
+    transform: rotate(-30deg);
+    background: #0088fe;
+    border-radius: 20px; }
+
+.common-header-nav {
+  width: 600px;
+  height: 60px;
+  box-sizing: border-box;
+  padding-top: 13px;
+  float: right;
+  margin-right: 82px; }
+
+.common-header-nav-item {
+  color: white;
+  display: block;
+  width: 100px;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 34px;
+  font-size: 14px;
+  float: right;
+  margin-left: 6px;
+  text-decoration: none;
+  text-align: center;
+  transition: background .3s, color .3s;
+  position: relative;
+  cursor: pointer; }
+  .common-header-nav-item a {
+    text-decoration: none;
+    color: #fff; }
+  .common-header-nav-item:hover, .common-header-nav-item.active {
+    background: white;
+    color: #00c49f; }
+    .common-header-nav-item:hover a,
+    .common-header-nav-item:hover i, .common-header-nav-item.active a,
+    .common-header-nav-item.active i {
+      color: #00c49f; }
+
+.page-language-switch {
+  color: white;
+  width: 34px;
+  height: 34px;
+  padding: 4px;
+  display: block;
+  float: right;
+  margin-left: 24px;
+  cursor: pointer; }
+  .page-language-switch.en::before {
+    content: 'EN'; }
+  .page-language-switch.en:hover::before {
+    content: 'CN'; }
+  .page-language-switch.cn::before {
+    content: '\4E2D'; }
+  .page-language-switch.cn:hover::before {
+    content: '\82F1'; }
+  .page-language-switch::before {
+    content: ' ';
+    display: block;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid white;
+    border-radius: 29px;
+    text-align: center; }
+  .page-language-switch:hover::before {
+    background: white;
+    color: #00c49f; }
+
+.github-link {
+  color: white;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  display: block;
+  float: right;
+  margin-left: 48px; }
+  .github-link .iconfont {
+    height: 29px;
+    width: 29px;
+    overflow: hidden;
+    font-size: 28px; }
+  .github-link .icon-gh {
+    display: none; }
+  .github-link .icon-gh-o {
+    display: block; }
+  .github-link:hover .icon-gh {
+    display: block; }
+  .github-link:hover .icon-gh-o {
+    display: none; }
+
 header.home-header {
   margin: 0 auto;
   width: 1000px;
@@ -168,46 +271,10 @@ header.home-header {
     height: 100px;
     width: 120px;
     box-sizing: border-box; }
-  header.home-header .home-subtitle {
-    color: white;
-    font-size: 20px;
-    font-weight: 100;
-    margin: 0;
-    line-height: 100px;
-    float: left;
+  header.home-header .common-header-nav {
     height: 100px;
-    width: 380px;
-    box-sizing: border-box;
-    vertical-align: 8px; }
-  header.home-header .home-nav {
-    width: 500px;
-    height: 100px;
-    box-sizing: border-box;
-    padding-top: 25px;
-    float: right;
-    margin-right: -80px; }
-  header.home-header .home-nav-item {
-    color: white;
-    display: block;
-    width: 130px;
-    height: 34px;
-    line-height: 34px;
-    border-radius: 34px;
-    font-size: 14px;
-    float: right;
-    text-decoration: none;
-    text-align: center;
-    transition: background .3s, color .3s;
-    position: relative;
-    cursor: pointer; }
-    header.home-header .home-nav-item a {
-      text-decoration: none;
-      color: #fff; }
-    header.home-header .home-nav-item:hover {
-      background: white;
-      color: #00c49f; }
-      header.home-header .home-nav-item:hover a, header.home-header .home-nav-item:hover i {
-        color: #00c49f; }
+    padding-top: 33px;
+    margin-right: -40px; }
 
 section.main-intro {
   color: white;
@@ -218,7 +285,7 @@ section.main-intro {
     width: 500px;
     font-size: 60px;
     line-height: 70px;
-    height: 70px;
+    height: 140px;
     margin: 0; }
   section.main-intro .main-intro-subtitle {
     padding-top: 22px;

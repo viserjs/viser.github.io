@@ -1,0 +1,13 @@
+@import '../styles/header.scss';
+@import '../styles/common.scss';
+@import '../styles/icon.scss';
+@import '../styles/main.scss';
+@import '../styles/nav.scss';
+@import '../styles/markdown.scss';
+
+#main-content.main-docs {
+  .right-panel {
+    padding-top: 0;
+    overflow: scroll;
+  }
+}
