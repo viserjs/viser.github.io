@@ -65,10 +65,10 @@ const color = ['name', ['#BAE7FF', '#7FC9FE', '#71E3E3', '#ABF5F5', '#8EE0A1', '
     <v-chart [forceFit]="true" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
       <v-tooltip [showTitle]="false" [itemTpl]="itemTpl"></v-tooltip>
       <v-coord type="theta" radius="{{0.5}}"></v-coord>
-      <v-pie position="percent" color="type" [label]="label" select="false" [style]="style"></v-pie>
+      <v-pie position="percent" color="type" [label]="label" select="false" [style]="style" [tooltip]="tooltip"></v-pie>
       <v-view [dataPre]="viewDataPre" [scale]="scale">
         <v-coord type="theta" radius="{{0.75}}" innerRadius="{{0.5 / 0.75}}"></v-coord>
-        <v-pie position="percent" [color]="color" label="name" select="false" [style]="style"></v-pie>
+        <v-pie position="percent" [color]="color" label="name" select="false" [style]="style" [tooltip]="tooltip"></v-pie>
       </v-view>
     </v-chart>
   </div>

@@ -59,7 +59,7 @@ class App extends React.Component {
       <Chart forceFit height={500} data={data} dataPre={dataPre} scale={scale}>
         <Tooltip showTitle={false} itemTpl={itemTpl} />
         <Coord type="theta" radius={0.5} />
-        <Pie position="percent" color="type" label={['type', { offset: -10, }]} select={false} style={style} />
+        <Pie position="percent" color="type" label={['type', { offset: -10, }]} tooltip={tooltip} select={false} style={style} />
         <View dataPre={viewDataPre} scale={scale}>
           <Coord type="theta" radius={0.75} innerRadius={0.5 / 0.75} />
           <Pie position="percent" color={["name", color]} label="name" tooltip={tooltip} select={false} style={style} />

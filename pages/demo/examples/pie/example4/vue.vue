@@ -3,10 +3,10 @@
     <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
       <v-tooltip :show-title="false" :item-tpl="itemTpl" />
       <v-coord :type="'theta'" :radius="0.5" />
-      <v-pie :position="'percent'" :color="'type'" :label="label" :select="false" :style="style" />
+      <v-pie :position="'percent'" :color="'type'" :label="label" :select="false" :style="style" :tooltip="tooltip" />
       <v-view :view-id="2" :data-pre="viewDataPre" :scale="scale">
         <v-coord :type="'theta'" :radius="0.75" :inner-radius="0.5 / 0.75" />
-        <v-pie :position="'percent'" :color="color" :label="'name'" :select="false" :style="style" />
+        <v-pie :position="'percent'" :color="color" :label="'name'" :select="false" :style="style" :tooltip="tooltip" />
       </v-view>
     </v-chart>
   </div>
