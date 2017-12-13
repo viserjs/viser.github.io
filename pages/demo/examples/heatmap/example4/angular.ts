@@ -9,7 +9,7 @@ import * as $ from 'jquery';
 registerShape('polygon', 'boundary-polygon', {
   draw(cfg, container) {
     if (cfg.points && cfg.points.length) {
-      const attrs = {
+      const attrs: any = {
         stroke: '#fff',
         lineWidth: 1,
         fill: cfg.color,
@@ -121,7 +121,7 @@ const height = window.innerHeight;
       <v-tooltip showTitle="false" ></v-tooltip>
       <v-axis [dataKey]="axis1Opts.dataKey" [position]="axis1Opts.position" [tickLine]="axis1Opts.tickLine" [line]="axis1Opts.line" [label]="axis1Opts.label"></v-axis>
       <v-axis [dataKey]="axis2Opts.dataKey" [grid]="axis2Opts.grid"></v-axis>
-      <v-coord reflect="'y'"></v-coord>
+      <v-coord [direction]="'y'"></v-coord>
       <v-polygon [position]="seriesOpts.position" [color]="seriesOpts.color" [shape]="seriesOpts.shape"></v-polygon>
     </v-chart>
   </div>

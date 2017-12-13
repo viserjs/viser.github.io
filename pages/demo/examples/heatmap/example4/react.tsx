@@ -6,11 +6,11 @@ import * as $ from 'jquery';
 registerShape('polygon', 'boundary-polygon', {
   draw(cfg, container) {
     if (cfg.points && cfg.points.length) {
-      const attrs = {
+      const attrs: any = {
         stroke: '#fff',
         lineWidth: 1,
         fill: cfg.color,
-        fillOpacity: cfg.opacity
+        fillOpacity: cfg.opacity,
       };
       const points = cfg.points;
       const path = [
@@ -127,7 +127,7 @@ class App extends React.Component {
           <Tooltip title={'date'} />
           <Axis {...axis1Opts}/>
           <Axis {...axis2Opts}/>
-          <Coord reflect={'y'}/>
+          <Coord direction={'TL'}/>
           <Polygon color={['commits', '#BAE7FF-#1890FF-#0050B3']} position="week*day*date" shape="boundary-polygon"/>
         </Chart>
       </div>
