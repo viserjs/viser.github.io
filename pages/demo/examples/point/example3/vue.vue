@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data">
+    <v-chart :force-fit="true" :height="400" :data="data">
       <v-legend :reversed="true" />
       <v-tooltip :crosshairs="tooltipCrosshairs" />
       <v-axis :data-key="'Score'" :grid="null" />

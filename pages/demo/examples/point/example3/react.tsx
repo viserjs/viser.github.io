@@ -17,7 +17,7 @@ class App extends React.Component {
   render() {
     const { data } = this.state;
     return (
-      <Chart forceFit height={500} data={data}>
+      <Chart forceFit height={400} data={data}>
         <Legend reversed />
         <Tooltip
           crosshairs= {{ type: 'cross' }}

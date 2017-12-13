@@ -10,7 +10,7 @@ import * as $ from 'jquery';
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="true" [height]="500" [data]="data">
+    <v-chart [forceFit]="true" [height]="400" [data]="data">
       <v-legend [reversed]="true"></v-legend>
       <v-tooltip [crosshairs]="tooltipCrosshairs"></v-tooltip>
       <v-axis dataKey="Score" [grid]="null"></v-axis>

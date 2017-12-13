@@ -36,7 +36,7 @@ const laeblFormatter = (value) => {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="true" [height]="500" [data]="data">
+    <v-chart [forceFit]="true" [height]="400" [data]="data">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-axis
         dataKey="GDP"

@@ -56,7 +56,7 @@
       return {
         data: [],
         scale,
-        height: 500,
+        height: 400,
         axisLabel: {
           formatter: laeblFormatter,
         },
