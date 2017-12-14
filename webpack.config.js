@@ -54,7 +54,7 @@ const vueCssLoaders = function (options) {
 }
 
 let config = {
-  //devtool: '#inline-source-map',
+  devtool: '#inline-source-map',
 
   entry: {
     demo: './pages/demo/index',
@@ -77,8 +77,20 @@ let config = {
 
   module: {
     loaders: [
-      { test: /\.css$/, loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader'] }) },
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'sass-loader'] }) },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [isProduction ? 'css-loader?minimize' : 'css-loader']
+        })
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [isProduction ? 'css-loader?minimize' : 'css-loader', 'sass-loader']
+        })
+      },
       { test: /\.tsx?$/, loader: "ts-loader" },
       { test: /\.tpl$/, loader: "handlebars-loader?helperDirs[]="+__dirname+"/helpers"},
       {
@@ -120,7 +132,29 @@ let config = {
     ]
   },
 
-  plugins: [
+  plugins: isProduction ? [
+    new webpack.optimize.UglifyJsPlugin({
+      // 最紧凑的输出
+      beautify: false,
+      // 删除所有的注释
+      comments: false,
+      compress: {
+        // 在UglifyJs删除没有用到的代码时不输出警告
+        warnings: false,
+        // 删除所有的 `console` 语句
+        // 还可以兼容ie浏览器
+        drop_console: true,
+        // 内嵌定义了但是只用到一次的变量
+        collapse_vars: true,
+        // 提取出出现多次但是没有定义成变量去引用的静态值
+        reduce_vars: true,
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(env),
+    }),
+    new ExtractTextPlugin("[name].css"),
+  ] : [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
     }),

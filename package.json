@@ -6,7 +6,7 @@
   "author": "viserjs",
   "scripts": {
     "start": "node ./run.js",
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack",
     "publish": "npm run build || true && git add . && git commit -m 'publish viserjs.github.io' && git push origin master"
   },
   "pre-commit": [

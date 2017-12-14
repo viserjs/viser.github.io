@@ -6,15 +6,18 @@
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es6",
+    "target": "es5",
     "jsx": "react",
-    "outDir": "built",
-    "sourceMap": true
+    "outDir": "build",
+    "sourceMap": true,
+    "allowJs": true,
+    "lib": [
+      "es6",
+      "dom"
+    ]
   },
   "exclude": [
     "node_modules",
-    "build",
-    "demo",
-    "umd"
+    "build"
   ]
 }
