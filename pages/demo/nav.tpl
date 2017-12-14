@@ -1,4 +1,4 @@
-{{#each menuList as |value key|}}
+{{#each menuList}}
   <div class="common-nav-folder expandable {{expanded}}" data-folder="{{@key}}">
     <h3 class="common-nav-title">
       <i class="iconfont icon-{{icon}}"></i>
@@ -7,7 +7,7 @@
     <ul class="common-nav-list">
       {{#each examples}}
         <li class="common-nav-item {{activeClass}}">
-          <a class="common-nav-link" href="/demo.html?type={{@key}}&example={{linkName}}" title="{{itemDisplayName}}">{{itemDisplayName}}</a>
+          <a class="common-nav-link" href="{{linkName}}" title="{{itemDisplayName}}">{{itemDisplayName}}</a>
         </li>
       {{/each}}
     </ul>

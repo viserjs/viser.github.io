@@ -1,5 +1,3 @@
-require('./index.scss');
-
 import * as $ from 'jquery';
 import Viser from 'viser';
 import Vue from 'vue';
@@ -10,177 +8,37 @@ import locale from '../common/locale';
 import {
   getNameByLanguage,
   ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
-  getPageLanguage, setPageLanguage, initPageLanguage, changePageLanguage
+  getPageLanguage, setPageLanguage, initPageLanguage, changePageLanguage,
+  generateHashtag, getFolderAndItem,
 } from '../common/utils';
+import './index.scss';
 
 const navTpl = require('./nav.tpl');
 
 const ALL_FRAMEWORKS = ['react', 'vue', 'angular'];
+const DEFAULT_FOLDER = 'line';
+const DEFAULT_ITEM = 'basic-line';
 
 class Demo {
-  attrs: {
-    code: any,
-    framework: string,
-    chartType: string,
-    exampleIndex: number,
-  } = {
-    code: {},
-    framework: 'react',
-    chartType: 'line',
-    exampleIndex: 0,
-  };
-
-  exampleList: any = {};
+  framework: string = 'react';
+  editor: any;
 
   constructor() {
     initPageLanguage();
-    this.initExampleList();
-    this.initUrlQuery();
-    this.initCode();
+
+    this.initEditor();
 
     this.render();
     this.bindEvent();
-
-    this.refreshCase(this.attrs.framework);
   }
 
-  initExampleList() {
-    const exampleList = {};
-    Object.keys(exampleOrigin).forEach((key) => {
-      exampleList[key] = {
-        ...exampleOrigin[key],
-        examples: exampleOrigin[key].examples.map((example) => {
-          return {
-            ...example,
-            linkName: example.enName.toLowerCase().replace(/\s/g, '-'),
-          }
-        }),
-      }
-    });
-    this.exampleList = exampleList;
-  }
-
-  initUrlQuery() {
-    const search = window.location.search.substr(1);
-
-    const typeReg = new RegExp('(^|&)type=([^&]*)(&|$)');
-    const typeResult = search.match(typeReg);
-    const chartType = typeResult ? typeResult[2] : Object.keys(this.exampleList)[0];
-    this.attrs.chartType = chartType;
-
-    const exampleReg = new RegExp('(^|&)example=([^&]*)(&|$)');
-    const exampleResult = search.match(exampleReg);
-    const exampleLinkName = exampleResult ? exampleResult[2] : '';
-
-    let exampleIndex = 0;
-    this.exampleList[chartType].examples.forEach((example, i) => {
-      if (example.linkName === exampleLinkName) {
-        exampleIndex = i;
-      }
-    })
-
-    this.attrs.exampleIndex = exampleIndex;
-  }
-
-  initCode() {
-    const { chartType, exampleIndex } = this.attrs;
-    const example = this.exampleList[chartType].examples[exampleIndex] || {};
-    const { path, cnName, enName } = example;
-
-    let reactCode = '';
-    let vueCode = '';
-    let angularCode = '';
-
-    let reactPath;
-    let vuePath;
-    let angularPath;
-
-    try {
-      reactCode = require(`!!raw-loader!./examples/${chartType}/${path}/react.tsx`);
-      vueCode = require(`!!raw-loader!./examples/${chartType}/${path}/vue.vue`);
-      angularCode = require(`!!raw-loader!./examples/${chartType}/${path}/angular.ts`);
-
-      reactPath = `./examples/${chartType}/${path}/react.tsx`;
-      vuePath = `./examples/${chartType}/${path}/vue.vue`;
-      angularPath = `./examples/${chartType}/${path}/angular.ts`;
-    } catch(err) {
-      console.error(err);
-    } finally {
-      this.attrs.code = {
-        reactCode, vueCode, angularCode,
-        reactPath, vuePath, angularPath,
-        cnName, enName,
-      };
-    }
-  }
-
-  bindEvent() {
-    const self = this;
-    // TODO: bind JSFiddle event
-    // $('.case-box .op .run').on('click', function() {
-    //   const index = $(this).attr('data-index');
-    // });
-
-    // bind left menu event
-    $('.case-box .case-code-switch .case-code-switch-item').on('click', function() {
-      const framework = $(this).attr('data-framework');
-      self.attrs.framework = framework;
-      self.refreshCase(framework);
-    });
-
-    // bind framework switch event
-    $('.left-panel .common-nav-folder.expandable .common-nav-title').on('click', function() {
-      if ($(this).parent().hasClass('expanded')) {
-        $('.left-panel .common-nav-folder.expandable').each(function () {
-          $(this).removeClass('expanded');
-        });
-      } else {
-        $('.left-panel .common-nav-folder.expandable').each(function () {
-          $(this).removeClass('expanded');
-        });
-        $(this).parent().addClass('expanded');
-      }
-    });
-
-    // bind page language switch event
-    $('.page-language-switch').on('click', function() {
-      changePageLanguage();
-
-      self.refresh();
-    });
-  }
-
-  unbindEvent() {
-    $('.case-box .case-code-switch .case-code-switch-item').off('click');
-    $('.left-panel .common-nav-folder.expandable .common-nav-title').off('click');
-    $('.page-language-switch').off('click');
-  }
-
-  refreshCase(framework) {
-    // change top framework switch
-    $('.case-box .case-code-switch-item').each(function () {
-      $(this).removeClass('active');
-      if (framework === $(this).attr('data-framework')) {
-        $(this).addClass('active');
-      }
-    });
-    // change code editor box
-    $('.case-box .case-code-detail').each(function () {
-      $(this).removeClass('active');
-      if (framework === $(this).attr('data-framework')) {
-        $(this).addClass('active');
-      }
-    });
-    this.runCode(framework);
-  }
-
-  presetEditor(framework) {
-    const { code } = this.attrs;
-    (window as any).monaco.editor.create(document.getElementById(`${framework}-editor`), {
-      value: code[`${framework}Code`],
-      language: framework !== 'vue' ? 'javascript' : 'html',
+  initEditor() {
+    this.editor = (window as any).monaco.editor.create(document.getElementById('monaco-editor'), {
+      value: '',
+      language: 'javascript',
       lineNumbers: false,
       scrollBeyondLastLine: false,
+      automaticLayout: true,
       renderLineHighlight: 'none',
       readOnly: true,
       theme: 'vs',
@@ -190,8 +48,64 @@ class Demo {
     });
   }
 
+  getCode() {
+    const { folder, item } = this.getDemoFolderAndItem();
+
+    const examples = exampleOrigin[folder].examples;
+    const filterExamples = examples.filter((ex) => {
+      const itemKey = this.getDemoItemKey(ex);
+      if (item === itemKey) {
+        return true;
+      }
+      return false;
+    })
+
+    if (!filterExamples || !filterExamples.length) {
+      return {};
+    }
+    const { path, cnName, enName } = filterExamples[0];
+
+    let reactCode = '';
+    let vueCode = '';
+    let angularCode = '';
+
+    let reactPath = '';
+    let vuePath = '';
+    let angularPath = '';
+
+    try {
+      reactCode = require(`!!raw-loader!./examples/${folder}/${path}/react.tsx`);
+      vueCode = require(`!!raw-loader!./examples/${folder}/${path}/vue.vue`);
+      angularCode = require(`!!raw-loader!./examples/${folder}/${path}/angular.ts`);
+
+      reactPath = `./examples/${folder}/${path}/react.tsx`;
+      vuePath = `./examples/${folder}/${path}/vue.vue`;
+      angularPath = `./examples/${folder}/${path}/angular.ts`;
+    } catch(err) {
+      console.error(err);
+    }
+
+    return {
+      reactCode, vueCode, angularCode,
+      reactPath, vuePath, angularPath,
+      cnName, enName,
+    };
+  }
+
+  getDemoFolderAndItem() {
+    const { folder, item } = getFolderAndItem();
+    return {
+      folder: folder || DEFAULT_FOLDER,
+      item: item || DEFAULT_ITEM,
+    };
+  }
+
+  getDemoItemKey(example) {
+    return example.enName.toLowerCase().replace(/\s/g, '-');
+  }
+
   runCode(framework) {
-    const { code } = this.attrs;
+    const code = this.getCode();
     const mount = document.getElementById('mount');
     ReactDOM.unmountComponentAtNode(mount);
     mount.innerHTML = '';
@@ -214,10 +128,26 @@ class Demo {
     }
   }
 
-  renderCodeEditor() {
-    ALL_FRAMEWORKS.forEach((framework) => {
-      this.presetEditor(framework);
+  renderCase() {
+    const self = this;
+    // change top framework switch
+    $('.case-box .case-code-switch-item').each(function () {
+      $(this).removeClass('active');
+      if (self.framework === $(this).attr('data-framework')) {
+        $(this).addClass('active');
+      }
     });
+
+    this.runCode(self.framework);
+  }
+
+  renderCodeEditor() {
+    const code = this.getCode();
+    const codeValue = code[`${this.framework}Code`];
+    const language = this.framework === 'vue' ? 'html' : 'typescript';
+
+    this.editor.setValue(codeValue);
+    (window as any).monaco.editor.setModelLanguage(this.editor.getModel(), language);
   }
 
   renderLanguage() {
@@ -235,39 +165,94 @@ class Demo {
   }
 
   renderDemoTitle() {
-    const code = this.attrs.code;
+    const code = this.getCode();
     $('.case-type').html(getNameByLanguage(code));
   }
 
   renderLeftMenu() {
-    const menuList = {};
-    Object.keys(this.exampleList).forEach((key) => {
-      const chartTypeMatched = key === this.attrs.chartType;
-      menuList[key] = {
-        ...this.exampleList[key],
-        folderDisplayName: getNameByLanguage(this.exampleList[key]),
-        examples: this.exampleList[key].examples.map((o, i) => {
-          const exampleIndexMatched = i === this.attrs.exampleIndex;
+    const { folder, item } = this.getDemoFolderAndItem();
+
+    const menuList = [];
+    Object.keys(exampleOrigin).forEach((key) => {
+      const folderKey = key;
+      const folderMatched = folderKey === folder;
+      menuList.push({
+        ...exampleOrigin[key],
+        folderKey,
+        folderDisplayName: getNameByLanguage(exampleOrigin[key]),
+        examples: exampleOrigin[key].examples.map((example) => {
+          const itemKey = this.getDemoItemKey(example);
+          const itemMatched = itemKey === item;
           return {
-            ...o,
-            itemDisplayName: getNameByLanguage(o),
-            activeClass: chartTypeMatched && exampleIndexMatched ? 'active' : '',
+            ...example,
+            linkName: generateHashtag(folderKey, itemKey),
+            itemKey,
+            itemDisplayName: getNameByLanguage(example),
+            activeClass: folderMatched && itemMatched ? 'active' : '',
           };
         }),
-        expanded: chartTypeMatched ? 'expanded' : '',
-      };
+        expanded: folderMatched ? 'expanded' : '',
+      });
     });
-    $('.left-panel').empty();
-    $('.left-panel').append(navTpl({
-      menuList,
-    }));
+    $('.left-panel').html(navTpl({ menuList }));
+  }
+
+  bindEvent() {
+    const self = this;
+    // TODO: bind JSFiddle event
+    // $('.case-box .op .run').on('click', function() {
+    //   const index = $(this).attr('data-index');
+    // });
+
+    $('.left-panel').on('click', '.common-nav-item', function () {
+      setTimeout(() => {
+        self.refresh();
+      }, 0);
+    });
+
+    // bind code-switch event
+    $('.case-box .case-code-switch .case-code-switch-item').on('click', function () {
+      const framework = $(this).attr('data-framework');
+      self.framework = framework;
+      self.renderCodeEditor();
+      self.renderCase();
+    });
+
+    // bind framework switch event
+    $('.left-panel .common-nav-folder.expandable .common-nav-title').on('click', function () {
+      if ($(this).parent().hasClass('expanded')) {
+        $('.left-panel .common-nav-folder.expandable').each(function () {
+          $(this).removeClass('expanded');
+        });
+      } else {
+        $('.left-panel .common-nav-folder.expandable').each(function () {
+          $(this).removeClass('expanded');
+        });
+        $(this).parent().addClass('expanded');
+      }
+    });
+
+    // bind page language switch event
+    $('.page-language-switch').on('click', function () {
+      changePageLanguage();
+
+      self.refresh();
+    });
+  }
+
+  unbindEvent() {
+    $('.left-panel').off('click', '.common-nav-item');
+    $('.case-box .case-code-switch .case-code-switch-item').off('click');
+    $('.left-panel .common-nav-folder.expandable .common-nav-title').off('click');
+    $('.page-language-switch').off('click');
   }
 
   render() {
-    this.renderCodeEditor();
+    this.renderLeftMenu();
     this.renderLanguage();
     this.renderDemoTitle();
-    this.renderLeftMenu();
+    this.renderCodeEditor();
+    this.renderCase();
   }
 
   refresh() {
