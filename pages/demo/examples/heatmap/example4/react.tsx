@@ -71,7 +71,7 @@ const scale = [{
   sync: true
 }];
 
-const axis1Opts = {
+const axis1Opts: any = {
   dataKey: 'week',
   position: 'top',
   tickLine: null,
@@ -102,10 +102,14 @@ const axis1Opts = {
   }
 };
 
-const axis2Opts = {
+const axis2Opts: any = {
   dataKey: 'day',
   grid: null,
 };
+
+const tooltipOpts: any = {
+  title: 'date',
+}
 
 const padding = [ window.innerHeight / 3, 20, window.innerHeight / 3, 80 ];
 const height = window.innerHeight;
@@ -124,7 +128,7 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={height} data={data} scale={scale} padding={padding}>
-          <Tooltip title={'date'} />
+          <Tooltip {...tooltipOpts} />
           <Axis {...axis1Opts}/>
           <Axis {...axis2Opts}/>
           <Coord direction={'TL'}/>
