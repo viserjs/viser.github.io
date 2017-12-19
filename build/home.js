@@ -68570,11 +68570,12 @@ var CommonDataSet = (function () {
         return finalData;
     };
     CommonDataSet.prototype.processCommonTransform = function (dv, item) {
+        var _this = this;
         if (item.type === 'toNumber') {
             dv = dv.transform({
                 type: 'map',
                 callback: function (row) {
-                    return this.handleToNumber(row, item);
+                    return _this.handleToNumber(row, item);
                 }
             });
         }
@@ -68582,7 +68583,7 @@ var CommonDataSet = (function () {
             dv = dv.transform({
                 type: 'map',
                 callback: function (row) {
-                    return this.handleMergeFields(row, item);
+                    return _this.handleMergeFields(row, item);
                 }
             });
         }
