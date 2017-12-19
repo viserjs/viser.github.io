@@ -112,7 +112,6 @@ const tooltipOpts: any = {
 }
 
 const padding = [ window.innerHeight / 3, 20, window.innerHeight / 3, 80 ];
-const height = window.innerHeight;
 
 class App extends React.Component {
   state = {
@@ -127,11 +126,11 @@ class App extends React.Component {
     const { data } = this.state;
     return (
       <div>
-        <Chart forceFit height={height} data={data} scale={scale} padding={padding}>
+        <Chart forceFit height={400} data={data} scale={scale}>
           <Tooltip {...tooltipOpts} />
           <Axis {...axis1Opts}/>
           <Axis {...axis2Opts}/>
-          <Coord direction={'TL'}/>
+          <Coord type="rect" direction="TL"/>
           <Polygon color={['commits', '#BAE7FF-#1890FF-#0050B3']} position="week*day*date" shape="boundary-polygon"/>
         </Chart>
       </div>

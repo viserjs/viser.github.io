@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale" :padding="padding">
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :show-title="false"/>
       <v-axis :data-key="axis1Opts.dataKey" :position="axis1Opts.position" :tickLine="axis1Opts.tickLine" :line="axis1Opts.line" :label="axis1Opts.label" />
       <v-axis :data-key="axis2Opts.dataKey" :grid="axis2Opts.grid" />
-      <v-coord :direction="'TL'" />
+      <v-coord :type="'rect'" :direction="'TL'" />
       <v-polygon :position="'week*day*date'" :color="['commits', '#BAE7FF-#1890FF-#0050B3']" :shape="'boundary-polygon'"/>
     </v-chart>
   </div>
@@ -119,7 +119,6 @@ const axis2Opts = {
 };
 
 const padding = [ window.innerHeight / 3, 20, window.innerHeight / 3, 80 ];
-const height = window.innerHeight;
 
 export default {
   mounted() {
@@ -131,7 +130,7 @@ export default {
     return {
       data: [],
       scale,
-      height,
+      height: 400,
       padding,
       axis1Opts,
       axis2Opts

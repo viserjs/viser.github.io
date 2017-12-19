@@ -110,18 +110,16 @@ dataKey: 'day',
 grid: null,
 };
 
-const padding = [ window.innerHeight / 3, 20, window.innerHeight / 3, 80 ];
-const height = window.innerHeight;
 
 @Component({
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale" [padding]="padding" >
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip showTitle="false" ></v-tooltip>
       <v-axis [dataKey]="axis1Opts.dataKey" [position]="axis1Opts.position" [tickLine]="axis1Opts.tickLine" [line]="axis1Opts.line" [label]="axis1Opts.label"></v-axis>
       <v-axis [dataKey]="axis2Opts.dataKey" [grid]="axis2Opts.grid"></v-axis>
-      <v-coord [direction]="'y'"></v-coord>
+      <v-coord [type]="'rect'" [direction]="'TL'"></v-coord>
       <v-polygon [position]="seriesOpts.position" [color]="seriesOpts.color" [shape]="seriesOpts.shape"></v-polygon>
     </v-chart>
   </div>
@@ -130,8 +128,7 @@ const height = window.innerHeight;
 
 class AppComponent {
   forceFit: boolean= true;
-  height = height;
-  padding = padding;
+  height = 400;
   data = [];
   scale = scale;
   axis1Opts = axis1Opts;
