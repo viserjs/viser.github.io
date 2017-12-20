@@ -39,12 +39,12 @@ const scale = [{
   dataKey: 'value',
   min: 0,
   max: 9,
-  tickInterval: 1,
+  ticks: [2.25, 3.75, 5.25, 6.75],
   nice: false
 }];
 
 const data = [
-  { value: 5.6 }
+  { value: 6 }
 ];
 
 class App extends React.Component {
@@ -63,24 +63,23 @@ class App extends React.Component {
             zIndex={2}
             line={null}
             label={{
-              offset: -16,
+              offset: -20,
+              formatter: (val: string) => {
+                if (val === '2.25') {
+                  return '差';
+                } else if (val === '3.75') {
+                  return '中';
+                } else if (val === '5.25') {
+                  return '良';
+                }
+                return '优';
+              },
               textStyle: {
                 fontSize: 18,
-                textAlign: 'center',
-                textBaseline: 'middle'
+                textAlign: 'center'
               }
             }}
-            subTickCount={4}
-            subTickLine={{
-              length: -8,
-              stroke: '#fff',
-              strokeOpacity: 1,
-            }}
-            tickLine={{
-              length: -17,
-              stroke: '#fff',
-              strokeOpacity: 1,
-            }}
+            tickLine={null}
             grid={null}
           />
           <Axis dataKey="1" show={false} />
@@ -91,6 +90,37 @@ class App extends React.Component {
             shape="pointer"
             color="#1890FF"
             active={false}
+          />
+
+          <Guide
+            type="line"
+            start={[3, 0.905]}
+            end={[3.0035, 0.85]}
+            lineStyle={{
+              stroke: '#19AFFA',
+              lineDash: null,
+              lineWidth: 3,
+            }}
+          />
+          <Guide
+            type="line"
+            start={[4.5, 0.905]}
+            end={[4.5, 0.85]}
+            lineStyle={{
+              stroke: '#19AFFA',
+              lineDash: null,
+              lineWidth: 3,
+            }}
+          />
+          <Guide
+            type="line"
+            start={[6, 0.905]}
+            end={[6.0035, 0.85]}
+            lineStyle={{
+              stroke: '#19AFFA',
+              lineDash: null,
+              lineWidth: 3,
+            }}
           />
 
           <Guide

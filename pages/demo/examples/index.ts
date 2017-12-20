@@ -265,6 +265,11 @@ const examples = {
         path: 'example1',
         enName: 'Basic Gauge',
         cnName: '基础仪表盘',
+      },
+      {
+        path: 'example2',
+        enName: 'Text Gauge',
+        cnName: '仪表盘（文字）',
       }
     ],
     icon: 'yibiaopan',

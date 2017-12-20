@@ -7,9 +7,7 @@
         :zIndex="2"
         :line="null"
         :label="axisLabel"
-        :subTickCount="4"
-        :subTickLine="axisSubTickLine"
-        :tickLine="axisTickLine"
+        :tickLine="null"
         :grid="null"
       ></v-axis>
       <v-axis dataKey="1" :show="false"></v-axis>
@@ -20,6 +18,26 @@
         color="#1890FF"
         :active="false"
       ></v-series>
+
+      <v-guide
+        type="line"
+        :start="lineGuide1Start"
+        :end="lineGuide1End"
+        :lineStyle="lineGuide1LineStyle"
+      ></v-guide>
+      <v-guide
+        type="line"
+        :start="lineGuide2Start"
+        :end="lineGuide2End"
+        :lineStyle="lineGuide2LineStyle"
+      ></v-guide>
+      <v-guide
+        type="line"
+        :start="lineGuide3Start"
+        :end="lineGuide3End"
+        :lineStyle="lineGuide3LineStyle"
+      ></v-guide>
+
       <v-guide
         type="arc"
         :zIndex="0"
@@ -84,12 +102,12 @@ const scale = [{
   dataKey: 'value',
   min: 0,
   max: 9,
-  tickInterval: 1,
+  ticks: [2.25, 3.75, 5.25, 6.75],
   nice: false
 }];
 
 const data = [
-  { value: 5.6 }
+  { value: 6 }
 ];
 
 export default {
@@ -100,22 +118,45 @@ export default {
       scale: scale,
 
       axisLabel: {
-        offset: -16,
+        offset: -20,
+        formatter: (val) => {
+          if (val === '2.25') {
+            return '差';
+          } else if (val === '3.75') {
+            return '中';
+          } else if (val === '5.25') {
+            return '良';
+          }
+          return '优';
+        },
         textStyle: {
           fontSize: 18,
-          textAlign: 'center',
-          textBaseline: 'middle'
+          textAlign: 'center'
         }
       },
-      axisSubTickLine: {
-        length: -8,
-        stroke: '#fff',
-        strokeOpacity: 1,
+
+      lineGuide1Start: [3, 0.905],
+      lineGuide1End: [3.0035, 0.85],
+      lineGuide1LineStyle: {
+        stroke: '#19AFFA',
+        lineDash: null,
+        lineWidth: 3
       },
-      axisTickLine: {
-        length: -17,
-        stroke: '#fff',
-        strokeOpacity: 1,
+
+      lineGuide2Start: [4.5, 0.905],
+      lineGuide2End: [4.5, 0.85],
+      lineGuide2LineStyle: {
+        stroke: '#19AFFA',
+        lineDash: null,
+        lineWidth: 3
+      },
+
+      lineGuide3Start: [6, 0.905],
+      lineGuide3End: [6.0035, 0.85],
+      lineGuide3LineStyle: {
+        stroke: '#19AFFA',
+        lineDash: null,
+        lineWidth: 3
       },
 
       arcGuide1Start: [0, 0.945],
