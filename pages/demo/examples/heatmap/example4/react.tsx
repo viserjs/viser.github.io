@@ -111,8 +111,6 @@ const tooltipOpts: any = {
   title: 'date',
 }
 
-const padding = [ window.innerHeight / 3, 20, window.innerHeight / 3, 80 ];
-
 class App extends React.Component {
   state = {
     data: [],

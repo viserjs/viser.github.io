@@ -75,41 +75,40 @@ const scale = [{
 }];
 
 const axis1Opts = {
-dataKey: 'week',
-position: 'top',
-tickLine: null,
-line: null,
-label: {
-  offset: 12,
-  textStyle: {
-    fontSize: 12,
-    fill: '#666',
-    textBaseline: 'top'
-  },
-  formatter: (val) => {
-    if (val === '2') {
-      return 'MAY';
-    } else if (val === '6') {
-      return 'JUN';
-    } else if (val === '10') {
-      return 'JUL';
-    } else if (val === '15') {
-      return 'AUG';
-    } else if (val === '19') {
-      return 'SEP';
-    } else if (val === '24') {
-      return 'OCT';
+  dataKey: 'week',
+  position: 'top',
+  tickLine: null,
+  line: null,
+  label: {
+    offset: 12,
+    textStyle: {
+      fontSize: 12,
+      fill: '#666',
+      textBaseline: 'top'
+    },
+    formatter: (val) => {
+      if (val === '2') {
+        return 'MAY';
+      } else if (val === '6') {
+        return 'JUN';
+      } else if (val === '10') {
+        return 'JUL';
+      } else if (val === '15') {
+        return 'AUG';
+      } else if (val === '19') {
+        return 'SEP';
+      } else if (val === '24') {
+        return 'OCT';
+      }
+      return '';
     }
-    return '';
   }
-}
 };
 
 const axis2Opts = {
-dataKey: 'day',
-grid: null,
+  dataKey: 'day',
+  grid: null,
 };
-
 
 @Component({
   selector: '#mount',

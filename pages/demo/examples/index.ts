@@ -257,22 +257,17 @@ const examples = {
     ],
     icon: 'relitu'
   },
-  radar: {
-    enName: 'Radar',
-    cnName: '雷达图',
+  gauge: {
+    enName: 'Gauge',
+    cnName: '仪表盘',
     examples: [
       {
         path: 'example1',
-        enName: 'Basic Radar',
-        cnName: '基础雷达图',
-      },
-      {
-        path: 'example2',
-        enName: 'Basic Radar (line)',
-        cnName: '基础雷达图（线）',
-      },
+        enName: 'Basic Gauge',
+        cnName: '基础仪表盘',
+      }
     ],
-    icon: 'leidatu'
+    icon: 'yibiaopan',
   },
   funnel: {
     enName: 'Funnel',
@@ -290,6 +285,23 @@ const examples = {
       },
     ],
     icon: 'loudoutu'
+  },
+  radar: {
+    enName: 'Radar',
+    cnName: '雷达图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Basic Radar',
+        cnName: '基础雷达图',
+      },
+      {
+        path: 'example2',
+        enName: 'Basic Radar (line)',
+        cnName: '基础雷达图（线）',
+      },
+    ],
+    icon: 'leidatu'
   },
   facet: {
     enName: 'Facet',
@@ -388,7 +400,7 @@ const examples = {
       //   cnName: '径向系统树图',
       // },
     ],
-    icon: 'juzhentu'
+    icon: 'guanxitu'
   },
 };
 

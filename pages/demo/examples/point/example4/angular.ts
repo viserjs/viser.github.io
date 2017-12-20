@@ -30,19 +30,19 @@ const colorMap = {
 
 const laeblFormatter = (value) => {
   return (value / 1000).toFixed(0) + 'k';
-}; 
+};
 
 @Component({
   selector: '#mount',
   template: `
   <div>
     <v-chart [forceFit]="true" [height]="400" [data]="data">
-      <v-tooltip showTitle="false"></v-tooltip>
+      <v-tooltip [showTitle]="false"></v-tooltip>
       <v-axis
         dataKey="GDP"
         [label]="axisLabel"
       ></v-axis>
-      <v-legend dataKey="Population" show="false"></v-legend>
+      <v-legend dataKey="Population" [show]="false"></v-legend>
       <v-point
         position="GDP*LifeExpectancy"
         [color]="pointColor"
