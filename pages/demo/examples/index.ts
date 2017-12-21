@@ -270,7 +270,12 @@ const examples = {
         path: 'example2',
         enName: 'Text Gauge',
         cnName: '仪表盘（文字）',
-      }
+      },
+      {
+        path: 'example3',
+        enName: 'Color Gauge',
+        cnName: '仪表盘（多色）',
+      },
     ],
     icon: 'yibiaopan',
   },
