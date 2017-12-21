@@ -20,14 +20,7 @@
         color="#8C8C8C"
         :active="false"
       ></v-series>
-      <v-guide
-        type="arc"
-        :zIndex="0"
-        :top="false"
-        :start="arcGuideBgStart"
-        :end="arcGuideBgEnd"
-        :v-style="arcGuideBgStyle"
-      ></v-guide>
+      <v-guide type="arc" :zIndex="0" :top="false" :start="arcGuideBgStart" :end="arcGuideBgEnd" :v-style="arcGuideBgStyle"></v-guide>
       <v-guide type="arc" :zIndex="1" :start="arcGuideLowStart" :end="arcGuideLowEnd" :v-style="arcGuideLowStyle"></v-guide>
       <v-guide type="arc" :zIndex="1" :start="arcGuideMidStart" :end="arcGuideMidEnd" :v-style="arcGuideMidStyle"></v-guide>
       <v-guide type="arc" :zIndex="1" :start="arcGuideHighStart" :end="arcGuideHighEnd" :v-style="arcGuideHighStyle"></v-guide>

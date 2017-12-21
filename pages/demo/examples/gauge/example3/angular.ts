@@ -47,8 +47,12 @@ const scale = [{
 }];
 
 const data = [
-  { value: 5.6 }
+  { value: 2.6 }
 ];
+
+const color = ['#0086FA', '#FFBF00', '#F5222D'];
+
+const val = data[0].value;
 
 @Component({
   selector: '#mount',
@@ -74,21 +78,10 @@ const data = [
         color="#8C8C8C"
         [active]="false"
       ></v-series>
-      <v-guide
-        type="arc"
-        [zIndex]="0"
-        [top]="false"
-        [start]="arcGuide1Start"
-        [end]="arcGuide1End"
-        [style]="arcGuide1Style"
-      ></v-guide>
-      <v-guide
-        type="arc"
-        [zIndex]="1"
-        [start]="arcGuide2Start"
-        [end]="arcGuide2End"
-        [style]="arcGuide2Style"
-      ></v-guide>
+      <v-guide type="arc" [zIndex]="0" [top]="false" [start]="arcGuideBgStart" [end]="arcGuideBgEnd" [style]="arcGuideBgStyle"></v-guide>
+      <v-guide type="arc" [zIndex]="1" [start]="arcGuideLowStart" [end]="arcGuideLowEnd" [style]="arcGuideLowStyle"></v-guide>
+      <v-guide type="arc" [zIndex]="1" [start]="arcGuideMidStart" [end]="arcGuideMidEnd" [style]="arcGuideMidStyle"></v-guide>
+      <v-guide type="arc" [zIndex]="1" [start]="arcGuideHighStart" [end]="arcGuideHighEnd" [style]="arcGuideHighStyle"></v-guide>
       <v-guide
         type="html"
         [position]="htmlGuidePosition"
@@ -124,17 +117,29 @@ class AppComponent {
     strokeOpacity: 1,
   };
 
-  arcGuide1Start = [0, 0.945];
-  arcGuide1End = [9, 0.945];
-  arcGuide1Style = {
+  arcGuideBgStart = [0, 0.945];
+  arcGuideBgEnd = [9, 0.945];
+  arcGuideBgStyle = {
     stroke: '#CBCBCB',
     lineWidth: 18,
   };
 
-  arcGuide2Start = [0, 0.945];
-  arcGuide2End = [data[0].value, 0.945];
-  arcGuide2Style = {
-    stroke: '#1890FF',
+  arcGuideLowStart = [0, 0.945];
+  arcGuideLowEnd = [Math.max(0, Math.min(3, val)), 0.945];
+  arcGuideLowStyle = {
+    stroke: color[0],
+    lineWidth: 18,
+  };
+  arcGuideMidStart = [3, 0.945];
+  arcGuideMidEnd = [Math.max(3, Math.min(6, val)), 0.945];
+  arcGuideMidStyle = {
+    stroke: color[1],
+    lineWidth: 18,
+  };
+  arcGuideHighStart = [6, 0.945];
+  arcGuideHighEnd = [Math.max(6, Math.min(9, val)), 0.945];
+  arcGuideHighStyle = {
+    stroke: color[2],
     lineWidth: 18,
   };
 

@@ -64,7 +64,7 @@ class App extends React.Component {
             line={null}
             label={{
               offset: -20,
-              formatter: (val: string) => {
+              formatter: (val: string | number):string => {
                 if (val === '2.25') {
                   return '差';
                 } else if (val === '3.75') {
