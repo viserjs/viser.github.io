@@ -382,7 +382,7 @@ const examples = {
       {
         path: 'example4',
         enName: 'Sankey Diagram',
-        cnName: '和弦图',
+        cnName: '桑基图',
       },
       {
         path: 'example5',
