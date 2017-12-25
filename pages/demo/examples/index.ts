@@ -61,6 +61,11 @@ const examples = {
         cnName: '区间柱状图',
       },
       {
+        path: 'example6',
+        enName: 'Waterfall',
+        cnName: '瀑布图',
+      },
+      {
         path: 'example7',
         enName: 'Histogram',
         cnName: '直方图',
