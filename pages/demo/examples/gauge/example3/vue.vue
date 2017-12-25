@@ -77,15 +77,61 @@ const scale = [{
   nice: false
 }];
 
-const data = [
-  { value: 5.6 }
-];
-
 const color = ['#0086FA', '#FFBF00', '#F5222D'];
 
 export default {
+  methods: {
+    setData() {
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+
+      const delta = Math.random();
+      const prevVal = this.$data.data[0].value;
+      if (this.$data.trend === 'up') {
+        const nextVal = prevVal + delta;
+        if (nextVal > 9) {
+          this.$data.trend = 'down';
+        } else {
+          this.$data.data = [{ value: nextVal }];
+          this.$data.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
+          this.$data.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
+          this.$data.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];
+          this.$data.htmlGuideHtml = `
+            <div style="width: 300px;text-align: center;">
+              <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
+              <p style="font-size: 36px;color: #545454;margin: 0;">${(nextVal) * 10}%</p>
+            </div>
+          `;
+        }
+      } else {
+        const nextVal = prevVal - delta;
+        if (nextVal < 0) {
+          this.$data.trend = 'up';
+        } else {
+          this.$data.data = [{ value: nextVal }];
+          this.$data.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
+          this.$data.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
+          this.$data.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];
+          this.$data.htmlGuideHtml = `
+            <div style="width: 300px;text-align: center;">
+              <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
+              <p style="font-size: 36px;color: #545454;margin: 0;">${(nextVal) * 10}%</p>
+            </div>
+          `;
+        }
+      }
+
+      this.timer = setTimeout(this.setData, 100);
+    }
+  },
+  mounted() {
+    this.timer = setTimeout(this.setData, 100);
+  },
   data() {
-    const val = data[0].value;
+    const data = [
+      { value: 5.6 }
+    ];
 
     return {
       height: 500,
@@ -119,19 +165,19 @@ export default {
       },
 
       arcGuideLowStart: [0, 0.945],
-      arcGuideLowEnd: [Math.max(0, Math.min(3, val)), 0.945],
+      arcGuideLowEnd: [Math.max(0, Math.min(3, data[0].value)), 0.945],
       arcGuideLowStyle: {
         stroke: color[0],
         lineWidth: 18,
       },
       arcGuideMidStart: [3, 0.945],
-      arcGuideMidEnd: [Math.max(3, Math.min(6, val)), 0.945],
+      arcGuideMidEnd: [Math.max(3, Math.min(6, data[0].value)), 0.945],
       arcGuideMidStyle: {
         stroke: color[1],
         lineWidth: 18,
       },
       arcGuideHighStart: [6, 0.945],
-      arcGuideHighEnd: [Math.max(6, Math.min(9, val)), 0.945],
+      arcGuideHighEnd: [Math.max(6, Math.min(9, data[0].value)), 0.945],
       arcGuideHighStyle: {
         stroke: color[2],
         lineWidth: 18,
@@ -141,7 +187,7 @@ export default {
       htmlGuideHtml: `
         <div style="width: 300px;text-align: center;">
           <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
-          <p style="font-size: 36px;color: #545454;margin: 0;">${data[0].value * 10}%</p>
+          <p style="font-size: 36px;color: #545454;margin: 0;">${(data[0].value) * 10}%</p>
         </div>
       `,
     };

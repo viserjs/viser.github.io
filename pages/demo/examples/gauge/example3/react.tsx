@@ -35,22 +35,63 @@ registerShape('point', 'pointer', {
   }
 });
 
+const GAUGE_MAX = 9;
+const GAUGE_MIN = 0;
+
 const scale = [{
   dataKey: 'value',
-  min: 0,
-  max: 9,
+  min: GAUGE_MIN,
+  max: GAUGE_MAX,
   tickInterval: 1,
   nice: false
-}];
-
-const data = [{
-  value: 7,
 }];
 
 const color = ['#0086FA', '#FFBF00', '#F5222D'];
 
 class App extends React.Component {
+  timer: any;
+  state: {
+    data: { value: number }[],
+    trend: 'up' | 'down',
+  } = {
+    data: [{
+      value: 0,
+    }],
+    trend: 'up',
+  };
+
+  componentDidMount() {
+    this.timer = setTimeout(this.setData, 100);
+  }
+
+  setData = () => {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+
+    const delta = Math.random();
+    const prevVal = this.state.data[0].value;
+    if (this.state.trend === 'up') {
+      const nextVal = prevVal + delta;
+      if (nextVal > 9) {
+        this.setState({ trend: 'down' });
+      } else {
+        this.setState({ data: [{ value: nextVal }] });
+      }
+    } else {
+      const nextVal = prevVal - delta;
+      if (nextVal < 0) {
+        this.setState({ trend: 'up' });
+      } else {
+        this.setState({ data: [{ value: nextVal }] });
+      }
+    }
+
+    this.timer = setTimeout(this.setData, 100)
+  }
+
   render() {
+    const { data } = this.state;
     const val = data[0].value;
 
     return (
@@ -146,7 +187,7 @@ class App extends React.Component {
             html={`
               <div style="width: 300px;text-align: center;">
                 <p style="font-size: 20px; color: #545454;margin: 0;">合格率</p>
-                <p style="font-size: 36px;color: #545454;margin: 0;">${val * 10}%</p>
+                <p style="font-size: 36px;color: #545454;margin: 0;">${Math.ceil(val * 10)}%</p>
               </div>
             `}
           />

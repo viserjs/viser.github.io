@@ -46,13 +46,7 @@ const scale = [{
   nice: false
 }];
 
-const data = [
-  { value: 2.6 }
-];
-
 const color = ['#0086FA', '#FFBF00', '#F5222D'];
-
-const val = data[0].value;
 
 @Component({
   selector: '#mount',
@@ -95,7 +89,9 @@ const val = data[0].value;
 class AppComponent {
   forceFit: boolean = true;
   height = 500;
-  data = data;
+  data = [
+    { value: 2.6 }
+  ];
   scale = scale;
 
   axisLabel = {
@@ -125,19 +121,19 @@ class AppComponent {
   };
 
   arcGuideLowStart = [0, 0.945];
-  arcGuideLowEnd = [Math.max(0, Math.min(3, val)), 0.945];
+  arcGuideLowEnd = [Math.max(0, Math.min(3, this.data[0].value)), 0.945];
   arcGuideLowStyle = {
     stroke: color[0],
     lineWidth: 18,
   };
   arcGuideMidStart = [3, 0.945];
-  arcGuideMidEnd = [Math.max(3, Math.min(6, val)), 0.945];
+  arcGuideMidEnd = [Math.max(3, Math.min(6, this.data[0].value)), 0.945];
   arcGuideMidStyle = {
     stroke: color[1],
     lineWidth: 18,
   };
   arcGuideHighStart = [6, 0.945];
-  arcGuideHighEnd = [Math.max(6, Math.min(9, val)), 0.945];
+  arcGuideHighEnd = [Math.max(6, Math.min(9, this.data[0].value)), 0.945];
   arcGuideHighStyle = {
     stroke: color[2],
     lineWidth: 18,
@@ -147,9 +143,60 @@ class AppComponent {
   htmlGuideHtml = `
     <div style="width: 300px;text-align: center;">
       <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
-      <p style="font-size: 36px;color: #545454;margin: 0;">${data[0].value * 10}%</p>
+      <p style="font-size: 36px;color: #545454;margin: 0;">${this.data[0].value * 10}%</p>
     </div>
   `;
+
+  timer: any;
+  trend: 'up' | 'down' = 'up';
+
+  constructor() {
+    this.timer = setTimeout(this.setData, 100);
+  }
+
+  setData = () => {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+
+    const delta = Math.random();
+    const prevVal = this.data[0].value;
+    if (this.trend === 'up') {
+      const nextVal = prevVal + delta;
+      if (nextVal > 9) {
+        this.trend = 'down';
+      } else {
+        this.data = [{ value: nextVal }];
+        this.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
+        this.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
+        this.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];
+        this.htmlGuideHtml = `
+          <div style="width: 300px;text-align: center;">
+            <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
+            <p style="font-size: 36px;color: #545454;margin: 0;">${(nextVal) * 10}%</p>
+          </div>
+        `;
+      }
+    } else {
+      const nextVal = prevVal - delta;
+      if (nextVal < 0) {
+        this.trend = 'up';
+      } else {
+        this.data = [{ value: nextVal }];
+        this.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
+        this.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
+        this.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];
+        this.htmlGuideHtml = `
+          <div style="width: 300px;text-align: center;">
+            <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
+            <p style="font-size: 36px;color: #545454;margin: 0;">${(nextVal) * 10}%</p>
+          </div>
+        `;
+      }
+    }
+
+    this.timer = setTimeout(this.setData, 100);
+  }
 }
 
 @NgModule({
