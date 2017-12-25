@@ -60,35 +60,12 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 785);
+/******/ 	return __webpack_require__(__webpack_require__.s = 784);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 100:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Build out our basic SafeString type
-
-
-exports.__esModule = true;
-function SafeString(string) {
-  this.string = string;
-}
-
-SafeString.prototype.toString = SafeString.prototype.toHTML = function () {
-  return '' + this.string;
-};
-
-exports['default'] = SafeString;
-module.exports = exports['default'];
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL3NhZmUtc3RyaW5nLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFDQSxTQUFTLFVBQVUsQ0FBQyxNQUFNLEVBQUU7QUFDMUIsTUFBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUM7Q0FDdEI7O0FBRUQsVUFBVSxDQUFDLFNBQVMsQ0FBQyxRQUFRLEdBQUcsVUFBVSxDQUFDLFNBQVMsQ0FBQyxNQUFNLEdBQUcsWUFBVztBQUN2RSxTQUFPLEVBQUUsR0FBRyxJQUFJLENBQUMsTUFBTSxDQUFDO0NBQ3pCLENBQUM7O3FCQUVhLFVBQVUiLCJmaWxlIjoic2FmZS1zdHJpbmcuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBCdWlsZCBvdXQgb3VyIGJhc2ljIFNhZmVTdHJpbmcgdHlwZVxuZnVuY3Rpb24gU2FmZVN0cmluZyhzdHJpbmcpIHtcbiAgdGhpcy5zdHJpbmcgPSBzdHJpbmc7XG59XG5cblNhZmVTdHJpbmcucHJvdG90eXBlLnRvU3RyaW5nID0gU2FmZVN0cmluZy5wcm90b3R5cGUudG9IVE1MID0gZnVuY3Rpb24oKSB7XG4gIHJldHVybiAnJyArIHRoaXMuc3RyaW5nO1xufTtcblxuZXhwb3J0IGRlZmF1bHQgU2FmZVN0cmluZztcbiJdfQ==
-
-
-/***/ }),
-
-/***/ 101:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -403,7 +380,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 
 /***/ }),
 
-/***/ 102:
+/***/ 101:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -429,6 +406,14 @@ module.exports = exports['default'];
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL25vLWNvbmZsaWN0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O3FCQUNlLFVBQVMsVUFBVSxFQUFFOztBQUVsQyxNQUFJLElBQUksR0FBRyxPQUFPLE1BQU0sS0FBSyxXQUFXLEdBQUcsTUFBTSxHQUFHLE1BQU07TUFDdEQsV0FBVyxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUM7O0FBRWxDLFlBQVUsQ0FBQyxVQUFVLEdBQUcsWUFBVztBQUNqQyxRQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssVUFBVSxFQUFFO0FBQ2xDLFVBQUksQ0FBQyxVQUFVLEdBQUcsV0FBVyxDQUFDO0tBQy9CO0FBQ0QsV0FBTyxVQUFVLENBQUM7R0FDbkIsQ0FBQztDQUNIIiwiZmlsZSI6Im5vLWNvbmZsaWN0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyogZ2xvYmFsIHdpbmRvdyAqL1xuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24oSGFuZGxlYmFycykge1xuICAvKiBpc3RhbmJ1bCBpZ25vcmUgbmV4dCAqL1xuICBsZXQgcm9vdCA9IHR5cGVvZiBnbG9iYWwgIT09ICd1bmRlZmluZWQnID8gZ2xvYmFsIDogd2luZG93LFxuICAgICAgJEhhbmRsZWJhcnMgPSByb290LkhhbmRsZWJhcnM7XG4gIC8qIGlzdGFuYnVsIGlnbm9yZSBuZXh0ICovXG4gIEhhbmRsZWJhcnMubm9Db25mbGljdCA9IGZ1bmN0aW9uKCkge1xuICAgIGlmIChyb290LkhhbmRsZWJhcnMgPT09IEhhbmRsZWJhcnMpIHtcbiAgICAgIHJvb3QuSGFuZGxlYmFycyA9ICRIYW5kbGViYXJzO1xuICAgIH1cbiAgICByZXR1cm4gSGFuZGxlYmFycztcbiAgfTtcbn1cbiJdfQ==
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+
+/***/ }),
+
+/***/ 119:
+/***/ (function(module, exports) {
+
+var core = module.exports = {version: '1.2.6'};
+if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ }),
 
@@ -564,27 +549,6 @@ function appendContextPath(contextPath, id) {
 
 /***/ }),
 
-/***/ 120:
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-
-/***/ }),
-
-/***/ 121:
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(371)(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
 /***/ 14:
 /***/ (function(module, exports) {
 
@@ -671,29 +635,6 @@ Exception.prototype = new Error();
 exports['default'] = Exception;
 module.exports = exports['default'];
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2V4Y2VwdGlvbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQ0EsSUFBTSxVQUFVLEdBQUcsQ0FBQyxhQUFhLEVBQUUsVUFBVSxFQUFFLFlBQVksRUFBRSxTQUFTLEVBQUUsTUFBTSxFQUFFLFFBQVEsRUFBRSxPQUFPLENBQUMsQ0FBQzs7QUFFbkcsU0FBUyxTQUFTLENBQUMsT0FBTyxFQUFFLElBQUksRUFBRTtBQUNoQyxNQUFJLEdBQUcsR0FBRyxJQUFJLElBQUksSUFBSSxDQUFDLEdBQUc7TUFDdEIsSUFBSSxZQUFBO01BQ0osTUFBTSxZQUFBLENBQUM7QUFDWCxNQUFJLEdBQUcsRUFBRTtBQUNQLFFBQUksR0FBRyxHQUFHLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQztBQUN0QixVQUFNLEdBQUcsR0FBRyxDQUFDLEtBQUssQ0FBQyxNQUFNLENBQUM7O0FBRTFCLFdBQU8sSUFBSSxLQUFLLEdBQUcsSUFBSSxHQUFHLEdBQUcsR0FBRyxNQUFNLENBQUM7R0FDeEM7O0FBRUQsTUFBSSxHQUFHLEdBQUcsS0FBSyxDQUFDLFNBQVMsQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLElBQUksRUFBRSxPQUFPLENBQUMsQ0FBQzs7O0FBRzFELE9BQUssSUFBSSxHQUFHLEdBQUcsQ0FBQyxFQUFFLEdBQUcsR0FBRyxVQUFVLENBQUMsTUFBTSxFQUFFLEdBQUcsRUFBRSxFQUFFO0FBQ2hELFFBQUksQ0FBQyxVQUFVLENBQUMsR0FBRyxDQUFDLENBQUMsR0FBRyxHQUFHLENBQUMsVUFBVSxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUM7R0FDOUM7OztBQUdELE1BQUksS0FBSyxDQUFDLGlCQUFpQixFQUFFO0FBQzNCLFNBQUssQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLEVBQUUsU0FBUyxDQUFDLENBQUM7R0FDMUM7O0FBRUQsTUFBSTtBQUNGLFFBQUksR0FBRyxFQUFFO0FBQ1AsVUFBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLENBQUM7Ozs7QUFJdkIsVUFBSSxNQUFNLENBQUMsY0FBYyxFQUFFO0FBQ3pCLGNBQU0sQ0FBQyxjQUFjLENBQUMsSUFBSSxFQUFFLFFBQVEsRUFBRTtBQUNwQyxlQUFLLEVBQUUsTUFBTTtBQUNiLG9CQUFVLEVBQUUsSUFBSTtTQUNqQixDQUFDLENBQUM7T0FDSixNQUFNO0FBQ0wsWUFBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUM7T0FDdEI7S0FDRjtHQUNGLENBQUMsT0FBTyxHQUFHLEVBQUU7O0dBRWI7Q0FDRjs7QUFFRCxTQUFTLENBQUMsU0FBUyxHQUFHLElBQUksS0FBSyxFQUFFLENBQUM7O3FCQUVuQixTQUFTIiwiZmlsZSI6ImV4Y2VwdGlvbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIlxuY29uc3QgZXJyb3JQcm9wcyA9IFsnZGVzY3JpcHRpb24nLCAnZmlsZU5hbWUnLCAnbGluZU51bWJlcicsICdtZXNzYWdlJywgJ25hbWUnLCAnbnVtYmVyJywgJ3N0YWNrJ107XG5cbmZ1bmN0aW9uIEV4Y2VwdGlvbihtZXNzYWdlLCBub2RlKSB7XG4gIGxldCBsb2MgPSBub2RlICYmIG5vZGUubG9jLFxuICAgICAgbGluZSxcbiAgICAgIGNvbHVtbjtcbiAgaWYgKGxvYykge1xuICAgIGxpbmUgPSBsb2Muc3RhcnQubGluZTtcbiAgICBjb2x1bW4gPSBsb2Muc3RhcnQuY29sdW1uO1xuXG4gICAgbWVzc2FnZSArPSAnIC0gJyArIGxpbmUgKyAnOicgKyBjb2x1bW47XG4gIH1cblxuICBsZXQgdG1wID0gRXJyb3IucHJvdG90eXBlLmNvbnN0cnVjdG9yLmNhbGwodGhpcywgbWVzc2FnZSk7XG5cbiAgLy8gVW5mb3J0dW5hdGVseSBlcnJvcnMgYXJlIG5vdCBlbnVtZXJhYmxlIGluIENocm9tZSAoYXQgbGVhc3QpLCBzbyBgZm9yIHByb3AgaW4gdG1wYCBkb2Vzbid0IHdvcmsuXG4gIGZvciAobGV0IGlkeCA9IDA7IGlkeCA8IGVycm9yUHJvcHMubGVuZ3RoOyBpZHgrKykge1xuICAgIHRoaXNbZXJyb3JQcm9wc1tpZHhdXSA9IHRtcFtlcnJvclByb3BzW2lkeF1dO1xuICB9XG5cbiAgLyogaXN0YW5idWwgaWdub3JlIGVsc2UgKi9cbiAgaWYgKEVycm9yLmNhcHR1cmVTdGFja1RyYWNlKSB7XG4gICAgRXJyb3IuY2FwdHVyZVN0YWNrVHJhY2UodGhpcywgRXhjZXB0aW9uKTtcbiAgfVxuXG4gIHRyeSB7XG4gICAgaWYgKGxvYykge1xuICAgICAgdGhpcy5saW5lTnVtYmVyID0gbGluZTtcblxuICAgICAgLy8gV29yayBhcm91bmQgaXNzdWUgdW5kZXIgc2FmYXJpIHdoZXJlIHdlIGNhbid0IGRpcmVjdGx5IHNldCB0aGUgY29sdW1uIHZhbHVlXG4gICAgICAvKiBpc3RhbmJ1bCBpZ25vcmUgbmV4dCAqL1xuICAgICAgaWYgKE9iamVjdC5kZWZpbmVQcm9wZXJ0eSkge1xuICAgICAgICBPYmplY3QuZGVmaW5lUHJvcGVydHkodGhpcywgJ2NvbHVtbicsIHtcbiAgICAgICAgICB2YWx1ZTogY29sdW1uLFxuICAgICAgICAgIGVudW1lcmFibGU6IHRydWVcbiAgICAgICAgfSk7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICB0aGlzLmNvbHVtbiA9IGNvbHVtbjtcbiAgICAgIH1cbiAgICB9XG4gIH0gY2F0Y2ggKG5vcCkge1xuICAgIC8qIElnbm9yZSBpZiB0aGUgYnJvd3NlciBpcyB2ZXJ5IHBhcnRpY3VsYXIgKi9cbiAgfVxufVxuXG5FeGNlcHRpb24ucHJvdG90eXBlID0gbmV3IEVycm9yKCk7XG5cbmV4cG9ydCBkZWZhdWx0IEV4Y2VwdGlvbjtcbiJdfQ==
-
-
-/***/ }),
-
-/***/ 370:
-/***/ (function(module, exports) {
-
-var core = module.exports = { version: '2.5.3' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ 371:
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
 
 
 /***/ }),
@@ -1513,6 +1454,48 @@ exports.default = Events;
 
 /***/ }),
 
+/***/ 437:
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
+
+/***/ }),
+
+/***/ 438:
+/***/ (function(module, exports) {
+
+module.exports = function(it){
+  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
+  return it;
+};
+
+/***/ }),
+
+/***/ 439:
+/***/ (function(module, exports) {
+
+// fast apply, http://jsperf.lnkit.com/fast-apply/5
+module.exports = function(fn, args, that){
+  var un = that === undefined;
+  switch(args.length){
+    case 0: return un ? fn()
+                      : fn.call(that);
+    case 1: return un ? fn(args[0])
+                      : fn.call(that, args[0]);
+    case 2: return un ? fn(args[0], args[1])
+                      : fn.call(that, args[0], args[1]);
+    case 3: return un ? fn(args[0], args[1], args[2])
+                      : fn.call(that, args[0], args[1], args[2]);
+    case 4: return un ? fn(args[0], args[1], args[2], args[3])
+                      : fn.call(that, args[0], args[1], args[2], args[3]);
+  } return              fn.apply(that, args);
+};
+
+/***/ }),
+
 /***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1531,11 +1514,11 @@ var _exception = __webpack_require__(16);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _helpers = __webpack_require__(89);
+var _helpers = __webpack_require__(88);
 
-var _decorators = __webpack_require__(97);
+var _decorators = __webpack_require__(96);
 
-var _logger = __webpack_require__(99);
+var _logger = __webpack_require__(98);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -1625,20 +1608,7 @@ exports.logger = _logger2['default'];
 
 /***/ }),
 
-/***/ 59:
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ 785:
+/***/ 784:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1652,12 +1622,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mds_1 = __webpack_require__(786);
-var locale_1 = __webpack_require__(86);
+var mds_1 = __webpack_require__(785);
+var locale_1 = __webpack_require__(85);
 var utils_1 = __webpack_require__(41);
-__webpack_require__(787);
-var timers_1 = __webpack_require__(788);
-var navTpl = __webpack_require__(801);
+__webpack_require__(786);
+var timers_1 = __webpack_require__(787);
+var navTpl = __webpack_require__(793);
 var DEFAULT_FOLDER = 'guide';
 var DEFAULT_ITEM = 'installation';
 var Docs = /** @class */ (function () {
@@ -1726,7 +1696,7 @@ var Docs = /** @class */ (function () {
         var _a = this.getDocsFolderAndItem(), folder = _a.folder, item = _a.item;
         var content = '';
         try {
-            content = __webpack_require__(802)("./" + folder + "/" + item + "/" + language + ".md");
+            content = __webpack_require__(794)("./" + folder + "/" + item + "/" + language + ".md");
         }
         catch (err) {
             console.error(err);
@@ -1771,7 +1741,7 @@ new Docs();
 
 /***/ }),
 
-/***/ 786:
+/***/ 785:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1806,74 +1776,70 @@ exports.default = mds;
 
 /***/ }),
 
-/***/ 787:
+/***/ 786:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
+/***/ 787:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(788);
+module.exports = __webpack_require__(119);
+
+/***/ }),
+
 /***/ 788:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(789);
-module.exports = __webpack_require__(370);
-
+// ie9- setTimeout & setInterval additional parameters fix
+var global     = __webpack_require__(437)
+  , $export    = __webpack_require__(789)
+  , invoke     = __webpack_require__(439)
+  , partial    = __webpack_require__(791)
+  , navigator  = global.navigator
+  , MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
+var wrap = function(set){
+  return MSIE ? function(fn, time /*, ...args */){
+    return set(invoke(
+      partial,
+      [].slice.call(arguments, 2),
+      typeof fn == 'function' ? fn : Function(fn)
+    ), time);
+  } : set;
+};
+$export($export.G + $export.B + $export.F * MSIE, {
+  setTimeout:  wrap(global.setTimeout),
+  setInterval: wrap(global.setInterval)
+});
 
 /***/ }),
 
 /***/ 789:
 /***/ (function(module, exports, __webpack_require__) {
 
-// ie9- setTimeout & setInterval additional parameters fix
-var global = __webpack_require__(59);
-var $export = __webpack_require__(790);
-var userAgent = __webpack_require__(800);
-var slice = [].slice;
-var MSIE = /MSIE .\./.test(userAgent); // <- dirty ie9- check
-var wrap = function (set) {
-  return function (fn, time /* , ...args */) {
-    var boundArgs = arguments.length > 2;
-    var args = boundArgs ? slice.call(arguments, 2) : false;
-    return set(boundArgs ? function () {
-      // eslint-disable-next-line no-new-func
-      (typeof fn == 'function' ? fn : Function(fn)).apply(this, args);
-    } : fn, time);
-  };
-};
-$export($export.G + $export.B + $export.F * MSIE, {
-  setTimeout: wrap(global.setTimeout),
-  setInterval: wrap(global.setInterval)
-});
+var global    = __webpack_require__(437)
+  , core      = __webpack_require__(119)
+  , ctx       = __webpack_require__(790)
+  , PROTOTYPE = 'prototype';
 
-
-/***/ }),
-
-/***/ 790:
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(59);
-var core = __webpack_require__(370);
-var ctx = __webpack_require__(791);
-var hide = __webpack_require__(793);
-var PROTOTYPE = 'prototype';
-
-var $export = function (type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var IS_WRAP = type & $export.W;
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE];
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
-  var key, own, out;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
+var $export = function(type, name, source){
+  var IS_FORCED = type & $export.F
+    , IS_GLOBAL = type & $export.G
+    , IS_STATIC = type & $export.S
+    , IS_PROTO  = type & $export.P
+    , IS_BIND   = type & $export.B
+    , IS_WRAP   = type & $export.W
+    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
+    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
+    , key, own, out;
+  if(IS_GLOBAL)source = name;
+  for(key in source){
     // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && key in exports) continue;
+    own = !IS_FORCED && target && key in target;
+    if(own && key in exports)continue;
     // export native or passed
     out = own ? target[key] : source[key];
     // prevent global pollution for namespaces
@@ -1881,203 +1847,96 @@ var $export = function (type, name, source) {
     // bind timers to global for call from export context
     : IS_BIND && own ? ctx(out, global)
     // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function (C) {
-      var F = function (a, b, c) {
-        if (this instanceof C) {
-          switch (arguments.length) {
-            case 0: return new C();
-            case 1: return new C(a);
-            case 2: return new C(a, b);
-          } return new C(a, b, c);
-        } return C.apply(this, arguments);
+    : IS_WRAP && target[key] == out ? (function(C){
+      var F = function(param){
+        return this instanceof C ? new C(param) : C(param);
       };
       F[PROTOTYPE] = C[PROTOTYPE];
       return F;
     // make static versions for prototype methods
     })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if (IS_PROTO) {
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
-    }
+    if(IS_PROTO)(exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
   }
 };
 // type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library`
+$export.F = 1;  // forced
+$export.G = 2;  // global
+$export.S = 4;  // static
+$export.P = 8;  // proto
+$export.B = 16; // bind
+$export.W = 32; // wrap
 module.exports = $export;
 
+/***/ }),
+
+/***/ 790:
+/***/ (function(module, exports, __webpack_require__) {
+
+// optional / simple context binding
+var aFunction = __webpack_require__(438);
+module.exports = function(fn, that, length){
+  aFunction(fn);
+  if(that === undefined)return fn;
+  switch(length){
+    case 1: return function(a){
+      return fn.call(that, a);
+    };
+    case 2: return function(a, b){
+      return fn.call(that, a, b);
+    };
+    case 3: return function(a, b, c){
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function(/* ...args */){
+    return fn.apply(that, arguments);
+  };
+};
 
 /***/ }),
 
 /***/ 791:
 /***/ (function(module, exports, __webpack_require__) {
 
-// optional / simple context binding
-var aFunction = __webpack_require__(792);
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
+"use strict";
+
+var path      = __webpack_require__(792)
+  , invoke    = __webpack_require__(439)
+  , aFunction = __webpack_require__(438);
+module.exports = function(/* ...pargs */){
+  var fn     = aFunction(this)
+    , length = arguments.length
+    , pargs  = Array(length)
+    , i      = 0
+    , _      = path._
+    , holder = false;
+  while(length > i)if((pargs[i] = arguments[i++]) === _)holder = true;
+  return function(/* ...args */){
+    var that  = this
+      , $$    = arguments
+      , $$len = $$.length
+      , j = 0, k = 0, args;
+    if(!holder && !$$len)return invoke(fn, pargs, that);
+    args = pargs.slice();
+    if(holder)for(;length > j; j++)if(args[j] === _)args[j] = $$[k++];
+    while($$len > k)args.push($$[k++]);
+    return invoke(fn, args, that);
   };
 };
-
 
 /***/ }),
 
 /***/ 792:
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
+module.exports = __webpack_require__(119);
 
 /***/ }),
 
 /***/ 793:
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(794);
-var createDesc = __webpack_require__(799);
-module.exports = __webpack_require__(121) ? function (object, key, value) {
-  return dP.f(object, key, createDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-
-/***/ 794:
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(795);
-var IE8_DOM_DEFINE = __webpack_require__(796);
-var toPrimitive = __webpack_require__(798);
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__(121) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-
-/***/ 795:
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(120);
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-
-/***/ }),
-
-/***/ 796:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__(121) && !__webpack_require__(371)(function () {
-  return Object.defineProperty(__webpack_require__(797)('div'), 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ 797:
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(120);
-var document = __webpack_require__(59).document;
-// typeof document.createElement is 'object' in old IE
-var is = isObject(document) && isObject(document.createElement);
-module.exports = function (it) {
-  return is ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-
-/***/ 798:
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(120);
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-
-/***/ 799:
-/***/ (function(module, exports) {
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ }),
-
-/***/ 800:
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(59);
-var navigator = global.navigator;
-
-module.exports = navigator && navigator.userAgent || '';
-
-
-/***/ }),
-
-/***/ 801:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Handlebars = __webpack_require__(87);
+var Handlebars = __webpack_require__(86);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
@@ -2110,16 +1969,16 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
 /***/ }),
 
-/***/ 802:
+/***/ 794:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./guide/installation/cn.md": 803,
-	"./guide/installation/en.md": 804,
-	"./guide/introduction/cn.md": 805,
-	"./guide/introduction/en.md": 806,
-	"./guide/usage/cn.md": 807,
-	"./guide/usage/en.md": 808
+	"./guide/installation/cn.md": 795,
+	"./guide/installation/en.md": 796,
+	"./guide/introduction/cn.md": 797,
+	"./guide/introduction/en.md": 798,
+	"./guide/usage/cn.md": 799,
+	"./guide/usage/en.md": 800
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -2135,53 +1994,53 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 802;
+webpackContext.id = 794;
 
 /***/ }),
 
-/***/ 803:
+/***/ 795:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"-\">安装</h2>\n<p>Viser 为 React, Vue 和 Angular 提供了3个不同的分发版本。我们同时提供了npm安装和umd引入两种方式来使用Viser。</p>\n<p>npm安装是使用 Viser 最简单也是最快捷的方式。我们强烈建议您在开发单页应用(SPA)时采用这种方式进行安装。Viser 可以完美兼容 CommonJS 打包工具，例如我们最常用的 Webpack。</p>\n<p>UMD 引入是使用script标签引入来使用 Viser。当你需要快速使用的时候，这是最便捷的方式。</p>\n<h3 id=\"vue-\">Vue 分发版</h3>\n<p>您需要使用版本 <strong>2.5</strong> 及以上的 Vue，来使用 Vue 分发版 Viser。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserVue</code> 来进行调用 Viser。</p>\n<h3 id=\"angular-\">Angular 分发版</h3>\n<p>您需要使用版本 <strong>2.4</strong> 及以上的 Angular，来使用 Angular 分发版 Viser。另外，你还需要版本 <strong>0.1</strong> 及以上的 reflect-metadata，版本 <strong>5</strong> 及以上的 rxjs，版本 <strong>0.7</strong> 及以上的 zone.js。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserNg</code> 来进行调用 Viser。</p>\n<h3 id=\"react-\">React 分发版</h3>\n<p>您需要使用版本 <strong>15</strong> 及以上的 React，来使用 React 分发版 Viser。显然，版本 <strong>16</strong> 也是可以的。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 引入的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserReact</code> 来进行调用 Viser。</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
 
 /***/ }),
 
-/***/ 804:
+/***/ 796:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"installation\">Installation</h2>\n<p>Viser include 3 version which is integrated by React, Vue and Angular. We provide NPM or UMD to use library.</p>\n<p>NPM is the easiest and fastest way to get started using Viser. It is the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.</p>\n<p>UMD is the script way to using Viser. It is convenient method when you used quickly.</p>\n<h3 id=\"vue-version\">Vue Version</h3>\n<p>In Vue version, You mush prepare to Vue version greater than <strong>2.5</strong> in project.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserVue.</p>\n<h3 id=\"angular-version\">Angular Version</h3>\n<p>In Angular version, You mush prepare to Angular version greater than <strong>2.4</strong> in project. In addition, you also prepare to reflect-metadata version greater than <strong>0.1</strong>, rxjs version greater than <strong>5</strong> and zone.js version greater than <strong>0.7</strong>.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserNg.</p>\n<h3 id=\"react-version\">React Version</h3>\n<p>In React version, You mush prepare React version greater then <strong>15</strong>, and support <strong>16</strong> certainly.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserReact.</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
 
 /***/ }),
 
-/***/ 805:
+/***/ 797:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"-\">简介</h2>\n<p>Viser，一个基于 G2 实现的，为数据可视化工程师量身定制的工具。Viser 现已支持几大主流前端框架，例如 React, Vue 和 AngularJS。</p>\n<h3 id=\"-\">核心价值</h3>\n<p>它可以开发网页应用的过程中，为图表开发带来卓越的体验。</p>\n<h3 id=\"-\">设计原则</h3>\n<ol>\n<li>利用语义化组件来组合图表。包括但不限于 React, Vue 和 AugularJS 的组件。</li>\n<li>脱胎于 G2，一套基于可视化编码的图形语法。由此带来了强大的可视化能力。</li>\n</ol>\n";
 
 /***/ }),
 
-/***/ 806:
+/***/ 798:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"introduction\">Introduction</h2>\n<p>A toolkit fit for data vis engineer based on G2. Viser support React, Vue and AngularJS.</p>\n<h3 id=\"main-purpose\">Main Purpose</h3>\n<p>The main purpose of this library is to help you to write charts in web applications without any pain.</p>\n<h3 id=\"main-principles\">Main Principles</h3>\n<ol>\n<li>Simply deploy with semantic component with chart, including but not limited to React, Vue and AugularJS.</li>\n<li>Lightweight depending only on G2 which is a plotting system for Javascript, based on the grammar of graphics.</li>\n</ol>\n";
 
 /***/ }),
 
-/***/ 807:
+/***/ 799:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"-\">用法</h2>\n<p>Viser 的使用方法几乎是和 G2 一样的，但是 Viser 增加了更多人性化的语法糖。最快速的了解这些内容的方法，便是学习在我们的“案例”页面中使用 Viser 构建的例子。</p>\n<p>接下来，我们将讨论这些 Viser 和 G2 的差异之处，以便于您的理解。</p>\n<h3 id=\"datapre\">DataPre</h3>\n<p>参数 <em>dataPre</em> 用于表示 G2 中 <em>data-set.js</em> 的相关内容。它包括了 <em>data-set</em> 中用到的 <code>connector</code> 和 <code>transform</code> 两个属性。关于这些属性的使用方法，可以阅读 data-set 的文档。</p>\n<h3 id=\"series\">Series</h3>\n<p>参数 <em>Series</em> 用于表示 G2 中 <em>gemo</em> 的相关内容。我们直接使用了具体的名称来表示组件，例如 bar 和 line 等。</p>\n<h3 id=\"coord\">Coord</h3>\n<p>参数 <em>Coord</em> 用于表示 G2 中 <em>coord</em> 的相关内容。但是我们提供了 <em>direction</em> 这一优化后的参数用来展现 G2 中的 <code>transpose</code>, <code>reflect</code> 和 <code>scale</code> 这几个属性.</p>\n<h3 id=\"formatter\">Formatter</h3>\n<p>我们使用了 <em>d3-format</em> 来增强 <code>label</code> 的回调函数。</p>\n";
 
 /***/ }),
 
-/***/ 808:
+/***/ 800:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"usage\">Usage</h2>\n<p>Viser usage is all comes out of G2. But Viser added some syntactic sugar. You should study to using viser from demo.</p>\n<p>We only talk about some different from G2 and Viser.</p>\n<h3 id=\"datapre\">DataPre</h3>\n<p><em>dataPre</em> param is <em>data-set.js</em> in G2, and it inclued <code>connector</code> and <code>transform</code> key from <em>data-set</em>, so you should read data-set just enough.</p>\n<h3 id=\"series\">Series</h3>\n<p><em>Series</em> param is <em>gemo</em> in G2, and we used specific name to express the component, like bar, line etc.</p>\n<h3 id=\"coord\">Coord</h3>\n<p><em>Coord</em> param is <em>coord</em> in G2, but we provide <em>direction</em> param which using <code>transpose</code>, <code>reflect</code> and <code>scale</code> of G2.</p>\n<h3 id=\"formatter\">Formatter</h3>\n<p>We add <em>d3-format</em> to enhance the <code>label</code> function.</p>\n";
 
 /***/ }),
 
-/***/ 86:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2214,17 +2073,17 @@ exports.default = locale;
 
 /***/ }),
 
-/***/ 87:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
-module.exports = __webpack_require__(88)['default'];
+module.exports = __webpack_require__(87)['default'];
 
 
 /***/ }),
 
-/***/ 88:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2246,7 +2105,7 @@ var base = _interopRequireWildcard(_handlebarsBase);
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
 
-var _handlebarsSafeString = __webpack_require__(100);
+var _handlebarsSafeString = __webpack_require__(99);
 
 var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
@@ -2258,11 +2117,11 @@ var _handlebarsUtils = __webpack_require__(12);
 
 var Utils = _interopRequireWildcard(_handlebarsUtils);
 
-var _handlebarsRuntime = __webpack_require__(101);
+var _handlebarsRuntime = __webpack_require__(100);
 
 var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
-var _handlebarsNoConflict = __webpack_require__(102);
+var _handlebarsNoConflict = __webpack_require__(101);
 
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
@@ -2298,7 +2157,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 89:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2310,31 +2169,31 @@ exports.registerDefaultHelpers = registerDefaultHelpers;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _helpersBlockHelperMissing = __webpack_require__(90);
+var _helpersBlockHelperMissing = __webpack_require__(89);
 
 var _helpersBlockHelperMissing2 = _interopRequireDefault(_helpersBlockHelperMissing);
 
-var _helpersEach = __webpack_require__(91);
+var _helpersEach = __webpack_require__(90);
 
 var _helpersEach2 = _interopRequireDefault(_helpersEach);
 
-var _helpersHelperMissing = __webpack_require__(92);
+var _helpersHelperMissing = __webpack_require__(91);
 
 var _helpersHelperMissing2 = _interopRequireDefault(_helpersHelperMissing);
 
-var _helpersIf = __webpack_require__(93);
+var _helpersIf = __webpack_require__(92);
 
 var _helpersIf2 = _interopRequireDefault(_helpersIf);
 
-var _helpersLog = __webpack_require__(94);
+var _helpersLog = __webpack_require__(93);
 
 var _helpersLog2 = _interopRequireDefault(_helpersLog);
 
-var _helpersLookup = __webpack_require__(95);
+var _helpersLookup = __webpack_require__(94);
 
 var _helpersLookup2 = _interopRequireDefault(_helpersLookup);
 
-var _helpersWith = __webpack_require__(96);
+var _helpersWith = __webpack_require__(95);
 
 var _helpersWith2 = _interopRequireDefault(_helpersWith);
 
@@ -2352,7 +2211,7 @@ function registerDefaultHelpers(instance) {
 
 /***/ }),
 
-/***/ 90:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2399,7 +2258,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 91:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2501,7 +2360,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 92:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2534,7 +2393,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 93:
+/***/ 92:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2571,7 +2430,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 94:
+/***/ 93:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2605,7 +2464,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 95:
+/***/ 94:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2625,7 +2484,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 96:
+/***/ 95:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2666,7 +2525,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 97:
+/***/ 96:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2678,7 +2537,7 @@ exports.registerDefaultDecorators = registerDefaultDecorators;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _decoratorsInline = __webpack_require__(98);
+var _decoratorsInline = __webpack_require__(97);
 
 var _decoratorsInline2 = _interopRequireDefault(_decoratorsInline);
 
@@ -2690,7 +2549,7 @@ function registerDefaultDecorators(instance) {
 
 /***/ }),
 
-/***/ 98:
+/***/ 97:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2727,7 +2586,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 99:
+/***/ 98:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2778,6 +2637,29 @@ var logger = {
 exports['default'] = logger;
 module.exports = exports['default'];
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2xvZ2dlci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O3FCQUFzQixTQUFTOztBQUUvQixJQUFJLE1BQU0sR0FBRztBQUNYLFdBQVMsRUFBRSxDQUFDLE9BQU8sRUFBRSxNQUFNLEVBQUUsTUFBTSxFQUFFLE9BQU8sQ0FBQztBQUM3QyxPQUFLLEVBQUUsTUFBTTs7O0FBR2IsYUFBVyxFQUFFLHFCQUFTLEtBQUssRUFBRTtBQUMzQixRQUFJLE9BQU8sS0FBSyxLQUFLLFFBQVEsRUFBRTtBQUM3QixVQUFJLFFBQVEsR0FBRyxlQUFRLE1BQU0sQ0FBQyxTQUFTLEVBQUUsS0FBSyxDQUFDLFdBQVcsRUFBRSxDQUFDLENBQUM7QUFDOUQsVUFBSSxRQUFRLElBQUksQ0FBQyxFQUFFO0FBQ2pCLGFBQUssR0FBRyxRQUFRLENBQUM7T0FDbEIsTUFBTTtBQUNMLGFBQUssR0FBRyxRQUFRLENBQUMsS0FBSyxFQUFFLEVBQUUsQ0FBQyxDQUFDO09BQzdCO0tBQ0Y7O0FBRUQsV0FBTyxLQUFLLENBQUM7R0FDZDs7O0FBR0QsS0FBRyxFQUFFLGFBQVMsS0FBSyxFQUFjO0FBQy9CLFNBQUssR0FBRyxNQUFNLENBQUMsV0FBVyxDQUFDLEtBQUssQ0FBQyxDQUFDOztBQUVsQyxRQUFJLE9BQU8sT0FBTyxLQUFLLFdBQVcsSUFBSSxNQUFNLENBQUMsV0FBVyxDQUFDLE1BQU0sQ0FBQyxLQUFLLENBQUMsSUFBSSxLQUFLLEVBQUU7QUFDL0UsVUFBSSxNQUFNLEdBQUcsTUFBTSxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQztBQUNyQyxVQUFJLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxFQUFFOztBQUNwQixjQUFNLEdBQUcsS0FBSyxDQUFDO09BQ2hCOzt3Q0FQbUIsT0FBTztBQUFQLGVBQU87OztBQVEzQixhQUFPLENBQUMsTUFBTSxPQUFDLENBQWYsT0FBTyxFQUFZLE9BQU8sQ0FBQyxDQUFDO0tBQzdCO0dBQ0Y7Q0FDRixDQUFDOztxQkFFYSxNQUFNIiwiZmlsZSI6ImxvZ2dlci5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7aW5kZXhPZn0gZnJvbSAnLi91dGlscyc7XG5cbmxldCBsb2dnZXIgPSB7XG4gIG1ldGhvZE1hcDogWydkZWJ1ZycsICdpbmZvJywgJ3dhcm4nLCAnZXJyb3InXSxcbiAgbGV2ZWw6ICdpbmZvJyxcblxuICAvLyBNYXBzIGEgZ2l2ZW4gbGV2ZWwgdmFsdWUgdG8gdGhlIGBtZXRob2RNYXBgIGluZGV4ZXMgYWJvdmUuXG4gIGxvb2t1cExldmVsOiBmdW5jdGlvbihsZXZlbCkge1xuICAgIGlmICh0eXBlb2YgbGV2ZWwgPT09ICdzdHJpbmcnKSB7XG4gICAgICBsZXQgbGV2ZWxNYXAgPSBpbmRleE9mKGxvZ2dlci5tZXRob2RNYXAsIGxldmVsLnRvTG93ZXJDYXNlKCkpO1xuICAgICAgaWYgKGxldmVsTWFwID49IDApIHtcbiAgICAgICAgbGV2ZWwgPSBsZXZlbE1hcDtcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIGxldmVsID0gcGFyc2VJbnQobGV2ZWwsIDEwKTtcbiAgICAgIH1cbiAgICB9XG5cbiAgICByZXR1cm4gbGV2ZWw7XG4gIH0sXG5cbiAgLy8gQ2FuIGJlIG92ZXJyaWRkZW4gaW4gdGhlIGhvc3QgZW52aXJvbm1lbnRcbiAgbG9nOiBmdW5jdGlvbihsZXZlbCwgLi4ubWVzc2FnZSkge1xuICAgIGxldmVsID0gbG9nZ2VyLmxvb2t1cExldmVsKGxldmVsKTtcblxuICAgIGlmICh0eXBlb2YgY29uc29sZSAhPT0gJ3VuZGVmaW5lZCcgJiYgbG9nZ2VyLmxvb2t1cExldmVsKGxvZ2dlci5sZXZlbCkgPD0gbGV2ZWwpIHtcbiAgICAgIGxldCBtZXRob2QgPSBsb2dnZXIubWV0aG9kTWFwW2xldmVsXTtcbiAgICAgIGlmICghY29uc29sZVttZXRob2RdKSB7ICAgLy8gZXNsaW50LWRpc2FibGUtbGluZSBuby1jb25zb2xlXG4gICAgICAgIG1ldGhvZCA9ICdsb2cnO1xuICAgICAgfVxuICAgICAgY29uc29sZVttZXRob2RdKC4uLm1lc3NhZ2UpOyAgICAvLyBlc2xpbnQtZGlzYWJsZS1saW5lIG5vLWNvbnNvbGVcbiAgICB9XG4gIH1cbn07XG5cbmV4cG9ydCBkZWZhdWx0IGxvZ2dlcjtcbiJdfQ==
+
+
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Build out our basic SafeString type
+
+
+exports.__esModule = true;
+function SafeString(string) {
+  this.string = string;
+}
+
+SafeString.prototype.toString = SafeString.prototype.toHTML = function () {
+  return '' + this.string;
+};
+
+exports['default'] = SafeString;
+module.exports = exports['default'];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL3NhZmUtc3RyaW5nLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFDQSxTQUFTLFVBQVUsQ0FBQyxNQUFNLEVBQUU7QUFDMUIsTUFBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUM7Q0FDdEI7O0FBRUQsVUFBVSxDQUFDLFNBQVMsQ0FBQyxRQUFRLEdBQUcsVUFBVSxDQUFDLFNBQVMsQ0FBQyxNQUFNLEdBQUcsWUFBVztBQUN2RSxTQUFPLEVBQUUsR0FBRyxJQUFJLENBQUMsTUFBTSxDQUFDO0NBQ3pCLENBQUM7O3FCQUVhLFVBQVUiLCJmaWxlIjoic2FmZS1zdHJpbmcuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBCdWlsZCBvdXQgb3VyIGJhc2ljIFNhZmVTdHJpbmcgdHlwZVxuZnVuY3Rpb24gU2FmZVN0cmluZyhzdHJpbmcpIHtcbiAgdGhpcy5zdHJpbmcgPSBzdHJpbmc7XG59XG5cblNhZmVTdHJpbmcucHJvdG90eXBlLnRvU3RyaW5nID0gU2FmZVN0cmluZy5wcm90b3R5cGUudG9IVE1MID0gZnVuY3Rpb24oKSB7XG4gIHJldHVybiAnJyArIHRoaXMuc3RyaW5nO1xufTtcblxuZXhwb3J0IGRlZmF1bHQgU2FmZVN0cmluZztcbiJdfQ==
 
 
 /***/ })
