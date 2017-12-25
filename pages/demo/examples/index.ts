@@ -301,6 +301,23 @@ const examples = {
     ],
     icon: 'loudoutu'
   },
+  map: {
+    enName: 'map',
+    cnName: '地图',
+    examples: [
+      {
+        path: 'example1',
+        enName: 'Bubble map',
+        cnName: '带气泡的地图',
+      },
+      {
+        path: 'example2',
+        enName: 'Statistic map',
+        cnName: '世界分级统计地图',
+      },
+    ],
+    icon: 'ditu'
+  },
   radar: {
     enName: 'Radar',
     cnName: '雷达图',
