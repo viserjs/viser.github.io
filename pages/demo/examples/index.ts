@@ -226,6 +226,18 @@ const examples = {
     ],
     icon: 'xiangxiantu'
   },
+  stock: {
+    enName: 'Stock',
+    cnName: '箱型图',
+    examples: [
+      {
+        path: 'example2',
+        enName: 'Stock and area',
+        cnName: '股票图与范围区域图',
+      },
+    ],
+    icon: 'xiangxiantu'
+  },
   heatmap: {
     enName: 'Heatmap',
     cnName: '热力图',
