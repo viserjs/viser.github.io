@@ -113,7 +113,7 @@ const data = [
 export default {
   data() {
     return {
-      height: 500,
+      height: 400,
       data: data,
       scale: scale,
 

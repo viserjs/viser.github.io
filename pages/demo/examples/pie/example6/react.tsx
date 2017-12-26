@@ -20,9 +20,9 @@ const data = [
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit height={500} data={data}>
+      <Chart forceFit height={400} data={data}>
         <Tooltip />
-        <Legend position="right" dataKey="year" offsetY={-70} offsetX={-140} />
+        <Legend position="right" dataKey="year" offsetX={-140} />
         <Coord type="polar" />
         <Sector position="year*population" color="year" style={{ stroke: '#fff', lineWidth: 1 }} />
       </Chart>

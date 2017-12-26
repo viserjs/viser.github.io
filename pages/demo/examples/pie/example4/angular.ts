@@ -76,7 +76,7 @@ const color = ['name', ['#BAE7FF', '#7FC9FE', '#71E3E3', '#ABF5F5', '#8EE0A1', '
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 500;
+  height: number = 400;
   data = data;
   dataPre = dataPre;
   scale = scale;

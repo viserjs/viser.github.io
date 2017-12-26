@@ -56,7 +56,7 @@ class App extends React.Component {
     const color = ['#BAE7FF', '#7FC9FE', '#71E3E3', '#ABF5F5', '#8EE0A1', '#BAF5C4'];
 
     return (
-      <Chart forceFit height={500} data={data} dataPre={dataPre} scale={scale}>
+      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
         <Tooltip showTitle={false} itemTpl={itemTpl} />
         <Coord type="theta" radius={0.5} />
         <Pie position="percent" color="type" label={['type', { offset: -10, }]} tooltip={tooltip} select={false} style={style} />

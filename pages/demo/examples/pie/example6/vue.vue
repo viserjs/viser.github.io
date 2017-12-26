@@ -3,7 +3,7 @@
     <v-chart :force-fit="true" :height="height" :data="data">
       <v-tooltip />
       <v-sector :position="'year*population'" :color="'year'" :v-style="sectorStyle" />
-      <v-legend :position="'right'" :data-key="'year'" :offset-y="-70" :offset-x="-140" />
+      <v-legend :position="'right'" :data-key="'year'" :offset-x="-140" />
       <v-coord :type="'polar'" />
     </v-chart>
   </div>
@@ -29,7 +29,7 @@
     data() {
       return {
         data,
-        height: 500,
+        height: 400,
         sectorStyle: {
           stroke: "#fff",
           lineWidth: 1,

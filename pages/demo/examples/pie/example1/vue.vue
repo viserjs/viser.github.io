@@ -45,7 +45,7 @@
         data,
         dataPre,
         scale,
-        height: 500,
+        height: 400,
         pieStyle: {
           stroke: "#fff",
           lineWidth: 1

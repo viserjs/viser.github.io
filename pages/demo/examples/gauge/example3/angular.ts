@@ -88,7 +88,7 @@ const color = ['#0086FA', '#FFBF00', '#F5222D'];
 
 class AppComponent {
   forceFit: boolean = true;
-  height = 500;
+  height = 400;
   data = [
     { value: 2.6 }
   ];

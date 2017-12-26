@@ -34,7 +34,7 @@ const data = [
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 500;
+  height: number = 400;
   data = data;
   sectorStyle = {
     stroke: "#fff",

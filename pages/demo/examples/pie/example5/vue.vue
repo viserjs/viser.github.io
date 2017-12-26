@@ -28,7 +28,7 @@
     data() {
       return {
         data,
-        height: 500,
+        height: 400,
         sectorStyle: {
           stroke: "#fff",
           lineWidth: 1

@@ -119,7 +119,7 @@ const data = [
 
 class AppComponent {
   forceFit: boolean = true;
-  height = 500;
+  height = 400;
   data = data;
   scale = scale;
 

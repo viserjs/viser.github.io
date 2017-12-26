@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data">
+    <v-chart :force-fit="true" :height="400" :data="data">
       <v-tooltip :show-title="false" />
       <v-axis :data-key="'GDP'" :label="axisLabel" />
       <v-legend :data-key="'Population'" :show="false" />

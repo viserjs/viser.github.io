@@ -20,7 +20,7 @@ const data = [
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit height={500} data={data}>
+      <Chart forceFit height={400} data={data}>
         <Tooltip />
         <Coord type="polar" />
         <Sector

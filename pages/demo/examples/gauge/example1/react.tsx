@@ -51,7 +51,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={500} data={data} scale={scale}>
+        <Chart forceFit height={400} data={data} scale={scale}>
           <Coord
             type="polar"
             startAngle={-202.5}

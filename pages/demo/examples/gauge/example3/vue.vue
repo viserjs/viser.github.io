@@ -134,7 +134,7 @@ export default {
     ];
 
     return {
-      height: 500,
+      height: 400,
       data: data,
       scale: scale,
 

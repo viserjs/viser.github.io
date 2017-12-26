@@ -28,14 +28,14 @@ const data = [
       <v-tooltip></v-tooltip>
       <v-coord type="polar" innerRadius="0.2"></v-coord>
       <v-sector position="year*population" [style]="sectorStyle" color="year"></v-sector>
-      <v-legend position="right" dataKey="year" offsetY="-70" offsetX="-140"></v-legend>
+      <v-legend position="right" dataKey="year" offsetX="-140"></v-legend>
     </v-chart>
   </div>
   `
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 500;
+  height: number = 400;
   data = data;
   sectorStyle = {
     stroke: "#fff",

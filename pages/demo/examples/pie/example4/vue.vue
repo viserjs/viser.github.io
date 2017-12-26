@@ -73,7 +73,7 @@
         dataPre,
         scale,
         viewDataPre,
-        height: 500,
+        height: 400,
         itemTpl,
         tooltip,
         color,

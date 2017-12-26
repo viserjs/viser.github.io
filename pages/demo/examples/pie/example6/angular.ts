@@ -26,7 +26,7 @@ const data = [
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-tooltip></v-tooltip>
-      <v-legend position="right" dataKey="year" offsetY="-70" offsetX="-140"></v-legend>
+      <v-legend position="right" dataKey="year" offsetX="-140"></v-legend>
       <v-sector position="year*population" [style]="sectorStyle" color="year"></v-sector>
       <v-coord type="polar"></v-coord>
     </v-chart>
@@ -35,7 +35,7 @@ const data = [
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 500;
+  height: number = 400;
   data = data;
   sectorStyle = {
     stroke: "#fff",
