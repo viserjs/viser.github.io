@@ -228,7 +228,7 @@ const examples = {
   },
   stock: {
     enName: 'Stock',
-    cnName: '箱型图',
+    cnName: '烛形图',
     examples: [
       {
         path: 'example2',
