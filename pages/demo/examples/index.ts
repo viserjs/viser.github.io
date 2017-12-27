@@ -236,7 +236,7 @@ const examples = {
         cnName: '股票图与范围区域图',
       },
     ],
-    icon: 'xiangxiantu'
+    icon: 'gupiaotu'
   },
   heatmap: {
     enName: 'Heatmap',
