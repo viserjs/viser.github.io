@@ -228,7 +228,7 @@ const examples = {
   },
   stock: {
     enName: 'Stock',
-    cnName: '箱型图',
+    cnName: '烛形图',
     examples: [
       {
         path: 'example2',
@@ -236,7 +236,7 @@ const examples = {
         cnName: '股票图与范围区域图',
       },
     ],
-    icon: 'xiangxiantu'
+    icon: 'gupiaotu'
   },
   heatmap: {
     enName: 'Heatmap',
