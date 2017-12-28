@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale" :animate="false">
-      <v-coord type="polar" :startAngle="-202.5" :endAngle="22.5" :radius="0.75"></v-coord>
+      <v-coord type="polar" :start-angle="-202.5" :end-angle="22.5" :radius="0.75"></v-coord>
       <v-axis
-        dataKey="value"
+        :data-key="'value'"
         :zIndex="2"
         :line="null"
         :label="axisLabel"
@@ -12,12 +12,12 @@
         :tickLine="axisTickLine"
         :grid="null"
       ></v-axis>
-      <v-axis dataKey="1" :show="false"></v-axis>
+      <v-axis :data-key="1" :show="false"></v-axis>
       <v-series
-        gemo="point"
-        position="value*1"
-        shape="pointer"
-        color="#8C8C8C"
+        :gemo="'point'"
+        :position="'value*1'"
+        :shape="'pointer'"
+        :color="'#8C8C8C'"
         :active="false"
       ></v-series>
       <v-guide type="arc" :zIndex="0" :top="false" :start="arcGuideBgStart" :end="arcGuideBgEnd" :v-style="arcGuideBgStyle"></v-guide>

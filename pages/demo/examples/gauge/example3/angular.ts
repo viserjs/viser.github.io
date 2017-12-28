@@ -53,16 +53,16 @@ const color = ['#0086FA', '#FFBF00', '#F5222D'];
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale" animate="false">
-      <v-coord type="polar" [startAngle]="-202.5" [endAngle]="22.5" [radius]="0.75"></v-coord>
+      <v-coord type="polar" startAngle="-202.5" endAngle="22.5" radius="0.75"></v-coord>
       <v-axis
         dataKey="value"
-        [zIndex]="2"
-        [line]="null"
+        zIndex="2"
+        line="null"
+        subTickCount="4"
+        grid="null"
         [label]="axisLabel"
-        [subTickCount]="4"
         [subTickLine]="axisSubTickLine"
         [tickLine]="axisTickLine"
-        [grid]="null"
       ></v-axis>
       <v-axis dataKey="1" [show]="false"></v-axis>
       <v-series
@@ -70,12 +70,12 @@ const color = ['#0086FA', '#FFBF00', '#F5222D'];
         position="value*1"
         shape="pointer"
         color="#8C8C8C"
-        [active]="false"
+        active="false"
       ></v-series>
-      <v-guide type="arc" [zIndex]="0" [top]="false" [start]="arcGuideBgStart" [end]="arcGuideBgEnd" [style]="arcGuideBgStyle"></v-guide>
-      <v-guide type="arc" [zIndex]="1" [start]="arcGuideLowStart" [end]="arcGuideLowEnd" [style]="arcGuideLowStyle"></v-guide>
-      <v-guide type="arc" [zIndex]="1" [start]="arcGuideMidStart" [end]="arcGuideMidEnd" [style]="arcGuideMidStyle"></v-guide>
-      <v-guide type="arc" [zIndex]="1" [start]="arcGuideHighStart" [end]="arcGuideHighEnd" [style]="arcGuideHighStyle"></v-guide>
+      <v-guide type="arc" zIndex="0" top="false" [start]="arcGuideBgStart" [end]="arcGuideBgEnd" [style]="arcGuideBgStyle"></v-guide>
+      <v-guide type="arc" zIndex="1" [start]="arcGuideLowStart" [end]="arcGuideLowEnd" [style]="arcGuideLowStyle"></v-guide>
+      <v-guide type="arc" zIndex="1" [start]="arcGuideMidStart" [end]="arcGuideMidEnd" [style]="arcGuideMidStyle"></v-guide>
+      <v-guide type="arc" zIndex="1" [start]="arcGuideHighStart" [end]="arcGuideHighEnd" [style]="arcGuideHighStyle"></v-guide>
       <v-guide
         type="html"
         [position]="htmlGuidePosition"
