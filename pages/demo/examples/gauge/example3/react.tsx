@@ -61,7 +61,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.timer = setTimeout(this.setData, 100);
+    this.timer = setTimeout(this.setData, 1000);
   }
 
   setData = () => {
@@ -87,7 +87,7 @@ class App extends React.Component {
       }
     }
 
-    this.timer = setTimeout(this.setData, 100)
+    this.timer = setTimeout(this.setData, 1000)
   }
 
   render() {
@@ -96,7 +96,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <Chart forceFit height={400} data={data} scale={scale}>
+        <Chart forceFit height={400} data={data} scale={scale} animate={false}>
           <Coord
             type="polar"
             startAngle={-202.5}
