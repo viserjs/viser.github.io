@@ -5,11 +5,11 @@ import * as $ from 'jquery';
 
 const dataPre = {
   transform: {
-    sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
+    sizeByCount: '$state.sizeEncoding',
     type: 'bin.rectangle',
-    fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
-    bins: [ 20, 10 ]
-  }
+    fields: ['x', 'y'],
+    bins: [20, 10],
+  },
 };
 
 class App extends React.Component {

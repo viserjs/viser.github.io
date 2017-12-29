@@ -27,11 +27,11 @@ class App extends React.Component {
     const scale = [{
       dataKey: 'name',
       type: 'cat',
-      values: ['Alexander', 'Marie', 'Maximilian', 'Sophia', 'Lukas', 'Maria', 'Leon', 'Anna', 'Tim', 'Laura']
+      values: ['Alexander', 'Marie', 'Maximilian', 'Sophia', 'Lukas', 'Maria', 'Leon', 'Anna', 'Tim', 'Laura'],
     }, {
       dataKey: 'day',
       type: 'cat',
-      values: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+      values: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     }];
 
     const axis1Opts = {
@@ -42,10 +42,11 @@ class App extends React.Component {
         lineStyle: {
           lineWidth: 1,
           lineDash: null,
-          stroke: '#f0f0f0'
-        }
-      }
+          stroke: '#f0f0f0',
+        },
+      },
     };
+
     const axis2Opts = {
       dataKey: 'day',
       title: null,
@@ -54,13 +55,13 @@ class App extends React.Component {
         lineStyle: {
           lineWidth: 1,
           lineDash: null,
-          stroke: '#f0f0f0'
+          stroke: '#f0f0f0',
         },
-        showFirstLine: true
-      }
+        showFirstLine: true,
+      },
     };
+
     const seriesOpts = {
-      quickType: 'polygon',
       color: ['sales', '#BAE7FF-#1890FF-#0050B3'],
       position: 'name*day',
       label: ['sales', {
@@ -68,13 +69,13 @@ class App extends React.Component {
         textStyle: {
           fill: '#fff',
           shadowBlur: 2,
-          shadowColor: 'rgba(0, 0, 0, .45)'
+          shadowColor: 'rgba(0, 0, 0, .45)',
         }
       }],
       style: {
         lineWidth: 1,
-        stroke: '#fff'
-      }
+        stroke: '#fff',
+      },
     };
 
     return (
@@ -82,9 +83,9 @@ class App extends React.Component {
         <Chart forceFit height={400} data={data} scale={scale}>
           <Legend />
           <Tooltip />
-          <Axis {...axis1Opts}/>
-          <Axis {...axis2Opts}/>
-          <Polygon {...seriesOpts}/>
+          <Axis {...axis1Opts} />
+          <Axis {...axis2Opts} />
+          <Polygon {...seriesOpts} />
         </Chart>
       </div>
     );

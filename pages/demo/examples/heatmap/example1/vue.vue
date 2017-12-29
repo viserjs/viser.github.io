@@ -3,9 +3,9 @@
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-legend />
       <v-tooltip />
-      <v-axis :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid"/>
-      <v-axis :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid"/>
-      <v-polygon :position="seriesOpts.position" :color="seriesOpts.color" :label="seriesOpts.label" :style="seriesOpts.style"/>
+      <v-axis :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid" />
+      <v-axis :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid" />
+      <v-polygon :position="seriesOpts.position" :color="seriesOpts.color" :label="seriesOpts.label" :style="seriesOpts.style" />
     </v-chart>
   </div>
 </template>
@@ -16,11 +16,11 @@ import * as $ from 'jquery';
 const scale = [{
   dataKey: 'name',
   type: 'cat',
-  values: ['Alexander', 'Marie', 'Maximilian', 'Sophia', 'Lukas', 'Maria', 'Leon', 'Anna', 'Tim', 'Laura']
+  values: ['Alexander', 'Marie', 'Maximilian', 'Sophia', 'Lukas', 'Maria', 'Leon', 'Anna', 'Tim', 'Laura'],
 }, {
   dataKey: 'day',
   type: 'cat',
-  values: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+  values: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
 }];
 
 const axis1Opts = {
@@ -31,10 +31,11 @@ const axis1Opts = {
     lineStyle: {
       lineWidth: 1,
       lineDash: null,
-      stroke: '#f0f0f0'
-    }
-  }
+      stroke: '#f0f0f0',
+    },
+  },
 };
+
 const axis2Opts = {
   dataKey: 'day',
   title: null,
@@ -43,11 +44,12 @@ const axis2Opts = {
     lineStyle: {
       lineWidth: 1,
       lineDash: null,
-      stroke: '#f0f0f0'
+      stroke: '#f0f0f0',
     },
-    showFirstLine: true
-  }
+    showFirstLine: true,
+  },
 };
+
 const seriesOpts = {
   quickType: 'polygon',
   color: ['sales', '#BAE7FF-#1890FF-#0050B3'],
@@ -57,13 +59,13 @@ const seriesOpts = {
     textStyle: {
       fill: '#fff',
       shadowBlur: 2,
-      shadowColor: 'rgba(0, 0, 0, .45)'
-    }
+      shadowColor: 'rgba(0, 0, 0, .45)',
+    },
   }],
   style: {
     lineWidth: 1,
-    stroke: '#fff'
-  }
+    stroke: '#fff',
+  },
 };
 
 export default {

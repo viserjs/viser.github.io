@@ -8,11 +8,11 @@ import * as $ from 'jquery';
 
 const dataPre = {
   transform: {
-    sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
+    sizeByCount: '$state.sizeEncoding',
     type: 'bin.rectangle',
-    fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
-    bins: [ 20, 10 ]
-  }
+    fields: [ 'x', 'y' ],
+    bins: [ 20, 10 ],
+  },
 };
 
 const seriesOpts = {
@@ -28,12 +28,11 @@ const seriesOpts = {
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
       <v-legend offset="40"></v-legend>
       <v-axis></v-axis>
-      <v-polygon [position]="seriesOpts.position" [color]="seriesOpts.color" ></v-polygon>
+      <v-polygon [position]="seriesOpts.position" [color]="seriesOpts.color"></v-polygon>
     </v-chart>
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
