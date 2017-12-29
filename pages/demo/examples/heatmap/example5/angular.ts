@@ -23,7 +23,7 @@ const seriesOpts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" >
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
       <v-legend offset="40"></v-legend>
       <v-axis></v-axis>
       <v-tooltip [showTitle]="false"></v-tooltip>

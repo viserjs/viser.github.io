@@ -31,9 +31,9 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={400} data={data} dataPre={dataPre}>
-          <Legend offset={40}/>
+          <Legend offset={40} />
           <Axis />
-          <Polygon {...seriesOpts}/>
+          <Polygon {...seriesOpts} />
         </Chart>
       </div>
     );

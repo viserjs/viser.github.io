@@ -52,10 +52,10 @@ const polygonLabel = [
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale" [padding]="padding">
       <v-tooltip showTitle="false"></v-tooltip>
-      <v-view dataView="edges">
+      <v-view viewId="2" dataView="edges" [scale]="scale">
         <v-sankey position="x*y" color="#bbb" opacity="0.6" [tooltip]="tooltip" [style]="sankeyStyle"></v-sankey>
       </v-view>
-      <v-view dataView="nodes">
+      <v-view viewId="3" dataView="nodes" [scale]="scale">
         <v-polygon position="x*y" color="name" [style]="polygonStyle" [label]="polygonLabel" tooltip="false"></v-polygon>
       </v-view>
     </v-chart>
