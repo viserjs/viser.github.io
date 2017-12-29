@@ -7,13 +7,12 @@ import { ViserModule, registerShape } from 'viser-ng';
 
 registerShape('point', 'pointer', {
   draw(cfg, container) {
-    let point = cfg.points[0]; // 获取第一个标记点
+    let point = cfg.points[0];
     point = this.parsePoint(point);
-    const center = this.parsePoint({ // 获取极坐标系下画布中心点
+    const center = this.parsePoint({
       x: 0,
-      y: 0
+      y: 0,
     });
-    // 绘制指针
     container.addShape('line', {
       attrs: {
         x1: center.x,
@@ -25,6 +24,7 @@ registerShape('point', 'pointer', {
         lineCap: 'round'
       }
     });
+
     return container.addShape('circle', {
       attrs: {
         x: center.x,
@@ -32,7 +32,7 @@ registerShape('point', 'pointer', {
         r: 9.75,
         stroke: cfg.color,
         lineWidth: 4.5,
-        fill: '#fff'
+        fill: '#fff',
       }
     });
   }
@@ -43,11 +43,11 @@ const scale = [{
   min: 0,
   max: 9,
   tickInterval: 1,
-  nice: false
+  nice: false,
 }];
 
 const data = [
-  { value: 5.6 }
+  { value: 5.6 },
 ];
 
 @Component({
@@ -55,36 +55,36 @@ const data = [
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
-      <v-coord type="polar" [startAngle]="-202.5" [endAngle]="22.5" [radius]="0.75"></v-coord>
+      <v-coord type="polar" startAngle="-202.5" endAngle="22.5" radius="0.75"></v-coord>
       <v-axis
         dataKey="value"
-        [zIndex]="2"
-        [line]="null"
+        zIndex="2"
+        line="null"
         [label]="axisLabel"
-        [subTickCount]="4"
+        subTickCount="4"
         [subTickLine]="axisSubTickLine"
         [tickLine]="axisTickLine"
-        [grid]="null"
+        grid="null"
       ></v-axis>
-      <v-axis dataKey="1" [show]="false"></v-axis>
+      <v-axis dataKey="1" show="false"></v-axis>
       <v-series
         gemo="point"
         position="value*1"
         shape="pointer"
         color="#1890FF"
-        [active]="false"
+        active="false"
       ></v-series>
       <v-guide
         type="arc"
-        [zIndex]="0"
-        [top]="false"
+        zIndex="0"
+        top="false"
         [start]="arcGuide1Start"
         [end]="arcGuide1End"
         [style]="arcGuide1Style"
       ></v-guide>
       <v-guide
         type="arc"
-        [zIndex]="1"
+        zIndex="1"
         [start]="arcGuide2Start"
         [end]="arcGuide2End"
         [style]="arcGuide2Style"
@@ -98,7 +98,6 @@ const data = [
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean = true;
   height = 400;

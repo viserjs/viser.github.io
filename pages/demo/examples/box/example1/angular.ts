@@ -46,11 +46,13 @@ const tooltipOpts = {
       + '<span style="padding-left: 16px">最小值：{low}</span><br/>'
       + '</li>'
 };
+
 const boxStyle = {
   stroke: '#545454',
   fill: '#1890FF',
   fillOpacity: 0.3,
 };
+
 const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) => {
   return {
     name: x,
@@ -76,7 +78,7 @@ const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) =>
 })
 
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 400;
   data = data;
   dataPre = dataPre;

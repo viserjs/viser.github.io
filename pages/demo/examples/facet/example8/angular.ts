@@ -70,7 +70,7 @@ const dataPre = {
   `
 })
 export class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 600;
   data = tmpData;
   dataPre = dataPre;

@@ -35,7 +35,7 @@ const scale = [{
   `
 })
 export class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 600;
   data = data;
   scale = scale;

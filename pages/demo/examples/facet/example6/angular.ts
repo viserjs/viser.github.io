@@ -43,7 +43,7 @@ const facetDataPre = {
   `
 })
 export class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   lineSmooth: boolean = true;
   axisNull: null;
   height: number = 600;

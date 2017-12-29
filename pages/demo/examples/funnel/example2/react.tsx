@@ -35,6 +35,7 @@ class App extends React.Component {
           + '<span style="padding-left: 16px">占比：{percent}</span><br/>'
           + '</li>'
     };
+
     const funnelOpts = {
       color: ['action', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ]],
       position: 'action*pv',
@@ -44,7 +45,7 @@ class App extends React.Component {
         offset: 35,
         labelLine: {
           lineWidth: 1,
-          stroke: 'rgba(0, 0, 0, 0.15)'
+          stroke: 'rgba(0, 0, 0, 0.15)',
         }
       }],
       tooltip: ['action*pv*percent', (action, pv, percent) => ({
@@ -53,6 +54,7 @@ class App extends React.Component {
         pv: pv,
       })]
     };
+
     return (
       <div>
         <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>

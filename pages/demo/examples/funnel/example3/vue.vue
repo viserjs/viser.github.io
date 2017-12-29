@@ -40,7 +40,7 @@ const tooltipOpts = {
 
 const pyramidOpts = {
   position: 'name*value',
-  color: ['name', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ]],
+  color: ['name', ['#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF']],
   label: ['name', {
     offset: 35,
     labelLine: {
@@ -51,7 +51,7 @@ const pyramidOpts = {
   tooltip: ['name*value', (name, value) => {
     return {
       name: '预期' + name,
-      value
+      value,
     };
   }],
   opacity: 0.65,
@@ -64,12 +64,12 @@ const pyramidOpts1 = {
   tooltip: ['name*value', (name, value) => {
     return {
       name: '实际' + name,
-      value
+      value,
     };
   }],
   style: {
     lineWidth: 1,
-    stroke: '#fff'
+    stroke: '#fff',
   },
   opacity: 1,
 };

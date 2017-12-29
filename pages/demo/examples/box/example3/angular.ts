@@ -67,9 +67,8 @@ const seriesStyle = ['Species', {
   </div>
   `
 })
-
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 400;
   data = [];
   dataPre = dataPre;

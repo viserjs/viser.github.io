@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
-      <v-tooltip :show-title="false" :item-tpl="tooltipOpts.itemTpl"/>
+      <v-tooltip :show-title="false" :item-tpl="tooltipOpts.itemTpl" />
       <v-legend />
       <v-coord type='rect' direction='LT' />
-      <v-pyramid :position="funnelOpts.position" :color="funnelOpts.color" :label="funnelOpts.label" :tooltip="funnelOpts.tooltip" :shape="funnelOpts.shape"/>
+      <v-pyramid :position="funnelOpts.position" :color="funnelOpts.color" :label="funnelOpts.label" :tooltip="funnelOpts.tooltip" :shape="funnelOpts.shape" />
     </v-chart>
   </div>
 </template>
@@ -41,6 +41,7 @@ const tooltipOpts = {
       + '<span style="padding-left: 16px">占比：{percent}</span><br/>'
       + '</li>'
 };
+
 const funnelOpts = {
   shape: 'pyramid',
   color: ['action', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ]],

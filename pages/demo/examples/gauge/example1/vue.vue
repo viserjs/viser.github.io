@@ -49,13 +49,12 @@ import { registerShape } from 'viser-vue';
 
 registerShape('point', 'pointer', {
   draw(cfg, container) {
-    let point = cfg.points[0]; // 获取第一个标记点
+    let point = cfg.points[0];
     point = this.parsePoint(point);
-    const center = this.parsePoint({ // 获取极坐标系下画布中心点
+    const center = this.parsePoint({
       x: 0,
-      y: 0
+      y: 0,
     });
-    // 绘制指针
     container.addShape('line', {
       attrs: {
         x1: center.x,
@@ -64,7 +63,7 @@ registerShape('point', 'pointer', {
         y2: point.y + 15,
         stroke: cfg.color,
         lineWidth: 5,
-        lineCap: 'round'
+        lineCap: 'round',
       }
     });
     return container.addShape('circle', {
@@ -74,7 +73,7 @@ registerShape('point', 'pointer', {
         r: 9.75,
         stroke: cfg.color,
         lineWidth: 4.5,
-        fill: '#fff'
+        fill: '#fff',
       }
     });
   }
@@ -85,11 +84,11 @@ const scale = [{
   min: 0,
   max: 9,
   tickInterval: 1,
-  nice: false
+  nice: false,
 }];
 
 const data = [
-  { value: 5.6 }
+  { value: 5.6 },
 ];
 
 export default {
@@ -98,7 +97,6 @@ export default {
       height: 400,
       data: data,
       scale: scale,
-
       axisLabel: {
         offset: -16,
         textStyle: {
@@ -117,21 +115,18 @@ export default {
         stroke: '#fff',
         strokeOpacity: 1,
       },
-
       arcGuide1Start: [0, 0.945],
       arcGuide1End: [9, 0.945],
       arcGuide1Style: {
         stroke: '#CBCBCB',
         lineWidth: 18,
       },
-
       arcGuide2Start: [0, 0.945],
       arcGuide2End: [data[0].value, 0.945],
       arcGuide2Style: {
         stroke: '#1890FF',
         lineWidth: 18,
       },
-
       htmlGuidePosition: ['50%', '95%'],
       htmlGuideHtml: `
         <div style="width: 300px;text-align: center;">

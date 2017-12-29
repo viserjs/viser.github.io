@@ -52,7 +52,7 @@ const facetScale = {
   `
 })
 export class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 600;
   data = data;
   line = { stroke: '#00a3d7' };

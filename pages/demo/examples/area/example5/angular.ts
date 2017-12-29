@@ -4,6 +4,7 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+
 const data = [
   { "time": 1246406400000, "temperature": [ 14.3, 27.7 ] },
   { "time": 1246492800000, "temperature": [ 14.5, 27.8 ] },
@@ -20,7 +21,7 @@ const data = [
   { "time": 1247443200000, "temperature": [ 11.6, 23.7 ] },
   { "time": 1247529600000, "temperature": [ 11.8, 20.7 ] },
   { "time": 1247616000000, "temperature": [ 12.6, 22.4 ] },
-  { "time": 1247702400000, "temperature": [ 13.6, 19.6 ]  },
+  { "time": 1247702400000, "temperature": [ 13.6, 19.6 ] },
   { "time": 1247788800000, "temperature": [ 11.4, 22.6 ] },
   { "time": 1247875200000, "temperature": [ 13.2, 25.0 ] },
   { "time": 1247961600000, "temperature": [ 14.2, 21.6 ] },
@@ -35,7 +36,7 @@ const data = [
   { "time": 1248739200000, "temperature": [ 11.0, 19.3 ] },
   { "time": 1248825600000, "temperature": [ 10.8, 17.8 ] },
   { "time": 1248912000000, "temperature": [ 11.8, 18.5 ] },
-  { "time": 1248998400000, "temperature": [ 10.8, 16.1 ] }
+  { "time": 1248998400000, "temperature": [ 10.8, 16.1 ] },
 ];
 
 const averages = [
@@ -54,7 +55,7 @@ const averages = [
   { "time": 1247443200000, "temperature": 17.7 },
   { "time": 1247529600000, "temperature": 16.8 },
   { "time": 1247616000000, "temperature": 17.7 },
-  { "time": 1247702400000, "temperature": 16.3  },
+  { "time": 1247702400000, "temperature": 16.3 },
   { "time": 1247788800000, "temperature": 17.8 },
   { "time": 1247875200000, "temperature": 18.1 },
   { "time": 1247961600000, "temperature": 17.2 },
@@ -69,7 +70,7 @@ const averages = [
   { "time": 1248739200000, "temperature": 14.8 },
   { "time": 1248825600000, "temperature": 14.4 },
   { "time": 1248912000000, "temperature": 15 },
-  { "time": 1248998400000, "temperature": 13.6 }
+  { "time": 1248998400000, "temperature": 13.6 },
 ];
 
 const scale = [{
@@ -111,7 +112,6 @@ class AppComponent {
   averages= averages;
   scale = scale;
   pointStyle = pointStyle;
-
 }
 
 @NgModule({

@@ -22,23 +22,23 @@ class App extends React.Component {
   render() {
     const tooltipOpts = {
       showTitle: false,
-      itemTpl: '<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
+      itemTpl: '<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>',
     };
 
     const pyramidOpts = {
       position: 'name*value',
-      color: ['name', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ]],
+      color: ['name', ['#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF']],
       label: ['name', {
         offset: 35,
         labelLine: {
           lineWidth: 1,
-          stroke: 'rgba(0, 0, 0, 0.15)'
+          stroke: 'rgba(0, 0, 0, 0.15)',
         }
       }],
       tooltip: ['name*value', (name, value) => {
         return {
           name: '预期' + name,
-          value
+          value,
         };
       }],
       opacity: 0.65,

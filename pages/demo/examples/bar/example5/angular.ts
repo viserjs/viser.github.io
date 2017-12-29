@@ -30,7 +30,7 @@ const data = [
 })
 
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 400;
   data = data;
 }

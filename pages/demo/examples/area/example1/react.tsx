@@ -32,7 +32,7 @@ class App extends React.Component {
 
     return (
       <Chart forceFit height={400} data={data} scale={scale}>
-        <Tooltip crosshairs={crosshairs}/>
+        <Tooltip crosshairs={crosshairs} />
         <Axis dataKey="value" />
         <Line position="year*value" size={2} />
         <Area position="year*value" />

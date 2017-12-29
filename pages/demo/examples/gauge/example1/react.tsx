@@ -4,13 +4,12 @@ import * as React from 'react';
 
 registerShape('point', 'pointer', {
   draw(cfg, container) {
-    let point = cfg.points[0]; // 获取第一个标记点
+    let point = cfg.points[0];
     point = this.parsePoint(point);
-    const center = this.parsePoint({ // 获取极坐标系下画布中心点
+    const center = this.parsePoint({
       x: 0,
-      y: 0
+      y: 0,
     });
-    // 绘制指针
     container.addShape('line', {
       attrs: {
         x1: center.x,
@@ -19,7 +18,7 @@ registerShape('point', 'pointer', {
         y2: point.y + 15,
         stroke: cfg.color,
         lineWidth: 5,
-        lineCap: 'round'
+        lineCap: 'round',
       }
     });
     return container.addShape('circle', {
@@ -29,7 +28,7 @@ registerShape('point', 'pointer', {
         r: 9.75,
         stroke: cfg.color,
         lineWidth: 4.5,
-        fill: '#fff'
+        fill: '#fff',
       }
     });
   }
@@ -40,11 +39,11 @@ const scale = [{
   min: 0,
   max: 9,
   tickInterval: 1,
-  nice: false
+  nice: false,
 }];
 
 const data = [
-  { value: 5.6 }
+  { value: 5.6 },
 ];
 
 class App extends React.Component {
@@ -84,7 +83,6 @@ class App extends React.Component {
             grid={null}
           />
           <Axis dataKey="1" show={false} />
-
           <Series
             gemo="point"
             position="value*1"
@@ -92,7 +90,6 @@ class App extends React.Component {
             color="#1890FF"
             active={false}
           />
-
           <Guide
             type="arc"
             zIndex={0}
