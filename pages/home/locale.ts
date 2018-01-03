@@ -62,7 +62,7 @@ const locale = {
     },
     {
       selector: '.home-footer',
-      text: '与来自 AntV 的 <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> 深度合作<br/>本项目基于 MIT 协议发布<br />Copyright (c) 2017 Viser Group. 版权所有<br />',
+      text: '与来自 AntV 的 <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> 深度合作<br/>本项目基于 MIT 协议发布<br />Copyright (c) 2018 Viser Group. 版权所有<br />',
     },
   ],
   en: [
@@ -128,7 +128,7 @@ const locale = {
     },
     {
       selector: '.home-footer',
-      text: 'Deep cooperation with <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> from AntV.<br/>Released under the MIT License.<br />Copyright (c) 2017 Viser Group. All Rights Reserved.<br />',
+      text: 'Deep cooperation with <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> from AntV.<br/>Released under the MIT License.<br />Copyright (c) 2018 Viser Group. All Rights Reserved.<br />',
     },
   ],
 };

@@ -293,6 +293,11 @@ const examples = {
         enName: 'Color Gauge',
         cnName: '仪表盘（多色）',
       },
+      {
+        path: 'example4',
+        enName: 'Tick Gauge',
+        cnName: '刻度仪表盘',
+      },
     ],
     icon: 'yibiaopan',
   },
