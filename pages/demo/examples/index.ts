@@ -327,6 +327,11 @@ const examples = {
         enName: 'Statistic map',
         cnName: '世界分级统计地图',
       },
+      {
+        path: 'example3',
+        enName: 'China Map-province',
+        cnName: '中国地图-省市下钻',
+      },
     ],
     icon: 'ditu'
   },

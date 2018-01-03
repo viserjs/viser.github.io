@@ -47,7 +47,6 @@ class AppComponent {
   };
 
   userDataPre = (dv) => {
-    console.log();
     const geo = dv['111'];
     return {
       transform: [{
