@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 817);
+/******/ 	return __webpack_require__(__webpack_require__.s = 841);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -111840,300 +111840,6 @@ var process = function (series, coord) {
 
 /***/ }),
 
-/***/ 817:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var locale_1 = __webpack_require__(818);
-var viser_1 = __webpack_require__(15);
-var utils_1 = __webpack_require__(41);
-__webpack_require__(819);
-var GDP_JSON = [
-    { year: '2006', gdp: 21.94385 },
-    { year: '2007', gdp: 27.02323 },
-    { year: '2008', gdp: 31.95155 },
-    { year: '2009', gdp: 34.90814 },
-    { year: '2010', gdp: 41.30303 },
-    { year: '2011', gdp: 48.93006 },
-    { year: '2012', gdp: 54.03674 },
-    { year: '2013', gdp: 59.52444 },
-    { year: '2014', gdp: 64.39740 },
-    { year: '2015', gdp: 68.90521 }
-];
-var Home = /** @class */ (function () {
-    function Home() {
-        var _this = this;
-        this.handleSwitchPageLanguage = function () {
-            utils_1.changePageLanguage();
-            _this.refresh();
-        };
-        utils_1.initPageLanguage();
-        this.render();
-        this.bindEvent();
-    }
-    Home.prototype.renderChart = function () {
-        viser_1.default({
-            data: GDP_JSON,
-            tooltip: true,
-            axis: true,
-            series: [{ quickType: 'bar', color: '#0088fe', position: 'year*gdp' }],
-            chart: { width: 700, height: 400, container: 'viser-mount-1-1' },
-        });
-        viser_1.default({
-            data: GDP_JSON,
-            tooltip: true,
-            axis: true,
-            series: [{ quickType: 'line', color: '#0088fe', position: 'year*gdp' }],
-            chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
-        });
-        viser_1.default({
-            data: GDP_JSON,
-            tooltip: true,
-            axis: true,
-            series: [{ quickType: 'area', color: '#0088fe', position: 'year*gdp' }],
-            chart: { width: 380, height: 230, container: 'viser-mount-2-3' },
-        });
-        viser_1.default({
-            data: GDP_JSON,
-            tooltip: { showTitle: false },
-            axis: true,
-            coord: { type: 'theta' },
-            series: [{
-                    quickType: 'pie',
-                    position: 'gdp',
-                    style: {
-                        lineWidth: 1,
-                        stroke: '#fff',
-                        fill: '#0088fe',
-                    },
-                    tooltip: 'year*gdp'
-                }],
-            chart: { width: 380, height: 280, container: 'viser-mount-2-2' },
-        });
-        viser_1.default({
-            data: GDP_JSON,
-            tooltip: true,
-            axis: false,
-            coord: { type: 'polar' },
-            series: [{
-                    quickType: 'sector',
-                    color: '#0088fe',
-                    style: {
-                        lineWidth: 1,
-                        stroke: '#fff',
-                        fill: '#0088fe',
-                    },
-                    position: 'year*gdp',
-                }],
-            chart: { width: 380, height: 310, container: 'viser-mount-2-4' },
-        });
-    };
-    Home.prototype.renderText = function (selector, text) {
-        var selectorDom = document.querySelector(selector);
-        if (selectorDom) {
-            selectorDom.innerHTML = text;
-        }
-    };
-    Home.prototype.renderLanguage = function () {
-        var _this = this;
-        var pageLanguageInStore = utils_1.getPageLanguage();
-        if (!pageLanguageInStore || utils_1.ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) === -1) {
-            pageLanguageInStore = utils_1.DEFAULT_PAGE_LANGUAGE;
-            utils_1.setPageLanguage(pageLanguageInStore);
-        }
-        var pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
-        utils_1.ALL_PAGE_LANGUAGES.forEach(function (lang) {
-            utils_1.removeClass(pageLanguageSwitchDom, lang);
-        });
-        utils_1.addClass(pageLanguageSwitchDom, pageLanguageInStore);
-        if (locale_1.default && locale_1.default[pageLanguageInStore] && locale_1.default[pageLanguageInStore].length) {
-            locale_1.default[pageLanguageInStore].forEach(function (o) {
-                _this.renderText(o.selector, o.text);
-            });
-        }
-    };
-    Home.prototype.unbindEvent = function () {
-        var pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
-        if (pageLanguageSwitchDom) {
-            utils_1.off(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
-        }
-    };
-    Home.prototype.bindEvent = function () {
-        var pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
-        if (pageLanguageSwitchDom) {
-            utils_1.on(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
-        }
-    };
-    Home.prototype.render = function () {
-        this.renderChart();
-        this.renderLanguage();
-    };
-    Home.prototype.refresh = function () {
-        this.unbindEvent();
-        this.render();
-        this.bindEvent();
-    };
-    return Home;
-}());
-new Home();
-
-
-/***/ }),
-
-/***/ 818:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var locale = {
-    cn: [
-        {
-            selector: '.home-header .common-header-nav-item.demo-link',
-            text: '案例',
-        },
-        {
-            selector: '.home-header .common-header-nav-item.docs-link',
-            text: '文档',
-        },
-        {
-            selector: '.main-intro .main-intro-title',
-            text: '再一次发现<br/>你的数据。',
-        },
-        {
-            selector: '.main-intro .main-intro-subtitle',
-            text: '使用Viser进行可视化，让你的数据变得更加直观。',
-        },
-        {
-            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-title',
-            text: '即刻创建图表',
-        },
-        {
-            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-content',
-            text: '只要你拥有一份结构化的数据，就可以在Viser里开始您的可视化探索之旅了。让Viser知道你想要的图表类型并告诉他数据的意义，Viser一定会为你绘制出你想要的图形。',
-        },
-        {
-            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-title',
-            text: '纠结？不存在的',
-        },
-        {
-            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-content',
-            text: '做可视化哪有一步到位的，还不是在不断地调整中，摸索出最合适的表达方式。使用Viser不用害怕随时变动需求带来的麻烦，最小化变动量设计的Viser的参数，让调整图表不再是一件难事。',
-        },
-        {
-            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-title',
-            text: '告别框架烦恼',
-        },
-        {
-            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-content',
-            text: '做可视化就是一件纯粹的事情，选择什么前端框架并不是需要真正关心的事情。不管是React，还是Angular，抑或是Vue，你都能在Viser里找到解决方案。你的框架比较小众？也可以快速定制啊，就是这么贴心。',
-        },
-        {
-            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-1 .highlight-feature-content',
-            text: '数据可视化，一个就够了',
-        },
-        {
-            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-2 .highlight-feature-content',
-            text: '语义化组件，无限的可能',
-        },
-        {
-            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-3 .highlight-feature-content',
-            text: '相似的语法，如你所期待',
-        },
-        {
-            selector: '.try-now .try-content',
-            text: '从现在开始，使用 Viser 为你的数据进行可视化处理',
-        },
-        {
-            selector: '.try-now .try-link',
-            text: '立即使用',
-        },
-        {
-            selector: '.home-footer',
-            text: '与来自 AntV 的 <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> 深度合作<br/>本项目基于 MIT 协议发布<br />Copyright (c) 2017 Viser Group. 版权所有<br />',
-        },
-    ],
-    en: [
-        {
-            selector: '.home-header .common-header-nav-item.demo-link',
-            text: 'Demo',
-        },
-        {
-            selector: '.home-header .common-header-nav-item.docs-link',
-            text: 'Docs',
-        },
-        {
-            selector: '.main-intro .main-intro-title',
-            text: 'The Rediscovery<br/>of Your Data.',
-        },
-        {
-            selector: '.main-intro .main-intro-subtitle',
-            text: 'Use Viser to simplify and beautify your data.',
-        },
-        {
-            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-title',
-            text: 'Create Instantly',
-        },
-        {
-            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-content',
-            text: 'It\'s quite easy to create a chart with Viser.All your need is preparing a set of data and describing the meaning of column and row.',
-        },
-        {
-            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-title',
-            text: 'Modify Easily',
-        },
-        {
-            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-content',
-            text: 'We all know that the most complex thing in data visualization is the detail adjustment. The well designed properties of Viser component make you leave params-phobia away.',
-        },
-        {
-            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-title',
-            text: 'Full Compatibility',
-        },
-        {
-            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-content',
-            text: 'No mater what front-end framework you chose, you can always find a data visualization solution with Viser. Explicitly, React, Angular and Vue are all supported.',
-        },
-        {
-            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-1 .highlight-feature-content',
-            text: 'One Framework for All Visualization',
-        },
-        {
-            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-2 .highlight-feature-content',
-            text: 'Infinite Charts by Semantic Component',
-        },
-        {
-            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-3 .highlight-feature-content',
-            text: 'Lightweight Depending Only on G2',
-        },
-        {
-            selector: '.try-now .try-content',
-            text: 'From now on，using Viser for data visualization.',
-        },
-        {
-            selector: '.try-now .try-link',
-            text: 'Install Now',
-        },
-        {
-            selector: '.home-footer',
-            text: 'Deep cooperation with <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> from AntV.<br/>Released under the MIT License.<br />Copyright (c) 2017 Viser Group. All Rights Reserved.<br />',
-        },
-    ],
-};
-exports.default = locale;
-
-
-/***/ }),
-
-/***/ 819:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 82:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -112295,6 +112001,300 @@ var process = function (chart, config) {
     return chart.tooltip(cTooltip);
 };
 //# sourceMappingURL=setTooltipConfig.js.map
+
+/***/ }),
+
+/***/ 841:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var locale_1 = __webpack_require__(842);
+var viser_1 = __webpack_require__(15);
+var utils_1 = __webpack_require__(41);
+__webpack_require__(843);
+var GDP_JSON = [
+    { year: '2006', gdp: 21.94385 },
+    { year: '2007', gdp: 27.02323 },
+    { year: '2008', gdp: 31.95155 },
+    { year: '2009', gdp: 34.90814 },
+    { year: '2010', gdp: 41.30303 },
+    { year: '2011', gdp: 48.93006 },
+    { year: '2012', gdp: 54.03674 },
+    { year: '2013', gdp: 59.52444 },
+    { year: '2014', gdp: 64.39740 },
+    { year: '2015', gdp: 68.90521 }
+];
+var Home = /** @class */ (function () {
+    function Home() {
+        var _this = this;
+        this.handleSwitchPageLanguage = function () {
+            utils_1.changePageLanguage();
+            _this.refresh();
+        };
+        utils_1.initPageLanguage();
+        this.render();
+        this.bindEvent();
+    }
+    Home.prototype.renderChart = function () {
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: true,
+            axis: true,
+            series: [{ quickType: 'bar', color: '#0088fe', position: 'year*gdp' }],
+            chart: { width: 700, height: 400, container: 'viser-mount-1-1' },
+        });
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: true,
+            axis: true,
+            series: [{ quickType: 'line', color: '#0088fe', position: 'year*gdp' }],
+            chart: { width: 380, height: 230, container: 'viser-mount-2-1' },
+        });
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: true,
+            axis: true,
+            series: [{ quickType: 'area', color: '#0088fe', position: 'year*gdp' }],
+            chart: { width: 380, height: 230, container: 'viser-mount-2-3' },
+        });
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: { showTitle: false },
+            axis: true,
+            coord: { type: 'theta' },
+            series: [{
+                    quickType: 'pie',
+                    position: 'gdp',
+                    style: {
+                        lineWidth: 1,
+                        stroke: '#fff',
+                        fill: '#0088fe',
+                    },
+                    tooltip: 'year*gdp'
+                }],
+            chart: { width: 380, height: 280, container: 'viser-mount-2-2' },
+        });
+        viser_1.default({
+            data: GDP_JSON,
+            tooltip: true,
+            axis: false,
+            coord: { type: 'polar' },
+            series: [{
+                    quickType: 'sector',
+                    color: '#0088fe',
+                    style: {
+                        lineWidth: 1,
+                        stroke: '#fff',
+                        fill: '#0088fe',
+                    },
+                    position: 'year*gdp',
+                }],
+            chart: { width: 380, height: 310, container: 'viser-mount-2-4' },
+        });
+    };
+    Home.prototype.renderText = function (selector, text) {
+        var selectorDom = document.querySelector(selector);
+        if (selectorDom) {
+            selectorDom.innerHTML = text;
+        }
+    };
+    Home.prototype.renderLanguage = function () {
+        var _this = this;
+        var pageLanguageInStore = utils_1.getPageLanguage();
+        if (!pageLanguageInStore || utils_1.ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) === -1) {
+            pageLanguageInStore = utils_1.DEFAULT_PAGE_LANGUAGE;
+            utils_1.setPageLanguage(pageLanguageInStore);
+        }
+        var pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
+        utils_1.ALL_PAGE_LANGUAGES.forEach(function (lang) {
+            utils_1.removeClass(pageLanguageSwitchDom, lang);
+        });
+        utils_1.addClass(pageLanguageSwitchDom, pageLanguageInStore);
+        if (locale_1.default && locale_1.default[pageLanguageInStore] && locale_1.default[pageLanguageInStore].length) {
+            locale_1.default[pageLanguageInStore].forEach(function (o) {
+                _this.renderText(o.selector, o.text);
+            });
+        }
+    };
+    Home.prototype.unbindEvent = function () {
+        var pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
+        if (pageLanguageSwitchDom) {
+            utils_1.off(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
+        }
+    };
+    Home.prototype.bindEvent = function () {
+        var pageLanguageSwitchDom = document.querySelector('.home-header .page-language-switch');
+        if (pageLanguageSwitchDom) {
+            utils_1.on(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
+        }
+    };
+    Home.prototype.render = function () {
+        this.renderChart();
+        this.renderLanguage();
+    };
+    Home.prototype.refresh = function () {
+        this.unbindEvent();
+        this.render();
+        this.bindEvent();
+    };
+    return Home;
+}());
+new Home();
+
+
+/***/ }),
+
+/***/ 842:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var locale = {
+    cn: [
+        {
+            selector: '.home-header .common-header-nav-item.demo-link',
+            text: '案例',
+        },
+        {
+            selector: '.home-header .common-header-nav-item.docs-link',
+            text: '文档',
+        },
+        {
+            selector: '.main-intro .main-intro-title',
+            text: '再一次发现<br/>你的数据。',
+        },
+        {
+            selector: '.main-intro .main-intro-subtitle',
+            text: '使用Viser进行可视化，让你的数据变得更加直观。',
+        },
+        {
+            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-title',
+            text: '即刻创建图表',
+        },
+        {
+            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-content',
+            text: '只要你拥有一份结构化的数据，就可以在Viser里开始您的可视化探索之旅了。让Viser知道你想要的图表类型并告诉他数据的意义，Viser一定会为你绘制出你想要的图形。',
+        },
+        {
+            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-title',
+            text: '纠结？不存在的',
+        },
+        {
+            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-content',
+            text: '做可视化哪有一步到位的，还不是在不断地调整中，摸索出最合适的表达方式。使用Viser不用害怕随时变动需求带来的麻烦，最小化变动量设计的Viser的参数，让调整图表不再是一件难事。',
+        },
+        {
+            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-title',
+            text: '告别框架烦恼',
+        },
+        {
+            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-content',
+            text: '做可视化就是一件纯粹的事情，选择什么前端框架并不是需要真正关心的事情。不管是React，还是Angular，抑或是Vue，你都能在Viser里找到解决方案。你的框架比较小众？也可以快速定制啊，就是这么贴心。',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-1 .highlight-feature-content',
+            text: '数据可视化，一个就够了',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-2 .highlight-feature-content',
+            text: '语义化组件，无限的可能',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-3 .highlight-feature-content',
+            text: '相似的语法，如你所期待',
+        },
+        {
+            selector: '.try-now .try-content',
+            text: '从现在开始，使用 Viser 为你的数据进行可视化处理',
+        },
+        {
+            selector: '.try-now .try-link',
+            text: '立即使用',
+        },
+        {
+            selector: '.home-footer',
+            text: '与来自 AntV 的 <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> 深度合作<br/>本项目基于 MIT 协议发布<br />Copyright (c) 2018 Viser Group. 版权所有<br />',
+        },
+    ],
+    en: [
+        {
+            selector: '.home-header .common-header-nav-item.demo-link',
+            text: 'Demo',
+        },
+        {
+            selector: '.home-header .common-header-nav-item.docs-link',
+            text: 'Docs',
+        },
+        {
+            selector: '.main-intro .main-intro-title',
+            text: 'The Rediscovery<br/>of Your Data.',
+        },
+        {
+            selector: '.main-intro .main-intro-subtitle',
+            text: 'Use Viser to simplify and beautify your data.',
+        },
+        {
+            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-title',
+            text: 'Create Instantly',
+        },
+        {
+            selector: '.home-section.presentation-1 .intro-container .intro-text .intro-content',
+            text: 'It\'s quite easy to create a chart with Viser.All your need is preparing a set of data and describing the meaning of column and row.',
+        },
+        {
+            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-title',
+            text: 'Modify Easily',
+        },
+        {
+            selector: '.home-section.presentation-2 .intro-container .intro-text .intro-content',
+            text: 'We all know that the most complex thing in data visualization is the detail adjustment. The well designed properties of Viser component make you leave params-phobia away.',
+        },
+        {
+            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-title',
+            text: 'Full Compatibility',
+        },
+        {
+            selector: '.home-section.presentation-3 .intro-container .intro-text .intro-content',
+            text: 'No mater what front-end framework you chose, you can always find a data visualization solution with Viser. Explicitly, React, Angular and Vue are all supported.',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-1 .highlight-feature-content',
+            text: 'One Framework for All Visualization',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-2 .highlight-feature-content',
+            text: 'Infinite Charts by Semantic Component',
+        },
+        {
+            selector: '.try-now .highlight-feature-list .highlight-feature-item.highlight-feature-item-3 .highlight-feature-content',
+            text: 'Lightweight Depending Only on G2',
+        },
+        {
+            selector: '.try-now .try-content',
+            text: 'From now on，using Viser for data visualization.',
+        },
+        {
+            selector: '.try-now .try-link',
+            text: 'Install Now',
+        },
+        {
+            selector: '.home-footer',
+            text: 'Deep cooperation with <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> from AntV.<br/>Released under the MIT License.<br />Copyright (c) 2018 Viser Group. All Rights Reserved.<br />',
+        },
+    ],
+};
+exports.default = locale;
+
+
+/***/ }),
+
+/***/ 843:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
