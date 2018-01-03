@@ -128,7 +128,7 @@ const guide2Opts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[20, 20, 50, 80]" [data]="data" [scale]="scale" [plotBackground]="plotBackground">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale" [plotBackground]="plotBackground">
       <v-tooltip title="'country'"></v-tooltip>
       <v-axis [dataKey]="axis1Opts.dataKey" [label]="axis1Opts.label" [grid]="axis1Opts.grid"></v-axis>
       <v-axis [dataKey]="axis2Opts.dataKey" [title]="axis2Opts.title" [label]="axis2Opts.label"></v-axis>

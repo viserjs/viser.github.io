@@ -43,6 +43,36 @@ const scale = [{
 
 const height = 600;
 
+const axis1Opts = {
+  dataKey: 'x',
+  label: {
+    formatter: function (val) {
+      return val + ' gr';
+    },
+  },
+  grid: {
+    lineStyle: {
+      stroke: '#d9d9d9',
+      lineWidth: 1,
+      lineDash: [2, 2],
+    },
+  },
+};
+
+const axis2Opts = {
+  dataKey: 'y',
+  title: {
+    offset: 64,
+  },
+  label: {
+    formatter: function (val) {
+      if (val > 0) {
+        return val + ' gr';
+      }
+    },
+  }
+};
+
 class App extends React.Component {
   componentDidMount() {
     const self = this;
@@ -51,7 +81,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={height} padding={[20, 20, 50, 80]} plotBackground={{
+        <Chart forceFit height={height} plotBackground={{
             stroke: '#ccc', // 边颜色
             lineWidth: 1, // 边框粗细
           }} data={data} scale={scale}>
@@ -59,7 +89,8 @@ class App extends React.Component {
           <Axis dataKey='x' label={{
             formatter: function(val) {
               return val + ' gr'; // 格式化坐标轴显示文本
-            }} grid={{
+            }}
+            grid={{
               lineStyle: {
                 stroke: '#d9d9d9',
                 lineWidth: 1,

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :padding="[20, 20, 50, 80]" :data="data" :scale="scale" :plotBackground="plotBackground" >
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale" :plotBackground="plotBackground" >
       <v-tooltip :title="'country'"/>
       <v-axis :data-key="axis1Opts.dataKey" :label="axis1Opts.label" :grid="axis1Opts.grid"/>
       <v-axis :data-key="axis2Opts.dataKey" :title="axis2Opts.title" :label="axis2Opts.label"/>
