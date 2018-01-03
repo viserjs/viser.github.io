@@ -24,7 +24,7 @@ const seriesOpts = {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
-      <v-legend offset="40"></v-legend>
+      <v-legend [offset]="40"></v-legend>
       <v-axis></v-axis>
       <v-tooltip [showTitle]="false"></v-tooltip>
       <v-polygon [position]="seriesOpts.position" [color]="seriesOpts.color" ></v-polygon>

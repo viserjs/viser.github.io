@@ -11,7 +11,7 @@ import * as $ from 'jquery';
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [padding]="padding">
-      <v-legend offset="10"></v-legend>
+      <v-legend [offset]="10"></v-legend>
       <v-tooltip [showTitle]="showTitle" ></v-tooltip>
       <v-heatmap [position]="seriesOpts.position" [color]="seriesOpts.color" ></v-heatmap>
       <v-guide [type]="guideOpts.type" [start]="guideOpts.start" [end]="guideOpts.end" [src]="guideOpts.src"></v-guide>
