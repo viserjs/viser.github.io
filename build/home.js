@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 841);
+/******/ 	return __webpack_require__(__webpack_require__.s = 849);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -112004,16 +112004,16 @@ var process = function (chart, config) {
 
 /***/ }),
 
-/***/ 841:
+/***/ 849:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var locale_1 = __webpack_require__(842);
+var locale_1 = __webpack_require__(850);
 var viser_1 = __webpack_require__(15);
 var utils_1 = __webpack_require__(41);
-__webpack_require__(843);
+__webpack_require__(851);
 var GDP_JSON = [
     { year: '2006', gdp: 21.94385 },
     { year: '2007', gdp: 27.02323 },
@@ -112146,7 +112146,39 @@ new Home();
 
 /***/ }),
 
-/***/ 842:
+/***/ 85:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return process; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setCustomFormatter__ = __webpack_require__(35);
+
+
+var process = function (chart, config) {
+    var cScale = __WEBPACK_IMPORTED_MODULE_0_lodash__["cloneDeep"](config.scale);
+    var isArr = __WEBPACK_IMPORTED_MODULE_0_lodash__["isArray"](cScale);
+    if (__WEBPACK_IMPORTED_MODULE_0_lodash__["isEmpty"](cScale)) {
+        return;
+    }
+    var arrScale = isArr ? cScale : [cScale];
+    var options = {};
+    for (var _i = 0, arrScale_1 = arrScale; _i < arrScale_1.length; _i++) {
+        var res = arrScale_1[_i];
+        if (res.dataKey) {
+            var currOption = __WEBPACK_IMPORTED_MODULE_0_lodash__["omit"](res, 'dataKey');
+            options[res.dataKey] = currOption;
+        }
+    }
+    options = __WEBPACK_IMPORTED_MODULE_1__setCustomFormatter__["a" /* supportD3Formatter */](options);
+    return chart.scale(options);
+};
+//# sourceMappingURL=setScaleConfig.js.map
+
+/***/ }),
+
+/***/ 850:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -112291,42 +112323,10 @@ exports.default = locale;
 
 /***/ }),
 
-/***/ 843:
+/***/ 851:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 85:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return process; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setCustomFormatter__ = __webpack_require__(35);
-
-
-var process = function (chart, config) {
-    var cScale = __WEBPACK_IMPORTED_MODULE_0_lodash__["cloneDeep"](config.scale);
-    var isArr = __WEBPACK_IMPORTED_MODULE_0_lodash__["isArray"](cScale);
-    if (__WEBPACK_IMPORTED_MODULE_0_lodash__["isEmpty"](cScale)) {
-        return;
-    }
-    var arrScale = isArr ? cScale : [cScale];
-    var options = {};
-    for (var _i = 0, arrScale_1 = arrScale; _i < arrScale_1.length; _i++) {
-        var res = arrScale_1[_i];
-        if (res.dataKey) {
-            var currOption = __WEBPACK_IMPORTED_MODULE_0_lodash__["omit"](res, 'dataKey');
-            options[res.dataKey] = currOption;
-        }
-    }
-    options = __WEBPACK_IMPORTED_MODULE_1__setCustomFormatter__["a" /* supportD3Formatter */](options);
-    return chart.scale(options);
-};
-//# sourceMappingURL=setScaleConfig.js.map
 
 /***/ })
 

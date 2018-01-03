@@ -461,9 +461,14 @@ const examples = {
     cnName: '其他图表',
     examples: [
       {
-        path: 'example3',
+        path: 'example1',
         enName: 'timeline bubble',
         cnName: '时间序列气泡图',
+      },
+      {
+        path: 'example3',
+        enName: 'text bubble',
+        cnName: '带文本的气泡图',
       },
     ],
     icon: 'others'
