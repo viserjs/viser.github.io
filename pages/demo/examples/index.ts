@@ -475,6 +475,11 @@ const examples = {
         enName: 'text bubble',
         cnName: '带文本的气泡图',
       },
+      {
+        path: 'example4',
+        enName: 'Punch Card',
+        cnName: 'Punch Card',
+      },
     ],
     icon: 'others'
   },

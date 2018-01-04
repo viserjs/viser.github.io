@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 833);
+/******/ 	return __webpack_require__(__webpack_require__.s = 841);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -578,7 +578,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(464)(function () {
+module.exports = !__webpack_require__(468)(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -1602,7 +1602,7 @@ exports.logger = _logger2['default'];
 
 /***/ }),
 
-/***/ 463:
+/***/ 467:
 /***/ (function(module, exports) {
 
 var core = module.exports = { version: '2.5.3' };
@@ -1611,7 +1611,7 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 /***/ }),
 
-/***/ 464:
+/***/ 468:
 /***/ (function(module, exports) {
 
 module.exports = function (exec) {
@@ -1638,7 +1638,7 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
 /***/ }),
 
-/***/ 833:
+/***/ 841:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1652,12 +1652,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mds_1 = __webpack_require__(834);
+var mds_1 = __webpack_require__(842);
 var locale_1 = __webpack_require__(86);
 var utils_1 = __webpack_require__(41);
-__webpack_require__(835);
-var timers_1 = __webpack_require__(836);
-var navTpl = __webpack_require__(849);
+__webpack_require__(843);
+var timers_1 = __webpack_require__(844);
+var navTpl = __webpack_require__(857);
 var DEFAULT_FOLDER = 'guide';
 var DEFAULT_ITEM = 'installation';
 var Docs = /** @class */ (function () {
@@ -1726,7 +1726,7 @@ var Docs = /** @class */ (function () {
         var _a = this.getDocsFolderAndItem(), folder = _a.folder, item = _a.item;
         var content = '';
         try {
-            content = __webpack_require__(850)("./" + folder + "/" + item + "/" + language + ".md");
+            content = __webpack_require__(858)("./" + folder + "/" + item + "/" + language + ".md");
         }
         catch (err) {
             console.error(err);
@@ -1771,7 +1771,7 @@ new Docs();
 
 /***/ }),
 
-/***/ 834:
+/***/ 842:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1806,29 +1806,29 @@ exports.default = mds;
 
 /***/ }),
 
-/***/ 835:
+/***/ 843:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 836:
+/***/ 844:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(837);
-module.exports = __webpack_require__(463);
+__webpack_require__(845);
+module.exports = __webpack_require__(467);
 
 
 /***/ }),
 
-/***/ 837:
+/***/ 845:
 /***/ (function(module, exports, __webpack_require__) {
 
 // ie9- setTimeout & setInterval additional parameters fix
 var global = __webpack_require__(59);
-var $export = __webpack_require__(838);
-var userAgent = __webpack_require__(848);
+var $export = __webpack_require__(846);
+var userAgent = __webpack_require__(856);
 var slice = [].slice;
 var MSIE = /MSIE .\./.test(userAgent); // <- dirty ie9- check
 var wrap = function (set) {
@@ -1849,13 +1849,13 @@ $export($export.G + $export.B + $export.F * MSIE, {
 
 /***/ }),
 
-/***/ 838:
+/***/ 846:
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(59);
-var core = __webpack_require__(463);
-var ctx = __webpack_require__(839);
-var hide = __webpack_require__(841);
+var core = __webpack_require__(467);
+var ctx = __webpack_require__(847);
+var hide = __webpack_require__(849);
 var PROTOTYPE = 'prototype';
 
 var $export = function (type, name, source) {
@@ -1917,11 +1917,11 @@ module.exports = $export;
 
 /***/ }),
 
-/***/ 839:
+/***/ 847:
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(840);
+var aFunction = __webpack_require__(848);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -1944,7 +1944,7 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
-/***/ 840:
+/***/ 848:
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -1955,11 +1955,11 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 841:
+/***/ 849:
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(842);
-var createDesc = __webpack_require__(847);
+var dP = __webpack_require__(850);
+var createDesc = __webpack_require__(855);
 module.exports = __webpack_require__(121) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -1970,12 +1970,12 @@ module.exports = __webpack_require__(121) ? function (object, key, value) {
 
 /***/ }),
 
-/***/ 842:
+/***/ 850:
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(843);
-var IE8_DOM_DEFINE = __webpack_require__(844);
-var toPrimitive = __webpack_require__(846);
+var anObject = __webpack_require__(851);
+var IE8_DOM_DEFINE = __webpack_require__(852);
+var toPrimitive = __webpack_require__(854);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(121) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -1993,7 +1993,7 @@ exports.f = __webpack_require__(121) ? Object.defineProperty : function definePr
 
 /***/ }),
 
-/***/ 843:
+/***/ 851:
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(120);
@@ -2005,17 +2005,17 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 844:
+/***/ 852:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(121) && !__webpack_require__(464)(function () {
-  return Object.defineProperty(__webpack_require__(845)('div'), 'a', { get: function () { return 7; } }).a != 7;
+module.exports = !__webpack_require__(121) && !__webpack_require__(468)(function () {
+  return Object.defineProperty(__webpack_require__(853)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
 /***/ }),
 
-/***/ 845:
+/***/ 853:
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(120);
@@ -2029,7 +2029,7 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 846:
+/***/ 854:
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
@@ -2048,7 +2048,7 @@ module.exports = function (it, S) {
 
 /***/ }),
 
-/***/ 847:
+/***/ 855:
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -2063,7 +2063,7 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
-/***/ 848:
+/***/ 856:
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(59);
@@ -2074,7 +2074,7 @@ module.exports = navigator && navigator.userAgent || '';
 
 /***/ }),
 
-/***/ 849:
+/***/ 857:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Handlebars = __webpack_require__(87);
@@ -2110,16 +2110,16 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
 /***/ }),
 
-/***/ 850:
+/***/ 858:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./guide/installation/cn.md": 851,
-	"./guide/installation/en.md": 852,
-	"./guide/introduction/cn.md": 853,
-	"./guide/introduction/en.md": 854,
-	"./guide/usage/cn.md": 855,
-	"./guide/usage/en.md": 856
+	"./guide/installation/cn.md": 859,
+	"./guide/installation/en.md": 860,
+	"./guide/introduction/cn.md": 861,
+	"./guide/introduction/en.md": 862,
+	"./guide/usage/cn.md": 863,
+	"./guide/usage/en.md": 864
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -2135,49 +2135,14 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 850;
+webpackContext.id = 858;
 
 /***/ }),
 
-/***/ 851:
+/***/ 859:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"-\">安装</h2>\n<p>Viser 为 React, Vue 和 Angular 提供了3个不同的分发版本。我们同时提供了npm安装和umd引入两种方式来使用Viser。</p>\n<p>npm安装是使用 Viser 最简单也是最快捷的方式。我们强烈建议您在开发单页应用(SPA)时采用这种方式进行安装。Viser 可以完美兼容 CommonJS 打包工具，例如我们最常用的 Webpack。</p>\n<p>UMD 引入是使用script标签引入来使用 Viser。当你需要快速使用的时候，这是最便捷的方式。</p>\n<h3 id=\"vue-\">Vue 分发版</h3>\n<p>您需要使用版本 <strong>2.5</strong> 及以上的 Vue，来使用 Vue 分发版 Viser。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserVue</code> 来进行调用 Viser。</p>\n<h3 id=\"angular-\">Angular 分发版</h3>\n<p>您需要使用版本 <strong>2.4</strong> 及以上的 Angular，来使用 Angular 分发版 Viser。另外，你还需要版本 <strong>0.1</strong> 及以上的 reflect-metadata，版本 <strong>5</strong> 及以上的 rxjs，版本 <strong>0.7</strong> 及以上的 zone.js。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserNg</code> 来进行调用 Viser。</p>\n<h3 id=\"react-\">React 分发版</h3>\n<p>您需要使用版本 <strong>15</strong> 及以上的 React，来使用 React 分发版 Viser。显然，版本 <strong>16</strong> 也是可以的。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 引入的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserReact</code> 来进行调用 Viser。</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
-
-/***/ }),
-
-/***/ 852:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"installation\">Installation</h2>\n<p>Viser include 3 version which is integrated by React, Vue and Angular. We provide NPM or UMD to use library.</p>\n<p>NPM is the easiest and fastest way to get started using Viser. It is the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.</p>\n<p>UMD is the script way to using Viser. It is convenient method when you used quickly.</p>\n<h3 id=\"vue-version\">Vue Version</h3>\n<p>In Vue version, You mush prepare to Vue version greater than <strong>2.5</strong> in project.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserVue.</p>\n<h3 id=\"angular-version\">Angular Version</h3>\n<p>In Angular version, You mush prepare to Angular version greater than <strong>2.4</strong> in project. In addition, you also prepare to reflect-metadata version greater than <strong>0.1</strong>, rxjs version greater than <strong>5</strong> and zone.js version greater than <strong>0.7</strong>.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserNg.</p>\n<h3 id=\"react-version\">React Version</h3>\n<p>In React version, You mush prepare React version greater then <strong>15</strong>, and support <strong>16</strong> certainly.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserReact.</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
-
-/***/ }),
-
-/***/ 853:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"-\">简介</h2>\n<p>Viser，一个基于 G2 实现的，为数据可视化工程师量身定制的工具。Viser 现已支持几大主流前端框架，例如 React, Vue 和 AngularJS。</p>\n<h3 id=\"-\">核心价值</h3>\n<p>它可以开发网页应用的过程中，为图表开发带来卓越的体验。</p>\n<h3 id=\"-\">设计原则</h3>\n<ol>\n<li>利用语义化组件来组合图表。包括但不限于 React, Vue 和 AugularJS 的组件。</li>\n<li>脱胎于 G2，一套基于可视化编码的图形语法。由此带来了强大的可视化能力。</li>\n</ol>\n";
-
-/***/ }),
-
-/***/ 854:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"introduction\">Introduction</h2>\n<p>A toolkit fit for data vis engineer based on G2. Viser support React, Vue and AngularJS.</p>\n<h3 id=\"main-purpose\">Main Purpose</h3>\n<p>The main purpose of this library is to help you to write charts in web applications without any pain.</p>\n<h3 id=\"main-principles\">Main Principles</h3>\n<ol>\n<li>Simply deploy with semantic component with chart, including but not limited to React, Vue and AugularJS.</li>\n<li>Lightweight depending only on G2 which is a plotting system for Javascript, based on the grammar of graphics.</li>\n</ol>\n";
-
-/***/ }),
-
-/***/ 855:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"-\">用法</h2>\n<p>Viser 的使用方法几乎是和 G2 一样的，但是 Viser 增加了更多人性化的语法糖。最快速的了解这些内容的方法，便是学习在我们的“案例”页面中使用 Viser 构建的例子。</p>\n<p>接下来，我们将讨论这些 Viser 和 G2 的差异之处，以便于您的理解。</p>\n<h3 id=\"datapre\">DataPre</h3>\n<p>参数 <em>dataPre</em> 用于表示 G2 中 <em>data-set.js</em> 的相关内容。它包括了 <em>data-set</em> 中用到的 <code>connector</code> 和 <code>transform</code> 两个属性。关于这些属性的使用方法，可以阅读 data-set 的文档。</p>\n<h3 id=\"series\">Series</h3>\n<p>参数 <em>Series</em> 用于表示 G2 中 <em>gemo</em> 的相关内容。我们直接使用了具体的名称来表示组件，例如 bar 和 line 等。</p>\n<h3 id=\"coord\">Coord</h3>\n<p>参数 <em>Coord</em> 用于表示 G2 中 <em>coord</em> 的相关内容。但是我们提供了 <em>direction</em> 这一优化后的参数用来展现 G2 中的 <code>transpose</code>, <code>reflect</code> 和 <code>scale</code> 这几个属性.</p>\n<h3 id=\"formatter\">Formatter</h3>\n<p>我们使用了 <em>d3-format</em> 来增强 <code>label</code> 的回调函数。</p>\n";
-
-/***/ }),
-
-/***/ 856:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"usage\">Usage</h2>\n<p>Viser usage is all comes out of G2. But Viser added some syntactic sugar. You should study to using viser from demo.</p>\n<p>We only talk about some different from G2 and Viser.</p>\n<h3 id=\"datapre\">DataPre</h3>\n<p><em>dataPre</em> param is <em>data-set.js</em> in G2, and it inclued <code>connector</code> and <code>transform</code> key from <em>data-set</em>, so you should read data-set just enough.</p>\n<h3 id=\"series\">Series</h3>\n<p><em>Series</em> param is <em>gemo</em> in G2, and we used specific name to express the component, like bar, line etc.</p>\n<h3 id=\"coord\">Coord</h3>\n<p><em>Coord</em> param is <em>coord</em> in G2, but we provide <em>direction</em> param which using <code>transpose</code>, <code>reflect</code> and <code>scale</code> of G2.</p>\n<h3 id=\"formatter\">Formatter</h3>\n<p>We add <em>d3-format</em> to enhance the <code>label</code> function.</p>\n";
 
 /***/ }),
 
@@ -2211,6 +2176,41 @@ var locale = {
 };
 exports.default = locale;
 
+
+/***/ }),
+
+/***/ 860:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"installation\">Installation</h2>\n<p>Viser include 3 version which is integrated by React, Vue and Angular. We provide NPM or UMD to use library.</p>\n<p>NPM is the easiest and fastest way to get started using Viser. It is the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.</p>\n<p>UMD is the script way to using Viser. It is convenient method when you used quickly.</p>\n<h3 id=\"vue-version\">Vue Version</h3>\n<p>In Vue version, You mush prepare to Vue version greater than <strong>2.5</strong> in project.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserVue.</p>\n<h3 id=\"angular-version\">Angular Version</h3>\n<p>In Angular version, You mush prepare to Angular version greater than <strong>2.4</strong> in project. In addition, you also prepare to reflect-metadata version greater than <strong>0.1</strong>, rxjs version greater than <strong>5</strong> and zone.js version greater than <strong>0.7</strong>.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserNg.</p>\n<h3 id=\"react-version\">React Version</h3>\n<p>In React version, You mush prepare React version greater then <strong>15</strong>, and support <strong>16</strong> certainly.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserReact.</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
+
+/***/ }),
+
+/***/ 861:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"-\">简介</h2>\n<p>Viser，一个基于 G2 实现的，为数据可视化工程师量身定制的工具。Viser 现已支持几大主流前端框架，例如 React, Vue 和 AngularJS。</p>\n<h3 id=\"-\">核心价值</h3>\n<p>它可以开发网页应用的过程中，为图表开发带来卓越的体验。</p>\n<h3 id=\"-\">设计原则</h3>\n<ol>\n<li>利用语义化组件来组合图表。包括但不限于 React, Vue 和 AugularJS 的组件。</li>\n<li>脱胎于 G2，一套基于可视化编码的图形语法。由此带来了强大的可视化能力。</li>\n</ol>\n";
+
+/***/ }),
+
+/***/ 862:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"introduction\">Introduction</h2>\n<p>A toolkit fit for data vis engineer based on G2. Viser support React, Vue and AngularJS.</p>\n<h3 id=\"main-purpose\">Main Purpose</h3>\n<p>The main purpose of this library is to help you to write charts in web applications without any pain.</p>\n<h3 id=\"main-principles\">Main Principles</h3>\n<ol>\n<li>Simply deploy with semantic component with chart, including but not limited to React, Vue and AugularJS.</li>\n<li>Lightweight depending only on G2 which is a plotting system for Javascript, based on the grammar of graphics.</li>\n</ol>\n";
+
+/***/ }),
+
+/***/ 863:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"-\">用法</h2>\n<p>Viser 的使用方法几乎是和 G2 一样的，但是 Viser 增加了更多人性化的语法糖。最快速的了解这些内容的方法，便是学习在我们的“案例”页面中使用 Viser 构建的例子。</p>\n<p>接下来，我们将讨论这些 Viser 和 G2 的差异之处，以便于您的理解。</p>\n<h3 id=\"datapre\">DataPre</h3>\n<p>参数 <em>dataPre</em> 用于表示 G2 中 <em>data-set.js</em> 的相关内容。它包括了 <em>data-set</em> 中用到的 <code>connector</code> 和 <code>transform</code> 两个属性。关于这些属性的使用方法，可以阅读 data-set 的文档。</p>\n<h3 id=\"series\">Series</h3>\n<p>参数 <em>Series</em> 用于表示 G2 中 <em>gemo</em> 的相关内容。我们直接使用了具体的名称来表示组件，例如 bar 和 line 等。</p>\n<h3 id=\"coord\">Coord</h3>\n<p>参数 <em>Coord</em> 用于表示 G2 中 <em>coord</em> 的相关内容。但是我们提供了 <em>direction</em> 这一优化后的参数用来展现 G2 中的 <code>transpose</code>, <code>reflect</code> 和 <code>scale</code> 这几个属性.</p>\n<h3 id=\"formatter\">Formatter</h3>\n<p>我们使用了 <em>d3-format</em> 来增强 <code>label</code> 的回调函数。</p>\n";
+
+/***/ }),
+
+/***/ 864:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"usage\">Usage</h2>\n<p>Viser usage is all comes out of G2. But Viser added some syntactic sugar. You should study to using viser from demo.</p>\n<p>We only talk about some different from G2 and Viser.</p>\n<h3 id=\"datapre\">DataPre</h3>\n<p><em>dataPre</em> param is <em>data-set.js</em> in G2, and it inclued <code>connector</code> and <code>transform</code> key from <em>data-set</em>, so you should read data-set just enough.</p>\n<h3 id=\"series\">Series</h3>\n<p><em>Series</em> param is <em>gemo</em> in G2, and we used specific name to express the component, like bar, line etc.</p>\n<h3 id=\"coord\">Coord</h3>\n<p><em>Coord</em> param is <em>coord</em> in G2, but we provide <em>direction</em> param which using <code>transpose</code>, <code>reflect</code> and <code>scale</code> of G2.</p>\n<h3 id=\"formatter\">Formatter</h3>\n<p>We add <em>d3-format</em> to enhance the <code>label</code> function.</p>\n";
 
 /***/ }),
 
