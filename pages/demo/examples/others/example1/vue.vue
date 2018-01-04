@@ -9,79 +9,79 @@
   </div>
 </template>
 <script>
-  import * as $ from 'jquery';
+import * as $ from 'jquery';
 
-  const dataPre = {
-    transform: {
-      type: 'map',
-      callback: obj => {
-        obj.exp_amo = obj.exp_amo * 1;
-        return obj;
-      }
+const dataPre = {
+  transform: {
+    type: 'map',
+    callback: obj => {
+      obj.exp_amo = obj.exp_amo * 1;
+      return obj;
     }
-  };
+  }
+};
 
-  const scale = [{
-    dataKey: 'exp_dat',
-    type: 'time',
-    mask: 'M/YY',
-    tickCount: 14
-  }, {
-    dataKey: 'exp_amo',
-    type: 'log',
-    ticks: [225, 1000000 ,2000000 , 4000000, 6000000]
-  }];
+const scale = [{
+  dataKey: 'exp_dat',
+  type: 'time',
+  mask: 'M/YY',
+  tickCount: 14
+}, {
+  dataKey: 'exp_amo',
+  type: 'log',
+  ticks: [225, 1000000 ,2000000 , 4000000, 6000000]
+}];
 
-  const height = 600;
+const height = 600;
 
-  const axis1Opts = {
-    dataKey: 'exp_dat',
-    tickLine: null,
-    label: {
-      textStyle: {
-        fontSize: 14
-      }
+const axis1Opts = {
+  dataKey: 'exp_dat',
+  tickLine: null,
+  label: {
+    textStyle: {
+      fontSize: 14
     }
-  };
+  }
+};
 
-  const axis2Opts = {
-    dataKey: 'exp_amo',
-    tickLine: null,
-    line: null,
-    grid: {
-      lineStyle: {
-        lineDash: null,
-        stroke: '#999'
-      }
-    },
-    label: {
-      formatter: function(val) {
-        let formatted;
-        if (+val === 225) {
-          formatted = 0;
-        } else {
-          formatted = val / 1000000;
-        }
-        return '$' + formatted + 'M';
-      }
+const axis2Opts = {
+  dataKey: 'exp_amo',
+  tickLine: null,
+  line: null,
+  grid: {
+    lineStyle: {
+      lineDash: null,
+      stroke: '#999'
     }
-  };
+  },
+  label: {
+    formatter: function(val) {
+      let formatted;
+      if (+val === 225) {
+        formatted = 0;
+      } else {
+        formatted = val / 1000000;
+      }
+      return '$' + formatted + 'M';
+    }
+  }
+};
 
-  export default {
-    mounted() {
-      $.getJSON('/data/others-1.json', (data) => {
-        this.$data.data = data;
-      });
-    },
-    data() {
-      return {
-        data: [],
-        dataPre,
-        scale,
-        height: 600,
-        axis1Opts,
-        axis2Opts,
-      };
-    }
-  };
+export default {
+  mounted() {
+    $.getJSON('/data/others-1.json', (data) => {
+      this.$data.data = data;
+    });
+  },
+  data() {
+    return {
+      data: [],
+      dataPre,
+      scale,
+      height: 600,
+      axis1Opts,
+      axis2Opts,
+    };
+  }
+};
 </script>

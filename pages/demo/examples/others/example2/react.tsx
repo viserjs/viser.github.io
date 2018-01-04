@@ -72,17 +72,11 @@ const seriesOpts = {
   }]
 };
 
-const height = 600;
-
 class App extends React.Component {
-  componentDidMount() {
-    const self = this;
-  }
-
   render() {
     return (
       <div>
-        <Chart forceFit height={height} data={data} scale={scale}>
+        <Chart forceFit height={600} data={data} scale={scale}>
           <Tooltip />
           <Axis dataKey={'value'} show={false} />
           <Series {...seriesOpts}/>

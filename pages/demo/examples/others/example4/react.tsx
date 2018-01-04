@@ -61,10 +61,6 @@ const pointOpts = {
 const height = 600;
 
 class App extends React.Component {
-  componentDidMount() {
-    const self = this;
-  }
-
   render() {
     return (
       <div>
