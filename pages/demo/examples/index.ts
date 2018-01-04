@@ -466,6 +466,11 @@ const examples = {
         cnName: '时间序列气泡图',
       },
       {
+        path: 'example2',
+        enName: 'custom shape bubble',
+        cnName: '气泡图-自定义 shape',
+      },
+      {
         path: 'example3',
         enName: 'text bubble',
         cnName: '带文本的气泡图',
