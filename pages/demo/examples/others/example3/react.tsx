@@ -1,7 +1,6 @@
 import { Chart, Axis, Tooltip, Point, Guide } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import * as $ from 'jquery';
 import * as _ from 'lodash';
 
 const data = [
@@ -74,10 +73,6 @@ const axis2Opts = {
 };
 
 class App extends React.Component {
-  componentDidMount() {
-    const self = this;
-  }
-
   render() {
     return (
       <div>
@@ -86,9 +81,11 @@ class App extends React.Component {
             lineWidth: 1, // 边框粗细
           }} data={data} scale={scale}>
           <Tooltip title='country'/>
-          <Axis dataKey='x' label={{
-            formatter: function(val) {
-              return val + ' gr'; // 格式化坐标轴显示文本
+          <Axis dataKey='x'
+            label={{
+              formatter: function(val) {
+                return val + ' gr'; // 格式化坐标轴显示文本
+              }
             }}
             grid={{
               lineStyle: {
@@ -107,30 +104,38 @@ class App extends React.Component {
               }
             }
           }} />
-          <Point position='x*y' color='#1890ff' size={['z', [ 10, 40 ]]} label={['name*country', {
-            offset: 0, // 文本距离图形的距离
-            textStyle: {
-              fill: '#1890FF'
-            },
-          }]} opacity={0.3} shape='circle' tooltip='x*y*z' style={{
-            lineWidth: 1,
-            stroke: '#1890ff'
-          }}/>
-          <Guide type='line' top={true} start={[65, 'min']} end={[65, 'max']} text={{
-            content: 'Safe fat intake 65g/day',
-            position: 'end',
-            autoRotate: false,
-            style: {
-              textAlign: 'start'
+          <Point position='x*y' color='#1890ff' size={['z', [ 10, 40 ]]}
+            label={['name*country', {
+              offset: 0, // 文本距离图形的距离
+              textStyle: {
+                fill: '#1890FF'
+              },
             }
-          }} />
-          <Guide type='line' top={true} start={['min', 50]} end={['max', 50]} text={{
-            content: 'Safe sugar intake 50g/day',
-            position: 'end',
-            style: {
-              textAlign: 'end'
-            }
-          }} />
+            ]} opacity={0.3} shape='circle' tooltip='x*y*z'
+            style={{
+              lineWidth: 1,
+              stroke: '#1890ff'
+            }}
+          />
+          <Guide type='line' top={true} start={[65, 'min']} end={[65, 'max']}
+            text={{
+              content: 'Safe fat intake 65g/day',
+              position: 'end',
+              autoRotate: false,
+              style: {
+                textAlign: 'start'
+              }
+            }}
+          />
+          <Guide type='line' top={true} start={['min', 50]} end={['max', 50]}
+            text={{
+              content: 'Safe sugar intake 50g/day',
+              position: 'end',
+              style: {
+                textAlign: 'end'
+              }
+            }}
+          />
         </Chart>
       </div>
     );

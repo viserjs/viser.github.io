@@ -27,8 +27,6 @@ const scale = [{
   ticks: [225, 1000000 ,2000000 , 4000000, 6000000]
 }];
 
-const height = 600;
-
 const axis1Opts = {
   dataKey: 'exp_dat',
   tickLine: null,

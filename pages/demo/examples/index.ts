@@ -480,6 +480,11 @@ const examples = {
         enName: 'Punch Card',
         cnName: 'Punch Card',
       },
+      // {     // need release new version
+      //   path: 'example7',
+      //   enName: 'Pizza Chart',
+      //   cnName: 'Pizza Chart',
+      // },
     ],
     icon: 'others'
   },
