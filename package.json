@@ -19,9 +19,9 @@
     "oui-dom-events": "^0.2.2",
     "oui-dom-utils": "^0.3.8",
     "viser": "^1.3.3",
-    "viser-ng": "^1.3.3",
-    "viser-react": "^1.3.3",
-    "viser-vue": "^1.3.3"
+    "viser-ng": "^1.3.7",
+    "viser-react": "^1.3.7",
+    "viser-vue": "^1.3.7"
   },
   "devDependencies": {
     "@angular/common": "^5.0.5",
