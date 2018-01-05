@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 857);
+/******/ 	return __webpack_require__(__webpack_require__.s = 865);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -111746,6 +111746,13 @@ var QUICK_TYPE = [
             shape: 'errorbar'
         }
     },
+    {
+        type: 'jitterPoint',
+        series: {
+            gemo: 'point',
+            adjust: 'jitter'
+        }
+    },
 ];
 var process = function (series, coord) {
     var quickType = {};
@@ -111965,16 +111972,16 @@ var process = function (chart, config) {
 
 /***/ }),
 
-/***/ 857:
+/***/ 865:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var locale_1 = __webpack_require__(858);
+var locale_1 = __webpack_require__(866);
 var viser_1 = __webpack_require__(15);
 var utils_1 = __webpack_require__(41);
-__webpack_require__(859);
+__webpack_require__(867);
 var GDP_JSON = [
     { year: '2006', gdp: 21.94385 },
     { year: '2007', gdp: 27.02323 },
@@ -112107,7 +112114,7 @@ new Home();
 
 /***/ }),
 
-/***/ 858:
+/***/ 866:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -112252,7 +112259,7 @@ exports.default = locale;
 
 /***/ }),
 
-/***/ 859:
+/***/ 867:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
