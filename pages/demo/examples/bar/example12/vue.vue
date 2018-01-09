@@ -11,6 +11,8 @@
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { 'State': 'WY', '小于5岁': 25635, '5至13岁': 1890, '14至17岁': 9314 },
     { 'State': 'DC', '小于5岁': 30352, '5至13岁': 20439, '14至17岁': 10225 },

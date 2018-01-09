@@ -11,6 +11,7 @@
 
 <script>
   import * as $ from 'jquery';
+  const DataSet = require('@antv/data-set');
 
   export default {
     mounted() {

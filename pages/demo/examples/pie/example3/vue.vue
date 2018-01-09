@@ -11,6 +11,8 @@
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { item: '事例一', count: 40 },
     { item: '事例二', count: 21 },

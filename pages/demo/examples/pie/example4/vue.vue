@@ -13,6 +13,8 @@
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { value: 251, type: '大事例一', name: '子事例一' },
     { value: 1048, type: '大事例一', name: '子事例二' },

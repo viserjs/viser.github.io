@@ -11,6 +11,8 @@
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { year: '1996',  north: 322, south: 162 },
     { year: '1997',  north: 324, south: 90 },

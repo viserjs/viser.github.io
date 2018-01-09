@@ -12,6 +12,8 @@
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { label: 'Mon.', series1: 2800, series2: 2260 },
     { label: 'Tues.', series1: 1800, series2: 1300 },

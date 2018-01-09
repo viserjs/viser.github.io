@@ -10,6 +10,8 @@
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { country: 'Europe', year: '1750', value: 163 },
     { country: 'Europe', year: '1800', value: 203 },

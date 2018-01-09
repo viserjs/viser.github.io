@@ -11,6 +11,8 @@
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { month: 'Jan', Tokyo: 7.0, London: 3.9 },
     { month: 'Feb', Tokyo: 6.9, London: 4.2 },

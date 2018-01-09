@@ -10,6 +10,8 @@
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { month: 'Jan', series2: 51, series1: 125 },
     { month: 'Feb', series2: 91, series1: 132 },

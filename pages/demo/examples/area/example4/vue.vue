@@ -12,6 +12,8 @@ export const template =
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { country: 'Asia', year: '1750', value: 502 },
     { country: 'Asia', year: '1800', value: 635 },

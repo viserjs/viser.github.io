@@ -10,6 +10,8 @@
 </template>
 
 <script>
+  const DataSet = require('@antv/data-set');
+
   const sourceData = [
     { country: '中国', population: 131744 },
     { country: '印度', population: 104970 },

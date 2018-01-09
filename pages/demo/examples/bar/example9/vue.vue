@@ -10,6 +10,7 @@
 
 <script>
   import * as $ from 'jquery';
+  const DataSet = require('@antv/data-set');
 
   const scale = [{
     dataKey: 'depth',
