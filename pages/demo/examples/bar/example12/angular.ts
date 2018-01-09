@@ -4,8 +4,9 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { 'State': 'WY', '小于5岁': 25635, '5至13岁': 1890, '14至17岁': 9314 },
   { 'State': 'DC', '小于5岁': 30352, '5至13岁': 20439, '14至17岁': 10225 },
   { 'State': 'VT', '小于5岁': 38253, '5至13岁': 42538, '14至17岁': 15757 },
@@ -13,15 +14,15 @@ const data = [
   { 'State': 'AK', '小于5岁': 72083, '5至13岁': 85640, '14至17岁': 22153 }
 ];
 
-const dataPre = {
-  transform: {
-    type: 'fold',
-    fields: ['小于5岁', '5至13岁', '14至17岁'],
-    key: '年龄段',
-    value: '人口数量',
-    retains: ['State'],
-  },
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'fold',
+  fields: ['小于5岁', '5至13岁', '14至17岁'],
+  key: '年龄段',
+  value: '人口数量',
+  retains: ['State'],
+});
+const data = dv.rows;
 
 const label = { offset: 12 };
 
@@ -29,7 +30,7 @@ const label = { offset: 12 };
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-coord type="rect" direction="LB"></v-coord>
       <v-tooltip></v-tooltip>
       <v-legend></v-legend>
@@ -43,7 +44,6 @@ class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
   data = data;
-  dataPre = dataPre;
   label = label;
 }
 

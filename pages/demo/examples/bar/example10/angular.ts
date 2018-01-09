@@ -4,8 +4,9 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { country: '中国', population: 131744 },
   { country: '印度', population: 104970 },
   { country: '美国', population: 29034 },
@@ -13,14 +14,14 @@ const data = [
   { country: '巴西', population: 18203 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'sort',
-    callback(a, b) {
-      return a.population - b.population > 0;
-    },
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'sort',
+  callback(a, b) {
+    return a.population - b.population > 0;
   },
-};
+});
+const data = dv.rows;
 
 const label = { offset: 12 };
 
@@ -28,7 +29,7 @@ const label = { offset: 12 };
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-coord type="rect" direction="LB"></v-coord>
       <v-tooltip></v-tooltip>
       <v-axis dataKey="coutry" [label]="label"></v-axis>
@@ -41,7 +42,6 @@ class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
   data = data;
-  dataPre = dataPre;
   label = label;
 }
 

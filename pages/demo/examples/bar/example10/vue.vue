@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre">
+    <v-chart :force-fit="true" :height="height" :data="data">
       <v-coord :type="'rect'" :direction="'LB'" />
       <v-tooltip />
       <v-axis :data-key="'country'" :label="label" />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  const data = [
+  const sourceData = [
     { country: '中国', population: 131744 },
     { country: '印度', population: 104970 },
     { country: '美国', population: 29034 },
@@ -18,14 +18,14 @@
     { country: '巴西', population: 18203 },
   ];
 
-  const dataPre = {
-    transform: {
-      type: 'sort',
-      callback(a, b) {
-        return a.population - b.population > 0;
-      },
+  const dv = new DataSet.View().source(sourceData);
+  dv.transform({
+    type: 'sort',
+    callback(a, b) {
+      return a.population - b.population > 0;
     },
-  };
+  });
+  const data = dv.rows;
 
   const label = { offset: 12 };
 

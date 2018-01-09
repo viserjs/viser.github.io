@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre">
+    <v-chart :force-fit="true" :height="height" :data="data">
       <v-tooltip :crosshairs="false" :in-plot="false" :position="'top'" />
       <v-axis />
       <v-legend />
@@ -10,23 +10,25 @@
 </template>
 
 <script>
-  import { data } from './data';
-
-  const dataPre = {
-    transform: {
-      type: 'bin.histogram',
-      field: 'depth',
-      binWidth: 1,
-      groupBy: ['cut'],
-      as: ['depth', 'count'],
-    },
-  };
+  import * as $ from 'jquery';
 
   export default {
+    mounted() {
+      $.getJSON('/data/diamond.json', (sourceData) => {
+        const dv = new DataSet.View().source(sourceData);
+        dv.transform({
+          type: 'bin.histogram',
+          field: 'depth',
+          binWidth: 1,
+          groupBy: ['cut'],
+          as: ['depth', 'count'],
+        });
+        this.$data.data = dv.rows;
+      });
+    },
     data() {
       return {
-        data,
-        dataPre,
+        data: [],
         height: 400,
       };
     }

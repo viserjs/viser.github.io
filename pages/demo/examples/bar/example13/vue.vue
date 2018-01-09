@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :padding="padding" :height="height" :data="data" :data-pre="dataPre">
+    <v-chart :force-fit="true" :padding="padding" :height="height" :data="data">
       <v-coord :type="'rect'" :direction="'LB'" />
       <v-tooltip />
       <v-legend />
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  const data = [
+  const sourceData = [
     { profession: '两年制副学士学位', highest: 110000, minimum: 23000, mean: 56636 },
     { profession: '执法与救火', highest: 120000, minimum: 18000, mean: 66625 },
     { profession: '教育学', highest: 125000, minimum: 24000, mean: 72536 },
@@ -19,13 +19,13 @@
     { profession: '计算机科学', highest: 131000, minimum: 23000, mean: 77031 }
   ];
 
-  const dataPre = {
-    transform: {
-      type: 'merge',
-      fields: ['minimum', 'highest'],
-      as: 'range',
-    },
-  };
+  const dv = new DataSet.View().source(sourceData);
+  dv.transform({
+    type: 'merge',
+    fields: ['minimum', 'highest'],
+    as: 'range',
+  });
+  const data = dv.rows;
 
   const label = { offset: 12 };
 
@@ -33,7 +33,6 @@
     data() {
       return {
         data,
-        dataPre,
         height: 400,
         label: label,
         padding: [20, 80, 50, 110],

@@ -4,23 +4,14 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-import { data } from './data';
-
-const dataPre = {
-  transform: {
-    type: 'bin.histogram',
-    field: 'depth',
-    binWidth: 1,
-    groupBy: ['cut'],
-    as: ['depth', 'count'],
-  },
-};
+import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 @Component({
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-tooltip crosshairs="false" inPlot="false" position="top"></v-tooltip>
       <v-axis></v-axis>
       <v-legend></v-legend>
@@ -32,8 +23,21 @@ const dataPre = {
 class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
-  data = data;
-  dataPre = dataPre;
+  data = [];
+
+  constructor() {
+    $.getJSON('/data/diamond.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'bin.histogram',
+        field: 'depth',
+        binWidth: 1,
+        groupBy: ['cut'],
+        as: ['depth', 'count'],
+      });
+      this.data = dv.rows;
+    });
+  }
 }
 
 @NgModule({

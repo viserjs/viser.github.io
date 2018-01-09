@@ -4,8 +4,9 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { label: 'Mon.', series1: 2800, series2: 2260 },
   { label: 'Tues.', series1: 1800, series2: 1300 },
   { label: 'Wed.', series1: 950, series2: 900 },
@@ -13,14 +14,14 @@ const data = [
   { label: 'Fri.', series1: 170, series2: 100 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'fold',
-    fields: [ 'series1', 'series2' ],
-    key: 'type',
-    value: 'value',
-  },
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'fold',
+  fields: ['series1', 'series2'],
+  key: 'type',
+  value: 'value',
+});
+const data = dv.rows;
 
 const label = { offset: 12 };
 const adjust = [{ type: 'dodge', marginRatio: 1 / 32 }];
@@ -29,7 +30,7 @@ const adjust = [{ type: 'dodge', marginRatio: 1 / 32 }];
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-coord type="rect" direction="LT"></v-coord>
       <v-tooltip></v-tooltip>
       <v-legend></v-legend>

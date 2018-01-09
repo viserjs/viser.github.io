@@ -1,8 +1,9 @@
 import { Chart, Tooltip, Axis, Bar, Coord, Legend } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { profession: '两年制副学士学位', highest: 110000, minimum: 23000, mean: 56636 },
   { profession: '执法与救火', highest: 120000, minimum: 18000, mean: 66625 },
   { profession: '教育学', highest: 125000, minimum: 24000, mean: 72536 },
@@ -10,18 +11,18 @@ const data = [
   { profession: '计算机科学', highest: 131000, minimum: 23000, mean: 77031 }
 ];
 
-const dataPre = {
-  transform: {
-    type: 'merge',
-    fields: ['minimum', 'highest'],
-    as: 'range',
-  },
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'merge',
+  fields: ['minimum', 'highest'],
+  as: 'range',
+});
+const data = dv.rows;
 
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit height={400} padding={[20, 80, 50, 110]} data={data} dataPre={dataPre}>
+      <Chart forceFit height={400} padding={[20, 80, 50, 110]} data={data}>
         <Coord type="rect" direction="LB" />
         <Tooltip />
         <Legend />

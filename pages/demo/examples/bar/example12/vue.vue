@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre">
+    <v-chart :force-fit="true" :height="height" :data="data">
       <v-coord :type="'rect'" :direction="'LB'" />
       <v-tooltip />
       <v-legend />
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  const data = [
+  const sourceData = [
     { 'State': 'WY', '小于5岁': 25635, '5至13岁': 1890, '14至17岁': 9314 },
     { 'State': 'DC', '小于5岁': 30352, '5至13岁': 20439, '14至17岁': 10225 },
     { 'State': 'VT', '小于5岁': 38253, '5至13岁': 42538, '14至17岁': 15757 },
@@ -19,15 +19,15 @@
     { 'State': 'AK', '小于5岁': 72083, '5至13岁': 85640, '14至17岁': 22153 }
   ];
 
-  const dataPre = {
-    transform: {
-      type: 'fold',
-      fields: ['小于5岁', '5至13岁', '14至17岁'],
-      key: '年龄段',
-      value: '人口数量',
-      retains: ['State'],
-    },
-  };
+  const dv = new DataSet.View().source(sourceData);
+  dv.transform({
+    type: 'fold',
+    fields: ['小于5岁', '5至13岁', '14至17岁'],
+    key: '年龄段',
+    value: '人口数量',
+    retains: ['State'],
+  });
+  const data = dv.rows;
 
   const label = { offset: 12 };
 
@@ -35,7 +35,6 @@
     data() {
       return {
         data,
-        dataPre,
         height: 400,
         label: label,
       };

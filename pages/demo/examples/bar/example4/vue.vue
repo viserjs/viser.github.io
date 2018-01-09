@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
       <v-legend />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  const data = [
+  const sourceData = [
     { country: 'Europe', year: '1750', value: 163 },
     { country: 'Europe', year: '1800', value: 203 },
     { country: 'Europe', year: '1850', value: 276 },
@@ -29,15 +29,15 @@
     { country: 'Asia', year: '2100', value: 7268 },
   ];
 
-  const dataPre = {
-    transform: {
-      type: 'percent',
-      field: 'value',
-      dimension: 'country',
-      groupBy: ['year'],
-      as: 'percent',
-    },
-  };
+  const dv = new DataSet.View().source(sourceData);
+  dv.transform({
+    type: 'percent',
+    field: 'value',
+    dimension: 'country',
+    groupBy: ['year'],
+    as: 'percent',
+  });
+  const data = dv.rows;
 
   const scale = [{
     dataKey: 'percent',
@@ -49,7 +49,6 @@
     data() {
       return {
         data,
-        dataPre,
         scale,
         height: 400,
         stackBarStyle: {
