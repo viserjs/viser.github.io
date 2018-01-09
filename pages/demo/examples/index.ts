@@ -480,6 +480,16 @@ const examples = {
         enName: 'Punch Card',
         cnName: 'Punch Card',
       },
+      // {
+      //   path: 'example5',
+      //   enName: 'Word Cloud',
+      //   cnName: '词云',
+      // },
+      // {
+      //   path: 'example6',
+      //   enName: 'Word Cloud Mask',
+      //   cnName: '带图片遮罩的词云',
+      // },
       {     // need release new version
         path: 'example7',
         enName: 'Pizza Chart',

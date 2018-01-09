@@ -40,10 +40,10 @@ class App extends React.Component {
     const { data } = this.state;
     const laeblFormatter = (value) => {
       return (value / 1000).toFixed(0) + 'k';
-    }; 
+    };
 
     return (
-      <Chart forceFit height={400} data={data}>
+      <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip showTitle={false} />
         <Legend dataKey="Population" show={false} />
         <Axis

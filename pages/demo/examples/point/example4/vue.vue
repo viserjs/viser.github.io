@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="400" :data="data">
+    <v-chart :force-fit="true" :height="400" :data="data" :scale="scale">
       <v-tooltip :show-title="false" />
       <v-axis :data-key="'GDP'" :label="axisLabel" />
       <v-legend :data-key="'Population'" :show="false" />
@@ -43,7 +43,7 @@
 
   const laeblFormatter = (value) => {
     return (value / 1000).toFixed(0) + 'k';
-  }; 
+  };
 
   export default {
     mounted() {
