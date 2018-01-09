@@ -1,7 +1,7 @@
 export const template =
 `<template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
       <v-legend />
@@ -12,7 +12,7 @@ export const template =
 </template>
 
 <script>
-  const data = [
+  const sourceData = [
     { country: 'Asia', year: '1750', value: 502 },
     { country: 'Asia', year: '1800', value: 635 },
     { country: 'Asia', year: '1850', value: 809 },
@@ -36,15 +36,15 @@ export const template =
     { country: 'Europe', year: '2050', value: 628 },
   ];
 
-  const dataPre = {
-    transform: {
-      type: 'percent',
-      field: 'value',
-      dimension: 'country',
-      groupBy: ['year'],
-      as: 'percent',
-    },
-  };
+  const dv = new DataSet.View().source(sourceData);
+  dv.transform({
+    type: 'percent',
+    field: 'value',
+    dimension: 'country',
+    groupBy: ['year'],
+    as: 'percent',
+  });
+  const data = dv.rows;
 
   const scale = [{
     dataKey: 'year',
@@ -64,7 +64,6 @@ export const template =
     data() {
       return {
         data,
-        dataPre,
         scale,
         height: 400,
       };

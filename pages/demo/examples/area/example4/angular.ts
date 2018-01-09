@@ -4,8 +4,9 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { country: 'Asia', year: '1750', value: 502 },
   { country: 'Asia', year: '1800', value: 635 },
   { country: 'Asia', year: '1850', value: 809 },
@@ -29,15 +30,16 @@ const data = [
   { country: 'Europe', year: '2050', value: 628 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'percent',
-    field: 'value',
-    dimension: 'country',
-    groupBy: ['year'],
-    as: 'percent',
-  }
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'percent',
+  field: 'value',
+  dimension: 'country',
+  groupBy: ['year'],
+  as: 'percent',
+});
+const data = dv.rows;
+
 
 const scale = [{
   dataKey: 'year',
@@ -57,7 +59,7 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
       <v-legend></v-legend>
@@ -71,7 +73,6 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
-  dataPre = dataPre;
   scale = scale;
 }
 

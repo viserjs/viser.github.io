@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :show-title="false" :item-tpl="itemTpl" />
       <v-coord :type="'theta'" :radius="0.5" />
       <v-pie :position="'percent'" :color="'type'" :label="label" :select="false" :style="style" :tooltip="tooltip" />
-      <v-view :view-id="2" :data-pre="viewDataPre" :scale="scale">
+      <v-view :view-id="2" :data="viewData" :scale="scale">
         <v-coord :type="'theta'" :radius="0.75" :inner-radius="0.5 / 0.75" />
         <v-pie :position="'percent'" :color="color" :label="'name'" :select="false" :style="style" :tooltip="tooltip" />
       </v-view>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  const data = [
+  const sourceData = [
     { value: 251, type: '大事例一', name: '子事例一' },
     { value: 1048, type: '大事例一', name: '子事例二' },
     { value: 610, type: '大事例二', name: '子事例三' },
@@ -22,23 +22,23 @@
     { value: 250, type: '大事例三', name: '子事例六' },
   ];
 
-  const dataPre = {
-    transform: {
-      type: 'percent',
-      field: 'value',
-      dimension: 'type',
-      as: 'percent',
-    },
-  };
+  const dv = new DataSet.View().source(sourceData);
+  dv.transform({
+    type: 'percent',
+    field: 'value',
+    dimension: 'type',
+    as: 'percent',
+  });
+  const data = dv.rows;
 
-  const viewDataPre = {
-    transform: {
-      type: 'percent',
-      field: 'value',
-      dimension: 'name',
-      as: 'percent',
-    },
-  };
+  const viewDv = new DataSet.View().source(sourceData);
+  viewDv.transform({
+    type: 'percent',
+    field: 'value',
+    dimension: 'name',
+    as: 'percent'
+  });
+  const viewData = dv.rows;
 
   const scale = {
     dataType: 'percent',
@@ -70,9 +70,8 @@
     data() {
       return {
         data,
-        dataPre,
         scale,
-        viewDataPre,
+        viewData,
         height: 400,
         itemTpl,
         tooltip,

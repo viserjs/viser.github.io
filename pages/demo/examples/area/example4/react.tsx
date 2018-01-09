@@ -1,8 +1,9 @@
 import { Chart, Tooltip, Axis, Legend, StackArea, Line } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { country: 'Asia', year: '1750', value: 502 },
   { country: 'Asia', year: '1800', value: 635 },
   { country: 'Asia', year: '1850', value: 809 },
@@ -26,15 +27,15 @@ const data = [
   { country: 'Europe', year: '2050', value: 628 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'percent',
-    field: 'value',
-    dimension: 'country',
-    groupBy: ['year'],
-    as: 'percent',
-  }
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'percent',
+  field: 'value',
+  dimension: 'country',
+  groupBy: ['year'],
+  as: 'percent',
+});
+const data = dv.rows;
 
 const scale = [{
   dataKey: 'year',
@@ -54,7 +55,7 @@ const scale = [{
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
+      <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip />
         <Axis dataKey="value" />
         <Legend />

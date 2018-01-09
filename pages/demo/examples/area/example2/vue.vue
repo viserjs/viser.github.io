@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :crosshairs="{ type: 'line' }" />
       <v-axis :data-key="'value'" />
       <v-legend />
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  const data = [
+  const sourceData = [
     { year: '1996',  north: 322, south: 162 },
     { year: '1997',  north: 324, south: 90 },
     { year: '1998',  north: 329, south: 50 },
@@ -34,14 +34,14 @@
     { year: '2015',  north: 334, south: -184 },
   ];
 
-  const dataPre = {
-    transform: {
-      type: 'fold',
-      fields: ['north', 'south'],
-      key: 'type',
-      value: 'value',
-    }
-  };
+  const dv = new DataSet.View().source(sourceData);
+  dv.transform({
+    type: 'fold',
+    fields: ['north', 'south'],
+    key: 'type',
+    value: 'value',
+  });
+  const data = dv.rows;
 
   const scale = [{
     dataKey: 'year',
@@ -53,7 +53,6 @@
     data() {
       return {
         data,
-        dataPre,
         scale,
         height: 400,
       };

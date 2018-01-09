@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
       <v-legend />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  const data = [
+  const sourceData = [
     { month: 'Jan', series2: 51, series1: 125 },
     { month: 'Feb', series2: 91, series1: 132 },
     { month: 'Mar', series2: 34, series1: 141 },
@@ -25,14 +25,14 @@
     { month: 'Dec', series2: 56, series1: 91 },
   ];
 
-  const dataPre = {
-    transform: {
-      type: 'fold',
-      fields: ['series1', 'series2'],
-      key: 'key',
-      value: 'value',
-    },
-  };
+  const dv = new DataSet.View().source(sourceData);
+  dv.transform({
+    type: 'fold',
+    fields: ['series1', 'series2'],
+    key: 'key',
+    value: 'value',
+  });
+  const data = dv.rows;
 
   const scale = [{
     dataKey: 'month',

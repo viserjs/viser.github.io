@@ -4,8 +4,9 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { month: 'Jan', series2: 51, series1: 125 },
   { month: 'Feb', series2: 91, series1: 132 },
   { month: 'Mar', series2: 34, series1: 141 },
@@ -20,14 +21,14 @@ const data = [
   { month: 'Dec', series2: 56, series1: 91 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'fold',
-    fields: ['series1', 'series2'],
-    key: 'key',
-    value: 'value',
-  },
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'fold',
+  fields: ['series1', 'series2'],
+  key: 'key',
+  value: 'value',
+});
+const data = dv.rows;
 
 const scale = [{
   dataKey: 'month',
@@ -39,7 +40,7 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
       <v-legend></v-legend>
@@ -52,7 +53,6 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
-  dataPre= dataPre;
   scale = scale;
 }
 
