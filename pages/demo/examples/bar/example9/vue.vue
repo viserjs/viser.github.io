@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { data } from './data';
+  import * as $ from 'jquery';
 
   const dataPre = {
     transform: {
@@ -26,9 +26,14 @@
   }];
 
   export default {
+    mounted() {
+      $.getJSON('/data/diamond.json', (data) => {
+        this.$data.data = data;
+      });
+    },
     data() {
       return {
-        data,
+        data: [],
         dataPre,
         scale,
         height: 400,

@@ -4,7 +4,7 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-import { data } from './data';
+import * as $ from 'jquery';
 
 const dataPre = {
   transform: {
@@ -32,8 +32,14 @@ const dataPre = {
 class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
-  data = data;
+  data = [];
   dataPre = dataPre;
+
+  constructor() {
+    $.getJSON('/data/diamond.json', (data) => {
+      this.data = data;
+    });
+  }
 }
 
 @NgModule({
