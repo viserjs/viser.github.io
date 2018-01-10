@@ -29,6 +29,8 @@ class App extends React.Component {
   }
 
   render() {
+    const { data } = this.state;
+
     return (
       <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip crosshairs={false} inPlot={false} position="top" />
