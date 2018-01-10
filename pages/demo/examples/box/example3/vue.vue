@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
-      <v-tooltip :crosshairs="tooltipOpts.crosshairs"/>
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
+      <v-tooltip :crosshairs="tooltipOpts.crosshairs" />
       <v-axis />
       <v-legend :marker="'circle'" />
       <v-box :position="'type*_bin'" :adjust="'dodge'" :vStyle="seriesStyle" :color="seriesColor" />
@@ -11,19 +11,7 @@
 
 <script>
 import * as $ from 'jquery';
-const dataPre = {
-  transform: [{
-      type: 'fold',
-      fields: ['SepalLength','SepalWidth','PetalLength','PetalWidth'],
-      key: 'type',
-      value: 'value'
-  }, {
-      type: 'bin.quantile',
-      field: 'value',
-      as: '_bin',
-      groupBy: ['Species', 'type'],
-  }]
-};
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'range',
@@ -62,13 +50,25 @@ const seriesStyle = ['Species', {
 export default {
   mounted() {
     $.getJSON('/data/box-3.json', (data) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'fold',
+        fields: ['SepalLength','SepalWidth','PetalLength','PetalWidth'],
+        key: 'type',
+        value: 'value'
+      })
+      .transform({
+        type: 'bin.quantile',
+        field: 'value',
+        as: '_bin',
+        groupBy: ['Species', 'type'],
+      });
       this.$data.data = data;
     });
   },
   data() {
     return {
       data: [],
-      dataPre,
       scale,
       height: 400,
       colorMap,

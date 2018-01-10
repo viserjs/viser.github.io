@@ -1,27 +1,28 @@
 import { Chart, Tooltip, Axis, Box, LiteChart } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+const DataSet = require('@antv/data-set');
 
-const data = [
-    { x: 'Oceania', low: 1, q1: 9, median: 16, q3: 22, high: 24 },
-    { x: 'East Europe', low: 1, q1: 5, median: 8, q3: 12, high: 16 },
-    { x: 'Australia', low: 1, q1: 8, median: 12, q3: 19, high: 26 },
-    { x: 'South America', low: 2, q1: 8, median: 12, q3: 21, high: 28 },
-    { x: 'North Africa', low: 1, q1: 8, median: 14, q3: 18, high: 24 },
-    { x: 'North America', low: 3, q1: 10, median: 17, q3: 28, high: 30 },
-    { x: 'West Europe', low: 1, q1: 7, median: 10, q3: 17, high: 22 },
-    { x: 'West Africa', low: 1, q1: 6, median: 8, q3: 13, high: 16 }
+const sourceData = [
+  { x: 'Oceania', low: 1, q1: 9, median: 16, q3: 22, high: 24 },
+  { x: 'East Europe', low: 1, q1: 5, median: 8, q3: 12, high: 16 },
+  { x: 'Australia', low: 1, q1: 8, median: 12, q3: 19, high: 26 },
+  { x: 'South America', low: 2, q1: 8, median: 12, q3: 21, high: 28 },
+  { x: 'North Africa', low: 1, q1: 8, median: 14, q3: 18, high: 24 },
+  { x: 'North America', low: 3, q1: 10, median: 17, q3: 28, high: 30 },
+  { x: 'West Europe', low: 1, q1: 7, median: 10, q3: 17, high: 22 },
+  { x: 'West Africa', low: 1, q1: 6, median: 8, q3: 13, high: 16 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'map',
-    callback: (obj) => {
-      obj.range = [ obj.low, obj.q1, obj.median, obj.q3, obj.high ];
-      return obj;
-    }
-  }
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'map',
+  callback: (obj) => {
+    obj.range = [ obj.low, obj.q1, obj.median, obj.q3, obj.high ];
+    return obj;
+  },
+});
+const data = dv.rows;
 
 const scale = [{
   dataKey: 'range',
@@ -66,7 +67,7 @@ class App extends React.Component {
     }];
     return (
       <div>
-        <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
+        <Chart forceFit height={400} data={data} scale={scale}>
           <Tooltip {...tooltipOpts} />
           <Axis />
           <Box position='x*range' style={boxStyle} tooltip={boxTooltip} />

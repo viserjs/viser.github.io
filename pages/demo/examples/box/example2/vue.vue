@@ -1,18 +1,20 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="height" :data="data"  :data-pre="dataPre" :scale="scale">
-      <v-tooltip :showTitle="tooltipOpts.showTitle" :crosshairs="tooltipOpts.crosshairs" :itemTpl="tooltipOpts.itemTpl"/>
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
+      <v-tooltip :showTitle="tooltipOpts.showTitle" :crosshairs="tooltipOpts.crosshairs" :itemTpl="tooltipOpts.itemTpl" />
       <v-axis />
       <v-box :position="'x*range'" :vStyle="boxStyle" :tooltip="boxTooltip" />
-      <v-view :view-id="4" :data="data"  :data-pre="dataPre" :scale="scale">
-        <v-point :position="'x*outliers'" :size="3" :active="false"/>
+      <v-view :view-id="4" :data="data" :scale="scale">
+        <v-point :position="'x*outliers'" :size="3" :active="false" />
       </v-view>
     </v-chart>
   </div>
 </template>
 
 <script>
-const data = [
+const DataSet = require('@antv/data-set');
+
+const sourceData = [
   { x: '职业 A', low: 20000, q1: 26000, median: 27000, q3: 32000, high: 38000, outliers: [50000, 52000] },
   { x: '职业 B', low: 40000, q1: 49000, median: 62000, q3: 73000, high: 88000, outliers: [32000, 29000, 106000] },
   { x: '职业 C', low: 52000, q1: 59000, median: 65000, q3: 74000, high: 83000, outliers: [91000] },
@@ -20,18 +22,18 @@ const data = [
   { x: '职业 E', low: 24000, q1: 28000, median: 32000, q3: 38000, high: 42000, outliers: [48000] },
   { x: '职业 F', low: 47000, q1: 56000, median: 69000, q3: 85000, high: 100000, outliers: [110000, 115000, 32000] },
   { x: '职业 G', low: 64000, q1: 74000, median: 83000, q3: 93000, high: 100000, outliers: [110000] },
-  { x: '职业 H', low: 67000, q1: 72000, median: 84000, q3: 95000, high: 110000, outliers: [57000, 54000] },
+  { x: '职业 H', low: 67000, q1: 72000, median: 84000, q3: 95000, high: 110000, outliers: [57000, 54000] }
 ];
 
-const dataPre = {
-  transform: {
-    type: 'map',
-    callback: (obj) => {
-      obj.range = [obj.low, obj.q1, obj.median, obj.q3, obj.high];
-      return obj;
-    }
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'map',
+  callback: (obj) => {
+    obj.range = [obj.low, obj.q1, obj.median, obj.q3, obj.high];
+    return obj;
   }
-};
+});
+const data = dv.rows;
 
 const scale = [{
   dataKey: 'range',
@@ -80,7 +82,6 @@ export default {
   data() {
     return {
       data,
-      dataPre,
       scale,
       height: 400,
       tooltipOpts,

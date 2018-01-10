@@ -1,8 +1,9 @@
 import { Chart, Tooltip, Axis, Box, Legend, Pyramid, Coord } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { action: '浏览网站', pv: 50000 },
   { action: '放入购物车', pv: 35000 },
   { action: '生成订单', pv: 25000 },
@@ -10,14 +11,15 @@ const data = [
   { action: '完成交易', pv: 8000 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'percent',
-    field: 'pv',
-    dimension: 'action',
-    as: 'percent',
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'map',
+  callback: (obj) => {
+    obj.range = [obj.low, obj.q1, obj.median, obj.q3, obj.high];
+    return obj;
   },
-};
+});
+const data = dv.rows;
 
 const scale = {
   dataKey: 'percent',
@@ -37,7 +39,7 @@ class App extends React.Component {
     };
 
     const funnelOpts = {
-      color: ['action', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ]],
+      color: ['action', ['#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF']],
       position: 'action*pv',
       label: ['action*pv', (action, pv) => {
         return action + ' ' + pv;
@@ -57,7 +59,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
+        <Chart forceFit height={400} data={data} scale={scale}>
           <Tooltip {...tooltipOpts} />
           <Legend />
           <Coord type='rect' direction='LT' />

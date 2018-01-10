@@ -5,20 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
-
-const dataPre = {
-  transform: [{
-    type: 'fold',
-    fields: ['SepalLength','SepalWidth','PetalLength','PetalWidth'],
-    key: 'type',
-    value: 'value'
-  }, {
-    type: 'bin.quantile',
-    field: 'value',
-    as: '_bin',
-    groupBy: ['Species', 'type'],
-  }]
-};
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'range',
@@ -58,7 +45,7 @@ const seriesStyle = ['Species', {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip [crosshairs]="tooltipOpts.crosshairs"></v-tooltip>
       <v-axis></v-axis>
       <v-legend marker="circle"></v-legend>
@@ -71,7 +58,6 @@ class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
   data = [];
-  dataPre = dataPre;
   scale = scale;
   colorMap = colorMap;
   tooltipOpts = tooltipOpts;
@@ -79,8 +65,22 @@ class AppComponent {
   seriesStyle = seriesStyle;
 
   constructor() {
-    $.getJSON('/data/box-3.json', (data) => {
-      this.data = data;
+    $.getJSON('/data/box-3.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'fold',
+        fields: ['SepalLength','SepalWidth','PetalLength','PetalWidth'],
+        key: 'type',
+        value: 'value'
+      })
+      .transform({
+        type: 'bin.quantile',
+        field: 'value',
+        as: '_bin',
+        groupBy: ['Species', 'type'],
+      });
+
+      this.data = dv.rows;
     });
   }
 }

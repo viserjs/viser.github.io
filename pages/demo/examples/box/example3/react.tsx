@@ -2,6 +2,7 @@ import { Chart, Tooltip, Axis, Box, Legend, Point } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const dataPre = {
   transform: [{
@@ -38,8 +39,21 @@ class App extends React.Component {
     data: [],
   };
   componentDidMount() {
-    $.getJSON('/data/box-3.json', (data) => {
-      this.setState({ data });
+    $.getJSON('/data/box-3.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'fold',
+        fields: ['SepalLength','SepalWidth','PetalLength','PetalWidth'],
+        key: 'type',
+        value: 'value'
+      })
+      .transform({
+        type: 'bin.quantile',
+        field: 'value',
+        as: '_bin',
+        groupBy: ['Species', 'type'],
+      });
+      this.setState({ data: dv.rows });
     });
   }
   render() {

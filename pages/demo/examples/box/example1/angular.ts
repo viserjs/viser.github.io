@@ -4,8 +4,9 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { x: 'Oceania', low: 1, q1: 9, median: 16, q3: 22, high: 24 },
   { x: 'East Europe', low: 1, q1: 5, median: 8, q3: 12, high: 16 },
   { x: 'Australia', low: 1, q1: 8, median: 12, q3: 19, high: 26 },
@@ -16,15 +17,15 @@ const data = [
   { x: 'West Africa', low: 1, q1: 6, median: 8, q3: 13, high: 16 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'map',
-    callback: (obj) => {
-      obj.range = [ obj.low, obj.q1, obj.median, obj.q3, obj.high ];
-      return obj;
-    },
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'map',
+  callback: (obj) => {
+    obj.range = [ obj.low, obj.q1, obj.median, obj.q3, obj.high ];
+    return obj;
   },
-};
+});
+const data = dv.rows;
 
 const scale = [{
   dataKey: 'range',
@@ -68,7 +69,7 @@ const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) =>
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip [showTitle]="tooltipOpts.showTitle" [crosshairs]="tooltipOpts.crosshairs" [itemTpl]="tooltipOpts.itemTpl"></v-tooltip>
       <v-axis></v-axis>
       <v-box position="x*range" [style]="boxStyle" [tooltip]="boxTooltip"></v-box>
@@ -81,7 +82,6 @@ class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
   data = data;
-  dataPre = dataPre;
   scale = scale;
   tooltipOpts = tooltipOpts;
   boxStyle = boxStyle;
