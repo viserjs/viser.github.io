@@ -52,7 +52,7 @@ const axis2GridOpts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-axis dataKey="item" line="null" tickLine="null" [grid]="axis1GridOpts"></v-axis>
       <v-axis dataKey="score" line="null" tickLine="null" [grid]="axis2GridOpts"></v-axis>
@@ -68,7 +68,6 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
-  dataPre = dataPre;
   scale = scale;
   axis1GridOpts = axis1GridOpts;
   axis2GridOpts = axis2GridOpts;

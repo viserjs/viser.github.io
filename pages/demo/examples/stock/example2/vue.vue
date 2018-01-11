@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data-pre="dataPre" :data="data" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :crosshairs="tooltipOpts.crosshairs"/>
       <v-axis :data-key="'mean'" :show="false"/>
       <v-axis :data-key="'stockRange'" :show="false"/>
@@ -13,6 +13,7 @@
 
 <script>
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'date',
@@ -38,16 +39,6 @@ const scale = [{
   nice: false
 }];
 
-const dataPre = {
-  transform: [{
-    type: 'map',
-    callback: obj => {
-      obj.stockRange = [ obj.start, obj.end, obj.highest, obj.lowest ];
-      return obj;
-    }
-  }]
-};
-
 const tooltipOpts = {
   crosshairs: {
     type: 'line'
@@ -66,8 +57,16 @@ const color = ['trend', val => {
 
 export default {
   mounted() {
-    $.getJSON('/data/stock-2.json', (data) => {
-      this.$data.data = data;
+    $.getJSON('/data/stock-2.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'map',
+        callback: (obj) => {
+          obj.stockRange = [obj.start, obj.end, obj.highest, obj.lowest];
+          return obj;
+        }
+      });
+      this.$data.data = dv.rows;
     });
   },
   data() {
@@ -75,7 +74,6 @@ export default {
       height: 600,
       data: [],
       scale,
-      dataPre,
       tooltipOpts,
       color,
     };

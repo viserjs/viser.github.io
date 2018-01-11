@@ -13,7 +13,7 @@ const sourceData = [
   { item: 'Technology', a: 50, b: 40 },
   { item: 'Support', a: 30, b: 40 },
   { item: 'Sales', a: 60, b: 40 },
-  { item: 'UX', a: 50, b: 60 },
+  { item: 'UX', a: 50, b: 60 }
 ];
 
 const dv = new DataSet.View().source(sourceData);

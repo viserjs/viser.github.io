@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre">
+    <v-chart :force-fit="true" :height="height" :data="data">
       <v-legend :offset="40" />
       <v-axis :data-key="axis1Opts.dataKey" :grid="axis1Opts.grid" />
       <v-tooltip :show-title="false" :crosshairs="false" />
@@ -48,7 +48,6 @@ export default {
   data() {
     return {
       data: [],
-      dataPre,
       height: 400,
       axis1Opts,
       seriesOpts,

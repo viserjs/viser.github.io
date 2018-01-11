@@ -12,15 +12,6 @@
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 
-const dataPre = {
-  transform: {
-    sizeByCount: '$state.sizeEncoding',
-    type: 'bin.rectangle',
-    fields: ['x', 'y'],
-    bins: [20, 10],
-  },
-};
-
 const seriesOpts = {
   quickType: 'polygon',
   color: ['count', '#BAE7FF-#1890FF-#0050B3'],

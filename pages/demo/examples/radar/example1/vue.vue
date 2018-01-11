@@ -1,5 +1,4 @@
-export const template =
-`<template>
+<template>
 <div>
   <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
     <v-tooltip />
@@ -17,7 +16,7 @@ export const template =
 <script>
 const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { item: 'Design', a: 70, b: 30 },
   { item: 'Development', a: 60, b: 70 },
   { item: 'Marketing', a: 50, b: 60 },
@@ -80,4 +79,3 @@ export default {
   }
 };
 </script>
-`;

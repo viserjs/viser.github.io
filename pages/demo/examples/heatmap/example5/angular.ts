@@ -7,13 +7,6 @@ import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 
-const dataPre = {
-  transform: {
-    type: 'bin.rectangle',
-    fields: [ 'carat', 'price' ]
-  }
-};
-
 const seriesOpts = {
   quickType: 'polygon',
   color: ['count', [ '#BAE7FF', '#1890FF', '#0050B3' ]],
@@ -24,7 +17,7 @@ const seriesOpts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-legend [offset]="40"></v-legend>
       <v-axis></v-axis>
       <v-tooltip [showTitle]="false"></v-tooltip>
@@ -38,7 +31,6 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = [];
-  dataPre = dataPre;
   seriesOpts = seriesOpts;
 
   constructor() {
