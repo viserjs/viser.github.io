@@ -2,6 +2,7 @@ import { Chart, Tooltip, Coord, View, Polygon, Point } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const tooltipOpts = {
   showTitle: false,
@@ -37,7 +38,27 @@ class App extends React.Component {
       $.getJSON('/data/worldGeo.json'),
       $.getJSON('/data/map-1.json')
     ).then((geoData, data) => {
-      this.setState({ geoData: geoData[0], data: data[0] });
+      const dv = new DataSet.View().source(geoData[0], {
+          type: 'GeoJSON'
+      }).transform({
+        type: 'geo.projection',
+        projection: 'geoMercator',
+        as: ['x', 'y', 'centroidX', 'centroidY'],
+      });
+
+      const userData = new DataSet.View().source(data[0]).transform({
+        type: 'map',
+        callback: (obj) => {
+          const projectedCoord = dv.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
+          obj.x = projectedCoord[0];
+          obj.y = projectedCoord[1];
+          obj.deaths = obj.deaths * 1;
+          obj.magnitude = obj.magnitude * 1;
+          return obj;
+        }
+      });
+
+      this.setState({ geoData: dv, data: userData});
     });
   }
 
@@ -48,40 +69,12 @@ class App extends React.Component {
       return (<div>Loading ...</div>);
     }
 
-    const bgDataPre = {
-      connector: {
-        type: 'GeoJSON'
-      },
-      transform: {
-        type: 'geo.projection',
-        projection: 'geoMercator',
-        as: ['x', 'y', 'centroidX', 'centroidY'],
-      },
-    };
-
-    const userDataPre = (dv) => {
-      const geo = dv['111'];
-      return {
-        transform: {
-          type: 'map',
-          callback: (obj) => {
-            const projectedCoord = geo.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
-            obj.x = projectedCoord[0];
-            obj.y = projectedCoord[1];
-            obj.deaths = obj.deaths * 1;
-            obj.magnitude = obj.magnitude * 1;
-            return obj;
-          }
-        },
-      }
-    };
-
     return (
       <div>
-        <Chart forceFit height={600} padding={[0, 20, 40]} data={geoData} dataPre={bgDataPre} scale={scale}>
+        <Chart forceFit height={600} padding={[0, 20, 40]} data={geoData} scale={scale}>
           <Coord type={'rect'} direction={'TL'} />
           <Tooltip {...tooltipOpts}/>
-          <View viewId='111' data={geoData} dataPre={bgDataPre} scale={scale}>
+          <View viewId='111' data={geoData} scale={scale}>
             <Polygon position='x*y' style={{
               fill: '#DDDDDD',
               stroke: '#fff',
@@ -89,7 +82,7 @@ class App extends React.Component {
               fillOpacity: 0.85,
             }} tooltip={false}/>
           </View>
-          <View viewId='122' data={data} dataPre={userDataPre}>
+          <View data={data}>
             <Point position='x*y' size={['deaths', [2, 30]]} opacity={0.45} color='#FF2F29' tooltip='date*location*lat*lng*deaths*magnitude'/>
           </View>
         </Chart>

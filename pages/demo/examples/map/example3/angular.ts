@@ -6,17 +6,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
+const DataSet = require('@antv/data-set');
 
 @Component({
   selector: '#mount',
   template: `
   <div *ngIf="data.length; else loading" style="width: 50%; height: 400px; position: absolute; right: 0px; top: 0px;">
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="padding" [data]="geoData" [dataPre]="bgDataPre">
+    <v-chart [forceFit]="forceFit" [height]="height" [padding]="padding" [data]="geoData">
       <v-tooltip [showTitle]="showTitle"></v-tooltip>
-      <v-view viewId="111" [data]="geoData" [dataPre]="bgDataPre">
+      <v-view [data]="geoData">
         <div></div>
       </v-view>
-      <v-view viewId="122" [data]="data" [dataPre]="userDataPre">
+      <v-view [data]="data">
         <v-polygon [position]="polygonOpts.position" [label]="polygonOpts.label" [style]="polygonOpts.style" [color]="polygonOpts.color"></v-polygon>
       </v-view>
     </v-chart>
@@ -32,24 +33,6 @@ class AppComponent {
   padding = [55, 20];
   data = [];
   geoData = {};
-  bgDataPre = {
-    connector: {
-      type: 'GeoJSON'
-    }
-  };
-
-  userDataPre = (dv) => {
-    const geo = dv['111'];
-    return {
-      transform: [{
-        type: 'geo.region',
-        field: 'name',
-        geoDataView: geo,
-        as: ['longitude', 'lantitude'],
-      }
-      ],
-    };
-  };
 
   colors = [ "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac" ];
 
@@ -167,8 +150,23 @@ class AppComponent {
           value: Math.round(Math.random() * 1000),
         });
       }
-      self.geoData = mapData;
-      self.data = userData;
+
+      const ds = new DataSet();
+      const geoDataView = ds.createView().source(mapData, {
+        type: 'GeoJSON',
+      }); // geoJSON 经纬度数据
+
+      // 用户数据
+      const dvData = ds.createView().source(userData);
+      dvData.transform({
+        type: 'geo.region',
+        field: 'name',
+        geoDataView: geoDataView,
+        as: ['longitude', 'lantitude'],
+      });
+
+      self.geoData = geoDataView;
+      self.data = dvData;
       self.name = name;
 
       if (callback) {

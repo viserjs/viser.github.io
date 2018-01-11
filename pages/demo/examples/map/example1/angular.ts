@@ -5,19 +5,20 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 @Component({
   selector: '#mount',
   template: `
   <div *ngIf="data.length; else loading">
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[0, 20, 40]" [data]="geoData" [dataPre]="bgDataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[0, 20, 40]" [data]="geoData" [scale]="scale">
       <v-coord type="rect" direction="TL" ></v-coord>
       <v-tooltip [showTitle]="tooltipOpts.showTitle" [containerTpl]="tooltipOpts.containerTpl" [itemTpl]="tooltipOpts.itemTpl" [g2Tooltip]="tooltipOpts.g2Tooltip"></v-tooltip>
-      <v-view viewId="111" [data]="geoData" [dataPre]="bgDataPre" [scale]="scale">
-        <v-polygon [position]="view1Opts.position" [style]="view1Opts.style" viewId="111" [tooltip]="view1Opts.tooltip"></v-polygon>
+      <v-view [data]="geoData" [scale]="scale">
+        <v-polygon [position]="view1Opts.position" [style]="view1Opts.style" [tooltip]="view1Opts.tooltip"></v-polygon>
       </v-view>
-      <v-view viewId="122" [data]="data" [dataPre]="userDataPre">
-        <v-point viewId="122" [position]="view2Opts.position" [size]="view2Opts.size" [opacity]="view2Opts.opacity" [color]="view2Opts.color" [tooltip]="view2Opts.tooltip"></v-point>
+      <v-view  [data]="data">
+        <v-point [position]="view2Opts.position" [size]="view2Opts.size" [opacity]="view2Opts.opacity" [color]="view2Opts.color" [tooltip]="view2Opts.tooltip"></v-point>
       </v-view>
     </v-chart>
   </div>
@@ -53,34 +54,6 @@ class AppComponent {
     nice: false,
   }];
 
-  bgDataPre = {
-    connector: {
-      type: 'GeoJSON'
-    },
-    transform: {
-      type: 'geo.projection',
-      projection: 'geoMercator',
-      as: ['x', 'y', 'centroidX', 'centroidY'],
-    },
-  };
-
-  userDataPre = (dv) => {
-    const geo = dv['111'];
-    return {
-      transform: {
-        type: 'map',
-        callback: (obj) => {
-          const projectedCoord = geo.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
-          obj.x = projectedCoord[0];
-          obj.y = projectedCoord[1];
-          obj.deaths = obj.deaths * 1;
-          obj.magnitude = obj.magnitude * 1;
-          return obj;
-        }
-      },
-    }
-  };
-
   view1Opts = {
     quickType: 'polygon',
     position: 'x*y',
@@ -104,8 +77,28 @@ class AppComponent {
 
   constructor() {
     $.when($.getJSON('/data/worldGeo.json'),$.getJSON('/data/map-1.json')).then((geoData, data) => {
-      this.geoData = geoData[0];
-      this.data = data[0];
+      const dv = new DataSet.View().source(geoData[0], {
+          type: 'GeoJSON'
+      }).transform({
+        type: 'geo.projection',
+        projection: 'geoMercator',
+        as: ['x', 'y', 'centroidX', 'centroidY'],
+      });
+
+      const userData = new DataSet.View().source(data[0]).transform({
+        type: 'map',
+        callback: (obj) => {
+          const projectedCoord = dv.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
+          obj.x = projectedCoord[0];
+          obj.y = projectedCoord[1];
+          obj.deaths = obj.deaths * 1;
+          obj.magnitude = obj.magnitude * 1;
+          return obj;
+        }
+      });
+
+      this.geoData = dv;
+      this.data = userData;
     });
   }
 }
