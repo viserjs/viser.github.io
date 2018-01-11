@@ -5,13 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
-
-const dataPre = {
-  transform: {
-    type: 'bin.rectangle',
-    fields: [ 'carat', 'price' ]
-  }
-};
+const DataSet = require('@antv/data-set');
 
 const seriesOpts = {
   quickType: 'polygon',
@@ -23,7 +17,7 @@ const seriesOpts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-legend [offset]="40"></v-legend>
       <v-axis></v-axis>
       <v-tooltip [showTitle]="false"></v-tooltip>
@@ -37,12 +31,16 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = [];
-  dataPre = dataPre;
   seriesOpts = seriesOpts;
 
   constructor() {
-    $.getJSON('/data/heatmap-5.json', (data) => {
-      this.data = data;
+    $.getJSON('/data/heatmap-5.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'bin.rectangle',
+        fields: ['carat', 'price']
+      });
+      this.data = dv.rows;
     });
   }
 }

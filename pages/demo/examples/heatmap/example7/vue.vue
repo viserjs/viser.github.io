@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre">
+    <v-chart :force-fit="true" :height="height" :data="data">
       <v-legend :offset="40" />
       <v-axis :data-key="axis1Opts.dataKey" :grid="axis1Opts.grid" />
       <v-tooltip :show-title="false" :crosshairs="false" />
@@ -10,14 +10,8 @@
 </template>
 <script>
 import * as $ from 'jquery';
-const dataPre = {
-  transform: {
-    sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
-    type: 'bin.hexagon',
-    fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
-    bins: [ 10, 5 ]
-  }
-};
+const DataSet = require('@antv/data-set');
+
 const axis1Opts = {
   dataKey: 'x',
   grid: {
@@ -41,13 +35,19 @@ const seriesOpts = {
 export default {
   mounted() {
     $.getJSON('/data/heatmap-7.json', (data) => {
-      this.$data.data = data;
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
+        type: 'bin.hexagon',
+        fields: ['x', 'y'], // 对应坐标轴上的一个点
+        bins: [10, 5]
+      });
+      this.$data.data = dv.rows;
     });
   },
   data() {
     return {
       data: [],
-      dataPre,
       height: 400,
       axis1Opts,
       seriesOpts,

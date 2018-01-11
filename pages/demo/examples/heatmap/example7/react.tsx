@@ -2,23 +2,22 @@ import { Chart, Axis, Legend, Tooltip, Polygon } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as $ from 'jquery';
-
-const dataPre = {
-  transform: {
-    sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
-    type: 'bin.hexagon',
-    fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
-    bins: [ 10, 5 ]
-  }
-};
+const DataSet = require('@antv/data-set');
 
 class App extends React.Component {
   state = {
     data: [],
   };
   componentDidMount() {
-    $.getJSON('/data/heatmap-7.json', (data) => {
-      this.setState({ data });
+    $.getJSON('/data/heatmap-7.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
+        type: 'bin.hexagon',
+        fields: ['x', 'y'], // 对应坐标轴上的一个点
+        bins: [10, 5]
+      });
+      this.setState({ data: dv.rows });
     });
   }
   render() {
@@ -44,7 +43,7 @@ class App extends React.Component {
     };
     return (
       <div>
-        <Chart forceFit height={400} data={data} dataPre={dataPre}>
+        <Chart forceFit height={400} data={data}>
           <Legend offset={40}/>
           <Tooltip showTitle={false} crosshairs={false}/>
           <Axis {...axis1Opts}/>

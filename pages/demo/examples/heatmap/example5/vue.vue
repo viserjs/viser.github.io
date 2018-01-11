@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre">
+    <v-chart :force-fit="true" :height="height" :data="data">
       <v-legend :offset="40"/>
       <v-axis />
       <v-tooltip :show-title="false"/>
@@ -11,12 +11,7 @@
 
 <script>
 import * as $ from 'jquery';
-const dataPre = {
-  transform: {
-    type: 'bin.rectangle',
-    fields: [ 'carat', 'price' ]
-  }
-};
+const DataSet = require('@antv/data-set');
 
 const seriesOpts = {
   quickType: 'polygon',
@@ -27,7 +22,12 @@ const seriesOpts = {
 export default {
   mounted() {
     $.getJSON('/data/heatmap-5.json', (data) => {
-      this.$data.data = data;
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'bin.rectangle',
+        fields: [ 'carat', 'price' ]
+      });
+      this.$data.data = dv.rows;
     });
   },
   data() {

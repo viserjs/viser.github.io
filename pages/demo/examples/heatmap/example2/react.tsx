@@ -2,6 +2,7 @@ import { Chart, Axis, Legend, Polygon } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const dataPre = {
   transform: {
@@ -17,8 +18,15 @@ class App extends React.Component {
     data: [],
   };
   componentDidMount() {
-    $.getJSON('/data/heatmap-2.json', (data) => {
-      this.setState({ data });
+    $.getJSON('/data/heatmap-2.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        sizeByCount: '$state.sizeEncoding',
+        type: 'bin.rectangle',
+        fields: ['x', 'y'],
+        bins: [20, 10],
+      });
+      this.setState({ data: dv.rows });
     });
   }
   render() {
