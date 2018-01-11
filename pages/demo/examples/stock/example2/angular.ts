@@ -5,12 +5,13 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 @Component({
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip [crosshairs]="tooltip.crosshairs"></v-tooltip>
       <v-axis dataKey="mean" [show]="false"></v-axis>
       <v-axis dataKey="stockRange" [show]="false"></v-axis>
@@ -50,16 +51,6 @@ class AppComponent {
     nice: false
   }];
 
-  dataPre = {
-    transform: [{
-      type: 'map',
-      callback: (obj: any) => {
-        obj.stockRange = [ obj.start, obj.end, obj.highest, obj.lowest ];
-        return obj;
-      }
-    }]
-  };
-
   tooltip = {
     crosshairs: {
       type: 'line'
@@ -76,8 +67,16 @@ class AppComponent {
   }];
 
   constructor() {
-    $.getJSON('/data/stock-2.json', (data) => {
-      this.data = data;
+    $.getJSON('/data/stock-2.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'map',
+        callback: (obj: any) => {
+          obj.stockRange = [obj.start, obj.end, obj.highest, obj.lowest];
+          return obj;
+        }
+      });
+      this.data = dv.rows;
     });
   }
 }

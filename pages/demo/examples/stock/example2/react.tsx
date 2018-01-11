@@ -2,6 +2,7 @@ import { Chart, Tooltip, Axis, Area, Candle, Line } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'date',
@@ -27,16 +28,6 @@ const scale = [{
   nice: false
 }];
 
-const dataPre = {
-  transform: [{
-    type: 'map',
-    callback: (obj: any) => {
-      obj.stockRange = [ obj.start, obj.end, obj.highest, obj.lowest ];
-      return obj;
-    }
-  }]
-};
-
 const tooltipOpts = {
   crosshairs: {
     type: 'line'
@@ -49,8 +40,16 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    $.getJSON('/data/stock-2.json', (data) => {
-      this.setState({ data });
+    $.getJSON('/data/stock-2.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'map',
+        callback: (obj: any) => {
+          obj.stockRange = [obj.start, obj.end, obj.highest, obj.lowest];
+          return obj;
+        }
+      });
+      this.setState({ data: dv.rows });
     });
   }
 
@@ -58,7 +57,7 @@ class App extends React.Component {
     const { data } = this.state;
     return (
       <div>
-        <Chart forceFit height={600} data={data} dataPre={dataPre} scale={scale}>
+        <Chart forceFit height={600} data={data} scale={scale}>
           <Tooltip {...tooltipOpts}/>
           <Axis dataKey="mean" show={false}/>
           <Axis dataKey="stockRange" show={false}/>
