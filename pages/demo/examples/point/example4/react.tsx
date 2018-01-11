@@ -42,10 +42,14 @@ class App extends React.Component {
       return (value / 1000).toFixed(0) + 'k';
     };
 
+    if (!data.length) {
+      return (<div></div>);
+    }
+
     return (
       <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip showTitle={false} />
-        <Legend dataKey="Population" show={false} />
+        <Legend dataKey="Population" show={true} />
         <Axis
           dataKey="GDP"
           label={{ formatter: laeblFormatter }}
