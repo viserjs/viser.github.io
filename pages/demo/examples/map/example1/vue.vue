@@ -82,7 +82,7 @@ export default {
           return obj;
         }
       });
-      console.log(dv, userData);
+
       this.$data.geoData = dv;
       this.$data.data = userData;
     });

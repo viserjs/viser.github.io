@@ -58,8 +58,6 @@ class App extends React.Component {
         }
       });
 
-      console.log(dv, userData);
-
       this.setState({ geoData: dv, data: userData});
     });
   }
