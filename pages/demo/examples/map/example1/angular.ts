@@ -10,14 +10,14 @@ const DataSet = require('@antv/data-set');
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data.length; else loading">
+  <div *ngIf="data; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[0, 20, 40]" [data]="geoData" [scale]="scale">
       <v-coord type="rect" direction="TL" ></v-coord>
       <v-tooltip [showTitle]="tooltipOpts.showTitle" [containerTpl]="tooltipOpts.containerTpl" [itemTpl]="tooltipOpts.itemTpl" [g2Tooltip]="tooltipOpts.g2Tooltip"></v-tooltip>
-      <v-view [data]="geoData" [scale]="scale">
+      <v-view viewId="1" [data]="geoData" [scale]="scale">
         <v-polygon [position]="view1Opts.position" [style]="view1Opts.style" [tooltip]="view1Opts.tooltip"></v-polygon>
       </v-view>
-      <v-view  [data]="data">
+      <v-view viewId="2" [data]="data">
         <v-point [position]="view2Opts.position" [size]="view2Opts.size" [opacity]="view2Opts.opacity" [color]="view2Opts.color" [tooltip]="view2Opts.tooltip"></v-point>
       </v-view>
     </v-chart>
@@ -30,7 +30,7 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
   geoData = {};
-  data = [];
+  data = null;
   tooltipOpts = {
     showTitle: false,
     containerTpl: '<div class="g2-tooltip">'
@@ -96,6 +96,8 @@ class AppComponent {
           return obj;
         }
       });
+
+      console.log(dv, userData);
 
       this.geoData = dv;
       this.data = userData;

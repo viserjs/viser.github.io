@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.length">
+  <div v-if="data">
     <v-chart :force-fit="true" :height="600" :padding="[0, 20, 40]" :data="geoData" :scale="scale">
       <v-coord :type="'rect'" :direction="'TL'"/>
       <v-tooltip :show-title="tooltipOpts.showTitle" :container-tpl="tooltipOpts.containerTpl" :item-tpl="tooltipOpts.itemTpl" :g2-tooltip="tooltipOpts.g2Tooltip"/>
@@ -10,9 +10,6 @@
         <v-point :position="view2Opts.position" :size="view2Opts.size" :opacity="view2Opts.opacity" :color="view2Opts.color" :tooltip="view2Opts.tooltip"/>
       </v-view>
     </v-chart>
-  </div>
-  <div v-else>
-    Loading ...
   </div>
 </template>
 
@@ -85,13 +82,14 @@ export default {
           return obj;
         }
       });
+      console.log(dv, userData);
       this.$data.geoData = dv;
       this.$data.data = userData;
     });
   },
   data() {
     return {
-      data: [],
+      data: null,
       geoData: {},
       scale,
       tooltipOpts,
