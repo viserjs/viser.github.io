@@ -10,7 +10,7 @@ const DataSet = require('@antv/data-set');
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data.length; else loading">
+  <div *ngIf="data; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="padding" [data]="geoData" [scale]="scale">
       <v-tooltip [showTitle]="showTitle"></v-tooltip>
       <v-legend dataKey="trend" position="left"></v-legend>
@@ -31,7 +31,7 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
   padding = [55, 20];
-  data = [];
+  data = null;
   geoData = {};
   scale = [{
     dataKey: 'longitude',

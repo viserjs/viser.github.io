@@ -30,7 +30,7 @@ const scale = [{
 class App extends React.Component {
   state = {
     geoData: {},
-    data: [],
+    data: null,
   };
 
   componentDidMount() {
@@ -58,17 +58,17 @@ class App extends React.Component {
         }
       });
 
+      console.log(dv, userData);
+
       this.setState({ geoData: dv, data: userData});
     });
   }
 
   render() {
     const { geoData, data } = this.state;
-
-    if (!geoData || !data.length) {
+    if (!geoData || !data) {
       return (<div>Loading ...</div>);
     }
-
     return (
       <div>
         <Chart forceFit height={600} padding={[0, 20, 40]} data={geoData} scale={scale}>

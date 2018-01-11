@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.length">
+  <div v-if="data">
     <v-chart :force-fit="true" :height="600" :padding="[55, 20]" :data="geoData" :scale="scale">
       <v-tooltip :show-title="false"/>
       <v-legend :data-key="'trend'" :position="'left'"/>
@@ -82,7 +82,7 @@ export default {
   },
   data() {
     return {
-      data: [],
+      data: null,
       geoData: {},
       scale,
       userDataScale,

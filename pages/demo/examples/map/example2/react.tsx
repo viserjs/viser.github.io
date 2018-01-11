@@ -43,7 +43,7 @@ const view2Opts = {
 class App extends React.Component {
   state = {
     geoData: {},
-    data: [],
+    data: null,
   };
 
   componentDidMount() {
@@ -70,7 +70,7 @@ class App extends React.Component {
 
   render() {
     const {geoData, data} = this.state;
-    if (!geoData || !data.length) {
+    if (!geoData || !data) {
       return (<div>Loading ...</div>);
     }
 
