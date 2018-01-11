@@ -3,16 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
-
-const dataPre = {
-  transform: {
-    type: 'map',
-    callback: obj => {
-      obj.exp_amo = obj.exp_amo * 1;
-      return obj;
-    }
-  }
-};
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'exp_dat',
@@ -66,8 +57,16 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    $.getJSON('/data/others-1.json', (data) => {
-      this.setState({data: data});
+    $.getJSON('/data/others-1.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'map',
+        callback: obj => {
+          obj.exp_amo = obj.exp_amo * 1;
+          return obj;
+        }
+      });
+      this.setState({data: dv.rows});
     })
   }
 
@@ -75,7 +74,7 @@ class App extends React.Component {
     const  { data } = this.state;
     return (
       <div>
-        <Chart forceFit height={height} data={data} dataPre={dataPre} scale={scale}>
+        <Chart forceFit height={height} data={data} scale={scale}>
           <Tooltip showTitle={false}/>
           <Axis {...axis1Opts}/>
           <Axis {...axis2Opts}/>

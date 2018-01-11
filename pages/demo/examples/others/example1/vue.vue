@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale" >
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale" >
       <v-tooltip :showTitle="false"/>
       <v-axis :data-key="axis1Opts.dataKey" :label="axis1Opts.label" :grid="axis1Opts.grid"/>
       <v-axis :data-key="axis2Opts.dataKey" :title="axis2Opts.title" :label="axis2Opts.label"/>
@@ -10,16 +10,7 @@
 </template>
 <script>
 import * as $ from 'jquery';
-
-const dataPre = {
-  transform: {
-    type: 'map',
-    callback: obj => {
-      obj.exp_amo = obj.exp_amo * 1;
-      return obj;
-    }
-  }
-};
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'exp_dat',
@@ -70,13 +61,20 @@ const axis2Opts = {
 export default {
   mounted() {
     $.getJSON('/data/others-1.json', (data) => {
-      this.$data.data = data;
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'map',
+        callback: obj => {
+          obj.exp_amo = obj.exp_amo * 1;
+          return obj;
+        }
+      });
+      this.$data.data = dv.rows;
     });
   },
   data() {
     return {
       data: [],
-      dataPre,
       scale,
       height: 600,
       axis1Opts,

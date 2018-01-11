@@ -5,16 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
-
-const dataPre = {
-  transform: {
-    type: 'map',
-    callback: obj => {
-      obj.exp_amo = obj.exp_amo * 1;
-      return obj;
-    }
-  }
-};
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'exp_dat',
@@ -78,14 +69,21 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 600;
   data = [];
-  dataPre = dataPre;
   scale = scale;
   axis1Opts = axis1Opts;
   axis2Opts = axis2Opts;
 
   constructor() {
-    $.getJSON('/data/others-1.json', (data) => {
-      this.data = data;
+    $.getJSON('/data/others-1.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'map',
+        callback: obj => {
+          obj.exp_amo = obj.exp_amo * 1;
+          return obj;
+        }
+      });
+      this.data = dv.rows;
     });
   }
 }
