@@ -3,23 +3,12 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
-<<<<<<< HEAD
-=======
-
-const dataPre = {
-  transform: {
-    sizeByCount: '$state.sizeEncoding',
-    type: 'bin.rectangle',
-    fields: ['x', 'y'],
-    bins: [20, 10],
-  },
-};
->>>>>>> a97c302dd488efef349f1800959058c8eec309a5
 
 class App extends React.Component {
   state = {
     data: [],
   };
+
   componentDidMount() {
     $.getJSON('/data/heatmap-2.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData);
@@ -32,6 +21,7 @@ class App extends React.Component {
       this.setState({ data: dv.rows });
     });
   }
+
   render() {
     const { data } = this.state;
     const seriesOpts = {
