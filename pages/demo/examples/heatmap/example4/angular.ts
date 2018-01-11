@@ -124,7 +124,6 @@ const axis2Opts = {
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height = 400;

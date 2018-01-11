@@ -10,14 +10,8 @@
 </template>
 <script>
 import * as $ from 'jquery';
-const dataPre = {
-  transform: {
-    sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
-    type: 'bin.hexagon',
-    fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
-    bins: [ 10, 5 ]
-  }
-};
+const DataSet = require('@antv/data-set');
+
 const axis1Opts = {
   dataKey: 'x',
   grid: {
@@ -40,7 +34,14 @@ const seriesOpts = {
 
 export default {
   mounted() {
-    $.getJSON('/data/heatmap-7.json', (data) => {
+    $.getJSON('/data/heatmap-7.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        sizeByCount: '$state.sizeEncoding',
+        type: 'bin.hexagon',
+        fields: ['x', 'y'],
+        bins: [10, 5],
+      });
       this.$data.data = data;
     });
   },

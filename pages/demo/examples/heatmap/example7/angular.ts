@@ -5,15 +5,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
-const dataPre = {
-  transform: {
-    sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
-    type: 'bin.hexagon',
-    fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
-    bins: [ 10, 5 ]
-  }
-};
 const axis1Opts = {
   dataKey: 'x',
   grid: {
@@ -38,7 +31,7 @@ const seriesOpts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-legend [offset]="40"></v-legend>
       <v-axis [dataKey]="axis1Opts.dataKey" [grid]="axis1Opts.grid"></v-axis>
       <v-tooltip showTitle="false" crosshairs="false"></v-tooltip>
@@ -47,18 +40,23 @@ const seriesOpts = {
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = [];
-  dataPre = dataPre;
   axis1Opts = axis1Opts;
   seriesOpts = seriesOpts;
 
   constructor() {
-    $.getJSON('/data/heatmap-7.json', (data) => {
-      this.data = data;
+    $.getJSON('/data/heatmap-7.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        sizeByCount: '$state.sizeEncoding',
+        type: 'bin.hexagon',
+        fields: ['x', 'y'],
+        bins: [10, 5],
+      });
+      this.data = dv.rows;
     });
   }
 }

@@ -19,7 +19,6 @@ import * as $ from 'jquery';
   </div>
   `
 })
-
 class AppComponent {
   forceFit = true;
   height = 400;

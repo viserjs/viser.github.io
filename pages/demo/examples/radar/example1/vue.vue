@@ -1,7 +1,7 @@
 export const template =
 `<template>
 <div>
-  <v-chart :force-fit="true" :height="height" :data="data" :dataPre="dataPre" :scale="scale">
+  <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
     <v-tooltip />
     <v-axis :dataKey="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid"/>
     <v-axis :dataKey="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid"/>
@@ -15,6 +15,7 @@ export const template =
 </template>
 
 <script>
+const DataSet = require('@antv/data-set');
 
 const data = [
   { item: 'Design', a: 70, b: 30 },
@@ -29,14 +30,14 @@ const data = [
   { item: 'UX', a: 50, b: 60 }
 ];
 
-const dataPre = {
-  transform: {
-    type: 'fold',
-    fields: ['a', 'b'],
-    key: 'user',
-    value: 'score',
-  },
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'fold',
+  fields: ['a', 'b'],
+  key: 'user',
+  value: 'score',
+});
+const data = dv.rows;
 
 const scale = [{
   dataKey: 'score',
@@ -71,7 +72,6 @@ export default {
   data() {
     return {
       data,
-      dataPre,
       scale,
       axis1Opts,
       axis2Opts,

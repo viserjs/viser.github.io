@@ -5,6 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const dataPre = {
   transform: {
@@ -41,8 +42,13 @@ class AppComponent {
   seriesOpts = seriesOpts;
 
   constructor() {
-    $.getJSON('/data/heatmap-5.json', (data) => {
-      this.data = data;
+    $.getJSON('/data/heatmap-5.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'bin.rectangle',
+        fields: ['carat', 'price'],
+      });
+      this.data = dv.rows;
     });
   }
 }

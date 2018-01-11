@@ -1,8 +1,9 @@
 import { Chart, Tooltip, Axis, Legend, Coord, Line, Point, Area } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { item: 'Design', a: 70, b: 30 },
   { item: 'Development', a: 60, b: 70 },
   { item: 'Marketing', a: 50, b: 60 },
@@ -15,14 +16,14 @@ const data = [
   { item: 'UX', a: 50, b: 60 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'fold',
-    fields: ['a', 'b'],
-    key: 'user',
-    value: 'score',
-  },
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'fold',
+  fields: ['a', 'b'],
+  key: 'user',
+  value: 'score',
+});
+const data = dv.rows;
 
 const scale = [{
   dataKey: 'score',
@@ -62,7 +63,7 @@ class App extends React.Component {
     };
 
     return (
-      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
+      <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip />
         <Axis {...axis1Opts} />
         <Axis {...axis2Opts} />

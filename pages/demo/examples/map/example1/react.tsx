@@ -33,16 +33,21 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    $.when($.getJSON('/data/worldGeo.json'),$.getJSON('/data/map-1.json')).then((geoData, data) => {
-      this.setState({geoData: geoData[0], data: data[0]});
+    $.when(
+      $.getJSON('/data/worldGeo.json'),
+      $.getJSON('/data/map-1.json')
+    ).then((geoData, data) => {
+      this.setState({ geoData: geoData[0], data: data[0] });
     });
   }
 
   render() {
-    const {geoData, data} = this.state;
+    const { geoData, data } = this.state;
+
     if (!geoData || !data.length) {
       return (<div>Loading ...</div>);
     }
+
     const bgDataPre = {
       connector: {
         type: 'GeoJSON'
@@ -70,6 +75,7 @@ class App extends React.Component {
         },
       }
     };
+
     return (
       <div>
         <Chart forceFit height={600} padding={[0, 20, 40]} data={geoData} dataPre={bgDataPre} scale={scale}>

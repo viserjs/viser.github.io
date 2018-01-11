@@ -4,8 +4,9 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { item: 'Design', a: 70, b: 30 },
   { item: 'Development', a: 60, b: 70 },
   { item: 'Marketing', a: 50, b: 60 },
@@ -15,17 +16,17 @@ const data = [
   { item: 'Technology', a: 50, b: 40 },
   { item: 'Support', a: 30, b: 40 },
   { item: 'Sales', a: 60, b: 40 },
-  { item: 'UX', a: 50, b: 60 }
+  { item: 'UX', a: 50, b: 60 },
 ];
 
-const dataPre = {
-  transform: {
-    type: 'fold',
-    fields: ['a', 'b'],
-    key: 'user',
-    value: 'score',
-  },
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'fold',
+  fields: ['a', 'b'],
+  key: 'user',
+  value: 'score',
+});
+const data = dv.rows;
 
 const scale = [{
   dataKey: 'score',
