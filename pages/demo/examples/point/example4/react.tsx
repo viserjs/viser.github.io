@@ -49,7 +49,7 @@ class App extends React.Component {
     return (
       <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip showTitle={false} />
-        <Legend dataKey="Population" show={true} />
+        <Legend dataKey="Population" show={false} />
         <Axis
           dataKey="GDP"
           label={{ formatter: laeblFormatter }}
