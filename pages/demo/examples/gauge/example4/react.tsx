@@ -58,7 +58,7 @@ const frontGuideStyle = {
   fill: '#CBCBCB',
   fontSize: 64,
   textAlign: 'center',
-  textBaseline: 'middle',
+  textBaseline: 'middle' as 'middle',
 };
 
 class App extends React.Component {

@@ -1,16 +1,16 @@
 import { Chart, Tooltip, Legend, Polygon, Coord, View, Point, Edge } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { data } from './data'
+import { data as sourceData } from './data'
+const DataSet = require('@antv/data-set');
 
-const dataPre = {
-  connector: {
-    type: 'hierarchy',
-  },
-  transform: {
-    type: 'hierarchy.cluster',
-  },
-};
+const dv = new DataSet.View().source(sourceData, {
+  type: 'hierarchy',
+});
+dv.transform({
+  type: 'hierarchy.cluster',
+});
+const data = dv.rows;
 
 const nodesDataView = ['nodes', nodes => {
   return nodes.map((node: any) => ({
@@ -53,7 +53,7 @@ const edgesDataView = ['edges', (edges) => {
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={600} data={data} dataPre={dataPre} padding={[ 60, 0, 40, 0 ]}>
+      <Chart forceFit={true} height={600} data={data} padding={[ 60, 0, 40, 0 ]}>
         <Coord type="polar" />
         <View dataView={edgesDataView}>
           <Edge position="x*y" shape="smooth" color="grey" opacity={0.5} tooltip="source*target" />

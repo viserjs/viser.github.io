@@ -51,10 +51,6 @@ const scale = [{
   sync: true,
 }];
 
-const dataPre = {
-  transform:
-};
-
 @Component({
   selector: '#mount',
   template: `

@@ -5,7 +5,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 
-const data = {
+const DataSet = require('@antv/data-set');
+
+const sourceData = {
   name: 'root',
   children: [
     { name: '分类 1', value: 560 },
@@ -31,17 +33,16 @@ const data = {
   ]
 };
 
-const dataPre = {
-  connector: {
-    type: 'hierarchy',
-  },
-  transform: {
-    field: 'value',
-    type: 'hierarchy.treemap',
-    tile: 'treemapResquarify',
-    as: ['x', 'y'],
-  },
-};
+const dv = new DataSet.View().source(sourceData, {
+  type: 'hierarchy',
+});
+dv.transform({
+  field: 'value',
+  type: 'hierarchy.treemap',
+  tile: 'treemapResquarify',
+  as: ['x', 'y'],
+});
+const data = dv.rows;
 
 const dataView = ['nodes', node => {
   node.name = node.data.name;
@@ -83,7 +84,7 @@ const label = ['name', {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [dataView]="dataView" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [dataView]="dataView" [scale]="scale">
       <v-tooltip showTitle="false" itemTpl="itemTpl"></v-tooltip>
       <v-polygon position="x*y" color="name" [tooltip]="tooltip" [style]="style" [label]="label"></v-polygon>
     </v-chart>
@@ -94,7 +95,6 @@ export class AppComponent {
   forceFit: boolean = true;
   height: number = 600;
   data = data;
-  dataPre = dataPre;
   dataView = dataView;
   scale = scale;
   tooltip = tooltip;
