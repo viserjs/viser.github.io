@@ -1,9 +1,9 @@
 <template>
   <div v-if="data.length" :style="style">
-    <v-chart :force-fit="true" :height="600" :padding="[55, 20]" :data-pre="bgDataPre" :data="geoData">
+    <v-chart :force-fit="true" :height="600" :padding="[55, 20]" :data="geoData">
       <v-tooltip :show-title="false"/>
-      <v-view :view-id="'111'" :data="geoData" :data-pre="bgDataPre"><div></div></v-view>
-      <v-view :view-id="'122'" :data="data" :data-pre="userDataPre">
+      <v-view :data="geoData" ><div></div></v-view>
+      <v-view :data="data">
         <v-polygon :position="polygonOpts.position" :label="polygonOpts.label" :style="polygonOpts.style" :color="polygonOpts.color"/>
       </v-view>
     </v-chart>
@@ -16,25 +16,7 @@
 <script>
 import * as $ from 'jquery';
 import * as _ from 'lodash';
-
-const bgDataPre = {
-  connector: {
-    type: 'GeoJSON'
-  }
-};
-
-const userDataPre = (dv) => {
-  const geo = dv['main'];
-  return {
-    transform: [{
-      type: 'geo.region',
-      field: 'name',
-      geoDataView: geo,
-      as: ['longitude', 'lantitude'],
-    }
-    ],
-  };
-};
+const DataSet = require('@antv/data-set');
 
 const colors = [ "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac" ];
 
@@ -149,9 +131,23 @@ export default {
             value: Math.round(Math.random() * 1000),
           });
         }
-        debugger;
-        self.$data.geoData = mapData;
-        self.$data.data = userData;
+
+        const ds = new DataSet();
+        const geoDataView = ds.createView().source(mapData, {
+          type: 'GeoJSON',
+        }); // geoJSON 经纬度数据
+
+        // 用户数据
+        const dvData = ds.createView().source(userData);
+        dvData.transform({
+          type: 'geo.region',
+          field: 'name',
+          geoDataView: geoDataView,
+          as: ['longitude', 'lantitude'],
+        });
+
+        self.$data.geoData = geoDataView;
+        self.$data.data = dvData;
         self.$data.name = name;
 
 
@@ -221,8 +217,6 @@ export default {
       style: {width: '50%', height:'400px',position: 'absolute', right: 0,top: 0,},
       data: [],
       geoData: {},
-      bgDataPre,
-      userDataPre,
       polygonOpts,
       name: '',
       currentAreaNode: null,

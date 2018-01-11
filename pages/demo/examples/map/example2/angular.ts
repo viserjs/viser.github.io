@@ -5,18 +5,19 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 @Component({
   selector: '#mount',
   template: `
   <div *ngIf="data.length; else loading">
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="padding" [data]="geoData" [dataPre]="bgDataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [padding]="padding" [data]="geoData" [scale]="scale">
       <v-tooltip [showTitle]="showTitle"></v-tooltip>
       <v-legend dataKey="trend" position="left"></v-legend>
-      <v-view viewId="111" [data]="geoData" [dataPre]="bgDataPre" [scale]="scale">
+      <v-view [data]="geoData" [scale]="scale">
         <v-polygon [position]="view1Opts.position" [style]="view1Opts.style" [tooltip]="view1Opts.tooltip"></v-polygon>
       </v-view>
-      <v-view viewId="122" [data]="data" [dataPre]="userDataPre" [scale]="userDataScale">
+      <v-view [data]="data" [scale]="userDataScale">
         <v-polygon [position]="view2Opts.position" [opacity]="view2Opts.opacity" [color]="view2Opts.color" [animate]="view2Opts.animate" [tooltip]="view2Opts.tooltip"></v-polygon>
       </v-view>
     </v-chart>
@@ -39,32 +40,6 @@ class AppComponent {
     dataKey: 'latitude',
     sync: true,
   }];
-
-  bgDataPre = {
-    connector: {
-      type: 'GeoJSON'
-    }
-  };
-
-  userDataPre = (dv) => {
-    const geo = dv['111'];
-    return {
-      transform: [{
-        geoDataView: geo,
-        field: 'name',
-        type: 'geo.region',
-        as: [ 'longitude', 'latitude' ],
-      },
-      {
-        type: 'map',
-        callback: function(obj) {
-          obj.trend = (obj.value > 100) ? '男性更多' : '女性更多';
-          return obj;
-        }
-      }
-      ],
-    };
-  };
 
   userDataScale = [{
     dataKey: 'trend',
@@ -97,8 +72,25 @@ class AppComponent {
 
   constructor() {
     $.when($.getJSON('/data/worldGeo.json'),$.getJSON('/data/map-2.json')).then((geoData, data) => {
-      this.geoData = geoData[0];
-      this.data = data[0];
+      const worldMap = new DataSet.View().source(geoData[0], {
+          type: 'GeoJSON'
+      });
+
+      const userDv = new DataSet.View().source(data[0]).transform({
+        geoDataView: worldMap,
+        field: 'name',
+        type: 'geo.region',
+        as: [ 'longitude', 'latitude' ],
+      }).transform({
+        type: 'map',
+        callback: function(obj) {
+          obj.trend = (obj.value > 100) ? '男性更多' : '女性更多';
+          return obj;
+        }
+      });
+
+      this.geoData = worldMap;
+      this.data = userDv;
     });
   }
 }
