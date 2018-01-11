@@ -21,14 +21,20 @@ const seriesOpts = {
 export default {
   mounted() {
     $.getJSON('/data/heatmap-2.json', (sourceData) => {
-      const dv = new DataSet.View().source(sourceData);
+      const ds = new DataSet({
+        state: {
+          sizeEncoding: false
+        }
+      });
+
+      const dv = ds.createView('diamond').source(sourceData);
       dv.transform({
         sizeByCount: '$state.sizeEncoding',
         type: 'bin.rectangle',
-        fields: ['x', 'y'],
-        bins: [20, 10],
+        fields: [ 'x', 'y' ],
+        bins: [ 20, 10 ]
       });
-      this.$data.data = dv.rows;
+      this.$data.data = dv;
     });
   },
   data() {
