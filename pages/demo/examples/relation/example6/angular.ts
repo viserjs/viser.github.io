@@ -4,16 +4,8 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-import { data } from './data';
-
-const dataPre = {
-  connector: {
-    type: 'hierarchy',
-  },
-  transform: {
-    type: 'hierarchy.partition',
-  },
-};
+import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const dataView = [
   'nodes', nodes => {
@@ -31,7 +23,7 @@ const dataView = [
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [dataView]="dataView" padding="0">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataView]="dataView" padding="0">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-polygon position="x*y" color="name"></v-polygon>
     </v-chart>
@@ -41,9 +33,20 @@ const dataView = [
 export class AppComponent {
   forceFit: boolean = true;
   height: number = 500;
-  data = data;
+  data = {};
   dataView = dataView;
-  dataPre = dataPre;
+
+  constructor() {
+    $.getJSON('/data/flare.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData, {
+        type: 'hierarchy',
+      });
+      dv.transform({
+        type: 'hierarchy.partition',
+      });
+      this.data = dv.rows;
+    });
+  }
 }
 
 @NgModule({

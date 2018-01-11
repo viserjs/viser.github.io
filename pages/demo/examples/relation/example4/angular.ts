@@ -4,19 +4,8 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-import { data } from './data';
-
-const dataPre = {
-  connector: {
-    type: 'graph',
-    edges: d => d.links,
-  },
-  transform: {
-    type: 'diagram.sankey',
-    nodeWidth: 0.015,
-    nodePadding: 0.02,
-  },
-};
+import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'x',
@@ -50,7 +39,7 @@ const polygonLabel = [
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale" [padding]="padding">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale" [padding]="padding">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-view viewId="2" dataView="edges" [scale]="scale">
         <v-sankey position="x*y" color="#bbb" opacity="0.6" [tooltip]="tooltip" [style]="sankeyStyle"></v-sankey>
@@ -65,14 +54,28 @@ const polygonLabel = [
 export class AppComponent {
   forceFit: boolean = true;
   height: number = 500;
-  data = data;
-  dataPre = dataPre;
+  data = {};
   scale = scale;
   padding = [40, 80];
   tooltip = tooltip;
   polygonLabel = polygonLabel;
   sankeyStyle = { curvature: 0.5 };
   polygonStyle = { stroke: '#ccc' };
+
+  constructor() {
+    $.getJSON('/data/energy.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData, {
+        type: 'graph',
+        edges: d => d.links,
+      });
+      dv.transform({
+        type: 'diagram.sankey',
+        nodeWidth: 0.015,
+        nodePadding: 0.02,
+      });
+      this.data = dv.rows;
+    });
+  }
 }
 
 @NgModule({

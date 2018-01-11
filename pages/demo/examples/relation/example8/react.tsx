@@ -1,8 +1,9 @@
 import { Chart, Tooltip, Legend, Polygon } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+const DataSet = require('@antv/data-set');
 
-const data = {
+const sourceData = {
   name: 'root',
   children: [
     { name: '分类 1', value: 560 },
@@ -28,17 +29,16 @@ const data = {
   ]
 };
 
-const dataPre = {
-  connector: {
-    type: 'hierarchy',
-  },
-  transform: {
-    field: 'value',
-    type: 'hierarchy.treemap',
-    tile: 'treemapResquarify',
-    as: ['x', 'y'],
-  },
-};
+const dv = new DataSet.View().source(sourceData, {
+  type: 'hierarchy',
+});
+dv.transform({
+  field: 'value',
+  type: 'hierarchy.treemap',
+  tile: 'treemapResquarify',
+  as: ['x', 'y'],
+});
+const data = dv.rows;
 
 const dataView = ['nodes', (nodes: any) => {
   return nodes.map((node: any) => ({
@@ -81,7 +81,7 @@ const label = ['name', {
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={400} data={data} dataView={dataView} dataPre={dataPre} scale={scale} padding={0}>
+      <Chart forceFit={true} height={400} data={data} dataView={dataView} scale={scale} padding={0}>
         <Tooltip showTitle={false} itemTpl={itemTpl} />
         <Polygon position="x*y" color="name" tooltip={tooltip} style={style} label={label} />
       </Chart>

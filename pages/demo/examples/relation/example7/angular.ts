@@ -4,18 +4,8 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-import { data } from './data';
-
-const dataPre = {
-  connector: {
-    type: 'hierarchy',
-  },
-  transform: {
-    type: 'hierarchy.partition',
-    field: 'sum',
-    as: ['x', 'y'],
-  },
-};
+import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const dataView = [
   'nodes', nodes => {
@@ -49,7 +39,7 @@ const color = ['value', '#BAE7FF-#1890FF-#0050B3'];
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [dataView]="dataView" padding="0">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataView]="dataView" padding="0">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-coord type="polar" innerRadius="0.3"></v-coord>
       <v-polygon position="x*y" [color]="color" active="false" [style]="style" tooltip="label*sum"></v-polygon>
@@ -60,11 +50,24 @@ const color = ['value', '#BAE7FF-#1890FF-#0050B3'];
 export class AppComponent {
   forceFit: boolean = true;
   height: number = 500;
-  data = data;
+  data = {};
   dataView = dataView;
-  dataPre = dataPre;
   style = style;
   color = color;
+
+  constructor() {
+    $.getJSON('/data/sunburst.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData, {
+        type: 'hierarchy',
+      });
+      dv.transform({
+        type: 'hierarchy.partition',
+        field: 'sum',
+        as: ['x', 'y'],
+      });
+      this.data = dv.rows;
+    });
+  }
 }
 
 @NgModule({

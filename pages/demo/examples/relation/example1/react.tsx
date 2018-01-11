@@ -1,18 +1,8 @@
 import { Chart, Tooltip, View, Edge, Point } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { data } from './data';
-
-const dataPre = {
-  connector: {
-    type: 'graph',
-    edges: d => d.links,
-  },
-  transform: {
-    type: 'diagram.arc',
-    marginRatio: 0.5,
-  },
-};
+import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const label = ['name', {
   offset: -10,
@@ -27,9 +17,29 @@ const style = {
 };
 
 class App extends React.Component {
+  state = {
+    data: {},
+  };
+
+  componentDidMount() {
+    $.getJSON('/data/relationship-with-weight.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData, {
+        type: 'graph',
+        edges: d => d.links,
+      });
+      dv.transform({
+        type: 'diagram.arc',
+        marginRatio: 0.5,
+      });
+      this.setState({ data: dv.rows});
+    });
+  }
+
   render() {
+    const { data } = this.state;
+
     return (
-      <Chart forceFit={true} height={500} data={data} dataPre={dataPre}>
+      <Chart forceFit={true} height={500} data={data}>
         <Tooltip showTitle={false} />
         <View dataView="edges">
           <Edge position="x*y" shape="arc" color="source" opacity={0.5} tooltip="source*target" />

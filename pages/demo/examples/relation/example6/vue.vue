@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data" :data-pre="dataPre" :data-view="dataView" :padding="0">
+    <v-chart :force-fit="true" :height="500" :data="data" :data-view="dataView" :padding="0">
       <v-tooltip :show-title="false" />
       <v-polygon :position="'x*y'" :color="'name'" />
     </v-chart>
@@ -8,16 +8,8 @@
 </template>
 
 <script>
-  import { data } from './data';
-
-  const dataPre = {
-    connector: {
-      type: 'hierarchy',
-    },
-    transform: {
-      type: 'hierarchy.partition',
-    },
-  };
+  import * as $ from 'jquery';
+  const DataSet = require('@antv/data-set');
 
   const dataView = [
     'nodes', nodes => {
@@ -32,10 +24,20 @@
   ];
 
   export default {
+    mounted() {
+      $.getJSON('/data/flare.json', (sourceData) => {
+        const dv = new DataSet.View().source(sourceData, {
+          type: 'hierarchy',
+        });
+        dv.transform({
+          type: 'hierarchy.partition',
+        });
+        this.$data.data = dv.rows;
+      });
+    },
     data() {
       return {
-        data,
-        dataPre,
+        data: {},
         dataView,
       };
     },

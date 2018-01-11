@@ -13,21 +13,8 @@
   </div>
 </template>
 <script>
-import { data } from './data';
-
-const dataPre = {
-  connector: {
-    type: 'graph',
-    edges: d => d.links,
-  },
-  transform: {
-    type: 'diagram.arc',
-    sourceWeight: e => e.sourceWeight,
-    targetWeight: e => e.targetWeight,
-    weight: true,
-    marginRatio: 0.3
-  },
-};
+import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'x',
@@ -45,10 +32,25 @@ const label = ['name', {
 }];
 
 export default {
+  mounted() {
+    $.getJSON('/data/relationship-with-weight.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData, {
+        type: 'graph',
+        edges: d => d.links,
+      });
+      dv.transform({
+        type: 'diagram.arc',
+        sourceWeight: e => e.sourceWeight,
+        targetWeight: e => e.targetWeight,
+        weight: true,
+        marginRatio: 0.3
+      });
+      this.$data.data = dv.rows;
+    });
+  },
   data() {
     return {
-      data,
-      dataPre,
+      data: {},
       scale,
       label,
     };

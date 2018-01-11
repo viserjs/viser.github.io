@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data" :data-pre="dataPre">
+    <v-chart :force-fit="true" :height="500" :data="data">
       <v-tooltip :show-title="false" />
       <v-view :view-id="1" :data-view="'edges'">
         <v-edge :position="'x*y'" :shape="'arc'" :color="'source'" opacity="0.5" tooltip="'source*target'" />
@@ -13,18 +13,8 @@
 </template>
 
 <script>
-  import { data } from './data';
-
-  const dataPre = {
-    connector: {
-      type: 'graph',
-      edges: d => d.links,
-    },
-    transform: {
-      type: 'diagram.arc',
-      marginRatio: 0.5,
-    },
-  };
+  import * as $ from 'jquery';
+  const DataSet = require('@antv/data-set');
 
   const label = ['name', {
     offset: -10,
@@ -39,10 +29,22 @@
   };
 
   export default {
+    mounted() {
+      $.getJSON('/data/relationship-with-weight.json', (sourceData) => {
+        const dv = new DataSet.View().source(sourceData, {
+          type: 'graph',
+          edges: d => d.links,
+        });
+        dv.transform({
+          type: 'diagram.arc',
+          marginRatio: 0.5,
+        });
+        this.$data.data = dv.rows;
+      });
+    },
     data() {
       return {
-        data,
-        dataPre,
+        data: {},
         style,
         label,
       };

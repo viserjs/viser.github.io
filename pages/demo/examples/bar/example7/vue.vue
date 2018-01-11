@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :crosshairs="false" :in-plot="false" :position="'top'" />
       <v-axis :data-key="'value'" :label="label" />
       <v-bar :position="'value*count'" />
@@ -50,7 +50,6 @@
     data() {
       return {
         data,
-        dataPre,
         scale,
         height: 400,
         label: { formatter: formatter },

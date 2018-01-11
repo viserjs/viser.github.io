@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data" :data-pre="dataPre" :scale="scale" :padding="padding">
+    <v-chart :force-fit="true" :height="500" :data="data" :scale="scale" :padding="padding">
       <v-tooltip :show-title="false" />
       <v-view :view-id="1" :data-view="'edges'">
         <v-sankey :position="'x*y'" :color="'#bbb'" :opacity="0.6" :tooltip="tooltip" :v-style="sankeyStyle" />
@@ -13,19 +13,8 @@
 </template>
 
 <script>
-  import { data } from './data';
-
-  const dataPre = {
-    connector: {
-      type: 'graph',
-      edges: d => d.links,
-    },
-    transform: {
-      type: 'diagram.sankey',
-      nodeWidth: 0.015,
-      nodePadding: 0.02,
-    },
-  };
+  import * as $ from 'jquery';
+  const DataSet = require('@antv/data-set');
 
   const scale = [{
     dataKey: 'x',
@@ -56,10 +45,23 @@
   ];
 
   export default {
+    mounted() {
+      $.getJSON('/data/sankey.json', (sourceData) => {
+        const dv = new DataSet.View().source(sourceData, {
+          type: 'graph',
+          edges: d => d.links,
+        });
+        dv.transform({
+          type: 'diagram.sankey',
+          nodeWidth: 0.015,
+          nodePadding: 0.02,
+        });
+        this.$data.data = dv.rows;
+      });
+    },
     data() {
       return {
-        data,
-        dataPre,
+        data: {},
         scale,
         padding: [40, 80],
         tooltip,

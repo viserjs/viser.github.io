@@ -1,16 +1,8 @@
 import { Chart, Tooltip, Polygon } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { data } from './data'
-
-const dataPre = {
-  transform: {
-    type: 'diagram.voronoi',
-    fields: ['x', 'y'],
-    size: [800, 600],
-    as: ['_x', '_y'],
-  },
-};
+import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const label = [
   'value', {
@@ -26,9 +18,27 @@ const label = [
 ];
 
 class App extends React.Component {
+  state = {
+    data: [],
+  };
+
+  componentDidMount() {
+    $.getJSON('/data/voronoi.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: 'diagram.voronoi',
+        fields: ['x', 'y'],
+        size: [800, 600],
+        as: ['_x', '_y'],
+      });
+      this.setState({ data: dv.rows });
+    });
+  }
+
   render() {
+    const { data } = this.state;
     return (
-      <Chart forceFit height={500} data={data} dataPre={dataPre} padding={0}>
+      <Chart forceFit height={500} data={data} padding={0}>
         <Tooltip showTitle={false} />
         <Polygon position="_x*_y" color="value" label={label} />
       </Chart>

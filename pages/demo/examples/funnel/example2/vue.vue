@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :data-pre="dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :show-title="false" :item-tpl="tooltipOpts.itemTpl" />
       <v-legend />
       <v-coord type='rect' direction='LT' />
@@ -69,7 +69,6 @@ export default {
   data() {
     return {
       data,
-      dataPre,
       scale,
       height: 400,
       tooltipOpts,
