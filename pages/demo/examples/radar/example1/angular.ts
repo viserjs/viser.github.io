@@ -4,8 +4,9 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+const DataSet = require('@antv/data-set');
 
-const data = [
+const sourceData = [
   { item: 'Design', a: 70, b: 30 },
   { item: 'Development', a: 60, b: 70 },
   { item: 'Marketing', a: 50, b: 60 },
@@ -18,14 +19,14 @@ const data = [
   { item: 'UX', a: 50, b: 60 }
 ];
 
-const dataPre = {
-  transform: {
-    type: 'fold',
-    fields: ['a', 'b'],
-    key: 'user',
-    value: 'score',
-  }
-};
+const dv = new DataSet.View().source(sourceData);
+dv.transform({
+  type: 'fold',
+  fields: ['a', 'b'],
+  key: 'user',
+  value: 'score',
+});
+const data = dv.rows;
 
 const scale = [{
   dataKey: 'score',
@@ -51,7 +52,7 @@ const axis2GridOpts =  {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-axis dataKey="item" line="null" tickLine="null" [grid]="axis1GridOpts"></v-axis>
       <v-axis dataKey="score" line="null" tickLine="null" [grid]="axis2GridOpts"></v-axis>
@@ -68,7 +69,6 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = data;
-  dataPre = dataPre;
   scale = scale;
   axis1GridOpts = axis1GridOpts;
   axis2GridOpts = axis2GridOpts;
