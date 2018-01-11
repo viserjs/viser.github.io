@@ -19,6 +19,11 @@ const mds = [
         enName: 'Usage',
         cnName: '用法',
       },
+      {
+        itemKey: 'feature',
+        enName: 'Feature',
+        cnName: '特点',
+      },
     ],
   }
 ];
