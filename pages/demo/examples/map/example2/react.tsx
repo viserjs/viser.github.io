@@ -2,6 +2,7 @@ import { Chart, Tooltip, Legend, View, Polygon, Point } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'longitude',
@@ -11,35 +12,11 @@ const scale = [{
   sync: true,
 }];
 
-const bgDataPre = {
-  connector: {
-    type: 'GeoJSON'
-  }
-};
-
 const userDataScale = [{
   dataKey: 'trend',
   alias: '每100位女性对应的男性数量',
 }]
-const userDataPre = (dv) => {
-  const geo = dv['111'];
-  return {
-    transform: [{
-      geoDataView: geo,
-      field: 'name',
-      type: 'geo.region',
-      as: [ 'longitude', 'latitude' ],
-    },
-    {
-      type: 'map',
-      callback: function(obj) {
-        obj.trend = (obj.value > 100) ? '男性更多' : '女性更多';
-        return obj;
-      }
-    }
-    ],
-  };
-};
+
 const view1Opts = {
   quickType: 'polygon',
   position: 'longitude*latitude',
@@ -71,7 +48,23 @@ class App extends React.Component {
 
   componentDidMount() {
     $.when($.getJSON('/data/worldGeo.json'),$.getJSON('/data/map-2.json')).then((geoData, data) => {
-      this.setState({geoData: geoData[0], data: data[0]});
+      const worldMap = new DataSet.View().source(geoData[0], {
+          type: 'GeoJSON'
+      });
+
+      const userDv = new DataSet.View().source(data[0]).transform({
+        geoDataView: worldMap,
+        field: 'name',
+        type: 'geo.region',
+        as: [ 'longitude', 'latitude' ],
+      }).transform({
+        type: 'map',
+        callback: function(obj) {
+          obj.trend = (obj.value > 100) ? '男性更多' : '女性更多';
+          return obj;
+        }
+      });
+      this.setState({geoData: worldMap, data: userDv});
     });
   }
 
@@ -83,13 +76,13 @@ class App extends React.Component {
 
     return (
       <div>
-        <Chart forceFit height={600} padding={[55, 20]} data={geoData} dataPre={bgDataPre} scale={scale}>
+        <Chart forceFit height={600} padding={[55, 20]} data={geoData} scale={scale}>
           <Tooltip showTitle={false}/>
           <Legend dataKey={'trend'} position={'left'}/>
-          <View viewId='111' data={geoData} dataPre={bgDataPre} scale={scale}>
+          <View data={geoData} scale={scale}>
             <Polygon {...view1Opts}/>
           </View>
-          <View viewId='122' data={data} dataPre={userDataPre} scale={userDataScale}>
+          <View  data={data} scale={userDataScale}>
             <Polygon {...view2Opts}/>
           </View>
         </Chart>

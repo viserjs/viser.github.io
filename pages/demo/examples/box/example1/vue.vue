@@ -36,11 +36,6 @@ const scale = [{
   max: 35,
 }];
 
-const scale = [{
-  dataKey: 'range',
-  max: 35,
-}];
-
 const tooltipOpts = {
   showTitle: false,
   crosshairs: {

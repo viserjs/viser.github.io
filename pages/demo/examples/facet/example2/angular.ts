@@ -5,6 +5,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import { data } from './data'
+const DataSet = require('@antv/data-set');
+const { DataView } = DataSet;
 
 const scale = [{
   dataKey: 'mean',
@@ -14,15 +16,26 @@ const scale = [{
   sync: true,
 }];
 
-const viewDataPre = {
-  transform: {
+const views = (view, facet) => {
+  const data = facet.data;
+  const dv = new DataView();
+  dv.source(data).transform({
     type: 'aggregate',
     fields: ['price'],
     operations: ['mean'],
     as: ['mean'],
-    groupBy: ['cut'],
-  },
-};
+    groupBy: ['cut']
+  });
+
+  return {
+    data: dv,
+    series: {
+      quickType: 'bar',
+      position: 'cut*mean',
+      color: 'cut',
+    }
+  }
+}
 
 @Component({
   selector: '#mount',
@@ -32,11 +45,7 @@ const viewDataPre = {
       <v-tooltip></v-tooltip>
       <v-legend></v-legend>
       <v-coord type="polar"></v-coord>
-      <v-facet type="circle" [fields]="fields">
-        <v-facet-view [dataPre]="viewDataPre">
-          <v-bar position="cut*mean" color="cut"></v-bar>
-        </v-facet-view>
-      </v-facet>
+      <v-facet type="circle" [fields]="fields" [views]="views"></v-facet>
     </v-chart>
   </div>
   `
@@ -47,7 +56,7 @@ export class AppComponent {
   data = data;
   scale = scale;
   fields = ['clarity'];
-  viewDataPre = viewDataPre;
+  views = views;
 }
 
 @NgModule({

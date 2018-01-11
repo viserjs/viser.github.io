@@ -4,20 +4,6 @@ import * as React from 'react';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 
-const dataPre = {
-  transform: [{
-    type: 'fold',
-    fields: ['SepalLength','SepalWidth','PetalLength','PetalWidth'],
-    key: 'type',
-    value: 'value'
-  }, {
-    type: 'bin.quantile',
-    field: 'value',
-    as: '_bin',
-    groupBy: [ 'Species', 'type' ],
-  }]
-};
-
 const scale = [{
   dataKey: 'range',
   min: 0,
@@ -76,7 +62,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
+        <Chart forceFit height={400} data={data} scale={scale}>
           <Tooltip {...tooltipOpts} />
           <Axis />
           <Legend marker="circle" />

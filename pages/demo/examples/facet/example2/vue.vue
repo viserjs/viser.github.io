@@ -4,17 +4,15 @@
       <v-tooltip />
       <v-legend />
       <v-coord :type="'polar'" />
-      <v-facet :type="'circle'" :fields="['clarity']">
-        <v-facet-view :data-pre="viewDataPre">
-          <v-bar :position="'cut*mean'" :color="'cut'" />
-        </v-facet-view>
-      </v-facet>
+      <v-facet :type="'circle'" :fields="['clarity']" :view="views"></v-facet>
     </v-chart>
   </div>
 </template>
 
 <script>
   import { data } from "./data";
+  const DataSet = require('@antv/data-set');
+  const { DataView } = DataSet;
 
   const scale = [{
     dataKey: 'mean',
@@ -23,23 +21,34 @@
     dataKey: 'cut',
     sync: true,
   }];
-  
-  const viewDataPre = {
-    transform: {
+
+  const views = (view, facet) => {
+    const data = facet.data;
+    const dv = new DataView();
+    dv.source(data).transform({
       type: 'aggregate',
       fields: ['price'],
       operations: ['mean'],
       as: ['mean'],
-      groupBy: ['cut'],
-    },
-  };
+      groupBy: ['cut']
+    });
+
+    return {
+      data: dv,
+      series: {
+        quickType: 'bar',
+        position: 'cut*mean',
+        color: 'cut',
+      }
+    }
+  }
 
   export default {
     data() {
       return {
         data,
         scale,
-        viewDataPre: viewDataPre,
+        views,
       };
     },
   };

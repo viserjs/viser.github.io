@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data" :data-pre="dataPre" :padding="0">
+    <v-chart :force-fit="true" :height="500" :data="data" :padding="0">
       <v-tooltip :show-title="false" />
       <v-polygon :position="'_x*_y'" :color="'value'" :label="label" />
     </v-chart>
@@ -8,17 +8,9 @@
 </template>
 
 <script>
-  import { data } from './data';
+  import * as $ from 'jquery';
+  const DataSet = require('@antv/data-set');
 
-  const dataPre = {
-    transform: {
-      type: 'diagram.voronoi',
-      fields: ['x', 'y'],
-      size: [800, 600],
-      as: ['_x', '_y'],
-    },
-  };
-  
   const label = [
     'value', {
       offset: 0,
@@ -33,10 +25,21 @@
   ];
 
   export default {
+    mounted() {
+      $.getJSON('/data/sankey.json', (sourceData) => {
+        const dv = new DataSet.View().source(sourceData);
+        dv.transform({
+          type: 'diagram.voronoi',
+          fields: ['x', 'y'],
+          size: [800, 600],
+          as: ['_x', '_y'],
+        });
+        this.$data.data = dv.rows;
+      });
+    },
     data() {
       return {
         data,
-        dataPre,
         label,
       };
     },

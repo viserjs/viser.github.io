@@ -4,21 +4,8 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-import { data } from './data';
-
-const dataPre = {
-  connector: {
-    type: 'graph',
-    edges: d => d.links,
-  },
-  transform: {
-    type: 'diagram.arc',
-    sourceWeight: e => e.sourceWeight,
-    targetWeight: e => e.targetWeight,
-    weight: true,
-    marginRatio: 0.3
-  },
-};
+import * as $ from 'jquery';
+const DataSet = require('@antv/data-set');
 
 const scale = [{
   dataKey: 'x',
@@ -39,7 +26,7 @@ const label = ['name', {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-view dataView="edges">
         <v-coord type="polar" direction="yReverse"></v-coord>
         <v-edge position="x*y" color="source" shape="arc" opacity="0.5" tooltip="source*target*value"></v-edge>
@@ -55,10 +42,26 @@ const label = ['name', {
 class AppComponent {
   forceFit: boolean = true;
   height: number = 500;
-  data = data;
-  dataPre = dataPre;
+  data = {};
   scale = scale;
   label = label;
+
+  constructor() {
+    $.getJSON('/data/relationship-with-weight.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData, {
+        type: 'graph',
+        edges: d => d.links,
+      });
+      dv.transform({
+        type: 'diagram.arc',
+        sourceWeight: e => e.sourceWeight,
+        targetWeight: e => e.targetWeight,
+        weight: true,
+        marginRatio: 0.3
+      });
+      this.data = dv.rows;
+    });
+  }
 }
 
 @NgModule({

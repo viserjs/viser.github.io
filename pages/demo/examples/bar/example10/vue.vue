@@ -35,7 +35,6 @@
     data() {
       return {
         data,
-        dataPre,
         height: 400,
         label: label,
       };

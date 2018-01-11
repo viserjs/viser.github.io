@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="600" :data="data" :data-pre="dataPre" :scale="scale">
+    <v-chart :force-fit="true" :height="600" :data="data" :scale="scale">
       <v-tooltip />
       <v-legend />
       <v-axis />
@@ -15,6 +15,7 @@
 
 <script>
   import { data } from "./data";
+  const DataSet = require('@antv/data-set');
 
   const tmp = [];
   const dates = [];
@@ -36,7 +37,14 @@
     });
   });
 
-  const tmpData = tmp;
+  const dv = new DataSet.View().source(tmp);
+  dv.transform({
+    type: 'filter',
+    callback(row) {
+      return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
+    }
+  });
+  const tmpData = dv.rows;
 
   const scale = [{
     dataKey: 'age',
@@ -52,21 +60,11 @@
     dataKey: 'gender',
     sync: true,
   }];
-  
-  const dataPre = {
-    transform: {
-      type: 'filter',
-      callback(row) {
-        return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
-      }
-    }
-  };
 
   export default {
     data() {
       return {
         data: tmpData,
-        dataPre,
         scale,
       };
     },

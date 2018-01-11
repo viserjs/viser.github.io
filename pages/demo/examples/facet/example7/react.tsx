@@ -1,6 +1,8 @@
 import { Chart, Facet, View, Tooltip, Legend, Axis, StackBar, FacetView, Coord } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+const DataSet = require('@antv/data-set');
+const { DataView } = DataSet;
 
 const data = [
   {gender:'男',count:40,'class': '一班',grade: '一年级'},
@@ -17,19 +19,29 @@ const data = [
   {gender:'女',count:36,'class': '三班',grade: '二年级'},
 ];
 
-const facetDataPre = {
-  transform: {
+const views = (view, facet) => {
+  const data = facet.data;
+  const dv = new DataView();
+  dv.source(data).transform({
     type: 'percent',
     field: 'count',
     dimension: 'gender',
     as: 'percent',
-  },
-};
+  });
 
-const facetScale = {
-  dataKey: 'percent',
-  formatter: '.2%',
-};
+  return {
+    data: dv,
+    scale: {
+      dataKey: 'percent',
+      formatter: '.2%',
+    },
+    series: {
+      quickType: 'stackBar',
+      position: 'percent',
+      color: 'gender',
+    }
+  }
+}
 
 class App extends React.Component {
   render() {
@@ -38,11 +50,7 @@ class App extends React.Component {
         <Tooltip showTitle={false} />
         <Coord type="theta" />
         <Legend dataKey="cut" position="top" />
-        <Facet type="tree" fields={['grade', 'class']} line={{ stroke: '#00a3d7' }} lineSmooth={true}>
-          <FacetView dataPre={facetDataPre} scale={facetScale}>
-            <StackBar position="percent" color="gender" />
-          </FacetView>
-        </Facet>
+        <Facet type="tree" fields={['grade', 'class']} line={{ stroke: '#00a3d7' }} lineSmooth={true} views={views}></Facet>
       </Chart>
     );
   }

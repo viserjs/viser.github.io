@@ -3,25 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
-
-const bgDataPre = {
-  connector: {
-    type: 'GeoJSON'
-  }
-};
-
-const userDataPre = (dv) => {
-  const geo = dv['111'];
-  return {
-    transform: [{
-      type: 'geo.region',
-      field: 'name',
-      geoDataView: geo,
-      as: ['longitude', 'lantitude'],
-    }
-    ],
-  };
-};
+const DataSet = require('@antv/data-set');
 
 const colors = [ "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac" ];
 
@@ -124,7 +106,21 @@ class App extends React.Component {
         });
       }
 
-      self.setState({geoData: mapData, data: userData, name});
+      const ds = new DataSet();
+      const geoDataView = ds.createView().source(mapData, {
+        type: 'GeoJSON',
+      }); // geoJSON 经纬度数据
+
+      // 用户数据
+      const dvData = ds.createView().source(userData);
+      dvData.transform({
+        type: 'geo.region',
+        field: 'name',
+        geoDataView: geoDataView,
+        as: ['longitude', 'lantitude'],
+      });
+
+      self.setState({geoData: geoDataView, data: dvData, name});
 
       if (callback) {
         callback(null, areaNode);
@@ -197,10 +193,10 @@ class App extends React.Component {
     return (
       <div id="province" style={{width: '50%', height:'400px',position: 'absolute', right: 0,top: 0,}}>
         <div>
-          <Chart forceFit height={600} padding={[55, 20]} data={geoData} dataPre={bgDataPre}>
+          <Chart forceFit height={600} padding={[55, 20]} data={geoData} >
             <Tooltip showTitle={false}/>
-            <View viewId='111' data={geoData} dataPre={bgDataPre}><div></div></View>
-            <View viewId='122' data={data} dataPre={userDataPre} >
+            <View data={geoData} ><div></div></View>
+            <View data={data} >
               <Polygon position='longitude*lantitude' label={['name', {
                 textStyle: {
                   fill: '#fff',

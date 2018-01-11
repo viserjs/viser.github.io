@@ -46,7 +46,6 @@
     data() {
       return {
         data,
-        dataPre,
         scale,
         height: 400,
       };
