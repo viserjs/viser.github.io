@@ -97,8 +97,6 @@ class AppComponent {
         }
       });
 
-      console.log(dv, userData);
-
       this.geoData = dv;
       this.data = userData;
     });
