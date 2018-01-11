@@ -44,7 +44,7 @@ const scale = [{
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit height={400} data={data} dataPre={dataPre} scale={scale}>
+      <Chart forceFit height={400} data={data} scale={scale}>
         <Tooltip crosshairs={{ type: 'line' }} />
         <Axis dataKey="value" />
         <Legend />
