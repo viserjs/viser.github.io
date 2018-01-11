@@ -18,7 +18,8 @@ const style = {
 
 class App extends React.Component {
   state = {
-    data: {},
+    edgesData: [],
+    nodesData: [],
   };
 
   componentDidMount() {
@@ -31,20 +32,26 @@ class App extends React.Component {
         type: 'diagram.arc',
         marginRatio: 0.5,
       });
-      this.setState({ data: dv.rows});
+      this.setState({
+        edgesData: dv.edges,
+        nodesData: dv.nodes,
+      });
     });
   }
 
   render() {
-    const { data } = this.state;
+    const {
+      edgesData,
+      nodesData,
+    } = this.state;
 
     return (
-      <Chart forceFit={true} height={500} data={data}>
+      <Chart forceFit={true} height={500}>
         <Tooltip showTitle={false} />
-        <View dataView="edges">
+        <View data={edgesData}>
           <Edge position="x*y" shape="arc" color="source" opacity={0.5} tooltip="source*target" />
         </View>
-        <View dataView="nodes">
+        <View data={nodesData}>
           <Point position="x*y" size="value" color="id" opacity={0.5} style={style} label={label} />
         </View>
       </Chart>

@@ -19,13 +19,13 @@ const style = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
+    <v-chart [forceFit]="forceFit" [height]="height">
       <v-tooltip [showTitle]="showTitle"></v-tooltip>
-      <v-view dataView="edges">
+      <v-view [data]="edgesData">
         <v-coord type="polar" direction="yReverse"></v-coord>
         <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target"></v-edge>
       </v-view>
-      <v-view dataView="nodes">
+      <v-view [data]="nodesData">
         <v-coord type="polar" direction="yReverse"></v-coord>
         <v-point position="x*y" size="value" color="id" opacity="0.5" [style]="style" [label]="label"></v-point>
       </v-view>
@@ -37,7 +37,8 @@ export class AppComponent {
   showTitle: boolean = false;
   forceFit: boolean = true;
   height: number = 500;
-  data = {};
+  edgesData = [];
+  nodesData = [];
   style = style;
   label = label;
 
@@ -51,7 +52,8 @@ export class AppComponent {
         type: 'diagram.arc',
         marginRatio: 0.5,
       });
-      this.data = dv.rows;
+      this.edgesData = dv.edges;
+      this.nodesData = dv.nodes;
     });
   }
 }

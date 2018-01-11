@@ -7,23 +7,11 @@ import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 
-const dataView = [
-  'nodes', nodes => {
-    return nodes.map((node: any) => ({
-      name: node.data.name,
-      value: node.value,
-      depth: node.depth,
-      x: node.x,
-      y: node.y,
-    }));
-  },
-];
-
 @Component({
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataView]="dataView" padding="0">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" padding="0">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-polygon position="x*y" color="name"></v-polygon>
     </v-chart>
@@ -33,8 +21,7 @@ const dataView = [
 export class AppComponent {
   forceFit: boolean = true;
   height: number = 500;
-  data = {};
-  dataView = dataView;
+  data = [];
 
   constructor() {
     $.getJSON('/data/flare.json', (sourceData) => {
@@ -44,7 +31,13 @@ export class AppComponent {
       dv.transform({
         type: 'hierarchy.partition',
       });
-      this.data = dv.rows;
+      this.data = dv.getAllNodes().map((node: any) => ({
+        name: node.data.name,
+        value: node.value,
+        depth: node.depth,
+        x: node.x,
+        y: node.y,
+      }));
     });
   }
 }

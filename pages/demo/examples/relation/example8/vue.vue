@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="400" :data="data" :data-view="dataView" :scale="scale" :padding="0">
+    <v-chart :force-fit="true" :height="400" :data="data" :scale="scale" :padding="0">
       <v-tooltip :show-title="false" :item-tpl="itemTpl" />
       <v-polygon :position="'x*y'" :color="'name'" :tooltip="tooltip" :v-style="style" :label="label" />
     </v-chart>
@@ -45,15 +45,11 @@
     tile: 'treemapResquarify',
     as: ['x', 'y'],
   });
-  const data = dv.rows;
-
-  const dataView = ['nodes', nodes => {
-    return nodes.map(node => ({
-      ...node,
-      name: node.data.name,
-      value: node.data.value,
-    }));
-  }];
+  const data = dv.getAllNodes().map((node) => ({
+    ...node,
+    name: node.data.name,
+    value: node.data.value,
+  }));
 
   const scale = [{
     dataKey: 'value',
@@ -89,7 +85,6 @@
     data() {
       return {
         data,
-        dataView,
         scale,
         style,
         itemTpl,

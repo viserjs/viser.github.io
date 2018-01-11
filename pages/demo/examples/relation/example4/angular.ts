@@ -39,12 +39,12 @@ const polygonLabel = [
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale" [padding]="padding">
+    <v-chart [forceFit]="forceFit" [height]="height" [scale]="scale" [padding]="padding">
       <v-tooltip showTitle="false"></v-tooltip>
-      <v-view viewId="2" dataView="edges" [scale]="scale">
+      <v-view viewId="2" [data]="edgesData" [scale]="scale">
         <v-sankey position="x*y" color="#bbb" opacity="0.6" [tooltip]="tooltip" [style]="sankeyStyle"></v-sankey>
       </v-view>
-      <v-view viewId="3" dataView="nodes" [scale]="scale">
+      <v-view viewId="3" [data]="nodesData" [scale]="scale">
         <v-polygon position="x*y" color="name" [style]="polygonStyle" [label]="polygonLabel" tooltip="false"></v-polygon>
       </v-view>
     </v-chart>
@@ -54,7 +54,8 @@ const polygonLabel = [
 export class AppComponent {
   forceFit: boolean = true;
   height: number = 500;
-  data = {};
+  edgesData = [];
+  nodesData = [];
   scale = scale;
   padding = [40, 80];
   tooltip = tooltip;
@@ -73,7 +74,8 @@ export class AppComponent {
         nodeWidth: 0.015,
         nodePadding: 0.02,
       });
-      this.data = dv.rows;
+      this.edgesData = dv.edges;
+      this.nodesData = dv.nodes;
     });
   }
 }

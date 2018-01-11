@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data" :data-view="dataView" :padding="0">
+    <v-chart :force-fit="true" :height="500" :data="data" :padding="0">
       <v-tooltip :show-title="false" />
       <v-polygon :position="'x*y'" :color="'name'" />
     </v-chart>
@@ -11,18 +11,6 @@
   import * as $ from 'jquery';
   const DataSet = require('@antv/data-set');
 
-  const dataView = [
-    'nodes', nodes => {
-      return nodes.map(node => ({
-        name: node.data.name,
-        value: node.value,
-        depth: node.depth,
-        x: node.x,
-        y: node.y,
-      }));
-    },
-  ];
-
   export default {
     mounted() {
       $.getJSON('/data/flare.json', (sourceData) => {
@@ -32,13 +20,18 @@
         dv.transform({
           type: 'hierarchy.partition',
         });
-        this.$data.data = dv.rows;
+        this.$data.data = dv.getAllNodes().map((node) => ({
+          name: node.data.name,
+          value: node.value,
+          depth: node.depth,
+          x: node.x,
+          y: node.y,
+        }));
       });
     },
     data() {
       return {
-        data: {},
-        dataView,
+        data: [],
       };
     },
   };

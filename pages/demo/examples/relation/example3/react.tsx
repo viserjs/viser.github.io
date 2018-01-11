@@ -21,7 +21,8 @@ const label = ['name', {
 
 class App extends React.Component {
   state = {
-    data: {},
+    edgesData: [],
+    nodesData: [],
   };
 
   componentDidMount() {
@@ -37,21 +38,27 @@ class App extends React.Component {
         weight: true,
         marginRatio: 0.3
       });
-      this.setState({ data: dv.rows });
+      this.setState({
+        edgesData: dv.edges,
+        nodesData: dv.nodes,
+      });
     });
   }
 
   render() {
-    const { data } = this.state;
+    const {
+      edgesData,
+      nodesData,
+    } = this.state;
 
     return (
-      <Chart forceFit={true} height={500} data={data} scale={scale}>
+      <Chart forceFit={true} height={500} scale={scale}>
         <Tooltip showTitle={false} />
-        <View dataView="edges">
+        <View data={edgesData}>
           <Coord type="polar" direction="yReverse" />
           <Edge position="x*y" shape="arc" color="source" opacity={0.5} tooltip="source*target*value" />
         </View>
-        <View dataView="nodes">
+        <View data={nodesData}>
           <Coord type="polar" direction="yReverse" />
           <Polygon position="x*y" color="id" label={label} />
         </View>

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data">
+    <v-chart :force-fit="true" :height="500">
       <v-tooltip :show-title="false" />
-      <v-view :view-id="1" :data-view="'edges'">
+      <v-view :view-id="1" :data="edgesData">
         <v-edge :position="'x*y'" :shape="'arc'" :color="'source'" opacity="0.5" tooltip="'source*target'" />
       </v-view>
-      <v-view :view-id="2" :data-view="'nodes'">
-        <v-point :position="'x*y'" :size="'value'" :color="'id'" :opacity="0.5" :style="style" :label="label" />
+      <v-view :view-id="2" :data="nodesData">
+        <v-point :position="'x*y'" :size="'value'" :color="'id'" :opacity="0.5" :v-style="style" :label="label" />
       </v-view>
     </v-chart>
   </div>
@@ -39,12 +39,14 @@
           type: 'diagram.arc',
           marginRatio: 0.5,
         });
-        this.$data.data = dv.rows;
+        this.$data.edgesData = dv.edges;
+        this.$data.nodesData = dv.nodes;
       });
     },
     data() {
       return {
-        data: {},
+        edgesData: [],
+        nodesData: [],
         style,
         label,
       };

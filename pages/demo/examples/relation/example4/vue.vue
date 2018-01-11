@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data" :scale="scale" :padding="padding">
+    <v-chart :force-fit="true" :height="500" :scale="scale" :padding="padding">
       <v-tooltip :show-title="false" />
-      <v-view :view-id="1" :data-view="'edges'">
+      <v-view :view-id="1" :data="edgesData">
         <v-sankey :position="'x*y'" :color="'#bbb'" :opacity="0.6" :tooltip="tooltip" :v-style="sankeyStyle" />
       </v-view>
-      <v-view :view-id="2" :data-view="'nodes'">
-        <v-polygon :position="'x*y'" :color="'name'" :style="polygonStyle" :label="polygonLabel" tooltip="false" />
+      <v-view :view-id="2" :data="nodesData">
+        <v-polygon :position="'x*y'" :color="'name'" :v-style="polygonStyle" :label="polygonLabel" tooltip="false" />
       </v-view>
     </v-chart>
   </div>
@@ -56,12 +56,14 @@
           nodeWidth: 0.015,
           nodePadding: 0.02,
         });
-        this.$data.data = dv.rows;
+        this.$data.edgesData = dv.edges;
+        this.$data.nodesData = dv.nodes;
       });
     },
     data() {
       return {
-        data: {},
+        edgesData: [],
+        nodesData: [],
         scale,
         padding: [40, 80],
         tooltip,

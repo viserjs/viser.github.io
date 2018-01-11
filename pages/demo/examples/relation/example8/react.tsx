@@ -38,15 +38,11 @@ dv.transform({
   tile: 'treemapResquarify',
   as: ['x', 'y'],
 });
-const data = dv.rows;
-
-const dataView = ['nodes', (nodes: any) => {
-  return nodes.map((node: any) => ({
-    ...node,
-    name: node.data.name,
-    value: node.data.value,
-  }));
-}];
+const data = dv.getAllNodes().map((node: any) => ({
+  ...node,
+  name: node.data.name,
+  value: node.data.value,
+}));
 
 const scale = [{
   dataKey: 'value',
@@ -81,7 +77,7 @@ const label = ['name', {
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={400} data={data} dataView={dataView} scale={scale} padding={0}>
+      <Chart forceFit={true} height={400} data={data} scale={scale} padding={0}>
         <Tooltip showTitle={false} itemTpl={itemTpl} />
         <Polygon position="x*y" color="name" tooltip={tooltip} style={style} label={label} />
       </Chart>

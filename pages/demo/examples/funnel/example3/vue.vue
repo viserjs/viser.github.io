@@ -9,7 +9,7 @@
         <v-tooltip />
         <v-coord type='rect' direction='LT' />
         <v-pyramid :position="pyramidOpts1.position" :color="pyramidOpts1.color"
-          :style="pyramidOpts1.style" :tooltip="pyramidOpts1.tooltip" :opacity="pyramidOpts1.opacity" />
+          :v-style="pyramidOpts1.style" :tooltip="pyramidOpts1.tooltip" :opacity="pyramidOpts1.opacity" />
       </v-view>
     </v-chart>
   </div>

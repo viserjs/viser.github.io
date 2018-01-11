@@ -4,7 +4,7 @@
       <v-tooltip :show-title="false"/>
       <v-view :data="geoData" ><div></div></v-view>
       <v-view :data="data">
-        <v-polygon :position="polygonOpts.position" :label="polygonOpts.label" :style="polygonOpts.style" :color="polygonOpts.color"/>
+        <v-polygon :position="polygonOpts.position" :label="polygonOpts.label" :v-style="polygonOpts.style" :color="polygonOpts.color"/>
       </v-view>
     </v-chart>
   </div>

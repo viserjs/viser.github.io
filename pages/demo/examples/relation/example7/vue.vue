@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data" :data-view="dataView" :padding="0">
+    <v-chart :force-fit="true" :height="500" :data="data" :padding="0">
       <v-tooltip :show-title="false" />
       <v-coord :type="'polar'" :inner-radius="0.3" />
-      <v-polygon :position="'x*y'" :color="color" :active="false" :style="style" :tooltip="'label*sum'" />
+      <v-polygon :position="'x*y'" :color="color" :active="false" :v-style="style" :tooltip="'label*sum'" />
     </v-chart>
   </div>
 </template>
@@ -11,27 +11,6 @@
 <script>
   import * as $ from 'jquery';
   const DataSet = require('@antv/data-set');
-
-  const dataView = [
-    'nodes', nodes => {
-      const source = [];
-      nodes.map((node) => {
-        if (node.depth === 0) {
-          return;
-        }
-        const obj = {};
-        obj.label = node.data.label;
-        obj.sum = node.data.sum;
-        obj.uv = node.data.uv;
-        obj.value = node.value;
-        obj.x = node.x;
-        obj.y = node.y;
-        source.push(obj);
-        return node;
-      });
-      return source;
-    },
-  ];
 
   const style = {
     stroke: '#FFF',
@@ -51,13 +30,23 @@
           field: 'sum',
           as: ['x', 'y'],
         });
-        this.$data.data = dv.rows;
+        this.$data.data = dv.getAllNodes().filter((node) => {
+          return node.depth !== 0;
+        }).map((node) => {
+          return {
+            label: node.data.label,
+            sum: node.data.sum,
+            uv: node.data.uv,
+            value: node.value,
+            x: node.x,
+            y: node.y,
+          };
+        });
       });
     },
     data() {
       return {
         data: {},
-        dataView,
         style,
         color,
       };

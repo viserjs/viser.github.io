@@ -4,21 +4,9 @@ import * as React from 'react';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 
-const dataView = [
-  'nodes', nodes => {
-    return nodes.map((node: any) => ({
-      name: node.data.name,
-      value: node.value,
-      depth: node.depth,
-      x: node.x,
-      y: node.y,
-    }));
-  },
-];
-
 class App extends React.Component {
   state = {
-    data: {},
+    data: [],
   };
 
   componentDidMount() {
@@ -29,14 +17,22 @@ class App extends React.Component {
       dv.transform({
         type: 'hierarchy.partition',
       });
-      this.setState({ data: dv.rows });
+      this.setState({
+        data: dv.getAllNodes().map((node: any) => ({
+          name: node.data.name,
+          value: node.value,
+          depth: node.depth,
+          x: node.x,
+          y: node.y,
+        })),
+      });
     });
   }
 
   render() {
     const { data } = this.state;
     return (
-      <Chart forceFit height={500} data={data} dataView={dataView} padding={0}>
+      <Chart forceFit height={500} data={data} padding={0}>
         <Tooltip showTitle={false} />
         <Polygon position="x*y" color="name" />
       </Chart>

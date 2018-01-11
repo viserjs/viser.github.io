@@ -34,7 +34,8 @@ const polygonLabel = [
 
 class App extends React.Component {
   state = {
-    data: {},
+    edgesData: [],
+    nodesData: [],
   };
 
   componentDidMount() {
@@ -48,19 +49,26 @@ class App extends React.Component {
         nodeWidth: 0.015,
         nodePadding: 0.02,
       });
-      this.setState({ data: dv.rows });
+      this.setState({
+        edgesData: dv.edges,
+        nodesData: dv.nodes,
+      });
     });
   }
 
   render() {
-    const { data } = this.state;
+    const {
+      edgesData,
+      nodesData,
+    } = this.state;
+
     return (
-      <Chart forceFit height={500} data={data} scale={scale} padding={[ 40, 80 ]}>
+      <Chart forceFit height={500} scale={scale} padding={[ 40, 80 ]}>
         <Tooltip showTitle={false} />
-        <View dataView='edges'>
+        <View data={edgesData}>
           <Sankey position='x*y' style={{ curvature: 0.5 }} color='#bbb' opacity={0.6} tooltip={tooltip} />
         </View>
-        <View dataView='nodes'>
+        <View data={nodesData}>
           <Polygon position="x*y" color="name" style={{ stroke: '#ccc' }} label={polygonLabel} tooltip={false} />
         </View>
       </Chart>

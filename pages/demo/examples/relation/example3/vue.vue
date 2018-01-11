@@ -1,11 +1,11 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="500" :data="data" :scale="scale">
-      <v-view :view-id="'2'" :data-view="'edges'">
+    <v-chart :force-fit="true" :height="500" :scale="scale">
+      <v-view :view-id="'2'" :data="edgesData">
         <v-coord :type="'polar'" :direction="'yReverse'" />
         <v-edge :position="'x*y'" :color="'source'" :shape="'arc'" :opacity="0.5" :tooltip="'source*target*value'" />
       </v-view>
-      <v-view :view-id="'3'" :data-view="'nodes'">
+      <v-view :view-id="'3'" :data="nodesData">
         <v-coord :type="'polar'" :direction="'yReverse'" />
         <v-polygon :position="'x*y'" :color="'id'" :label="label" />
       </v-view>
@@ -45,12 +45,14 @@ export default {
         weight: true,
         marginRatio: 0.3
       });
-      this.$data.data = dv.rows;
+      this.$data.edgesData = dv.edges;
+      this.$data.nodesData = dv.nodes;
     });
   },
   data() {
     return {
-      data: {},
+      edgesData: [],
+      nodesData: [],
       scale,
       label,
     };

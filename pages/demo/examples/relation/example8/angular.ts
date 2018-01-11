@@ -41,15 +41,11 @@ dv.transform({
   tile: 'treemapResquarify',
   as: ['x', 'y'],
 });
-const data = dv.rows;
-
-const dataView = ['nodes', (nodes: any) => {
-  return nodes.map((node: any) => ({
-    ...node,
-    name: node.data.name,
-    value: node.data.value,
-  }));
-}];
+const data = dv.getAllNodes().map((node: any) => ({
+  ...node,
+  name: node.data.name,
+  value: node.data.value,
+}));
 
 const scale = [{
   dataKey: 'value',
@@ -85,7 +81,7 @@ const label = ['name', {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="400" [data]="data" [dataView]="dataView" [scale]="scale" padding="0">
+    <v-chart [forceFit]="forceFit" [height]="400" [data]="data" [scale]="scale" padding="0">
       <v-tooltip showTitle="false" itemTpl="itemTpl"></v-tooltip>
       <v-polygon position="x*y" color="name" [tooltip]="tooltip" [style]="style" [label]="label"></v-polygon>
     </v-chart>
@@ -96,7 +92,6 @@ export class AppComponent {
   forceFit: boolean = true;
   height: number = 600;
   data = data;
-  dataView = dataView;
   scale = scale;
   tooltip = tooltip;
   style = style;

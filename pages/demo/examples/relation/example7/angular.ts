@@ -7,27 +7,6 @@ import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 
-const dataView = [
-  'nodes', nodes => {
-    const source = [];
-    nodes.map((node: any) => {
-      if (node.depth === 0) {
-        return;
-      }
-      const obj: any = {};
-      obj.label = node.data.label;
-      obj.sum = node.data.sum;
-      obj.uv = node.data.uv;
-      obj.value = node.value;
-      obj.x = node.x;
-      obj.y = node.y;
-      source.push(obj);
-      return node;
-    });
-    return source;
-  },
-];
-
 const style = {
   stroke: '#FFF',
   lineWidth: 1,
@@ -39,7 +18,7 @@ const color = ['value', '#BAE7FF-#1890FF-#0050B3'];
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [dataView]="dataView" padding="0">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" padding="0">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-coord type="polar" innerRadius="0.3"></v-coord>
       <v-polygon position="x*y" [color]="color" active="false" [style]="style" tooltip="label*sum"></v-polygon>
@@ -50,8 +29,7 @@ const color = ['value', '#BAE7FF-#1890FF-#0050B3'];
 export class AppComponent {
   forceFit: boolean = true;
   height: number = 500;
-  data = {};
-  dataView = dataView;
+  data = [];
   style = style;
   color = color;
 
@@ -65,7 +43,18 @@ export class AppComponent {
         field: 'sum',
         as: ['x', 'y'],
       });
-      this.data = dv.rows;
+      this.data = dv.getAllNodes().filter((node: any) => {
+        return node.depth !== 0;
+      }).map((node: any) => {
+        return {
+          label: node.data.label,
+          sum: node.data.sum,
+          uv: node.data.uv,
+          value: node.value,
+          x: node.x,
+          y: node.y,
+        };
+      });
     });
   }
 }
