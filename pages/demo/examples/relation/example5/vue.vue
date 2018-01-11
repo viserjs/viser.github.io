@@ -26,7 +26,7 @@
 
   export default {
     mounted() {
-      $.getJSON('/data/sankey.json', (sourceData) => {
+      $.getJSON('/data/voronoi.json', (sourceData) => {
         const dv = new DataSet.View().source(sourceData);
         dv.transform({
           type: 'diagram.voronoi',
@@ -39,7 +39,7 @@
     },
     data() {
       return {
-        data,
+        data: [],
         label,
       };
     },

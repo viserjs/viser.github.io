@@ -63,7 +63,7 @@ export default {
         as: '_bin',
         groupBy: ['Species', 'type'],
       });
-      this.$data.data = data;
+      this.$data.data = dv.rows;
     });
   },
   data() {
