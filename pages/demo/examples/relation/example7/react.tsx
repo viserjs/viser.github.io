@@ -30,7 +30,6 @@ class App extends React.Component {
         data: dv.getAllNodes().filter((node: any) => {
           return node.depth !== 0;
         }).map((node: any) => {
-          console.log(node);
           return {
             label: node.data.label,
             sum: node.data.sum,
