@@ -60,7 +60,7 @@ const axis2Opts = {
 
 export default {
   mounted() {
-    $.getJSON('/data/others-1.json', (data) => {
+    $.getJSON('/data/others-1.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData);
       dv.transform({
         type: 'map',

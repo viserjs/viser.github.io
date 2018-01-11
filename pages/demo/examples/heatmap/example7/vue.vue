@@ -35,14 +35,19 @@ const seriesOpts = {
 export default {
   mounted() {
     $.getJSON('/data/heatmap-7.json', (sourceData) => {
-      const dv = new DataSet.View().source(sourceData);
+      const ds = new DataSet({
+        state: {
+          sizeEncoding: false
+        }
+      });
+      const dv = ds.createView().source(sourceData);
       dv.transform({
         sizeByCount: '$state.sizeEncoding',
         type: 'bin.hexagon',
         fields: ['x', 'y'],
         bins: [10, 5],
       });
-      this.$data.data = data;
+      this.$data.data = dv.rows;
     });
   },
   data() {

@@ -49,7 +49,12 @@ class AppComponent {
 
   constructor() {
     $.getJSON('/data/heatmap-7.json', (sourceData) => {
-      const dv = new DataSet.View().source(sourceData);
+      const ds = new DataSet({
+        state: {
+          sizeEncoding: false
+        }
+      });
+      const dv = ds.createView().source(sourceData);
       dv.transform({
         sizeByCount: '$state.sizeEncoding',
         type: 'bin.hexagon',

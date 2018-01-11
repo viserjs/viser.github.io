@@ -23,10 +23,12 @@
 
   const dv = new DataSet.View().source(sourceData);
   dv.transform({
-    type: 'merge',
-    fields: ['minimum', 'highest'],
-    as: 'range',
-  });
+  type: 'map',
+  callback(row) {
+    row.range = [row.minimum, row.highest];
+    return row;
+  }
+});
   const data = dv.rows;
 
   const label = { offset: 12 };

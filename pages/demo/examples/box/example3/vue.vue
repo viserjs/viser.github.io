@@ -49,7 +49,7 @@ const seriesStyle = ['Species', {
 
 export default {
   mounted() {
-    $.getJSON('/data/box-3.json', (data) => {
+    $.getJSON('/data/box-3.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData);
       dv.transform({
         type: 'fold',

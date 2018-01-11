@@ -28,7 +28,7 @@ viewDv.transform({
   dimension: 'name',
   as: 'percent'
 });
-const viewData = dv.rows;
+const viewData = viewDv.rows;
 
 const scale = {
   dataKey: 'percent',
