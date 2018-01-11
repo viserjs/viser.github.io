@@ -5,6 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import { data } from './data'
+const DataSet = require('@antv/data-set');
 
 const tmp = [];
 const dates = [];
@@ -26,6 +27,13 @@ data.female.values.forEach((obj: any) => {
   });
 });
 
+const dv = new DataSet.View().source(tmp);
+dv.transform({
+  type: 'filter',
+  callback(row) {
+    return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
+  }
+});
 const tmpData = tmp;
 
 const scale = [{
@@ -44,19 +52,14 @@ const scale = [{
 }];
 
 const dataPre = {
-  transform: {
-    type: 'filter',
-    callback(row) {
-      return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
-    }
-  }
+  transform:
 };
 
 @Component({
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [dataPre]="dataPre" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-legend></v-legend>
       <v-axis></v-axis>
@@ -73,7 +76,6 @@ export class AppComponent {
   forceFit: boolean = true;
   height: number = 600;
   data = tmpData;
-  dataPre = dataPre;
   scale = scale;
   fields = ['gender'];
   color = ['gender', [ '#1890ff', '#f04864' ]];

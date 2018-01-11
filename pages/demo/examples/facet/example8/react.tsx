@@ -2,6 +2,7 @@ import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { data } from './data'
+const DataSet = require('@antv/data-set');
 
 const tmp = [];
 const dates = [];
@@ -23,7 +24,14 @@ data.female.values.forEach((obj: any) => {
   });
 });
 
-const tmpData = tmp;
+const dv = new DataSet.View().source(tmp);
+dv.transform({
+  type: 'filter',
+  callback(row) {
+    return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
+  }
+});
+const tmpData = dv.rows;
 
 const scale = [{
   dataKey: 'age',
@@ -40,19 +48,10 @@ const scale = [{
   sync: true,
 }];
 
-const dataPre = {
-  transform: {
-    type: 'filter',
-    callback(row) {
-      return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
-    }
-  }
-};
-
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={600} data={tmpData} dataPre={dataPre} scale={scale}>
+      <Chart forceFit={true} height={600} data={tmpData} scale={scale}>
         <Tooltip />
         <Legend />
         <Axis />

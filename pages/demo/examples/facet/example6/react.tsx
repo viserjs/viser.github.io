@@ -2,6 +2,8 @@ import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { data } from './data'
+const DataSet = require('@antv/data-set');
+const { DataView } = DataSet;
 
 const scale = [{
   dataKey: 'mean',
@@ -12,15 +14,26 @@ const scale = [{
   sync: true,
 }];
 
-const facetDataPre = {
-  transform: {
+const views = (view, facet) => {
+  const data = facet.data;
+  const dv = new DataView();
+  dv.source(data).transform({
     type: 'aggregate',
     fields: ['price'],
     operations: ['mean'],
     as: ['mean'],
-    groupBy: ['cut'],
-  },
-};
+    groupBy: ['cut']
+  });
+
+  return {
+    data: dv,
+    series: {
+      quickType: 'bar',
+      position: 'cut*mean',
+      color: 'cut',
+    }
+  }
+}
 
 class App extends React.Component {
   render() {
@@ -29,11 +42,7 @@ class App extends React.Component {
         <Tooltip crosshairs={false} />
         <Legend dataKey="cut" position="top" />
         <Axis dataKey="cut" label={null} tickLine={null} />
-        <Facet type="tree" fields={['clarity']} line={{ stroke: '#c0d0e0' }} lineSmooth={true}>
-          <FacetView dataPre={facetDataPre}>
-            <Bar position="cut*mean" color="cut" />
-          </FacetView>
-        </Facet>
+        <Facet type="tree" fields={['clarity']} line={{ stroke: '#c0d0e0' }} lineSmooth={true} views={views}></Facet>
       </Chart>
     );
   }

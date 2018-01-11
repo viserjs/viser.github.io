@@ -2,6 +2,8 @@ import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView, Coord } from
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { data } from './data'
+const DataSet = require('@antv/data-set');
+const { DataView } = DataSet;
 
 const scale = [{
   dataKey: 'mean',
@@ -11,15 +13,26 @@ const scale = [{
   sync: true,
 }];
 
-const viewDataPre = {
-  transform: {
+const views = (view, facet) => {
+  const data = facet.data;
+  const dv = new DataView();
+  dv.source(data).transform({
     type: 'aggregate',
     fields: ['price'],
     operations: ['mean'],
     as: ['mean'],
-    groupBy: ['cut'],
-  },
-};
+    groupBy: ['cut']
+  });
+
+  return {
+    data: dv,
+    series: {
+      quickType: 'bar',
+      position: 'cut*mean',
+      color: 'cut',
+    }
+  }
+}
 
 class App extends React.Component {
   render() {
@@ -29,11 +42,7 @@ class App extends React.Component {
           <Coord type="polar" />
           <Legend />
           <Tooltip />
-          <Facet type="circle" fields={['clarity']}>
-            <FacetView dataPre={viewDataPre}>
-              <Bar position="cut*mean" color="cut" />
-            </FacetView>
-          </Facet>
+          <Facet type="circle" fields={['clarity']} views={views}></Facet>
         </Chart>
       </div>
     );

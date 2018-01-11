@@ -4,8 +4,10 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+const DataSet = require('@antv/data-set');
+const { DataView } = DataSet;
 
-const data = [
+const sourceData = [
   {gender:'男',count:40,'class': '一班',grade: '一年级'},
   {gender:'女',count:30,'class': '一班',grade: '一年级'},
   {gender:'男',count:35,'class': '二班',grade: '一年级'},
@@ -20,19 +22,29 @@ const data = [
   {gender:'女',count:36,'class': '三班',grade: '二年级'},
 ];
 
-const facetDataPre = {
-  transform: {
+const views = (view, facet) => {
+  const data = facet.data;
+  const dv = new DataView();
+  dv.source(data).transform({
     type: 'percent',
     field: 'count',
     dimension: 'gender',
     as: 'percent',
-  },
-};
+  });
 
-const facetScale = {
-  dataKey: 'percent',
-  formatter: '.2%',
-};
+  return {
+    data: dv,
+    scale: {
+      dataKey: 'percent',
+      formatter: '.2%',
+    },
+    series: {
+      quickType: 'stackBar',
+      position: 'percent',
+      color: 'gender',
+    }
+  }
+}
 
 @Component({
   selector: '#mount',
@@ -42,11 +54,7 @@ const facetScale = {
       <v-tooltip showTitle="false"></v-tooltip>
       <v-legend dataKey="cut" position="top"></v-legend>
       <v-coord type="theta"></v-coord>
-      <v-facet type="tree" [fields]="fields" [line]="line" lineSmooth="true">
-        <v-facet-view [dataPre]="facetDataPre" [scale]="facetScale">
-          <v-stack-bar position="percent" color="gender"></v-stack-bar>
-        </v-facet-view>
-      </v-facet>
+      <v-facet type="tree" [fields]="fields" [line]="line" lineSmooth="true" [views]="views"></v-facet>
     </v-chart>
   </div>
   `
@@ -54,12 +62,11 @@ const facetScale = {
 export class AppComponent {
   forceFit: boolean = true;
   height: number = 600;
-  data = data;
+  data = sourceData;
   line = { stroke: '#00a3d7' };
   padding = [60, 90, 80, 80];
   fields = ['grade', 'class'];
-  facetDataPre = facetDataPre;
-  facetScale = facetScale;
+  views = views;
 }
 
 @NgModule({
