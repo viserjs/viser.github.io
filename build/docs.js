@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 810);
+/******/ 	return __webpack_require__(__webpack_require__.s = 809);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1102,6 +1102,16 @@ exports.default = Events;
 
 /***/ }),
 
+/***/ 429:
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
+
+/***/ }),
+
 /***/ 43:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1120,11 +1130,11 @@ var _exception = __webpack_require__(16);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _helpers = __webpack_require__(80);
+var _helpers = __webpack_require__(79);
 
-var _decorators = __webpack_require__(88);
+var _decorators = __webpack_require__(87);
 
-var _logger = __webpack_require__(90);
+var _logger = __webpack_require__(89);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -1214,43 +1224,39 @@ exports.logger = _logger2['default'];
 
 /***/ }),
 
+/***/ 430:
+/***/ (function(module, exports) {
+
+module.exports = function(it){
+  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
+  return it;
+};
+
+/***/ }),
+
 /***/ 431:
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.5.3' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ 432:
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
+// fast apply, http://jsperf.lnkit.com/fast-apply/5
+module.exports = function(fn, args, that){
+  var un = that === undefined;
+  switch(args.length){
+    case 0: return un ? fn()
+                      : fn.call(that);
+    case 1: return un ? fn(args[0])
+                      : fn.call(that, args[0]);
+    case 2: return un ? fn(args[0], args[1])
+                      : fn.call(that, args[0], args[1]);
+    case 3: return un ? fn(args[0], args[1], args[2])
+                      : fn.call(that, args[0], args[1], args[2]);
+    case 4: return un ? fn(args[0], args[1], args[2], args[3])
+                      : fn.call(that, args[0], args[1], args[2], args[3]);
+  } return              fn.apply(that, args);
 };
 
-
 /***/ }),
 
-/***/ 51:
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ 77:
+/***/ 76:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1283,17 +1289,17 @@ exports.default = locale;
 
 /***/ }),
 
-/***/ 78:
+/***/ 77:
 /***/ (function(module, exports, __webpack_require__) {
 
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
-module.exports = __webpack_require__(79)['default'];
+module.exports = __webpack_require__(78)['default'];
 
 
 /***/ }),
 
-/***/ 79:
+/***/ 78:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1315,7 +1321,7 @@ var base = _interopRequireWildcard(_handlebarsBase);
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
 
-var _handlebarsSafeString = __webpack_require__(91);
+var _handlebarsSafeString = __webpack_require__(90);
 
 var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
@@ -1327,11 +1333,11 @@ var _handlebarsUtils = __webpack_require__(13);
 
 var Utils = _interopRequireWildcard(_handlebarsUtils);
 
-var _handlebarsRuntime = __webpack_require__(92);
+var _handlebarsRuntime = __webpack_require__(91);
 
 var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
-var _handlebarsNoConflict = __webpack_require__(93);
+var _handlebarsNoConflict = __webpack_require__(92);
 
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
@@ -1367,7 +1373,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 80:
+/***/ 79:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1379,31 +1385,31 @@ exports.registerDefaultHelpers = registerDefaultHelpers;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _helpersBlockHelperMissing = __webpack_require__(81);
+var _helpersBlockHelperMissing = __webpack_require__(80);
 
 var _helpersBlockHelperMissing2 = _interopRequireDefault(_helpersBlockHelperMissing);
 
-var _helpersEach = __webpack_require__(82);
+var _helpersEach = __webpack_require__(81);
 
 var _helpersEach2 = _interopRequireDefault(_helpersEach);
 
-var _helpersHelperMissing = __webpack_require__(83);
+var _helpersHelperMissing = __webpack_require__(82);
 
 var _helpersHelperMissing2 = _interopRequireDefault(_helpersHelperMissing);
 
-var _helpersIf = __webpack_require__(84);
+var _helpersIf = __webpack_require__(83);
 
 var _helpersIf2 = _interopRequireDefault(_helpersIf);
 
-var _helpersLog = __webpack_require__(85);
+var _helpersLog = __webpack_require__(84);
 
 var _helpersLog2 = _interopRequireDefault(_helpersLog);
 
-var _helpersLookup = __webpack_require__(86);
+var _helpersLookup = __webpack_require__(85);
 
 var _helpersLookup2 = _interopRequireDefault(_helpersLookup);
 
-var _helpersWith = __webpack_require__(87);
+var _helpersWith = __webpack_require__(86);
 
 var _helpersWith2 = _interopRequireDefault(_helpersWith);
 
@@ -1421,7 +1427,7 @@ function registerDefaultHelpers(instance) {
 
 /***/ }),
 
-/***/ 81:
+/***/ 80:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1468,7 +1474,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 810:
+/***/ 809:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1482,12 +1488,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mds_1 = __webpack_require__(811);
-var locale_1 = __webpack_require__(77);
+var mds_1 = __webpack_require__(810);
+var locale_1 = __webpack_require__(76);
 var utils_1 = __webpack_require__(40);
-__webpack_require__(812);
-var timers_1 = __webpack_require__(813);
-var navTpl = __webpack_require__(826);
+__webpack_require__(811);
+var timers_1 = __webpack_require__(812);
+var navTpl = __webpack_require__(818);
 var DEFAULT_FOLDER = 'guide';
 var DEFAULT_ITEM = 'installation';
 var Docs = /** @class */ (function () {
@@ -1556,7 +1562,7 @@ var Docs = /** @class */ (function () {
         var _a = this.getDocsFolderAndItem(), folder = _a.folder, item = _a.item;
         var content = '';
         try {
-            content = __webpack_require__(827)("./" + folder + "/" + item + "/" + language + ".md");
+            content = __webpack_require__(819)("./" + folder + "/" + item + "/" + language + ".md");
         }
         catch (err) {
             console.error(err);
@@ -1601,234 +1607,7 @@ new Docs();
 
 /***/ }),
 
-/***/ 811:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var mds = [
-    {
-        folderKey: 'guide',
-        cnName: '快速上手',
-        enName: 'Guide',
-        mds: [
-            {
-                itemKey: 'installation',
-                enName: 'Installation',
-                cnName: '安装',
-            },
-            {
-                itemKey: 'introduction',
-                enName: 'Introduction',
-                cnName: '简介',
-            },
-            {
-                itemKey: 'usage',
-                enName: 'Usage',
-                cnName: '用法',
-            },
-            {
-                itemKey: 'feature',
-                enName: 'Feature',
-                cnName: '特点',
-            },
-        ],
-    }
-];
-exports.default = mds;
-
-
-/***/ }),
-
-/***/ 812:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 813:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(814);
-module.exports = __webpack_require__(431);
-
-
-/***/ }),
-
-/***/ 814:
-/***/ (function(module, exports, __webpack_require__) {
-
-// ie9- setTimeout & setInterval additional parameters fix
-var global = __webpack_require__(51);
-var $export = __webpack_require__(815);
-var userAgent = __webpack_require__(825);
-var slice = [].slice;
-var MSIE = /MSIE .\./.test(userAgent); // <- dirty ie9- check
-var wrap = function (set) {
-  return function (fn, time /* , ...args */) {
-    var boundArgs = arguments.length > 2;
-    var args = boundArgs ? slice.call(arguments, 2) : false;
-    return set(boundArgs ? function () {
-      // eslint-disable-next-line no-new-func
-      (typeof fn == 'function' ? fn : Function(fn)).apply(this, args);
-    } : fn, time);
-  };
-};
-$export($export.G + $export.B + $export.F * MSIE, {
-  setTimeout: wrap(global.setTimeout),
-  setInterval: wrap(global.setInterval)
-});
-
-
-/***/ }),
-
-/***/ 815:
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(51);
-var core = __webpack_require__(431);
-var ctx = __webpack_require__(816);
-var hide = __webpack_require__(818);
-var PROTOTYPE = 'prototype';
-
-var $export = function (type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var IS_WRAP = type & $export.W;
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE];
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
-  var key, own, out;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && key in exports) continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function (C) {
-      var F = function (a, b, c) {
-        if (this instanceof C) {
-          switch (arguments.length) {
-            case 0: return new C();
-            case 1: return new C(a);
-            case 2: return new C(a, b);
-          } return new C(a, b, c);
-        } return C.apply(this, arguments);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-    // make static versions for prototype methods
-    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if (IS_PROTO) {
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
-    }
-  }
-};
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library`
-module.exports = $export;
-
-
-/***/ }),
-
-/***/ 816:
-/***/ (function(module, exports, __webpack_require__) {
-
-// optional / simple context binding
-var aFunction = __webpack_require__(817);
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ }),
-
-/***/ 817:
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-
-/***/ }),
-
-/***/ 818:
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP = __webpack_require__(819);
-var createDesc = __webpack_require__(824);
-module.exports = __webpack_require__(99) ? function (object, key, value) {
-  return dP.f(object, key, createDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-
-/***/ 819:
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(820);
-var IE8_DOM_DEFINE = __webpack_require__(821);
-var toPrimitive = __webpack_require__(823);
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__(99) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-
-/***/ 82:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1930,91 +1709,207 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 820:
+/***/ 810:
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(98);
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var mds = [
+    {
+        folderKey: 'guide',
+        cnName: '快速上手',
+        enName: 'Guide',
+        mds: [
+            {
+                itemKey: 'installation',
+                enName: 'Installation',
+                cnName: '安装',
+            },
+            {
+                itemKey: 'introduction',
+                enName: 'Introduction',
+                cnName: '简介',
+            },
+            {
+                itemKey: 'usage',
+                enName: 'Usage',
+                cnName: '用法',
+            },
+            {
+                itemKey: 'feature',
+                enName: 'Feature',
+                cnName: '特点',
+            },
+        ],
+    }
+];
+exports.default = mds;
 
 
 /***/ }),
 
-/***/ 821:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__(99) && !__webpack_require__(432)(function () {
-  return Object.defineProperty(__webpack_require__(822)('div'), 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ 822:
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(98);
-var document = __webpack_require__(51).document;
-// typeof document.createElement is 'object' in old IE
-var is = isObject(document) && isObject(document.createElement);
-module.exports = function (it) {
-  return is ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-
-/***/ 823:
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(98);
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-
-/***/ 824:
+/***/ 811:
 /***/ (function(module, exports) {
 
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 812:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(813);
+module.exports = __webpack_require__(97);
+
+/***/ }),
+
+/***/ 813:
+/***/ (function(module, exports, __webpack_require__) {
+
+// ie9- setTimeout & setInterval additional parameters fix
+var global     = __webpack_require__(429)
+  , $export    = __webpack_require__(814)
+  , invoke     = __webpack_require__(431)
+  , partial    = __webpack_require__(816)
+  , navigator  = global.navigator
+  , MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
+var wrap = function(set){
+  return MSIE ? function(fn, time /*, ...args */){
+    return set(invoke(
+      partial,
+      [].slice.call(arguments, 2),
+      typeof fn == 'function' ? fn : Function(fn)
+    ), time);
+  } : set;
+};
+$export($export.G + $export.B + $export.F * MSIE, {
+  setTimeout:  wrap(global.setTimeout),
+  setInterval: wrap(global.setInterval)
+});
+
+/***/ }),
+
+/***/ 814:
+/***/ (function(module, exports, __webpack_require__) {
+
+var global    = __webpack_require__(429)
+  , core      = __webpack_require__(97)
+  , ctx       = __webpack_require__(815)
+  , PROTOTYPE = 'prototype';
+
+var $export = function(type, name, source){
+  var IS_FORCED = type & $export.F
+    , IS_GLOBAL = type & $export.G
+    , IS_STATIC = type & $export.S
+    , IS_PROTO  = type & $export.P
+    , IS_BIND   = type & $export.B
+    , IS_WRAP   = type & $export.W
+    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
+    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
+    , key, own, out;
+  if(IS_GLOBAL)source = name;
+  for(key in source){
+    // contains in native
+    own = !IS_FORCED && target && key in target;
+    if(own && key in exports)continue;
+    // export native or passed
+    out = own ? target[key] : source[key];
+    // prevent global pollution for namespaces
+    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+    // bind timers to global for call from export context
+    : IS_BIND && own ? ctx(out, global)
+    // wrap global constructors for prevent change them in library
+    : IS_WRAP && target[key] == out ? (function(C){
+      var F = function(param){
+        return this instanceof C ? new C(param) : C(param);
+      };
+      F[PROTOTYPE] = C[PROTOTYPE];
+      return F;
+    // make static versions for prototype methods
+    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    if(IS_PROTO)(exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
+  }
+};
+// type bitmap
+$export.F = 1;  // forced
+$export.G = 2;  // global
+$export.S = 4;  // static
+$export.P = 8;  // proto
+$export.B = 16; // bind
+$export.W = 32; // wrap
+module.exports = $export;
+
+/***/ }),
+
+/***/ 815:
+/***/ (function(module, exports, __webpack_require__) {
+
+// optional / simple context binding
+var aFunction = __webpack_require__(430);
+module.exports = function(fn, that, length){
+  aFunction(fn);
+  if(that === undefined)return fn;
+  switch(length){
+    case 1: return function(a){
+      return fn.call(that, a);
+    };
+    case 2: return function(a, b){
+      return fn.call(that, a, b);
+    };
+    case 3: return function(a, b, c){
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function(/* ...args */){
+    return fn.apply(that, arguments);
   };
 };
 
+/***/ }),
+
+/***/ 816:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var path      = __webpack_require__(817)
+  , invoke    = __webpack_require__(431)
+  , aFunction = __webpack_require__(430);
+module.exports = function(/* ...pargs */){
+  var fn     = aFunction(this)
+    , length = arguments.length
+    , pargs  = Array(length)
+    , i      = 0
+    , _      = path._
+    , holder = false;
+  while(length > i)if((pargs[i] = arguments[i++]) === _)holder = true;
+  return function(/* ...args */){
+    var that  = this
+      , $$    = arguments
+      , $$len = $$.length
+      , j = 0, k = 0, args;
+    if(!holder && !$$len)return invoke(fn, pargs, that);
+    args = pargs.slice();
+    if(holder)for(;length > j; j++)if(args[j] === _)args[j] = $$[k++];
+    while($$len > k)args.push($$[k++]);
+    return invoke(fn, args, that);
+  };
+};
 
 /***/ }),
 
-/***/ 825:
+/***/ 817:
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(51);
-var navigator = global.navigator;
-
-module.exports = navigator && navigator.userAgent || '';
-
+module.exports = __webpack_require__(97);
 
 /***/ }),
 
-/***/ 826:
+/***/ 818:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(78);
+var Handlebars = __webpack_require__(77);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
@@ -2047,18 +1942,18 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
 /***/ }),
 
-/***/ 827:
+/***/ 819:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./guide/feature/cn.md": 828,
-	"./guide/feature/en.md": 829,
-	"./guide/installation/cn.md": 830,
-	"./guide/installation/en.md": 831,
-	"./guide/introduction/cn.md": 832,
-	"./guide/introduction/en.md": 833,
-	"./guide/usage/cn.md": 834,
-	"./guide/usage/en.md": 835
+	"./guide/feature/cn.md": 820,
+	"./guide/feature/en.md": 821,
+	"./guide/installation/cn.md": 822,
+	"./guide/installation/en.md": 823,
+	"./guide/introduction/cn.md": 824,
+	"./guide/introduction/en.md": 825,
+	"./guide/usage/cn.md": 826,
+	"./guide/usage/en.md": 827
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -2074,25 +1969,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 827;
+webpackContext.id = 819;
 
 /***/ }),
 
-/***/ 828:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"-\">特点</h2>\n<p>这里我们讨论下 viser 和 g2 的差异之处，这里我们以 viser-react 举例，以便于您的理解。</p>\n<h4 id=\"datakey-\">dataKey 字段映射</h4>\n<p>对于字段映射的方式，viser 使用 <code>dataKey</code> 的方式来设置，与其它属性并列，比如在设置 <code>scale</code> 时：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-string\">//</span> <span class=\"hljs-string\">G2</span>\n<span class=\"hljs-string\">chart.scale({</span>\n<span class=\"hljs-attr\">  x:</span> <span class=\"hljs-string\">{</span>\n<span class=\"hljs-attr\">    sync:</span> <span class=\"hljs-literal\">true</span>\n  <span class=\"hljs-string\">},</span>\n<span class=\"hljs-attr\">  y:</span> <span class=\"hljs-string\">{</span>\n<span class=\"hljs-attr\">    sync:</span> <span class=\"hljs-literal\">true</span>\n  <span class=\"hljs-string\">}</span>\n<span class=\"hljs-string\">});</span>\n\n<span class=\"hljs-string\">//</span> <span class=\"hljs-string\">Viser-react</span>\n<span class=\"hljs-string\">const</span> <span class=\"hljs-string\">scale</span> <span class=\"hljs-string\">=</span> <span class=\"hljs-string\">[{</span>\n<span class=\"hljs-attr\">  dataKey:</span> <span class=\"hljs-string\">'x'</span><span class=\"hljs-string\">,</span>\n<span class=\"hljs-attr\">  sync:</span> <span class=\"hljs-literal\">true</span><span class=\"hljs-string\">,</span>\n<span class=\"hljs-string\">},</span> <span class=\"hljs-string\">{</span>\n<span class=\"hljs-attr\">  dataKey:</span> <span class=\"hljs-string\">'y'</span><span class=\"hljs-string\">,</span>\n<span class=\"hljs-attr\">  sync:</span> <span class=\"hljs-literal\">true</span><span class=\"hljs-string\">,</span>\n<span class=\"hljs-string\">}];</span>\n<span class=\"hljs-string\">&lt;Chart</span> <span class=\"hljs-string\">scale={scale}</span> <span class=\"hljs-string\">{...others}&gt;</span>\n<span class=\"hljs-string\">&lt;/Chart&gt;</span>\n</code></pre>\n<p>其它\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b的类似于 Legend, Axis 等字段映射使用同样的方式。但在 Gemo 中不是对单个字段映射的处理方式不同。因为 Gemo 的设置往往非常复杂，在 g2 中也是不定参数，不定形式，因此使用数组的方式来表达。比如 label 属性：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">// G2</span>\nnodeView.polygon()\n.position(<span class=\"hljs-string\">'x*y'</span>)\n.<span class=\"hljs-built_in\">color</span>(<span class=\"hljs-string\">'id'</span>)\n.label(<span class=\"hljs-string\">'name'</span>, {\n  labelEmit: <span class=\"hljs-keyword\">true</span>,\n  textStyle: {\n    <span class=\"hljs-built_in\">fill</span>: <span class=\"hljs-string\">'#8c8c8c'</span>\n  }\n});\n\n<span class=\"hljs-comment\">// Viser-react</span>\n<span class=\"hljs-keyword\">const</span> label = [\n  <span class=\"hljs-string\">'name'</span>, {\n    labelEmit: <span class=\"hljs-keyword\">true</span>,\n    textStyle: {\n      <span class=\"hljs-built_in\">fill</span>: <span class=\"hljs-string\">'#8c8c8c'</span>\n    },\n  }\n];\n&lt;Polygon position=<span class=\"hljs-string\">'x*y'</span> <span class=\"hljs-built_in\">color</span>=<span class=\"hljs-string\">'id'</span> label={label} /&gt;\n</code></pre>\n<h3 id=\"series-gemo-\">Series 中 Gemo 快速类型</h3>\n<p>Series 组件用于表示 g2 中 <code>gemo</code> 的相关内容。我们可以用 Series 来做为组件，但推荐直接使用具体的图形名称来表示组件，例如 Bar 和 Line 等。这样方便语义化的使用，我们提供所有的类型有 Pie, Sector, Line, SmoothLine, DashLine, Area, StackArea, SmoothArea, Bar, StackBar, DodgeBar, Interval, StackInterval, DodgeInterval, Point, JitterPoint, Funnel, Pyramid, Schema, Box, Candle, Polygon, Contour, Heatmap, Edge, Sankey。</p>\n<p>具体举例，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">// G2</span>\nchart.<span class=\"hljs-built_in\">line</span>().<span class=\"hljs-built_in\">position</span>(<span class=\"hljs-string\">'year*value'</span>);\n\n<span class=\"hljs-comment\">// Viser-react</span>\n&lt;Line <span class=\"hljs-built_in\">position</span>=<span class=\"hljs-string\">\"year*value\"</span> /&gt;\n</code></pre>\n<h3 id=\"coord\">Coord</h3>\n<p>Coord 组件用于表示 g2 中 coord 的相关内容。但是我们提供了 <code>direction</code> 这一优化后的参数用来展现 g2 中的 <code>transpose</code>, <code>reflect</code> 和 <code>scale</code> 这几个属性。这里提供对应方位 8 个位置，分别有 BL, BR, LT, LB, RB, RT, TL, TR。B 代表 bottom, T 代表 top，L 代表 left，R 代表 right。组合代表排布的初始位置。</p>\n<p>具体举例，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">// G2</span>\nchart.coord().transpose().scale(<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">-1</span>);\n\n<span class=\"hljs-comment\">// Viser-react</span>\n&lt;Coord <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"rect\"</span> direction=<span class=\"hljs-string\">\"LT\"</span> /&gt;\n</code></pre>\n<h3 id=\"formatter-\">Formatter 格式化方法</h3>\n<p>我们使用了 <code>d3-format</code> 来增强 <code>label</code> 的回调函数能力，也就是说简单场景下的数据格式化，可以直接用格式化表达式来完成。</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">// G2</span>\nchart.<span class=\"hljs-keyword\">scale</span>({\n  <span class=\"hljs-keyword\">percent</span>: {\n    <span class=\"hljs-keyword\">min</span>: <span class=\"hljs-number\">0</span>,\n    formatter(val) {\n      <span class=\"hljs-keyword\">return</span> (val * <span class=\"hljs-number\">100</span>).toFixed(<span class=\"hljs-number\">2</span>) + <span class=\"hljs-string\">'%'</span>;\n    }\n  }\n});\n\n<span class=\"hljs-comment\">// Viser-react</span>\nconst <span class=\"hljs-keyword\">scale</span> = [{\n  dataKey: <span class=\"hljs-string\">'percent'</span>,\n  <span class=\"hljs-keyword\">min</span>: <span class=\"hljs-number\">0</span>,\n  formatter: <span class=\"hljs-string\">'.2%'</span>,\n}];\n</code></pre>\n";
-
-/***/ }),
-
-/***/ 829:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"feature\">Feature</h2>\n<p>Comming Soon...</p>\n";
-
-/***/ }),
-
-/***/ 83:
+/***/ 82:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2125,49 +2006,63 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 830:
+/***/ 820:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"-\">特点</h2>\n<p>这里我们讨论下 viser 和 g2 的差异之处，这里我们以 viser-react 举例，以便于您的理解。</p>\n<h4 id=\"datakey-\">dataKey 字段映射</h4>\n<p>对于字段映射的方式，viser 使用 <code>dataKey</code> 的方式来设置，与其它属性并列，比如在设置 <code>scale</code> 时：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-string\">//</span> <span class=\"hljs-string\">G2</span>\n<span class=\"hljs-string\">chart.scale({</span>\n<span class=\"hljs-attr\">  x:</span> <span class=\"hljs-string\">{</span>\n<span class=\"hljs-attr\">    sync:</span> <span class=\"hljs-literal\">true</span>\n  <span class=\"hljs-string\">},</span>\n<span class=\"hljs-attr\">  y:</span> <span class=\"hljs-string\">{</span>\n<span class=\"hljs-attr\">    sync:</span> <span class=\"hljs-literal\">true</span>\n  <span class=\"hljs-string\">}</span>\n<span class=\"hljs-string\">});</span>\n\n<span class=\"hljs-string\">//</span> <span class=\"hljs-string\">Viser-react</span>\n<span class=\"hljs-string\">const</span> <span class=\"hljs-string\">scale</span> <span class=\"hljs-string\">=</span> <span class=\"hljs-string\">[{</span>\n<span class=\"hljs-attr\">  dataKey:</span> <span class=\"hljs-string\">'x'</span><span class=\"hljs-string\">,</span>\n<span class=\"hljs-attr\">  sync:</span> <span class=\"hljs-literal\">true</span><span class=\"hljs-string\">,</span>\n<span class=\"hljs-string\">},</span> <span class=\"hljs-string\">{</span>\n<span class=\"hljs-attr\">  dataKey:</span> <span class=\"hljs-string\">'y'</span><span class=\"hljs-string\">,</span>\n<span class=\"hljs-attr\">  sync:</span> <span class=\"hljs-literal\">true</span><span class=\"hljs-string\">,</span>\n<span class=\"hljs-string\">}];</span>\n<span class=\"hljs-string\">&lt;Chart</span> <span class=\"hljs-string\">scale={scale}</span> <span class=\"hljs-string\">{...others}&gt;</span>\n<span class=\"hljs-string\">&lt;/Chart&gt;</span>\n</code></pre>\n<p>其它\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b的类似于 Legend, Axis 等字段映射使用同样的方式。但在 Gemo 中不是对单个字段映射的处理方式不同。因为 Gemo 的设置往往非常复杂，在 g2 中也是不定参数，不定形式，因此使用数组的方式来表达。比如 label 属性：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">// G2</span>\nnodeView.polygon()\n.position(<span class=\"hljs-string\">'x*y'</span>)\n.<span class=\"hljs-built_in\">color</span>(<span class=\"hljs-string\">'id'</span>)\n.label(<span class=\"hljs-string\">'name'</span>, {\n  labelEmit: <span class=\"hljs-keyword\">true</span>,\n  textStyle: {\n    <span class=\"hljs-built_in\">fill</span>: <span class=\"hljs-string\">'#8c8c8c'</span>\n  }\n});\n\n<span class=\"hljs-comment\">// Viser-react</span>\n<span class=\"hljs-keyword\">const</span> label = [\n  <span class=\"hljs-string\">'name'</span>, {\n    labelEmit: <span class=\"hljs-keyword\">true</span>,\n    textStyle: {\n      <span class=\"hljs-built_in\">fill</span>: <span class=\"hljs-string\">'#8c8c8c'</span>\n    },\n  }\n];\n&lt;Polygon position=<span class=\"hljs-string\">'x*y'</span> <span class=\"hljs-built_in\">color</span>=<span class=\"hljs-string\">'id'</span> label={label} /&gt;\n</code></pre>\n<h3 id=\"series-gemo-\">Series 中 Gemo 快速类型</h3>\n<p>Series 组件用于表示 g2 中 <code>gemo</code> 的相关内容。我们可以用 Series 来做为组件，但推荐直接使用具体的图形名称来表示组件，例如 Bar 和 Line 等。这样方便语义化的使用，我们提供所有的类型有 Pie, Sector, Line, SmoothLine, DashLine, Area, StackArea, SmoothArea, Bar, StackBar, DodgeBar, Interval, StackInterval, DodgeInterval, Point, JitterPoint, Funnel, Pyramid, Schema, Box, Candle, Polygon, Contour, Heatmap, Edge, Sankey。</p>\n<p>具体举例，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">// G2</span>\nchart.<span class=\"hljs-built_in\">line</span>().<span class=\"hljs-built_in\">position</span>(<span class=\"hljs-string\">'year*value'</span>);\n\n<span class=\"hljs-comment\">// Viser-react</span>\n&lt;Line <span class=\"hljs-built_in\">position</span>=<span class=\"hljs-string\">\"year*value\"</span> /&gt;\n</code></pre>\n<h3 id=\"coord\">Coord</h3>\n<p>Coord 组件用于表示 g2 中 coord 的相关内容。但是我们提供了 <code>direction</code> 这一优化后的参数用来展现 g2 中的 <code>transpose</code>, <code>reflect</code> 和 <code>scale</code> 这几个属性。这里提供对应方位 8 个位置，分别有 BL, BR, LT, LB, RB, RT, TL, TR。B 代表 bottom, T 代表 top，L 代表 left，R 代表 right。组合代表排布的初始位置。</p>\n<p>具体举例，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">// G2</span>\nchart.coord().transpose().scale(<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">-1</span>);\n\n<span class=\"hljs-comment\">// Viser-react</span>\n&lt;Coord <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"rect\"</span> direction=<span class=\"hljs-string\">\"LT\"</span> /&gt;\n</code></pre>\n<h3 id=\"formatter-\">Formatter 格式化方法</h3>\n<p>我们使用了 <code>d3-format</code> 来增强 <code>label</code> 的回调函数能力，也就是说简单场景下的数据格式化，可以直接用格式化表达式来完成。</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">// G2</span>\nchart.<span class=\"hljs-keyword\">scale</span>({\n  <span class=\"hljs-keyword\">percent</span>: {\n    <span class=\"hljs-keyword\">min</span>: <span class=\"hljs-number\">0</span>,\n    formatter(val) {\n      <span class=\"hljs-keyword\">return</span> (val * <span class=\"hljs-number\">100</span>).toFixed(<span class=\"hljs-number\">2</span>) + <span class=\"hljs-string\">'%'</span>;\n    }\n  }\n});\n\n<span class=\"hljs-comment\">// Viser-react</span>\nconst <span class=\"hljs-keyword\">scale</span> = [{\n  dataKey: <span class=\"hljs-string\">'percent'</span>,\n  <span class=\"hljs-keyword\">min</span>: <span class=\"hljs-number\">0</span>,\n  formatter: <span class=\"hljs-string\">'.2%'</span>,\n}];\n</code></pre>\n";
+
+/***/ }),
+
+/***/ 821:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"feature\">Feature</h2>\n<p>Comming Soon...</p>\n";
+
+/***/ }),
+
+/***/ 822:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"-\">安装</h2>\n<p>Viser 为 React, Vue 和 Angular 提供了3个不同的分发版本。我们同时提供了npm安装和umd引入两种方式来使用Viser。</p>\n<p>npm安装是使用 Viser 最简单也是最快捷的方式。我们强烈建议您在开发单页应用(SPA)时采用这种方式进行安装。Viser 可以完美兼容 CommonJS 打包工具，例如我们最常用的 Webpack。</p>\n<p>UMD 引入是使用script标签引入来使用 Viser。当你需要快速使用的时候，这是最便捷的方式。</p>\n<h3 id=\"vue-\">Vue 分发版</h3>\n<p>您需要使用版本 <strong>2.5</strong> 及以上的 Vue，来使用 Vue 分发版 Viser。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserVue</code> 来进行调用 Viser。</p>\n<h3 id=\"angular-\">Angular 分发版</h3>\n<p>您需要使用版本 <strong>2.4</strong> 及以上的 Angular，来使用 Angular 分发版 Viser。另外，你还需要版本 <strong>0.1</strong> 及以上的 reflect-metadata，版本 <strong>5</strong> 及以上的 rxjs，版本 <strong>0.7</strong> 及以上的 zone.js。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserNg</code> 来进行调用 Viser。</p>\n<h3 id=\"react-\">React 分发版</h3>\n<p>您需要使用版本 <strong>15</strong> 及以上的 React，来使用 React 分发版 Viser。显然，版本 <strong>16</strong> 也是可以的。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 引入的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserReact</code> 来进行调用 Viser。</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
 
 /***/ }),
 
-/***/ 831:
+/***/ 823:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"installation\">Installation</h2>\n<p>Viser include 3 version which is integrated by React, Vue and Angular. We provide NPM or UMD to use library.</p>\n<p>NPM is the easiest and fastest way to get started using Viser. It is the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.</p>\n<p>UMD is the script way to using Viser. It is convenient method when you used quickly.</p>\n<h3 id=\"vue-version\">Vue Version</h3>\n<p>In Vue version, You mush prepare to Vue version greater than <strong>2.5</strong> in project.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserVue.</p>\n<h3 id=\"angular-version\">Angular Version</h3>\n<p>In Angular version, You mush prepare to Angular version greater than <strong>2.4</strong> in project. In addition, you also prepare to reflect-metadata version greater than <strong>0.1</strong>, rxjs version greater than <strong>5</strong> and zone.js version greater than <strong>0.7</strong>.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserNg.</p>\n<h3 id=\"react-version\">React Version</h3>\n<p>In React version, You mush prepare React version greater then <strong>15</strong>, and support <strong>16</strong> certainly.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserReact.</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
 
 /***/ }),
 
-/***/ 832:
+/***/ 824:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"-\">简介</h2>\n<p>Viser，一个基于 G2 实现的，为数据可视化工程师量身定制的工具。Viser 现已支持几大主流前端框架，例如 React, Vue 和 AngularJS。</p>\n<h3 id=\"-\">核心价值</h3>\n<p>它可以开发网页应用的过程中，为图表开发带来卓越的体验。</p>\n<h3 id=\"-\">设计原则</h3>\n<ol>\n<li>利用语义化组件来组合图表。包括但不限于 React, Vue 和 AugularJS 的组件。</li>\n<li>脱胎于 G2，一套基于可视化编码的图形语法。由此带来了强大的可视化能力。</li>\n</ol>\n";
 
 /***/ }),
 
-/***/ 833:
+/***/ 825:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"introduction\">Introduction</h2>\n<p>A toolkit fit for data vis engineer based on G2. Viser support React, Vue and AngularJS.</p>\n<h3 id=\"main-purpose\">Main Purpose</h3>\n<p>The main purpose of this library is to help you to write charts in web applications without any pain.</p>\n<h3 id=\"main-principles\">Main Principles</h3>\n<ol>\n<li>Simply deploy with semantic component with chart, including but not limited to React, Vue and AugularJS.</li>\n<li>Lightweight depending only on G2 which is a plotting system for Javascript, based on the grammar of graphics.</li>\n</ol>\n";
 
 /***/ }),
 
-/***/ 834:
+/***/ 826:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"-\">用法</h2>\n<p>我们以 viser-react 举例写<a href=\"https://antv.alipay.com/zh-cn/g2/3.x/demo/relation/chord.html\">一个 chore 图为例</a>，viser-vue 和 viser-ng 的用法类似。</p>\n<h3 id=\"-\">引入库</h3>\n<p>首先是引入 viser-react 的需要的子组件，以及必要的依赖，如 React, ReactDOM。</p>\n<p>其中所有的子组件分为几类：</p>\n<ul>\n<li>容器类：Chart, View, FacetView, Facet, LiteChart,</li>\n<li>标准组件类：Coord, Tooltip, Legend, Guide, Axis, Series, </li>\n<li>图形组件类：Pie, Sector, Line, SmoothLine, DashLine, Area, StackArea, SmoothArea, Bar, StackBar, DodgeBar, Interval, StackInterval, DodgeInterval, Point, JitterPoint, Funnel, Pyramid, Schema, Box, Candle, Polygon, Contour, Heatmap, Edge, Sankey</li>\n</ul>\n<pre><code class=\"lang-js\"><span class=\"hljs-keyword\">import</span> { Chart, Tooltip, Edge, View, Polygon, Coord } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'viser-react'</span>;\n<span class=\"hljs-keyword\">import</span> * <span class=\"hljs-keyword\">as</span> ReactDOM <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-dom'</span>;\n<span class=\"hljs-keyword\">import</span> * <span class=\"hljs-keyword\">as</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>;\n</code></pre>\n<h3 id=\"-\">数据处理</h3>\n<p>数据处理完全沿用 data-set.js 的处理。data-set 有丰富的数据处理方法，具体请参考 g2 官网的 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/data-set.html\">data-set 部分</a>.</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-keyword\">const</span> DataSet = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'@antv/data-set'</span>);\n\n<span class=\"hljs-keyword\">const</span> ds: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">new</span> DataSet();\n<span class=\"hljs-keyword\">const</span> dv = ds.createView().source(data, {\n  <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-string\">'graph'</span>,\n  edges: <span class=\"hljs-function\"><span class=\"hljs-params\">d</span> =&gt;</span> d.links\n});\n\ndv.transform({\n  <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-string\">'diagram.arc'</span>,\n  sourceWeight: <span class=\"hljs-function\"><span class=\"hljs-params\">e</span> =&gt;</span> e.sourceWeight,\n  targetWeight: <span class=\"hljs-function\"><span class=\"hljs-params\">e</span> =&gt;</span> e.targetWeight,\n  weight: <span class=\"hljs-literal\">true</span>,\n  marginRatio: <span class=\"hljs-number\">0.3</span>\n});\n</code></pre>\n<h3 id=\"-\">图表实现</h3>\n<p>图表实现完全沿用 g2 对于图形语法的表达。</p>\n<p>我们观察原生 g2 的语法：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-keyword\">const</span> chart = <span class=\"hljs-keyword\">new</span> G2.Chart({\n  container: <span class=\"hljs-string\">'mountNode'</span>,\n  forceFit: <span class=\"hljs-keyword\">true</span>,\n  <span class=\"hljs-built_in\">height</span>: window.innerHeight\n});\nchart.legend(<span class=\"hljs-keyword\">false</span>);\nchart.tooltip({\n  showTitle: <span class=\"hljs-keyword\">false</span>\n});\n\nchart.<span class=\"hljs-built_in\">scale</span>({\n  x: {\n    sync: <span class=\"hljs-keyword\">true</span>\n  },\n  y: {\n    sync: <span class=\"hljs-keyword\">true</span>\n  }\n});\n\n<span class=\"hljs-keyword\">const</span> edgeView = chart.view();\nedgeView.source(dv.edges);\nedgeView.coord(<span class=\"hljs-string\">'polar'</span>).reflect(<span class=\"hljs-string\">'y'</span>);\nedgeView.axis(<span class=\"hljs-keyword\">false</span>);\nedgeView.edge()\n  .position(<span class=\"hljs-string\">'x*y'</span>)\n  .<span class=\"hljs-built_in\">shape</span>(<span class=\"hljs-string\">'arc'</span>)\n  .<span class=\"hljs-built_in\">color</span>(<span class=\"hljs-string\">'source'</span>)\n  .opacity(<span class=\"hljs-number\">0.5</span>)\n  .tooltip(<span class=\"hljs-string\">'source*target*value'</span>);\n\n<span class=\"hljs-keyword\">const</span> nodeView = chart.view();\nnodeView.source(dv.nodes);\nnodeView.coord(<span class=\"hljs-string\">'polar'</span>).reflect(<span class=\"hljs-string\">'y'</span>);\nnodeView.axis(<span class=\"hljs-keyword\">false</span>);\nnodeView.polygon()\n  .position(<span class=\"hljs-string\">'x*y'</span>)\n  .<span class=\"hljs-built_in\">color</span>(<span class=\"hljs-string\">'id'</span>)\n  .label(<span class=\"hljs-string\">'name'</span>, {\n    labelEmit: <span class=\"hljs-keyword\">true</span>,\n    textStyle: {\n      <span class=\"hljs-built_in\">fill</span>: <span class=\"hljs-string\">'#8c8c8c'</span>\n    }\n  });\n\nchart.render();\n</code></pre>\n<p>我们看到有几个部分，Chart, Lengend, Tooltip, Scale 的配置，这些是公共配置，g2 提供 View 的能力，因此对应到 viser-react 中也需要两个 View，一个是边（edge），一个是节点（node）。然后每一个 api 都被抽象成了配置，而不是连续的调用。所以，我们看到对应到 viser-react 中的代码是：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">App</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> </span>{\n  constructor(props) {\n    <span class=\"hljs-keyword\">super</span>(props);\n  }\n\n  render() {\n    const label = [\n      <span class=\"hljs-symbol\">'nam</span>e', {\n        labelEmit: <span class=\"hljs-literal\">true</span>,\n        textStyle: {\n          fill: '#<span class=\"hljs-number\">8</span>c8c8c'\n        },\n      }\n    ];\n\n    const scale = [{\n      dataKey: 'x',\n      sync: <span class=\"hljs-literal\">true</span>,\n    }, {\n      dataKey: 'y',\n      sync: <span class=\"hljs-literal\">true</span>,\n    }];\n\n    <span class=\"hljs-keyword\">return</span> (\n      &lt;div&gt;\n        &lt;<span class=\"hljs-type\">Chart</span> forceFit height={window.innerHeight} scale={scale}&gt;\n          &lt;<span class=\"hljs-type\">View</span> data={dv.edges}&gt;\n            &lt;<span class=\"hljs-type\">Coord</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"polar\"</span> direction=<span class=\"hljs-string\">\"yReverse\"</span> /&gt;\n            &lt;<span class=\"hljs-type\">Edge</span> position=<span class=\"hljs-symbol\">'x</span>*y' color=<span class=\"hljs-symbol\">'sourc</span>e' shape=<span class=\"hljs-symbol\">'ar</span>c' opacity={<span class=\"hljs-number\">0.5</span>} tooltip={<span class=\"hljs-symbol\">'source</span>*target*value'} /&gt;\n          &lt;/<span class=\"hljs-type\">View</span>&gt;\n          &lt;<span class=\"hljs-type\">View</span> data={dv.nodes}&gt;\n            &lt;<span class=\"hljs-type\">Coord</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"polar\"</span> direction=<span class=\"hljs-string\">\"yReverse\"</span> /&gt;\n            &lt;<span class=\"hljs-type\">Polygon</span> position=<span class=\"hljs-symbol\">'x</span>*y' color=<span class=\"hljs-symbol\">'i</span>d' label={label} /&gt;\n          &lt;/<span class=\"hljs-type\">View</span>&gt;\n        &lt;/<span class=\"hljs-type\">Chart</span>&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n</code></pre>\n<h3 id=\"-\">最后</h3>\n<p>对于图表大部分实现上的问题，都是 g2 提供的，并不是 viser 提供的。希望你可以先对 g2 的用法能够熟悉，viser 不会单独列 g2 的 API，就这一点没有意义，但我们会对一些小变化在特点一节列出。</p>\n";
 
 /***/ }),
 
-/***/ 835:
+/***/ 827:
 /***/ (function(module, exports) {
 
 module.exports = "<h2 id=\"usage\">Usage</h2>\n<p>Common Soon...</p>\n";
 
 /***/ }),
 
-/***/ 84:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2204,7 +2099,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 85:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2238,7 +2133,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 86:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2258,7 +2153,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 87:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2299,7 +2194,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 88:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2311,7 +2206,7 @@ exports.registerDefaultDecorators = registerDefaultDecorators;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _decoratorsInline = __webpack_require__(89);
+var _decoratorsInline = __webpack_require__(88);
 
 var _decoratorsInline2 = _interopRequireDefault(_decoratorsInline);
 
@@ -2323,7 +2218,7 @@ function registerDefaultDecorators(instance) {
 
 /***/ }),
 
-/***/ 89:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2360,7 +2255,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 90:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2415,7 +2310,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 91:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2438,7 +2333,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 92:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2753,7 +2648,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 
 /***/ }),
 
-/***/ 93:
+/***/ 92:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2782,24 +2677,11 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 98:
+/***/ 97:
 /***/ (function(module, exports) {
 
-module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(432)(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
+var core = module.exports = {version: '1.2.6'};
+if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ })
 
