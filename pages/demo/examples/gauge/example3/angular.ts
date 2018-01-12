@@ -57,9 +57,9 @@ const color = ['#0086FA', '#FFBF00', '#F5222D'];
       <v-axis
         dataKey="value"
         zIndex="2"
-        line="null"
-        subTickCount="4"
-        grid="null"
+        [line]="null"
+        [subTickCount]="4"
+        [grid]="null"
         [label]="axisLabel"
         [subTickLine]="axisSubTickLine"
         [tickLine]="axisTickLine"
@@ -70,9 +70,9 @@ const color = ['#0086FA', '#FFBF00', '#F5222D'];
         position="value*1"
         shape="pointer"
         color="#8C8C8C"
-        active="false"
+        [active]="false"
       ></v-series>
-      <v-guide type="arc" zIndex="0" top="false" [start]="arcGuideBgStart" [end]="arcGuideBgEnd" [style]="arcGuideBgStyle"></v-guide>
+      <v-guide type="arc" zIndex="0" [top]="false" [start]="arcGuideBgStart" [end]="arcGuideBgEnd" [style]="arcGuideBgStyle"></v-guide>
       <v-guide type="arc" zIndex="1" [start]="arcGuideLowStart" [end]="arcGuideLowEnd" [style]="arcGuideLowStyle"></v-guide>
       <v-guide type="arc" zIndex="1" [start]="arcGuideMidStart" [end]="arcGuideMidEnd" [style]="arcGuideMidStyle"></v-guide>
       <v-guide type="arc" zIndex="1" [start]="arcGuideHighStart" [end]="arcGuideHighEnd" [style]="arcGuideHighStyle"></v-guide>
@@ -90,7 +90,7 @@ class AppComponent {
   forceFit: boolean = true;
   height = 400;
   data = [
-    { value: 2.6 }
+    { value: 5.6 }
   ];
   scale = scale;
 
@@ -166,7 +166,7 @@ class AppComponent {
       if (nextVal > 9) {
         this.trend = 'down';
       } else {
-        this.data = [{ value: nextVal }];
+        this.data[0].value = nextVal;
         this.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
         this.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
         this.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];

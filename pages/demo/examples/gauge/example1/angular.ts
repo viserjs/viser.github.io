@@ -58,26 +58,26 @@ const data = [
       <v-coord type="polar" startAngle="-202.5" endAngle="22.5" radius="0.75"></v-coord>
       <v-axis
         dataKey="value"
-        zIndex="2"
-        line="null"
+        [zIndex]="2"
+        [line]="null"
         [label]="axisLabel"
-        subTickCount="4"
+        [subTickCount]="4"
         [subTickLine]="axisSubTickLine"
         [tickLine]="axisTickLine"
-        grid="null"
+        [grid]="null"
       ></v-axis>
-      <v-axis dataKey="1" show="false"></v-axis>
+      <v-axis dataKey="1" [show]="false"></v-axis>
       <v-series
         gemo="point"
         position="value*1"
         shape="pointer"
         color="#1890FF"
-        active="false"
+        [active]="false"
       ></v-series>
       <v-guide
         type="arc"
         zIndex="0"
-        top="false"
+        [top]="false"
         [start]="arcGuide1Start"
         [end]="arcGuide1End"
         [style]="arcGuide1Style"

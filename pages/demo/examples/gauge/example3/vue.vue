@@ -93,7 +93,7 @@ export default {
         if (nextVal > 9) {
           this.$data.trend = 'down';
         } else {
-          this.$data.data = [{ value: nextVal }];
+          this.$data.data[0].value = nextVal;
           this.$data.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
           this.$data.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
           this.$data.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];
@@ -109,7 +109,7 @@ export default {
         if (nextVal < 0) {
           this.$data.trend = 'up';
         } else {
-          this.$data.data = [{ value: nextVal }];
+          this.$data.data[0].value = nextVal;
           this.$data.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
           this.$data.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
           this.$data.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];

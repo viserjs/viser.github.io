@@ -61,7 +61,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.timer = setTimeout(this.setData, 1000);
+    this.timer = setTimeout(this.setData, 100);
   }
 
   setData = () => {
@@ -87,7 +87,7 @@ class App extends React.Component {
       }
     }
 
-    this.timer = setTimeout(this.setData, 1000)
+    this.timer = setTimeout(this.setData, 100)
   }
 
   render() {
