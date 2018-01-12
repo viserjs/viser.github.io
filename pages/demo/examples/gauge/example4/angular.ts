@@ -105,7 +105,7 @@ const frontGuideStyle = {
           [size]="6"
         ></v-interval>
       </v-view>
-      <v-view viewId="3" data="dataFront">
+      <v-view viewId="3" [data]="dataFront">
         <v-coord
           [type]="'polar'"
           [startAngle]="-202.5"
