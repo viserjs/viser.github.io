@@ -13,6 +13,10 @@
   word-wrap: break-word;
 }
 
+.markdown-container p {
+  margin: 10px 0;
+}
+
 .markdown-container a {
   background-color: transparent;
 }
@@ -359,10 +363,7 @@
   color: #666;
 }
 
-.markdown-container p,
 .markdown-container blockquote,
-.markdown-container ul,
-.markdown-container ol,
 .markdown-container dl,
 .markdown-container table,
 .markdown-container pre {
