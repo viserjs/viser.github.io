@@ -7,17 +7,18 @@
 对于字段映射的方式，viser 使用 `dataKey` 的方式来设置，与其它属性并列，比如在设置 `scale` 时：
 
 ```js
-// G2
+/**
+ * G2
+ */
 chart.scale({
-  x: {
-    sync: true
-  },
-  y: {
-    sync: true
-  }
+  x: { sync: true },
+  y: { sync: true },
 });
-
-// Viser-react
+```
+```js
+/**
+ * Viser-react
+ */
 const scale = [{
   dataKey: 'x',
   sync: true,
@@ -29,10 +30,12 @@ const scale = [{
 </Chart>
 ```
 
-其它的类似于 Legend, Axis 等字段映射使用同样的方式。但在 Gemo 中不是对单个字段映射的处理方式不同。因为 Gemo 的设置往往非常复杂，在 g2 中也是不定参数，不定形式，因此使用数组的方式来表达。比如 label 属性：
+其它的类似于 Legend, Axis 等字段映射使用同样的方式。但在 Gemo 中不是对单个字段映射的处理方式不同。因为 Gemo 的设置往往非常复杂，在 g2 中也是不定参数，不定形式，因此使用数组的方式来表达。比如 label 属性：
 
 ```js
-// G2
+/**
+ * G2
+ */
 nodeView.polygon()
 .position('x*y')
 .color('id')
@@ -42,8 +45,11 @@ nodeView.polygon()
     fill: '#8c8c8c'
   }
 });
-
-// Viser-react
+```
+```js
+/**
+ * Viser-react
+ */
 const label = [
   'name', {
     labelEmit: true,
@@ -62,10 +68,15 @@ Series 组件用于表示 g2 中 `gemo` 的相关内容。我们可以用 Series
 具体举例，比如：
 
 ```js
-// G2
+/**
+ * G2
+ */
 chart.line().position('year*value');
-
-// Viser-react
+```
+```js
+/**
+ * Viser-react
+ */
 <Line position="year*value" />
 ```
 
@@ -76,10 +87,15 @@ Coord 组件用于表示 g2 中 coord 的相关内容。但是我们提供了 `d
 具体举例，比如：
 
 ```js
-// G2
+/**
+ * G2
+ */
 chart.coord().transpose().scale(1, -1);
-
-// Viser-react
+```
+```js
+/**
+ * Viser-react
+ */
 <Coord type="rect" direction="LT" />
 ```
 
@@ -88,7 +104,9 @@ chart.coord().transpose().scale(1, -1);
 我们使用了 `d3-format` 来增强 `label` 的回调函数能力，也就是说简单场景下的数据格式化，可以直接用格式化表达式来完成。
 
 ```js
-// G2
+/**
+ * G2
+ */
 chart.scale({
   percent: {
     min: 0,
@@ -97,8 +115,11 @@ chart.scale({
     }
   }
 });
-
-// Viser-react
+```
+```js
+/**
+ * Viser-react
+ */
 const scale = [{
   dataKey: 'percent',
   min: 0,
