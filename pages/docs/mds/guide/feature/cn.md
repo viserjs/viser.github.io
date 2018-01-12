@@ -90,7 +90,7 @@ const label = [
 
 ### Coord 的方向
 
-Coord 组件用于表示 g2 中 coord 的相关内容。但是我们提供了 `direction` 这一优化后的参数用来展现 g2 中的 `transpose`, `reflect` 和 `scale` 这几个属性。这里提供对应方位 8 个位置，分别有 BL, BR, LT, LB, RB, RT, TL, TR。B 代表 bottom, T 代表 top，L 代表 left，R 代表 right。组合代表排布的初始位置。具体举例，比如：
+Coord 组件用于表示 g2 中 coord 的相关内容。针对直角坐标系的图表，我们提供了 `direction` 这一优化后的参数用来展现 g2 中的 `transpose`, `reflect` 和 `scale` 这几个属性。根据X轴，Y轴的位置，我们提供了8种坐标系的排列，分别有 BL, BR, LT, LB, RB, RT, TL, TR。B 代表 bottom, T 代表 top，L 代表 left，R 代表 right。具体举例，比如：
 
 ```js
 /*
@@ -104,6 +104,18 @@ chart.coord().transpose().scale(1, -1);
  */
 <Coord type="rect" direction="LT" />
 ```
+映射关系如下：
+
+| direction | 配置                                                        |
+| :-------- | :-----                                                     |
+| BL(默认）  | chart.coord('rect');                                       |
+| BR        | chart.coord('rect').scale(-1, 1);                          |
+| LT        | chart.coord('rect').transpose().scale(1, -1);              |
+| LB        | chart.coord('rect').transpose();                           |
+| RB        | chart.coord('rect').transpose().reflect();                 |
+| RT        | chart.coord('rect').transpose().reflect().scale(-1, 1);    |
+| TL        | chart.coord('rect').reflect();                             |
+| TR        | chart.coord('rect').reflect().scale(-1, 1);                |
 
 ### Guide 的类型
 
