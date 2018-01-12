@@ -6,12 +6,6 @@
 
 首先是引入 viser-react 的需要的子组件，以及必要的依赖，如 React, ReactDOM。
 
-其中所有的子组件分为几类：
-
-- 容器类：Chart, View, FacetView, Facet, LiteChart,
-- 标准组件类：Coord, Tooltip, Legend, Guide, Axis, Series, 
-- 图形组件类：Pie, Sector, Line, SmoothLine, DashLine, Area, StackArea, SmoothArea, Bar, StackBar, DodgeBar, Interval, StackInterval, DodgeInterval, Point, JitterPoint, Funnel, Pyramid, Schema, Box, Candle, Polygon, Contour, Heatmap, Edge, Sankey
-
 ```js
 import { Chart, Tooltip, Edge, View, Polygon, Coord } from 'viser-react';
 import * as ReactDOM from 'react-dom';
@@ -140,4 +134,4 @@ class App extends React.Component {
 
 ### 最后
 
-对于图表大部分实现上的问题，都是 g2 提供的，并不是 viser 提供的。希望你可以先对 g2 的用法能够熟悉，viser 不会单独列 g2 的 API，就这一点没有意义，但我们会对一些小变化在特点一节列出。
+对于图表实现上，都是 g2 图形语法的特性，并不是 viser 提供的，viser 提供的是框架级别的轻量级封装。希望你可以先对 g2 的用法熟悉，viser 不会单独列 g2 的 API，但我们会对一些 viser 的特点单独列出。
