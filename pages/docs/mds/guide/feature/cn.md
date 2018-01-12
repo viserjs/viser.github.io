@@ -29,17 +29,18 @@ chart.line().position('year*value');
 对于字段映射的方式，viser 使用 `dataKey` 的方式来设置，与其它属性并列，比如在设置 `scale` 时，g2 的 `key` 就是数据的列字段，而 viser 里就是 `dataKey` 来表示：
 
 ```js
-// G2
+/**
+ * G2
+ */
 chart.scale({
-  x: {
-    sync: true
-  },
-  y: {
-    sync: true
-  }
+  x: { sync: true },
+  y: { sync: true },
 });
-
-// Viser-react
+```
+```js
+/**
+ * Viser-react
+ */
 const scale = [{
   dataKey: 'x',
   sync: true,
@@ -54,7 +55,9 @@ const scale = [{
 其它，类似于 Legend, Axis 部分的字段映射使用同样的方式，用 `dataKey` 代表列字段。但在 Series 中并不是对单个字段映射，而且它是属性的一部分，因为我们的处理方式不同，使用数组的方式来表达。比如 `label` 属性中列字段是 `name`，并有配置，那么我们在 viser 中使用就直接使用一个数组来代表：
 
 ```js
-// G2
+/**
+ * G2
+ */
 nodeView.polygon()
 .position('x*y')
 .color('id')
@@ -64,8 +67,11 @@ nodeView.polygon()
     fill: '#8c8c8c'
   }
 });
-
-// Viser-react
+```
+```js
+/**
+ * Viser-react
+ */
 const label = [
   'name', {
     labelEmit: true,
@@ -119,7 +125,9 @@ chart.guide.line({
 我们加入了 `d3-format` 库来增强 `label` 需要数据处理的能力，也就是说简单场景下的数据格式化，可以直接用 d3 提供的格式化表达式来完成。比如：
 
 ```js
-// G2
+/**
+ * G2
+ */
 chart.scale({
   percent: {
     min: 0,
@@ -128,8 +136,11 @@ chart.scale({
     }
   }
 });
-
-// Viser-react
+```
+```js
+/**
+ * Viser-react
+ */
 const scale = [{
   dataKey: 'percent',
   min: 0,
