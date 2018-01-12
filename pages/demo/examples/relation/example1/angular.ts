@@ -22,17 +22,18 @@ const style = {
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="edgesData.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height">
-      <v-tooltip showTitle="false"></v-tooltip>
-      <v-view [data]="edgesData">
+      <v-tooltip [showTitle]="false"></v-tooltip>
+      <v-view viewId="1" [data]="edgesData">
         <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target"></v-edge>
       </v-view>
-      <v-view [data]="nodesData">
+      <v-view viewId="2" [data]="nodesData">
         <v-point position="x*y" size="value" color="id" opacity="0.5" [style]="style" [label]="label"></v-point>
       </v-view>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 export class AppComponent {

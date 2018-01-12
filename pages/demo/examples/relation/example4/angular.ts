@@ -38,7 +38,7 @@ const polygonLabel = [
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="edgesData.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [scale]="scale" [padding]="padding">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-view viewId="2" [data]="edgesData" [scale]="scale">
@@ -49,6 +49,7 @@ const polygonLabel = [
       </v-view>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 export class AppComponent {
