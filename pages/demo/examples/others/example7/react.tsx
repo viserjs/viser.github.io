@@ -41,7 +41,7 @@ class App extends React.Component {
   }
   render() {
     const { data } = this.state;
-    console.log(data);
+
     return (
       <div>
         <Chart forceFit height={600} padding={[ 40, 100, 80, 80 ]} data={data} scale={scale}>
