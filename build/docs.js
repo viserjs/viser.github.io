@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 809);
+/******/ 	return __webpack_require__(__webpack_require__.s = 859);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1102,16 +1102,6 @@ exports.default = Events;
 
 /***/ }),
 
-/***/ 429:
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-
-/***/ }),
-
 /***/ 43:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1224,7 +1214,17 @@ exports.logger = _logger2['default'];
 
 /***/ }),
 
-/***/ 430:
+/***/ 454:
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
+
+/***/ }),
+
+/***/ 455:
 /***/ (function(module, exports) {
 
 module.exports = function(it){
@@ -1234,7 +1234,7 @@ module.exports = function(it){
 
 /***/ }),
 
-/***/ 431:
+/***/ 456:
 /***/ (function(module, exports) {
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -1474,139 +1474,6 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 809:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var mds_1 = __webpack_require__(810);
-var locale_1 = __webpack_require__(76);
-var utils_1 = __webpack_require__(40);
-__webpack_require__(811);
-var timers_1 = __webpack_require__(812);
-var navTpl = __webpack_require__(818);
-var DEFAULT_FOLDER = 'guide';
-var DEFAULT_ITEM = 'installation';
-var Docs = /** @class */ (function () {
-    function Docs() {
-        var _this = this;
-        this.handleSwitchPageLanguage = function () {
-            utils_1.changePageLanguage();
-            _this.refresh();
-        };
-        this.handleSwitchContent = function () {
-            timers_1.setTimeout(function () {
-                _this.refresh();
-            }, 0);
-        };
-        utils_1.initPageLanguage();
-        this.render();
-        this.bindEvent();
-    }
-    Docs.prototype.getDocsFolderAndItem = function () {
-        var _a = utils_1.getFolderAndItem(), folder = _a.folder, item = _a.item;
-        return {
-            folder: folder || DEFAULT_FOLDER,
-            item: item || DEFAULT_ITEM,
-        };
-    };
-    Docs.prototype.renderText = function (selector, text) {
-        var selectorDom = document.querySelector(selector);
-        if (selectorDom) {
-            selectorDom.innerHTML = text;
-        }
-    };
-    Docs.prototype.renderLanguage = function () {
-        var _this = this;
-        var pageLanguageInStore = utils_1.getPageLanguage();
-        if (!pageLanguageInStore || utils_1.ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) === -1) {
-            pageLanguageInStore = utils_1.DEFAULT_PAGE_LANGUAGE;
-            utils_1.setPageLanguage(pageLanguageInStore);
-        }
-        var pageLanguageSwitchDom = document.querySelector('.common-header .page-language-switch');
-        utils_1.ALL_PAGE_LANGUAGES.forEach(function (lang) {
-            utils_1.removeClass(pageLanguageSwitchDom, lang);
-        });
-        utils_1.addClass(pageLanguageSwitchDom, pageLanguageInStore);
-        if (locale_1.default && locale_1.default[pageLanguageInStore] && locale_1.default[pageLanguageInStore].length) {
-            locale_1.default[pageLanguageInStore].forEach(function (o) {
-                _this.renderText(o.selector, o.text);
-            });
-        }
-    };
-    Docs.prototype.renderLeftMenu = function () {
-        var _a = this.getDocsFolderAndItem(), folder = _a.folder, item = _a.item;
-        var menuList = mds_1.default.map(function (v) {
-            var folderMatched = v.folderKey === folder;
-            return __assign({}, v, { folderDisplayName: utils_1.getNameByLanguage(v), mds: v.mds.map(function (o) {
-                    var itemMatched = o.itemKey === item;
-                    return __assign({}, o, { itemDisplayName: utils_1.getNameByLanguage(o), linkName: utils_1.generateHashtag(v.folderKey, o.itemKey), activeClass: folderMatched && itemMatched ? 'active' : '' });
-                }) });
-        });
-        var leftPanelDom = document.querySelector('.left-panel');
-        leftPanelDom.innerHTML = navTpl({
-            menuList: menuList,
-        });
-    };
-    Docs.prototype.renderContent = function () {
-        var language = utils_1.getPageLanguage();
-        var _a = this.getDocsFolderAndItem(), folder = _a.folder, item = _a.item;
-        var content = '';
-        try {
-            content = __webpack_require__(819)("./" + folder + "/" + item + "/" + language + ".md");
-        }
-        catch (err) {
-            console.error(err);
-        }
-        var rightPanelDom = document.querySelector('.right-panel');
-        rightPanelDom.innerHTML = content;
-    };
-    Docs.prototype.unbindEvent = function () {
-        var pageLanguageSwitchDom = document.querySelector('.common-header .page-language-switch');
-        if (pageLanguageSwitchDom) {
-            utils_1.off(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
-        }
-        var leftMenuDom = document.querySelector('.left-panel');
-        if (leftMenuDom) {
-            utils_1.undelegate(leftMenuDom, '.common-nav-item', 'click', this.handleSwitchContent);
-        }
-    };
-    Docs.prototype.bindEvent = function () {
-        var pageLanguageSwitchDom = document.querySelector('.common-header .page-language-switch');
-        if (pageLanguageSwitchDom) {
-            utils_1.on(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
-        }
-        var leftMenuDom = document.querySelector('.left-panel');
-        if (leftMenuDom) {
-            utils_1.delegate(leftMenuDom, '.common-nav-item', 'click', this.handleSwitchContent);
-        }
-    };
-    Docs.prototype.render = function () {
-        this.renderLeftMenu();
-        this.renderLanguage();
-        this.renderContent();
-    };
-    Docs.prototype.refresh = function () {
-        this.unbindEvent();
-        this.render();
-        this.bindEvent();
-    };
-    return Docs;
-}());
-new Docs();
-
-
-/***/ }),
-
 /***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1709,270 +1576,6 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 810:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var mds = [
-    {
-        folderKey: 'guide',
-        cnName: '快速上手',
-        enName: 'Guide',
-        mds: [
-            {
-                itemKey: 'installation',
-                enName: 'Installation',
-                cnName: '安装',
-            },
-            {
-                itemKey: 'introduction',
-                enName: 'Introduction',
-                cnName: '简介',
-            },
-            {
-                itemKey: 'usage',
-                enName: 'Usage',
-                cnName: '用法',
-            },
-            {
-                itemKey: 'feature',
-                enName: 'Feature',
-                cnName: '特点',
-            },
-        ],
-    }
-];
-exports.default = mds;
-
-
-/***/ }),
-
-/***/ 811:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 812:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(813);
-module.exports = __webpack_require__(97);
-
-/***/ }),
-
-/***/ 813:
-/***/ (function(module, exports, __webpack_require__) {
-
-// ie9- setTimeout & setInterval additional parameters fix
-var global     = __webpack_require__(429)
-  , $export    = __webpack_require__(814)
-  , invoke     = __webpack_require__(431)
-  , partial    = __webpack_require__(816)
-  , navigator  = global.navigator
-  , MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
-var wrap = function(set){
-  return MSIE ? function(fn, time /*, ...args */){
-    return set(invoke(
-      partial,
-      [].slice.call(arguments, 2),
-      typeof fn == 'function' ? fn : Function(fn)
-    ), time);
-  } : set;
-};
-$export($export.G + $export.B + $export.F * MSIE, {
-  setTimeout:  wrap(global.setTimeout),
-  setInterval: wrap(global.setInterval)
-});
-
-/***/ }),
-
-/***/ 814:
-/***/ (function(module, exports, __webpack_require__) {
-
-var global    = __webpack_require__(429)
-  , core      = __webpack_require__(97)
-  , ctx       = __webpack_require__(815)
-  , PROTOTYPE = 'prototype';
-
-var $export = function(type, name, source){
-  var IS_FORCED = type & $export.F
-    , IS_GLOBAL = type & $export.G
-    , IS_STATIC = type & $export.S
-    , IS_PROTO  = type & $export.P
-    , IS_BIND   = type & $export.B
-    , IS_WRAP   = type & $export.W
-    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
-    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
-    , key, own, out;
-  if(IS_GLOBAL)source = name;
-  for(key in source){
-    // contains in native
-    own = !IS_FORCED && target && key in target;
-    if(own && key in exports)continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function(C){
-      var F = function(param){
-        return this instanceof C ? new C(param) : C(param);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-    // make static versions for prototype methods
-    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    if(IS_PROTO)(exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
-  }
-};
-// type bitmap
-$export.F = 1;  // forced
-$export.G = 2;  // global
-$export.S = 4;  // static
-$export.P = 8;  // proto
-$export.B = 16; // bind
-$export.W = 32; // wrap
-module.exports = $export;
-
-/***/ }),
-
-/***/ 815:
-/***/ (function(module, exports, __webpack_require__) {
-
-// optional / simple context binding
-var aFunction = __webpack_require__(430);
-module.exports = function(fn, that, length){
-  aFunction(fn);
-  if(that === undefined)return fn;
-  switch(length){
-    case 1: return function(a){
-      return fn.call(that, a);
-    };
-    case 2: return function(a, b){
-      return fn.call(that, a, b);
-    };
-    case 3: return function(a, b, c){
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function(/* ...args */){
-    return fn.apply(that, arguments);
-  };
-};
-
-/***/ }),
-
-/***/ 816:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var path      = __webpack_require__(817)
-  , invoke    = __webpack_require__(431)
-  , aFunction = __webpack_require__(430);
-module.exports = function(/* ...pargs */){
-  var fn     = aFunction(this)
-    , length = arguments.length
-    , pargs  = Array(length)
-    , i      = 0
-    , _      = path._
-    , holder = false;
-  while(length > i)if((pargs[i] = arguments[i++]) === _)holder = true;
-  return function(/* ...args */){
-    var that  = this
-      , $$    = arguments
-      , $$len = $$.length
-      , j = 0, k = 0, args;
-    if(!holder && !$$len)return invoke(fn, pargs, that);
-    args = pargs.slice();
-    if(holder)for(;length > j; j++)if(args[j] === _)args[j] = $$[k++];
-    while($$len > k)args.push($$[k++]);
-    return invoke(fn, args, that);
-  };
-};
-
-/***/ }),
-
-/***/ 817:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(97);
-
-/***/ }),
-
-/***/ 818:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Handlebars = __webpack_require__(77);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
-
-  return "  <div class=\"common-nav-folder\" data-folder=\""
-    + alias2(alias1((depth0 != null ? depth0.folderKey : depth0), depth0))
-    + "\">\n    <h3 class=\"common-nav-title\">\n      "
-    + alias2(alias1((depth0 != null ? depth0.folderDisplayName : depth0), depth0))
-    + "\n    </h3>\n    <ul class=\"common-nav-list\">\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.mds : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "    </ul>\n  </div>\n";
-},"2":function(container,depth0,helpers,partials,data) {
-    var alias1=container.lambda, alias2=container.escapeExpression;
-
-  return "        <li class=\"common-nav-item "
-    + alias2(alias1((depth0 != null ? depth0.activeClass : depth0), depth0))
-    + "\">\n          <a class=\"common-nav-link\" href=\""
-    + alias2(alias1((depth0 != null ? depth0.linkName : depth0), depth0))
-    + "\" title=\""
-    + alias2(alias1((depth0 != null ? depth0.itemDisplayName : depth0), depth0))
-    + "\">"
-    + alias2(alias1((depth0 != null ? depth0.itemDisplayName : depth0), depth0))
-    + "</a>\n        </li>\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.menuList : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n\n";
-},"useData":true});
-
-/***/ }),
-
-/***/ 819:
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./guide/feature/cn.md": 820,
-	"./guide/feature/en.md": 821,
-	"./guide/installation/cn.md": 822,
-	"./guide/installation/en.md": 823,
-	"./guide/introduction/cn.md": 824,
-	"./guide/introduction/en.md": 825,
-	"./guide/usage/cn.md": 826,
-	"./guide/usage/en.md": 827
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 819;
-
-/***/ }),
-
 /***/ 82:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2003,62 +1606,6 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2hlbHBlcnMvaGVscGVyLW1pc3NpbmcuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozt5QkFBc0IsY0FBYzs7OztxQkFFckIsVUFBUyxRQUFRLEVBQUU7QUFDaEMsVUFBUSxDQUFDLGNBQWMsQ0FBQyxlQUFlLEVBQUUsaUNBQWdDO0FBQ3ZFLFFBQUksU0FBUyxDQUFDLE1BQU0sS0FBSyxDQUFDLEVBQUU7O0FBRTFCLGFBQU8sU0FBUyxDQUFDO0tBQ2xCLE1BQU07O0FBRUwsWUFBTSwyQkFBYyxtQkFBbUIsR0FBRyxTQUFTLENBQUMsU0FBUyxDQUFDLE1BQU0sR0FBRyxDQUFDLENBQUMsQ0FBQyxJQUFJLEdBQUcsR0FBRyxDQUFDLENBQUM7S0FDdkY7R0FDRixDQUFDLENBQUM7Q0FDSiIsImZpbGUiOiJoZWxwZXItbWlzc2luZy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBFeGNlcHRpb24gZnJvbSAnLi4vZXhjZXB0aW9uJztcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24oaW5zdGFuY2UpIHtcbiAgaW5zdGFuY2UucmVnaXN0ZXJIZWxwZXIoJ2hlbHBlck1pc3NpbmcnLCBmdW5jdGlvbigvKiBbYXJncywgXW9wdGlvbnMgKi8pIHtcbiAgICBpZiAoYXJndW1lbnRzLmxlbmd0aCA9PT0gMSkge1xuICAgICAgLy8gQSBtaXNzaW5nIGZpZWxkIGluIGEge3tmb299fSBjb25zdHJ1Y3QuXG4gICAgICByZXR1cm4gdW5kZWZpbmVkO1xuICAgIH0gZWxzZSB7XG4gICAgICAvLyBTb21lb25lIGlzIGFjdHVhbGx5IHRyeWluZyB0byBjYWxsIHNvbWV0aGluZywgYmxvdyB1cC5cbiAgICAgIHRocm93IG5ldyBFeGNlcHRpb24oJ01pc3NpbmcgaGVscGVyOiBcIicgKyBhcmd1bWVudHNbYXJndW1lbnRzLmxlbmd0aCAtIDFdLm5hbWUgKyAnXCInKTtcbiAgICB9XG4gIH0pO1xufVxuIl19
 
-
-/***/ }),
-
-/***/ 820:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"-\">特点</h2>\n<p>这里我们讨论下 viser 和 g2 的差异之处，这里我们以 viser-react 举例，以便于您的理解。</p>\n<h3 id=\"-\">组件分类</h3>\n<p>Viser 中所有的子组件分为几类：</p>\n<ul>\n<li>容器组件：Chart, View, FacetView, Facet, LiteChart；</li>\n<li>标准组件：Coord, Tooltip, Legend, Guide, Axis, Series；</li>\n<li>图形组件：Pie, Sector, Line, SmoothLine, DashLine, Area, StackArea, SmoothArea, Bar, StackBar, DodgeBar, Interval, StackInterval, DodgeInterval, Point, JitterPoint, Funnel, Pyramid, Schema, Box, Candle, Polygon, Contour, Heatmap, Edge, Sankey。</li>\n</ul>\n<p>容器组件代表它们是可以对应一组渲染，比如 Chart 容器包含组件绘制的所有步骤，而 G2 的图表可以由多个<a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/how-to-create-view.html\">视图 View 构成</a>，同时各个视图可以拥有各自的数据源，那么 View 也会包含组件绘制的一部分步骤。此外 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/facet.html\">Facet</a>, FacetView 是类似的，具体可以参考 demo 中的写法。</p>\n<p>标准组件对应 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/understanding-g2-charts.html\">G2 的图表组成</a> 包括了 Axis, Legend, Geom, Tooltip 和 Guide。对应到 viser 是 Axis, Legend, Series, Tooltip 和 Guide，另外将 Coord 也设置为组件。其中，Series 来代替 Geom，原因是大部分其它图表库更强调 Series 概念，G2 从图形语法层面将这一概念抽象成 Geom。</p>\n<p>图形组件是对 Series 类型的扩展，其实就是所有 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/geom.html\">geom 类型</a>。将它们具象化成组件，以方便在使用时理解。虽然我们还是可以用 Series 来做为组件，但推荐直接使用具体的图形名称来表示组件，例如 Bar 和 Line 等。这样方便语义化的使用。具体举例，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\nchart.<span class=\"hljs-built_in\">line</span>().<span class=\"hljs-built_in\">position</span>(<span class=\"hljs-string\">'year*value'</span>);\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n&lt;Line <span class=\"hljs-built_in\">position</span>=<span class=\"hljs-string\">\"year*value\"</span> /&gt;\n</code></pre>\n<h3 id=\"datakey-\">dataKey 字段映射</h3>\n<p>对于字段映射的方式，viser 使用 <code>dataKey</code> 的方式来设置，与其它属性并列，比如在设置 <code>scale</code> 时，g2 的 <code>key</code> 就是数据的列字段，而 viser 里就是 <code>dataKey</code> 来表示：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.scale</span>({\n  <span class=\"hljs-attribute\">x</span>: { sync: true },\n  <span class=\"hljs-selector-tag\">y</span>: { <span class=\"hljs-attribute\">sync</span>: true },\n});\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n<span class=\"hljs-keyword\">const</span> scale = [{\n  <span class=\"hljs-attr\">dataKey</span>: <span class=\"hljs-string\">'x'</span>,\n  <span class=\"hljs-attr\">sync</span>: <span class=\"hljs-literal\">true</span>,\n}, {\n  <span class=\"hljs-attr\">dataKey</span>: <span class=\"hljs-string\">'y'</span>,\n  <span class=\"hljs-attr\">sync</span>: <span class=\"hljs-literal\">true</span>,\n}];\n<span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">Chart</span> <span class=\"hljs-attr\">scale</span>=<span class=\"hljs-string\">{scale}</span> {<span class=\"hljs-attr\">...others</span>}&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">Chart</span>&gt;</span></span>\n</code></pre>\n<p>其它，类似于 Legend, Axis 部分的字段映射使用同样的方式，用 <code>dataKey</code> 代表列字段。但在 Series 中并不是对单个字段映射，而且它是属性的一部分，因为我们的处理方式不同，使用数组的方式来表达。比如 <code>label</code> 属性中列字段是 <code>name</code>，并有配置，那么我们在 viser 中使用就直接使用一个数组来代表：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">nodeView</span><span class=\"hljs-selector-class\">.polygon</span>()\n<span class=\"hljs-selector-class\">.position</span>(<span class=\"hljs-string\">'x*y'</span>)\n<span class=\"hljs-selector-class\">.color</span>(<span class=\"hljs-string\">'id'</span>)\n<span class=\"hljs-selector-class\">.label</span>(<span class=\"hljs-string\">'name'</span>, {\n  <span class=\"hljs-attribute\">labelEmit</span>: true,\n  <span class=\"hljs-attribute\">textStyle</span>: {\n    <span class=\"hljs-attribute\">fill</span>: <span class=\"hljs-string\">'#8c8c8c'</span>\n  }\n});\n</code></pre>\n<pre><code class=\"lang-js\">/*\n * Viser-react\n */\nconst <span class=\"hljs-keyword\">label</span><span class=\"bash\"> = [\n</span>  <span class=\"hljs-string\">'name'</span>, {\n    labelEmit: true,\n    textStyle: {\n      fill: <span class=\"hljs-string\">'#8c8c8c'</span>\n    },\n  }\n];\n&lt;Polygon position=<span class=\"hljs-string\">'x*y'</span> color=<span class=\"hljs-string\">'id'</span> <span class=\"hljs-keyword\">label</span><span class=\"bash\">={label} /&gt;</span>\n</code></pre>\n<h3 id=\"coord-\">Coord 的方向</h3>\n<p>Coord 组件用于表示 g2 中 coord 的相关内容。针对直角坐标系的图表，我们提供了 <code>direction</code> 这一优化后的参数用来展现 g2 中的 <code>transpose</code>, <code>reflect</code> 和 <code>scale</code> 这几个属性。根据X轴，Y轴的位置，我们提供了8种坐标系的排列，分别有 BL, BR, LT, LB, RB, RT, TL, TR。B 代表 bottom, T 代表 top，L 代表 left，R 代表 right。具体举例，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.coord</span>()<span class=\"hljs-selector-class\">.transpose</span>()<span class=\"hljs-selector-class\">.scale</span>(1, <span class=\"hljs-selector-tag\">-1</span>);\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n&lt;<span class=\"hljs-type\">Coord</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"rect\"</span> direction=<span class=\"hljs-string\">\"LT\"</span> /&gt;\n</code></pre>\n<p>映射关系如下：</p>\n<table>\n<thead>\n<tr>\n<th style=\"text-align:left\">direction</th>\n<th style=\"text-align:left\">配置</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left\">BL(默认）</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;);</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">BR</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).scale(-1, 1);</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">LT</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).transpose().scale(1, -1);</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">LB</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).transpose();</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">RB</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).transpose().reflect();</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">RT</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).transpose().reflect().scale(-1, 1);</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">TL</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).reflect();</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">TR</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).reflect().scale(-1, 1);</td>\n</tr>\n</tbody>\n</table>\n<h3 id=\"guide-\">Guide 的类型</h3>\n<p>Guide 在 g2 中直接会指定，比如 <code>chart.guide().line()</code>，在 viser 中均使用 Guide 组件，类型就使用 <code>type</code> 字段来表示，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.guide</span>()<span class=\"hljs-selector-class\">.line</span>()\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n&lt;<span class=\"hljs-type\">Guide</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"line\"</span> /&gt;\n</code></pre>\n<p>另外，提供了两种平行和正交快捷设置，因此增加了 <code>quickType</code> 的字段，value 则对应是 <code>parallel</code> 和 <code>normal</code>，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.guide</span><span class=\"hljs-selector-class\">.line</span>({\n  <span class=\"hljs-attribute\">start</span>: [<span class=\"hljs-string\">'min'</span>, <span class=\"hljs-number\">2</span>],\n  end: [<span class=\"hljs-string\">'max'</span>, <span class=\"hljs-number\">2</span>],\n});\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n&lt;Guide <span class=\"hljs-keyword\">type</span>=<span class=\"hljs-string\">\"line\"</span> quickType=<span class=\"hljs-string\">\"parallel\"</span> <span class=\"hljs-built_in\">data</span>={<span class=\"hljs-number\">2</span>} /&gt;\n</code></pre>\n<h3 id=\"formatter-\">Formatter 格式化方法</h3>\n<p>我们加入了 <code>d3-format</code> 库来增强 <code>label</code> 需要数据处理的能力，也就是说简单场景下的数据格式化，可以直接用 d3 提供的格式化表达式来完成。比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.scale</span>({\n  <span class=\"hljs-attribute\">percent</span>: {\n    min: <span class=\"hljs-number\">0</span>,\n    <span class=\"hljs-built_in\">formatter</span>(val) {\n      return (val * <span class=\"hljs-number\">100</span>).<span class=\"hljs-built_in\">toFixed</span>(2) + <span class=\"hljs-string\">'%'</span>;\n    }\n  }\n});\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n<span class=\"hljs-keyword\">const</span> <span class=\"hljs-built_in\">scale</span> = [{\n  dataKey: <span class=\"hljs-string\">'percent'</span>,\n  <span class=\"hljs-built_in\">min</span>: <span class=\"hljs-number\">0</span>,\n  formatter: <span class=\"hljs-string\">'.2%'</span>,\n}];\n</code></pre>\n<h3 id=\"-\">事件</h3>\n<p>Viser 的事件对于 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/chart-event.html\">g2 的事件</a> 来说看起来不太一样，viser 是直接绑定在元素上的，因此对于事件来说，在哪里用就在哪里绑定。但 g2 使用中常常使用到 chart 实例，因此 viser 将 chart 实例放在了回调函数第二个参数上，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.on</span>(<span class=\"hljs-string\">'mousedown'</span>, ev =&gt; {});\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\nhandleMouseDown = <span class=\"hljs-function\">(<span class=\"hljs-params\">ev, chart</span>) =&gt;</span> {}\n&lt;Chart onMouseDown={<span class=\"hljs-keyword\">this</span>.handleMouseDown}&gt;\n<span class=\"xml\"><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">Chart</span>&gt;</span></span>\n</code></pre>\n<p>对于 Axis 来说，原来的 <code>chart.on(&#39;axis-title: click&#39;, ev =&gt; {})</code>，在 Axis 上绑定就会有一个 <code>onTitleClick</code> 的属性，其它的以此类推。</p>\n";
-
-/***/ }),
-
-/***/ 821:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"feature\">Feature</h2>\n<p>Comming Soon...</p>\n";
-
-/***/ }),
-
-/***/ 822:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"-\">安装</h2>\n<p>Viser 为 React, Vue 和 Angular 提供了3个不同的分发版本。我们同时提供了npm安装和umd引入两种方式来使用Viser。</p>\n<p>npm安装是使用 Viser 最简单也是最快捷的方式。我们强烈建议您在开发单页应用(SPA)时采用这种方式进行安装。Viser 可以完美兼容 CommonJS 打包工具，例如我们最常用的 Webpack。</p>\n<p>UMD 引入是使用script标签引入来使用 Viser。当你需要快速使用的时候，这是最便捷的方式。</p>\n<h3 id=\"vue-\">Vue 分发版</h3>\n<p>您需要使用版本 <strong>2.5</strong> 及以上的 Vue，来使用 Vue 分发版 Viser。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserVue</code> 来进行调用 Viser。</p>\n<h3 id=\"angular-\">Angular 分发版</h3>\n<p>您需要使用版本 <strong>2.4</strong> 及以上的 Angular，来使用 Angular 分发版 Viser。另外，你还需要版本 <strong>0.1</strong> 及以上的 reflect-metadata，版本 <strong>5</strong> 及以上的 rxjs，版本 <strong>0.7</strong> 及以上的 zone.js。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserNg</code> 来进行调用 Viser。</p>\n<h3 id=\"react-\">React 分发版</h3>\n<p>您需要使用版本 <strong>15</strong> 及以上的 React，来使用 React 分发版 Viser。显然，版本 <strong>16</strong> 也是可以的。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 引入的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserReact</code> 来进行调用 Viser。</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
-
-/***/ }),
-
-/***/ 823:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"installation\">Installation</h2>\n<p>Viser include 3 version which is integrated by React, Vue and Angular. We provide NPM or UMD to use library.</p>\n<p>NPM is the easiest and fastest way to get started using Viser. It is the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.</p>\n<p>UMD is the script way to using Viser. It is convenient method when you used quickly.</p>\n<h3 id=\"vue-version\">Vue Version</h3>\n<p>In Vue version, You mush prepare to Vue version greater than <strong>2.5</strong> in project.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserVue.</p>\n<h3 id=\"angular-version\">Angular Version</h3>\n<p>In Angular version, You mush prepare to Angular version greater than <strong>2.4</strong> in project. In addition, you also prepare to reflect-metadata version greater than <strong>0.1</strong>, rxjs version greater than <strong>5</strong> and zone.js version greater than <strong>0.7</strong>.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserNg.</p>\n<h3 id=\"react-version\">React Version</h3>\n<p>In React version, You mush prepare React version greater then <strong>15</strong>, and support <strong>16</strong> certainly.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserReact.</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
-
-/***/ }),
-
-/***/ 824:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"-\">简介</h2>\n<p>Viser，一个基于 G2 实现的，为数据可视化工程师量身定制的工具。Viser 现已支持几大主流前端框架，例如 React, Vue 和 AngularJS。</p>\n<h3 id=\"-\">核心价值</h3>\n<p>它可以开发网页应用的过程中，为图表开发带来卓越的体验。</p>\n<h3 id=\"-\">设计原则</h3>\n<ol>\n<li>利用语义化组件来组合图表。包括但不限于 React, Vue 和 AugularJS 的组件。</li>\n<li>脱胎于 G2，一套基于可视化编码的图形语法。由此带来了强大的可视化能力。</li>\n</ol>\n";
-
-/***/ }),
-
-/***/ 825:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"introduction\">Introduction</h2>\n<p>A toolkit fit for data vis engineer based on G2. Viser support React, Vue and AngularJS.</p>\n<h3 id=\"main-purpose\">Main Purpose</h3>\n<p>The main purpose of this library is to help you to write charts in web applications without any pain.</p>\n<h3 id=\"main-principles\">Main Principles</h3>\n<ol>\n<li>Simply deploy with semantic component with chart, including but not limited to React, Vue and AugularJS.</li>\n<li>Lightweight depending only on G2 which is a plotting system for Javascript, based on the grammar of graphics.</li>\n</ol>\n";
-
-/***/ }),
-
-/***/ 826:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"-\">用法</h2>\n<p>我们以 viser-react 举例写<a href=\"https://antv.alipay.com/zh-cn/g2/3.x/demo/relation/chord.html\">一个 chore 图为例</a>，viser-vue 和 viser-ng 的用法类似。</p>\n<h3 id=\"-\">引入库</h3>\n<p>首先是引入 viser-react 的需要的子组件，以及必要的依赖，如 React, ReactDOM。</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-keyword\">import</span> { Chart, Tooltip, Edge, View, Polygon, Coord } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'viser-react'</span>;\n<span class=\"hljs-keyword\">import</span> * <span class=\"hljs-keyword\">as</span> ReactDOM <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-dom'</span>;\n<span class=\"hljs-keyword\">import</span> * <span class=\"hljs-keyword\">as</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>;\n</code></pre>\n<h3 id=\"-\">数据处理</h3>\n<p>数据处理完全沿用 data-set.js 的处理。data-set 有丰富的数据处理方法，具体请参考 g2 官网的 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/data-set.html\">data-set 部分</a>.</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-keyword\">const</span> DataSet = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'@antv/data-set'</span>);\n\n<span class=\"hljs-keyword\">const</span> ds: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">new</span> DataSet();\n<span class=\"hljs-keyword\">const</span> dv = ds.createView().source(data, {\n  <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-string\">'graph'</span>,\n  edges: <span class=\"hljs-function\"><span class=\"hljs-params\">d</span> =&gt;</span> d.links\n});\n\ndv.transform({\n  <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-string\">'diagram.arc'</span>,\n  sourceWeight: <span class=\"hljs-function\"><span class=\"hljs-params\">e</span> =&gt;</span> e.sourceWeight,\n  targetWeight: <span class=\"hljs-function\"><span class=\"hljs-params\">e</span> =&gt;</span> e.targetWeight,\n  weight: <span class=\"hljs-literal\">true</span>,\n  marginRatio: <span class=\"hljs-number\">0.3</span>\n});\n</code></pre>\n<h3 id=\"-\">图表实现</h3>\n<p>图表实现完全沿用 g2 对于图形语法的表达。</p>\n<p>我们观察原生 g2 的语法：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-keyword\">const</span> chart = <span class=\"hljs-keyword\">new</span> G2.Chart({\n  container: <span class=\"hljs-string\">'mountNode'</span>,\n  forceFit: <span class=\"hljs-keyword\">true</span>,\n  <span class=\"hljs-built_in\">height</span>: window.innerHeight\n});\nchart.legend(<span class=\"hljs-keyword\">false</span>);\nchart.tooltip({\n  showTitle: <span class=\"hljs-keyword\">false</span>\n});\n\nchart.<span class=\"hljs-built_in\">scale</span>({\n  x: {\n    sync: <span class=\"hljs-keyword\">true</span>\n  },\n  y: {\n    sync: <span class=\"hljs-keyword\">true</span>\n  }\n});\n\n<span class=\"hljs-keyword\">const</span> edgeView = chart.view();\nedgeView.source(dv.edges);\nedgeView.coord(<span class=\"hljs-string\">'polar'</span>).reflect(<span class=\"hljs-string\">'y'</span>);\nedgeView.axis(<span class=\"hljs-keyword\">false</span>);\nedgeView.edge()\n  .position(<span class=\"hljs-string\">'x*y'</span>)\n  .<span class=\"hljs-built_in\">shape</span>(<span class=\"hljs-string\">'arc'</span>)\n  .<span class=\"hljs-built_in\">color</span>(<span class=\"hljs-string\">'source'</span>)\n  .opacity(<span class=\"hljs-number\">0.5</span>)\n  .tooltip(<span class=\"hljs-string\">'source*target*value'</span>);\n\n<span class=\"hljs-keyword\">const</span> nodeView = chart.view();\nnodeView.source(dv.nodes);\nnodeView.coord(<span class=\"hljs-string\">'polar'</span>).reflect(<span class=\"hljs-string\">'y'</span>);\nnodeView.axis(<span class=\"hljs-keyword\">false</span>);\nnodeView.polygon()\n  .position(<span class=\"hljs-string\">'x*y'</span>)\n  .<span class=\"hljs-built_in\">color</span>(<span class=\"hljs-string\">'id'</span>)\n  .label(<span class=\"hljs-string\">'name'</span>, {\n    labelEmit: <span class=\"hljs-keyword\">true</span>,\n    textStyle: {\n      <span class=\"hljs-built_in\">fill</span>: <span class=\"hljs-string\">'#8c8c8c'</span>\n    }\n  });\n\nchart.render();\n</code></pre>\n<p>我们看到有几个部分，Chart, Lengend, Tooltip, Scale 的配置，这些是公共配置，g2 提供 View 的能力，因此对应到 viser-react 中也需要两个 View，一个是边（edge），一个是节点（node）。然后每一个 api 都被抽象成了配置，而不是连续的调用。所以，我们看到对应到 viser-react 中的代码是：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">App</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> </span>{\n  constructor(props) {\n    <span class=\"hljs-keyword\">super</span>(props);\n  }\n\n  render() {\n    const label = [\n      <span class=\"hljs-symbol\">'nam</span>e', {\n        labelEmit: <span class=\"hljs-literal\">true</span>,\n        textStyle: {\n          fill: '#<span class=\"hljs-number\">8</span>c8c8c'\n        },\n      }\n    ];\n\n    const scale = [{\n      dataKey: 'x',\n      sync: <span class=\"hljs-literal\">true</span>,\n    }, {\n      dataKey: 'y',\n      sync: <span class=\"hljs-literal\">true</span>,\n    }];\n\n    <span class=\"hljs-keyword\">return</span> (\n      &lt;div&gt;\n        &lt;<span class=\"hljs-type\">Chart</span> forceFit height={window.innerHeight} scale={scale}&gt;\n          &lt;<span class=\"hljs-type\">View</span> data={dv.edges}&gt;\n            &lt;<span class=\"hljs-type\">Coord</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"polar\"</span> direction=<span class=\"hljs-string\">\"yReverse\"</span> /&gt;\n            &lt;<span class=\"hljs-type\">Edge</span> position=<span class=\"hljs-symbol\">'x</span>*y' color=<span class=\"hljs-symbol\">'sourc</span>e' shape=<span class=\"hljs-symbol\">'ar</span>c' opacity={<span class=\"hljs-number\">0.5</span>} tooltip={<span class=\"hljs-symbol\">'source</span>*target*value'} /&gt;\n          &lt;/<span class=\"hljs-type\">View</span>&gt;\n          &lt;<span class=\"hljs-type\">View</span> data={dv.nodes}&gt;\n            &lt;<span class=\"hljs-type\">Coord</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"polar\"</span> direction=<span class=\"hljs-string\">\"yReverse\"</span> /&gt;\n            &lt;<span class=\"hljs-type\">Polygon</span> position=<span class=\"hljs-symbol\">'x</span>*y' color=<span class=\"hljs-symbol\">'i</span>d' label={label} /&gt;\n          &lt;/<span class=\"hljs-type\">View</span>&gt;\n        &lt;/<span class=\"hljs-type\">Chart</span>&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n</code></pre>\n<h3 id=\"-\">最后</h3>\n<p>对于图表实现上，都是 g2 图形语法的特性，并不是 viser 提供的，viser 提供的是框架级别的轻量级封装。希望你可以先对 g2 的用法熟悉，viser 不会单独列 g2 的 API，但我们会对一些 viser 的特点单独列出。</p>\n";
-
-/***/ }),
-
-/***/ 827:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 id=\"usage\">Usage</h2>\n<p>Common Soon...</p>\n";
 
 /***/ }),
 
@@ -2153,6 +1700,139 @@ module.exports = exports['default'];
 
 /***/ }),
 
+/***/ 859:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var mds_1 = __webpack_require__(860);
+var locale_1 = __webpack_require__(76);
+var utils_1 = __webpack_require__(40);
+__webpack_require__(861);
+var timers_1 = __webpack_require__(862);
+var navTpl = __webpack_require__(868);
+var DEFAULT_FOLDER = 'guide';
+var DEFAULT_ITEM = 'installation';
+var Docs = /** @class */ (function () {
+    function Docs() {
+        var _this = this;
+        this.handleSwitchPageLanguage = function () {
+            utils_1.changePageLanguage();
+            _this.refresh();
+        };
+        this.handleSwitchContent = function () {
+            timers_1.setTimeout(function () {
+                _this.refresh();
+            }, 0);
+        };
+        utils_1.initPageLanguage();
+        this.render();
+        this.bindEvent();
+    }
+    Docs.prototype.getDocsFolderAndItem = function () {
+        var _a = utils_1.getFolderAndItem(), folder = _a.folder, item = _a.item;
+        return {
+            folder: folder || DEFAULT_FOLDER,
+            item: item || DEFAULT_ITEM,
+        };
+    };
+    Docs.prototype.renderText = function (selector, text) {
+        var selectorDom = document.querySelector(selector);
+        if (selectorDom) {
+            selectorDom.innerHTML = text;
+        }
+    };
+    Docs.prototype.renderLanguage = function () {
+        var _this = this;
+        var pageLanguageInStore = utils_1.getPageLanguage();
+        if (!pageLanguageInStore || utils_1.ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) === -1) {
+            pageLanguageInStore = utils_1.DEFAULT_PAGE_LANGUAGE;
+            utils_1.setPageLanguage(pageLanguageInStore);
+        }
+        var pageLanguageSwitchDom = document.querySelector('.common-header .page-language-switch');
+        utils_1.ALL_PAGE_LANGUAGES.forEach(function (lang) {
+            utils_1.removeClass(pageLanguageSwitchDom, lang);
+        });
+        utils_1.addClass(pageLanguageSwitchDom, pageLanguageInStore);
+        if (locale_1.default && locale_1.default[pageLanguageInStore] && locale_1.default[pageLanguageInStore].length) {
+            locale_1.default[pageLanguageInStore].forEach(function (o) {
+                _this.renderText(o.selector, o.text);
+            });
+        }
+    };
+    Docs.prototype.renderLeftMenu = function () {
+        var _a = this.getDocsFolderAndItem(), folder = _a.folder, item = _a.item;
+        var menuList = mds_1.default.map(function (v) {
+            var folderMatched = v.folderKey === folder;
+            return __assign({}, v, { folderDisplayName: utils_1.getNameByLanguage(v), mds: v.mds.map(function (o) {
+                    var itemMatched = o.itemKey === item;
+                    return __assign({}, o, { itemDisplayName: utils_1.getNameByLanguage(o), linkName: utils_1.generateHashtag(v.folderKey, o.itemKey), activeClass: folderMatched && itemMatched ? 'active' : '' });
+                }) });
+        });
+        var leftPanelDom = document.querySelector('.left-panel');
+        leftPanelDom.innerHTML = navTpl({
+            menuList: menuList,
+        });
+    };
+    Docs.prototype.renderContent = function () {
+        var language = utils_1.getPageLanguage();
+        var _a = this.getDocsFolderAndItem(), folder = _a.folder, item = _a.item;
+        var content = '';
+        try {
+            content = __webpack_require__(869)("./" + folder + "/" + item + "/" + language + ".md");
+        }
+        catch (err) {
+            console.error(err);
+        }
+        var rightPanelDom = document.querySelector('.right-panel');
+        rightPanelDom.innerHTML = content;
+    };
+    Docs.prototype.unbindEvent = function () {
+        var pageLanguageSwitchDom = document.querySelector('.common-header .page-language-switch');
+        if (pageLanguageSwitchDom) {
+            utils_1.off(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
+        }
+        var leftMenuDom = document.querySelector('.left-panel');
+        if (leftMenuDom) {
+            utils_1.undelegate(leftMenuDom, '.common-nav-item', 'click', this.handleSwitchContent);
+        }
+    };
+    Docs.prototype.bindEvent = function () {
+        var pageLanguageSwitchDom = document.querySelector('.common-header .page-language-switch');
+        if (pageLanguageSwitchDom) {
+            utils_1.on(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
+        }
+        var leftMenuDom = document.querySelector('.left-panel');
+        if (leftMenuDom) {
+            utils_1.delegate(leftMenuDom, '.common-nav-item', 'click', this.handleSwitchContent);
+        }
+    };
+    Docs.prototype.render = function () {
+        this.renderLeftMenu();
+        this.renderLanguage();
+        this.renderContent();
+    };
+    Docs.prototype.refresh = function () {
+        this.unbindEvent();
+        this.render();
+        this.bindEvent();
+    };
+    return Docs;
+}());
+new Docs();
+
+
+/***/ }),
+
 /***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2194,6 +1874,270 @@ module.exports = exports['default'];
 
 /***/ }),
 
+/***/ 860:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var mds = [
+    {
+        folderKey: 'guide',
+        cnName: '快速上手',
+        enName: 'Guide',
+        mds: [
+            {
+                itemKey: 'installation',
+                enName: 'Installation',
+                cnName: '安装',
+            },
+            {
+                itemKey: 'introduction',
+                enName: 'Introduction',
+                cnName: '简介',
+            },
+            {
+                itemKey: 'usage',
+                enName: 'Usage',
+                cnName: '用法',
+            },
+            {
+                itemKey: 'feature',
+                enName: 'Feature',
+                cnName: '特点',
+            },
+        ],
+    }
+];
+exports.default = mds;
+
+
+/***/ }),
+
+/***/ 861:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 862:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(863);
+module.exports = __webpack_require__(97);
+
+/***/ }),
+
+/***/ 863:
+/***/ (function(module, exports, __webpack_require__) {
+
+// ie9- setTimeout & setInterval additional parameters fix
+var global     = __webpack_require__(454)
+  , $export    = __webpack_require__(864)
+  , invoke     = __webpack_require__(456)
+  , partial    = __webpack_require__(866)
+  , navigator  = global.navigator
+  , MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
+var wrap = function(set){
+  return MSIE ? function(fn, time /*, ...args */){
+    return set(invoke(
+      partial,
+      [].slice.call(arguments, 2),
+      typeof fn == 'function' ? fn : Function(fn)
+    ), time);
+  } : set;
+};
+$export($export.G + $export.B + $export.F * MSIE, {
+  setTimeout:  wrap(global.setTimeout),
+  setInterval: wrap(global.setInterval)
+});
+
+/***/ }),
+
+/***/ 864:
+/***/ (function(module, exports, __webpack_require__) {
+
+var global    = __webpack_require__(454)
+  , core      = __webpack_require__(97)
+  , ctx       = __webpack_require__(865)
+  , PROTOTYPE = 'prototype';
+
+var $export = function(type, name, source){
+  var IS_FORCED = type & $export.F
+    , IS_GLOBAL = type & $export.G
+    , IS_STATIC = type & $export.S
+    , IS_PROTO  = type & $export.P
+    , IS_BIND   = type & $export.B
+    , IS_WRAP   = type & $export.W
+    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
+    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
+    , key, own, out;
+  if(IS_GLOBAL)source = name;
+  for(key in source){
+    // contains in native
+    own = !IS_FORCED && target && key in target;
+    if(own && key in exports)continue;
+    // export native or passed
+    out = own ? target[key] : source[key];
+    // prevent global pollution for namespaces
+    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+    // bind timers to global for call from export context
+    : IS_BIND && own ? ctx(out, global)
+    // wrap global constructors for prevent change them in library
+    : IS_WRAP && target[key] == out ? (function(C){
+      var F = function(param){
+        return this instanceof C ? new C(param) : C(param);
+      };
+      F[PROTOTYPE] = C[PROTOTYPE];
+      return F;
+    // make static versions for prototype methods
+    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    if(IS_PROTO)(exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
+  }
+};
+// type bitmap
+$export.F = 1;  // forced
+$export.G = 2;  // global
+$export.S = 4;  // static
+$export.P = 8;  // proto
+$export.B = 16; // bind
+$export.W = 32; // wrap
+module.exports = $export;
+
+/***/ }),
+
+/***/ 865:
+/***/ (function(module, exports, __webpack_require__) {
+
+// optional / simple context binding
+var aFunction = __webpack_require__(455);
+module.exports = function(fn, that, length){
+  aFunction(fn);
+  if(that === undefined)return fn;
+  switch(length){
+    case 1: return function(a){
+      return fn.call(that, a);
+    };
+    case 2: return function(a, b){
+      return fn.call(that, a, b);
+    };
+    case 3: return function(a, b, c){
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function(/* ...args */){
+    return fn.apply(that, arguments);
+  };
+};
+
+/***/ }),
+
+/***/ 866:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var path      = __webpack_require__(867)
+  , invoke    = __webpack_require__(456)
+  , aFunction = __webpack_require__(455);
+module.exports = function(/* ...pargs */){
+  var fn     = aFunction(this)
+    , length = arguments.length
+    , pargs  = Array(length)
+    , i      = 0
+    , _      = path._
+    , holder = false;
+  while(length > i)if((pargs[i] = arguments[i++]) === _)holder = true;
+  return function(/* ...args */){
+    var that  = this
+      , $$    = arguments
+      , $$len = $$.length
+      , j = 0, k = 0, args;
+    if(!holder && !$$len)return invoke(fn, pargs, that);
+    args = pargs.slice();
+    if(holder)for(;length > j; j++)if(args[j] === _)args[j] = $$[k++];
+    while($$len > k)args.push($$[k++]);
+    return invoke(fn, args, that);
+  };
+};
+
+/***/ }),
+
+/***/ 867:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(97);
+
+/***/ }),
+
+/***/ 868:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(77);
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "  <div class=\"common-nav-folder\" data-folder=\""
+    + alias2(alias1((depth0 != null ? depth0.folderKey : depth0), depth0))
+    + "\">\n    <h3 class=\"common-nav-title\">\n      "
+    + alias2(alias1((depth0 != null ? depth0.folderDisplayName : depth0), depth0))
+    + "\n    </h3>\n    <ul class=\"common-nav-list\">\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.mds : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    </ul>\n  </div>\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    var alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "        <li class=\"common-nav-item "
+    + alias2(alias1((depth0 != null ? depth0.activeClass : depth0), depth0))
+    + "\">\n          <a class=\"common-nav-link\" href=\""
+    + alias2(alias1((depth0 != null ? depth0.linkName : depth0), depth0))
+    + "\" title=\""
+    + alias2(alias1((depth0 != null ? depth0.itemDisplayName : depth0), depth0))
+    + "\">"
+    + alias2(alias1((depth0 != null ? depth0.itemDisplayName : depth0), depth0))
+    + "</a>\n        </li>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.menuList : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\n\n";
+},"useData":true});
+
+/***/ }),
+
+/***/ 869:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./guide/feature/cn.md": 870,
+	"./guide/feature/en.md": 871,
+	"./guide/installation/cn.md": 872,
+	"./guide/installation/en.md": 873,
+	"./guide/introduction/cn.md": 874,
+	"./guide/introduction/en.md": 875,
+	"./guide/usage/cn.md": 876,
+	"./guide/usage/en.md": 877
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 869;
+
+/***/ }),
+
 /***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2215,6 +2159,62 @@ function registerDefaultDecorators(instance) {
 }
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2RlY29yYXRvcnMuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Z0NBQTJCLHFCQUFxQjs7OztBQUV6QyxTQUFTLHlCQUF5QixDQUFDLFFBQVEsRUFBRTtBQUNsRCxnQ0FBZSxRQUFRLENBQUMsQ0FBQztDQUMxQiIsImZpbGUiOiJkZWNvcmF0b3JzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHJlZ2lzdGVySW5saW5lIGZyb20gJy4vZGVjb3JhdG9ycy9pbmxpbmUnO1xuXG5leHBvcnQgZnVuY3Rpb24gcmVnaXN0ZXJEZWZhdWx0RGVjb3JhdG9ycyhpbnN0YW5jZSkge1xuICByZWdpc3RlcklubGluZShpbnN0YW5jZSk7XG59XG5cbiJdfQ==
 
+
+/***/ }),
+
+/***/ 870:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"-\">特点</h2>\n<p>这里我们讨论下 viser 和 g2 的差异之处，这里我们以 viser-react 举例，以便于您的理解。</p>\n<h3 id=\"-\">组件分类</h3>\n<p>Viser 中所有的子组件分为几类：</p>\n<ul>\n<li>容器组件：Chart, View, FacetView, Facet, LiteChart；</li>\n<li>标准组件：Coord, Tooltip, Legend, Guide, Axis, Series；</li>\n<li>图形组件：Pie, Sector, Line, SmoothLine, DashLine, Area, StackArea, SmoothArea, Bar, StackBar, DodgeBar, Interval, StackInterval, DodgeInterval, Point, JitterPoint, Funnel, Pyramid, Schema, Box, Candle, Polygon, Contour, Heatmap, Edge, Sankey。</li>\n</ul>\n<p>容器组件代表它们是可以对应一组渲染，比如 Chart 容器包含组件绘制的所有步骤，而 G2 的图表可以由多个<a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/how-to-create-view.html\">视图 View 构成</a>，同时各个视图可以拥有各自的数据源，那么 View 也会包含组件绘制的一部分步骤。此外 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/facet.html\">Facet</a>, FacetView 是类似的，具体可以参考 demo 中的写法。</p>\n<p>标准组件对应 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/understanding-g2-charts.html\">G2 的图表组成</a> 包括了 Axis, Legend, Geom, Tooltip 和 Guide。对应到 viser 是 Axis, Legend, Series, Tooltip 和 Guide，另外将 Coord 也设置为组件。其中，Series 来代替 Geom，原因是大部分其它图表库更强调 Series 概念，G2 从图形语法层面将这一概念抽象成 Geom。</p>\n<p>图形组件是对 Series 类型的扩展，其实就是所有 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/geom.html\">geom 类型</a>。将它们具象化成组件，以方便在使用时理解。虽然我们还是可以用 Series 来做为组件，但推荐直接使用具体的图形名称来表示组件，例如 Bar 和 Line 等。这样方便语义化的使用。具体举例，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\nchart.<span class=\"hljs-built_in\">line</span>().<span class=\"hljs-built_in\">position</span>(<span class=\"hljs-string\">'year*value'</span>);\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n&lt;Line <span class=\"hljs-built_in\">position</span>=<span class=\"hljs-string\">\"year*value\"</span> /&gt;\n</code></pre>\n<h3 id=\"datakey-\">dataKey 字段映射</h3>\n<p>对于字段映射的方式，viser 使用 <code>dataKey</code> 的方式来设置，与其它属性并列，比如在设置 <code>scale</code> 时，g2 的 <code>key</code> 就是数据的列字段，而 viser 里就是 <code>dataKey</code> 来表示：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.scale</span>({\n  <span class=\"hljs-attribute\">x</span>: { sync: true },\n  <span class=\"hljs-selector-tag\">y</span>: { <span class=\"hljs-attribute\">sync</span>: true },\n});\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n<span class=\"hljs-keyword\">const</span> scale = [{\n  <span class=\"hljs-attr\">dataKey</span>: <span class=\"hljs-string\">'x'</span>,\n  <span class=\"hljs-attr\">sync</span>: <span class=\"hljs-literal\">true</span>,\n}, {\n  <span class=\"hljs-attr\">dataKey</span>: <span class=\"hljs-string\">'y'</span>,\n  <span class=\"hljs-attr\">sync</span>: <span class=\"hljs-literal\">true</span>,\n}];\n<span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">Chart</span> <span class=\"hljs-attr\">scale</span>=<span class=\"hljs-string\">{scale}</span> {<span class=\"hljs-attr\">...others</span>}&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">Chart</span>&gt;</span></span>\n</code></pre>\n<p>其它，类似于 Legend, Axis 部分的字段映射使用同样的方式，用 <code>dataKey</code> 代表列字段。但在 Series 中并不是对单个字段映射，而且它是属性的一部分，因为我们的处理方式不同，使用数组的方式来表达。比如 <code>label</code> 属性中列字段是 <code>name</code>，并有配置，那么我们在 viser 中使用就直接使用一个数组来代表：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">nodeView</span><span class=\"hljs-selector-class\">.polygon</span>()\n<span class=\"hljs-selector-class\">.position</span>(<span class=\"hljs-string\">'x*y'</span>)\n<span class=\"hljs-selector-class\">.color</span>(<span class=\"hljs-string\">'id'</span>)\n<span class=\"hljs-selector-class\">.label</span>(<span class=\"hljs-string\">'name'</span>, {\n  <span class=\"hljs-attribute\">labelEmit</span>: true,\n  <span class=\"hljs-attribute\">textStyle</span>: {\n    <span class=\"hljs-attribute\">fill</span>: <span class=\"hljs-string\">'#8c8c8c'</span>\n  }\n});\n</code></pre>\n<pre><code class=\"lang-js\">/*\n * Viser-react\n */\nconst <span class=\"hljs-keyword\">label</span><span class=\"bash\"> = [\n</span>  <span class=\"hljs-string\">'name'</span>, {\n    labelEmit: true,\n    textStyle: {\n      fill: <span class=\"hljs-string\">'#8c8c8c'</span>\n    },\n  }\n];\n&lt;Polygon position=<span class=\"hljs-string\">'x*y'</span> color=<span class=\"hljs-string\">'id'</span> <span class=\"hljs-keyword\">label</span><span class=\"bash\">={label} /&gt;</span>\n</code></pre>\n<h3 id=\"coord-\">Coord 的方向</h3>\n<p>Coord 组件用于表示 g2 中 coord 的相关内容。针对直角坐标系的图表，我们提供了 <code>direction</code> 这一优化后的参数用来展现 g2 中的 <code>transpose</code>, <code>reflect</code> 和 <code>scale</code> 这几个属性。根据X轴，Y轴的位置，我们提供了8种坐标系的排列，分别有 BL, BR, LT, LB, RB, RT, TL, TR。B 代表 bottom, T 代表 top，L 代表 left，R 代表 right。具体举例，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.coord</span>()<span class=\"hljs-selector-class\">.transpose</span>()<span class=\"hljs-selector-class\">.scale</span>(1, <span class=\"hljs-selector-tag\">-1</span>);\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n&lt;<span class=\"hljs-type\">Coord</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"rect\"</span> direction=<span class=\"hljs-string\">\"LT\"</span> /&gt;\n</code></pre>\n<p>映射关系如下：</p>\n<table>\n<thead>\n<tr>\n<th style=\"text-align:left\">direction</th>\n<th style=\"text-align:left\">配置</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left\">BL(默认）</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;);</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">BR</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).scale(-1, 1);</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">LT</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).transpose().scale(1, -1);</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">LB</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).transpose();</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">RB</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).transpose().reflect();</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">RT</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).transpose().reflect().scale(-1, 1);</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">TL</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).reflect();</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">TR</td>\n<td style=\"text-align:left\">chart.coord(&#39;rect&#39;).reflect().scale(-1, 1);</td>\n</tr>\n</tbody>\n</table>\n<h3 id=\"guide-\">Guide 的类型</h3>\n<p>Guide 在 g2 中直接会指定，比如 <code>chart.guide().line()</code>，在 viser 中均使用 Guide 组件，类型就使用 <code>type</code> 字段来表示，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.guide</span>()<span class=\"hljs-selector-class\">.line</span>()\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n&lt;<span class=\"hljs-type\">Guide</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"line\"</span> /&gt;\n</code></pre>\n<p>另外，提供了两种平行和正交快捷设置，因此增加了 <code>quickType</code> 的字段，value 则对应是 <code>parallel</code> 和 <code>normal</code>，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.guide</span><span class=\"hljs-selector-class\">.line</span>({\n  <span class=\"hljs-attribute\">start</span>: [<span class=\"hljs-string\">'min'</span>, <span class=\"hljs-number\">2</span>],\n  end: [<span class=\"hljs-string\">'max'</span>, <span class=\"hljs-number\">2</span>],\n});\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n&lt;Guide <span class=\"hljs-keyword\">type</span>=<span class=\"hljs-string\">\"line\"</span> quickType=<span class=\"hljs-string\">\"parallel\"</span> <span class=\"hljs-built_in\">data</span>={<span class=\"hljs-number\">2</span>} /&gt;\n</code></pre>\n<h3 id=\"formatter-\">Formatter 格式化方法</h3>\n<p>我们加入了 <code>d3-format</code> 库来增强 <code>label</code> 需要数据处理的能力，也就是说简单场景下的数据格式化，可以直接用 d3 提供的格式化表达式来完成。比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.scale</span>({\n  <span class=\"hljs-attribute\">percent</span>: {\n    min: <span class=\"hljs-number\">0</span>,\n    <span class=\"hljs-built_in\">formatter</span>(val) {\n      return (val * <span class=\"hljs-number\">100</span>).<span class=\"hljs-built_in\">toFixed</span>(2) + <span class=\"hljs-string\">'%'</span>;\n    }\n  }\n});\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\n<span class=\"hljs-keyword\">const</span> <span class=\"hljs-built_in\">scale</span> = [{\n  dataKey: <span class=\"hljs-string\">'percent'</span>,\n  <span class=\"hljs-built_in\">min</span>: <span class=\"hljs-number\">0</span>,\n  formatter: <span class=\"hljs-string\">'.2%'</span>,\n}];\n</code></pre>\n<h3 id=\"-\">事件</h3>\n<p>Viser 的事件对于 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/chart-event.html\">g2 的事件</a> 来说看起来不太一样，viser 是直接绑定在元素上的，因此对于事件来说，在哪里用就在哪里绑定。但 g2 使用中常常使用到 chart 实例，因此 viser 将 chart 实例放在了回调函数第二个参数上，比如：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * G2\n */</span>\n<span class=\"hljs-selector-tag\">chart</span><span class=\"hljs-selector-class\">.on</span>(<span class=\"hljs-string\">'mousedown'</span>, ev =&gt; {});\n</code></pre>\n<pre><code class=\"lang-js\"><span class=\"hljs-comment\">/*\n * Viser-react\n */</span>\nhandleMouseDown = <span class=\"hljs-function\">(<span class=\"hljs-params\">ev, chart</span>) =&gt;</span> {}\n&lt;Chart onMouseDown={<span class=\"hljs-keyword\">this</span>.handleMouseDown}&gt;\n<span class=\"xml\"><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">Chart</span>&gt;</span></span>\n</code></pre>\n<p>对于 Axis 来说，原来的 <code>chart.on(&#39;axis-title: click&#39;, ev =&gt; {})</code>，在 Axis 上绑定就会有一个 <code>onTitleClick</code> 的属性，其它的以此类推。</p>\n";
+
+/***/ }),
+
+/***/ 871:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"feature\">Feature</h2>\n<p>Comming Soon...</p>\n";
+
+/***/ }),
+
+/***/ 872:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"-\">安装</h2>\n<p>Viser 为 React, Vue 和 Angular 提供了3个不同的分发版本。我们同时提供了npm安装和umd引入两种方式来使用Viser。</p>\n<p>npm安装是使用 Viser 最简单也是最快捷的方式。我们强烈建议您在开发单页应用(SPA)时采用这种方式进行安装。Viser 可以完美兼容 CommonJS 打包工具，例如我们最常用的 Webpack。</p>\n<p>UMD 引入是使用script标签引入来使用 Viser。当你需要快速使用的时候，这是最便捷的方式。</p>\n<h3 id=\"vue-\">Vue 分发版</h3>\n<p>您需要使用版本 <strong>2.5</strong> 及以上的 Vue，来使用 Vue 分发版 Viser。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserVue</code> 来进行调用 Viser。</p>\n<h3 id=\"angular-\">Angular 分发版</h3>\n<p>您需要使用版本 <strong>2.4</strong> 及以上的 Angular，来使用 Angular 分发版 Viser。另外，你还需要版本 <strong>0.1</strong> 及以上的 reflect-metadata，版本 <strong>5</strong> 及以上的 rxjs，版本 <strong>0.7</strong> 及以上的 zone.js。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserNg</code> 来进行调用 Viser。</p>\n<h3 id=\"react-\">React 分发版</h3>\n<p>您需要使用版本 <strong>15</strong> 及以上的 React，来使用 React 分发版 Viser。显然，版本 <strong>16</strong> 也是可以的。</p>\n<h4 id=\"npm\">npm</h4>\n<p>在终端使用如下命令来安装 npm 版本：</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>我们在 unpkg.com 上提供了 UMD 引入的版本:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>然后你可以使用全局变量 <code>window.ViserReact</code> 来进行调用 Viser。</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
+
+/***/ }),
+
+/***/ 873:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"installation\">Installation</h2>\n<p>Viser include 3 version which is integrated by React, Vue and Angular. We provide NPM or UMD to use library.</p>\n<p>NPM is the easiest and fastest way to get started using Viser. It is the recommended installation method when building single-page applications (SPAs). It pairs nicely with a CommonJS module bundler such as Webpack.</p>\n<p>UMD is the script way to using Viser. It is convenient method when you used quickly.</p>\n<h3 id=\"vue-version\">Vue Version</h3>\n<p>In Vue version, You mush prepare to Vue version greater than <strong>2.5</strong> in project.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-vue</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-vue.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserVue.</p>\n<h3 id=\"angular-version\">Angular Version</h3>\n<p>In Angular version, You mush prepare to Angular version greater than <strong>2.4</strong> in project. In addition, you also prepare to reflect-metadata version greater than <strong>0.1</strong>, rxjs version greater than <strong>5</strong> and zone.js version greater than <strong>0.7</strong>.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-ng</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-ng.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserNg.</p>\n<h3 id=\"react-version\">React Version</h3>\n<p>In React version, You mush prepare React version greater then <strong>15</strong>, and support <strong>16</strong> certainly.</p>\n<h4 id=\"npm\">npm</h4>\n<p>The NPM way is only install by shell:</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">#</span><span class=\"bash\"> latest stable</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm install viser-react</span>\n</code></pre>\n<h4 id=\"umd\">umd</h4>\n<p>The UMD build is also available on unpkg.com:</p>\n<pre><code class=\"lang-html\"> <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">script</span> <span class=\"hljs-attr\">src</span>=<span class=\"hljs-string\">\"https://unpkg.com/recharts/umd/viser-react.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">script</span>&gt;</span>\n</code></pre>\n<p>Then you can find the library on window.ViserReact.</p>\n<h2 id=\"demo\">Demo</h2>\n<p>To examine the demos in your local build, open to <code>demo</code> directory, and execute</p>\n<pre><code class=\"lang-shell\"><span class=\"hljs-meta\">$</span><span class=\"bash\"> git <span class=\"hljs-built_in\">clone</span> https://github.com/viserjs/viser.git</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run postinstall</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> <span class=\"hljs-built_in\">cd</span> ./demo &amp;&amp; npm install</span>\n<span class=\"hljs-meta\">$</span><span class=\"bash\"> npm run start</span>\n</code></pre>\n";
+
+/***/ }),
+
+/***/ 874:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"-\">简介</h2>\n<p>Viser，一个基于 G2 实现的，为数据可视化工程师量身定制的工具。Viser 现已支持几大主流前端框架，例如 React, Vue 和 AngularJS。</p>\n<h3 id=\"-\">核心价值</h3>\n<p>它可以开发网页应用的过程中，为图表开发带来卓越的体验。</p>\n<h3 id=\"-\">设计原则</h3>\n<ol>\n<li>利用语义化组件来组合图表。包括但不限于 React, Vue 和 AugularJS 的组件。</li>\n<li>脱胎于 G2，一套基于可视化编码的图形语法。由此带来了强大的可视化能力。</li>\n</ol>\n";
+
+/***/ }),
+
+/***/ 875:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"introduction\">Introduction</h2>\n<p>A toolkit fit for data vis engineer based on G2. Viser support React, Vue and AngularJS.</p>\n<h3 id=\"main-purpose\">Main Purpose</h3>\n<p>The main purpose of this library is to help you to write charts in web applications without any pain.</p>\n<h3 id=\"main-principles\">Main Principles</h3>\n<ol>\n<li>Simply deploy with semantic component with chart, including but not limited to React, Vue and AugularJS.</li>\n<li>Lightweight depending only on G2 which is a plotting system for Javascript, based on the grammar of graphics.</li>\n</ol>\n";
+
+/***/ }),
+
+/***/ 876:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"-\">用法</h2>\n<p>我们以 viser-react 举例写<a href=\"https://antv.alipay.com/zh-cn/g2/3.x/demo/relation/chord.html\">一个 chore 图为例</a>，viser-vue 和 viser-ng 的用法类似。</p>\n<h3 id=\"-\">引入库</h3>\n<p>首先是引入 viser-react 的需要的子组件，以及必要的依赖，如 React, ReactDOM。</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-keyword\">import</span> { Chart, Tooltip, Edge, View, Polygon, Coord } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'viser-react'</span>;\n<span class=\"hljs-keyword\">import</span> * <span class=\"hljs-keyword\">as</span> ReactDOM <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-dom'</span>;\n<span class=\"hljs-keyword\">import</span> * <span class=\"hljs-keyword\">as</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>;\n</code></pre>\n<h3 id=\"-\">数据处理</h3>\n<p>数据处理完全沿用 data-set.js 的处理。data-set 有丰富的数据处理方法，具体请参考 g2 官网的 <a href=\"https://antv.alipay.com/zh-cn/g2/3.x/tutorial/data-set.html\">data-set 部分</a>.</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-keyword\">const</span> DataSet = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'@antv/data-set'</span>);\n\n<span class=\"hljs-keyword\">const</span> ds: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">new</span> DataSet();\n<span class=\"hljs-keyword\">const</span> dv = ds.createView().source(data, {\n  <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-string\">'graph'</span>,\n  edges: <span class=\"hljs-function\"><span class=\"hljs-params\">d</span> =&gt;</span> d.links\n});\n\ndv.transform({\n  <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-string\">'diagram.arc'</span>,\n  sourceWeight: <span class=\"hljs-function\"><span class=\"hljs-params\">e</span> =&gt;</span> e.sourceWeight,\n  targetWeight: <span class=\"hljs-function\"><span class=\"hljs-params\">e</span> =&gt;</span> e.targetWeight,\n  weight: <span class=\"hljs-literal\">true</span>,\n  marginRatio: <span class=\"hljs-number\">0.3</span>\n});\n</code></pre>\n<h3 id=\"-\">图表实现</h3>\n<p>图表实现完全沿用 g2 对于图形语法的表达。</p>\n<p>我们观察原生 g2 的语法：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-keyword\">const</span> chart = <span class=\"hljs-keyword\">new</span> G2.Chart({\n  container: <span class=\"hljs-string\">'mountNode'</span>,\n  forceFit: <span class=\"hljs-keyword\">true</span>,\n  <span class=\"hljs-built_in\">height</span>: window.innerHeight\n});\nchart.legend(<span class=\"hljs-keyword\">false</span>);\nchart.tooltip({\n  showTitle: <span class=\"hljs-keyword\">false</span>\n});\n\nchart.<span class=\"hljs-built_in\">scale</span>({\n  x: {\n    sync: <span class=\"hljs-keyword\">true</span>\n  },\n  y: {\n    sync: <span class=\"hljs-keyword\">true</span>\n  }\n});\n\n<span class=\"hljs-keyword\">const</span> edgeView = chart.view();\nedgeView.source(dv.edges);\nedgeView.coord(<span class=\"hljs-string\">'polar'</span>).reflect(<span class=\"hljs-string\">'y'</span>);\nedgeView.axis(<span class=\"hljs-keyword\">false</span>);\nedgeView.edge()\n  .position(<span class=\"hljs-string\">'x*y'</span>)\n  .<span class=\"hljs-built_in\">shape</span>(<span class=\"hljs-string\">'arc'</span>)\n  .<span class=\"hljs-built_in\">color</span>(<span class=\"hljs-string\">'source'</span>)\n  .opacity(<span class=\"hljs-number\">0.5</span>)\n  .tooltip(<span class=\"hljs-string\">'source*target*value'</span>);\n\n<span class=\"hljs-keyword\">const</span> nodeView = chart.view();\nnodeView.source(dv.nodes);\nnodeView.coord(<span class=\"hljs-string\">'polar'</span>).reflect(<span class=\"hljs-string\">'y'</span>);\nnodeView.axis(<span class=\"hljs-keyword\">false</span>);\nnodeView.polygon()\n  .position(<span class=\"hljs-string\">'x*y'</span>)\n  .<span class=\"hljs-built_in\">color</span>(<span class=\"hljs-string\">'id'</span>)\n  .label(<span class=\"hljs-string\">'name'</span>, {\n    labelEmit: <span class=\"hljs-keyword\">true</span>,\n    textStyle: {\n      <span class=\"hljs-built_in\">fill</span>: <span class=\"hljs-string\">'#8c8c8c'</span>\n    }\n  });\n\nchart.render();\n</code></pre>\n<p>我们看到有几个部分，Chart, Lengend, Tooltip, Scale 的配置，这些是公共配置，g2 提供 View 的能力，因此对应到 viser-react 中也需要两个 View，一个是边（edge），一个是节点（node）。然后每一个 api 都被抽象成了配置，而不是连续的调用。所以，我们看到对应到 viser-react 中的代码是：</p>\n<pre><code class=\"lang-js\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">App</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> </span>{\n  constructor(props) {\n    <span class=\"hljs-keyword\">super</span>(props);\n  }\n\n  render() {\n    const label = [\n      <span class=\"hljs-symbol\">'nam</span>e', {\n        labelEmit: <span class=\"hljs-literal\">true</span>,\n        textStyle: {\n          fill: '#<span class=\"hljs-number\">8</span>c8c8c'\n        },\n      }\n    ];\n\n    const scale = [{\n      dataKey: 'x',\n      sync: <span class=\"hljs-literal\">true</span>,\n    }, {\n      dataKey: 'y',\n      sync: <span class=\"hljs-literal\">true</span>,\n    }];\n\n    <span class=\"hljs-keyword\">return</span> (\n      &lt;div&gt;\n        &lt;<span class=\"hljs-type\">Chart</span> forceFit height={window.innerHeight} scale={scale}&gt;\n          &lt;<span class=\"hljs-type\">View</span> data={dv.edges}&gt;\n            &lt;<span class=\"hljs-type\">Coord</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"polar\"</span> direction=<span class=\"hljs-string\">\"yReverse\"</span> /&gt;\n            &lt;<span class=\"hljs-type\">Edge</span> position=<span class=\"hljs-symbol\">'x</span>*y' color=<span class=\"hljs-symbol\">'sourc</span>e' shape=<span class=\"hljs-symbol\">'ar</span>c' opacity={<span class=\"hljs-number\">0.5</span>} tooltip={<span class=\"hljs-symbol\">'source</span>*target*value'} /&gt;\n          &lt;/<span class=\"hljs-type\">View</span>&gt;\n          &lt;<span class=\"hljs-type\">View</span> data={dv.nodes}&gt;\n            &lt;<span class=\"hljs-type\">Coord</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">type</span></span>=<span class=\"hljs-string\">\"polar\"</span> direction=<span class=\"hljs-string\">\"yReverse\"</span> /&gt;\n            &lt;<span class=\"hljs-type\">Polygon</span> position=<span class=\"hljs-symbol\">'x</span>*y' color=<span class=\"hljs-symbol\">'i</span>d' label={label} /&gt;\n          &lt;/<span class=\"hljs-type\">View</span>&gt;\n        &lt;/<span class=\"hljs-type\">Chart</span>&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n</code></pre>\n<h3 id=\"-\">最后</h3>\n<p>对于图表实现上，都是 g2 图形语法的特性，并不是 viser 提供的，viser 提供的是框架级别的轻量级封装。希望你可以先对 g2 的用法熟悉，viser 不会单独列 g2 的 API，但我们会对一些 viser 的特点单独列出。</p>\n";
+
+/***/ }),
+
+/***/ 877:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 id=\"usage\">Usage</h2>\n<p>Common Soon...</p>\n";
 
 /***/ }),
 

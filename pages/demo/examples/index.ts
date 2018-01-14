@@ -490,10 +490,45 @@ const examples = {
       //   enName: 'Word Cloud Mask',
       //   cnName: '带图片遮罩的词云',
       // },
-      {     // need release new version
+      {
         path: 'example7',
         enName: 'Pizza Chart',
         cnName: 'Pizza Chart',
+      },
+      {
+        path: 'example8',
+        enName: 'custom label pie',
+        cnName: '个性化标签饼图',
+      },
+      {
+        path: 'example9',
+        enName: 'daily life visualization',
+        cnName: '日常作息可视化',
+      },
+      {
+        path: 'example10',
+        enName: 'slice pie',
+        cnName: '分片饼图',
+      },
+      // {
+      //   path: 'example11',
+      //   enName: 'double ring',
+      //   cnName: '双环图',
+      // },
+      {
+        path: 'example12',
+        enName: 'stack bar in polar axis',
+        cnName: '极坐标下的层叠柱状图',
+      },
+      {
+        path: 'example13',
+        enName: 'nightingale rose',
+        cnName: '南丁格尔玫瑰图',
+      },
+      {
+        path: 'example14',
+        enName: 'jade jue',
+        cnName: '玉珏图',
       },
     ],
     icon: 'others'

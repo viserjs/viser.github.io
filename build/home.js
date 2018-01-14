@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 828);
+/******/ 	return __webpack_require__(__webpack_require__.s = 878);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -17245,7 +17245,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 18:
+/***/ 19:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17276,7 +17276,7 @@ var Global = G2.Global;
 
 /***/ }),
 
-/***/ 19:
+/***/ 20:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67053,7 +67053,7 @@ var supportD3Formatter = function (obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__formatGroup__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__formatNumerals__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__formatSpecifier__ = __webpack_require__(36);
@@ -67129,7 +67129,7 @@ var prefixes = ["y","z","a","f","p","n","µ","m","","k","M","G","T","P","E","Z",
 
         // Compute the prefix and suffix.
         valuePrefix = (valueNegative ? (sign === "(" ? sign : "-") : sign === "-" || sign === "(" ? "" : sign) + valuePrefix;
-        valueSuffix = valueSuffix + (type === "s" ? prefixes[8 + __WEBPACK_IMPORTED_MODULE_5__formatPrefixAuto__["b" /* prefixExponent */] / 3] : "") + (valueNegative && sign === "(" ? ")" : "");
+        valueSuffix = (type === "s" ? prefixes[8 + __WEBPACK_IMPORTED_MODULE_5__formatPrefixAuto__["b" /* prefixExponent */] / 3] : "") + valueSuffix + (valueNegative && sign === "(" ? ")" : "");
 
         // Break the formatted value into the integer “value” part that can be
         // grouped, and fractional or exponential “suffix” part that is not.
@@ -68920,7 +68920,7 @@ function defaultLocale(definition) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(20);
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (function(step) {
@@ -68934,7 +68934,7 @@ function defaultLocale(definition) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(20);
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (function(step, value) {
@@ -68948,7 +68948,7 @@ function defaultLocale(definition) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__exponent__ = __webpack_require__(20);
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (function(step, max) {
@@ -70341,16 +70341,16 @@ module.exports = Util;
 
 /***/ }),
 
-/***/ 828:
+/***/ 878:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var locale_1 = __webpack_require__(829);
-var viser_1 = __webpack_require__(18);
+var locale_1 = __webpack_require__(879);
+var viser_1 = __webpack_require__(19);
 var utils_1 = __webpack_require__(40);
-__webpack_require__(830);
+__webpack_require__(880);
 var GDP_JSON = [
     { year: '2006', gdp: 21.94385 },
     { year: '2007', gdp: 27.02323 },
@@ -70483,7 +70483,7 @@ new Home();
 
 /***/ }),
 
-/***/ 829:
+/***/ 879:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70628,7 +70628,7 @@ exports.default = locale;
 
 /***/ }),
 
-/***/ 830:
+/***/ 880:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
