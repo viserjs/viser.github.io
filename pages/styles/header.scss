@@ -87,11 +87,11 @@
   cursor: pointer;
   &.en {
     &::before { content: 'EN'; }
-    &:hover::before { content: 'CN'; }
+    &:hover::before { content: '中'; }
   }
   &.cn {
     &::before { content: '中'; }
-    &:hover::before { content: '英'; }
+    &:hover::before { content: 'EN'; }
   }
   &::before {
     content: ' ';
