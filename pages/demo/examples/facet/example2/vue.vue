@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { data } from "./data";
+  import * as $ from 'jquery';
   const DataSet = require('@antv/data-set');
   const { DataView } = DataSet;
 
@@ -44,9 +44,14 @@
   }
 
   export default {
+    mounted() {
+      $.getJSON('/data/diamond.json', (data) => {
+        this.$data.data = data;
+      });
+    },
     data() {
       return {
-        data,
+        data: [],
         scale,
         views,
       };

@@ -1,7 +1,7 @@
 import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { data } from './data'
+import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 const { DataView } = DataSet;
 
@@ -36,7 +36,18 @@ const views = (view, facet) => {
 }
 
 class App extends React.Component {
+  state = {
+    data: [],
+  };
+
+  componentDidMount() {
+    $.getJSON('/data/diamond.json', (data) => {
+      this.setState({ data });
+    });
+  }
+
   render() {
+    const { data } = this.state;
     return (
       <Chart forceFit={true} height={600} data={data} scale={scale}>
         <Tooltip crosshairs={false} />

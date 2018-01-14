@@ -1,7 +1,7 @@
 import { Chart, Facet, View, Tooltip, Legend, Axis, Point, FacetView } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { data } from './data';
+import * as $ from 'jquery';
 
 const scale = [{
   dataKey: 'carat',
@@ -16,7 +16,18 @@ const scale = [{
 }];
 
 class App extends React.Component {
+  state = {
+    data: [],
+  };
+
+  componentDidMount() {
+    $.getJSON('/data/diamond.json', (data) => {
+      this.setState({ data });
+    });
+  }
+
   render() {
+    const { data } = this.state;
     return (
       <div>
         <Chart forceFit={true} height={600} data={data} scale={scale}>

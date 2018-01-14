@@ -1,37 +1,8 @@
 import { Chart, Facet, View, Tooltip, Legend, Axis, Bar, FacetView } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { data } from './data'
+import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
-
-const tmp = [];
-const dates = [];
-data.male.values.forEach((obj: any) => {
-  if (dates.indexOf(obj.date) === -1) {
-    dates.push(obj.date);
-  }
-  obj.age_groups.forEach((subObject: any) => {
-    subObject.gender = 'male';
-    subObject.date = obj.date;
-    tmp.push(subObject);
-  });
-});
-data.female.values.forEach((obj: any) => {
-  obj.age_groups.forEach((subObject: any) => {
-    subObject.gender = 'female';
-    subObject.date = obj.date;
-    tmp.push(subObject);
-  });
-});
-
-const dv = new DataSet.View().source(tmp);
-dv.transform({
-  type: 'filter',
-  callback(row) {
-    return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
-  }
-});
-const tmpData = dv.rows;
 
 const scale = [{
   dataKey: 'age',
@@ -49,9 +20,48 @@ const scale = [{
 }];
 
 class App extends React.Component {
+  state = {
+    data: [],
+  };
+
+  componentDidMount() {
+    $.getJSON('/data/population.json', (sourceData) => {
+      const tmp = [];
+      const dates = [];
+      sourceData.male.values.forEach((obj: any) => {
+        if (dates.indexOf(obj.date) === -1) {
+          dates.push(obj.date);
+        }
+        obj.age_groups.forEach((subObject: any) => {
+          subObject.gender = 'male';
+          subObject.date = obj.date;
+          tmp.push(subObject);
+        });
+      });
+      sourceData.female.values.forEach((obj: any) => {
+        obj.age_groups.forEach((subObject: any) => {
+          subObject.gender = 'female';
+          subObject.date = obj.date;
+          tmp.push(subObject);
+        });
+      });
+
+      const dv = new DataSet.View().source(tmp);
+      dv.transform({
+        type: 'filter',
+        callback(row) {
+          return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
+        }
+      });
+
+      this.setState({ data: dv.rows });
+    });
+  }
+
   render() {
+    const { data } = this.state;
     return (
-      <Chart forceFit={true} height={600} data={tmpData} scale={scale}>
+      <Chart forceFit={true} height={600} data={data} scale={scale}>
         <Tooltip />
         <Legend />
         <Axis />

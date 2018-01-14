@@ -4,37 +4,8 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-import { data } from './data'
+import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
-
-const tmp = [];
-const dates = [];
-data.male.values.forEach((obj: any) => {
-  if (dates.indexOf(obj.date) === -1) {
-    dates.push(obj.date);
-  }
-  obj.age_groups.forEach((subObject: any) => {
-    subObject.gender = 'male';
-    subObject.date = obj.date;
-    tmp.push(subObject);
-  });
-});
-data.female.values.forEach((obj: any) => {
-  obj.age_groups.forEach((subObject: any) => {
-    subObject.gender = 'female';
-    subObject.date = obj.date;
-    tmp.push(subObject);
-  });
-});
-
-const dv = new DataSet.View().source(tmp);
-dv.transform({
-  type: 'filter',
-  callback(row) {
-    return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
-  }
-});
-const tmpData = tmp;
 
 const scale = [{
   dataKey: 'age',
@@ -71,10 +42,44 @@ const scale = [{
 export class AppComponent {
   forceFit: boolean = true;
   height: number = 600;
-  data = tmpData;
+  data = [];
   scale = scale;
   fields = ['gender'];
-  color = ['gender', [ '#1890ff', '#f04864' ]];
+  color = ['gender', ['#1890ff', '#f04864']];
+
+  constructor() {
+    $.getJSON('/data/population.json', (sourceData) => {
+      const tmp = [];
+      const dates = [];
+      sourceData.male.values.forEach((obj: any) => {
+        if (dates.indexOf(obj.date) === -1) {
+          dates.push(obj.date);
+        }
+        obj.age_groups.forEach((subObject: any) => {
+          subObject.gender = 'male';
+          subObject.date = obj.date;
+          tmp.push(subObject);
+        });
+      });
+      sourceData.female.values.forEach((obj: any) => {
+        obj.age_groups.forEach((subObject: any) => {
+          subObject.gender = 'female';
+          subObject.date = obj.date;
+          tmp.push(subObject);
+        });
+      });
+
+      const dv = new DataSet.View().source(tmp);
+      dv.transform({
+        type: 'filter',
+        callback(row) {
+          return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
+        }
+      });
+
+      this.data = dv.rows;
+    });
+  }
 }
 
 @NgModule({

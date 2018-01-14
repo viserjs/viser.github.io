@@ -4,7 +4,7 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-import { data } from './data'
+import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 const { DataView } = DataSet;
 
@@ -53,10 +53,16 @@ const views = (view, facet) => {
 export class AppComponent {
   forceFit: boolean = true;
   height: number = 600;
-  data = data;
+  data = [];
   scale = scale;
   fields = ['clarity'];
   views = views;
+
+  constructor() {
+    $.getJSON('/data/diamond.json', (data) => {
+      this.data = data;
+    });
+  }
 }
 
 @NgModule({

@@ -14,37 +14,8 @@
 </template>
 
 <script>
-  import { data } from "./data";
+  import * as $ from 'jquery';
   const DataSet = require('@antv/data-set');
-
-  const tmp = [];
-  const dates = [];
-  data.male.values.forEach((obj) => {
-    if (dates.indexOf(obj.date) === -1) {
-      dates.push(obj.date);
-    }
-    obj.age_groups.forEach((subObject) => {
-      subObject.gender = 'male';
-      subObject.date = obj.date;
-      tmp.push(subObject);
-    });
-  });
-  data.female.values.forEach((obj) => {
-    obj.age_groups.forEach((subObject) => {
-      subObject.gender = 'female';
-      subObject.date = obj.date;
-      tmp.push(subObject);
-    });
-  });
-
-  const dv = new DataSet.View().source(tmp);
-  dv.transform({
-    type: 'filter',
-    callback(row) {
-      return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
-    }
-  });
-  const tmpData = dv.rows;
 
   const scale = [{
     dataKey: 'age',
@@ -62,6 +33,39 @@
   }];
 
   export default {
+    mounted() {
+      $.getJSON('/data/population.json', (sourceData) => {
+        const tmp = [];
+        const dates = [];
+        sourceData.male.values.forEach((obj) => {
+          if (dates.indexOf(obj.date) === -1) {
+            dates.push(obj.date);
+          }
+          obj.age_groups.forEach((subObject) => {
+            subObject.gender = 'male';
+            subObject.date = obj.date;
+            tmp.push(subObject);
+          });
+        });
+        sourceData.female.values.forEach((obj) => {
+          obj.age_groups.forEach((subObject) => {
+            subObject.gender = 'female';
+            subObject.date = obj.date;
+            tmp.push(subObject);
+          });
+        });
+
+        const dv = new DataSet.View().source(tmp);
+        dv.transform({
+          type: 'filter',
+          callback(row) {
+            return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
+          }
+        });
+
+        this.$data.data = dv.rows;
+      });
+    },
     data() {
       return {
         data: tmpData,

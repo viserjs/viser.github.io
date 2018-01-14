@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import { data } from "./data";
+  import * as $ from 'jquery';
 
   const scale = [{
     dataKey: 'carat',
@@ -29,9 +29,14 @@
   }];
 
   export default {
+    mounted() {
+      $.getJSON('/data/diamond.json', (data) => {
+        this.$data.data = data;
+      });
+    },
     data() {
       return {
-        data,
+        data: [],
         scale,
       };
     },
