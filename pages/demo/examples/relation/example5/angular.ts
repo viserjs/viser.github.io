@@ -38,7 +38,7 @@ export class AppComponent {
   label = label;
 
   constructor() {
-    $.getJSON('/data/voronoi.json', (sourceData) => {
+    $.getJSON('/assets/data/voronoi.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData);
       dv.transform({
         type: 'diagram.voronoi',

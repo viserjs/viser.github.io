@@ -43,7 +43,7 @@ export class AppComponent {
   fields = [null, 'clarity'];
 
   constructor() {
-    $.getJSON('/data/diamond.json', (data) => {
+    $.getJSON('/assets/data/diamond.json', (data) => {
       this.data = data;
     });
   }

@@ -40,7 +40,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    $.getJSON('/data/diamond.json', (data) => {
+    $.getJSON('/assets/data/diamond.json', (data) => {
       this.setState({ data });
     });
   }

@@ -10,7 +10,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    $.getJSON('/data/heatmap-5.json', (sourceData) => {
+    $.getJSON('/assets/data/heatmap-5.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData);
       dv.transform({
         type: 'bin.rectangle',

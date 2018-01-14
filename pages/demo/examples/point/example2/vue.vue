@@ -13,7 +13,7 @@
 
   export default {
     mounted() {
-      $.getJSON('/data/scatter.json', (data) => {
+      $.getJSON('/assets/data/scatter.json', (data) => {
         this.$data.data = data;
       });
     },

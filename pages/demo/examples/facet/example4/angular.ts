@@ -43,7 +43,7 @@ export class AppComponent {
   fields = ['cut'];
 
   constructor() {
-    $.getJSON('/data/diamond.json', (data) => {
+    $.getJSON('/assets/data/diamond.json', (data) => {
       this.data = data;
     });
   }

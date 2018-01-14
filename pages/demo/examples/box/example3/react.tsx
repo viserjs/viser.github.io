@@ -25,7 +25,7 @@ class App extends React.Component {
     data: [],
   };
   componentDidMount() {
-    $.getJSON('/data/box-3.json', (sourceData) => {
+    $.getJSON('/assets/data/box-3.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData);
       dv.transform({
         type: 'fold',

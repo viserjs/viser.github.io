@@ -44,7 +44,7 @@ class AppComponent {
   };
 
   constructor() {
-    $.getJSON('/data/dv-grades.json', (data) => {
+    $.getJSON('/assets/data/dv-grades.json', (data) => {
       this.data = data;
     });
   }

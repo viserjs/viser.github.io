@@ -8,7 +8,7 @@ class App extends React.Component {
     data: [],
   };
   componentDidMount() {
-    $.getJSON('/data/heatmap-1.json', (data) => {
+    $.getJSON('/assets/data/heatmap-1.json', (data) => {
       const source = [];
       for(let i = 0; i < data.length; i ++) {
         const item = data[i];

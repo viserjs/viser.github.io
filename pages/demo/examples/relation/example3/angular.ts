@@ -49,7 +49,7 @@ class AppComponent {
   label = label;
 
   constructor() {
-    $.getJSON('/data/relationship-with-weight.json', (sourceData) => {
+    $.getJSON('/assets/data/relationship-with-weight.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData, {
         type: 'graph',
         edges: d => d.links,

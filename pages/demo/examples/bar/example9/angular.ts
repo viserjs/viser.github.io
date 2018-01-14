@@ -31,7 +31,7 @@ class AppComponent {
   scale = scale;
 
   constructor() {
-    $.getJSON('/data/diamond.json', (sourceData) => {
+    $.getJSON('/assets/data/diamond.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData);
       dv.transform({
         type: 'bin.histogram',

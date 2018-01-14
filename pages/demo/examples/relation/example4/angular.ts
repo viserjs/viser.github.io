@@ -65,7 +65,7 @@ export class AppComponent {
   polygonStyle = { stroke: '#ccc' };
 
   constructor() {
-    $.getJSON('/data/energy.json', (sourceData) => {
+    $.getJSON('/assets/data/energy.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData, {
         type: 'graph',
         edges: d => d.links,

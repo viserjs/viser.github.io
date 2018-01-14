@@ -76,7 +76,7 @@ class AppComponent {
 
 
   constructor() {
-    $.when($.getJSON('/data/worldGeo.json'),$.getJSON('/data/map-1.json')).then((geoData, data) => {
+    $.when($.getJSON('/assets/data/worldGeo.json'),$.getJSON('/assets/data/map-1.json')).then((geoData, data) => {
       const dv = new DataSet.View().source(geoData[0], {
           type: 'GeoJSON'
       }).transform({

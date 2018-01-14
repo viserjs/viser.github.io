@@ -31,7 +31,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    $.getJSON('/data/bubble.json', (data) => {
+    $.getJSON('/assets/data/bubble.json', (data) => {
       this.setState({ data });
     });
   }

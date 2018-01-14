@@ -24,7 +24,7 @@ export class AppComponent {
   data = [];
 
   constructor() {
-    $.getJSON('/data/flare.json', (sourceData) => {
+    $.getJSON('/assets/data/flare.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData, {
         type: 'hierarchy',
       });

@@ -9,7 +9,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    $.getJSON('/data/scatter.json', (data) => {
+    $.getJSON('/assets/data/scatter.json', (data) => {
       this.setState({ data });
     });
   }

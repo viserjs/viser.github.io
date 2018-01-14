@@ -48,7 +48,7 @@ class AppComponent {
   seriesOpts = seriesOpts;
 
   constructor() {
-    $.getJSON('/data/heatmap-7.json', (sourceData) => {
+    $.getJSON('/assets/data/heatmap-7.json', (sourceData) => {
       const ds = new DataSet({
         state: {
           sizeEncoding: false

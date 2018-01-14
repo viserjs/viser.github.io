@@ -50,7 +50,7 @@
 
   export default {
     mounted() {
-      $.getJSON('/data/bubble.json', (data) => {
+      $.getJSON('/assets/data/bubble.json', (data) => {
         this.$data.data = data;
       });
     },

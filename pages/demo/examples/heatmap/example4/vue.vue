@@ -122,7 +122,7 @@ const padding = [ window.innerHeight / 3, 20, window.innerHeight / 3, 80 ];
 
 export default {
   mounted() {
-    $.getJSON('/data/heatmap-6.json', (data) => {
+    $.getJSON('/assets/data/heatmap-6.json', (data) => {
       this.$data.data = data;
     });
   },

@@ -25,7 +25,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    $.getJSON('/data/population.json', (sourceData) => {
+    $.getJSON('/assets/data/population.json', (sourceData) => {
       const tmp = [];
       const dates = [];
       sourceData.male.values.forEach((obj: any) => {

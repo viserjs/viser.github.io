@@ -35,7 +35,7 @@ class AppComponent {
   `;
 
   constructor() {
-    $.getJSON('/data/scatter.json', (data) => {
+    $.getJSON('/assets/data/scatter.json', (data) => {
       this.data = data;
     });
   }

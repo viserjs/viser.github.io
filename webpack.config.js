@@ -60,6 +60,7 @@ let config = {
     demo: './pages/demo/index',
     docs: './pages/docs/index',
     home: './pages/home/index',
+    'home-viser': './pages/home/home-viser',
   },
 
   output: {

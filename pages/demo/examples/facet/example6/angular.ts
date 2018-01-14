@@ -63,7 +63,7 @@ export class AppComponent {
   views = views;
 
   constructor() {
-    $.getJSON('/data/diamond.json', (data) => {
+    $.getJSON('/assets/data/diamond.json', (data) => {
       this.data = data;
     });
   }

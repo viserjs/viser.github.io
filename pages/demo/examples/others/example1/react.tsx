@@ -57,7 +57,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    $.getJSON('/data/others-1.json', (sourceData) => {
+    $.getJSON('/assets/data/others-1.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData);
       dv.transform({
         type: 'map',

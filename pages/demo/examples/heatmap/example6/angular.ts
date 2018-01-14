@@ -38,7 +38,7 @@ class AppComponent {
   };
 
   constructor() {
-    $.getJSON('/data/heatmap-4.json', (data) => {
+    $.getJSON('/assets/data/heatmap-4.json', (data) => {
       this.data = data;
     });
   }

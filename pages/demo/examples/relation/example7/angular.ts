@@ -34,7 +34,7 @@ export class AppComponent {
   color = color;
 
   constructor() {
-    $.getJSON('/data/sunburst.json', (sourceData) => {
+    $.getJSON('/assets/data/sunburst.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData, {
         type: 'hierarchy',
       });

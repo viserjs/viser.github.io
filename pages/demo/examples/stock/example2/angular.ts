@@ -67,7 +67,7 @@ class AppComponent {
   }];
 
   constructor() {
-    $.getJSON('/data/stock-2.json', (sourceData) => {
+    $.getJSON('/assets/data/stock-2.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData);
       dv.transform({
         type: 'map',

@@ -116,7 +116,7 @@ class App extends React.Component {
     data: [],
   };
   componentDidMount() {
-    $.getJSON('/data/heatmap-6.json', (data) => {
+    $.getJSON('/assets/data/heatmap-6.json', (data) => {
       this.setState({ data });
     });
   }
