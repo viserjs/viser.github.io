@@ -96,7 +96,7 @@ const stackInterval1Opts = {
 export default {
   data() {
     return {
-      height: 600,
+      height: 500,
       dv,
       scale,
       stackInterval1Opts,
