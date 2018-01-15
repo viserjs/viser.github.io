@@ -13,7 +13,7 @@
           stroke: '#fff',
           lineWidth: 1,
         }" />
-      <v-guide v-for="val in values"
+      <v-guide v-for="(val, idx) in values"
         :key="val"
         type="text"
         :top="true"

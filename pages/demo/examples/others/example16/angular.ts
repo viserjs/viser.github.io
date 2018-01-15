@@ -26,8 +26,8 @@ const values = ['Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'];
       <v-guide *ngFor="let val of values; let idx = index;"
         type="text"
         top="true"
-        position="[0, idx]"
-        content="val"
+        [position]="[0, idx]"
+        [content]="val"
         [style]="guideStyle">
       </v-guide>
     </v-chart>

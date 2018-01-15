@@ -548,7 +548,12 @@ const examples = {
       {
         path: 'example16',
         enName: 'Polar Heatmap',
-        cnName: '极坐标热力图',
+        cnName: 'Polar Heatma',
+      },
+      {
+        path: 'example17',
+        enName: 'Spiral coordinate',
+        cnName: '螺旋坐标系',
       },
     ],
     icon: 'others'

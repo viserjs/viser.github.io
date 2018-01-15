@@ -26,7 +26,7 @@ class App extends React.Component {
           <Coord type="polar" innerRadius={0.2} />
           <Axis dataKey="week" grid={null} line={null} tickLine={null} label={null} />
           <Axis dataKey="time" grid={null} line={null} tickLine={null} label={{ offset: 3 }} />
-          <Polygon 
+          <Polygon
             position="time*week"
             color={['value', '#BAE7FF-#1890FF-#0050B3']}
             tooltip="week*time*value"
