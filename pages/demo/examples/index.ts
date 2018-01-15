@@ -545,6 +545,16 @@ const examples = {
         enName: 'Radial Bar Chart',
         cnName: 'Radial Bar Chart',
       },
+      {
+        path: 'example16',
+        enName: 'Polar Heatmap',
+        cnName: 'Polar Heatma',
+      },
+      {
+        path: 'example17',
+        enName: 'Spiral coordinate',
+        cnName: '螺旋坐标系',
+      },
     ],
     icon: 'others'
   },
