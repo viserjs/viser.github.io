@@ -320,6 +320,11 @@ const examples = {
         enName: 'Compare Funnel',
         cnName: '对比漏斗图',
       },
+      {
+        path: 'example4',
+        enName: 'Mirror Funnel',
+        cnName: '对称漏斗图',
+      },
     ],
     icon: 'loudoutu'
   },
