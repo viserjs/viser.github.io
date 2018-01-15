@@ -51,7 +51,6 @@ const scale = [{
   alias: 'percent(%)',
 }];
 
-
 class App extends React.Component {
   render() {
     return (

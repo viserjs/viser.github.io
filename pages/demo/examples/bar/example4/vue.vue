@@ -4,7 +4,7 @@
       <v-tooltip />
       <v-axis />
       <v-legend />
-      <v-stack-bar :position="'year*percent'" :color="'country'" :v-style="stackBarStyle" />
+      <v-stack-bar position="year*percent" color="country" :v-style="stackBarStyle" />
     </v-chart>
   </div>
 </template>

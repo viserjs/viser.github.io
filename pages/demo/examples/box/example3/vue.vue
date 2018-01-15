@@ -3,8 +3,8 @@
     <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :crosshairs="tooltipOpts.crosshairs" />
       <v-axis />
-      <v-legend :marker="'circle'" />
-      <v-box :position="'type*_bin'" :adjust="'dodge'" :vStyle="seriesStyle" :color="seriesColor" />
+      <v-legend marker="circle" />
+      <v-box position="type*_bin" adjust="dodge" :vStyle="seriesStyle" :color="seriesColor" />
     </v-chart>
   </div>
 </template>

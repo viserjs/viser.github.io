@@ -4,7 +4,7 @@
       <v-legend :custom="true" :clickable="false" :items="items" />
       <v-axis />
       <v-tooltip />
-      <v-bar :position="'type*money'" :shape="'waterfall'" :color="color" :tooltip="tooltip" />
+      <v-bar position="type*money" shape="waterfall" :color="color" :tooltip="tooltip" />
     </v-chart>
   </div>
 </template>

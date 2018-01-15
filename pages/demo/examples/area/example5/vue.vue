@@ -3,10 +3,10 @@
   <v-chart :force-fit="true" :height="height" :data="averages" :scale="scale">
     <v-tooltip />
     <v-axis />
-    <v-line :position="'time*temperature'" :size="2" />
-    <v-point :position="'time*temperature'" :size="4" :v-style="pointStyle" />
-    <v-view :view-id="2" :data="data">
-      <v-area :position="'time*temperature'" />
+    <v-line position="time*temperature" size="2" />
+    <v-point position="time*temperature" size="4" :v-style="pointStyle" />
+    <v-view :data="data">
+      <v-area position="time*temperature" />
     </v-view>
   </v-chart>
 </div>
