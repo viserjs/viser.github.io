@@ -411,6 +411,11 @@ const examples = {
         enName: 'Mirror Facet',
         cnName: '镜像分面',
       },
+      {
+        path: 'example9',
+        enName: 'Matrix Facet',
+        cnName: '矩阵分面',
+      },
     ],
     icon: 'fenmian'
   },

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="600" :data="data" :scale="scale">
+    <v-chart :force-fit="true" height="600" :data="data" :scale="scale">
       <v-tooltip />
       <v-legend />
-      <v-coord :type="'polar'" />
-      <v-facet :type="'circle'" :fields="['clarity']" :views="views"></v-facet>
+      <v-coord type="polar" />
+      <v-facet type="circle" :fields="['clarity']" :views="views" />
     </v-chart>
   </div>
 </template>

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="600" :data="data" :padding="padding">
+    <v-chart :force-fit="true" height="600" :data="data" :padding="padding">
       <v-tooltip :show-title="false" />
-      <v-legend :data-key="'cut'" :position="'top'" />
-      <v-coord :type="'theta'" />
-      <v-facet :type="'tree'" :fields="fields" :line="{ stroke: '#00a3d7' }" :line-smooth="true" :views="views"></v-facet>
+      <v-legend data-key="cut" position="top" />
+      <v-coord type="theta" />
+      <v-facet type="tree" :fields="fields" :line="{ stroke: '#00a3d7' }" :line-smooth="true" :views="views" />
     </v-chart>
   </div>
 </template>
