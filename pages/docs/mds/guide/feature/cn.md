@@ -90,7 +90,7 @@ const label = [
 
 ### Coord 的方向
 
-Coord 组件用于表示 g2 中 coord 的相关内容。针对直角坐标系的图表，我们提供了 `direction` 这一优化后的参数用来展现 g2 中的 `transpose`, `reflect` 和 `scale` 这几个属性。根据X轴，Y轴的位置，我们提供了8种坐标系的排列，分别有 BL, BR, LT, LB, RB, RT, TL, TR。B 代表 bottom, T 代表 top，L 代表 left，R 代表 right。具体举例，比如：
+Coord 组件用于表示 g2 中 coord 的相关内容。针对直角坐标系的图表，我们提供了 `direction` 这一优化后的参数用来展现 g2 中的 `transpose`, `reflect` 和 `scale` 这几个属性。根据 X 轴，Y 轴的位置，我们提供了 8 种坐标系的排列，分别有 BL, BR, LT, LB, RB, RT, TL, TR。B 代表 bottom, T 代表 top，L 代表 left，R 代表 right。具体举例，比如：
 
 ```js
 /*
@@ -104,7 +104,7 @@ chart.coord().transpose().scale(1, -1);
  */
 <Coord type="rect" direction="LT" />
 ```
-映射关系如下：
+直角坐标系映射关系如下：
 
 | direction | 配置                                                        |
 | :-------- | :-----                                                     |
@@ -116,6 +116,15 @@ chart.coord().transpose().scale(1, -1);
 | RT        | chart.coord('rect').transpose().reflect().scale(-1, 1);    |
 | TL        | chart.coord('rect').reflect();                             |
 | TR        | chart.coord('rect').reflect().scale(-1, 1);                |
+
+同理，对于极坐标系我们也提供了 4 种方向，最主要是 `rotate` 和 `reverse` 两种，具体映射关系如下：
+
+| direction | 配置                                                        |
+| :-------- | :-----                                                     |
+| rotate    | chart.coord('rect').transpose();                           |
+| xReverse  | chart.coord('rect').reflect('x');                          |
+| yReverse  | chart.coord('rect').reflect('y');                          |
+| reverse   | chart.coord('rect').reflect();                             |
 
 ### Guide 的类型
 
