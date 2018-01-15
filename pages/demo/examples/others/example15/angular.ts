@@ -27,7 +27,7 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" padding="[20, 80]" [data]="data" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[20, 80]" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-coord type="theta" innerRadius="0.2" startAngle="-90" endAngle="180"></v-coord>
       <v-bar position="term*count" color="#8543e0" shape="line" select="false" [style]="barStyle"></v-bar>
@@ -35,7 +35,7 @@ const scale = [{
       <v-guide *ngFor="let obj of data"
         type="text"
         [position]="this.getPosition(obj)" [content]="this.getContent(obj)"
-        style="{
+        [style]="{
           textAlign: 'right'
         }">
       </v-guide>
