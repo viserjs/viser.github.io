@@ -3,7 +3,7 @@
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
-      <v-bar :position="'year*sales'" />
+      <v-bar position="year*sales" />
     </v-chart>
   </div>
 </template>

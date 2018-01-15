@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data">
-      <v-tooltip :crosshairs="false" :in-plot="false" :position="'top'" />
+      <v-tooltip :crosshairs="false" :in-plot="false" position="top" />
       <v-axis />
       <v-legend />
-      <v-stack-bar :position="'depth*count'" :color="'cut'" />
+      <v-stack-bar position="depth*count" color="cut" />
     </v-chart>
   </div>
 </template>

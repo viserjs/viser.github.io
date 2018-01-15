@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data">
-      <v-coord :type="'rect'" :direction="'LT'" />
+      <v-coord type="rect" direction="LT" />
       <v-tooltip />
       <v-legend />
-      <v-axis :data-key="'value'" :position="right" />
-      <v-axis :data-key="'label'" :label="label" />
-      <v-bar :position="'label*value'" :color="'type'" :adjust="adjust" />
+      <v-axis data-key="value" :position="right" />
+      <v-axis data-key="label" :label="label" />
+      <v-bar position="label*value" color="type" :adjust="adjust" />
     </v-chart>
   </div>
 </template>

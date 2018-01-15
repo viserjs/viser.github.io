@@ -2,10 +2,10 @@
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :crosshairs="{ type: 'line' }" />
-      <v-axis :data-key="'value'" />
+      <v-axis data-key="value" />
       <v-legend />
-      <v-line :position="'year*value'" :size="2" :color="'type'" />
-      <v-area :position="'year*value'" :color="'type'" />
+      <v-line position="year*value" size="2" color="type" />
+      <v-area position="year*value" color="type" />
     </v-chart>
   </div>
 </template>

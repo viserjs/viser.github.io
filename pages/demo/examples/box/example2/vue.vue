@@ -3,9 +3,9 @@
     <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :showTitle="tooltipOpts.showTitle" :crosshairs="tooltipOpts.crosshairs" :itemTpl="tooltipOpts.itemTpl" />
       <v-axis />
-      <v-box :position="'x*range'" :vStyle="boxStyle" :tooltip="boxTooltip" />
-      <v-view :view-id="4" :data="data" :scale="scale">
-        <v-point :position="'x*outliers'" :size="3" :active="false" />
+      <v-box position="x*range" :vStyle="boxStyle" :tooltip="boxTooltip" />
+      <v-view :data="data" :scale="scale">
+        <v-point position="x*outliers" size="3" :active="false" />
       </v-view>
     </v-chart>
   </div>

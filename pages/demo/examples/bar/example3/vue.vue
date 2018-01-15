@@ -4,7 +4,7 @@
       <v-tooltip />
       <v-axis />
       <v-legend />
-      <v-stack-bar :position="'月份*月均降雨量'" :color="'name'" />
+      <v-stack-bar position="月份*月均降雨量" color="name" />
     </v-chart>
   </div>
 </template>

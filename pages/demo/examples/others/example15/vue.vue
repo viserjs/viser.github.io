@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="600" :padding="[ 20, 80 ]" :data="data" :scale="scale">
+    <v-chart :forceFit="true" :height="600" :padding="[20, 80]" :data="data" :scale="scale">
       <v-tooltip />
-      <v-coord :type="'theta'" :inner-radius="0.2" />
-      <v-bar :position="'term*count'" :color="'#8543e0'" :shape="'line'" :select="false" :v-style="barStyle" />
-      <v-point :position="'term*count'" :color="'#8543e0'" />
+      <v-coord type="theta" inner-radius="0.2" start-angle="-90" end-angle="180" />
+      <v-bar position="term*count" color="#8543e0" shape="line" :select="false" :v-style="barStyle" />
+      <v-point position="term*count" color="#8543e0" />
       <v-guide v-for="(obj) in data"
         :type="'text'" :key="obj.term"
         :position="getPosition(obj)"
