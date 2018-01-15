@@ -54,7 +54,7 @@ const vueCssLoaders = function (options) {
 }
 
 let config = {
-  // devtool: '#inline-source-map',
+  devtool: '#source-map',
 
   entry: {
     demo: './pages/demo/index',

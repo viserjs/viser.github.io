@@ -411,6 +411,11 @@ const examples = {
         enName: 'Mirror Facet',
         cnName: '镜像分面',
       },
+      {
+        path: 'example9',
+        enName: 'Matrix Facet',
+        cnName: '矩阵分面',
+      },
     ],
     icon: 'fenmian'
   },
@@ -554,6 +559,11 @@ const examples = {
         path: 'example17',
         enName: 'Spiral coordinate',
         cnName: '螺旋坐标系',
+      },
+      {
+        path: 'example35',
+        enName: 'Periodic table of ele ments',
+        cnName: '元素周期表',
       },
     ],
     icon: 'others'

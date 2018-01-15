@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="600" :data="data" :scale="scale">
+    <v-chart :force-fit="true" height="600" :data="data" :scale="scale">
       <v-tooltip />
       <v-legend />
       <v-axis />
-      <v-facet :type="'mirror'" :fields="['gender']" :transpose="true">
+      <v-facet type="mirror" :fields="['gender']" :transpose="true">
         <v-facet-view>
-          <v-bar :position="'age*total_percentage'" :color="['gender', [ '#1890ff', '#f04864' ]]" />
+          <v-bar position="age*total_percentage" :color="['gender', [ '#1890ff', '#f04864' ]]" />
         </v-facet-view>
       </v-facet>
     </v-chart>
