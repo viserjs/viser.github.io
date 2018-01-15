@@ -35,7 +35,7 @@ const jitterPointOpts = {
 
 export default {
   mounted() {
-    $.getJSON('/assets/data/others-7.json', (data) => {
+    $.getJSON('/assets/data/diamond.json', (data) => {
       data.forEach((obj) => {
         obj.type = '1';
       });

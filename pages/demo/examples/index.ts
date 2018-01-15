@@ -306,6 +306,11 @@ const examples = {
     cnName: '漏斗',
     examples: [
       {
+        path: 'example1',
+        enName: 'Basic Funnel',
+        cnName: '基础漏斗图',
+      },
+      {
         path: 'example2',
         enName: 'Sharp Funnel',
         cnName: '尖底漏斗图',

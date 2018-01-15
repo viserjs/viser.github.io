@@ -51,7 +51,7 @@ class AppComponent {
   axis1Opts = axis1Opts;
   jitterPointOpts = jitterPointOpts;
   constructor() {
-    $.getJSON('/assets/data/others-7.json', (data) => {
+    $.getJSON('/assets/data/diamond.json', (data) => {
       data.forEach((obj: any) => {
         obj.type = '1';
       });
