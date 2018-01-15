@@ -467,17 +467,17 @@ const examples = {
     examples: [
       {
         path: 'example1',
-        enName: 'timeline bubble',
+        enName: 'Timeline Bubble',
         cnName: '时间序列气泡图',
       },
       {
         path: 'example2',
-        enName: 'custom shape bubble',
+        enName: 'Custom Shape Bubble',
         cnName: '气泡图-自定义 shape',
       },
       {
         path: 'example3',
-        enName: 'text bubble',
+        enName: 'Text Bubble',
         cnName: '带文本的气泡图',
       },
       {
@@ -485,16 +485,16 @@ const examples = {
         enName: 'Punch Card',
         cnName: 'Punch Card',
       },
-      // {
-      //   path: 'example5',
-      //   enName: 'Word Cloud',
-      //   cnName: '词云',
-      // },
-      // {
-      //   path: 'example6',
-      //   enName: 'Word Cloud Mask',
-      //   cnName: '带图片遮罩的词云',
-      // },
+      {
+        path: 'example5',
+        enName: 'Word Cloud',
+        cnName: '词云',
+      },
+      {
+        path: 'example6',
+        enName: 'Word Cloud Mask',
+        cnName: '带图片遮罩的词云',
+      },
       {
         path: 'example7',
         enName: 'Pizza Chart',
@@ -502,17 +502,17 @@ const examples = {
       },
       {
         path: 'example8',
-        enName: 'custom label pie',
+        enName: 'Custom Label Pie',
         cnName: '个性化标签饼图',
       },
       {
         path: 'example9',
-        enName: 'daily life visualization',
+        enName: 'Daily Life Visualization',
         cnName: '日常作息可视化',
       },
       {
         path: 'example10',
-        enName: 'slice pie',
+        enName: 'Slice Pie',
         cnName: '分片饼图',
       },
       // {
@@ -522,18 +522,23 @@ const examples = {
       // },
       {
         path: 'example12',
-        enName: 'stack bar in polar axis',
+        enName: 'Stack Bar in Polar Axis',
         cnName: '极坐标下的层叠柱状图',
       },
       {
         path: 'example13',
-        enName: 'nightingale rose',
+        enName: 'Nightingale Rose',
         cnName: '南丁格尔玫瑰图',
       },
       {
         path: 'example14',
-        enName: 'jade jue',
+        enName: 'Jade Jue',
         cnName: '玉珏图',
+      },
+      {
+        path: 'example15',
+        enName: 'Radial Bar Chart',
+        cnName: 'Radial Bar Chart',
       },
     ],
     icon: 'others'

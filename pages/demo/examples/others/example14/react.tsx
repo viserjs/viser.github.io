@@ -25,11 +25,11 @@ const interval1Opts = {
   tooltip: ['percent', val => {
     return {
       name: '占比',
-      value: val * 100 + '%'
+      value: val * 100 + '%',
     };
   }],
   label: ['percent', {
-    offset: -5
+    offset: -5,
   }],
 };
 
