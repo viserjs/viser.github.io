@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :padding="[ 40, 40, 130, 40 ]" :data="data" :scale="scale">
-      <v-tooltip :title="'question'"/>
-      <v-coord :type="'polar'" :inner-radius="0.1" :direction="'rotate'"/>
+      <v-tooltip :title="'question'" />
+      <v-coord :type="'polar'" :inner-radius="0.1" :direction="'rotate'" />
       <v-interval :position="interval1Opts.position" :color="interval1Opts.color"
-        :tooltip="interval1Opts.tooltip" :label="interval1Opts.label"/>
+        :tooltip="interval1Opts.tooltip" :label="interval1Opts.label" />
     </v-chart>
   </div>
 </template>
@@ -33,11 +33,11 @@ const interval1Opts = {
   tooltip: ['percent', val => {
     return {
       name: '占比',
-      value: val * 100 + '%'
+      value: val * 100 + '%',
     };
   }],
   label: ['percent', {
-    offset: -5
+    offset: -5,
   }],
 };
 

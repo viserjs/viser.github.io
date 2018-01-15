@@ -25,11 +25,11 @@ const interval1Opts = {
   tooltip: ['percent', val => {
     return {
       name: '占比',
-      value: val * 100 + '%'
+      value: val * 100 + '%',
     };
   }],
   label: ['percent', {
-    offset: -5
+    offset: -5,
   }],
 };
 
@@ -38,9 +38,9 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={600} padding={[ 40, 40, 130, 40 ]} data={data} scale={scale}>
-          <Tooltip title="question"/>
-          <Coord type="polar" innerRadius={0.1} direction="rotate"/>
-          <Interval {...interval1Opts}/>
+          <Tooltip title="question" />
+          <Coord type="polar" innerRadius={0.1} direction="rotate" />
+          <Interval {...interval1Opts} />
         </Chart>
       </div>
     );
