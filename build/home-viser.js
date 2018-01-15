@@ -17264,8 +17264,32 @@ var G2 = __webpack_require__(24);
 var registerAnimation = __WEBPACK_IMPORTED_MODULE_1__utils_CustomizeUtils__["a" /* registerAnimation */];
 var registerShape = __WEBPACK_IMPORTED_MODULE_1__utils_CustomizeUtils__["b" /* registerShape */];
 var Global = G2.Global;
+function hasDataCondition(config) {
+    var hasData = false;
+    if (!__WEBPACK_IMPORTED_MODULE_2_lodash__["isEmpty"](config.data)) {
+        hasData = true;
+    }
+    if (!__WEBPACK_IMPORTED_MODULE_2_lodash__["isNil"](config.views)) {
+        if (__WEBPACK_IMPORTED_MODULE_2_lodash__["isPlainObject"](config.views) && !__WEBPACK_IMPORTED_MODULE_2_lodash__["isEmpty"](config.views.data)) {
+            hasData = true;
+        }
+        if (__WEBPACK_IMPORTED_MODULE_2_lodash__["isArray"](config.views)) {
+            for (var _i = 0, _a = config.views; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (!__WEBPACK_IMPORTED_MODULE_2_lodash__["isEmpty"](item.data)) {
+                    hasData = true;
+                }
+            }
+        }
+    }
+    return hasData;
+}
 /* harmony default export */ __webpack_exports__["default"] = (function (config) {
     if (__WEBPACK_IMPORTED_MODULE_2_lodash__["isNil"](config) || __WEBPACK_IMPORTED_MODULE_2_lodash__["isEmpty"](config)) {
+        return;
+    }
+    var hasData = hasDataCondition(config);
+    if (!hasData) {
         return;
     }
     var commonChart = new __WEBPACK_IMPORTED_MODULE_0__core_CommonChart__["a" /* default */](config);
@@ -67371,9 +67395,7 @@ var CommonChart = (function () {
         var chart = this.chartInstance;
         Object(__WEBPACK_IMPORTED_MODULE_0__shapes_loadShapes__["a" /* default */])();
         this.setEvents(chart, config);
-        if (!__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](config.data) && (!__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](config.series) || !__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](config.facet))) {
-            this.setDataSource(chart, config.data);
-        }
+        this.setDataSource(chart, config.data);
         this.setCoord(chart, config);
         this.setTooltip(chart, config);
         this.setAxis(chart, config);
@@ -67415,7 +67437,9 @@ var CommonChart = (function () {
         __WEBPACK_IMPORTED_MODULE_2__utils_EventUtils__["a" /* setEvent */](chart, null, config.chart);
     };
     CommonChart.prototype.setDataSource = function (chart, data) {
-        chart.source(data);
+        if (!__WEBPACK_IMPORTED_MODULE_1_lodash__["isNil"](data) && !__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](data)) {
+            chart.source(data);
+        }
     };
     CommonChart.prototype.setScale = function (chart, config) {
         return __WEBPACK_IMPORTED_MODULE_9__components_setScaleConfig__["a" /* process */](chart, config);
@@ -67478,8 +67502,7 @@ var CommonChart = (function () {
         }
     };
     CommonChart.prototype.setFacetViews = function (chart, facet, views) {
-        var data = views.data ? views.data : facet.data;
-        this.setDataSource(chart, data);
+        this.setDataSource(chart, views.data);
         this.setContent(chart, views);
     };
     CommonChart.prototype.setFacet = function (chart, config) {
@@ -67756,11 +67779,18 @@ function setPolarCoord(chart, coord) {
         newCoord = __assign({}, newCoord, { innerRadius: coord.innerRadius });
     }
     if (coord.startAngle || coord.endAngle) {
-        if (!coord.startAngle || (coord.startAngle && (coord.startAngle < -360 || coord.startAngle > 360)) ||
-            !coord.endAngle || (coord.endAngle && (coord.endAngle < -360 || coord.endAngle > 360))) {
-            throw new Error('please set correct starAngle and endAngle');
+        if (coord.startAngle && (coord.startAngle < -360 || coord.startAngle > 360)) {
+            throw new Error('please set correct starAngle');
         }
-        newCoord = __assign({}, newCoord, { startAngle: Object(__WEBPACK_IMPORTED_MODULE_0__utils_PolarUtils__["a" /* degreeToRadian */])(coord.startAngle), endAngle: Object(__WEBPACK_IMPORTED_MODULE_0__utils_PolarUtils__["a" /* degreeToRadian */])(coord.endAngle) });
+        else {
+            newCoord = __assign({}, newCoord, { startAngle: Object(__WEBPACK_IMPORTED_MODULE_0__utils_PolarUtils__["a" /* degreeToRadian */])(coord.startAngle) });
+        }
+        if (coord.endAngle && (coord.endAngle < -360 || coord.endAngle > 360)) {
+            throw new Error('please set correct endAngle');
+        }
+        else {
+            newCoord = __assign({}, newCoord, { endAngle: Object(__WEBPACK_IMPORTED_MODULE_0__utils_PolarUtils__["a" /* degreeToRadian */])(coord.endAngle) });
+        }
     }
     var polarCoord = chart.coord(coord.type, __assign({}, newCoord));
     switch (coord.direction) {
@@ -68264,10 +68294,7 @@ function setSeriesLabel(chart, currSeries) {
         return chart.label(label);
     }
     if (__WEBPACK_IMPORTED_MODULE_0_lodash__["isArray"](label) && label.length >= 1) {
-        if (label[1]) {
-            return chart.label(label[0], label[1]);
-        }
-        return chart.label(label[0]);
+        return chart.label.apply(chart, label);
     }
     return chart;
 }
