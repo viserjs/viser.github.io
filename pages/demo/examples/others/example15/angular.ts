@@ -18,18 +18,6 @@ const data = [
   { "term":"The Olivia Experiment","count":1 },
 ];
 
-const guide_data = [];
-for (let i = 0, l = data.length; i < l; i++) {
-  const obj = data[i];
-  guide_data.push({
-    position: [ obj.term, 0 ],
-    content: obj.term + ' ',
-    style: {
-      textAlign: 'right'
-    }
-  });
-}
-
 const scale = [{
   dataKey: 'count',
   max: 2,
@@ -39,12 +27,18 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" padding="[ 20, 80 ]" [data]="data" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" padding="[20, 80]" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-coord type="theta" innerRadius="0.2"></v-coord>
       <v-bar position="term*count" color="#8543e0" shape="line" select="false" [style]="barStyle"></v-bar>
       <v-point position="term*count" color="#8543e0"></v-point>
-      <v-guide type="text" [position]="guide_data[0].position" [content]="guide_data[0].content" [style]="guide_data[0].style"></v-guide>
+      <v-guide *ngFor="let obj of data"
+        type="text"
+        [position]="this.getPosition(obj)" [content]="this.getContent(obj)"
+        style="{
+          textAlign: 'right'
+        }">
+      </v-guide>
       <v-guide type="text" [position]="guideTextPosition" content="Music" [style]="guideTextStyle"></v-guide>
     </v-chart>
   </div>
@@ -62,7 +56,13 @@ class AppComponent {
   };
   guideTextPosition = ['50%', '50%'];
   barStyle = { lineAppendWidth: 10 };
-  guide_data = guide_data;
+
+  getPosition = (obj) => {
+    return [obj.term, 0];
+  }
+  getContent = (obj) => {
+    return obj.term.toString();
+  }
 }
 
 @NgModule({

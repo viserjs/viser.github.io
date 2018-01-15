@@ -15,18 +15,6 @@ const data = [
   { "term":"The Olivia Experiment","count":1 },
 ];
 
-const guide_data = [];
-for (let i = 0, l = data.length; i < l; i++) {
-  const obj = data[i];
-  guide_data.push({
-    position: [ obj.term, 0 ],
-    content: obj.term + ' ',
-    style: {
-      textAlign: 'right'
-    }
-  });
-}
-
 const scale = [{
   dataKey: 'count',
   max: 2,
@@ -36,21 +24,19 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={600} padding={[ 20, 80 ]} data={data} scale={scale}>
+        <Chart forceFit height={600} padding={[20, 80]} data={data} scale={scale}>
           <Tooltip />
           <Coord type="theta" innerRadius={0.2} />
           <Bar position="term*count" color="#8543e0" shape="line" select={false} style={{ lineAppendWidth: 10 }} />
           <Point position="term*count" color="#8543e0" />
-          <Guide type="text" {...guide_data[0]} />
-          <Guide type="text" {...guide_data[1]} />
-          <Guide type="text" {...guide_data[2]} />
-          <Guide type="text" {...guide_data[3]} />
-          <Guide type="text" {...guide_data[4]} />
-          <Guide type="text" {...guide_data[5]} />
-          <Guide type="text" {...guide_data[6]} />
-          <Guide type="text" {...guide_data[7]} />
-          <Guide type="text" {...guide_data[8]} />
-          <Guide type="text" {...guide_data[9]} />
+          {
+            data.map((obj: any) => {
+              const position = [obj.term, 0];
+              const content = obj.term.toString();
+
+              return (<Guide key={content} type="text" position={position} content={content} style={{textAlign: 'right'}}/>)
+            })
+          }
           <Guide type="text" position={[ '50%', '50%' ]} content="Music" style={{
             textAlign: 'center',
             fontSize: 24,

@@ -5,16 +5,14 @@
       <v-coord :type="'theta'" :inner-radius="0.2" />
       <v-bar :position="'term*count'" :color="'#8543e0'" :shape="'line'" :select="false" :v-style="barStyle" />
       <v-point :position="'term*count'" :color="'#8543e0'" />
-      <v-guide :type="'text'" :position="guide_data[0].position" :content="guide_data[0].content" :v-style="guide_data[0].style" />
-      <v-guide :type="'text'" :position="guide_data[1].position" :content="guide_data[1].content" :v-style="guide_data[1].style" />
-      <v-guide :type="'text'" :position="guide_data[2].position" :content="guide_data[2].content" :v-style="guide_data[2].style" />
-      <v-guide :type="'text'" :position="guide_data[3].position" :content="guide_data[3].content" :v-style="guide_data[3].style" />
-      <v-guide :type="'text'" :position="guide_data[4].position" :content="guide_data[4].content" :v-style="guide_data[4].style" />
-      <v-guide :type="'text'" :position="guide_data[5].position" :content="guide_data[5].content" :v-style="guide_data[5].style" />
-      <v-guide :type="'text'" :position="guide_data[6].position" :content="guide_data[6].content" :v-style="guide_data[6].style" />
-      <v-guide :type="'text'" :position="guide_data[7].position" :content="guide_data[7].content" :v-style="guide_data[7].style" />
-      <v-guide :type="'text'" :position="guide_data[8].position" :content="guide_data[8].content" :v-style="guide_data[8].style" />
-      <v-guide :type="'text'" :position="guide_data[9].position" :content="guide_data[9].content" :v-style="guide_data[9].style" />
+      <v-guide v-for="(obj) in data"
+        :type="'text'" :key="obj.term"
+        :position="getPosition(obj)"
+        :content="getContent(obj)"
+        :v-style="{
+          textAlign: 'right',
+        }"
+      />
       <v-guide :type="'text'" :position="guideTextPosition" :content="'Music'" :v-style="guideTextStyle" />
     </v-chart>
   </div>
@@ -34,24 +32,20 @@ const data = [
   { "term":"The Olivia Experiment","count":1 },
 ];
 
-const guide_data = [];
-for (let i = 0, l = data.length; i < l; i++) {
-  const obj = data[i];
-  guide_data.push({
-    position: [ obj.term, 0 ],
-    content: obj.term + ' ',
-    style: {
-      textAlign: 'right'
-    }
-  });
-}
-
 const scale = [{
   dataKey: 'count',
   max: 2,
 }];
 
 export default {
+  methods: {
+    getPosition: (obj) => {
+      return [obj.term, 0];
+    },
+    getContent: (obj) => {
+      return obj.term.toString();
+    },
+  },
   data() {
     return {
       height: 600,
@@ -64,7 +58,6 @@ export default {
       },
       guideTextPosition: ['50%', '50%'],
       barStyle: { lineAppendWidth: 10 },
-      guide_data: guide_data,
     };
   }
 };
