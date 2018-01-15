@@ -26,7 +26,7 @@ class App extends React.Component {
       <div>
         <Chart forceFit height={600} padding={[20, 80]} data={data} scale={scale}>
           <Tooltip />
-          <Coord type="theta" innerRadius={0.2} />
+          <Coord type="theta" innerRadius={0.2} startAngle={-90} endAngle={180} />
           <Bar position="term*count" color="#8543e0" shape="line" select={false} style={{ lineAppendWidth: 10 }} />
           <Point position="term*count" color="#8543e0" />
           {
