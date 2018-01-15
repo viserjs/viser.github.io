@@ -21,9 +21,9 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    // $.getJSON('/assets/data/diamond.json', (data) => {
-    //   this.setState({ data });
-    // });
+    $.getJSON('/assets/data/diamond.json', (data) => {
+      this.setState({ data });
+    });
   }
 
   render() {
