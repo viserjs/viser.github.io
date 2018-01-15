@@ -5,6 +5,14 @@
       <v-coord :type="'polar'" :inner-radius="0.1" :direction="'rotate'"/>
       <v-interval :position="interval1Opts.position" :color="interval1Opts.color"
         :tooltip="interval1Opts.tooltip" :label="interval1Opts.label"/>
+      <v-guide v-for="(obj, index) in data"
+        :type="'text'" :top="true"
+        :position="getPosition(obj)"
+        :content="getContent(obj)"
+        :v-style="{
+          textAlign: 'right',
+        }"
+      />
     </v-chart>
   </div>
 </template>
@@ -42,6 +50,14 @@ const interval1Opts = {
 };
 
 export default {
+  methods: {
+    getPosition: (obj) => {
+      return [ obj.question, 0 ];
+    },
+    getContent: (obj) => {
+      return obj.question + ' ';
+    },
+  },
   data() {
     return {
       height: 600,

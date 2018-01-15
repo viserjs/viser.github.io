@@ -1,4 +1,4 @@
-import { Chart, Axis, Legend, Tooltip, Coord, Interval } from 'viser-react';
+import { Chart, Axis, Legend, Tooltip, Coord, Interval, Guide } from 'viser-react';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as _ from 'lodash';
@@ -41,6 +41,14 @@ class App extends React.Component {
           <Tooltip title="question"/>
           <Coord type="polar" innerRadius={0.1} direction="rotate"/>
           <Interval {...interval1Opts}/>
+          {
+            data.map((obj: any) => {
+              const position = [ obj.question, 0 ];
+              const content = obj.question + ' ';
+
+              return (<Guide type="text" position={position} content={content} style={{textAlign: 'right'}}/>)
+            })
+          }
         </Chart>
       </div>
     );
