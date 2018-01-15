@@ -320,6 +320,11 @@ const examples = {
         enName: 'Compare Funnel',
         cnName: '对比漏斗图',
       },
+      {
+        path: 'example4',
+        enName: 'Mirror Funnel',
+        cnName: '对称漏斗图',
+      },
     ],
     icon: 'loudoutu'
   },
@@ -485,16 +490,16 @@ const examples = {
         enName: 'Punch Card',
         cnName: 'Punch Card',
       },
-      // {
-      //   path: 'example5',
-      //   enName: 'Word Cloud',
-      //   cnName: '词云',
-      // },
-      // {
-      //   path: 'example6',
-      //   enName: 'Word Cloud Mask',
-      //   cnName: '带图片遮罩的词云',
-      // },
+      {
+        path: 'example5',
+        enName: 'Word Cloud',
+        cnName: '词云',
+      },
+      {
+        path: 'example6',
+        enName: 'Word Cloud Mask',
+        cnName: '带图片遮罩的词云',
+      },
       {
         path: 'example7',
         enName: 'Pizza Chart',
