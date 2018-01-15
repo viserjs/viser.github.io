@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 902);
+/******/ 	return __webpack_require__(__webpack_require__.s = 918);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -880,15 +880,15 @@ exports.default = Events;
 
 /***/ }),
 
-/***/ 902:
+/***/ 918:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var locale_1 = __webpack_require__(903);
+var locale_1 = __webpack_require__(919);
 var utils_1 = __webpack_require__(33);
-__webpack_require__(904);
+__webpack_require__(920);
 var Home = /** @class */ (function () {
     function Home() {
         var _this = this;
@@ -953,7 +953,7 @@ new Home();
 
 /***/ }),
 
-/***/ 903:
+/***/ 919:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1098,7 +1098,7 @@ exports.default = locale;
 
 /***/ }),
 
-/***/ 904:
+/***/ 920:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
