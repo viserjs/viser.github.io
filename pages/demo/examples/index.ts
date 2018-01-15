@@ -555,6 +555,11 @@ const examples = {
         enName: 'Spiral coordinate',
         cnName: '螺旋坐标系',
       },
+      {
+        path: 'example35',
+        enName: 'Periodic table of ele ments',
+        cnName: '元素周期表',
+      },
     ],
     icon: 'others'
   },
