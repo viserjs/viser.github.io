@@ -36,7 +36,7 @@ class App extends React.Component {
         sourceWeight: e => e.sourceWeight,
         targetWeight: e => e.targetWeight,
         weight: true,
-        marginRatio: 0.3
+        marginRatio: 0.3,
       });
       this.setState({
         edgesData: dv.edges,
@@ -52,7 +52,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <Chart forceFit={true} height={400} scale={scale}>
+      <Chart forceFit={true} height={500} scale={scale}>
         <Tooltip showTitle={false} />
         <View data={edgesData}>
           <Coord type="polar" direction="yReverse" />

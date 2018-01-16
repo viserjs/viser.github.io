@@ -1,14 +1,14 @@
 <template>
 <div>
-  <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
+  <v-chart force-fit="true" height="500" :padding="padding" :data="data" :scale="scale">
     <v-tooltip />
-    <v-axis :dataKey="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid"/>
-    <v-axis :dataKey="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid"/>
-    <v-legend />
-    <v-coord :type="'polar'" :radius="0.8" />
-    <v-line :position="'item*score'" :color="'user'" :size="2"/>
-    <v-point :position="'item*score'" :color="'user'" :size="4"/>
-    <v-area :position="'item*score'" :color="'user'" />
+    <v-axis :dataKey="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid" />
+    <v-axis :dataKey="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid" />
+    <v-legend data-key="user" marker="circle" offset="30" />
+    <v-coord type="polar" radius="0.8" />
+    <v-line position="item*score" color="user" size="2" />
+    <v-point position="item*score" color="user" size="4" />
+    <v-area position="item*score" color="user" />
   </v-chart>
 </div>
 </template>
@@ -26,7 +26,7 @@ const sourceData = [
   { item: 'Technology', a: 50, b: 40 },
   { item: 'Support', a: 30, b: 40 },
   { item: 'Sales', a: 60, b: 40 },
-  { item: 'UX', a: 50, b: 60 }
+  { item: 'UX', a: 50, b: 60 },
 ];
 
 const dv = new DataSet.View().source(sourceData);
@@ -72,9 +72,9 @@ export default {
     return {
       data,
       scale,
+      padding: [20, 20, 95, 20],
       axis1Opts,
       axis2Opts,
-      height: 400,
     };
   }
 };

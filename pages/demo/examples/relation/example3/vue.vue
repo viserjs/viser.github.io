@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="400" :scale="scale">
+    <v-chart force-fit="true" height="500" :scale="scale">
       <v-view :data="edgesData">
         <v-coord type="polar" direction="yReverse" />
         <v-edge position="x*y" color="source" shape="arc" opacity="0.5" tooltip="source*target*value" />
@@ -43,7 +43,7 @@ export default {
         sourceWeight: e => e.sourceWeight,
         targetWeight: e => e.targetWeight,
         weight: true,
-        marginRatio: 0.3
+        marginRatio: 0.3,
       });
       this.$data.edgesData = dv.edges;
       this.$data.nodesData = dv.nodes;

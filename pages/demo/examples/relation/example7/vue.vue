@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart force-fit="true" height="400" :data="data" padding="0">
+    <v-chart force-fit="true" height="500" :data="data" padding="0">
       <v-tooltip show-title="false" />
       <v-coord type="polar" inner-radius="0.3" />
       <v-polygon position="x*y" :color="color" active="false" :v-style="style" tooltip="label*sum" />

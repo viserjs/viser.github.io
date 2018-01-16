@@ -1,13 +1,13 @@
 <template>
 <div>
-  <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
+  <v-chart force-fit="true" height="500" :data="data" :padding="padding" :scale="scale">
     <v-tooltip />
     <v-axis :dataKey="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid" />
     <v-axis :dataKey="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid" />
-    <v-legend />
-    <v-coord :type="'polar'" :radius="0.8" />
-    <v-line :position="'item*score'" :color="'user'" :size="2" />
-    <v-point :position="'item*score'" :color="'user'" :size="4" />
+    <v-legend data-key="user" marker="circle" offset="30" />
+    <v-coord type="polar" radius="0.8" />
+    <v-line position="item*score" color="user" size="2" />
+    <v-point position="item*score" color="user" size="4" />
   </v-chart>
 </div>
 </template>
@@ -73,7 +73,7 @@ export default {
       scale,
       axis1Opts,
       axis2Opts,
-      height: 400,
+      padding: [20, 20, 95, 20],
     };
   }
 };

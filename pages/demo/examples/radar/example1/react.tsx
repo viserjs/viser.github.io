@@ -63,11 +63,11 @@ class App extends React.Component {
     };
 
     return (
-      <Chart forceFit height={400} data={data} scale={scale}>
+      <Chart forceFit height={500} data={data} padding={[20, 20, 95, 20]} scale={scale}>
         <Tooltip />
         <Axis {...axis1Opts} />
         <Axis {...axis2Opts} />
-        <Legend />
+        <Legend dataKey="user" marker="circle" offset={30} />
         <Coord {...coordOpts} />
         <Line position="item*score" color="user" size={2} />
         <Point position="item*score" color="user" size={4} />

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="400">
-      <v-tooltip :show-title="false" />
+    <v-chart force-fit="true" height="500">
+      <v-tooltip show-title="false" />
       <v-view :data="edgesData">
         <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target" />
       </v-view>
