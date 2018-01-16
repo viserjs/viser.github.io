@@ -11,7 +11,7 @@ const values = ['Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'];
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" padding="40" [data]="data">
       <v-tooltip showTitle="null"></v-tooltip>
       <v-coord type="polar" innerRadius="0.2"></v-coord>
@@ -32,6 +32,7 @@ const values = ['Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'];
       </v-guide>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {

@@ -44,7 +44,7 @@ const seriesStyle = ['Species', {
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip [crosshairs]="tooltipOpts.crosshairs"></v-tooltip>
       <v-axis></v-axis>
@@ -52,6 +52,7 @@ const seriesStyle = ['Species', {
       <v-box position="type*_bin" adjust="dodge" [style]="seriesStyle" [color]="seriesColor"></v-box>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {

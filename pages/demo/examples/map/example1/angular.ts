@@ -11,7 +11,7 @@ const DataSet = require('@antv/data-set');
   selector: '#mount',
   template: `
   <div *ngIf="data; else loading">
-    <v-chart [forceFit]="forceFit" [height]="height" padding="[0, 20, 0]" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[0, 20, 0]" [scale]="scale">
       <v-coord type="rect" direction="TL" ></v-coord>
       <v-tooltip [showTitle]="tooltipOpts.showTitle" [containerTpl]="tooltipOpts.containerTpl" [itemTpl]="tooltipOpts.itemTpl" [g2Tooltip]="tooltipOpts.g2Tooltip"></v-tooltip>
       <v-view viewId="1" [data]="geoData" [scale]="scale">
@@ -30,7 +30,7 @@ class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
   geoData = {};
-  data = [];
+  data = null;
   tooltipOpts = {
     showTitle: false,
     containerTpl: '<div class="g2-tooltip">'

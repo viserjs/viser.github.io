@@ -15,13 +15,14 @@ const scale = [{
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip crosshairs="false" inPlot="false" position="top"></v-tooltip>
       <v-axis></v-axis>
       <v-bar position="depth*count"></v-bar>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {

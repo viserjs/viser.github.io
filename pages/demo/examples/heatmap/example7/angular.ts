@@ -30,7 +30,7 @@ const seriesOpts = {
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-legend [offset]="40"></v-legend>
       <v-axis [dataKey]="axis1Opts.dataKey" [grid]="axis1Opts.grid"></v-axis>
@@ -38,6 +38,7 @@ const seriesOpts = {
       <v-polygon [position]="seriesOpts.position" [color]="seriesOpts.color" [style]="seriesOpts.style"></v-polygon>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {

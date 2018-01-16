@@ -10,7 +10,7 @@ const DataSet = require('@antv/data-set');
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip [crosshairs]="tooltip.crosshairs"></v-tooltip>
       <v-axis dataKey="mean" [show]="false"></v-axis>
@@ -20,6 +20,7 @@ const DataSet = require('@antv/data-set');
       <v-line position="date*mean" color="#FACC14"></v-line>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 
