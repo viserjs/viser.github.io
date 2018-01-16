@@ -16,8 +16,6 @@ const scale = [{
   ticks: [225, 1000000 ,2000000 , 4000000, 6000000]
 }];
 
-const height = 600;
-
 const axis1Opts = {
   dataKey: 'exp_dat',
   tickLine: null,
@@ -74,7 +72,7 @@ class App extends React.Component {
     const  { data } = this.state;
     return (
       <div>
-        <Chart forceFit height={height} data={data} scale={scale}>
+        <Chart forceFit height={600} data={data} scale={scale}>
           <Tooltip showTitle={false}/>
           <Axis {...axis1Opts}/>
           <Axis {...axis2Opts}/>
