@@ -67404,9 +67404,7 @@ var CommonChart = (function () {
         this.setViews(chart, config);
         this.setFacet(chart, config);
         chart.render();
-        if (!__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](config.brush)) {
-            this.setBrush(chart, config);
-        }
+        this.setBrush(chart, config);
     };
     CommonChart.prototype.repaint = function (config) {
         var newConfig = __WEBPACK_IMPORTED_MODULE_1_lodash__["cloneDeep"](config);
@@ -67530,6 +67528,9 @@ var CommonChart = (function () {
         return chart.facet(cFacet.type, options);
     };
     CommonChart.prototype.setBrush = function (chart, config) {
+        if (__WEBPACK_IMPORTED_MODULE_1_lodash__["isNil"](config.brush) || __WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"](config.brush)) {
+            return;
+        }
         var brush = config.brush;
         var brushConfig = __assign({}, config.brush, { canvas: chart.get('canvas'), chart: chart });
         var regEvents = /on(BrushStart|BrushMove|BrushEnd|DragStart|DragMove|DragEnd)/;
@@ -67570,6 +67571,7 @@ var CommonChart = (function () {
             chart.changeData(config.data);
         }
         chart.repaint();
+        this.setBrush(chart, config);
     };
     return CommonChart;
 }());
