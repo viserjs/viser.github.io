@@ -30,7 +30,7 @@ const scale = [{
 class App extends React.Component {
   state = {
     geoData: {},
-    data: null,
+    data: [],
   };
 
   componentDidMount() {
@@ -58,7 +58,7 @@ class App extends React.Component {
         }
       });
 
-      this.setState({ geoData: dv, data: userData});
+      this.setState({ geoData: dv, data: userData });
     });
   }
 
@@ -67,21 +67,22 @@ class App extends React.Component {
     if (!geoData || !data) {
       return (<div>Loading ...</div>);
     }
+
     return (
       <div>
-        <Chart forceFit height={600} padding={[0, 20, 40]} data={geoData} scale={scale}>
-          <Coord type={'rect'} direction={'TL'} />
-          <Tooltip {...tooltipOpts}/>
-          <View viewId='111' data={geoData} scale={scale}>
-            <Polygon position='x*y' style={{
-              fill: '#DDDDDD',
-              stroke: '#fff',
+        <Chart forceFit height={400} padding={[0, 20, 0]} scale={scale}>
+          <Coord type="rect" direction="TL" />
+          <Tooltip {...tooltipOpts} />
+          <View data={geoData} scale={scale}>
+            <Polygon position="x*y" style={{
+              fill: '#ddd',
+              stroke: '#b1b1b1',
               lineWidth: 0.5,
               fillOpacity: 0.85,
-            }} tooltip={false}/>
+            }} tooltip={false} />
           </View>
           <View data={data}>
-            <Point position='x*y' size={['deaths', [2, 30]]} opacity={0.45} color='#FF2F29' tooltip='date*location*lat*lng*deaths*magnitude'/>
+            <Point position="x*y" size={['deaths', [2, 30]]} opacity={0.45} color="#FF2F29" tooltip="date*location*lat*lng*deaths*magnitude" />
           </View>
         </Chart>
       </div>

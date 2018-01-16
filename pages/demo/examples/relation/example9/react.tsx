@@ -53,7 +53,7 @@ const edgesDataView = ['edges', (edges) => {
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={600} data={data} padding={[ 60, 0, 40, 0 ]}>
+      <Chart forceFit={true} height={400} data={data} padding={[ 60, 0, 40, 0 ]}>
         <Coord type="polar" />
         <View dataView={edgesDataView}>
           <Edge position="x*y" shape="smooth" color="grey" opacity={0.5} tooltip="source*target" />

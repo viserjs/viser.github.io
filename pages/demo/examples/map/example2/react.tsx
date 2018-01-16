@@ -15,7 +15,7 @@ const scale = [{
 const userDataScale = [{
   dataKey: 'trend',
   alias: '每100位女性对应的男性数量',
-}]
+}];
 
 const view1Opts = {
   quickType: 'polygon',
@@ -42,14 +42,17 @@ const view2Opts = {
 
 class App extends React.Component {
   state = {
-    geoData: {},
-    data: null,
+    geoData: [],
+    data: [],
   };
 
   componentDidMount() {
-    $.when($.getJSON('/assets/data/worldGeo.json'),$.getJSON('/assets/data/map-2.json')).then((geoData, data) => {
+    $.when(
+      $.getJSON('/assets/data/worldGeo.json'),
+      $.getJSON('/assets/data/map-2.json')
+    ).then((geoData, data) => {
       const worldMap = new DataSet.View().source(geoData[0], {
-          type: 'GeoJSON'
+        type: 'GeoJSON',
       });
 
       const userDv = new DataSet.View().source(data[0]).transform({
@@ -59,7 +62,7 @@ class App extends React.Component {
         as: [ 'longitude', 'latitude' ],
       }).transform({
         type: 'map',
-        callback: function(obj) {
+        callback: (obj) => {
           obj.trend = (obj.value > 100) ? '男性更多' : '女性更多';
           return obj;
         }
@@ -69,21 +72,21 @@ class App extends React.Component {
   }
 
   render() {
-    const {geoData, data} = this.state;
+    const { geoData, data } = this.state;
     if (!geoData || !data) {
       return (<div>Loading ...</div>);
     }
 
     return (
       <div>
-        <Chart forceFit height={600} padding={[55, 20]} data={geoData} scale={scale}>
-          <Tooltip showTitle={false}/>
-          <Legend dataKey={'trend'} position={'left'}/>
+        <Chart forceFit height={400} padding={[20, 20]} scale={scale}>
+          <Tooltip showTitle={false} />
+          <Legend dataKey={'trend'} position={'left'} />
           <View data={geoData} scale={scale}>
-            <Polygon {...view1Opts}/>
+            <Polygon {...view1Opts} />
           </View>
           <View  data={data} scale={userDataScale}>
-            <Polygon {...view2Opts}/>
+            <Polygon {...view2Opts} />
           </View>
         </Chart>
       </div>

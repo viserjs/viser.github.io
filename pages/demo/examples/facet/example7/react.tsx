@@ -46,7 +46,7 @@ const views = (view, facet) => {
 class App extends React.Component {
   render() {
     return (
-      <Chart forceFit={true} height={600} data={data} padding={[60, 90, 80, 80]}>
+      <Chart forceFit={true} height={400} data={data} padding={[60, 90, 80, 80]}>
         <Tooltip showTitle={false} />
         <Coord type="theta" />
         <Legend dataKey="cut" position="top" />

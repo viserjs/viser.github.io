@@ -62,7 +62,7 @@ class App extends React.Component {
   render() {
     const { data } = this.state;
     return (
-      <Chart forceFit={true} height={600} data={data} scale={scale}>
+      <Chart forceFit={true} height={400} data={data} scale={scale}>
         <Tooltip />
         <Legend />
         <Axis />

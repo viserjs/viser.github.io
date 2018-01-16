@@ -36,7 +36,7 @@ class App extends React.Component {
         sourceWeight: e => e.sourceWeight,
         targetWeight: e => e.targetWeight,
         weight: true,
-        marginRatio: 0.3
+        marginRatio: 0.3,
       });
       this.setState({
         edgesData: dv.edges,

@@ -4,7 +4,6 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-
 const DataSet = require('@antv/data-set');
 
 const sourceData = {
@@ -84,7 +83,7 @@ const label = ['name', {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [dataView]="dataView" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip showTitle="false" itemTpl="itemTpl"></v-tooltip>
       <v-polygon position="x*y" color="name" [tooltip]="tooltip" [style]="style" [label]="label"></v-polygon>
     </v-chart>
@@ -93,7 +92,7 @@ const label = ['name', {
 })
 export class AppComponent {
   forceFit: boolean = true;
-  height: number = 600;
+  height: number = 400;
   data = data;
   dataView = dataView;
   scale = scale;

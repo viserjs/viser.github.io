@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
-      <v-tooltip :crosshairs="tooltipOpts.crosshairs"/>
-      <v-axis :data-key="'mean'" :show="false"/>
-      <v-axis :data-key="'stockRange'" :show="false"/>
-      <v-area :position="'date*range'" />
-      <v-candle :position="'date*stockRange'" :color="color" :tooltip="'start*end*highest*lowest'"/>
-      <v-line :position="'date*mean'" :color="'#FACC14'"/>
+      <v-tooltip :crosshairs="tooltipOpts.crosshairs" />
+      <v-axis data-key="mean" :show="false" />
+      <v-axis data-key="stockRange" :show="false" />
+      <v-area position="date*range" />
+      <v-candle position="date*stockRange" :color="color" tooltip="start*end*highest*lowest" />
+      <v-line position="date*mean" color="#FACC14" />
     </v-chart>
   </div>
 </template>
@@ -20,29 +20,29 @@ const scale = [{
   type: 'time',
   nice: false,
   mask: 'MM-DD',
-  tickCount: 10
+  tickCount: 10,
 }, {
   dataKey: 'range',
   min: 20,
   max: 35,
   nice: false,
-  tickInterval: 2
+  tickInterval: 2,
 }, {
   dataKey: 'mean',
   min: 20,
   max: 35,
-  nice: false
+  nice: false,
 }, {
   dataKey: 'stockRange',
   min: 20,
   max: 35,
-  nice: false
+  nice: false,
 }];
 
 const tooltipOpts = {
   crosshairs: {
-    type: 'line'
-  }
+    type: 'line',
+  },
 };
 
 const color = ['trend', val => {
@@ -71,7 +71,7 @@ export default {
   },
   data() {
     return {
-      height: 600,
+      height: 400,
       data: [],
       scale,
       tooltipOpts,

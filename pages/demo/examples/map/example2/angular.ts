@@ -11,7 +11,7 @@ const DataSet = require('@antv/data-set');
   selector: '#mount',
   template: `
   <div *ngIf="data; else loading">
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="padding" [data]="geoData" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [padding]="padding" [scale]="scale">
       <v-tooltip [showTitle]="showTitle"></v-tooltip>
       <v-legend dataKey="trend" position="left"></v-legend>
       <v-view [data]="geoData" [scale]="scale">
@@ -27,12 +27,12 @@ const DataSet = require('@antv/data-set');
 })
 
 class AppComponent {
+  forceFit: boolean = true;
+  height: number = 400;
   showTitle = false;
-  forceFit: boolean= true;
-  height: number = 600;
-  padding = [55, 20];
-  data = null;
-  geoData = {};
+  padding = [20, 20];
+  data = [];
+  geoData = [];
   scale = [{
     dataKey: 'longitude',
     sync: true,
@@ -71,16 +71,19 @@ class AppComponent {
   };
 
   constructor() {
-    $.when($.getJSON('/assets/data/worldGeo.json'),$.getJSON('/assets/data/map-2.json')).then((geoData, data) => {
+    $.when(
+      $.getJSON('/assets/data/worldGeo.json'),
+      $.getJSON('/assets/data/map-2.json')
+    ).then((geoData, data) => {
       const worldMap = new DataSet.View().source(geoData[0], {
-          type: 'GeoJSON'
+        type: 'GeoJSON',
       });
 
       const userDv = new DataSet.View().source(data[0]).transform({
         geoDataView: worldMap,
         field: 'name',
         type: 'geo.region',
-        as: [ 'longitude', 'latitude' ],
+        as: ['longitude', 'latitude'],
       }).transform({
         type: 'map',
         callback: function(obj) {

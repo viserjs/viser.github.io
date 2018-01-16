@@ -9,29 +9,29 @@ const scale = [{
   type: 'time',
   nice: false,
   mask: 'MM-DD',
-  tickCount: 10
+  tickCount: 10,
 }, {
   dataKey: 'range',
   min: 20,
   max: 35,
   nice: false,
-  tickInterval: 2
+  tickInterval: 2,
 }, {
   dataKey: 'mean',
   min: 20,
   max: 35,
-  nice: false
+  nice: false,
 }, {
   dataKey: 'stockRange',
   min: 20,
   max: 35,
-  nice: false
+  nice: false,
 }];
 
 const tooltipOpts = {
   crosshairs: {
-    type: 'line'
-  }
+    type: 'line',
+  },
 };
 
 class App extends React.Component {
@@ -57,10 +57,10 @@ class App extends React.Component {
     const { data } = this.state;
     return (
       <div>
-        <Chart forceFit height={600} data={data} scale={scale}>
-          <Tooltip {...tooltipOpts}/>
-          <Axis dataKey="mean" show={false}/>
-          <Axis dataKey="stockRange" show={false}/>
+        <Chart forceFit height={400} data={data} scale={scale}>
+          <Tooltip {...tooltipOpts} />
+          <Axis dataKey="mean" show={false} />
+          <Axis dataKey="stockRange" show={false} />
           <Area position="date*range" />
           <Candle position="date*stockRange" color={['trend', val => {
             if (val === 'up') {
@@ -70,8 +70,8 @@ class App extends React.Component {
             if (val === 'down') {
               return '#2fc25b';
             }
-          }]} tooltip='start*end*highest*lowest'/>
-          <Line position="date*mean" color="#FACC14"/>
+          }]} tooltip='start*end*highest*lowest' />
+          <Line position="date*mean" color="#FACC14" />
         </Chart>
       </div>
     );

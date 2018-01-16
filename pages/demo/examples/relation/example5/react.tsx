@@ -38,7 +38,7 @@ class App extends React.Component {
   render() {
     const { data } = this.state;
     return (
-      <Chart forceFit height={500} data={data} padding={0}>
+      <Chart forceFit height={400} data={data} padding={0}>
         <Tooltip showTitle={false} />
         <Polygon position="_x*_y" color="value" label={label} />
       </Chart>

@@ -59,7 +59,7 @@ class AppComponent {
         sourceWeight: e => e.sourceWeight,
         targetWeight: e => e.targetWeight,
         weight: true,
-        marginRatio: 0.3
+        marginRatio: 0.3,
       });
       this.edgesData = dv.edges;
       this.nodesData = dv.nodes;

@@ -63,7 +63,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <Chart forceFit height={500} scale={scale} padding={[ 40, 80 ]}>
+      <Chart forceFit height={400} scale={scale} padding={[ 40, 80 ]}>
         <Tooltip showTitle={false} />
         <View data={edgesData}>
           <Sankey position='x*y' style={{ curvature: 0.5 }} color='#bbb' opacity={0.6} tooltip={tooltip} />
