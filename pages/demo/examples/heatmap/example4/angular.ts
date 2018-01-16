@@ -113,7 +113,7 @@ const axis2Opts = {
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip showTitle="false" ></v-tooltip>
       <v-axis [dataKey]="axis1Opts.dataKey" [position]="axis1Opts.position" [tickLine]="axis1Opts.tickLine" [line]="axis1Opts.line" [label]="axis1Opts.label"></v-axis>
@@ -122,6 +122,7 @@ const axis2Opts = {
       <v-polygon [position]="seriesOpts.position" [color]="seriesOpts.color" [shape]="seriesOpts.shape"></v-polygon>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {

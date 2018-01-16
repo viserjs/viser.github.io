@@ -10,7 +10,7 @@ const DataSet = require('@antv/data-set');
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" padding="10" [data]="data">
       <v-tooltip [showTitle]="false"></v-tooltip>
       <v-polygon position="x*y" color="category" [style]="{
@@ -25,13 +25,14 @@ const DataSet = require('@antv/data-set');
       }]" tooltip="symbol*name*number*atomic_mass*category"></v-polygon>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 
 class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
-  data = [];
+  data = null;
   constructor() {
     $.getJSON('/assets/data/periodic-table.hex.json', (data) => {
       const dv = new DataSet.View().source(data, {

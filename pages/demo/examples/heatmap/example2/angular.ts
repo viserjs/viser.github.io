@@ -16,19 +16,20 @@ const seriesOpts = {
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-legend [offset]="40"></v-legend>
       <v-axis></v-axis>
       <v-polygon [position]="seriesOpts.position" [color]="seriesOpts.color"></v-polygon>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
-  data = [];
+  data = null;
   seriesOpts = seriesOpts;
 
   constructor() {

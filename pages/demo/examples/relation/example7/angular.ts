@@ -17,13 +17,14 @@ const color = ['value', '#BAE7FF-#1890FF-#0050B3'];
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" padding="0">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-coord type="polar" innerRadius="0.3"></v-coord>
       <v-polygon position="x*y" [color]="color" active="false" [style]="style" tooltip="label*sum"></v-polygon>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 export class AppComponent {

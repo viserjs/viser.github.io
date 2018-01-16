@@ -32,7 +32,7 @@ const jitterPointOpts = {
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data.length; else loading">
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[ 40, 100, 80, 80 ]" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-coord [type]="'polar'"></v-coord>
@@ -40,6 +40,7 @@ const jitterPointOpts = {
       <v-jitter-point [position]="jitterPointOpts.position" [color]="jitterPointOpts.color" [shape]="jitterPointOpts.shape" [opacity]="jitterPointOpts.opacity"></v-jitter-point>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 

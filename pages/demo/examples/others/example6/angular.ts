@@ -37,13 +37,14 @@ const padding = [0];
 @Component({
   selector: '#mount',
   template: `
-  <div>
+  <div *ngIf="data.length; else loading">
     <v-chart [width]="640" [height]="400" [data]="data" [scale]="scale" [padding]="padding">
       <v-tooltip [showTitle]="false"></v-tooltip>
       <v-coord [type]="'rect'" [direction]="'TL'"></v-coord>
       <v-point [position]="'x*y'" [color]="'text'" [shape]="'cloud'" [tooltip]="'value*category'"></v-point>
     </v-chart>
   </div>
+  <ng-template #loading>Loading ...</ng-template>
   `
 })
 
