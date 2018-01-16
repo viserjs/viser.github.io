@@ -27,11 +27,11 @@ const label = ['name', {
   template: `
   <div >
     <v-chart [forceFit]="forceFit" [height]="height" [scale]="scale">
-      <v-view viewId="1" [data]="edgesData">
+      <v-view  [data]="edgesData">
         <v-coord type="polar" direction="yReverse"></v-coord>
         <v-edge position="x*y" color="source" shape="arc" opacity="0.5" tooltip="source*target*value"></v-edge>
       </v-view>
-      <v-view viewId="2" [data]="nodesData">
+      <v-view [data]="nodesData">
         <v-coord type="polar" direction="yReverse"></v-coord>
         <v-polygon position="x*y" color="id" [label]="label"></v-polygon>
       </v-view>

@@ -75,7 +75,7 @@ class App extends React.Component {
           <Tooltip {...tooltipOpts} />
           <Axis />
           <Box position="x*range" style={boxStyle} tooltip={boxTooltip}/>
-          <View viewId="4" data={data} scale={scale}>
+          <View data={data} scale={scale}>
             <Point position="x*outliers" size={3} active={false}></Point>
           </View>
         </Chart>

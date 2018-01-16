@@ -347,6 +347,11 @@ const examples = {
         enName: 'China Map-province',
         cnName: '中国地图-省市下钻',
       },
+      {
+        path: 'example4',
+        enName: 'United States map hexagon segmentation',
+        cnName: '美国地图六边形分割',
+      },
     ],
     icon: 'ditu'
   },

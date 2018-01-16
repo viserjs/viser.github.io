@@ -66,7 +66,7 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={400} scale={scale}>
-          <View viewId="1" data={dataBackground}>
+          <View data={dataBackground}>
             <Coord
               type="polar"
               startAngle={-202.5}
@@ -80,7 +80,7 @@ class App extends React.Component {
               size={6}
             />
           </View>
-          <View viewId="2" data={dataBackground} scale={insideScale}>
+          <View data={dataBackground} scale={insideScale}>
             <Axis dataKey="value" show={false} />
             <Axis
               dataKey="type"
@@ -102,7 +102,7 @@ class App extends React.Component {
               size={6}
             />
           </View>
-          <View viewId="3" data={dataFront}>
+          <View data={dataFront}>
             <Coord
               type="polar"
               startAngle={-202.5}

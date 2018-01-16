@@ -76,12 +76,12 @@ const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) =>
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" >
       <v-tooltip [showTitle]="tooltipOpts.showTitle" [crosshairs]="tooltipOpts.crosshairs" [itemTpl]="tooltipOpts.itemTpl"></v-tooltip>
-      <v-view viewId="1" [data]="data" [scale]="scale">
+      <v-view [data]="data" [scale]="scale">
         <v-tooltip></v-tooltip>
         <v-axis></v-axis>
         <v-box position="x*range" [style]="boxStyle" [tooltip]="boxTooltip"></v-box>
       </v-view>
-      <v-view viewId="4" [data]="data" [scale]="scale">
+      <v-view [data]="data" [scale]="scale">
         <v-tooltip></v-tooltip>
         <v-point position="x*outliers" [size]="3" [active]="false"></v-point>
       </v-view>

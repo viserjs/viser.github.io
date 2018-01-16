@@ -25,10 +25,10 @@ const style = {
   <div>
     <v-chart [forceFit]="forceFit" [height]="height">
       <v-tooltip [showTitle]="false"></v-tooltip>
-      <v-view viewId="1" [data]="edgesData">
+      <v-view  [data]="edgesData">
         <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target"></v-edge>
       </v-view>
-      <v-view viewId="2" [data]="nodesData">
+      <v-view [data]="nodesData">
         <v-point position="x*y" size="value" color="id" opacity="0.5" [style]="style" [label]="label"></v-point>
       </v-view>
     </v-chart>
