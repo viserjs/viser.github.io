@@ -561,6 +561,11 @@ const examples = {
         cnName: '螺旋坐标系',
       },
       {
+        path: 'example33',
+        enName: 'bar with round corner',
+        cnName: '圆角柱状图',
+      },
+      {
         path: 'example34',
         enName: 'stack bar with round corner',
         cnName: '圆角堆叠柱状图',
