@@ -71,7 +71,7 @@ const pyramidOpts1 = {
       <v-coord type='rect' direction='LT' ></v-coord>
       <v-pyramid [position]="pyramidOpts.position" [color]="pyramidOpts.color"
           [label]="pyramidOpts.label" [tooltip]="pyramidOpts.tooltip" [opacity]="pyramidOpts.opacity"></v-pyramid>
-      <v-view viewId="1" [data]="actualData">
+      <v-view [viewId]="'1'" [data]="actualData">
         <v-tooltip></v-tooltip>
         <v-coord type='rect' direction='LT' ></v-coord>
         <v-pyramid [position]="pyramidOpts1.position" [color]="pyramidOpts1.color"

@@ -67,7 +67,7 @@ class App extends React.Component {
           <Tooltip {...tooltipOpts} />
           <Coord type='rect' direction='LT' />
           <Pyramid {...pyramidOpts} />
-          <View viewId="1" data={actualData}>
+          <View data={actualData}>
             <Tooltip />
             <Coord type='rect' direction='LT' />
             <Pyramid {...pyramidOpts1} />
