@@ -88,6 +88,25 @@ const label = [
 <Polygon position='x*y' color='id' label={label} />
 ```
 
+### Coord 的角度
+
+[Coord](https://antv.alipay.com/zh-cn/g2/3.x/tutorial/coord.html) 默认的 `startAngle` 和 `endAngle` 是用弧度表示的，比如角度是 180 度，那么弧度用 js 表示就是 `2 * Math.PI`。对于使用者来说，还是角度更简单和直观，因此，viser 使用角度来替代弧度。
+
+```js
+/*
+ * G2
+ */
+chart.coord('polar', {
+  startAngle: 2 * Math.PI,
+})
+```
+```js
+/*
+ * Viser-react
+ */
+<Coord type="polar" startAngle={180} />
+```
+
 ### Coord 的方向
 
 Coord 组件用于表示 g2 中 coord 的相关内容。针对直角坐标系的图表，我们提供了 `direction` 这一优化后的参数用来展现 g2 中的 `transpose`, `reflect` 和 `scale` 这几个属性。根据 X 轴，Y 轴的位置，我们提供了 8 种坐标系的排列，分别有 BL, BR, LT, LB, RB, RT, TL, TR。B 代表 bottom, T 代表 top，L 代表 left，R 代表 right。具体举例，比如：
