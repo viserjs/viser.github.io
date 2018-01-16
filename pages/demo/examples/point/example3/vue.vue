@@ -1,48 +1,48 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="400" :data="data">
-      <v-legend :reversed="true" />
+    <v-chart force-fit="true" height="400" :data="data">
+      <v-legend reversed="true" />
       <v-tooltip :crosshairs="tooltipCrosshairs" />
-      <v-axis :data-key="'Score'" :grid="null" />
+      <v-axis data-key="'Score'" :grid="null" />
       <v-axis
-        :data-key="'Class'"
+        data-key="'Class'"
         :tick-line="null"
-        :sub-tick-count="1"
+        sub-tick-count="1"
         :sub-tick-line="axisClassSubTickLine"
         :grid="axisClassGrid"
       />
-      <v-point :color="'Grade'" :position="'Class*Score'" :adjust="'jitter'" :size="4" :opacity="0.65" />
+      <v-point color="Grade" position="Class*Score" adjust="jitter" size="4" opacity="0.65" />
     </v-chart>
   </div>
 </template>
 
 <script>
-  import * as $ from 'jquery';
+import * as $ from 'jquery';
 
-  export default {
-    mounted() {
-      $.getJSON('/assets/data/dv-grades.json', (data) => {
-        this.$data.data = data;
-      });
-    },
-    data() {
-      return {
-        data: [],
-        tooltipCrosshairs: { type: 'cross' },
-        axisClassGrid: {
-          align: 'center',
-          lineStyle: {
-            stroke: '#8C8C8C',
-            lineWidth: 1,
-            lineDash: [3, 3],
-          }
-        },
-        axisClassSubTickLine: {
+export default {
+  mounted() {
+    $.getJSON('/assets/data/dv-grades.json', (data) => {
+      this.$data.data = data;
+    });
+  },
+  data() {
+    return {
+      data: [],
+      tooltipCrosshairs: { type: 'cross' },
+      axisClassGrid: {
+        align: 'center',
+        lineStyle: {
+          stroke: '#8C8C8C',
           lineWidth: 1,
-          stroke: '#BFBFBF',
-          length: 4
-        },
-      };
-    }
-  };
+          lineDash: [3, 3],
+        }
+      },
+      axisClassSubTickLine: {
+        lineWidth: 1,
+        stroke: '#BFBFBF',
+        length: 4
+      },
+    };
+  }
+};
 </script>
