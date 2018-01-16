@@ -143,7 +143,7 @@ class AppComponent {
   htmlGuideHtml = `
     <div style="width: 300px;text-align: center;">
       <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
-      <p style="font-size: 36px;color: #545454;margin: 0;">${this.data[0].value * 10}%</p>
+      <p style="font-size: 36px;color: #545454;margin: 0;">${Math.ceil(this.data[0].value * 10)}%</p>
     </div>
   `;
 
@@ -166,14 +166,14 @@ class AppComponent {
       if (nextVal > 9) {
         this.trend = 'down';
       } else {
-        this.data[0].value = nextVal;
+        this.data = [{ value: nextVal }];
         this.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
         this.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
         this.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];
         this.htmlGuideHtml = `
           <div style="width: 300px;text-align: center;">
             <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
-            <p style="font-size: 36px;color: #545454;margin: 0;">${(nextVal) * 10}%</p>
+            <p style="font-size: 36px;color: #545454;margin: 0;">${Math.ceil(nextVal * 10)}%</p>
           </div>
         `;
       }
@@ -189,7 +189,7 @@ class AppComponent {
         this.htmlGuideHtml = `
           <div style="width: 300px;text-align: center;">
             <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
-            <p style="font-size: 36px;color: #545454;margin: 0;">${(nextVal) * 10}%</p>
+            <p style="font-size: 36px;color: #545454;margin: 0;">${Math.ceil(nextVal * 10)}%</p>
           </div>
         `;
       }
