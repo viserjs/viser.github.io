@@ -50,7 +50,7 @@ const views = (view, facet) => {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [padding]="padding">
+    <v-chart [forceFit]="forceFit" [height]="400" [data]="data" [padding]="padding">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-legend dataKey="cut" position="top"></v-legend>
       <v-coord type="theta"></v-coord>
@@ -61,7 +61,7 @@ const views = (view, facet) => {
 })
 export class AppComponent {
   forceFit: boolean = true;
-  height: number = 600;
+  height: number = 400;
   data = sourceData;
   line = { stroke: '#00a3d7' };
   padding = [60, 90, 80, 80];

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" height="600" :data="data">
+    <v-chart :force-fit="true" height="400" :data="data">
       <v-tooltip />
       <v-legend />
       <v-axis />

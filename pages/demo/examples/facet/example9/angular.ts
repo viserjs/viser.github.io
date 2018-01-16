@@ -55,7 +55,7 @@ const views = (view, facet) => {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="600" [data]="data">
+    <v-chart [forceFit]="forceFit" [height]="400" [data]="data">
       <v-tooltip></v-tooltip>
       <v-legend></v-legend>
       <v-axis></v-axis>
@@ -66,7 +66,7 @@ const views = (view, facet) => {
 })
 export class AppComponent {
   forceFit: boolean = true;
-  height: number = 600;
+  height: number = 400;
   data = [];
   fields = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth'];
   views = views;

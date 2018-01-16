@@ -42,7 +42,7 @@ const views = (view, facet) => {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="600" [data]="data" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="400" [data]="data" [scale]="scale">
       <v-tooltip crosshairs="false"></v-tooltip>
       <v-legend dataKey="cut" position="top"></v-legend>
       <v-axis dataKey="cut" [label]="axisNull" [tickLine]="axisNull"></v-axis>
@@ -55,7 +55,7 @@ export class AppComponent {
   forceFit: boolean = true;
   lineSmooth: boolean = true;
   axisNull: null;
-  height: number = 600;
+  height: number = 400;
   data = [];
   scale = scale;
   fields = ['clarity'];
