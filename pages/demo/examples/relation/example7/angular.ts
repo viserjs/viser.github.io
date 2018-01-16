@@ -28,7 +28,7 @@ const color = ['value', '#BAE7FF-#1890FF-#0050B3'];
 })
 export class AppComponent {
   forceFit: boolean = true;
-  height: number = 500;
+  height: number = 400;
   data = [];
   style = style;
   color = color;

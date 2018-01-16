@@ -37,7 +37,7 @@ const style = {
 export class AppComponent {
   showTitle: boolean = false;
   forceFit: boolean = true;
-  height: number = 500;
+  height: number = 400;
   edgesData = [];
   nodesData = [];
   style = style;

@@ -33,7 +33,7 @@ const label = [
 })
 export class AppComponent {
   forceFit: boolean = true;
-  height: number = 500;
+  height: number = 400;
   data = [];
   label = label;
 

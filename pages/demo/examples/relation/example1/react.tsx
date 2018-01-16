@@ -46,7 +46,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <Chart forceFit={true} height={500}>
+      <Chart forceFit={true} height={400}>
         <Tooltip showTitle={false} />
         <View data={edgesData}>
           <Edge position="x*y" shape="arc" color="source" opacity={0.5} tooltip="source*target" />

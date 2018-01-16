@@ -38,7 +38,7 @@ const style = {
 })
 export class AppComponent {
   forceFit: boolean = true;
-  height: number = 500;
+  height: number = 400;
   edgesData = [];
   nodesData = [];
   style = style;

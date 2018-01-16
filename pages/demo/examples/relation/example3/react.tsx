@@ -52,7 +52,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <Chart forceFit={true} height={500} scale={scale}>
+      <Chart forceFit={true} height={400} scale={scale}>
         <Tooltip showTitle={false} />
         <View data={edgesData}>
           <Coord type="polar" direction="yReverse" />
