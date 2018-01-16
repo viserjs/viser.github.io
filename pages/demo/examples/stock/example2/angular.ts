@@ -24,37 +24,37 @@ const DataSet = require('@antv/data-set');
 })
 
 class AppComponent {
-  forceFit: boolean= true;
-  height: number = 600;
+  forceFit: boolean = true;
+  height: number = 400;
   data = [];
   scale = [{
     dataKey: 'date',
     type: 'time',
     nice: false,
     mask: 'MM-DD',
-    tickCount: 10
+    tickCount: 10,
   }, {
     dataKey: 'range',
     min: 20,
     max: 35,
     nice: false,
-    tickInterval: 2
+    tickInterval: 2,
   }, {
     dataKey: 'mean',
     min: 20,
     max: 35,
-    nice: false
+    nice: false,
   }, {
     dataKey: 'stockRange',
     min: 20,
     max: 35,
-    nice: false
+    nice: false,
   }];
 
   tooltip = {
     crosshairs: {
-      type: 'line'
-    }
+      type: 'line',
+    },
   };
   color = ['trend', val => {
     if (val === 'up') {

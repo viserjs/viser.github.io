@@ -11,7 +11,7 @@ const DataSet = require('@antv/data-set');
   selector: '#mount',
   template: `
   <div *ngIf="data; else loading">
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[0, 20, 40]" [data]="geoData" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" padding="[0, 20, 0]" [scale]="scale">
       <v-coord type="rect" direction="TL" ></v-coord>
       <v-tooltip [showTitle]="tooltipOpts.showTitle" [containerTpl]="tooltipOpts.containerTpl" [itemTpl]="tooltipOpts.itemTpl" [g2Tooltip]="tooltipOpts.g2Tooltip"></v-tooltip>
       <v-view viewId="1" [data]="geoData" [scale]="scale">
@@ -27,10 +27,10 @@ const DataSet = require('@antv/data-set');
 })
 
 class AppComponent {
-  forceFit: boolean= true;
-  height: number = 600;
+  forceFit: boolean = true;
+  height: number = 400;
   geoData = {};
-  data = null;
+  data = [];
   tooltipOpts = {
     showTitle: false,
     containerTpl: '<div class="g2-tooltip">'
@@ -58,8 +58,8 @@ class AppComponent {
     quickType: 'polygon',
     position: 'x*y',
     style: {
-      fill: '#DDDDDD',
-      stroke: '#fff',
+      fill: '#ddd',
+      stroke: '#b1b1b1',
       lineWidth: 0.5,
       fillOpacity: 0.85,
     },
@@ -73,7 +73,6 @@ class AppComponent {
     color: '#FF2F29',
     tooltip: 'date*location*lat*lng*deaths*magnitude',
   };
-
 
   constructor() {
     $.when($.getJSON('/assets/data/worldGeo.json'),$.getJSON('/assets/data/map-1.json')).then((geoData, data) => {

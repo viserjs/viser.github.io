@@ -1,13 +1,13 @@
 <template>
   <div v-if="data">
-    <v-chart :force-fit="true" :height="600" :padding="[0, 20, 40]" :data="geoData" :scale="scale">
-      <v-coord :type="'rect'" :direction="'TL'"/>
-      <v-tooltip :show-title="tooltipOpts.showTitle" :container-tpl="tooltipOpts.containerTpl" :item-tpl="tooltipOpts.itemTpl" :g2-tooltip="tooltipOpts.g2Tooltip"/>
-      <v-view :data="geoData" :scale="scale">
-        <v-polygon :position="view1Opts.position" :v-style="view1Opts.style" :tooltip="view1Opts.tooltip"/>
+    <v-chart :force-fit="true" :height="400" :padding="[0, 20, 0]" :scale="scale">
+      <v-coord type="rect" direction="TL" />
+      <v-tooltip :show-title="tooltipOpts.showTitle" :container-tpl="tooltipOpts.containerTpl" :item-tpl="tooltipOpts.itemTpl" :g2-tooltip="tooltipOpts.g2Tooltip" />
+      <v-view :data="data">
+        <v-point :position="view2Opts.position" :size="view2Opts.size" :opacity="view2Opts.opacity" :color="view2Opts.color" :tooltip="view2Opts.tooltip" />
       </v-view>
-      <v-view :data="data" >
-        <v-point :position="view2Opts.position" :size="view2Opts.size" :opacity="view2Opts.opacity" :color="view2Opts.color" :tooltip="view2Opts.tooltip"/>
+      <v-view :data="geoData" :scale="scale">
+        <v-polygon :position="view1Opts.position" :v-style="view1Opts.style" :tooltip="view1Opts.tooltip" />
       </v-view>
     </v-chart>
   </div>
@@ -44,13 +44,14 @@ const view1Opts = {
   quickType: 'polygon',
   position: 'x*y',
   style: {
-    fill: '#DDDDDD',
-    stroke: '#fff',
+    fill: '#ddd',
+    stroke: '#b1b1b1',
     lineWidth: 0.5,
     fillOpacity: 0.85,
   },
   tooltip: false,
 };
+
 const view2Opts = {
   quickType: 'point',
   position: 'x*y',
@@ -89,7 +90,7 @@ export default {
   },
   data() {
     return {
-      data: null,
+      data: [],
       geoData: {},
       scale,
       tooltipOpts,
