@@ -9,7 +9,7 @@ import * as $ from 'jquery';
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data.length; else loading">
+  <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [padding]="padding">
       <v-legend [offset]="10"></v-legend>
       <v-tooltip [showTitle]="showTitle" ></v-tooltip>
@@ -17,7 +17,6 @@ import * as $ from 'jquery';
       <v-guide [type]="guideOpts.type" [start]="guideOpts.start" [end]="guideOpts.end" [src]="guideOpts.src"></v-guide>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {

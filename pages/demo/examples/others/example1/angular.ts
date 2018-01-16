@@ -54,7 +54,7 @@ const axis2Opts = {
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data.length; else loading">
+  <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip [showTitle]="false"></v-tooltip>
       <v-axis [dataKey]="axis1Opts.dataKey" [label]="axis1Opts.label" [grid]="axis1Opts.grid"></v-axis>
@@ -62,7 +62,6 @@ const axis2Opts = {
       <v-point [position]="'exp_dat*exp_amo'" [size]="['exp_amo', [ 1, 10 ]]" [size]="pointOpts.size" [opacity]="'exp_amo'" [shape]="'circle'" [tooltip]="'exp_dat*can_nam*spe_nam*exp_amo'"></v-point>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 

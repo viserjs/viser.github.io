@@ -23,13 +23,12 @@ const label = [
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data.length; else loading">
+  <div >
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" padding="0">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-polygon position="_x*_y" color="value" [label]="label"></v-polygon>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 export class AppComponent {

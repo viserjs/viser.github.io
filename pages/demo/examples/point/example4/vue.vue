@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.length">
+  <div >
     <v-chart force-fit="true" height="400" :data="data" :scale="scale">
       <v-tooltip show-title="false" />
       <v-axis data-key="GDP" :label="axisLabel" />
@@ -12,9 +12,6 @@
         tooltip="Country*Population*GDP*LifeExpectancy"
       />
     </v-chart>
-  </div>
-  <div v-else>
-    Loading ...
   </div>
 </template>
 

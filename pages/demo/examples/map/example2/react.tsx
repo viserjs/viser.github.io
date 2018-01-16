@@ -73,9 +73,6 @@ class App extends React.Component {
 
   render() {
     const { geoData, data } = this.state;
-    if (!geoData || !data) {
-      return (<div>Loading ...</div>);
-    }
 
     return (
       <div>

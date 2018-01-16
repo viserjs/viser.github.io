@@ -10,7 +10,7 @@ const DataSet = require('@antv/data-set');
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data; else loading">
+  <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[0, 20, 0]" [scale]="scale">
       <v-coord type="rect" direction="TL" ></v-coord>
       <v-tooltip [showTitle]="tooltipOpts.showTitle" [containerTpl]="tooltipOpts.containerTpl" [itemTpl]="tooltipOpts.itemTpl" [g2Tooltip]="tooltipOpts.g2Tooltip"></v-tooltip>
@@ -22,7 +22,6 @@ const DataSet = require('@antv/data-set');
       </v-view>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 

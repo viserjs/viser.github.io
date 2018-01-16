@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data">
+  <div>
     <v-chart :force-fit="true" height="400" :padding="[20, 20]" :scale="scale">
       <v-tooltip :show-title="false" />
       <v-legend data-key="trend" position="left" />
@@ -10,9 +10,6 @@
         <v-polygon :position="view1Opts.position" :v-style="view1Opts.style" :tooltip="view1Opts.tooltip" />
       </v-view>
     </v-chart>
-  </div>
-  <div v-else>
-    Loading ...
   </div>
 </template>
 

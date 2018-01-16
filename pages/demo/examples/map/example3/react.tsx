@@ -186,9 +186,6 @@ class App extends React.Component {
 
   render() {
     const {geoData, data, name} = this.state;
-    if (!geoData || !data.length) {
-      return (<div>Loading ...</div>);
-    }
 
     return (
       <div id="province" style={{width: '50%', height:'400px',position: 'absolute', right: 0,top: 0,}}>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.length" :style="style">
+  <div :style="style">
     <v-chart :force-fit="true" :height="600" :padding="[55, 20]" :data="geoData">
       <v-tooltip :show-title="false"/>
       <v-view :data="geoData" ><div></div></v-view>
@@ -7,9 +7,6 @@
         <v-polygon :position="polygonOpts.position" :label="polygonOpts.label" :v-style="polygonOpts.style" :color="polygonOpts.color"/>
       </v-view>
     </v-chart>
-  </div>
-  <div v-else>
-    Loading ...
   </div>
 </template>
 

@@ -10,7 +10,7 @@ const DataSet = require('@antv/data-set');
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data; else loading">
+  <div>
     <v-chart [forceFit]="forceFit" [height]="height" padding="10" [data]="data">
       <v-tooltip [showTitle]="false"></v-tooltip>
       <v-polygon position="x*y" color="category" [style]="{
@@ -25,7 +25,6 @@ const DataSet = require('@antv/data-set');
       }]" tooltip="symbol*name*number*atomic_mass*category"></v-polygon>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 

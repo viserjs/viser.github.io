@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data">
+  <div>
     <v-chart :force-fit="true" :height="400" :padding="[0, 20, 0]" :scale="scale">
       <v-coord type="rect" direction="TL" />
       <v-tooltip :show-title="tooltipOpts.showTitle" :container-tpl="tooltipOpts.containerTpl" :item-tpl="tooltipOpts.itemTpl" :g2-tooltip="tooltipOpts.g2Tooltip" />
