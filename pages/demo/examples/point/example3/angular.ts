@@ -9,7 +9,7 @@ import * as $ from 'jquery';
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data.length; else loading">
+  <div >
     <v-chart [forceFit]="true" [height]="400" [data]="data">
       <v-legend [reversed]="true"></v-legend>
       <v-tooltip [crosshairs]="tooltipCrosshairs"></v-tooltip>
@@ -24,7 +24,6 @@ import * as $ from 'jquery';
       <v-point color="Grade" position="Class*Score" adjust="jitter" [size]="4" [opacity]="0.65"></v-point>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {

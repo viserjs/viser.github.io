@@ -18,7 +18,7 @@ const style = {
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="edgesData.length; else loading">
+  <div >
     <v-chart [forceFit]="forceFit" [height]="height">
       <v-tooltip [showTitle]="showTitle"></v-tooltip>
       <v-view viewId="1" [data]="edgesData">
@@ -31,7 +31,6 @@ const style = {
       </v-view>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 export class AppComponent {

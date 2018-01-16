@@ -25,7 +25,7 @@ const label = ['name', {
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="edgesData.length; else loading">
+  <div >
     <v-chart [forceFit]="forceFit" [height]="height" [scale]="scale">
       <v-view viewId="1" [data]="edgesData">
         <v-coord type="polar" direction="yReverse"></v-coord>
@@ -37,7 +37,6 @@ const label = ['name', {
       </v-view>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {
