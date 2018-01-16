@@ -561,6 +561,11 @@ const examples = {
         cnName: '螺旋坐标系',
       },
       {
+        path: 'example34',
+        enName: 'stack bar with round corner',
+        cnName: '圆角堆叠柱状图',
+      },
+      {
         path: 'example35',
         enName: 'Periodic table of ele ments',
         cnName: '元素周期表',
