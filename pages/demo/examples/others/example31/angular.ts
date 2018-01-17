@@ -42,7 +42,7 @@ const axisOpts = {
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data.length; else loading">
+  <div>
     <v-chart [forceFit]="forceFit" [animate]="false" [height]="height" [padding]="[ 20, 140, 60, 50 ]" [data]="data" [scale]="scale">
       <v-legend position="right"></v-legend>
       <v-axis [dataKey]="axisOpts.dataKey" [line]="axisOpts.line"
@@ -51,7 +51,6 @@ const axisOpts = {
         [color]="'name'" [opacity]="1"></v-area>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 

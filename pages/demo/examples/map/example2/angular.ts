@@ -10,19 +10,18 @@ const DataSet = require('@antv/data-set');
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data; else loading">
+  <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[20, 20]" [scale]="scale">
       <v-tooltip [showTitle]="showTitle"></v-tooltip>
       <v-legend dataKey="trend" position="left"></v-legend>
-      <v-view viewId="1" [data]="geoData" [scale]="scale">
+      <v-view [data]="geoData" [scale]="scale">
         <v-polygon [position]="view1Opts.position" [style]="view1Opts.style" [tooltip]="view1Opts.tooltip"></v-polygon>
       </v-view>
-      <v-view viewId="2" [data]="data" [scale]="userDataScale">
+      <v-view [data]="data" [scale]="userDataScale">
         <v-polygon [position]="view2Opts.position" [opacity]="view2Opts.opacity" [color]="view2Opts.color" [animate]="view2Opts.animate" [tooltip]="view2Opts.tooltip"></v-polygon>
       </v-view>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 

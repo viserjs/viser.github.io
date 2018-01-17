@@ -35,7 +35,7 @@ const laeblFormatter = (value) => {
 @Component({
   selector: '#mount',
   template: `
-  <div *ngIf="data.length; else loading">
+  <div>
     <v-chart [forceFit]="true" [height]="400" [data]="data" [scale]="scale">
       <v-tooltip [showTitle]="false"></v-tooltip>
       <v-axis
@@ -52,7 +52,6 @@ const laeblFormatter = (value) => {
       ></v-point>
     </v-chart>
   </div>
-  <ng-template #loading>Loading ...</ng-template>
   `
 })
 class AppComponent {

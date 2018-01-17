@@ -69,7 +69,7 @@ const frontGuideStyle = {
   template: `
   <div>
     <v-chart [forceFit]="true" [height]="400" [scale]="scale">
-      <v-view [viewId]="'1'" [data]="dataBackground">
+      <v-view [data]="dataBackground">
         <v-coord
           [type]="'polar'"
           [startAngle]="-202.5"
@@ -83,7 +83,7 @@ const frontGuideStyle = {
           [size]="6"
         ></v-interval>
       </v-view>
-      <v-view [viewId]="'2'" [data]="dataBackground" [scale]="insideScale">
+      <v-view [data]="dataBackground" [scale]="insideScale">
         <v-axis [dataKey]="'value'" [show]="false" ></v-axis>
         <v-axis
           [dataKey]="'type'"
@@ -105,7 +105,7 @@ const frontGuideStyle = {
           [size]="6"
         ></v-interval>
       </v-view>
-      <v-view viewId="3" [data]="dataFront">
+      <v-view [data]="dataFront">
         <v-coord
           [type]="'polar'"
           [startAngle]="-202.5"
