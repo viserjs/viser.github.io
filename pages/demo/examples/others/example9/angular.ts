@@ -113,7 +113,7 @@ const stackInterval3Opts = {
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="80">
       <v-tooltip [showTitle]="false"></v-tooltip>
-      <v-view [data]="dv" viewId="1">
+      <v-view [data]="dv" >
         <v-coord [type]="'theta'" [innerRadius]="0.9"></v-coord>
         <v-stack-interval [position]="stackInterval1Opts.position" [color]="stackInterval1Opts.color"
           [style]="stackInterval1Opts.style" [tooltip]="stackInterval1Opts.tooltip"
@@ -121,13 +121,13 @@ const stackInterval3Opts = {
         <v-guide [type]="guideOpts.type" [position]="guideOpts.position"
           [content]="guideOpts.content" [style]="guideOpts.style"></v-guide>
       </v-view>
-      <v-view [data]="dv" viewId="2">
+      <v-view [data]="dv" >
         <v-coord [type]="'polar'" [innerRadius]="0.6"></v-coord>
         <v-stack-interval [position]="stackInterval2Opts.position" [size]="stackInterval2Opts.size"
           [color]="stackInterval2Opts.color" [tooltip]="stackInterval2Opts.tooltip"
           [label]="stackInterval2Opts.label"></v-stack-interval>
       </v-view>
-      <v-view [data]="userDv" [scale]="userScale" viewId="3">
+      <v-view [data]="userDv" [scale]="userScale" >
         <v-coord [type]="'theta'" [innerRadius]="0.75"></v-coord>
         <v-stack-interval [position]="stackInterval3Opts.position" [color]="stackInterval3Opts.color"
           [label]="stackInterval3Opts.label"
