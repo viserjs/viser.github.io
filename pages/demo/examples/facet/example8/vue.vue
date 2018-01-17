@@ -68,7 +68,7 @@
     },
     data() {
       return {
-        data: tmpData,
+        data: [],
         scale,
       };
     },

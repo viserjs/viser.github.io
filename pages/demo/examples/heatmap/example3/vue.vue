@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-chart force-fit="true" :height="height" :padding="padding" :data="data" :scale="scale">
-      <v-legend data-key="涨跌幅" offset="0" />
+      <v-legend data-key="涨跌幅" :offset="0" />
       <v-tooltip title="日期" />
-      <v-facet type="list" :fields="fields" cols="3" :padding="facetPadding" :col-title="colTitle">
+      <v-facet type="list" :fields="fields" :cols="3" :padding="facetPadding" :col-title="colTitle">
         <v-facet-view>
           <v-polygon position="day*week*日期" :color="color" :v-style="style" />
         </v-facet-view>
