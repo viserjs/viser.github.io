@@ -253,6 +253,11 @@ const examples = {
         cnName: '矩形分箱图',
       },
       {
+        path: 'example3',
+        enName: 'Heatmap calendar',
+        cnName: '日历色块图',
+      },
+      {
         path: 'example4',
         enName: 'Horizontal calendar color box',
         cnName: '水平日历色块图',
