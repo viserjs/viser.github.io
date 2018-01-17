@@ -36,7 +36,8 @@ const DataSet = require('@antv/data-set');
             }
           }]"
           [tooltip]="'capital'"
-        ></v-polygon>      </v-view>
+        ></v-polygon>
+      </v-view>
     </v-chart>
   </div>
   `

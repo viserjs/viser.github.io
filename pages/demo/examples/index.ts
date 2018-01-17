@@ -571,6 +571,11 @@ const examples = {
         cnName: '螺旋坐标系',
       },
       {
+        path: 'example30',
+        enName: 'Kernel Function Probability Density Distribution',
+        cnName: '核函数概率密度分布',
+      },
+      {
         path: 'example31',
         enName: 'streamgraph',
         cnName: 'streamgraph',

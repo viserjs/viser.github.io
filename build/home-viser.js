@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 969);
+/******/ 	return __webpack_require__(__webpack_require__.s = 977);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -17292,6 +17292,7 @@ function hasDataCondition(config) {
     if (!hasData) {
         return;
     }
+    console.log(config);
     var commonChart = new __WEBPACK_IMPORTED_MODULE_0__core_CommonChart__["a" /* default */](config);
     commonChart.render();
     return commonChart;
@@ -69555,7 +69556,7 @@ module.exports = Util;
 
 /***/ }),
 
-/***/ 969:
+/***/ 977:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
