@@ -46,6 +46,7 @@ const views = (view, facet) => {
     obj = {
       series: {
         quickType: 'point',
+        shape: 'circle',
         color: 'Species',
         position: [ facet.colField, facet.rowField ],
         opacity: 0.3,

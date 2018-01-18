@@ -8,7 +8,7 @@
       </v-view>
       <v-view :data="nodesData">
         <v-coord type="polar" direction="yReverse" />
-        <v-point position="x*y" size="value" color="id" opacity="0.5" :v-style="style" :label="label" />
+        <v-point position="x*y" size="value" color="id" opacity="0.5" :v-style="style" :label="label" shape="circle"/>
       </v-view>
     </v-chart>
   </div>

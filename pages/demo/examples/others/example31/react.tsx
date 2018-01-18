@@ -12,15 +12,17 @@ const scale = [{
 
 const legendOpts = {
   useHtml: true,
-  position: 'right',
-  'g2-legend-marker': {
-    borderRadius: 'none'
-  },
-  'g2-legend-title': {
-    fontSize: '12px',
-    fontWeight: 500,
-    margin: 0,
-    color: '#ff8800'
+  position: "right" as any,
+  legendMarker: {
+    'g2-legend-marker': {
+      borderRadius: 'none'
+    },
+    'g2-legend-title': {
+      fontSize: '12px',
+      fontWeight: 500,
+      margin: 0,
+      color: '#ff8800'
+    }
   }
 };
 

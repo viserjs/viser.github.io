@@ -4,7 +4,7 @@
     <v-tooltip />
     <v-axis />
     <v-line position="time*temperature" size="2" />
-    <v-point position="time*temperature" size="4" :v-style="pointStyle" />
+    <v-point position="time*temperature" size="4" :v-style="pointStyle" shape="circle"/>
     <v-view :data="data">
       <v-area position="time*temperature" />
     </v-view>

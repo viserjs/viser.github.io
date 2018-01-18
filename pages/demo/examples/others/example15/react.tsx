@@ -28,7 +28,7 @@ class App extends React.Component {
           <Tooltip />
           <Coord type="theta" innerRadius={0.2} startAngle={-90} endAngle={180} />
           <Bar position="term*count" color="#8543e0" shape="line" select={false} style={{ lineAppendWidth: 10 }} />
-          <Point position="term*count" color="#8543e0" />
+          <Point position="term*count" color="#8543e0" shape="circle"/>
           {
             data.map((obj: any) => {
               const position = [obj.term, 0];

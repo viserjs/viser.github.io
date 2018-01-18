@@ -21,7 +21,7 @@ import * as $ from 'jquery';
         [subTickLine]="axisClassSubTickLine"
         [grid]="axisClassGrid"
       ></v-axis>
-      <v-point color="Grade" position="Class*Score" adjust="jitter" [size]="4" [opacity]="0.65"></v-point>
+      <v-point color="Grade" position="Class*Score" adjust="jitter" [size]="4" [opacity]="0.65" shape="circle"></v-point>
     </v-chart>
   </div>
   `

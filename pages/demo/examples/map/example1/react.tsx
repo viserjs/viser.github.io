@@ -79,7 +79,10 @@ class App extends React.Component {
             }} tooltip={false} />
           </View>
           <View data={data}>
-            <Point position="x*y" size={['deaths', [2, 30]]} opacity={0.45} color="#FF2F29" tooltip="date*location*lat*lng*deaths*magnitude" />
+            <Point position="x*y" size={['deaths', [2, 30]]} opacity={0.45}
+              color="#FF2F29" tooltip="date*location*lat*lng*deaths*magnitude"
+              shape="circle"
+            />
           </View>
         </Chart>
       </div>

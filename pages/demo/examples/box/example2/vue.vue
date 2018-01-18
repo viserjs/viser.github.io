@@ -5,7 +5,7 @@
       <v-axis />
       <v-box position="x*range" :vStyle="boxStyle" :tooltip="boxTooltip" />
       <v-view :data="data" :scale="scale">
-        <v-point position="x*outliers" size="3" :active="false" />
+        <v-point position="x*outliers" size="3" :active="false" shape="circle"/>
       </v-view>
     </v-chart>
   </div>

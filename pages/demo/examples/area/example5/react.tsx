@@ -92,7 +92,7 @@ class App extends React.Component {
         <Tooltip />
         <Axis />
         <Line position="time*temperature" size={2} />
-        <Point position="time*temperature" size={4} style={pointStyle} />
+        <Point position="time*temperature" size={4} style={pointStyle} shape="circle"/>
         <View data={data}>
           <Area position="time*temperature" />
         </View>

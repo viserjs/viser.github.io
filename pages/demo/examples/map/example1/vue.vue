@@ -4,7 +4,8 @@
       <v-coord type="rect" direction="TL" />
       <v-tooltip :show-title="tooltipOpts.showTitle" :container-tpl="tooltipOpts.containerTpl" :item-tpl="tooltipOpts.itemTpl" :g2-tooltip="tooltipOpts.g2Tooltip" />
       <v-view :data="data">
-        <v-point :position="view2Opts.position" :size="view2Opts.size" :opacity="view2Opts.opacity" :color="view2Opts.color" :tooltip="view2Opts.tooltip" />
+        <v-point :position="view2Opts.position" :size="view2Opts.size" :opacity="view2Opts.opacity"
+          :color="view2Opts.color" :tooltip="view2Opts.tooltip" shape="circle"/>
       </v-view>
       <v-view :data="geoData" :scale="scale">
         <v-polygon :position="view1Opts.position" :v-style="view1Opts.style" :tooltip="view1Opts.tooltip" />

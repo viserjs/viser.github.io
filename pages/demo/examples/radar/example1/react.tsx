@@ -70,7 +70,7 @@ class App extends React.Component {
         <Legend dataKey="user" marker="circle" offset={30} />
         <Coord {...coordOpts} />
         <Line position="item*score" color="user" size={2} />
-        <Point position="item*score" color="user" size={4} />
+        <Point position="item*score" color="user" size={4} shape="circle"/>
         <Area position="item*score" color="user"/>
       </Chart>
     );

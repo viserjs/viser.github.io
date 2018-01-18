@@ -36,7 +36,7 @@ class App extends React.Component {
           <Axis />
           <Facet type="rect" fields={[null, 'clarity']}>
             <FacetView>
-              <Point position="carat*price" color="clarity" opacity={0.3} size={3} />
+              <Point position="carat*price" color="clarity" opacity={0.3} size={3} shape="circle"/>
             </FacetView>
           </Facet>
         </Chart>

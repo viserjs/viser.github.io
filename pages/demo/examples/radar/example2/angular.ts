@@ -59,7 +59,7 @@ const axis2GridOpts = {
       <v-legend dataKey="user" marker="circle" offset="30"></v-legend>
       <v-coord type="polar" radius="0.8"></v-coord>
       <v-line position="item*score" color="user" size="2"></v-line>
-      <v-point position="item*score" color="user" size="4"></v-point>
+      <v-point position="item*score" color="user" size="4" shape="circle"></v-point>
     </v-chart>
   </div>
   `
