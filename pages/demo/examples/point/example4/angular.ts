@@ -49,6 +49,7 @@ const laeblFormatter = (value) => {
         [size]="pointSize"
         [style]="pointStyle"
         tooltip="Country*Population*GDP*LifeExpectancy"
+        shape="circle"
       ></v-point>
     </v-chart>
   </div>

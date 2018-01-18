@@ -66,6 +66,7 @@ class App extends React.Component {
             stroke: val => colorMap[val],
           }]}
           tooltip="Country*Population*GDP*LifeExpectancy"
+          shape="circle"
         />
       </Chart>
     );

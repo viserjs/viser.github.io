@@ -7,7 +7,7 @@
     <v-legend data-key="user" marker="circle" offset="30" />
     <v-coord type="polar" radius="0.8" />
     <v-line position="item*score" color="user" size="2" />
-    <v-point position="item*score" color="user" size="4" />
+    <v-point position="item*score" color="user" size="4" shape="circle"/>
   </v-chart>
 </div>
 </template>

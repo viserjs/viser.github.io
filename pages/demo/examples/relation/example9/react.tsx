@@ -59,7 +59,7 @@ class App extends React.Component {
           <Edge position="x*y" shape="smooth" color="grey" opacity={0.5} tooltip="source*target" />
         </View>
         <View dataView={nodesDataView}>
-          <Point position="x*y" color="hasChildren" label={nodesLabel} />
+          <Point position="x*y" color="hasChildren" label={nodesLabel} shape="circle"/>
         </View>
       </Chart>
     );

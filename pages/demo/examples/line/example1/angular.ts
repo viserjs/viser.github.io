@@ -34,7 +34,7 @@ const scale = [{
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
       <v-line position="year*value"></v-line>
-      <v-point position="year*value"></v-point>
+      <v-point position="year*value" shape="circle"></v-point>
     </v-chart>
   </div>
   `

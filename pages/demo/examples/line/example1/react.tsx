@@ -30,7 +30,7 @@ class App extends React.Component {
         <Tooltip />
         <Axis />
         <Line position="year*value" />
-        <Point position="year*value" />
+        <Point position="year*value" shape="circle"/>
       </Chart>
     );
   }

@@ -50,7 +50,7 @@ class App extends React.Component {
         </View>
         <View data={nodesData}>
           <Coord type="polar" direction="yReverse" />
-          <Point position="x*y" size="value" color="id" opacity={0.5} style={style} label={label} />
+          <Point position="x*y" size="value" color="id" opacity={0.5} style={style} label={label} shape="circle"/>
         </View>
       </Chart>
     );

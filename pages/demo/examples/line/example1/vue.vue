@@ -4,7 +4,7 @@
       <v-tooltip />
       <v-axis />
       <v-line :position="'year*value'" />
-      <v-point :position="'year*value'" />
+      <v-point :position="'year*value'" :shape="'circle'"/>
     </v-chart>
   </div>
 </template>

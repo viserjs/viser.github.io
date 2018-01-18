@@ -14,15 +14,17 @@ const scale = [{
 
 const legendOpts = {
   useHtml: true,
-  position: 'right',
-  'g2-legend-marker': {
-    borderRadius: 'none'
-  },
-  'g2-legend-title': {
-    fontSize: '12px',
-    fontWeight: 500,
-    margin: 0,
-    color: '#ff8800'
+  position: "right" as any,
+  legendMarker: {
+    'g2-legend-marker': {
+      borderRadius: 'none'
+    },
+    'g2-legend-title': {
+      fontSize: '12px',
+      fontWeight: 500,
+      margin: 0,
+      color: '#ff8800'
+    }
   }
 };
 
@@ -44,7 +46,7 @@ const axisOpts = {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [animate]="false" [height]="height" [padding]="[ 20, 140, 60, 50 ]" [data]="data" [scale]="scale">
-      <v-legend position="right"></v-legend>
+      <v-legend [position]="legendOpts.position" [useHtml]="legendOpts.useHtml" [legendMarker]="legendOpts.legendMarker"></v-legend>
       <v-axis [dataKey]="axisOpts.dataKey" [line]="axisOpts.line"
         [tickLine]="axisOpts.tickLine" [grid]="axisOpts.grid"></v-axis>
       <v-area [position]="'year*count'" [adjust]="[ 'stack', 'symmetric' ]"
@@ -58,6 +60,7 @@ class AppComponent {
   forceFit: boolean= true;
   height: number = 400;
   data = [];
+  legendOpts = legendOpts;
   axisOpts = axisOpts;
 
   constructor() {

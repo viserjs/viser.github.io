@@ -6,7 +6,7 @@
       <v-axis />
       <v-facet type="list" :fields="['cut']" :cols="3" :padding="30">
         <v-facet-view>
-          <v-point position="carat*price" color="cut" :opacity="0.3" :size="3" />
+          <v-point position="carat*price" color="cut" opacity="0.3" size="3" shape="circle"/>
         </v-facet-view>
       </v-facet>
     </v-chart>

@@ -5,7 +5,7 @@
       <v-axis />
       <v-legend />
       <v-line :position="'month*temperature'" :color="'city'" />
-      <v-point :position="'month*temperature'" :color="'city'" :size="4" :v-style="style" />
+      <v-point :position="'month*temperature'" :color="'city'" :size="4" :v-style="style" :shape="'circle'"/>
     </v-chart>
   </div>
 </template>

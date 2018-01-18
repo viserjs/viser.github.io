@@ -18,7 +18,7 @@ const DataSet = require('@antv/data-set');
         <v-polygon [position]="view1Opts.position" [style]="view1Opts.style" [tooltip]="view1Opts.tooltip"></v-polygon>
       </v-view>
       <v-view [data]="data">
-        <v-point [position]="view2Opts.position" [size]="view2Opts.size" [opacity]="view2Opts.opacity" [color]="view2Opts.color" [tooltip]="view2Opts.tooltip"></v-point>
+        <v-point [position]="view2Opts.position" [size]="view2Opts.size" [opacity]="view2Opts.opacity" [color]="view2Opts.color" [tooltip]="view2Opts.tooltip" shape="circle"></v-point>
       </v-view>
     </v-chart>
   </div>
