@@ -68,61 +68,61 @@ const frontGuideStyle = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="true" [height]="400" [scale]="scale">
+    <v-chart [forceFit]="forceFit" height="400" [scale]="scale">
       <v-view [data]="dataBackground">
         <v-coord
-          [type]="'polar'"
-          [startAngle]="-202.5"
-          [endAngle]="22.5"
-          [innerRadius]="0.75"
-          [radius]="0.8"
+          type="polar"
+          startAngle="-202.5"
+          endAngle="22.5"
+          innerRadius="0.75"
+          radius="0.8"
         ></v-coord>
         <v-interval
-          [position]="'type*value'"
-          [color]="'#CBCBCB'"
-          [size]="6"
+          position="type*value"
+          color="#CBCBCB"
+          size="6"
         ></v-interval>
       </v-view>
       <v-view [data]="dataBackground" [scale]="insideScale">
-        <v-axis [dataKey]="'value'" [show]="false" ></v-axis>
+        <v-axis dataKey="value" show="false"></v-axis>
         <v-axis
-          [dataKey]="'type'"
-          [grid]="null"
-          [line]="null"
-          [tickLine]="null"
+          dataKey="type"
+          grid="null"
+          line="null"
+          tickLine="null"
           [label]="insideAxisLabel"
         ></v-axis>
         <v-coord
-          [type]="'polar'"
-          [startAngle]="-202.5"
-          [endAngle]="22.5"
-          [innerRadius]="0.95"
-          [radius]="0.55"
+          type="polar"
+          startAngle="-202.5"
+          endAngle="22.5"
+          innerRadius="0.95"
+          radius="0.55"
         ></v-coord>
         <v-interval
-          [position]="'type*value'"
-          [color]="'#CBCBCB'"
-          [size]="6"
+          position="type*value"
+          color="#CBCBCB"
+          size="6"
         ></v-interval>
       </v-view>
       <v-view [data]="dataFront">
         <v-coord
-          [type]="'polar'"
-          [startAngle]="-202.5"
-          [endAngle]="22.5"
-          [innerRadius]="0.75"
-          [radius]="0.8"
+          type="polar"
+          startAngle="-202.5"
+          endAngle="22.5"
+          innerRadius="0.75"
+          radius="0.8"
         ></v-coord>
         <v-interval
-          [position]="'type*value'"
+          position="type*value"
           [color]="frontIntervalColor"
-          [opacity]="1"
-          [size]="6"
+          opacity="1"
+          size="6"
         ></v-interval>
         <v-guide
-          [type]="'text'"
+          type="text"
           [position]="frontGuidePosition"
-          [content]="'26°'"
+          content="26°"
           [style]="frontGuideStyle"
         ></v-guide>
       </v-view>
@@ -130,7 +130,6 @@ const frontGuideStyle = {
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean = true;
   scale = scale;
