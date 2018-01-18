@@ -94,9 +94,9 @@ export default {
           this.$data.trend = 'down';
         } else {
           this.$data.data[0].value = nextVal;
-          this.$data.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
-          this.$data.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
-          this.$data.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];
+          this.$data.arcGuideLowEnd[0] = Math.max(0, Math.min(3, nextVal));
+          this.$data.arcGuideMidEnd[0] = Math.max(3, Math.min(6, nextVal));
+          this.$data.arcGuideHighEnd[0] = Math.max(6, Math.min(9, nextVal));
           this.$data.htmlGuideHtml = `
             <div style="width: 300px;text-align: center;">
               <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
@@ -110,9 +110,9 @@ export default {
           this.$data.trend = 'up';
         } else {
           this.$data.data[0].value = nextVal;
-          this.$data.arcGuideLowEnd = [Math.max(0, Math.min(3, nextVal)), 0.945];
-          this.$data.arcGuideMidEnd = [Math.max(3, Math.min(6, nextVal)), 0.945];
-          this.$data.arcGuideHighEnd = [Math.max(6, Math.min(9, nextVal)), 0.945];
+          this.$data.arcGuideLowEnd[0] = Math.max(0, Math.min(3, nextVal));
+          this.$data.arcGuideMidEnd[0] = Math.max(3, Math.min(6, nextVal));
+          this.$data.arcGuideHighEnd[0] = Math.max(6, Math.min(9, nextVal));
           this.$data.htmlGuideHtml = `
             <div style="width: 300px;text-align: center;">
               <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>

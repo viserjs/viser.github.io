@@ -12,7 +12,7 @@ const scale = [{
 
 const legendOpts = {
   useHtml: true,
-  position: "right" as any,
+  position: "right" as "right",
   legendMarker: {
     'g2-legend-marker': {
       borderRadius: 'none'

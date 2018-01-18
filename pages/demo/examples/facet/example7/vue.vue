@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" height="400" :data="data" :padding="padding">
+    <v-chart :force-fit="true" :height="400" :data="data" :padding="padding">
       <v-tooltip :show-title="false" />
       <v-legend data-key="cut" position="top" />
       <v-coord type="theta" />

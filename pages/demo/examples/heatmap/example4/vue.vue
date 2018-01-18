@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
-      <v-tooltip :show-title="false"/>
+      <v-tooltip :show-title="false" />
       <v-axis :data-key="axis1Opts.dataKey" :position="axis1Opts.position" :tickLine="axis1Opts.tickLine" :line="axis1Opts.line" :label="axis1Opts.label" />
       <v-axis :data-key="axis2Opts.dataKey" :grid="axis2Opts.grid" />
       <v-coord :type="'rect'" :direction="'TL'" />
