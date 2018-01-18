@@ -41,7 +41,7 @@ class App extends React.Component {
         <Axis />
         <Legend />
         <SmoothLine position="month*temperature" color="city" />
-        <Point position="month*temperature" color="city" />
+        <Point position="month*temperature" color="city" shape="circle"/>
       </Chart>
     );
   }

@@ -41,7 +41,7 @@ class App extends React.Component {
         <Axis />
         <Legend />
         <Line position="month*temperature" color="city" />
-        <Point position="month*temperature" color="city" size={4} style={{ stroke: '#fff', lineWidth: 1 }} />
+        <Point position="month*temperature" color="city" size={4} style={{ stroke: '#fff', lineWidth: 1 }} shape="circle"/>
       </Chart>
     );
   }

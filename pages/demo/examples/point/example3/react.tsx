@@ -47,6 +47,7 @@ class App extends React.Component {
           adjust="jitter"
           size={4}
           opacity={0.65}
+          shape="circle"
         />
       </Chart>
     );

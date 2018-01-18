@@ -3,7 +3,7 @@
     <v-chart force-fit="true" height="400" :data="data">
       <v-tooltip showTitle="false" :crosshairs="tooltipCrosshairs" :item-tpl="tooltipItemTpl" />
       <v-axis />
-      <v-point color="gender" position="height*weight" size="4" opacity="0.65" :tooltip="pointTooltip" />
+      <v-point color="gender" position="height*weight" size="4" opacity="0.65" :tooltip="pointTooltip" :shape="'circle'"/>
     </v-chart>
   </div>
 </template>

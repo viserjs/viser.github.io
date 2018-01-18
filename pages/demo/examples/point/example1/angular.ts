@@ -13,7 +13,7 @@ import * as $ from 'jquery';
     <v-chart [forceFit]="true" [height]="400" [data]="data">
       <v-tooltip [showTitle]="false" [crosshairs]="tooltipCrosshairs" [itemTpl]="tooltipItemTpl"></v-tooltip>
       <v-axis></v-axis>
-      <v-point position="height*weight" [size]="4" [opacity]="0.65" [tooltip]="pointTooltip"></v-point>
+      <v-point position="height*weight" [size]="4" [opacity]="0.65" [tooltip]="pointTooltip" shape="circle"></v-point>
     </v-chart>
   </div>
   `

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "http://localhost:3000/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 977);
+/******/ 	return __webpack_require__(__webpack_require__.s = 985);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -17292,7 +17292,6 @@ function hasDataCondition(config) {
     if (!hasData) {
         return;
     }
-    console.log(config);
     var commonChart = new __WEBPACK_IMPORTED_MODULE_0__core_CommonChart__["a" /* default */](config);
     commonChart.render();
     return commonChart;
@@ -68521,7 +68520,7 @@ var QUICK_TYPE = [
         type: 'point',
         series: {
             gemo: 'point',
-            shape: 'circle'
+            shape: 'hollowCircle'
         }
     },
     {
@@ -68637,6 +68636,14 @@ var process = function (series, coord) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_EventUtils__ = __webpack_require__(15);
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 
 
 function setHighlight(item) {
@@ -68668,6 +68675,8 @@ var process = function (chart, config) {
                 __WEBPACK_IMPORTED_MODULE_1__utils_EventUtils__["b" /* setSEvent */](chart, 'legend', item, res[item]);
             }
         }
+        res = __assign({}, res, res.legendMarker || {});
+        res = __WEBPACK_IMPORTED_MODULE_0_lodash__["omit"](res, ['legendMarker']);
         if (res.dataKey) {
             if (res.show === false) {
                 return chart.legend(res.dataKey, false);
@@ -69556,7 +69565,7 @@ module.exports = Util;
 
 /***/ }),
 
-/***/ 977:
+/***/ 985:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

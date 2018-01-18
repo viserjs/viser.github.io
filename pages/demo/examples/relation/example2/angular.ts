@@ -27,7 +27,7 @@ const style = {
       </v-view>
       <v-view [data]="nodesData">
         <v-coord type="polar" direction="yReverse"></v-coord>
-        <v-point position="x*y" size="value" color="id" opacity="0.5" [style]="style" [label]="label"></v-point>
+        <v-point position="x*y" size="value" color="id" opacity="0.5" [style]="style" [label]="label" shape="circle"></v-point>
       </v-view>
     </v-chart>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-chart :force-fit="true" :animate="false" :height="height" :padding="[ 20, 140, 60, 50 ]" :data="data" :scale="scale" >
-      <v-legend :position="'right'"/>
+      <v-legend :position="legendOpts.position" :use-html="legendOpts.useHtml" :legend-marker="legendOpts.legendMarker"/>
       <v-axis :data-key="axisOpts.dataKey" :line="axisOpts.line" :tick-line="axisOpts.tickLine" :grid="axisOpts.grid"/>
       <v-area :position="'year*count'" :adjust="[ 'stack', 'symmetric' ]" :color="'name'" :opacity="1"/>
     </v-chart>
@@ -19,15 +19,17 @@ const scale = [{
 
 const legendOpts = {
   useHtml: true,
-  position: 'right',
-  'g2-legend-marker': {
-    borderRadius: 'none'
-  },
-  'g2-legend-title': {
-    fontSize: '12px',
-    fontWeight: 500,
-    margin: 0,
-    color: '#ff8800'
+  position: "right",
+  legendMarker: {
+    'g2-legend-marker': {
+      borderRadius: 'none'
+    },
+    'g2-legend-title': {
+      fontSize: '12px',
+      fontWeight: 500,
+      margin: 0,
+      color: '#ff8800'
+    }
   }
 };
 

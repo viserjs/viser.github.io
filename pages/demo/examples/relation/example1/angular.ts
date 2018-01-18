@@ -29,7 +29,7 @@ const style = {
         <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target"></v-edge>
       </v-view>
       <v-view [data]="nodesData">
-        <v-point position="x*y" size="value" color="id" opacity="0.5" [style]="style" [label]="label"></v-point>
+        <v-point position="x*y" size="value" color="id" opacity="0.5" [style]="style" [label]="label" shape="circle"></v-point>
       </v-view>
     </v-chart>
   </div>

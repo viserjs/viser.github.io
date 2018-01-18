@@ -40,6 +40,7 @@ class App extends React.Component {
               value: height + '(cm), ' + weight + '(kg)'
             };
           }]}
+          shape="circle"
         />
       </Chart>
     );
