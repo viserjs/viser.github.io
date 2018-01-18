@@ -2,10 +2,10 @@
   <div>
     <v-chart :forceFit="true" :height="400" :padding="[20, 80, 80, 80]" :data="data" :scale="scale">
       <v-tooltip />
-      <v-axis :data-key="'date'" :show="false"/>
-      <v-axis :data-key="'actual'" :show="false"/>
+      <v-axis :data-key="'date'" :show="false" />
+      <v-axis :data-key="'actual'" :show="false" />
       <v-axis :data-key="axisOpts.dataKey" :line="axisOpts.line" :tick-line="axisOpts.tickLine"
-        :position="axisOpts.position" :label="axisOpts.label"/>
+        :position="axisOpts.position" :label="axisOpts.label" />
       <v-interval :position="'date*expected'" :color="'#752136'" :shape="'borderRadius'"
         :tooltip="'expected'" :opacity="0.6" />
       <v-interval :position="'date*actual'" :color="'#db0d2d'" :tooltip="'actual'"
@@ -17,7 +17,7 @@
           }
         }]"
       />
-      <v-guide :type="'text'" :position="[ 'min', 'max']" :content="'活动'"
+      <v-guide :type="'text'" :position="['min', 'max']" :content="'活动'"
         :v-style="{
           fill: '#ff2c55',
           fontSize: 20,
@@ -25,7 +25,7 @@
           textBaseline: 'top'
         }"
       />
-      <v-guide :type="'text'" :position="[ 'max', 'max']" :content="'67 / 900 千卡'"
+      <v-guide :type="'text'" :position="['max', 'max']" :content="'67 / 900 千卡'"
         :v-style="{
           fill: '#cbcbcb',
           fontSize: 20,

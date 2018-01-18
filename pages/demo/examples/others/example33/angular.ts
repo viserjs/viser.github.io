@@ -83,7 +83,7 @@ const axisOpts = {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[20, 80, 80, 80]" [data]="data" [scale]="scale">
-      <v-tooltip ></v-tooltip>
+      <v-tooltip></v-tooltip>
       <v-axis [dataKey]="'date'" [show]="false"></v-axis>
       <v-axis [dataKey]="'actual'" [show]="false"></v-axis>
       <v-axis [dataKey]="axisOpts.dataKey" [line]="axisOpts.line" [tickLine]="axisOpts.tickLine"
@@ -92,14 +92,14 @@ const axisOpts = {
         tooltip="expected" opacity="0.6"></v-interval>
       <v-interval position="date*actual" color="#db0d2d" tooltip="actual"
         [shape]="shape"></v-interval>
-      <v-guide type="text" [position]="[ 'min', 'max']" content="活动"
+      <v-guide type="text" [position]="['min', 'max']" content="活动"
         [style]="{
           fill: '#ff2c55',
           fontSize: 20,
           fontWeight: 'bold',
           textBaseline: 'top'
         }"></v-guide>
-      <v-guide type="text" [position]="[ 'max', 'max']" content="67 / 900 千卡"
+      <v-guide type="text" [position]="['max', 'max']" content="67 / 900 千卡"
         [style]="{
           fill: '#cbcbcb',
           fontSize: 20,

@@ -15,7 +15,7 @@ class App extends React.Component {
       const dv = new DataSet.View().source(data, {
         type: 'hex'
       });
-      this.setState({data: dv});
+      this.setState({ data: dv });
     })
   }
 
@@ -24,7 +24,7 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={400} padding={10} data={data}>
-          <Tooltip showTitle={false}/>
+          <Tooltip showTitle={false} />
           <Polygon position='x*y' color='category' style={{
             stroke: 'white',
             lineWidth: 2
@@ -34,7 +34,7 @@ class App extends React.Component {
               fontSize: 14,
               fontWeight: 500
             }
-          }]} tooltip='symbol*name*number*atomic_mass*category'/>
+          }]} tooltip='symbol*name*number*atomic_mass*category' />
         </Chart>
       </div>
     );

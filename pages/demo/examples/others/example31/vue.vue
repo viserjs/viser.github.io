@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :animate="false" :height="height" :padding="[ 20, 140, 60, 50 ]" :data="data" :scale="scale" >
+    <v-chart :force-fit="true" :animate="false" :height="height" :padding="[20, 140, 60, 50]" :data="data" :scale="scale" >
       <v-legend :position="legendOpts.position" :use-html="legendOpts.useHtml" :legend-marker="legendOpts.legendMarker"/>
       <v-axis :data-key="axisOpts.dataKey" :line="axisOpts.line" :tick-line="axisOpts.tickLine" :grid="axisOpts.grid"/>
-      <v-area :position="'year*count'" :adjust="[ 'stack', 'symmetric' ]" :color="'name'" :opacity="1"/>
+      <v-area position="year*count" :adjust="['stack', 'symmetric']" color="name" :opacity="1"/>
     </v-chart>
   </div>
 </template>

@@ -4,7 +4,7 @@
       <v-legend />
       <v-axis :data-key="axis1Opts.dataKey" :grid="axis1Opts.grid" :label="axis1Opts.label"/>
       <v-axis :data-key="axis2Opts.dataKey" :grid="axis2Opts.grid" :label="axis2Opts.label" :line="axis2Opts.line"/>
-      <v-stack-interval :position="'year*sales'" :color="'type'" :size="35"
+      <v-stack-interval position="year*sales" color="type" :size="35"
         :shape="['type', function(val) {
           if (val === 'Profit') { // 顶部圆角
             return 'bottom';

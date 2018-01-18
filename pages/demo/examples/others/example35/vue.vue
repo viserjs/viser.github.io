@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="400" :padding="10" :data="data">
-      <v-tooltip :show-title="false"/>
-      <v-polygon :position="'x*y'" :color="'category'" :v-style="{
+    <v-chart forceFit="true" :height="400" :padding="10" :data="data">
+      <v-tooltip showTitle="false"/>
+      <v-polygon position="x*y" color="category" :v-style="{
         stroke: 'white',
         lineWidth: 2
       }" :label="['symbol', {

@@ -84,11 +84,11 @@ class App extends React.Component {
         <Chart forceFit height={400} padding={[20, 80, 80, 80]} data={activeData} scale={scale}>
           <Tooltip />
           <Axis {...axisOpts} />
-          <Axis dataKey="date" show={false}/>
-          <Axis dataKey="actual" show={false}/>
-          <Interval position="date*expected" color="#752136" shape="borderRadius" tooltip="expected" opacity={0.6}/>
+          <Axis dataKey="date" show={false} />
+          <Axis dataKey="actual" show={false} />
+          <Interval position="date*expected" color="#752136" shape="borderRadius" tooltip="expected" opacity={0.6} />
           <Interval position="date*actual" color="#db0d2d" tooltip="actual"
-            shape={['date*actual', function(date, val) {
+            shape={['date*actual', (date, val) => {
               if (val === 0) {
                 return;
               } else {
@@ -97,7 +97,7 @@ class App extends React.Component {
             }]}
           />
 
-          <Guide type="text" position={[ 'min', 'max']} content="活动"
+          <Guide type="text" position={['min', 'max']} content="活动"
             style={{
               fill: '#ff2c55',
               fontSize: 20,
@@ -105,7 +105,7 @@ class App extends React.Component {
               textBaseline: 'top'
             }}
           />
-          <Guide type="text" position={[ 'max', 'max']} content="67 / 900 千卡"
+          <Guide type="text" position={['max', 'max']} content="67 / 900 千卡"
             style={{
               fill: '#cbcbcb',
               fontSize: 20,

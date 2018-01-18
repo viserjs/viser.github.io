@@ -74,10 +74,10 @@ class App extends React.Component {
     const  { data } = this.state;
     return (
       <div>
-        <Chart forceFit height={400} animate={false} padding={[ 20, 140, 60, 50 ]} data={data} scale={scale}>
-          <Legend {...legendOpts}/>
-          <Axis {...axisOpts}/>
-          <Area position='year*count' adjust={[ 'stack', 'symmetric' ]} color='name' opacity={1}/>
+        <Chart forceFit height={400} animate={false} padding={[20, 140, 60, 50]} data={data} scale={scale}>
+          <Legend {...legendOpts} />
+          <Axis {...axisOpts} />
+          <Area position='year*count' adjust={['stack', 'symmetric']} color='name' opacity={1} />
         </Chart>
       </div>
     );

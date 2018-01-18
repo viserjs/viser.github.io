@@ -45,12 +45,12 @@ const axisOpts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [animate]="false" [height]="height" [padding]="[ 20, 140, 60, 50 ]" [data]="data" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [animate]="false" [height]="height" [padding]="[20, 140, 60, 50]" [data]="data" [scale]="scale">
       <v-legend [position]="legendOpts.position" [useHtml]="legendOpts.useHtml" [legendMarker]="legendOpts.legendMarker"></v-legend>
       <v-axis [dataKey]="axisOpts.dataKey" [line]="axisOpts.line"
         [tickLine]="axisOpts.tickLine" [grid]="axisOpts.grid"></v-axis>
-      <v-area [position]="'year*count'" [adjust]="[ 'stack', 'symmetric' ]"
-        [color]="'name'" [opacity]="1"></v-area>
+      <v-area position="year*count" [adjust]="['stack', 'symmetric']"
+        color="name" [opacity]="1"></v-area>
     </v-chart>
   </div>
   `

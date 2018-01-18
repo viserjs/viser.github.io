@@ -12,7 +12,7 @@ const DataSet = require('@antv/data-set');
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" padding="10" [data]="data">
-      <v-tooltip [showTitle]="false"></v-tooltip>
+      <v-tooltip showTitle="false"></v-tooltip>
       <v-polygon position="x*y" color="category" [style]="{
         stroke: 'white',
         lineWidth: 2
@@ -27,11 +27,11 @@ const DataSet = require('@antv/data-set');
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
-  data = null;
+  data = [];
+
   constructor() {
     $.getJSON('/assets/data/periodic-table.hex.json', (data) => {
       const dv = new DataSet.View().source(data, {
