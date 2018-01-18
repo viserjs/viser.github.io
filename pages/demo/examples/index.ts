@@ -537,7 +537,7 @@ const examples = {
       },
       // {
       //   path: 'example11',
-      //   enName: 'double ring',
+      //   enName: 'Double Ring',
       //   cnName: '双环图',
       // },
       {
