@@ -27,7 +27,7 @@ const scale = [{
       <v-axis></v-axis>
       <v-facet type="list" [fields]="fields" cols="3" padding="30">
         <v-facet-view>
-          <v-point position="carat*price" color="cut" opacity="0.3" size="3" shape="circle"></v-point>
+          <v-point position="carat*price" color="cut" [opacity]="0.3" [size]="3" shape="circle"></v-point>
         </v-facet-view>
       </v-facet>
     </v-chart>

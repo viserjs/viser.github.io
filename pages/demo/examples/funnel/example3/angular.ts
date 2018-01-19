@@ -68,12 +68,12 @@ const pyramidOpts1 = {
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="expectData">
       <v-tooltip [showTitle]="showTitle" [itemTpl]="tooltipOpts.itemTpl"></v-tooltip>
-      <v-coord type='rect' direction='LT' ></v-coord>
+      <v-coord type='rect' direction='LT'></v-coord>
       <v-pyramid [position]="pyramidOpts.position" [color]="pyramidOpts.color"
           [label]="pyramidOpts.label" [tooltip]="pyramidOpts.tooltip" [opacity]="pyramidOpts.opacity"></v-pyramid>
       <v-view [data]="actualData">
         <v-tooltip></v-tooltip>
-        <v-coord type='rect' direction='LT' ></v-coord>
+        <v-coord type='rect' direction='LT'></v-coord>
         <v-pyramid [position]="pyramidOpts1.position" [color]="pyramidOpts1.color"
         [style]="pyramidOpts1.style" [tooltip]="pyramidOpts1.tooltip" [opacity]="pyramidOpts1.opacity"></v-pyramid>
       </v-view>

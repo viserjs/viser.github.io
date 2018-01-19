@@ -52,7 +52,7 @@ const scale = [{
       <v-tooltip [crosshairs]="crosshairs"></v-tooltip>
       <v-axis dataKey="value"></v-axis>
       <v-legend></v-legend>
-      <v-line position="year*value" size="2" color="type"></v-line>
+      <v-line position="year*value" [size]="2" color="type"></v-line>
       <v-area position="year*value" color="type"></v-area>
     </v-chart>
   </div>

@@ -45,7 +45,7 @@ const scale = [{
       <v-axis></v-axis>
       <v-legend></v-legend>
       <v-line position="month*temperature" color="city"></v-line>
-      <v-point position="month*temperature" color="city" size="4" [style]="style" shape="circle"></v-point>
+      <v-point position="month*temperature" color="city" [size]="4" [style]="style" shape="circle"></v-point>
     </v-chart>
   </div>
   `

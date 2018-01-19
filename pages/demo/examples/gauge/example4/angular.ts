@@ -72,15 +72,15 @@ const frontGuideStyle = {
       <v-view [data]="dataBackground">
         <v-coord
           type="polar"
-          startAngle="-202.5"
-          endAngle="22.5"
-          innerRadius="0.75"
-          radius="0.8"
+          [startAngle]="-202.5"
+          [endAngle]="22.5"
+          [innerRadius]="0.75"
+          [radius]="0.8"
         ></v-coord>
         <v-interval
           position="type*value"
           color="#CBCBCB"
-          size="6"
+          [size]="6"
         ></v-interval>
       </v-view>
       <v-view [data]="dataBackground" [scale]="insideScale">
@@ -94,30 +94,30 @@ const frontGuideStyle = {
         ></v-axis>
         <v-coord
           type="polar"
-          startAngle="-202.5"
-          endAngle="22.5"
-          innerRadius="0.95"
-          radius="0.55"
+          [startAngle]="-202.5"
+          [endAngle]="22.5"
+          [innerRadius]="0.95"
+          [radius]="0.55"
         ></v-coord>
         <v-interval
           position="type*value"
           color="#CBCBCB"
-          size="6"
+          [size]="6"
         ></v-interval>
       </v-view>
       <v-view [data]="dataFront">
         <v-coord
           type="polar"
-          startAngle="-202.5"
-          endAngle="22.5"
-          innerRadius="0.75"
-          radius="0.8"
+          [startAngle]="-202.5"
+          [endAngle]="22.5"
+          [innerRadius]="0.75"
+          [radius]="0.8"
         ></v-coord>
         <v-interval
           position="type*value"
           [color]="frontIntervalColor"
-          opacity="1"
-          size="6"
+          [opacity]="1"
+          [size]="6"
         ></v-interval>
         <v-guide
           type="text"

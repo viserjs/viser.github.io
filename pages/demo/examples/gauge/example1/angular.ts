@@ -76,7 +76,7 @@ const data = [
       ></v-series>
       <v-guide
         type="arc"
-        zIndex="0"
+        [zIndex]="0"
         [top]="false"
         [start]="arcGuide1Start"
         [end]="arcGuide1End"
@@ -84,7 +84,7 @@ const data = [
       ></v-guide>
       <v-guide
         type="arc"
-        zIndex="1"
+        [zIndex]="1"
         [start]="arcGuide2Start"
         [end]="arcGuide2End"
         [style]="arcGuide2Style"

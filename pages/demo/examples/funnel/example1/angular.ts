@@ -61,7 +61,7 @@ const funnelOpts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[ 20, 120, 95 ]" [data]="data" [scale]="scale" >
+    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[20, 120, 95]" [data]="data" [scale]="scale" >
       <v-tooltip [showTitle]="showTitle" [itemTpl]="tooltipOpts.itemTpl" ></v-tooltip>
       <v-legend></v-legend>
       <v-coord type='rect' direction='LT'></v-coord>

@@ -63,7 +63,7 @@ const scale = [{
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
       <v-legend></v-legend>
-      <v-line position="year*percent" size="2" color="country" adjust="stack"></v-line>
+      <v-line position="year*percent" [size]="2" color="country" adjust="stack"></v-line>
       <v-stack-area position="year*percent" color="country"></v-stack-area>
     </v-chart>
   </div>

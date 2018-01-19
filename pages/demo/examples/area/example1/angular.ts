@@ -33,14 +33,14 @@ const scale = [{
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
-      <v-line position="year*value" size="2"></v-line>
+      <v-line position="year*value" [size]="2"></v-line>
       <v-area position="year*value"></v-area>
     </v-chart>
   </div>
   `
 })
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 400;
   data = data;
   scale = scale;

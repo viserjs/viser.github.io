@@ -96,8 +96,8 @@ const pointStyle = {
     <v-chart [forceFit]="forceFit" [height]="height" [scale]="scale" [data]="averages">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
-      <v-line position="time*temperature" size="2"></v-line>
-      <v-point position="time*temperature" size="4" [style]="pointStyle" shape="circle"></v-point>
+      <v-line position="time*temperature" [size]="2"></v-line>
+      <v-point position="time*temperature" [size]="4" [style]="pointStyle" shape="circle"></v-point>
       <v-view [data]="data">
         <v-area position="time*temperature"></v-area>
       </v-view>

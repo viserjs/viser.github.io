@@ -84,7 +84,7 @@ const facetOpts = {
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="80" [data]="data" [scale]="scale">
       <v-tooltip [crosshairs]="tooltipOpts.crosshairs" [showTitle]="tooltipOpts.showTitle" [itemTpl]="tooltipOpts.itemTpl"></v-tooltip>
-      <v-coord [type]="'theta'" [radius]="0.8" [innerRadius]="0.7"></v-coord>
+      <v-coord type="theta" [radius]="0.8" [innerRadius]="0.7"></v-coord>
       <v-legend [reversed]="true"></v-legend>
       <v-facet [type]="facetOpts.type" [fields]="facetOpts.fields"
         [transpose]="facetOpts.transpose"
