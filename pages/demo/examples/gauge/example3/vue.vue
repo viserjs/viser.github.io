@@ -100,7 +100,7 @@ export default {
           this.$data.htmlGuideHtml = `
             <div style="width: 300px;text-align: center;">
               <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
-              <p style="font-size: 36px;color: #545454;margin: 0;">${(nextVal) * 10}%</p>
+              <p style="font-size: 36px;color: #545454;margin: 0;">${Math.ceil(nextVal * 10)}%</p>
             </div>
           `;
         }
@@ -116,7 +116,7 @@ export default {
           this.$data.htmlGuideHtml = `
             <div style="width: 300px;text-align: center;">
               <p style="font-size: 20px;color: #545454;margin: 0;">合格率</p>
-              <p style="font-size: 36px;color: #545454;margin: 0;">${(nextVal) * 10}%</p>
+              <p style="font-size: 36px;color: #545454;margin: 0;">${Math.ceil(nextVal * 10)}%</p>
             </div>
           `;
         }
