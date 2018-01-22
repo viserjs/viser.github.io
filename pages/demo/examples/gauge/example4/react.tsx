@@ -65,7 +65,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={400} scale={scale}>
+        <Chart forceFit height={400} scale={scale} animate={false}>
           <View data={dataBackground}>
             <Coord
               type="polar"

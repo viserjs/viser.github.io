@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="400" :scale="scale">
-      <v-view :view-id="'1'" :data="dataBackground">
+    <v-chart :force-fit="true" :height="400" :scale="scale" :animate="false">
+      <v-view :view-id="'1'" :data="dataBackground" :animate="false">
         <v-coord
           :type="'polar'"
           :start-angle="-202.5"
@@ -15,7 +15,7 @@
           :size="6"
         />
       </v-view>
-      <v-view :view-id="'2'" :data="dataBackground" :scale="insideScale">
+      <v-view :view-id="'2'" :data="dataBackground" :scale="insideScale" :animate="false">
         <v-axis :data-key="'value'" :show="false" />
         <v-axis
           :data-key="'type'"
@@ -37,7 +37,7 @@
           :size="6"
         />
       </v-view>
-      <v-view :view-id="3" :data="dataFront">
+      <v-view :view-id="3" :data="dataFront" :animate="false">
         <v-coord
           :type="'polar'"
           :start-angle="-202.5"
