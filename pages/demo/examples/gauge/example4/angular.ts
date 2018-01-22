@@ -84,7 +84,7 @@ const frontGuideStyle = {
         ></v-interval>
       </v-view>
       <v-view [data]="dataBackground" [scale]="insideScale">
-        <v-axis dataKey="value" show="false"></v-axis>
+        <v-axis dataKey="value" [show]="show"></v-axis>
         <v-axis
           dataKey="type"
           grid="null"
@@ -132,6 +132,7 @@ const frontGuideStyle = {
 })
 class AppComponent {
   forceFit: boolean = true;
+  show: boolean = false;
   scale = scale;
   dataBackground = dataBackground;
   dataFront = dataFront;
