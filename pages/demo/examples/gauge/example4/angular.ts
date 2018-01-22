@@ -68,7 +68,7 @@ const frontGuideStyle = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" height="400" [scale]="scale">
+    <v-chart [forceFit]="forceFit" height="400" [scale]="scale" [animate]="false">
       <v-view [data]="dataBackground">
         <v-coord
           type="polar"
@@ -84,12 +84,12 @@ const frontGuideStyle = {
         ></v-interval>
       </v-view>
       <v-view [data]="dataBackground" [scale]="insideScale">
-        <v-axis dataKey="value" show="false"></v-axis>
+        <v-axis dataKey="value" [show]="false"></v-axis>
         <v-axis
           dataKey="type"
-          grid="null"
-          line="null"
-          tickLine="null"
+          [grid]="null"
+          [line]="null"
+          [tickLine]="null"
           [label]="insideAxisLabel"
         ></v-axis>
         <v-coord
