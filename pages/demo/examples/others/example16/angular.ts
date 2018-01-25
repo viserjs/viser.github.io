@@ -13,10 +13,10 @@ const values = ['Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'];
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" padding="40" [data]="data">
-      <v-tooltip showTitle="null"></v-tooltip>
+      <v-tooltip [showTitle]="null"></v-tooltip>
       <v-coord type="polar" innerRadius="0.2"></v-coord>
-      <v-axis dataKey="week" grid="null" line="null" tickLine="null" label="null"></v-axis>
-      <v-axis dataKey="time" grid="null" line="null" tickLine="null" [label]="timeAxis"></v-axis>
+      <v-axis dataKey="week" [grid]="null" [line]="null" [tickLine]="null" [label]="null"></v-axis>
+      <v-axis dataKey="time" [grid]="null" [line]="null" [tickLine]="null" [label]="timeAxis"></v-axis>
       <v-polygon
         position="time*week"
         [color]="['value', '#BAE7FF-#1890FF-#0050B3']"
