@@ -5,6 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 import * as $ from 'jquery';
+
 const data = [];
 const n = 31;
 for (let i = 0; i < 372; i++) {
@@ -34,11 +35,11 @@ const scale = [{
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[0, 60, 30, 0 ]" [data]="data" [scale]="scale">
+    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[0, 60, 30, 0]" [data]="data" [scale]="scale">
       <v-tooltip [showTitle]="null"></v-tooltip>
       <v-coord type="helix" [startAngle]="startAngle" [endAngle]="endAngle"></v-coord>
-      <v-axis [dataKey]="'time'" [line]="null"></v-axis>
-      <v-interval [position]="'time*value'" [color]="['value', '#ffffff-#1890FF']" [size]="0.45"></v-interval>
+      <v-axis dataKey="time" [line]="null"></v-axis>
+      <v-interval position="time*value" [color]="['value', '#ffffff-#1890FF']" [size]="0.45"></v-interval>
     </v-chart>
   </div>
   `

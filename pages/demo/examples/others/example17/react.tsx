@@ -28,15 +28,14 @@ const scale = [{
 }];
 
 class App extends React.Component {
-
   render() {
     return (
       <div>
-        <Chart forceFit height={400} padding={[ 0, 60, 30, 0 ]} data={data} scale={scale}>
-          <Tooltip showTitle={null}/>
+        <Chart forceFit height={400} padding={[0, 60, 30, 0]} data={data} scale={scale}>
+          <Tooltip showTitle={null} />
           <Coord type="helix" startAngle={0.5 * Math.PI} endAngle={12.5 * Math.PI} />
-          <Axis dataKey="time" line={null}/>
-          <Interval position="time*value" color={['value', '#ffffff-#1890FF']} size={0.45}/>
+          <Axis dataKey="time" line={null} />
+          <Interval position="time*value" color={['value', '#ffffff-#1890FF']} size={0.45} />
         </Chart>
       </div>
     );
