@@ -40,13 +40,12 @@ const padding = [0];
   <div >
     <v-chart [width]="640" [height]="400" [data]="data" [scale]="scale" [padding]="padding">
       <v-tooltip [showTitle]="false"></v-tooltip>
-      <v-coord [type]="'rect'" [direction]="'TL'"></v-coord>
-      <v-point [position]="'x*y'" [color]="'text'" [shape]="'cloud'" [tooltip]="'value*category'"></v-point>
+      <v-coord type="rect" direction="TL"></v-coord>
+      <v-point position="x*y" color="text" shape="cloud" tooltip="value*category"></v-point>
     </v-chart>
   </div>
   `
 })
-
 class AppComponent {
   scale = scale;
   data = [];

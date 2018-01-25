@@ -84,8 +84,8 @@ const axisOpts = {
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[20, 80, 80, 80]" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
-      <v-axis [dataKey]="'date'" [show]="false"></v-axis>
-      <v-axis [dataKey]="'actual'" [show]="false"></v-axis>
+      <v-axis dataKey="date" [show]="false"></v-axis>
+      <v-axis dataKey="actual" [show]="false"></v-axis>
       <v-axis [dataKey]="axisOpts.dataKey" [line]="axisOpts.line" [tickLine]="axisOpts.tickLine"
         [position]="axisOpts.position" [label]="axisOpts.label"></v-axis>
       <v-interval position="date*expected" color="#752136" shape="borderRadius"

@@ -2,11 +2,11 @@
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale" :plotBackground="plotBackground" >
       <v-tooltip :title="'country'"/>
-      <v-axis :data-key="axis1Opts.dataKey" :label="axis1Opts.label" :grid="axis1Opts.grid"/>
-      <v-axis :data-key="axis2Opts.dataKey" :title="axis2Opts.title" :label="axis2Opts.label"/>
-      <v-point :position="pointOpts.position" :color="pointOpts.color" :size="pointOpts.size" :label="pointOpts.label" :opacity="pointOpts.opacity" :shape="pointOpts.shape" :tooltip="pointOpts.tooltip" :v-style="pointOpts.style"/>
-      <v-guide :type="guide1Opts.type" :top="guide1Opts.top" :start="guide1Opts.start" :end="guide1Opts.end" :text="guide1Opts.text"/>
-      <v-guide :type="guide2Opts.type" :top="guide2Opts.top" :start="guide2Opts.start" :end="guide2Opts.end" :text="guide2Opts.text"/>
+      <v-axis :data-key="axis1Opts.dataKey" :label="axis1Opts.label" :grid="axis1Opts.grid" />
+      <v-axis :data-key="axis2Opts.dataKey" :title="axis2Opts.title" :label="axis2Opts.label" />
+      <v-point :position="pointOpts.position" :color="pointOpts.color" :size="pointOpts.size" :label="pointOpts.label" :opacity="pointOpts.opacity" :shape="pointOpts.shape" :tooltip="pointOpts.tooltip" :v-style="pointOpts.style" />
+      <v-guide :type="guide1Opts.type" :top="guide1Opts.top" :start="guide1Opts.start" :end="guide1Opts.end" :text="guide1Opts.text" />
+      <v-guide :type="guide2Opts.type" :top="guide2Opts.top" :start="guide2Opts.start" :end="guide2Opts.end" :text="guide2Opts.text" />
     </v-chart>
   </div>
 </template>

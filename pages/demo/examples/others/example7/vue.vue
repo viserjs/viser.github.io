@@ -2,9 +2,9 @@
   <div>
     <v-chart :force-fit="true" :height="height" :padding="[ 40, 100, 80, 80 ]" :data="data" :scale="scale">
       <v-tooltip />
-      <v-coord :type="'polar'"/>
+      <v-coord type="polar" />
       <v-axis :data-key="axis1Opts.dataKey" :grid="axis1Opts.grid" />
-      <v-jitter-point :position="jitterPointOpts.position" :color="jitterPointOpts.color" :shape="jitterPointOpts.shape" :opacity="jitterPointOpts.opacity"/>
+      <v-jitter-point :position="jitterPointOpts.position" :color="jitterPointOpts.color" :shape="jitterPointOpts.shape" :opacity="jitterPointOpts.opacity" />
     </v-chart>
   </div>
 </template>
@@ -42,6 +42,7 @@ export default {
       this.$data.data = data;
     });
   },
+
   data() {
     return {
       data: [],

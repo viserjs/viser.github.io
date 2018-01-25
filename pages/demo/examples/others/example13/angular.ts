@@ -58,7 +58,7 @@ const interval1Opts = {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[ 40, 40, 130, 40 ]" [data]="data" [scale]="scale">
-      <v-coord [type]="'polar'"></v-coord>
+      <v-coord type="polar"></v-coord>
       <v-axis [dataKey]="axis1Opts.dataKey" [label]="axis1Opts.label"
         [tickLine]="axis1Opts.tickLine" [line]="axis1Opts.line"></v-axis>
       <v-axis [dataKey]="axis2Opts.dataKey" [grid]="axis2Opts.grid"

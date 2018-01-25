@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :padding="80" :data="dv" :scale="scale">
-      <v-tooltip :show-title="false"/>
-      <v-coord :type="'theta'" :radius="0.8" :innerRadius="0.7"/>
-      <v-axis :data-key="'percent'" :title="{offset: 40, text: '百分比'}"/>
-      <v-legend :data-key="'key'"/>
+      <v-tooltip :show-title="false" />
+      <v-coord type="theta" :radius="0.8" :innerRadius="0.7" />
+      <v-axis dataKey="percent" :title="{offset: 40, text: '百分比'}" />
+      <v-legend dataKey="key" />
       <v-stack-interval :shape="stackInterval1Opts.shape" :position="stackInterval1Opts.position"
         :color="stackInterval1Opts.color" />
     </v-chart>

@@ -96,24 +96,25 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={600} padding={80}>
-          <Tooltip showTitle={false}/>
+          <Tooltip showTitle={false} />
           <View data={dv}>
-            <Coord type="theta" innerRadius={0.9}/>
-            <StackInterval {...stackInterval1Opts}/>
+            <Coord type="theta" innerRadius={0.9} />
+            <StackInterval {...stackInterval1Opts} />
             <Guide type="text" position={[ '50%', '50%' ]} content="24 hours"
               style={{
                 lineHeight: 240,
                 fontSize: '30',
                 fill: '#262626',
-                textAlign: 'center'}}/>
+                textAlign: 'center'}}
+            />
           </View>
           <View data={dv}>
-            <Coord type="polar" innerRadius={0.9}/>
-            <StackInterval {...stackInterval2Opts}/>
+            <Coord type="polar" innerRadius={0.9} />
+            <StackInterval {...stackInterval2Opts} />
           </View>
           <View data={userDv} scale={userScale}>
-            <Coord type="theta" innerRadius={0.75}/>
-            <StackInterval {...stackInterval3Opts}/>
+            <Coord type="theta" innerRadius={0.75} />
+            <StackInterval {...stackInterval3Opts} />
           </View>
         </Chart>
       </div>

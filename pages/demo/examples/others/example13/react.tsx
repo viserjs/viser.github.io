@@ -55,12 +55,12 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={600} padding={[ 40, 40, 130, 40 ]} data={data} scale={scale}>
-          <Coord type="polar"/>
-          <Axis {...axis1Opts}/>
-          <Axis {...axis2Opts}/>
-          <Legend dataKey="country" itemWidth={50}/>
-          <Axis dataKey="percent" title={{ offset: 40, text: '百分比'}}/>
-          <Interval {...interval1Opts}/>
+          <Coord type="polar" />
+          <Axis {...axis1Opts} />
+          <Axis {...axis2Opts} />
+          <Legend dataKey="country" itemWidth={50} />
+          <Axis dataKey="percent" title={{ offset: 40, text: '百分比'}} />
+          <Interval {...interval1Opts} />
         </Chart>
       </div>
     );

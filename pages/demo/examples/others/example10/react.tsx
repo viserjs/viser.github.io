@@ -87,11 +87,11 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={500} padding={80} data={dv} scale={scale}>
-          <Tooltip showTitle={false}/>
-          <Coord type="theta" radius={0.8} innerRadius={0.7}/>
+          <Tooltip showTitle={false} />
+          <Coord type="theta" radius={0.8} innerRadius={0.7} />
           <Legend />
-          <Axis dataKey="percent" title={{ offset: 40, text: '百分比'}}/>
-          <StackInterval {...stackInterval1Opts}/>
+          <Axis dataKey="percent" title={{ offset: 40, text: '百分比'}} />
+          <StackInterval {...stackInterval1Opts} />
         </Chart>
       </div>
     );

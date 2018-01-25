@@ -4,6 +4,7 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { registerShape, ViserModule } from 'viser-ng';
+
 registerShape('point', 'image', {
   drawShape: function(cfg: any, container: any) {
     cfg.points = this.parsePoints(cfg.points);
@@ -67,7 +68,7 @@ const seriesOpts = {
   label: ['value', {
     offset: -20,
     textStyle: {
-      fontSize:16, // 文本大小
+      fontSize:16,
     }
   }]
 };

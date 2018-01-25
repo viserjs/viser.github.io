@@ -2,6 +2,7 @@ import { Chart, Axis, Legend, Tooltip, Coord, Interval, Guide } from 'viser-reac
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import * as _ from 'lodash';
+
 const data = [
   {"question":"问题 1","percent":0.21},
   {"question":"问题 2","percent":0.40},
@@ -38,15 +39,17 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={600} padding={[ 40, 40, 130, 40 ]} data={data} scale={scale}>
-          <Tooltip title="question"/>
-          <Coord type="polar" innerRadius={0.1} direction="rotate"/>
-          <Interval {...interval1Opts}/>
+          <Tooltip title="question" />
+          <Coord type="polar" innerRadius={0.1} direction="rotate" />
+          <Interval {...interval1Opts} />
           {
             data.map((obj: any) => {
               const position = [ obj.question, 0 ];
               const content = obj.question + ' ';
 
-              return (<Guide type="text" position={position} content={content} style={{textAlign: 'right'}}/>)
+              return (
+                <Guide type="text" position={position} content={content} style={{textAlign: 'right'}} />
+              );
             })
           }
         </Chart>

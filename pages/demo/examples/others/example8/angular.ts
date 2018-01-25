@@ -77,14 +77,13 @@ const opts = {
     }
   }]
 };
-
 @Component({
   selector: '#mount',
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[ 20, 30, 30, 20 ]" [data]="data">
       <v-tooltip [showTitle]="false"></v-tooltip>
-      <v-coord [type]="'theta'" [radius]="0.8"></v-coord>
+      <v-coord type="theta" [radius]="0.8"></v-coord>
       <v-stack-interval [position]="opts.position" [shape]="opts.shape" [color]="opts.color" [label]="opts.label"></v-stack-interval>
     </v-chart>
   </div>
@@ -92,7 +91,7 @@ const opts = {
 })
 
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 600;
   data = data;
   opts = opts;

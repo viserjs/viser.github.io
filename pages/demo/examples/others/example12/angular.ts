@@ -41,24 +41,22 @@ const stackInterval1Opts = {
   }
 };
 
-
 @Component({
   selector: '#mount',
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="80" [data]="dv">
-      <v-coord [type]="'polar'" [innerRadius]="0.1"></v-coord>
-      <v-axis [dataKey]="'percent'" [title]="{offset: 40, text: '百分比'}"></v-axis>
-      <v-legend [dataKey]="'难民类型'" [position]="'bottom'"></v-legend>
+      <v-coord type="polar" [innerRadius]="0.1"></v-coord>
+      <v-axis dataKey="percent" [title]="{offset: 40, text: '百分比'}"></v-axis>
+      <v-legend dataKey="难民类型" position="bottom"></v-legend>
       <v-stack-interval [position]="stackInterval1Opts.position" [color]="stackInterval1Opts.color"
         [style]="stackInterval1Opts.style"></v-stack-interval>
     </v-chart>
   </div>
   `
 })
-
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 600;
   dv = dv;
   stackInterval1Opts = stackInterval1Opts;

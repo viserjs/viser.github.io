@@ -59,7 +59,7 @@ const axis2Opts = {
       <v-tooltip [showTitle]="false"></v-tooltip>
       <v-axis [dataKey]="axis1Opts.dataKey" [label]="axis1Opts.label" [grid]="axis1Opts.grid"></v-axis>
       <v-axis [dataKey]="axis2Opts.dataKey" [title]="axis2Opts.title" [label]="axis2Opts.label"></v-axis>
-      <v-point [position]="'exp_dat*exp_amo'" [size]="['exp_amo', [ 1, 10 ]]" [size]="pointOpts.size" [opacity]="'exp_amo'" [shape]="'circle'" [tooltip]="'exp_dat*can_nam*spe_nam*exp_amo'"></v-point>
+      <v-point position="exp_dat*exp_amo" [size]="['exp_amo', [ 1, 10 ]]" [size]="pointOpts.size" opacity="exp_amo" shape="circle" tooltip="exp_dat*can_nam*spe_nam*exp_amo"></v-point>
     </v-chart>
   </div>
   `

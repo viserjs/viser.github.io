@@ -27,10 +27,10 @@ class App extends React.Component {
     const  { data, dv } = this.state;
     return (
       <div>
-        <Chart forceFit height={400} data={data} >
-          <Legend offset={45}/>
+        <Chart forceFit height={400} data={data}>
+          <Legend offset={45} />
           <Axis />
-          <Point position="carat*price"/>
+          <Point position="carat*price" />
           <View data={dv}>
             <Heatmap position="carat*price" color={['density', 'blue-cyan-lime-yellow-red']}/>
           </View>

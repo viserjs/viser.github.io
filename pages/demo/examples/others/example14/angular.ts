@@ -36,19 +36,19 @@ const interval1Opts = {
   }],
 };
 
-
 @Component({
   selector: '#mount',
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[ 40, 40, 130, 40 ]" [data]="data" [scale]="scale">
-      <v-tooltip title="'question'"></v-tooltip>
+      <v-tooltip title="question"></v-tooltip>
       <v-coord type="polar" innerRadius="0.1" direction="rotate"></v-coord>
       <v-interval [position]="interval1Opts.position" [color]="interval1Opts.color"
         [tooltip]="interval1Opts.tooltip" [label]="interval1Opts.label"></v-interval>
       <v-guide *ngFor="let obj of data"
         type="text"
-        [position]="this.getPosition(obj)" [content]="this.getContent(obj)"
+        [position]="this.getPosition(obj)"
+        [content]="this.getContent(obj)"
         [style]="{
           textAlign: 'right'
         }">
@@ -57,7 +57,6 @@ const interval1Opts = {
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean = true;
   height: number = 600;

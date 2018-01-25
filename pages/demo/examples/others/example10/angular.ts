@@ -58,7 +58,6 @@ registerShape('interval', 'burstPie', {
   }
 });
 
-
 const data = [
   { value: 0.5, key: '男' },
   { value: 0.4, key: '女' },
@@ -91,18 +90,17 @@ const stackInterval1Opts = {
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="80" [data]="dv" [scale]="scale">
       <v-tooltip [showTitle]="false"></v-tooltip>
-      <v-coord [type]="'theta'" [radius]="0.8" [innerRadius]="0.7"></v-coord>
-      <v-axis [dataKey]="'percent'" [title]="{offset: 40, text: '百分比'}"></v-axis>
-      <v-legend [dataKey]="'percent'"></v-legend>
+      <v-coord type="theta" [radius]="0.8" [innerRadius]="0.7"></v-coord>
+      <v-axis dataKey="percent" [title]="{offset: 40, text: '百分比'}"></v-axis>
+      <v-legend dataKey="percent"></v-legend>
       <v-stack-interval [shape]="stackInterval1Opts.shape" [position]="stackInterval1Opts.position"
         [color]="stackInterval1Opts.color"></v-stack-interval>
     </v-chart>
   </div>
   `
 })
-
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 500;
   dv = dv;
   scale = scale;

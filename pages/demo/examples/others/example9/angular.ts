@@ -106,29 +106,28 @@ const stackInterval3Opts = {
   select: false,
 };
 
-
 @Component({
   selector: '#mount',
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="80">
       <v-tooltip [showTitle]="false"></v-tooltip>
-      <v-view [data]="dv" >
-        <v-coord [type]="'theta'" [innerRadius]="0.9"></v-coord>
+      <v-view [data]="dv">
+        <v-coord type="theta" [innerRadius]="0.9"></v-coord>
         <v-stack-interval [position]="stackInterval1Opts.position" [color]="stackInterval1Opts.color"
           [style]="stackInterval1Opts.style" [tooltip]="stackInterval1Opts.tooltip"
           [select]="stackInterval1Opts.select"></v-stack-interval>
         <v-guide [type]="guideOpts.type" [position]="guideOpts.position"
           [content]="guideOpts.content" [style]="guideOpts.style"></v-guide>
       </v-view>
-      <v-view [data]="dv" >
-        <v-coord [type]="'polar'" [innerRadius]="0.6"></v-coord>
+      <v-view [data]="dv">
+        <v-coord type="polar" [innerRadius]="0.6"></v-coord>
         <v-stack-interval [position]="stackInterval2Opts.position" [size]="stackInterval2Opts.size"
           [color]="stackInterval2Opts.color" [tooltip]="stackInterval2Opts.tooltip"
           [label]="stackInterval2Opts.label"></v-stack-interval>
       </v-view>
-      <v-view [data]="userDv" [scale]="userScale" >
-        <v-coord [type]="'theta'" [innerRadius]="0.75"></v-coord>
+      <v-view [data]="userDv" [scale]="userScale">
+        <v-coord type="theta" [innerRadius]="0.75"></v-coord>
         <v-stack-interval [position]="stackInterval3Opts.position" [color]="stackInterval3Opts.color"
           [label]="stackInterval3Opts.label"
           [select]="stackInterval3Opts.select"></v-stack-interval>
@@ -139,7 +138,7 @@ const stackInterval3Opts = {
 })
 
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 600;
   dv = dv;
   stackInterval1Opts = stackInterval1Opts;

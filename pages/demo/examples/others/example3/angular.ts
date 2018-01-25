@@ -129,7 +129,7 @@ const guide2Opts = {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale" [plotBackground]="plotBackground">
-      <v-tooltip title="'country'"></v-tooltip>
+      <v-tooltip title="country"></v-tooltip>
       <v-axis [dataKey]="axis1Opts.dataKey" [label]="axis1Opts.label" [grid]="axis1Opts.grid"></v-axis>
       <v-axis [dataKey]="axis2Opts.dataKey" [title]="axis2Opts.title" [label]="axis2Opts.label"></v-axis>
       <v-point [position]="pointOpts.position" [color]="pointOpts.color" [size]="pointOpts.size" [label]="pointOpts.label" [opacity]="pointOpts.opacity" [shape]="pointOpts.shape" [tooltip]="pointOpts.tooltip" [style]="pointOpts.style"></v-point>
@@ -141,7 +141,7 @@ const guide2Opts = {
 })
 
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 600;
   data = data;
   scale = scale;

@@ -3,8 +3,8 @@
     <v-chart :force-fit="true" :height="height" :padding="[20, 60, 40, 100]" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis :data-key="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid" :label="axis1Opts.label" />
-      <v-axis :data-key="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine"/>
-      <v-point :position="pointOpts.position" :size="pointOpts.size" :color="pointOpts.color" :shape="pointOpts.shape"/>
+      <v-axis :data-key="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine" />
+      <v-point :position="pointOpts.position" :size="pointOpts.size" :color="pointOpts.color" :shape="pointOpts.shape" />
     </v-chart>
   </div>
 </template>

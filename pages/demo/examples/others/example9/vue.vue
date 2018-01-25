@@ -1,25 +1,25 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :padding="80">
-      <v-tooltip :show-title="false"/>
+      <v-tooltip :show-title="false" />
       <v-view :data="dv">
-        <v-coord :type="'theta'" :innerRadius="0.9"/>
+        <v-coord type="theta" :innerRadius="0.9" />
         <v-stack-interval :position="stackInterval1Opts.position" :color="stackInterval1Opts.color"
           :v-style="stackInterval1Opts.style" :tooltip="stackInterval1Opts.tooltip"
-          :select="stackInterval1Opts.select"/>
+          :select="stackInterval1Opts.select" />
         <v-guide :type="guideOpts.type" :position="guideOpts.position"
-          :content="guideOpts.content" :v-style="guideOpts.style"/>
+          :content="guideOpts.content" :v-style="guideOpts.style" />
       </v-view>
       <v-view :data="dv">
-        <v-coord :type="'polar'" :innerRadius="0.6"/>
+        <v-coord type="polar" :innerRadius="0.6" />
         <v-stack-interval :position="stackInterval2Opts.position" :size="stackInterval2Opts.size"
           :color="stackInterval2Opts.color" :tooltip="stackInterval2Opts.tooltip"
-          :label="stackInterval2Opts.label"/>
+          :label="stackInterval2Opts.label" />
         <v-guide />
       </v-view>
       <v-view :data="userDv" :scale="userScale">
-        <v-coord :type="'theta'" :innerRadius="0.75"/>
-        <v-stack-interval :position="stackInterval3Opts.position" :color="stackInterval3Opts.color" :label="stackInterval3Opts.color" :select="stackInterval3Opts.color"/>
+        <v-coord type="theta" :innerRadius="0.75" />
+        <v-stack-interval :position="stackInterval3Opts.position" :color="stackInterval3Opts.color" :label="stackInterval3Opts.color" :select="stackInterval3Opts.color" />
         <v-guide />
       </v-view>
     </v-chart>

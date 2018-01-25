@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :padding="[ 20, 30, 30, 20 ]" :data="data">
-      <v-tooltip :show-title="false"/>
-      <v-coord :type="'theta'" :radius="0.8"/>
-      <v-stack-interval :position="opts.position" :shape="opts.shape" :color="opts.color" :label="opts.label"/>
+      <v-tooltip :show-title="false" />
+      <v-coord type="theta" :radius="0.8" />
+      <v-stack-interval :position="opts.position" :shape="opts.shape" :color="opts.color" :label="opts.label" />
     </v-chart>
   </div>
 </template>

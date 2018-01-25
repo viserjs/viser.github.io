@@ -35,14 +35,13 @@ const jitterPointOpts = {
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[ 40, 100, 80, 80 ]" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
-      <v-coord [type]="'polar'"></v-coord>
+      <v-coord type="polar"></v-coord>
       <v-axis [dataKey]="axis1Opts.dataKey" [grid]="axis1Opts.grid"></v-axis>
       <v-jitter-point [position]="jitterPointOpts.position" [color]="jitterPointOpts.color" [shape]="jitterPointOpts.shape" [opacity]="jitterPointOpts.opacity"></v-jitter-point>
     </v-chart>
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean= true;
   height: number = 600;

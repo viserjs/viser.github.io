@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-chart :width="640" :height="400" :padding="[0]" :data="data" :scale="scale">
-      <v-tooltip :show-title="false"/>
-      <v-coord :type="'rect'" :direction="'TL'"/>
-      <v-point :position="'x*y'" :color="'category'" :shape="'cloud'" :tooltip="'value*category'"/>
+      <v-tooltip :show-title="false" />
+      <v-coord type="rect" direction="TL" />
+      <v-point position="x*y" color="category" shape="cloud" tooltip="value*category" />
     </v-chart>
   </div>
 </template>

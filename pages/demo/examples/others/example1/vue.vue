@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale" >
-      <v-tooltip :showTitle="false"/>
-      <v-axis :data-key="axis1Opts.dataKey" :label="axis1Opts.label" :grid="axis1Opts.grid"/>
-      <v-axis :data-key="axis2Opts.dataKey" :title="axis2Opts.title" :label="axis2Opts.label"/>
-      <v-point :position="'exp_dat*exp_amo'" :size="['exp_amo', [ 1, 10 ]]" :opacity="'exp_amo'" :shape="'circle'" :tooltip="'exp_dat*can_nam*spe_nam*exp_amo'" />
+      <v-tooltip :showTitle="false" />
+      <v-axis :data-key="axis1Opts.dataKey" :label="axis1Opts.label" :grid="axis1Opts.grid" />
+      <v-axis :data-key="axis2Opts.dataKey" :title="axis2Opts.title" :label="axis2Opts.label" />
+      <v-point position="exp_dat*exp_amo" :size="['exp_amo', [ 1, 10 ]]" opacity="exp_amo" :shape="'circle'" :tooltip="'exp_dat*can_nam*spe_nam*exp_amo'" />
     </v-chart>
   </div>
 </template>

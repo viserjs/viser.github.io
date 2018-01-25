@@ -96,7 +96,6 @@ class App extends React.Component {
               }
             }]}
           />
-
           <Guide type="text" position={['min', 'max']} content="活动"
             style={{
               fill: '#ff2c55',

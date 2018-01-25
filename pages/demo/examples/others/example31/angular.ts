@@ -14,7 +14,7 @@ const scale = [{
 
 const legendOpts = {
   useHtml: true,
-  position: "right" as any,
+  position: 'right' as any,
   legendMarker: {
     'g2-legend-marker': {
       borderRadius: 'none'
@@ -55,9 +55,8 @@ const axisOpts = {
   </div>
   `
 })
-
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 400;
   data = [];
   legendOpts = legendOpts;

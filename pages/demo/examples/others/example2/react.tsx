@@ -78,8 +78,8 @@ class App extends React.Component {
       <div>
         <Chart forceFit height={600} data={data} scale={scale}>
           <Tooltip />
-          <Axis dataKey={'value'} show={false} />
-          <Series {...seriesOpts}/>
+          <Axis dataKey="value" show={false} />
+          <Series {...seriesOpts} />
         </Chart>
       </div>
     );

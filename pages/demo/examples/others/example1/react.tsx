@@ -73,10 +73,10 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={600} data={data} scale={scale}>
-          <Tooltip showTitle={false}/>
-          <Axis {...axis1Opts}/>
-          <Axis {...axis2Opts}/>
-          <Point position='exp_dat*exp_amo' size={['exp_amo', [ 1, 10 ]]} opacity='exp_amo' shape='circle' tooltip='exp_dat*can_nam*spe_nam*exp_amo'/>
+          <Tooltip showTitle={false} />
+          <Axis {...axis1Opts} />
+          <Axis {...axis2Opts} />
+          <Point position='exp_dat*exp_amo' size={['exp_amo', [ 1, 10 ]]} opacity='exp_amo' shape='circle' tooltip='exp_dat*can_nam*spe_nam*exp_amo' />
         </Chart>
       </div>
     );

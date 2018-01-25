@@ -2,7 +2,7 @@
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale" >
       <v-tooltip />
-      <v-axis :data-key="'value'" :show="false"/>
+      <v-axis dataKey="value" :show="false" />
       <v-series :gemo="seriesOpts.gemo" :position="seriesOpts.position" :size="seriesOpts.size" :color="seriesOpts.color" :shape="seriesOpts.shape" :label="seriesOpts.label" />
     </v-chart>
   </div>

@@ -2,10 +2,10 @@
   <div>
     <v-chart :force-fit="true" :height="height" :data="data">
       <v-axis />
-      <v-point :position="'carat*price'"/>
-      <v-view :view-id="'2'" :data="dv" >
-        <v-legend :offset="45"/>
-        <v-heatmap :position="'carat*price'" :color="['density', 'blue-cyan-lime-yellow-red']"/>
+      <v-point position="carat*price" />
+      <v-view :data="dv" >
+        <v-legend :offset="45" />
+        <v-heatmap position="carat*price" :color="['density', 'blue-cyan-lime-yellow-red']" />
       </v-view>
     </v-chart>
   </div>
