@@ -1,10 +1,10 @@
 <template>
 <div>
-  <v-chart :force-fit="true" :height="height" :data="averages" :scale="scale">
+  <v-chart :forceFit="true" :height="height" :data="averages" :scale="scale">
     <v-tooltip />
     <v-axis />
-    <v-line position="time*temperature" size="2" />
-    <v-point position="time*temperature" size="4" :v-style="pointStyle" shape="circle"/>
+    <v-line position="time*temperature" :size="2" />
+    <v-point position="time*temperature" :size="4" :vStyle="pointStyle" shape="circle" />
     <v-view :data="data">
       <v-area position="time*temperature" />
     </v-view>

@@ -36,14 +36,9 @@ const data = dv.rows;
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
-      <v-coord [type]="'theta'"></v-coord>
-      <v-pie
-        [position]="'percent'"
-        [color]="'item'"
-        [style]="pieStyle"
-        [label]="labelConfig"
-      ></v-pie>
-      <v-legend [dataKey]="'item'"></v-legend>
+      <v-coord type="theta"></v-coord>
+      <v-pie position="percent" color="item" [style]="pieStyle" [label]="labelConfig"></v-pie>
+      <v-legend dataKey="item"></v-legend>
     </v-chart>
   </div>
   `

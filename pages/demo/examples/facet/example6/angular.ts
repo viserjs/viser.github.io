@@ -43,9 +43,9 @@ const views = (view, facet) => {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="400" [data]="data" [scale]="scale">
-      <v-tooltip crosshairs="false"></v-tooltip>
+      <v-tooltip [crosshairs]="false"></v-tooltip>
       <v-legend dataKey="cut" position="top"></v-legend>
-      <v-axis dataKey="cut" [label]="axisNull" [tickLine]="axisNull"></v-axis>
+      <v-axis dataKey="cut" [label]="null" [tickLine]="null"></v-axis>
       <v-facet type="tree" [fields]="fields" [line]="line" [lineSmooth]="lineSmooth" [views]="views"></v-facet>
     </v-chart>
   </div>

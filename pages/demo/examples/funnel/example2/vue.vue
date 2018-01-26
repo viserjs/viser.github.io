@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
-      <v-tooltip :show-title="false" :item-tpl="tooltipOpts.itemTpl" />
+      <v-tooltip :show-title="false" :itemTpl="tooltipOpts.itemTpl" />
       <v-legend />
-      <v-coord type='rect' direction='LT' />
+      <v-coord type="rect" direction="LT" />
       <v-pyramid :position="funnelOpts.position" :color="funnelOpts.color" :label="funnelOpts.label" :tooltip="funnelOpts.tooltip" :shape="funnelOpts.shape" />
     </v-chart>
   </div>

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
       <v-legend />
-      <v-stack-bar position="year*percent" color="country" :v-style="stackBarStyle" />
+      <v-stack-bar position="year*percent" color="country" :vStyle="stackBarStyle" />
     </v-chart>
   </div>
 </template>

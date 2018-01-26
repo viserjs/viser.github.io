@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip :crosshairs="tooltipOpts.crosshairs" />
-      <v-axis data-key="mean" :show="false" />
-      <v-axis data-key="stockRange" :show="false" />
+      <v-axis dataKey="mean" :show="false" />
+      <v-axis dataKey="stockRange" :show="false" />
       <v-area position="date*range" />
       <v-candle position="date*stockRange" :color="color" tooltip="start*end*highest*lowest" />
       <v-line position="date*mean" color="#FACC14" />

@@ -2,9 +2,9 @@
   <div>
     <v-chart :force-fit="true" :height="400" :data="data" :scale="scale">
       <v-tooltip :crosshairs="false" />
-      <v-legend data-key="cut" position="top" />
-      <v-axis data-key="cut" :label="null" :tick-line="null" />
-      <v-facet type="tree" :fields="['clarity']" :line="{ stroke: '#c0d0e0' }" :line-smooth="true" :views="views" />
+      <v-legend dataKey="cut" position="top" />
+      <v-axis data-key="cut" :label="null" :tickLine="null" />
+      <v-facet type="tree" :fields="['clarity']" :line="{ stroke: '#c0d0e0' }" :lineSmooth="true" :views="views" />
     </v-chart>
   </div>
 </template>

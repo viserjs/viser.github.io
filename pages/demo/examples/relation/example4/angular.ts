@@ -42,7 +42,7 @@ const polygonLabel = [
     <v-chart [forceFit]="forceFit" [height]="height" [scale]="scale" [padding]="padding">
       <v-tooltip showTitle="false"></v-tooltip>
       <v-view [data]="edgesData" [scale]="scale">
-        <v-sankey position="x*y" color="#bbb" opacity="0.6" [tooltip]="tooltip" [style]="sankeyStyle"></v-sankey>
+        <v-sankey position="x*y" color="#bbb" [opacity]="0.6" [tooltip]="tooltip" [style]="sankeyStyle"></v-sankey>
       </v-view>
       <v-view [data]="nodesData" [scale]="scale">
         <v-polygon position="x*y" color="name" [style]="polygonStyle" [label]="polygonLabel" tooltip="false"></v-polygon>

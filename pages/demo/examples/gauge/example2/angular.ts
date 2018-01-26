@@ -72,7 +72,6 @@ const data = [
         color="#1890FF"
         [active]="false"
       ></v-series>
-
       <v-guide
         type="line"
         [start]="lineGuide1Start"

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <v-chart force-fit="true" height="500">
-      <v-tooltip show-title="false" />
+    <v-chart :forceFit="true" height="500">
+      <v-tooltip :showTitle="false" />
       <v-view :data="edgesData">
         <v-coord type="polar" direction="yReverse" />
-        <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target" />
+        <v-edge position="x*y" shape="arc" color="source" :opacity="0.5" tooltip="source*target" />
       </v-view>
       <v-view :data="nodesData">
         <v-coord type="polar" direction="yReverse" />
-        <v-point position="x*y" size="value" color="id" opacity="0.5" :v-style="style" :label="label" shape="circle"/>
+        <v-point position="x*y" size="value" color="id" :opacity="0.5" :v-style="style" :label="label" shape="circle" />
       </v-view>
     </v-chart>
   </div>

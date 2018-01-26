@@ -23,11 +23,11 @@ const style = {
       <v-tooltip [showTitle]="showTitle"></v-tooltip>
       <v-view [data]="edgesData">
         <v-coord type="polar" direction="yReverse"></v-coord>
-        <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target"></v-edge>
+        <v-edge position="x*y" shape="arc" color="source" [opacity]="0.5" tooltip="source*target"></v-edge>
       </v-view>
       <v-view [data]="nodesData">
         <v-coord type="polar" direction="yReverse"></v-coord>
-        <v-point position="x*y" size="value" color="id" opacity="0.5" [style]="style" [label]="label" shape="circle"></v-point>
+        <v-point position="x*y" size="value" color="id" [opacity]="0.5" [style]="style" [label]="label" shape="circle"></v-point>
       </v-view>
     </v-chart>
   </div>

@@ -18,9 +18,9 @@ const color = ['value', '#BAE7FF-#1890FF-#0050B3'];
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" padding="0">
-      <v-tooltip showTitle="false"></v-tooltip>
-      <v-coord type="polar" innerRadius="0.3"></v-coord>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [padding]="0">
+      <v-tooltip [showTitle]="false"></v-tooltip>
+      <v-coord type="polar" [innerRadius]="0.3"></v-coord>
       <v-polygon position="x*y" [color]="color" active="false" [style]="style" tooltip="label*sum"></v-polygon>
     </v-chart>
   </div>

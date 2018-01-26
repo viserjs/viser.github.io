@@ -14,16 +14,17 @@ const DataSet = require('@antv/data-set');
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="20" [scale]="scale">
       <v-tooltip [showTitle]="showTitle"></v-tooltip>
       <v-coord></v-coord>
-      <v-view [data]="bgData" >
-        <v-polygon [position]="'x*y'" [color]="'grey'" [opacity]="0.5"
+      <v-view [data]="bgData">
+        <v-polygon position="x*y" color="grey" [opacity]="0.5"
           [style]="{
             stroke: 'white',
             lineWidth: 1
-          }" [tooltip]="'key'"
+          }"
+          tooltip="key"
         ></v-polygon>
       </v-view>
-      <v-view [data]="data" >
-        <v-polygon [position]="'x*y'" [color]="'#2FC25B'"
+      <v-view [data]="data">
+        <v-polygon position="x*y" color="#2FC25B"
           [style]="{
             stroke: 'white',
             lineWidth: 5
@@ -35,14 +36,13 @@ const DataSet = require('@antv/data-set');
                 fontWeight: 500
             }
           }]"
-          [tooltip]="'capital'"
+          tooltip="capital"
         ></v-polygon>
       </v-view>
     </v-chart>
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean = true;
   height: number = 400;

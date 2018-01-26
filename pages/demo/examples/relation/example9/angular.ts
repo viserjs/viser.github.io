@@ -84,7 +84,7 @@ const label = ['name', {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
-      <v-tooltip showTitle="false" itemTpl="itemTpl"></v-tooltip>
+      <v-tooltip [showTitle]="false" itemTpl="itemTpl"></v-tooltip>
       <v-polygon position="x*y" color="name" [tooltip]="tooltip" [style]="style" [label]="label"></v-polygon>
     </v-chart>
   </div>

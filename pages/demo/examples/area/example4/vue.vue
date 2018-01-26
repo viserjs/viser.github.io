@@ -1,7 +1,7 @@
 export const template =
 `<template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
       <v-legend />

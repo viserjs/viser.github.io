@@ -24,7 +24,6 @@ const DataSet = require('@antv/data-set');
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean = true;
   height: number = 400;

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data">
+    <v-chart :forceFit="true" :height="height" :data="data">
       <v-coord type="rect" direction="LB" />
       <v-tooltip />
       <v-legend />
-      <v-axis data-key="State" :label="label" />
+      <v-axis dataKey="State" :label="label" />
       <v-stack-bar position="State*人口数量" color="年龄段" />
     </v-chart>
   </div>

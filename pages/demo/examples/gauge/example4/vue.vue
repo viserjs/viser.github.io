@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-chart :force-fit="true" :height="400" :scale="scale" :animate="false">
-      <v-view :view-id="'1'" :data="dataBackground" :animate="false">
+      <v-view :data="dataBackground" :animate="false">
         <v-coord
-          :type="'polar'"
-          :start-angle="-202.5"
-          :end-angle="22.5"
-          :inner-radius="0.75"
+          type="polar"
+          :startAngle="-202.5"
+          :endAngle="22.5"
+          :innerRadius="0.75"
           :radius="0.8"
         />
         <v-interval
@@ -15,20 +15,20 @@
           :size="6"
         />
       </v-view>
-      <v-view :view-id="'2'" :data="dataBackground" :scale="insideScale" :animate="false">
-        <v-axis :data-key="'value'" :show="false" />
+      <v-view :data="dataBackground" :scale="insideScale" :animate="false">
+        <v-axis dataKey="value" :show="false" />
         <v-axis
-          :data-key="'type'"
+          dataKey="type"
           :grid="null"
           :line="null"
           :tickLine="null"
           :label="insideAxisLabel"
         />
         <v-coord
-          :type="'polar'"
-          :start-angle="-202.5"
-          :end-angle="22.5"
-          :inner-radius="0.95"
+          type="polar"
+          :startAngle="-202.5"
+          :endAngle="22.5"
+          :innerRadius="0.95"
           :radius="0.55"
         />
         <v-interval
@@ -37,12 +37,12 @@
           :size="6"
         />
       </v-view>
-      <v-view :view-id="3" :data="dataFront" :animate="false">
+      <v-view :data="dataFront" :animate="false">
         <v-coord
           :type="'polar'"
-          :start-angle="-202.5"
-          :end-angle="22.5"
-          :inner-radius="0.75"
+          :startAngle="-202.5"
+          :endAngle="22.5"
+          :innerRadius="0.75"
           :radius="0.8"
         />
         <v-interval
@@ -55,7 +55,7 @@
           :type="'text'"
           :position="frontGuidePosition"
           :content="'26°'"
-          :v-style="frontGuideStyle"
+          :vStyle="frontGuideStyle"
         />
       </v-view>
     </v-chart>

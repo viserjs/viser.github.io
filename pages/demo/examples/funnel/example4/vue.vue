@@ -1,10 +1,11 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :padding="80" :data="data" :scale="scale">
-      <v-tooltip :crosshairs="tooltipOpts.crosshairs" :show-title="tooltipOpts.showTitle" :item-tpl="tooltipOpts.itemTpl"/>
-      <v-coord :type="'theta'" :radius="0.8" :innerRadius="0.7"/>
-      <v-legend :reversed="true"/>
-      <v-facet :type="facetOpts.type" :fields="facetOpts.fields"
+    <v-chart :forceFit="true" :height="height" :padding="80" :data="data" :scale="scale">
+      <v-tooltip :crosshairs="tooltipOpts.crosshairs" :showTitle="tooltipOpts.showTitle" :itemTpl="tooltipOpts.itemTpl" />
+      <v-coord type="theta" :radius="0.8" :innerRadius="0.7" />
+      <v-legend :reversed="true" />
+      <v-facet :type="facetOpts.type"
+        :fields="facetOpts.fields"
         :transpose="facetOpts.transpose"
         :padding="facetOpts.padding"
         :eachView="facetOpts.eachView"
@@ -27,7 +28,7 @@ const data = [
   { action: '完成', visitor: 80, site: '站点2' }
 ];
 
-data.sort(function(obj1, obj2){ // 从小到大
+data.sort((obj1, obj2) => {
   return obj1.visitor - obj2.visitor;
 });
 

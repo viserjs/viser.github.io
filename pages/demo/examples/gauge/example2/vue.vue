@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
       <v-coord type="polar" :startAngle="-202.5" :endAngle="22.5" :radius="0.75"></v-coord>
       <v-axis
         dataKey="value"
@@ -18,7 +18,6 @@
         color="#1890FF"
         :active="false"
       ></v-series>
-
       <v-guide
         type="line"
         :start="lineGuide1Start"
@@ -37,21 +36,20 @@
         :end="lineGuide3End"
         :lineStyle="lineGuide3LineStyle"
       ></v-guide>
-
       <v-guide
         type="arc"
         :zIndex="0"
         :top="false"
         :start="arcGuide1Start"
         :end="arcGuide1End"
-        :v-style="arcGuide1Style"
+        :vStyle="arcGuide1Style"
       ></v-guide>
       <v-guide
         type="arc"
         :zIndex="1"
         :start="arcGuide2Start"
         :end="arcGuide2End"
-        :v-style="arcGuide2Style"
+        :vStyle="arcGuide2Style"
       ></v-guide>
       <v-guide
         type="html"

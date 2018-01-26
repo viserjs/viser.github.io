@@ -61,11 +61,10 @@ class App extends React.Component {
         <Chart forceFit height={400} padding={[ 20, 120, 95 ]} data={data} scale={scale}>
           <Tooltip {...tooltipOpts} />
           <Legend />
-          <Coord type='rect' direction='LT' />
+          <Coord type="rect" direction="LT" />
           <Pyramid {...funnelOpts} />
           {
             data.map((obj: any) => {
-              console.log(obj);
               const content = parseInt(String(obj.percent * 100)) + '%';
               return (<Guide type="text" top={true} position={{
                 action: obj.action,

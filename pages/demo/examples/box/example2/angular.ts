@@ -74,7 +74,7 @@ const boxTooltip = ['x*low*q1*median*q3*high', (x, low, q1, median, q3, high) =>
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" >
+    <v-chart [forceFit]="forceFit" [height]="height">
       <v-tooltip [showTitle]="tooltipOpts.showTitle" [crosshairs]="tooltipOpts.crosshairs" [itemTpl]="tooltipOpts.itemTpl"></v-tooltip>
       <v-view [data]="data" [scale]="scale">
         <v-tooltip></v-tooltip>

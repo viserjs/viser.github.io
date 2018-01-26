@@ -30,7 +30,7 @@ const scale = [{
       <v-tooltip></v-tooltip>
       <v-legend></v-legend>
       <v-axis></v-axis>
-      <v-facet type="mirror" [fields]="fields" transpose="true">
+      <v-facet type="mirror" [fields]="fields" [transpose]="true">
         <v-facet-view>
           <v-bar position="age*total_percentage" [color]="color"></v-bar>
         </v-facet-view>

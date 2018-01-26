@@ -1,16 +1,11 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
-      <v-tooltip :show-title="false" :data-key="'item*percent'"/>
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
+      <v-tooltip :showTitle="false" dataKey="item*percent" />
       <v-axis />
-      <v-legend :data-key="'item'"/>
-      <v-pie
-        :position="'percent'"
-        :color="'item'"
-        :v-style="pieStyle"
-        :label="labelConfig"
-      />
-      <v-coord :type="'theta'" />
+      <v-legend dataKey="item" />
+      <v-pie position="percent" color="item" :v-style="pieStyle" :label="labelConfig" />
+      <v-coord type="theta" />
     </v-chart>
   </div>
 </template>

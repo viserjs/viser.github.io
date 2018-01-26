@@ -17,7 +17,7 @@ const scale = [{
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
-      <v-tooltip crosshairs="false" inPlot="false" position="top"></v-tooltip>
+      <v-tooltip [crosshairs]="false" [inPlot]="false" position="top"></v-tooltip>
       <v-axis></v-axis>
       <v-bar position="depth*count"></v-bar>
     </v-chart>

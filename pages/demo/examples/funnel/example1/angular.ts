@@ -61,13 +61,14 @@ const funnelOpts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[20, 120, 95]" [data]="data" [scale]="scale" >
-      <v-tooltip [showTitle]="showTitle" [itemTpl]="tooltipOpts.itemTpl" ></v-tooltip>
+    <v-chart [forceFit]="forceFit" [height]="height" [padding]="[20, 120, 95]" [data]="data" [scale]="scale">
+      <v-tooltip [showTitle]="showTitle" [itemTpl]="tooltipOpts.itemTpl"></v-tooltip>
       <v-legend></v-legend>
-      <v-coord type='rect' direction='LT'></v-coord>
+      <v-coord type="rect" direction="LT"></v-coord>
       <v-pyramid [position]="funnelOpts.position" [color]="funnelOpts.color" [label]="funnelOpts.label" [tooltip]="funnelOpts.tooltip"></v-pyramid>
       <v-guide *ngFor="let obj of data"
-        type="text" [top]="true"
+        type="text"
+        [top]="true"
         [position]="this.getPosition(obj)" [content]="this.getContent(obj)"
         [style]="{
           fill: '#fff',
@@ -81,7 +82,6 @@ const funnelOpts = {
   </div>
   `
 })
-
 class AppComponent {
   forceFit: boolean = true;
   height: number = 400;

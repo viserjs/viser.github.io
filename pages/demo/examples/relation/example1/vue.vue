@@ -3,10 +3,10 @@
     <v-chart force-fit="true" height="500">
       <v-tooltip show-title="false" />
       <v-view :data="edgesData">
-        <v-edge position="x*y" shape="arc" color="source" opacity="0.5" tooltip="source*target" />
+        <v-edge position="x*y" shape="arc" color="source" :opacity="0.5" tooltip="source*target" />
       </v-view>
       <v-view :data="nodesData">
-        <v-point position="x*y" size="value" color="id" opacity="0.5" :v-style="style" :label="label" shape="circle"/>
+        <v-point position="x*y" size="value" color="id" :opacity="0.5" :v-style="style" :label="label" shape="circle" />
       </v-view>
     </v-chart>
   </div>

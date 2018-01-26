@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart force-fit="true" height="500" :data="data" padding="0">
-      <v-tooltip show-title="false" />
-      <v-coord type="polar" inner-radius="0.3" />
-      <v-polygon position="x*y" :color="color" active="false" :v-style="style" tooltip="label*sum" />
+    <v-chart :forceFit="true" height="500" :data="data" padding="0">
+      <v-tooltip :showTitle="false" />
+      <v-coord type="polar" :innerRadius="0.3" />
+      <v-polygon position="x*y" :color="color" active="false" :vStyle="style" tooltip="label*sum" />
     </v-chart>
   </div>
 </template>

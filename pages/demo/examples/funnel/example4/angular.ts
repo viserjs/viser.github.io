@@ -4,6 +4,7 @@ import { Component, enableProdMode, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
+
 const data = [
   { action: '访问', visitor: 500, site: '站点1' },
   { action: '浏览', visitor: 400, site: '站点1' },
@@ -17,7 +18,7 @@ const data = [
   { action: '完成', visitor: 80, site: '站点2' }
 ];
 
-data.sort(function(obj1: any, obj2: any){ // 从小到大
+data.sort((obj1: any, obj2: any) => {
   return obj1.visitor - obj2.visitor;
 });
 
@@ -86,7 +87,8 @@ const facetOpts = {
       <v-tooltip [crosshairs]="tooltipOpts.crosshairs" [showTitle]="tooltipOpts.showTitle" [itemTpl]="tooltipOpts.itemTpl"></v-tooltip>
       <v-coord type="theta" [radius]="0.8" [innerRadius]="0.7"></v-coord>
       <v-legend [reversed]="true"></v-legend>
-      <v-facet [type]="facetOpts.type" [fields]="facetOpts.fields"
+      <v-facet [type]="facetOpts.type"
+        [fields]="facetOpts.fields"
         [transpose]="facetOpts.transpose"
         [padding]="facetOpts.padding"
         [eachView]="facetOpts.eachView">
@@ -95,9 +97,8 @@ const facetOpts = {
   </div>
   `
 })
-
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 400;
   data = data;
   scale = scale;

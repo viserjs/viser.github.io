@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :padding="padding" :height="height" :data="data">
+    <v-chart :forceFit="true" :padding="padding" :height="height" :data="data">
       <v-coord type="rect" direction="LB" />
       <v-tooltip />
       <v-legend />
-      <v-axis data-key="profession" :label="label" />
+      <v-axis dataKey="profession" :label="label" />
       <v-bar position="profession*range" />
     </v-chart>
   </div>

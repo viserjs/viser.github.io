@@ -56,7 +56,7 @@ const axis2GridOpts = {
       <v-tooltip></v-tooltip>
       <v-axis dataKey="item" line="null" tickLine="null" [grid]="axis1GridOpts"></v-axis>
       <v-axis dataKey="score" line="null" tickLine="null" [grid]="axis2GridOpts"></v-axis>
-      <v-legend dataKey="user" marker="circle" offset="30"></v-legend>
+      <v-legend dataKey="user" marker="circle" [offset]="30"></v-legend>
       <v-coord type="polar" [radius]="0.8"></v-coord>
       <v-line position="item*score" color="user" [size]="2"></v-line>
       <v-point position="item*score" color="user" [size]="4" shape="circle"></v-point>

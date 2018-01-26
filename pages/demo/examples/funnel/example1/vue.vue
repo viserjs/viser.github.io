@@ -3,14 +3,15 @@
     <v-chart :force-fit="true" :height="height" :padding="[ 20, 120, 95 ]" :data="data" :scale="scale">
       <v-tooltip :show-title="false" :item-tpl="tooltipOpts.itemTpl" />
       <v-legend />
-      <v-coord type='rect' direction='LT' />
-      <v-pyramid :position="funnelOpts.position" :color="funnelOpts.color" :label="funnelOpts.label" :tooltip="funnelOpts.tooltip"/>
-
+      <v-coord type="rect" direction="LT" />
+      <v-pyramid :position="funnelOpts.position" :color="funnelOpts.color" :label="funnelOpts.label" :tooltip="funnelOpts.tooltip" />
       <v-guide v-for="(obj, index) in data"
-        :type="'text'" :top="true"
+        :key="index"
+        type="text"
+        :top="true"
         :position="getPosition(obj)"
         :content="getContent(obj)"
-        :v-style="{
+        :vStyle="{
           fill: '#fff',
           fontSize: '12',
           textAlign: 'center',

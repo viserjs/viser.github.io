@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="400" :data="data">
+    <v-chart :forceFit="true" :height="400" :data="data">
       <v-tooltip />
       <v-legend />
       <v-axis />
@@ -64,6 +64,7 @@ export default {
       this.$data.data = sourceData;
     });
   },
+
   data() {
     return {
       data: [],

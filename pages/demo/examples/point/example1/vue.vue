@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart force-fit="true" height="400" :data="data">
-      <v-tooltip showTitle="false" :crosshairs="tooltipCrosshairs" :item-tpl="tooltipItemTpl" />
+    <v-chart :forceFit="true" height="400" :data="data">
+      <v-tooltip :showTitle="false" :crosshairs="tooltipCrosshairs" :itemTpl="tooltipItemTpl" />
       <v-axis />
-      <v-point position="height*weight" size="4" opacity="0.65" :tooltip="pointTooltip" :shape="'circle'"/>
+      <v-point position="height*weight" :size="4" :opacity="0.65" :tooltip="pointTooltip" shape="circle" />
     </v-chart>
   </div>
 </template>

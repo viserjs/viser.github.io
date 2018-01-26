@@ -49,7 +49,7 @@ const scale = [{
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="padding" [data]="data" [scale]="scale">
       <v-legend dataKey="涨跌幅" [offset]="0"></v-legend>
       <v-tooltip title="日期"></v-tooltip>
-      <v-facet type="list" [fields]="fields" cols="3" [padding]="facetPadding" [colTitle]="colTitle">
+      <v-facet type="list" [fields]="fields" [cols]="3" [padding]="facetPadding" [colTitle]="colTitle">
         <v-facet-view>
           <v-polygon position="day*week*日期" [color]="color" [style]="style"></v-polygon>
         </v-facet-view>

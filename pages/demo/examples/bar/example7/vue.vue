@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
-      <v-tooltip :crosshairs="false" :in-plot="false" position="top" />
-      <v-axis data-key="value" :label="label" />
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
+      <v-tooltip :crosshairs="false" :inPlot="false" position="top" />
+      <v-axis dataKey="value" :label="label" />
       <v-bar position="value*count" />
     </v-chart>
   </div>

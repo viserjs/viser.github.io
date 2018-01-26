@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart force-fit="true" height="500" :scale="scale">
+    <v-chart :forceFit="true" height="500" :scale="scale">
       <v-view :data="edgesData">
         <v-coord type="polar" direction="yReverse" />
-        <v-edge position="x*y" color="source" shape="arc" opacity="0.5" tooltip="source*target*value" />
+        <v-edge position="x*y" color="source" shape="arc" :opacity="0.5" tooltip="source*target*value" />
       </v-view>
       <v-view :data="nodesData">
         <v-coord type="polar" direction="yReverse" />

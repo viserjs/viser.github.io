@@ -4,10 +4,10 @@
     <v-tooltip />
     <v-axis :dataKey="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid" />
     <v-axis :dataKey="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid" />
-    <v-legend data-key="user" marker="circle" offset="30" />
-    <v-coord type="polar" radius="0.8" />
-    <v-line position="item*score" color="user" size="2" />
-    <v-point position="item*score" color="user" size="4" shape="circle"/>
+    <v-legend dataKey="user" marker="circle" :offset="30" />
+    <v-coord type="polar" :radius="0.8" />
+    <v-line position="item*score" color="user" :size="2" />
+    <v-point position="item*score" color="user" :size="4" shape="circle" />
     <v-area position="item*score" color="user" />
   </v-chart>
 </div>

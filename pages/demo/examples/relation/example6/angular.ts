@@ -11,8 +11,8 @@ const DataSet = require('@antv/data-set');
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" padding="0">
-      <v-tooltip showTitle="false"></v-tooltip>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [padding]="0">
+      <v-tooltip [showTitle]="false"></v-tooltip>
       <v-polygon position="x*y" color="name"></v-polygon>
     </v-chart>
   </div>

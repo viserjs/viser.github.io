@@ -1,22 +1,21 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="expectData">
-      <v-tooltip :show-title="false" :item-tpl="tooltipOpts.itemTpl" />
-      <v-coord type='rect' direction='LT' />
+    <v-chart :forceFit="true" :height="height" :data="expectData">
+      <v-tooltip :showTitle="false" :itemTpl="tooltipOpts.itemTpl" />
+      <v-coord type="rect" direction="LT" />
       <v-pyramid :position="pyramidOpts.position" :color="pyramidOpts.color"
         :label="pyramidOpts.label" :tooltip="pyramidOpts.tooltip" :opacity="pyramidOpts.opacity" />
-      <v-view view-id="1" :data="actualData">
+      <v-view :data="actualData">
         <v-tooltip />
-        <v-coord type='rect' direction='LT' />
+        <v-coord type="rect" direction="LT" />
         <v-pyramid :position="pyramidOpts1.position" :color="pyramidOpts1.color"
-          :v-style="pyramidOpts1.style" :tooltip="pyramidOpts1.tooltip" :opacity="pyramidOpts1.opacity" />
+          :vStyle="pyramidOpts1.style" :tooltip="pyramidOpts1.tooltip" :opacity="pyramidOpts1.opacity" />
       </v-view>
     </v-chart>
   </div>
 </template>
 
 <script>
-
 const expectData = [
   {value: 100, name: '展现'},
   {value: 80, name: '点击'},

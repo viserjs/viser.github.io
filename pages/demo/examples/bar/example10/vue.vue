@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data">
+    <v-chart :forceFit="true" :height="height" :data="data">
       <v-coord type="rect" direction="LB" />
       <v-tooltip />
-      <v-axis data-key="country" :label="label" />
+      <v-axis dataKey="country" :label="label" />
       <v-bar position="country*population" />
     </v-chart>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-chart force-fit="true" height="400" :data="data" padding="0">
-      <v-tooltip show-title="false" />
+    <v-chart :forceFit="true" height="400" :data="data" :padding="0">
+      <v-tooltip :showTitle="false" />
       <v-polygon position="x*y" color="name" />
     </v-chart>
   </div>

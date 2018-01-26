@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart force-fit="true" height="400" :scale="scale" :padding="padding">
-      <v-tooltip show-title="false" />
+    <v-chart :forceFit="true" height="400" :scale="scale" :padding="padding">
+      <v-tooltip :showTitle="false" />
       <v-view :data="edgesData">
-        <v-sankey position="x*y" color="#bbb" opacity="0.6" :tooltip="tooltip" :v-style="sankeyStyle" />
+        <v-sankey position="x*y" color="#bbb" :opacity="0.6" :tooltip="tooltip" :vStyle="sankeyStyle" />
       </v-view>
       <v-view :data="nodesData">
         <v-polygon position="x*y" color="name" :v-style="polygonStyle" :label="polygonLabel" tooltip="false" />

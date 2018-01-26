@@ -1,14 +1,14 @@
 <template>
   <div >
-    <v-chart force-fit="true" height="400" :data="data" :scale="scale">
-      <v-tooltip show-title="false" />
-      <v-axis data-key="GDP" :label="axisLabel" />
-      <v-legend data-key="Population" :show="false" />
+    <v-chart :forceFit="true" height="400" :data="data" :scale="scale">
+      <v-tooltip :showTitle="false" />
+      <v-axis dataKey="GDP" :label="axisLabel" />
+      <v-legend dataKey="Population" :show="false" />
       <v-point
         position="GDP*LifeExpectancy"
         :color="pointColor"
         :size="pointSize"
-        :v-style="pointStyle"
+        :vStyle="pointStyle"
         tooltip="Country*Population*GDP*LifeExpectancy"
         shape="circle"
       />

@@ -1,30 +1,32 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="400" :padding="20" :scale="scale">
-      <v-tooltip :show-title="false" />
+    <v-chart :forceFit="true" :height="400" :padding="20" :scale="scale">
+      <v-tooltip :showTitle="false" />
       <v-coord/>
       <v-view :data="bgData">
-        <v-polygon :position="'x*y'" :color="'grey'" :opacity="0.5"
-          :v-style="{
+        <v-polygon position="x*y" color="grey" :opacity="0.5"
+          :vStyle="{
             stroke: 'white',
             lineWidth: 1
-          }" :tooltip="'key'"
+          }"
+          tooltip="key"
         />
       </v-view>
       <v-view :data="data">
-        <v-polygon :position="'x*y'" :color="'#2FC25B'"
-          :v-style="{
+        <v-polygon position="x*y" color="#2FC25B"
+          :vStyle="{
             stroke: 'white',
             lineWidth: 5
           }"
           :label="['key', {
             offset: 0,
             textStyle: {
-                fontSize: 14,
-                fontWeight: 500
+              fontSize: 14,
+              fontWeight: 500
             }
           }]"
-          :tooltip="'capital'" />
+          tooltip="capital"
+        />
       </v-view>
     </v-chart>
   </div>

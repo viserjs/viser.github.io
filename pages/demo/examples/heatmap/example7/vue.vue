@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data">
+    <v-chart :forceFit="true" :height="height" :data="data">
       <v-legend :offset="40" />
-      <v-axis :data-key="axis1Opts.dataKey" :grid="axis1Opts.grid" />
-      <v-tooltip :show-title="false" :crosshairs="false" />
-      <v-polygon :position="seriesOpts.position" :color="seriesOpts.color" :v-style="seriesOpts.style" />
+      <v-axis :dataKey="axis1Opts.dataKey" :grid="axis1Opts.grid" />
+      <v-tooltip :showTitle="false" :crosshairs="false" />
+      <v-polygon :position="seriesOpts.position" :color="seriesOpts.color" :vStyle="seriesOpts.style" />
     </v-chart>
   </div>
 </template>

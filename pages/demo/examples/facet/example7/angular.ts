@@ -51,10 +51,10 @@ const views = (view, facet) => {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="400" [data]="data" [padding]="padding">
-      <v-tooltip showTitle="false"></v-tooltip>
+      <v-tooltip [showTitle]="false"></v-tooltip>
       <v-legend dataKey="cut" position="top"></v-legend>
       <v-coord type="theta"></v-coord>
-      <v-facet type="tree" [fields]="fields" [line]="line" lineSmooth="true" [views]="views"></v-facet>
+      <v-facet type="tree" [fields]="fields" [line]="line" [lineSmooth]="true" [views]="views"></v-facet>
     </v-chart>
   </div>
   `

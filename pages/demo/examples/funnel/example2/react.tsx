@@ -62,7 +62,7 @@ class App extends React.Component {
         <Chart forceFit height={400} data={data} scale={scale}>
           <Tooltip {...tooltipOpts} />
           <Legend />
-          <Coord type='rect' direction='LT' />
+          <Coord type="rect" direction="LT" />
           <Pyramid {...funnelOpts} />
         </Chart>
       </div>

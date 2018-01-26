@@ -1,13 +1,13 @@
 <template>
   <div>
-    <v-chart :force-fit="true" height="400" :padding="[20, 20]" :scale="scale">
-      <v-tooltip :show-title="false" />
+    <v-chart :forceFit="true" height="400" :padding="[20, 20]" :scale="scale">
+      <v-tooltip :showTitle="false" />
       <v-legend data-key="trend" position="left" />
       <v-view :data="data" :scale="userDataScale">
         <v-polygon :position="view2Opts.position" :opacity="view2Opts.opacity" :color="view2Opts.color" :animate="view2Opts.animate" :tooltip="view2Opts.tooltip" />
       </v-view>
       <v-view :data="geoData" :scale="scale">
-        <v-polygon :position="view1Opts.position" :v-style="view1Opts.style" :tooltip="view1Opts.tooltip" />
+        <v-polygon :position="view1Opts.position" :vStyle="view1Opts.style" :tooltip="view1Opts.tooltip" />
       </v-view>
     </v-chart>
   </div>

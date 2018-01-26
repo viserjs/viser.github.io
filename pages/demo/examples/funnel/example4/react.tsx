@@ -83,11 +83,10 @@ class App extends React.Component {
     return (
       <div>
         <Chart forceFit height={400} padding={[ 30, 120, 95 ]} data={data} scale={scale}>
-          <Tooltip {...tooltipOpts}/>
-          <Coord type="theta" radius={0.8} innerRadius={0.7}/>
-          <Legend reversed={true}/>
-          <Facet {...facetOpts}>
-          </Facet>
+          <Tooltip {...tooltipOpts} />
+          <Coord type="theta" radius={0.8} innerRadius={0.7} />
+          <Legend reversed={true} />
+          <Facet {...facetOpts}></Facet>
         </Chart>
       </div>
     );

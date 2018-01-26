@@ -34,22 +34,20 @@ const scale = [{
   max: 14,
 }];
 
-const label = {
-  formatter: val => {
-    if ((val % 2)) {
-     return val;
-    }
-    return '';
-  },
+const formatter = val => {
+  if ((val % 2)) {
+    return val;
+  }
+  return '';
 };
 
 @Component({
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
-      <v-tooltip crosshairs="false" inPlot="false" position="top"></v-tooltip>
-      <v-axis dataKey="value" label="label"></v-axis>
+    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
+      <v-tooltip [crosshairs]="false" [inPlot]="false" position="top"></v-tooltip>
+      <v-axis dataKey="value" [label]="label"></v-axis>
       <v-bar position="value*count"></v-bar>
     </v-chart>
   </div>
@@ -58,8 +56,9 @@ const label = {
 class AppComponent {
   forceFit: boolean = true;
   height: number = 400;
+  scale = scale;
   data = data;
-  label = label;
+  label = { formatter: formatter };
 }
 
 @NgModule({

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
       <v-legend />
       <v-tooltip />
       <v-axis :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid" />
       <v-axis :tickLine="axis2Opts.tickLine" :grid="axis2Opts.grid" />
-      <v-polygon :position="seriesOpts.position" :color="seriesOpts.color" :label="seriesOpts.label" :v-style="seriesOpts.style" />
+      <v-polygon :position="seriesOpts.position" :color="seriesOpts.color" :label="seriesOpts.label" :vStyle="seriesOpts.style" />
     </v-chart>
   </div>
 </template>

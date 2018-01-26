@@ -65,11 +65,11 @@ class App extends React.Component {
       <div>
         <Chart forceFit height={400} data={expectData}>
           <Tooltip {...tooltipOpts} />
-          <Coord type='rect' direction='LT' />
+          <Coord type="rect" direction="LT" />
           <Pyramid {...pyramidOpts} />
           <View data={actualData}>
             <Tooltip />
-            <Coord type='rect' direction='LT' />
+            <Coord type="rect" direction="LT" />
             <Pyramid {...pyramidOpts1} />
           </View>
         </Chart>

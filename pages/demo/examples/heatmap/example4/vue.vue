@@ -1,11 +1,11 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
-      <v-tooltip :show-title="false" />
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
+      <v-tooltip :showTitle="false" />
       <v-axis :data-key="axis1Opts.dataKey" :position="axis1Opts.position" :tickLine="axis1Opts.tickLine" :line="axis1Opts.line" :label="axis1Opts.label" />
       <v-axis :data-key="axis2Opts.dataKey" :grid="axis2Opts.grid" />
-      <v-coord :type="'rect'" :direction="'TL'" />
-      <v-polygon :position="'week*day*date'" :color="['commits', '#BAE7FF-#1890FF-#0050B3']" :shape="'boundary-polygon'"/>
+      <v-coord type="rect" direction="TL" />
+      <v-polygon position="week*day*date" :color="['commits', '#BAE7FF-#1890FF-#0050B3']" shape="boundary-polygon" />
     </v-chart>
   </div>
 </template>

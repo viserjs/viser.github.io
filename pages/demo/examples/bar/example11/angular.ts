@@ -34,7 +34,7 @@ const adjust = [{ type: 'dodge', marginRatio: 1 / 32 }];
       <v-coord type="rect" direction="LT"></v-coord>
       <v-tooltip></v-tooltip>
       <v-legend></v-legend>
-      <v-axis dataKey="coutry" position="right"></v-axis>
+      <v-axis dataKey="value" position="right"></v-axis>
       <v-axis dataKey="label" [label]="label"></v-axis>
       <v-bar position="label*value" color="type" [adjust]="adjust"></v-bar>
     </v-chart>

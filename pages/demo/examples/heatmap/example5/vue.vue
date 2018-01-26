@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data">
+    <v-chart :forceFit="true" :height="height" :data="data">
       <v-legend :offset="40" />
       <v-axis />
-      <v-tooltip :show-title="false" />
+      <v-tooltip :showTitle="false" />
       <v-polygon :position="seriesOpts.position" :color="seriesOpts.color" />
     </v-chart>
   </div>

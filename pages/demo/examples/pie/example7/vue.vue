@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data">
+    <v-chart :forceFit="true" :height="height" :data="data">
       <v-tooltip />
-      <v-coord :type="'polar'" :inner-radius="0.2" />
-      <v-sector :position="'year*population'" :color="'year'" :v-style="sectorStyle" />
-      <v-legend :position="'right'" :data-key="'year'" :offset-x="-140" />
+      <v-coord type="polar" :innerRadius="0.2" />
+      <v-sector position="year*population" color="year" :vStyle="sectorStyle" />
+      <v-legend position="right" dataKey="year" :offsetX="-140" />
     </v-chart>
   </div>
 </template>

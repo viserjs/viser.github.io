@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
-      <v-tooltip :crosshairs="false" :in-plot="false" position="top" />
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
+      <v-tooltip :crosshairs="false" :inPlot="false" position="top" />
       <v-axis />
       <v-bar position="depth*count" />
     </v-chart>

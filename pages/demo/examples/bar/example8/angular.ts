@@ -12,7 +12,7 @@ const DataSet = require('@antv/data-set');
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
-      <v-tooltip crosshairs="false" inPlot="false" position="top"></v-tooltip>
+      <v-tooltip [crosshairs]="false" [inPlot]="false" position="top"></v-tooltip>
       <v-axis></v-axis>
       <v-legend></v-legend>
       <v-stack-bar position="depth*count" color="cut"></v-stack-bar>

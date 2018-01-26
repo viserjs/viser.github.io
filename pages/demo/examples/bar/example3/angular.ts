@@ -34,7 +34,7 @@ const data = dv.rows;
   `
 })
 class AppComponent {
-  forceFit: boolean= true;
+  forceFit: boolean = true;
   height: number = 400;
   data = data;
 }
