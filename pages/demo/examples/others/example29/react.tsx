@@ -44,7 +44,6 @@ class App extends React.Component {
           </View>
           {
             REGRESSION_METHODS.map((method: any, i: number) => {
-              console.log(method, i);
               const dv = new DataSet.View().source(data)
               .transform({
                 type: 'regression',
