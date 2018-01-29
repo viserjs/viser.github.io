@@ -576,6 +576,11 @@ const examples = {
         cnName: '一年的日均温度可视化',
       },
       {
+        path: 'example29',
+        enName: 'Regression curve',
+        cnName: '回归曲线',
+      },
+      {
         path: 'example30',
         enName: 'Kernel Function Probability Density Distribution',
         cnName: '核函数概率密度分布',

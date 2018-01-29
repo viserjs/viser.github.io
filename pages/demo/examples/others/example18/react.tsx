@@ -25,7 +25,7 @@ const legendOpt = {
     textAlign: 'start'
   },
   slidable: false,
-  position: 'bottom',
+  position: 'bottom' as any,
   offsetX: 25,
 };
 
@@ -44,7 +44,7 @@ const guideLineOpt = {
     lineDash: null
   },
   text: {
-    position: 1,
+    position: 1 as any,
     offsetY: -6,
     autoRotate: false,
     style: {
