@@ -576,6 +576,11 @@ const examples = {
         cnName: '一年的日均温度可视化',
       },
       {
+        path: 'example19',
+        enName: 'Wind rose',
+        cnName: '风向玫瑰图',
+      },
+      {
         path: 'example30',
         enName: 'Kernel Function Probability Density Distribution',
         cnName: '核函数概率密度分布',

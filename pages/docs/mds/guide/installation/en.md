@@ -24,7 +24,7 @@ $ npm install viser-vue
 The UMD build is also available on unpkg.com:
 
 ```html
- <script src="https://unpkg.com/recharts/umd/viser-vue.min.js"></script>
+ <script src="https://unpkg.com/viser/umd/viser-vue.min.js"></script>
 ```
 
 Then you can find the library on window.ViserVue.
@@ -47,7 +47,7 @@ $ npm install viser-ng
 The UMD build is also available on unpkg.com:
 
 ```html
- <script src="https://unpkg.com/recharts/umd/viser-ng.min.js"></script>
+ <script src="https://unpkg.com/viser/umd/viser-ng.min.js"></script>
 ```
 
 Then you can find the library on window.ViserNg.
@@ -70,7 +70,7 @@ $ npm install viser-react
 The UMD build is also available on unpkg.com:
 
 ```html
- <script src="https://unpkg.com/recharts/umd/viser-react.min.js"></script>
+ <script src="https://unpkg.com/viser/umd/viser-react.min.js"></script>
 ```
 
 Then you can find the library on window.ViserReact.

@@ -24,7 +24,7 @@ $ npm install viser-vue
 我们在 unpkg.com 上提供了 UMD 的版本:
 
 ```html
- <script src="https://unpkg.com/recharts/umd/viser-vue.min.js"></script>
+ <script src="https://unpkg.com/viser/umd/viser-vue.min.js"></script>
 ```
 
 然后你可以使用全局变量 ```window.ViserVue``` 来进行调用 Viser。
@@ -47,7 +47,7 @@ $ npm install viser-ng
 我们在 unpkg.com 上提供了 UMD 的版本:
 
 ```html
- <script src="https://unpkg.com/recharts/umd/viser-ng.min.js"></script>
+ <script src="https://unpkg.com/viser/umd/viser-ng.min.js"></script>
 ```
 
 然后你可以使用全局变量 ```window.ViserNg``` 来进行调用 Viser。
@@ -70,7 +70,7 @@ $ npm install viser-react
 我们在 unpkg.com 上提供了 UMD 引入的版本:
 
 ```html
- <script src="https://unpkg.com/recharts/umd/viser-react.min.js"></script>
+ <script src="https://unpkg.com/viser/umd/viser-react.min.js"></script>
 ```
 
 然后你可以使用全局变量 ```window.ViserReact``` 来进行调用 Viser。
