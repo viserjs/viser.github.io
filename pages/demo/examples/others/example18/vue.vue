@@ -20,7 +20,7 @@
         :text="guideLineOpt.text"
         content="January"
       />
-      <v-guide 
+      <v-guide
         v-for="(entry, index) in data"
         type="text"
         :key="index"
