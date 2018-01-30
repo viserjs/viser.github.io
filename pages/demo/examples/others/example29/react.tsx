@@ -53,10 +53,12 @@ class App extends React.Component {
                 extent: [ 0, 4 ],
                 as: [ 'carat', 'price' ]
               });
-              return (<View data={dv} scale={scale} key={`view-${i}`}>
-                <Axis dataKey='price' show={false}/>
-                <Line position="carat*price" size={1} color={Global.colors_16[i]}/>
-              </View>);
+              return (
+                <View data={dv} scale={scale} key={`view-${i}`}>
+                  <Axis dataKey='price' show={false}/>
+                  <Line position="carat*price" size={1} color={Global.colors_16[i]}/>
+                </View>
+              );
             })
           }
         </Chart>

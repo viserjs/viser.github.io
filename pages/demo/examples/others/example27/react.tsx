@@ -59,9 +59,11 @@ class App extends React.Component {
                 field: 'depth',
                 extent: [ 50, 70 ]
               });
-              return (<View data={dv} scale={scale} key={`view-${i}`}>
-                <Line position="x*y" color={Global.colors_16[i]}/>
-              </View>);
+              return (
+                <View data={dv} scale={scale} key={`view-${i}`}>
+                  <Line position="x*y" color={Global.colors_16[i]} />
+                </View>
+              );
             })
           }
         </Chart>

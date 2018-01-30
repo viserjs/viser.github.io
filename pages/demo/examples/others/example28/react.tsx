@@ -47,7 +47,7 @@ class App extends React.Component {
         <Chart forceFit height={400} data={data} scale={scale}>
           <Axis />
           <Tooltip />
-          <Point position="carat*price"/>
+          <Point position="carat*price" />
           {
             REGRESSION_METHODS.map((method: any, i: number) => {
               const dv = new DataSet.View().source(data);
@@ -59,10 +59,12 @@ class App extends React.Component {
                 bandwidth: 0.5,
                 extent: [ 0, 4 ]
               });
-              return (<View data={dv} scale={scale} key={`view-${i}`}>
-                <Axis dataKey='price' show={false}/>
-                <Line position="carat*price" color={Global.colors_16[i]}/>
-              </View>);
+              return (
+                <View data={dv} scale={scale} key={`view-${i}`}>
+                  <Axis dataKey='price' show={false}/>
+                  <Line position="carat*price" color={Global.colors_16[i]}/>
+                </View>
+              );
             })
           }
         </Chart>
