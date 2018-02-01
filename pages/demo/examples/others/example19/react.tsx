@@ -121,7 +121,7 @@ const data = [
 const colors = ['#E3F4BF', '#BEF7C8', '#86E6C8', '#36CFC9', '#209BDD', '#1581E6', '#0860BF'];
 
 const legendOpt = {
-  position: 'bottom',
+  position: 'bottom' as any,
   useHtml: true,
   offset: 30,
   itemTpl: '<li class="g2-legend-list-item item-{index} {checked}" data-color="{originColor}" data-value="{originValue}">' +

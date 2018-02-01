@@ -581,6 +581,11 @@ const examples = {
         cnName: '风向玫瑰图',
       },
       {
+        path: 'example26',
+        enName: 'Visualization of unit test coverage',
+        cnName: '单元测试覆盖率可视化',
+      },
+      {
         path: 'example27',
         enName: 'Kernel Function Probability Density Regression curvr',
         cnName: '核函数概率密度回归曲线',
