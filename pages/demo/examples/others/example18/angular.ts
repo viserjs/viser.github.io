@@ -68,6 +68,7 @@ const guideLineOpt = {
       <v-legend
         [offset]="legendOpt.offset"
         [title]="legendOpt.title"
+        [slidable]="legendOpt.slidable"
         [position]="legendOpt.position"
         [offsetX]="legendOpt.offsetX"
       ></v-legend>
