@@ -128,6 +128,11 @@ export default {
   mounted() {
     this.timer = setTimeout(this.setData, 100);
   },
+  beforeDestroy() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+  },
   data() {
     const data = [
       { value: 5.6 }

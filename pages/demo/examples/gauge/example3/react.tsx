@@ -61,7 +61,13 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    this.timer = setTimeout(this.setData, 100);
+    this.timer = setTimeout(this.setData, 0);
+  }
+
+  componentWillUnmount() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
   }
 
   setData = () => {
@@ -87,7 +93,7 @@ export default class App extends React.Component {
       }
     }
 
-    this.timer = setTimeout(this.setData, 100)
+    this.timer = setTimeout(this.setData, 1000);
   }
 
   render() {
