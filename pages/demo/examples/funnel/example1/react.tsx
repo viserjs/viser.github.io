@@ -64,9 +64,9 @@ export default class App extends React.Component {
           <Coord type="rect" direction="LT" />
           <Pyramid {...funnelOpts} />
           {
-            data.map((obj: any) => {
+            data.map((obj: any, i: number) => {
               const content = parseInt(String(obj.percent * 100)) + '%';
-              return (<Guide type="text" top={true} position={{
+              return (<Guide key={`guide-text-${i}`} type="text" top={true} position={{
                 action: obj.action,
                 percent: 'median'
               }} content={content} style={{

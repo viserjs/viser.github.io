@@ -43,12 +43,12 @@ export default class App extends React.Component {
           <Coord type="polar" innerRadius={0.1} direction="rotate" />
           <Interval {...interval1Opts} />
           {
-            data.map((obj: any) => {
+            data.map((obj: any, i: number) => {
               const position = [ obj.question, 0 ];
               const content = obj.question + ' ';
 
               return (
-                <Guide type="text" position={position} content={content} style={{textAlign: 'right'}} />
+                <Guide type="text" key={`guide-text-${i}`} position={position} content={content} style={{textAlign: 'right'}} />
               );
             })
           }
