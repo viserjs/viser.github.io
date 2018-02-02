@@ -1,5 +1,4 @@
 import { Chart, Tooltip, Sector, Coord } from 'viser-react';
-
 import * as React from 'react';
 
 const data = [

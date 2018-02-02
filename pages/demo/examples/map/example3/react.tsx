@@ -1,5 +1,4 @@
 import { Chart, Tooltip, Legend, View, Polygon, Guide } from 'viser-react';
-
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';

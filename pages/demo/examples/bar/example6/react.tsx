@@ -1,5 +1,4 @@
 import { Global, registerShape, Chart, Tooltip, Axis, Bar, Legend } from 'viser-react';
-
 import * as React from 'react';
 
 function getRectPath(points) {

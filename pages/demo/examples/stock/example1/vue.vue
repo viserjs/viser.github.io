@@ -1,27 +1,27 @@
 <template>
   <div v-if="data.length">
     <v-chart :force-fit="true" :height="400" :animate="false" :padding="[ 10, 40, 40, 40 ]" :data="dv" :scale="scale1">
-      <v-tooltip :show-title="tooltipOpts.showTitle" :item-tpl="tooltipOpts.itemTpl"/>
+      <v-tooltip :show-title="tooltipOpts.showTitle" :item-tpl="tooltipOpts.itemTpl" />
       <v-axis />
-      <v-legend :offset="20"/>
+      <v-legend :offset="20" />
       <v-view :data="dv" :end="{x: 1, y: 0.5}">
-        <v-candle position="time*range" :color="candleOpts.color" :tooltip="candleOpts.tooltip"/>
+        <v-candle position="time*range" :color="candleOpts.color" :tooltip="candleOpts.tooltip" />
       </v-view>
       <v-view :data="dv" :scale="scale2" :start="{x: 0, y: 0.65}">
-        <v-axis data-key="time" :tick-line="null" :label="null"/>
-        <v-axis data-key="volumn" :label="axis1Opts.label"/>
-        <v-bar position="time*volumn" :color="barOpts.color" :tooltip="barOpts.tooltip"/>
+        <v-axis dataKey="time" :tick-line="null" :label="null" />
+        <v-axis dataKey="volumn" :label="axis1Opts.label" />
+        <v-bar position="time*volumn" :color="barOpts.color" :tooltip="barOpts.tooltip" />
       </v-view>
     </v-chart>
     <v-plugin>
       <v-slider width="auto" :height="26" :padding="[ 20, 40, 20, 40 ]"
         :start="start" :end="end"
-        :data="data" x-axis="time" y-axis="volumn" :scales="{
+        :data="data" xAxis="time" yAxis="volumn" :scales="{
           time: {
             type: 'timeCat',
             nice: false,
           }
-        }" :on-change="slideChange"/>
+        }" :on-change="slideChange" />
     </v-plugin>
   </div>
 </template>
@@ -29,6 +29,7 @@
 <script>
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
+
 const scale1 = [{
   dataKey: 'time',
   type: 'timeCat',

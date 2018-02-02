@@ -102,7 +102,7 @@ const barOpts = {
       <v-tooltip [showTitle]="tooltipOpts.showTitle" [itemTpl]="tooltipOpts.itemTpl"></v-tooltip>
       <v-axis></v-axis>
       <v-legend [offset]="20"></v-legend>
-      <v-view [data]="dv" [end]="{x: 1, y: 0.5}" >
+      <v-view [data]="dv" [end]="{x: 1, y: 0.5}">
         <v-candle position="time*range" [color]="candleOpts.color" [tooltip]="candleOpts.tooltip"></v-candle>
       </v-view>
       <v-view [data]="dv" [scale]="scale2" [start]="{x: 0, y: 0.65}" >
@@ -139,6 +139,7 @@ class AppComponent {
       nice: false,
     }
   };
+
   constructor() {
     $.getJSON('/assets/data/candle-sticks.json', (sourceData) => {
       this.data = sourceData;
@@ -173,6 +174,7 @@ class AppComponent {
       });
     return dv;
   }
+
   slideChange = (opts: any) => {
     this.start = opts.startText;
     this.end = opts.endText;

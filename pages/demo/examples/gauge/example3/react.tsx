@@ -1,5 +1,4 @@
 import { registerShape, Chart, Axis, Tooltip, Coord, Point, Guide, Series } from 'viser-react';
-
 import * as React from 'react';
 
 registerShape('point', 'pointer', {

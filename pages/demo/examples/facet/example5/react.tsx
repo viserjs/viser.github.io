@@ -1,5 +1,4 @@
 import { Chart, Facet, View, Tooltip, Legend, Axis, Point, FacetView } from 'viser-react';
-
 import * as React from 'react';
 import * as $ from 'jquery';
 

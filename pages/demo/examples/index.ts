@@ -478,11 +478,21 @@ const examples = {
         enName: 'Treemap Diagram',
         cnName: '矩形树图',
       },
-      // {
-      //   path: 'example9',
-      //   enName: 'Radial Dendrogram',
-      //   cnName: '径向系统树图',
-      // },
+      {
+        path: 'example9',
+        enName: 'Radial Tidy Tree',
+        cnName: '径向紧凑树图',
+      },
+      {
+        path: 'example10',
+        enName: 'Radial Dendrogram',
+        cnName: '径向系统树图',
+      },
+      {
+        path: 'example11',
+        enName: 'Circle Packing',
+        cnName: 'Circle Packing',
+      },
     ],
     icon: 'guanxitu'
   },

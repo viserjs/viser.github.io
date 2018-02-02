@@ -1,5 +1,4 @@
 import { Chart, Facet, View, Tooltip, Legend, Axis, StackBar, FacetView, Coord } from 'viser-react';
-
 import * as React from 'react';
 const DataSet = require('@antv/data-set');
 const { DataView } = DataSet;

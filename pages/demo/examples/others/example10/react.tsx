@@ -1,5 +1,4 @@
 import { registerShape, Chart, Axis, Legend, Tooltip, Coord, StackInterval } from 'viser-react';
-
 import * as React from 'react';
 import * as _ from 'lodash';
 const DataSet = require('@antv/data-set');

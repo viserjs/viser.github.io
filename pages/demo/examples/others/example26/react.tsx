@@ -1,5 +1,4 @@
 import { registerShape, Chart, Axis, Legend, Polygon, Tooltip } from 'viser-react';
-
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
@@ -70,7 +69,6 @@ const itemFormatter = val => {
 };
 
 export default class App extends React.Component {
-
   render() {
     return (
       <div>

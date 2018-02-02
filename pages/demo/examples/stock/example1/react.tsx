@@ -139,7 +139,7 @@ export default class App extends React.Component {
                 + '<span style="padding-left: 16px">最高价：' + max + '</span><br/>'
                 + '<span style="padding-left: 16px">最低价：' + min + '</span>'
               };
-            }]}/>
+            }]} />
           </View>
           <View data={dv} scale={scale2} start={{x: 0, y: 0.65}}>
             <Axis dataKey='time' tickLine={null} label={null}/>
@@ -161,11 +161,11 @@ export default class App extends React.Component {
                 name: time,
                 value: '<br/><span style="padding-left: 16px">成交量：' + volumn + '</span><br/>'
               };
-            }]}/>
+            }]} />
           </View>
         </Chart>
         <Plugin>
-          <Slider {...sliderOpts}/>
+          <Slider {...sliderOpts} />
         </Plugin>
       </div>
     );

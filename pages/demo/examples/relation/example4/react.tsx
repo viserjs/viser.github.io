@@ -1,5 +1,4 @@
 import { Chart, Tooltip, Axis, StackBar, Sankey, View, Polygon } from 'viser-react';
-
 import * as React from 'react';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
