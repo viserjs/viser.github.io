@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Box, LiteChart } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 const DataSet = require('@antv/data-set');
 
@@ -29,7 +29,7 @@ const scale = [{
   max: 35,
 }];
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -77,5 +77,5 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+
 

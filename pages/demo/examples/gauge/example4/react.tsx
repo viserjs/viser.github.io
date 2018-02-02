@@ -1,5 +1,5 @@
 import { registerShape, Chart, Axis, Tooltip, Coord, Point, Interval, Guide, Series, View } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 
 const scale = [{
@@ -61,7 +61,7 @@ const frontGuideStyle = {
   textBaseline: 'middle' as 'middle',
 };
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
@@ -129,4 +129,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));

@@ -1,5 +1,5 @@
 import { Chart, View, Tooltip, Coord, StackInterval, Guide } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as _ from 'lodash';
 const DataSet = require('@antv/data-set');
@@ -91,7 +91,7 @@ const stackInterval3Opts = {
   select: false,
 };
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
@@ -122,4 +122,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+

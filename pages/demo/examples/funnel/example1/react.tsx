@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Box, Legend, Pyramid, Coord, Guide } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 const DataSet = require('@antv/data-set');
 
@@ -54,7 +54,7 @@ const funnelOpts = {
   })]
 };
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
@@ -84,5 +84,5 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+
 

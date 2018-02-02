@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Legend, SmoothLine, Point } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 const DataSet = require('@antv/data-set');
 
@@ -33,7 +33,7 @@ const scale = [{
   max: 1,
 }];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <Chart forceFit height={400} data={data} scale={scale}>
@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);
+
+
+
+

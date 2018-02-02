@@ -1,5 +1,5 @@
 import { registerShape, Chart, Axis, Tooltip, Coord, Polygon } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 
@@ -111,7 +111,7 @@ const tooltipOpts: any = {
   title: 'date',
 }
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     data: [],
   };
@@ -136,5 +136,5 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+
 

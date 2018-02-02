@@ -1,5 +1,5 @@
 import { registerShape, Chart, Axis, Tooltip, Series } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
@@ -72,7 +72,7 @@ const seriesOpts = {
   }]
 };
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
@@ -86,4 +86,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+

@@ -1,5 +1,5 @@
 import { registerShape, Chart, Axis, Tooltip, Coord, Point, Guide, Series } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 
 registerShape('point', 'pointer', {
@@ -48,7 +48,7 @@ const scale = [{
 
 const color = ['#0086FA', '#FFBF00', '#F5222D'];
 
-class App extends React.Component {
+export default class App extends React.Component {
   timer: any;
   state: {
     data: { value: number }[],
@@ -197,4 +197,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));

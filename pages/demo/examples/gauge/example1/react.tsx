@@ -1,5 +1,5 @@
 import { registerShape, Chart, Axis, Tooltip, Coord, Point, Guide, Series } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 
 registerShape('point', 'pointer', {
@@ -46,7 +46,7 @@ const data = [
   { value: 5.6 },
 ];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
@@ -127,4 +127,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));

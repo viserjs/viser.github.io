@@ -1,5 +1,5 @@
 import { Chart, Facet, View, Tooltip, Legend, Axis, StackBar, FacetView, Coord } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 const DataSet = require('@antv/data-set');
 const { DataView } = DataSet;
@@ -43,7 +43,7 @@ const views = (view, facet) => {
   }
 }
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <Chart forceFit={true} height={400} data={data} padding={[60, 90, 80, 80]}>
@@ -56,7 +56,6 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);
+
+
+

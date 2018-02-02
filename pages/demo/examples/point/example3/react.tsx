@@ -1,9 +1,9 @@
 import { Chart, Tooltip, Axis, Point, Legend } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     data: [],
   };
@@ -54,7 +54,7 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);
+
+
+
+

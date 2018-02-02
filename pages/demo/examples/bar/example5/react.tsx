@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Bar } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 
 const data = [
@@ -13,7 +13,7 @@ const data = [
   { x: '分类八', y: [ 18, 34 ] },
 ];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <Chart forceFit height={400} data={data}>
@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);
+
+
+
+

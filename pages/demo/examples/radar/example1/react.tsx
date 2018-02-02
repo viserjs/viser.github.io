@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Legend, Coord, Line, Point, Area } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 const DataSet = require('@antv/data-set');
 
@@ -31,7 +31,7 @@ const scale = [{
   max: 80,
 }];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     const axis1Opts: any = {
       dataKey: 'item',
@@ -77,7 +77,7 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);
+
+
+
+

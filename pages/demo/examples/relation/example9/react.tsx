@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Legend, Polygon, Coord, View, Point, Edge } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import { data as sourceData } from './data'
 const DataSet = require('@antv/data-set');
@@ -50,7 +50,7 @@ const edgesDataView = ['edges', (edges) => {
   }));
 }];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <Chart forceFit={true} height={400} data={data} padding={[ 60, 0, 40, 0 ]}>
@@ -66,7 +66,6 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);
+
+
+

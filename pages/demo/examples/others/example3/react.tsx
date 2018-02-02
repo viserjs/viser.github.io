@@ -1,5 +1,5 @@
 import { Chart, Axis, Tooltip, Point, Guide } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as _ from 'lodash';
 
@@ -72,7 +72,7 @@ const axis2Opts = {
   }
 };
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
@@ -142,4 +142,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+
