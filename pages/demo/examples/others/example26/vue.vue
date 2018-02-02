@@ -2,9 +2,9 @@
   <div>
     <v-chart :force-fit="true" :height="height" :padding="[ 20, 80, 150 ]" :data="data" :scale="scale">
       <v-tooltip />
-      <v-legend :slidable="false" :width="165" :item-formatter="itemFormatter"/>
-      <v-axis data-key="name" :grid="null"/>
-      <v-axis data-key="time" :line="null" :tick-line="null"/>
+      <v-legend :slidable="false" :width="165" :item-formatter="itemFormatter" />
+      <v-axis data-key="name" :grid="null" />
+      <v-axis data-key="time" :line="null" :tick-line="null" />
       <v-polygon position="time*name"
         :color="['value','rgb(215, 25, 28)-rgb(231, 104, 24)-rgb(242, 158, 46)-rgb(249, 208, 87)-rgb(255, 255, 140)-rgb(144, 235, 157)-rgb(0, 204, 188)-rgb(0, 166, 202)-rgb(44, 123, 182)']"
         :size="['value', function(size) {
