@@ -596,6 +596,11 @@ const examples = {
         cnName: '风向玫瑰图',
       },
       {
+        path: 'example20',
+        enName: 'Cutomize Tooltip',
+        cnName: '自定义Tooltip',
+      },
+      {
         path: 'example26',
         enName: 'Visualization of unit test coverage',
         cnName: '单元测试覆盖率可视化',
