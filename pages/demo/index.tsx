@@ -1,8 +1,5 @@
 import * as $ from 'jquery';
-import Viser from 'viser';
-import Vue from 'vue';
-import ViserVue from 'viser-vue'
-import * as ReactDOM from 'react-dom';
+
 import exampleOrigin from './examples/index';
 import locale from '../common/locale';
 import {
@@ -12,6 +9,20 @@ import {
   generateHashtag, getFolderAndItem,
 } from '../common/utils';
 import './index.scss';
+
+import Vue from 'vue';
+import ViserVue from 'viser-vue'
+
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+// store Vue Instance globally;
+let vm;
+Vue.use(ViserVue);
+// store Ng Instance globally;
+let ngRef;
 
 const navTpl = require('./nav.tpl');
 
@@ -107,19 +118,43 @@ class Demo {
   runCode(framework) {
     const code = this.getCode();
     const mount = document.getElementById('mount');
+
+    // Unmount React;
     ReactDOM.unmountComponentAtNode(mount);
+    // Unmount Vue
+    if (vm && vm.existed) {
+      vm.existed = false;
+    }
+    // Unmount Angular
+    if (ngRef) {
+      const mountParent = mount.parentNode;
+      ngRef.destroy();
+      ngRef = undefined;
+      const newMount = document.createElement('div');
+      newMount.setAttribute('id', 'mount');
+      mountParent.appendChild(newMount);
+    }
+    // Remove Dom
     mount.innerHTML = '';
 
     const codePath = code[`${framework}Path`];
 
-    delete require.cache[require.resolve(`${codePath}`)];
-    require(`${codePath}`);
+    if (framework === 'react') {
+      delete require.cache[require.resolve(`${codePath}`)];
+      const App = require(`${codePath}`).default;
+      ReactDOM.render(<App />, document.getElementById('mount'));
+    }
+
+    if (framework === 'angular') {
+      delete require.cache[require.resolve(`${codePath}`)];
+      const AppModule = require(`${codePath}`).default;
+      platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
+    }
 
     if (framework === 'vue') {
       const VueApp = require(`${codePath}`).default;
       const container = document.createElement('div');
       document.getElementById('mount').appendChild(container);
-      Vue.use(ViserVue)
       const runCodeItem = new Vue({
         el: container,
         template: '<VueApp />',
