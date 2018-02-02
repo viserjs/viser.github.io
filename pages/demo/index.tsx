@@ -155,9 +155,12 @@ class Demo {
       const VueApp = require(`${codePath}`).default;
       const container = document.createElement('div');
       document.getElementById('mount').appendChild(container);
-      const runCodeItem = new Vue({
+      vm = new Vue({
+        data: {
+          existed: true
+        },
         el: container,
-        template: '<VueApp />',
+        template: '<VueApp v-if="existed"/>',
         components: { VueApp }
       });
     }
