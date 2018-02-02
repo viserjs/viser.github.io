@@ -617,8 +617,8 @@ const examples = {
       },
       {
         path: 'example32',
-        enName: 'rain compare',
-        cnName: 'Rainfall traffic contrast',
+        enName: 'Rainfall traffic contrast',
+        cnName: '雨量流量对比',
       },
       {
         path: 'example33',
