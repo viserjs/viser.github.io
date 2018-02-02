@@ -1,5 +1,4 @@
 import { Chart, Axis, Legend, Tooltip, Coord, Guide, Polygon } from 'viser-react';
-
 import * as React from 'react';
 import * as $ from 'jquery';
 

@@ -1,5 +1,4 @@
 import { registerShape, Chart, Axis, Legend, Tooltip, Coord, Facet } from 'viser-react';
-
 import * as React from 'react';
 import * as _ from 'lodash';
 

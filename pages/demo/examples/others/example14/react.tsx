@@ -1,5 +1,4 @@
 import { Chart, Axis, Legend, Tooltip, Coord, Interval, Guide } from 'viser-react';
-
 import * as React from 'react';
 import * as _ from 'lodash';
 

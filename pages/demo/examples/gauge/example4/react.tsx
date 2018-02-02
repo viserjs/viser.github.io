@@ -1,5 +1,4 @@
 import { registerShape, Chart, Axis, Tooltip, Coord, Point, Interval, Guide, Series, View } from 'viser-react';
-
 import * as React from 'react';
 
 const scale = [{

@@ -1,5 +1,4 @@
 import { Chart, Axis, Tooltip, Coord, JitterPoint } from 'viser-react';
-
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';

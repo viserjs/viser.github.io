@@ -1,7 +1,6 @@
 import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule, registerShape } from 'viser-ng';
 

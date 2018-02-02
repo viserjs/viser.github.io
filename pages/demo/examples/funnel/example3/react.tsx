@@ -1,5 +1,4 @@
 import { Chart, Tooltip, Axis, Box, Legend, Pyramid, Coord, View } from 'viser-react';
-
 import * as React from 'react';
 
 const expectData = [

@@ -1,5 +1,4 @@
 import { Chart, Axis, Tooltip, Coord, Interval } from 'viser-react';
-
 import * as React from 'react';
 
 const data = [];

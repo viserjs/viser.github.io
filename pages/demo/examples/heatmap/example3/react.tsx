@@ -1,5 +1,4 @@
 import { Chart, Legend, Tooltip, Facet, FacetView, Polygon } from 'viser-react';
-
 import * as React from 'react';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');

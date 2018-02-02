@@ -1,5 +1,4 @@
 import { registerShape, Chart, Axis, Tooltip, Coord, Polygon } from 'viser-react';
-
 import * as React from 'react';
 import * as $ from 'jquery';
 

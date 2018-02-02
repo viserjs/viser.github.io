@@ -1,5 +1,4 @@
 import { Chart, Legend, Tooltip, Facet, FacetView } from 'viser-react';
-
 import * as React from 'react';
 import * as _ from 'lodash';
 const DataSet = require('@antv/data-set');
