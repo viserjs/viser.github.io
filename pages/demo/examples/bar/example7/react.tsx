@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Bar } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 const DataSet = require('@antv/data-set');
 
@@ -31,7 +31,7 @@ const scale = [{
   max: 14,
 }];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     const formatter = val => {
       if ((val % 2)) {
@@ -50,7 +50,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);

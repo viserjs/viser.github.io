@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Box, Legend, Pyramid, Coord, View } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 
 const expectData = [
@@ -18,7 +18,7 @@ const actualData = [
   {value: 5, name: '订单'},
 ];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     const tooltipOpts = {
       showTitle: false,
@@ -78,5 +78,5 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+
 

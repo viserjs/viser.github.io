@@ -1,5 +1,5 @@
 import { Chart, Legend, Tooltip, Facet, FacetView, Polygon } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
@@ -39,7 +39,7 @@ const scale = [{
   type: 'time',
 }];
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     data: [],
   };
@@ -84,7 +84,7 @@ class App extends React.Component {
           <Tooltip title="日期" />
           <Facet type="list" fields={['month']} cols={3} padding={[0, 15, 30, 15]} colTitle={colTitle}>
             <FacetView>
-              <Polygon 
+              <Polygon
                 position="day*week*日期"
                 color={['涨跌幅', '#F51D27-#FA541C-#FFBE15-#FFF2D1-#E3F6FF-#85C6FF-#0086FA-#0A61D7']}
                 style={{
@@ -100,5 +100,5 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+
 

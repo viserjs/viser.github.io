@@ -62,5 +62,8 @@
     "webpack-dev-middleware": "^1.11.0",
     "webpack-dev-server": "^2.5.1",
     "zone.js": "^0.8.18"
+  },
+  "tnpm": {
+    "mode": "npm"
   }
 }

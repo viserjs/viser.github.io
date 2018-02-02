@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Line, Point, Area, View } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 
 const data = [
@@ -80,7 +80,7 @@ const scale = [{
   tickInterval: 24 * 3600 * 1000 * 2,
 }];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     const pointStyle = {
       stroke: '#fff',
@@ -100,8 +100,3 @@ class App extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);

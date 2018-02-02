@@ -1,10 +1,10 @@
 import { Chart, Tooltip, Axis, Legend, StackBar } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     data: [],
   };
@@ -36,7 +36,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);

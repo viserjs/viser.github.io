@@ -1,5 +1,5 @@
 import { registerShape, Chart, Axis, Tooltip, Coord, StackInterval } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as _ from 'lodash';
 
@@ -59,7 +59,7 @@ const data = [
   { sex: '女', sold: 0.55 }
 ];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
@@ -83,4 +83,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+

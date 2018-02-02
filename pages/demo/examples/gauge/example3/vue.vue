@@ -122,11 +122,16 @@ export default {
         }
       }
 
-      this.timer = setTimeout(this.setData, 100);
+      this.timer = setTimeout(this.setData, 1000);
     }
   },
   mounted() {
-    this.timer = setTimeout(this.setData, 100);
+    this.timer = setTimeout(this.setData, 0);
+  },
+  beforeDestroy() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
   },
   data() {
     const data = [

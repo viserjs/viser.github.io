@@ -1,7 +1,7 @@
 import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 const DataSet = require('@antv/data-set');
@@ -75,5 +75,5 @@ class AppComponent {
     AppComponent
   ]
 })
-export class AppModule { }
-platformBrowserDynamic().bootstrapModule(AppModule);
+export default class AppModule { }
+

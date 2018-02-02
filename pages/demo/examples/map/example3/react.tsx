@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Legend, View, Polygon, Guide } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
@@ -7,7 +7,7 @@ const DataSet = require('@antv/data-set');
 
 const colors = [ "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac" ];
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     geoData: {},
     data: [],
@@ -217,4 +217,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+

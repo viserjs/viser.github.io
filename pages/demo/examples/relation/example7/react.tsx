@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Coord, Polygon } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
@@ -11,7 +11,7 @@ const style = {
 
 const color = ['value', '#BAE7FF-#1890FF-#0050B3'];
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     data: {},
   };
@@ -55,4 +55,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));

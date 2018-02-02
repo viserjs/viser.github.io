@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Box, Legend, Pyramid, Coord, Guide } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 const DataSet = require('@antv/data-set');
 
@@ -54,7 +54,7 @@ const funnelOpts = {
   })]
 };
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
@@ -64,9 +64,9 @@ class App extends React.Component {
           <Coord type="rect" direction="LT" />
           <Pyramid {...funnelOpts} />
           {
-            data.map((obj: any) => {
+            data.map((obj: any, i: number) => {
               const content = parseInt(String(obj.percent * 100)) + '%';
-              return (<Guide type="text" top={true} position={{
+              return (<Guide key={`guide-text-${i}`} type="text" top={true} position={{
                 action: obj.action,
                 percent: 'median'
               }} content={content} style={{
@@ -84,5 +84,5 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+
 

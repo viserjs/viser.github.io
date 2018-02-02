@@ -1,5 +1,5 @@
 import { Global, registerShape, Chart, Tooltip, Axis, Bar, Legend } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 
 function getRectPath(points) {
@@ -84,7 +84,7 @@ for (let i = 0; i < data.length; i++) {
   }
 }
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     const items = [
       { value: '各项花销', fill: '#1890FF', marker: 'square' },
@@ -105,7 +105,7 @@ class App extends React.Component {
           value: money[1] - money[0],
         };
       }
-  
+
       return {
         name: '生活费',
         value: money,
@@ -123,7 +123,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);

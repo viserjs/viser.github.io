@@ -1,5 +1,5 @@
 import { Chart, Legend, Axis, Tooltip, Coord, Point, registerShape } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
@@ -30,7 +30,7 @@ registerShape('point', 'cloud', {
   }
 });
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     data: [],
   };
@@ -86,4 +86,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+

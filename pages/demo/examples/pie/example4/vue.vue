@@ -79,6 +79,7 @@ export default {
       tooltip,
       color,
       label,
+      style,
     };
   }
 };

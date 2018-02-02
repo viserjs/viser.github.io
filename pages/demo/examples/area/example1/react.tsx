@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Area, Line } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 
 const data = [
@@ -23,7 +23,7 @@ const scale = [{
   max: 1,
 }];
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     const crosshairs: any = {
       type: 'y',
@@ -40,8 +40,3 @@ class App extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);

@@ -1,5 +1,5 @@
 import { Chart, Axis, Tooltip, Coord, JitterPoint } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
@@ -26,7 +26,7 @@ const jitterPointOpts = {
   opacity: 0.65,
 };
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     data: [],
   };
@@ -55,4 +55,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+

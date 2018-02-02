@@ -1,7 +1,7 @@
 import 'zone.js';
 import 'reflect-metadata';
-import { Component, enableProdMode, NgModule } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { Component, enableProdMode, NgModule, OnDestroy } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule, registerShape } from 'viser-ng';
 
@@ -86,7 +86,7 @@ const color = ['#0086FA', '#FFBF00', '#F5222D'];
   `
 })
 
-class AppComponent {
+class AppComponent implements OnDestroy {
   forceFit: boolean = true;
   height = 400;
   data = [
@@ -151,7 +151,7 @@ class AppComponent {
   trend: 'up' | 'down' = 'up';
 
   constructor() {
-    this.timer = setTimeout(this.setData, 100);
+    this.timer = setTimeout(this.setData, 0);
   }
 
   setData = () => {
@@ -195,7 +195,13 @@ class AppComponent {
       }
     }
 
-    this.timer = setTimeout(this.setData, 100);
+    this.timer = setTimeout(this.setData, 1000);
+  }
+
+  ngOnDestroy() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
   }
 }
 
@@ -212,5 +218,5 @@ class AppComponent {
     AppComponent
   ]
 })
-export class AppModule { }
-platformBrowserDynamic().bootstrapModule(AppModule);
+export default class AppModule { }
+

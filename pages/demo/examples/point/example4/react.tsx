@@ -1,5 +1,5 @@
 import { Chart, Tooltip, Axis, Point, Legend, Global } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 
@@ -25,7 +25,7 @@ const colorMap = {
   'Oceania': Global.colors[3],
 };
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     data: [],
   };
@@ -73,7 +73,7 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('mount')
-);
+
+
+
+

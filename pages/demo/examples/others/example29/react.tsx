@@ -1,5 +1,5 @@
 import { Global, Chart, Axis, Legend, Point, View, Line, Tooltip } from 'viser-react';
-import * as ReactDOM from 'react-dom';
+
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
@@ -21,7 +21,7 @@ const scale = [{
   sync: true,
 }];
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     data: [],
   };
@@ -67,4 +67,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('mount'));
+
