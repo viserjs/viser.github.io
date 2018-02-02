@@ -231,6 +231,11 @@ const examples = {
     cnName: '烛形图',
     examples: [
       {
+        path: 'example1',
+        enName: 'Stock',
+        cnName: '股票图',
+      },
+      {
         path: 'example2',
         enName: 'Stock and area',
         cnName: '股票图与范围区域图',
@@ -609,6 +614,11 @@ const examples = {
         path: 'example31',
         enName: 'streamgraph',
         cnName: 'streamgraph',
+      },
+      {
+        path: 'example32',
+        enName: 'rain compare',
+        cnName: 'Rainfall traffic contrast',
       },
       {
         path: 'example33',
