@@ -9,18 +9,19 @@ const DataSet = require('@antv/data-set');
 const nodesLabel = [
   'name', {
     offset: 0,
-    labelEmit: true,
     textStyle: (text, item) => {
-      let textAlign = item.textAlign;
       if (item.point.hasChildren) {
-        textAlign = textAlign === 'left' ? 'right' : 'left';
+        return {
+          opacity: 0
+        };
       }
       return {
+        textBaseline: 'middle',
         fill: 'grey',
         fontSize: 9,
-        textAlign,
+        textAlign: 'center'
       };
-    },
+    }
   },
 ];
 
@@ -28,24 +29,21 @@ const nodesLabel = [
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [padding]="padding">
-      <v-coord type="polar"></v-coord>
-      <v-view [data]="edgeSource">
-        <v-edge position="x*y" shape="smooth" color="grey" [opacity]="0.5" tooltip="source*target"></v-edge>
-      </v-view>
-      <v-view [data]="nodeSource">
-        <v-point position="x*y" color="hasChildren" [label]="label"></v-point>
-      </v-view>
+    <v-chart [height]="height" [width]="height" [data]="data" [padding]="0">
+      <v-tooltip [showTitle]="false"></v-tooltip>
+      <v-point position="x*y" shape="circle" tooltip="name" [size]="size" [color]="color" [style]="style" [label]="label"></v-point>
     </v-chart>
   </div>
   `
 })
 export class AppComponent {
-  forceFit: boolean = true;
   height: number = 400;
+  width: number = 400;
   padding = [ 60, 0, 40, 0 ];
-  edgeSource = {};
-  nodeSource = {};
+  data = {};
+  size = ['r', r => r * 400];
+  style = { stroke: 'rgb(183, 55, 121)' };
+  color = ['r', 'rgb(252, 253, 191)-rgb(231, 82, 99)-rgb(183, 55, 121)'];
   label = nodesLabel;
 
   constructor() {
@@ -54,23 +52,17 @@ export class AppComponent {
         type: 'hierarchy',
       });
       dv.transform({
-        type: 'hierarchy.tree',
+        type: 'hierarchy.circle-packing',
       });
 
-      this.edgeSource = dv.getAllLinks().map(link => ({
-          x: [ link.source.x, link.target.x ],
-          y: [ link.source.y, link.target.y ],
-          source: link.source.id,
-          target: link.target.id
-      }));
-
-      this.nodeSource = dv.getAllNodes().map(node => ({
+      this.data = dv.getAllNodes().map(node => ({
         hasChildren: !!(node.data.children && node.data.children.length),
-        name: node.data.name,
+        name: node.data.name.split(/(?=[A-Z][^A-Z])/g).join('\n'),
         value: node.value,
         depth: node.depth,
         x: node.x,
-        y: node.y
+        y: node.y,
+        r: node.r
       }));
     });
   }

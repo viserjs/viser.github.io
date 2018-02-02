@@ -33,7 +33,7 @@ export default class App extends React.Component {
         type: 'hierarchy',
       });
       dv.transform({
-        type: 'hierarchy.tree',
+        type: 'hierarchy.cluster',
       });
 
       const edgeSource = dv.getAllLinks().map(link => ({

@@ -1,5 +1,18 @@
-import { Chart, Tooltip, Legend, Polygon, Coord, View, Point, Edge } from 'viser-react';
-import * as React from 'react';
+<template>
+  <div>
+    <v-chart :forceFit="true" :height="400" :padding="padding">
+      <v-coord type="polar" />
+      <v-view :data="edgeSource">
+        <v-edge position="x*y" shape="smooth" color="grey" :opacity="0.5" tooltip="source*target" />
+      </v-view>
+      <v-view :data="nodeSource">
+        <v-point position="x*y" color="hasChildren" :label="label" />
+      </v-view>
+    </v-chart>
+  </div>
+</template>
+
+<script>
 import * as $ from 'jquery';
 const DataSet = require('@antv/data-set');
 
@@ -21,29 +34,24 @@ const nodesLabel = [
   },
 ];
 
-export default class App extends React.Component {
-  state = {
-    edgeSource: {},
-    nodeSource: {},
-  };
-
-  componentDidMount() {
+export default {
+  mounted() {
     $.getJSON('/assets/data/flare.json', (sourceData) => {
       const dv = new DataSet.View().source(sourceData, {
         type: 'hierarchy',
       });
       dv.transform({
-        type: 'hierarchy.tree',
+        type: 'hierarchy.cluster',
       });
 
-      const edgeSource = dv.getAllLinks().map(link => ({
+      this.$data.edgeSource = dv.getAllLinks().map(link => ({
           x: [ link.source.x, link.target.x ],
           y: [ link.source.y, link.target.y ],
           source: link.source.id,
           target: link.target.id
       }));
 
-      const nodeSource = dv.getAllNodes().map(node => ({
+      this.$data.nodeSource = dv.getAllNodes().map(node => ({
         hasChildren: !!(node.data.children && node.data.children.length),
         name: node.data.name,
         value: node.value,
@@ -51,31 +59,16 @@ export default class App extends React.Component {
         x: node.x,
         y: node.y
       }));
-
-      this.setState({
-        edgeSource,
-        nodeSource,
-      })
     });
-  }
+  },
 
-  render() {
-    const { edgeSource, nodeSource } = this.state;
-
-    return (
-      <Chart forceFit={true} height={400} padding={[ 60, 0, 40, 0 ]}>
-        <Coord type="polar" />
-        <View data={edgeSource}>
-          <Edge position="x*y" shape="smooth" color="grey" opacity={0.5} tooltip="source*target" />
-        </View>
-        <View data={nodeSource}>
-          <Point position="x*y" color="hasChildren" label={nodesLabel} />
-        </View>
-      </Chart>
-    );
-  }
-}
-
-
-
-
+  data() {
+    return {
+      edgeSource: [],
+      nodeSource: [],
+      padding: [ 60, 0, 40, 0 ],
+      label: nodesLabel,
+    };
+  },
+};
+</script>

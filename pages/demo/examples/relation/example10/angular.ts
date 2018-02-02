@@ -54,7 +54,7 @@ export class AppComponent {
         type: 'hierarchy',
       });
       dv.transform({
-        type: 'hierarchy.tree',
+        type: 'hierarchy.cluster',
       });
 
       this.edgeSource = dv.getAllLinks().map(link => ({
