@@ -601,6 +601,11 @@ const examples = {
         cnName: '自定义Tooltip',
       },
       {
+        path: 'example21',
+        enName: 'Double Axes',
+        cnName: '双轴图表',
+      },
+      {
         path: 'example26',
         enName: 'Visualization of unit test coverage',
         cnName: '单元测试覆盖率可视化',
