@@ -596,6 +596,16 @@ const examples = {
         cnName: '风向玫瑰图',
       },
       {
+        path: 'example20',
+        enName: 'Cutomize Tooltip',
+        cnName: '自定义Tooltip',
+      },
+      {
+        path: 'example21',
+        enName: 'Double Axes',
+        cnName: '双轴图表',
+      },
+      {
         path: 'example24',
         enName: 'bullet',
         cnName: '子弹图',
