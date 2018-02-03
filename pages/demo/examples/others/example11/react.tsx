@@ -61,7 +61,7 @@ export default class App extends React.Component {
       <div>
         <Chart forceFit height={600} padding={80} data={data}>
           <Tooltip showTitle={false} />
-          <Legend dataKey="area" offset={0} />
+          <Legend dataKey="area" offset={20} />
           <Facet type="rect" fields={['year']} padding={20} rowTitle={null} colTitle={{
             offsetY: -30,
             style: {
