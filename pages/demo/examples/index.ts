@@ -606,6 +606,16 @@ const examples = {
         cnName: '双轴图表',
       },
       {
+        path: 'example24',
+        enName: 'bullet',
+        cnName: '子弹图',
+      },
+      {
+        path: 'example25',
+        enName: 'Grouping stacked histograms',
+        cnName: '分组层叠柱状图',
+      },
+      {
         path: 'example26',
         enName: 'Visualization of unit test coverage',
         cnName: '单元测试覆盖率可视化',
