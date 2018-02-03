@@ -32,6 +32,9 @@ const data = [
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-tooltip
+        [defaultPoint]="defaultPoint"
+        [g2Tooltip]="g2Tooltip"
+        [g2TooltipList]="g2TooltipList"
         [containerTpl]="containerTpl"
         [itemTpl]="itemTpl"
         [offset]="offset"
@@ -42,9 +45,6 @@ const data = [
   </div>
   `
 })
-        // [default-point]="defaultPoint"
-        // [g2Tooltip]="g2Tooltip"
-        // [g2TooltipList]="g2TooltipList"
 class AppComponent {
   forceFit: boolean= true;
   height: number = 400;

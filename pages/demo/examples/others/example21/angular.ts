@@ -32,6 +32,7 @@ const scale = [{
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
       <v-legend
+        [custom] = "legendCustom"
         [allowAllCanceled]="legendAllowAllCanceled"
         [items]="legendItems"
         [onClick]="legendOnClick"
@@ -48,7 +49,6 @@ const scale = [{
   </div>
   `
 })
-// [custom] = "legendCustom"
 
 class AppComponent {
   forceFit: boolean = true;
@@ -72,20 +72,20 @@ class AppComponent {
     { value: 'people', marker: { symbol: 'hyphen', stroke: '#fdae6b', radius: 5, lineWidth: 3 } }
   ];
   legendOnClick = (ev, chart) => {
-    // const item = ev.item;
-    // const value = item.value;
-    // const checked = ev.checked;
-    // const geoms = chart.getAllGeoms();
-    // for (let i = 0; i < geoms.length; i++) {
-    //   const geom = geoms[i];
-    //   if (geom.getYScale().field === value) {
-    //     if (checked) {
-    //       geom.show();
-    //     } else {
-    //       geom.hide();
-    //     }
-    //   }
-    // }
+    const item = ev.item;
+    const value = item.value;
+    const checked = ev.checked;
+    const geoms = chart.getAllGeoms();
+    for (let i = 0; i < geoms.length; i++) {
+      const geom = geoms[i];
+      if (geom.getYScale().field === value) {
+        if (checked) {
+          geom.show();
+        } else {
+          geom.hide();
+        }
+      }
+    }
   };
 }
 

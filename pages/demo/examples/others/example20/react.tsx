@@ -31,7 +31,7 @@ export default class App extends React.Component {
         </style>
         <Chart forceFit height={400} data={data}>
           <Tooltip
-            // defaultPoint={{ month: '七月', tem: 25.2 }}
+            defaultPoint={{ month: '七月', tem: 25.2 }}
             containerTpl={`
               <div class="g2-tooltip">
                 <p class="g2-tooltip-title"></p>
@@ -45,19 +45,19 @@ export default class App extends React.Component {
               </tr>
             `}
             offset={50}
-            // g2Tooltip={{
-            //   position: 'absolute',
-            //   visibility: 'hidden',
-            //   border : '1px solid #efefef',
-            //   backgroundColor: 'white',
-            //   color: '#000',
-            //   opacity: "0.8",
-            //   padding: '5px 15px',
-            //   transition: 'top 200ms,left 200ms'
-            // }}
-            // g2TooltipList={{
-            //   margin: '10px'
-            // }}
+            g2Tooltip={{
+              position: 'absolute',
+              visibility: 'hidden',
+              border : '1px solid #efefef',
+              backgroundColor: 'white',
+              color: '#000',
+              opacity: "0.8",
+              padding: '5px 15px',
+              transition: 'top 200ms,left 200ms'
+            }}
+            g2TooltipList={{
+              margin: '10px'
+            }}
           />
           <Axis />
           <Line position="month*tem" />

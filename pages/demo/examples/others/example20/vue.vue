@@ -10,10 +10,12 @@
   <div>
     <v-chart :forceFit="true" :height="height" :data="data">
       <v-tooltip
+        :default-point="defaultPoint"
+        :g2-tooltip="g2Tooltip"
+        :g2-tooltip-list="g2TooltipList"
         :container-tpl="containerTpl"
         :item-tpl="itemTpl"
         :offset="offset"
-
       ></v-tooltip>
       <v-axis></v-axis>
       <v-line position="month*tem"></v-line>
@@ -22,9 +24,6 @@
 </template>
 
 <script>
-        // :default-point="defaultPoint"
-        // :g2-tooltip="g2Tooltip"
-        // :g2-tooltip-list="g2TooltipList"
 const data = [
   { "month": '一月', "tem": 7, "city": "tokyo" },
   { "month": '二月', "tem": 6.9, "city": "tokyo" },
