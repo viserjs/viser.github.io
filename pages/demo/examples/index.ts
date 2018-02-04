@@ -665,6 +665,11 @@ const examples = {
         enName: 'Periodic table of ele ments',
         cnName: '元素周期表',
       },
+      {
+        path: 'example36',
+        enName: 'Waffle',
+        cnName: '华夫图',
+      },
     ],
     icon: 'others'
   },
