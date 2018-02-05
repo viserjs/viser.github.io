@@ -3,7 +3,7 @@
     <v-chart :force-fit="true" :height="height" :padding="[100, 150]" :data="data" :scale="scale">
       <v-tooltip />
       <v-legend :custom="true" :clickable="false" :items="legendItems"/>
-      <v-view v-for="(item, i) in data" :start="getStart(i)" :end="getEnd(i)" :data="[item]" :scale="getScale(item, i)">
+      <v-view v-for="(item, i) in data" :key="i" :start="getStart(i)" :end="getEnd(i)" :data="[item]" :scale="getScale(item, i)">
         <v-coord type="rect" direction='LB'/>
         <v-axis dataKey="target" :show="false"/>
         <v-axis dataKey="actual" position="right"/>

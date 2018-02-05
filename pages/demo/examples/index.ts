@@ -550,11 +550,11 @@ const examples = {
         enName: 'Slice Pie',
         cnName: '分片饼图',
       },
-      // {
-      //   path: 'example11',
-      //   enName: 'Double Ring',
-      //   cnName: '双环图',
-      // },
+      {
+        path: 'example11',
+        enName: 'Double Ring',
+        cnName: '双环图',
+      },
       {
         path: 'example12',
         enName: 'Stack Bar in Polar Axis',

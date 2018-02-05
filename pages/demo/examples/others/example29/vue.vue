@@ -6,7 +6,7 @@
       <v-view :data="data" :scale="scale">
         <v-point position="carat*price" />
       </v-view>
-      <v-view v-for="(method, i) in REGRESSION_METHODS" :data="getData(method, i)" :scale="scale">
+      <v-view v-for="(method, i) in REGRESSION_METHODS" :key="i" :data="getData(method, i)" :scale="scale">
         <v-axis :data-key="'price'" :show="false" />
         <v-line position="carat*price" :size="1" :color="Global.colors_16[i]" />
       </v-view>

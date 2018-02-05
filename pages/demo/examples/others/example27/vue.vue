@@ -3,7 +3,7 @@
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-axis />
       <v-tooltip />
-      <v-view v-for="(method, i) in REGRESSION_METHODS" :data="getData(method, i)" :scale="scale">
+      <v-view v-for="(method, i) in REGRESSION_METHODS" :key="i" :data="getData(method, i)" :scale="scale">
         <v-line position="x*y" :color="Global.colors_16[i]" />
       </v-view>
     </v-chart>
