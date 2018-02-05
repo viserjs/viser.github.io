@@ -606,6 +606,16 @@ const examples = {
         cnName: '双轴图表',
       },
       {
+        path: 'example22',
+        enName: 'Kagi Chart',
+        cnName: 'Kagi Chart',
+      },
+      {
+        path: 'example23',
+        enName: 'path chart',
+        cnName: '路径图',
+      },
+      {
         path: 'example24',
         enName: 'bullet',
         cnName: '子弹图',
