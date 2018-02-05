@@ -105,7 +105,7 @@ const userData = [
   { type: '阅读', value: 30 },
 ];
 
-const userDv = new DataSet.View().source(data).transform({
+const userDv = new DataSet.View().source(userData).transform({
   type: 'percent',
   field: 'value',
   dimension: 'type',
