@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="data.length">
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale">
       <v-axis />
       <v-tooltip />
