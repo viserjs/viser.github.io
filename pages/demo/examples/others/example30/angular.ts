@@ -12,6 +12,7 @@ const DataSet = require('@antv/data-set');
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-axis></v-axis>
+      <v-legend [offset]="45"></v-legend>
       <v-point position="carat*price"></v-point>
       <v-view [data]="dv">
         <v-legend [offset]="45"></v-legend>

@@ -2,6 +2,7 @@
   <div>
     <v-chart :force-fit="true" :height="height" :data="data">
       <v-axis />
+      <v-legend :offset="45"/>
       <v-point position="carat*price" />
       <v-view :data="dv" >
         <v-legend :offset="45" />
