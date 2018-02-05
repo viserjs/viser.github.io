@@ -13,7 +13,7 @@
       <v-coord type="polar" :radius="0.85" />
       <v-axis 
         dataKey="value"
-        :label="axisOpt.lable"
+        :label="axisOpt.label"
         :tickLine="axisOpt.tickLine"
         :line="axisOpt.line"
         :grid="axisOpt.grid"
