@@ -1,6 +1,6 @@
 import 'zone.js';
 import 'reflect-metadata';
-import { Component, enableProdMode, NgModule } from '@angular/core';
+import { Component, enableProdMode, NgModule, ViewEncapsulation } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
@@ -21,14 +21,18 @@ const data = [
 
 @Component({
   selector: '#mount',
-  template: `
-  <style>
+  styles: [`
+    .g2-tooltip-title {
+      margin-top: 12px;
+    }
     .g2-tooltip-list td {
       border: 1px solid #cdcdcd;
       padding: 5px 8px;
       font-size: 12px;
     }
-  </style>
+  `],
+  encapsulation: ViewEncapsulation.None,
+  template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data">
       <v-tooltip

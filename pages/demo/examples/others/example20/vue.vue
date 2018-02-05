@@ -1,5 +1,8 @@
 <style>
-  .g2-tooltip-list td {
+  .g2-tooltip-title[data-v-gtlv] {
+    margin-top: 12px;
+  }
+  .g2-tooltip-list td[data-v-gtlv] {
     border: 1px solid #cdcdcd;
     padding: 5px 8px;
     font-size: 12px;
@@ -45,14 +48,14 @@ export default {
       height: 400,
       containerTpl: `
         <div class="g2-tooltip">
-          <p class="g2-tooltip-title"></p>
+          <p data-v-gtlv class="g2-tooltip-title"></p>
           <table class="g2-tooltip-list"></table>
         </div>
       `,
       itemTpl: `
         <tr class="g2-tooltip-list-item">
-          <td style="color:{color}">{name}</td>
-          <td>{value}</td>
+          <td data-v-gtlv style="color:{color}">{name}</td>
+          <td data-v-gtlv>{value}</td>
         </tr>
       `,
       offset: 50,

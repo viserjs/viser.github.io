@@ -22,6 +22,9 @@ export default class App extends React.Component {
       <div>
         <style>
           {`
+            .g2-tooltip-title {
+              margin-top: 12px;
+            }
             .g2-tooltip-list td {
               border: 1px solid #cdcdcd;
               padding: 5px 8px;
