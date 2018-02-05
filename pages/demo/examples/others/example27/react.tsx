@@ -41,6 +41,9 @@ export default class App extends React.Component {
 
   render() {
     const  { data } = this.state;
+    if (!data.length) {
+      return (<div></div>);
+    }
     return (
       <div>
         <Chart forceFit height={400} data={data} scale={scale}>

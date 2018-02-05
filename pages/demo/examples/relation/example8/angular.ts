@@ -81,7 +81,7 @@ const label = ['name', {
   template: `
   <div>
     <v-chart [forceFit]="forceFit" [height]="400" [data]="data" [scale]="scale" padding="0">
-      <v-tooltip [showTitle]="false" itemTpl="itemTpl"></v-tooltip>
+      <v-tooltip [showTitle]="false" [itemTpl]="itemTpl"></v-tooltip>
       <v-polygon position="x*y" color="name" [tooltip]="tooltip" [style]="style" [label]="label"></v-polygon>
     </v-chart>
   </div>
@@ -95,6 +95,7 @@ export class AppComponent {
   tooltip = tooltip;
   style = style;
   label = label;
+  itemTpl = itemTpl;
 }
 
 @NgModule({
