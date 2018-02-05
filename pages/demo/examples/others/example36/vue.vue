@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale" :padding="padding">
       <v-tooltip/>
       <v-legend dataKey="name" position="bottom"/>
       <v-legend dataKey="_hStep" :show="legendShow"/>
@@ -13,7 +13,7 @@
       />
       <v-guide
         v-for="(row, index) in guideData"
-        :key={index}
+        :key="index"
         type="text"
         :top="guideTop"
         :position="getGuidePosition(row)"
@@ -129,11 +129,11 @@
       return {
         data,
         scale,
-        height: 550,
-        padding: [20, 20, 80, 50],
+        height: 440,
+        padding: [20, 20, 120, 50],
 
         legendShow: false,
-        pointSize: hStep => Math.min(90 * hStep, 5),
+        pointSize: ['_hStep', hStep => Math.min(90 * hStep, 5)],
 
         guideData: guideData,
         guideTop: true,

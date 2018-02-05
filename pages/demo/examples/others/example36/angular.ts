@@ -131,13 +131,13 @@ const scale = [
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 550;
+  height: number = 440;
   data = data;
   scale = scale;
-  padding = [20, 20, 80, 50];
+  padding = [20, 20, 120, 50];
 
   legendShow = false;
-  pointSize = hStep => Math.min(90 * hStep, 5);
+  pointSize = ['_hStep', hStep => Math.min(90 * hStep, 5)];
 
   guideData = guideData;
   guideTop = true;

@@ -98,10 +98,11 @@ const scale = [
   { dataKey: 'y', nice: false },
 ];
 
+
 export default class App extends React.Component {
   render() {
     return (
-      <Chart forceFit height={550} data={data} scale={scale} padding={[20, 20, 80, 50]}>
+      <Chart forceFit height={440} data={data} scale={scale} padding={[20, 20, 120, 50]}>
         <Tooltip />
         <Legend dataKey="name" position="bottom"/>
         <Legend dataKey="_hStep" show={false}/>
@@ -110,7 +111,7 @@ export default class App extends React.Component {
           shape="square"
           position="x*y"
           color="name"
-          size={hStep => Math.min(90 * hStep, 5)}
+          size={['_hStep', hStep => Math.min(90 * hStep, 5)]}
         />
         {
           guideData.map((row: any, i: number) => {
