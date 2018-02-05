@@ -79,6 +79,12 @@ const scale = [{
   tickInterval: 24 * 3600 * 1000 * 2,
 }];
 
+const tooltipOpts = {
+  crosshairs: {
+    type: 'line'
+  }
+};
+
 export default class App extends React.Component {
   render() {
     const pointStyle = {
@@ -88,7 +94,7 @@ export default class App extends React.Component {
     };
     return (
       <Chart forceFit height={400} data={averages} scale={scale}>
-        <Tooltip />
+        <Tooltip {...tooltipOpts}/>
         <Axis />
         <Line position="time*temperature" size={2} />
         <Point position="time*temperature" size={4} style={pointStyle} shape="circle"/>

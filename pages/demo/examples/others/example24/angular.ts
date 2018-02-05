@@ -60,7 +60,7 @@ const legendItems = [
   <div>
     <v-chart [forceFit]="forceFit" [height]="height" [padding]="[100, 150]" [data]="data" [scale]="scale">
       <v-tooltip></v-tooltip>
-      <v-legend [custom]="false" [clickable]="false" [items]="legendItems" ></v-legend>
+      <v-legend [custom]="true" [clickable]="false" [items]="legendItems" ></v-legend>
       <v-view *ngFor="let item of data; let i = index;" [start]="getStart(i)" [end]="getEnd(i)"
         [data]="[item]" [scale]="this.getScale(item, i)">
         <v-coord type="rect" direction='LB'></v-coord>

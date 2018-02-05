@@ -120,7 +120,7 @@ const stackInterval3Opts = {
           [content]="guideOpts.content" [style]="guideOpts.style"></v-guide>
       </v-view>
       <v-view [data]="dv">
-        <v-coord type="polar" [innerRadius]="0.6"></v-coord>
+        <v-coord type="polar" [innerRadius]="0.9"></v-coord>
         <v-stack-interval [position]="stackInterval2Opts.position" [size]="stackInterval2Opts.size"
           [color]="stackInterval2Opts.color" [tooltip]="stackInterval2Opts.tooltip"
           [label]="stackInterval2Opts.label"></v-stack-interval>
