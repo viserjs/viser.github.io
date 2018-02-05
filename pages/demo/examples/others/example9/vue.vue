@@ -11,7 +11,7 @@
           :content="guideOpts.content" :v-style="guideOpts.style" />
       </v-view>
       <v-view :data="dv">
-        <v-coord type="polar" :innerRadius="0.6" />
+        <v-coord type="polar" :innerRadius="0.9" />
         <v-stack-interval :position="stackInterval2Opts.position" :size="stackInterval2Opts.size"
           :color="stackInterval2Opts.color" :tooltip="stackInterval2Opts.tooltip"
           :label="stackInterval2Opts.label" />
