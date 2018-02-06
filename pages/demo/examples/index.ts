@@ -598,7 +598,7 @@ const examples = {
       {
         path: 'example20',
         enName: 'Cutomize Tooltip',
-        cnName: '自定义Tooltip',
+        cnName: '个性化Tooltip',
       },
       {
         path: 'example21',
