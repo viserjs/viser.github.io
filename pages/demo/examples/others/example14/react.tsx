@@ -37,7 +37,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={600} padding={[ 40, 40, 130, 40 ]} data={data} scale={scale}>
+        <Chart forceFit height={400} padding={[ 40, 40, 130, 40 ]} data={data} scale={scale}>
           <Tooltip title="question" />
           <Coord type="polar" innerRadius={0.1} direction="rotate" />
           <Interval {...interval1Opts} />

@@ -62,7 +62,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={600} padding={[ 20, 30, 30, 20 ]} data={data}>
+        <Chart forceFit height={400} padding={[ 20, 30, 30, 20 ]} data={data}>
           <Tooltip showTitle={false}/>
           <Coord type="theta" radius={0.8}/>
           <StackInterval position="sold" shape="radiusPie" color={['sex', COLORS]} label={['sold', {

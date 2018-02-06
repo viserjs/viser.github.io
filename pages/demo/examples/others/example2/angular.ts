@@ -87,7 +87,7 @@ const seriesOpts = {
 
 class AppComponent {
   forceFit: boolean= true;
-  height: number = 600;
+  height: number = 400;
   data = data;
   scale = scale;
   seriesOpts = seriesOpts;

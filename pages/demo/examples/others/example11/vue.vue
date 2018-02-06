@@ -75,7 +75,7 @@ export default {
     return {
       forceFit: true,
       data,
-      height: 600,
+      height: 400,
       padding: 80,
 
       tooltipShowFalse: false,

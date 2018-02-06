@@ -63,7 +63,7 @@ const interval1Opts = {
 export default {
   data() {
     return {
-      height: 600,
+      height: 400,
       data,
       scale,
       axis1Opts,

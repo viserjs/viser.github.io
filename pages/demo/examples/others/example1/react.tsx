@@ -71,7 +71,7 @@ export default class App extends React.Component {
     const  { data } = this.state;
     return (
       <div>
-        <Chart forceFit height={600} data={data} scale={scale}>
+        <Chart forceFit height={400} data={data} scale={scale}>
           <Tooltip showTitle={false} />
           <Axis {...axis1Opts} />
           <Axis {...axis2Opts} />

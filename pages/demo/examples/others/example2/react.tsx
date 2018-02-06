@@ -75,7 +75,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={600} data={data} scale={scale}>
+        <Chart forceFit height={400} data={data} scale={scale}>
           <Tooltip />
           <Axis dataKey="value" show={false} />
           <Series {...seriesOpts} />

@@ -94,7 +94,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={600} padding={80}>
+        <Chart forceFit height={400} padding={80}>
           <Tooltip showTitle={false} />
           <View data={dv}>
             <Coord type="theta" innerRadius={0.9} />

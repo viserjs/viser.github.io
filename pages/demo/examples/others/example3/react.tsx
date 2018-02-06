@@ -39,8 +39,6 @@ const scale = [{
   alias: 'Obesity(adults) %',
 }];
 
-const height = 600;
-
 const axis1Opts = {
   dataKey: 'x',
   label: {
@@ -75,7 +73,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={height} plotBackground={{
+        <Chart forceFit height={400} plotBackground={{
             stroke: '#ccc', // 边颜色
             lineWidth: 1, // 边框粗细
           }} data={data} scale={scale}>

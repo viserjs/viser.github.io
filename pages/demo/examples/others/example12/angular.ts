@@ -56,7 +56,7 @@ const stackInterval1Opts = {
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 600;
+  height: number = 400;
   dv = dv;
   stackInterval1Opts = stackInterval1Opts;
 }
