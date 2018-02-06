@@ -3,11 +3,16 @@
     <v-chart :force-fit="true" :height="height" :padding="[ 40, 40, 130, 40 ]" :data="data" :scale="scale">
       <v-tooltip title="question" />
       <v-coord type="polar" :inner-radius="0.1" direction="rotate" />
-      <v-interval :position="interval1Opts.position" :color="interval1Opts.color"
-        :tooltip="interval1Opts.tooltip" :label="interval1Opts.label"/>
+      <v-interval
+        :position="interval1Opts.position"
+        :color="interval1Opts.color"
+        :tooltip="interval1Opts.tooltip"
+        :label="interval1Opts.label" 
+      />
       <v-guide v-for="(obj, index) in data"
         :key="index"
-        type="text" :top="true"
+        type="text"
+        :top="true"
         :position="getPosition(obj)"
         :content="getContent(obj)"
         :v-style="{
@@ -62,7 +67,7 @@ export default {
 
   data() {
     return {
-      height: 400,
+      height: 500,
       data,
       scale,
       interval1Opts,

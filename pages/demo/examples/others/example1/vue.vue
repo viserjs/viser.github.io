@@ -2,9 +2,9 @@
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" :scale="scale" >
       <v-tooltip :showTitle="false" />
-      <v-axis :data-key="axis1Opts.dataKey" :tick-line="axis1Opts.tickLine" :label="axis1Opts.label" />
-      <v-axis :data-key="axis2Opts.dataKey" :tick-line="axis2Opts.tickLine" :line="axis2Opts.line" :grid="axis2Opts.grid" :label="axis2Opts.label"/>
-      <v-point position="exp_dat*exp_amo" :size="['exp_amo', [ 1, 10 ]]" opacity="exp_amo" :shape="'circle'" :tooltip="'exp_dat*can_nam*spe_nam*exp_amo'" />
+      <v-axis :dataKey="axis1Opts.dataKey" :tickLine="axis1Opts.tickLine" :label="axis1Opts.label" />
+      <v-axis :dataKey="axis2Opts.dataKey" :tickLine="axis2Opts.tickLine" :line="axis2Opts.line" :grid="axis2Opts.grid" :label="axis2Opts.label" />
+      <v-point position="exp_dat*exp_amo" :size="['exp_amo', [ 1, 10 ]]" opacity="exp_amo" shape="circle" tooltip="exp_dat*can_nam*spe_nam*exp_amo" />
     </v-chart>
   </div>
 </template>
