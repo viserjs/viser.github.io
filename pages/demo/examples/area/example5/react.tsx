@@ -92,14 +92,18 @@ export default class App extends React.Component {
       lineWidth: 1,
       fillOpacity: 1,
     };
+
     return (
-      <Chart forceFit height={400} data={averages} scale={scale}>
-        <Tooltip {...tooltipOpts}/>
+      <Chart forceFit height={400} scale={scale}>
+        <Tooltip {...tooltipOpts} />
         <Axis />
-        <Line position="time*temperature" size={2} />
-        <Point position="time*temperature" size={4} style={pointStyle} shape="circle"/>
         <View data={data}>
-          <Area position="time*temperature" />
+          <Area position="time*temperature" tooltip={false} />
+        </View>
+        <View data={averages}>
+          <Axis show={false} />
+          <Line position="time*temperature" size={2} />
+          <Point position="time*temperature" size={4} style={pointStyle} shape="circle" />
         </View>
       </Chart>
     );

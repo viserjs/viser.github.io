@@ -1,12 +1,15 @@
 <template>
 <div>
-  <v-chart :forceFit="true" :height="height" :data="averages" :scale="scale">
-    <v-tooltip :crosshairs="tooltipOpts.crosshairs"/>
+  <v-chart :forceFit="true" :height="height" :scale="scale">
+    <v-tooltip :crosshairs="tooltipOpts.crosshairs" />
     <v-axis />
-    <v-line position="time*temperature" :size="2" />
-    <v-point position="time*temperature" :size="4" :vStyle="pointStyle" shape="circle" />
     <v-view :data="data">
-      <v-area position="time*temperature" />
+      <v-area position="time*temperature" :tooltip="false" />
+    </v-view>
+    <v-view :data="averages">
+      <v-axis :show="false" />
+      <v-line position="time*temperature" :size="2" />
+      <v-point position="time*temperature" :size="4" :vStyle="pointStyle" shape="circle" />
     </v-view>
   </v-chart>
 </div>

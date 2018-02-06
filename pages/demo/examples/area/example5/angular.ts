@@ -98,13 +98,16 @@ const tooltipOpts = {
   selector: '#mount',
   template: `
   <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [scale]="scale" [data]="averages">
+    <v-chart [forceFit]="forceFit" [height]="height" [scale]="scale">
       <v-tooltip [crosshairs]="tooltipOpts.crosshairs"></v-tooltip>
       <v-axis></v-axis>
-      <v-line position="time*temperature" [size]="2"></v-line>
-      <v-point position="time*temperature" [size]="4" [style]="pointStyle" shape="circle"></v-point>
       <v-view [data]="data">
-        <v-area position="time*temperature"></v-area>
+        <v-area position="time*temperature" [tooltip]="false"></v-area>
+      </v-view>
+      <v-view [data]="averages">
+        <v-axis [show]="false"></v-axis>
+        <v-line position="time*temperature" [size]="2"></v-line>
+        <v-point position="time*temperature" [size]="4" [style]="pointStyle" shape="circle"></v-point>
       </v-view>
     </v-chart>
   </div>
