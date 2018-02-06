@@ -68,7 +68,7 @@ export default {
     return {
       data: source,
       scale,
-      height: 600,
+      height: 400,
       axis1Opts,
       axis2Opts,
       pointOpts,

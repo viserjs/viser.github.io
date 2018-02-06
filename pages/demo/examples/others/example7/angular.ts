@@ -42,8 +42,8 @@ const jitterPointOpts = {
   `
 })
 class AppComponent {
-  forceFit: boolean= true;
-  height: number = 600;
+  forceFit: boolean = true;
+  height: number = 400;
   data = [];
   scale = scale;
   axis1Opts = axis1Opts;

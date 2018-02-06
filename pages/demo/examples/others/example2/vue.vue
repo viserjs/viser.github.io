@@ -83,7 +83,7 @@ export default {
     return {
       data,
       scale,
-      height: 600,
+      height: 400,
       seriesOpts,
     };
   }

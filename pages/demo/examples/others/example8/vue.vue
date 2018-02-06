@@ -87,7 +87,7 @@ export default {
   data() {
     return {
       data,
-      height: 600,
+      height: 400,
       opts,
     };
   }

@@ -62,7 +62,7 @@ export default {
 
   data() {
     return {
-      height: 600,
+      height: 400,
       data,
       scale,
       interval1Opts,

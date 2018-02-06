@@ -42,7 +42,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={600} padding={80} data={dv}>
+        <Chart forceFit height={400} padding={80} data={dv}>
           <Coord type="polar" innerRadius={0.1} />
           <Legend dataKey="难民类型" position="bottom" />
           <Axis dataKey="percent" title={{ offset: 40, text: '百分比'}} />

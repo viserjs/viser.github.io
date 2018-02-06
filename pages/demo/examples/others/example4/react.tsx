@@ -57,17 +57,15 @@ const pointOpts = {
   shape: 'circle',
 };
 
-const height = 600;
-
 export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Chart forceFit height={height} padding={[20, 60, 40, 100]} data={source} scale={scale}>
+        <Chart forceFit height={400} padding={[20, 60, 40, 100]} data={source} scale={scale}>
           <Tooltip />
-          <Axis {...axis1Opts}/>
-          <Axis {...axis2Opts}/>
-          <Point {...pointOpts}/>
+          <Axis {...axis1Opts} />
+          <Axis {...axis2Opts} />
+          <Point {...pointOpts} />
         </Chart>
       </div>
     );

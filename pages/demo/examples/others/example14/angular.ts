@@ -58,7 +58,7 @@ const interval1Opts = {
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 600;
+  height: number = 400;
   data = data;
   scale = scale;
   interval1Opts = interval1Opts;

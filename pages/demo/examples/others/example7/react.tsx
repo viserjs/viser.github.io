@@ -43,7 +43,7 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <Chart forceFit height={600} padding={[ 40, 100, 80, 80 ]} data={data} scale={scale}>
+        <Chart forceFit height={400} padding={[ 40, 100, 80, 80 ]} data={data} scale={scale}>
           <Tooltip />
           <Coord type="polar"/>
           <Axis {...axis1Opts}/>

@@ -73,7 +73,7 @@ const pointOpts = {
 })
 class AppComponent {
   forceFit: boolean = true;
-  height: number = 600;
+  height: number = 400;
   data = source;
   scale = scale;
   axis1Opts = axis1Opts;

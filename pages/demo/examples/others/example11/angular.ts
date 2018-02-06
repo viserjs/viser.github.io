@@ -81,7 +81,7 @@ const views = (view, facet) => {
 class AppComponent {
   forceFit = true;
   data = data;
-  height = 600;
+  height = 400;
   padding = 80;
 
   tooltipShowFalse = false;
