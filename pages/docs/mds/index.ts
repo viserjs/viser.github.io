@@ -24,6 +24,11 @@ const mds = [
         enName: 'Feature',
         cnName: '特点',
       },
+      {
+        itemKey: 'event',
+        enName: 'Event',
+        cnName: '事件',
+      },
     ],
   }
 ];
