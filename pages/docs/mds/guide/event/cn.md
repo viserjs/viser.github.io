@@ -92,7 +92,7 @@ edge,sankey,errorBar,jitterPoint,path,series
 
 <img src="/assets/image/axis_component.png" width="600" height="350">
 
-#### title 组件
+### title 组件
 - 鼠标移动事件： onTitleMouseDown,onTitleMouseMove,onTitleMouseLeave,onTitleMouseUp,
 - 鼠标点击事件： onTitleClick,onTitleDbClick,
 - 移动端事件： onTitleTouchStart,onTitleTouchMove,onTitleTouchEnd,
@@ -136,7 +136,7 @@ edge,sankey,errorBar,jitterPoint,path,series
 <img src="/assets/image/legend_component.png" width="350" height="200"/>
 
 ### 标题组件
-title 组件在使用时要注意，只有 position 为 left  right (示例： <Legend position="left or right" title={{}}> )才会显示出来，展示的内容是字段名称, <Legend position="left or right" title={null}> 可以隐藏title 。
+title 组件在使用时要注意，只有 position 为 left  right (示例：``` <Legend position="left or right" title={{}}> ```)才会显示出来，展示的内容是字段名称, ```<Legend position="left or right" title={null}> ```可以隐藏title 。
 - 鼠标移动事件： onTitleMouseDown,onTitleMouseMove,onTitleMouseLeave,onTitleMouseUp,
 - 鼠标点击事件： onTitleClick,onTitleDbClick,
 - 移动端事件： onTitleTouchStart,onTitleTouchMove,onTitleTouchEnd,

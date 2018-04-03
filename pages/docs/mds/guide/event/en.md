@@ -1,15 +1,15 @@
-## 简介
-The interaction of diagrams is the bridge between people and cold data. Viser provides a series of interaction events to help achieve the second presentation of the chart data, such as drilling down. We have supported a total of 14 kinds of events.
+## summary
+The interaction of diagrams is the bridge between people and cold data. Viser provides a series of interaction events to help achieve the second presentation of the chart data, such as drilling or rollup. We have supported about 14 kinds of events.
 - Mouse movement event： onMouseDown,onMouseMove,onMouseLeave,onMouseUp,
 - Mouse click event： onClick,onDbClick,
 - Mobile event： onTouchStart,onTouchMove,onTouchEnd,
 - Chart area events： onPlotEnter,onPlotMove,onPlotLeave,onPlotClick,onPlotDbClick
 
-In addition, the axis, legend tag has some special events.
+In addition,  axis and legend tag has some special events.
 
-The event callback function provides two parameters, the event  and the chart instance , to facilitate the user to obtain the event source and data, and to handle the chart instance accordingly.
+The event callback function provides two parameters, the event  and the chart instance , to facilitate the user to obtain the event source and data, and to handle the chart instance according to the actual scene.
 
-Let's come to understand which events are specifically supported by each tag.
+Let's come to see each tag support what kind of events and how can we code to implement requirements.
 
 ## Labels and Supported Events
 ### Chart
@@ -87,7 +87,7 @@ Code example：
 </Chart>
 ```
 
-### 坐标轴 Axis
+###  Axis
 Axis label, support for many events。
 
 <img src="/assets/image/axis_component.png" width="600" height="350">
@@ -129,14 +129,14 @@ Code example：
 </Chart>
 ```
 
-### 图例 Legend
+### Legend
 
 - Self-supported events： onHover,onClick
 
 <img src="/assets/image/legend_component.png" width="350" height="200"/>
 
 ### title
-Here is some tips, if you are using The title component , only set position equals left  or right (示例： <Legend position="left or right" title={{}}> ), the title component will show，title content is field name. code like this can hide title component <Legend position="left or right" title={null}>  。
+Here is some tips, if you are using The title component , only set position equals left  or right (such as: ```<Legend position="left or right" title={{}}> ```), the title component will show，title content is field name. code like this can hide title component ```<Legend position="left or right" title={null}> ``` 。
 - Mouse movement event： onTitleMouseDown,onTitleMouseMove,onTitleMouseLeave,onTitleMouseUp,
 - Mouse click event： onTitleClick,onTitleDbClick,
 - Mobile event： onTitleTouchStart,onTitleTouchMove,onTitleTouchEnd,
