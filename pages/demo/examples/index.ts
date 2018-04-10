@@ -223,6 +223,16 @@ const examples = {
         enName: 'Group Box',
         cnName: '分组箱型图',
       },
+      {
+        path: 'example4',
+        enName: 'Simple Dimesion Box',
+        cnName: '一维箱型图',
+      },
+      {
+        path: 'example5',
+        enName: 'Box with Polar Coordinates',
+        cnName: '极坐标系下箱型图',
+      },
     ],
     icon: 'xiangxiantu'
   },
