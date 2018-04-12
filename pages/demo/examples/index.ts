@@ -372,6 +372,11 @@ const examples = {
         enName: 'United States map hexagon segmentation',
         cnName: '美国地图六边形分割',
       },
+      {
+        path: 'example6',
+        enName: 'Map with heatmap',
+        cnName: '带热力图的地图',
+      },
     ],
     icon: 'ditu'
   },
@@ -388,6 +393,11 @@ const examples = {
         path: 'example2',
         enName: 'Basic Radar (line)',
         cnName: '基础雷达图（线）',
+      },
+      {
+        path: 'example3',
+        enName: 'Complex Radar',
+        cnName: '雷达图复杂曲线',
       },
     ],
     icon: 'leidatu'
