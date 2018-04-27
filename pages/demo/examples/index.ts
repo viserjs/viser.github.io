@@ -373,6 +373,11 @@ const examples = {
         cnName: '美国地图六边形分割',
       },
       {
+        path: 'example5',
+        enName: 'route maps at airports in us',
+        cnName: '美国各个机场的航线图',
+      },
+      {
         path: 'example6',
         enName: 'Map with heatmap',
         cnName: '带热力图的地图',

@@ -45,7 +45,7 @@
     "jquery": "^3.2.1",
     "markdown-loader": "^2.0.1",
     "marked": "^0.3.7",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.0",
     "raw-loader": "^0.5.1",
     "react": "^16.0.0",
     "react-addons-transition-group": "^15.6.2",
