@@ -11,7 +11,8 @@ import {
 import './index.scss';
 
 import Vue from 'vue';
-import ViserVue from 'viser-vue'
+import ViserVue from 'viser-vue';
+import ViserGraphVue from 'viser-graph-vue';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -21,6 +22,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 // store Vue Instance globally;
 let vm;
 Vue.use(ViserVue);
+Vue.use(ViserGraphVue);
 // store Ng Instance globally;
 let ngRef;
 
@@ -164,6 +166,8 @@ class Demo {
         components: { VueApp }
       });
     }
+
+
   }
 
   renderCase() {

@@ -708,6 +708,47 @@ const examples = {
     ],
     icon: 'others'
   },
+  g6: {
+    enName: 'g6 relation',
+    cnName: 'g6 关系图',
+    examples: [
+    {
+      path: 'example0',
+      enName: 'basic graph',
+      cnName: '基础graph',
+    },{
+      path: 'example00',
+      enName: 'basic tree',
+      cnName: '基础tree',
+    },
+    {
+      path: 'example1',
+      enName: 'compactBoxTree',
+      cnName: '紧凑树',
+    },
+    {
+      path: 'example2',
+      enName: 'dendrogram',
+      cnName: '系统树',
+    },
+    {
+      path: 'example3',
+      enName: 'indentedTree',
+      cnName: '生态树',
+    },
+    {
+      path: 'example4',
+      enName: 'mindmap',
+      cnName: '脑图',
+    },
+    {
+      path: 'example8',
+      enName: 'functionTree',
+      cnName: '函数生成树',
+    },
+    ],
+    icon: 'others'
+  }
 };
 
 export default examples;

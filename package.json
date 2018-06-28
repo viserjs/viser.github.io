@@ -20,6 +20,10 @@
     "oui-dom-events": "^0.2.2",
     "oui-dom-utils": "^0.3.8",
     "viser": "^2.2.2",
+    "viser-graph": "^0.1.7",
+    "viser-graph-ng": "^0.1.8",
+    "viser-graph-react": "^0.1.8",
+    "viser-graph-vue": "^0.1.8",
     "viser-ng": "^2.2.2",
     "viser-react": "^2.2.2",
     "viser-vue": "^2.2.2"
