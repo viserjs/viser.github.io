@@ -82,17 +82,41 @@ subTreeSep   子树间隔
 indent  [Function|Number] 缩进量
 ```
 
+
+详细可见： https://antv.alipay.com/zh-cn/g6/1.x/api/layouts.html
+
 ### registerNode
 注册新节点
 ```
+// 普通节点
 registerNode(name, {
-  // 绘制
-  draw: callback,
-  // 获取锚点
-  anchor: array || callback
-}, extendShape);
-
-
+  draw: (item) =>{},
+  drawKeyShape:(item) =>{},
+  drawLabel: (item) =>{},
+  getSize: (item) =>{},
+  getColor:(item) =>{},
+  getStyle: (item) =>{},
+  getPath:(item) =>{},
+  getLabel: (item) =>{},
+  afterDraw: (item) =>{},
+  enterAnimate: (item) =>{},
+  leaveAnimate: (item) =>{},
+  drawText: (item) =>{},
+  getText: (item) =>{},
+  anchor: [
+    [ 0, 0.5 ],
+    [ 1, 0.5 ]
+  ],
+  anchor: {
+    type: 'rect'
+  },
+});
+// html节点
+registerNode('html', {
+  cssSize: true,
+  draw: (item) =>{},
+  getHtml: (item) =>{},
+});
 registerNode('treeNode', {
     anchor: [[0, 0.5], [1, 0.5]]
 });
@@ -102,10 +126,19 @@ registerNode('treeNode', {
 注册边
 ```
 registerEdge(name, {
-  // 绘制
-  draw: callback,
-}, extendShape);
-
+  draw: (item) =>{},
+  drawKeyShape:(item) =>{},
+  drawLabel: (item) =>{},
+  getSize: (item) =>{},
+  getColor:(item) =>{},
+  getStyle: (item) =>{},
+  getPath:(item) =>{},
+  getLabel: (item) =>{},
+  afterDraw:  (item) =>{},
+});
+```
+示例：
+```
 registerEdge('smooth', {
   getPath: function getPath(item) {
     var points = item.getPoints();
@@ -124,7 +157,11 @@ registerEdge('smooth', {
 注册组
 ```
 registerGroup(name, {
-  // 绘制
-  draw: callback,
-}, extendShape);
+  draw: (item) =>{},
+  drawKeyShape:(item) =>{},
+  drawLabel: (item) =>{},
+  drawExpanded:  (item) =>{},
+  drawCollapsed:  (item) =>{},
+  getLabel: (item) =>{},
+});
 ```

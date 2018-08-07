@@ -58,11 +58,11 @@ nodes：节点的数据模型
   shape: 'circle',         // 所用图形（目前只测验了circle可用）
   style: {                 // 关键形样式（优先级高于color）
     fill: 'red',
-	stroke: 'blue'
+	  stroke: 'blue'
   },
   label: '文本标签' || {     // 文本标签 || 文本图形配置
     text: '文本标签',
-	fill: 'green'
+	  fill: 'green'
   },
   parent: 'group1',         // 所属组
   index: 1,                 // 渲染层级（暂未测试）
@@ -76,19 +76,19 @@ edges：边的数据模型
   target: 'node2',       // 目标节点 id
   controlPoints: [{      // 控制点
     x: 10,
-	y: 10
+	  y: 10
   }],
-  sourceAnchor: 0,       // 源节点锚点
+  sourceAnchor: 0,       // 源节点锚点（以上锚点测试为填写后将不会与其他点连接，具体作用未知）
   targetAnchor: 2,       // 目标节点锚点（以上锚点测试为填写后将不会与其他点连接，具体作用未知）
   color: 'red',          // 颜色
   size: 3,               // 尺寸
-  shape: 'line',         // 所用图形（目前只测验了line可用）
+  shape: 'line',         // 所用图形（目前只测验了line可用）, 引入插件-二阶贝塞尔曲线 ， 可使用shape: quadraticCurve
   style: {               // 关键形样式（优先级高于color）
-	stroke: 'blue'
+	  stroke: 'blue'
   },
   label: '文本标签' || {   // 文本标签 || 文本图形配置
     text: '文本标签',
-	fill: 'green'
+	  fill: 'green'
   },
   parent: 'group1',       // 所属组
   index: 1,               // 渲染层级
@@ -99,15 +99,15 @@ groups：群组的数据模型
 {
   id: 'group1',             // id 必须唯一
   color: '#333',           // 颜色
-  size: 10 || [10, 10],    // 尺寸 || [宽, 高]（未测试出结果）
-  shape: 'circle',         // 所用图形（未测试出结果）
+  size: 10 || [10, 10],    // 尺寸 || [宽, 高], 参数不可用
+  shape: 'circle',         // 所用图形, 参数不可用
   style: {                 // 关键形样式（优先级高于color）
     fill: 'red',
-	stroke: 'blue'
+	  stroke: 'blue'
   },
   label: '文本标签' || {     // 文本标签 || 文本图形配置
     text: '文本标签',
-	fill: 'green'
+	  fill: 'green'
   },
   parent: 'group2',         // 所属组
   index: 1,                 // 渲染层级
@@ -139,7 +139,7 @@ groups：群组的数据模型
   ]
 ```
 #### container
-需传入 dom 容器或者容器id {domObject || string} 必选（暂未测试成功）
+需传入 dom 容器或者容器id {domObject || string} 必选
 
 #### width
 画布宽，单位像素 {number} 可选
@@ -154,25 +154,43 @@ groups：群组的数据模型
 <img src="//cdn.nlark.com/lark/0/2018/png/124533/1532954651334-8286b350-7e04-4b56-84ec-fc0182e1bf32.png" width="300px"/>
 
 #### fitViewPadding
-视口适应画布边距 {boolean | number | number[]} 可选 （未测试出效果）
+视口适应画布边距 {boolean | number | number[]} 可选
+<img src="//cdn.nlark.com/lark/0/2018/png/1140/1533632218107-1822dab0-9499-41cb-8fb4-cfb4843637ec.png" width="300px"/>
 
 #### animate
 是否开启动画 {boolean} 默认false
 
 #### minZoom
-最小缩放倍率 {number} (测试未能改变数值，默认为0.2)
+最小缩放倍率 {number} 默认为0.2
 
 #### maxZoom
-最大缩放倍率 {number} (测试未能改变数值，默认为10)
-
-#### modes
-模式集 {object} （未测试）
-
-#### mode
-当前模式 {string} 默认为default（未测试）
+最大缩放倍率 {number} 默认为10
 
 #### plugins
-插件集 {array}（未测试）
+插件集 {array} 用于扩展 layout 或者映射关系，示例如下
+```
+// 插件-布局-阿基米德螺线
+var Plugin = G6.Plugins["layout.circle"];
+// 插件-布局-圆形
+var Plugin = G6.Plugins["layout.archimeddeanSpiral"];
+// 插件-模版-最大生成森林
+var Plugin = G6.Plugins["template.maxSpanningForest"];
+// 插件-缩略图
+var Plugin = G6.Plugins["tool.minimap"];
+var plugin = new Plugin({
+  container: 'minimap',
+  width: 180,
+  height: 120
+});
+
+var graph = new G6.Graph({
+  container: 'mountNode',
+  fitView: 'cc',
+  height: window.innerHeight,
+  plugins: [new Plugin()]
+});
+
+```
 
 #### layout
 布局参数 {object|function}
@@ -184,7 +202,7 @@ groups：群组的数据模型
     type: 'graph',
     data,
     onClick: function (ev, graph) {
-        console.log('click', ev, graph);
+      console.log('click', ev, graph);
     }
   };
 ```
@@ -306,29 +324,4 @@ export default class App extends React.Component {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+详细可见： https://antv.alipay.com/zh-cn/g6/1.x/api/graph.html
