@@ -30,6 +30,23 @@ const mds = [
         cnName: '事件',
       },
     ],
+  },
+  {
+    folderKey: 'api',
+    cnName: 'api',
+    enName: 'api',
+    mds: [
+      {
+        itemKey: 'graphApi',
+        enName: 'graphApi',
+        cnName: 'graph api',
+      },
+      {
+        itemKey: 'graphFuncApi',
+        enName: 'graphFuncApi',
+        cnName: 'graph 方法 api',
+      },
+    ],
   }
 ];
 
