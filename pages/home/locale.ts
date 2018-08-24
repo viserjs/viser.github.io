@@ -9,6 +9,10 @@ const locale = {
       text: '文档',
     },
     {
+      selector: '.home-header .common-header-nav-item.theme-link',
+      text: '主题',
+    },
+    {
       selector: '.main-intro .main-intro-title',
       text: '再一次发现<br/>你的数据。',
     },
@@ -73,6 +77,10 @@ const locale = {
     {
       selector: '.home-header .common-header-nav-item.docs-link',
       text: 'Docs',
+    },
+    {
+      selector: '.home-header .common-header-nav-item.theme-link',
+      text: 'Theme',
     },
     {
       selector: '.main-intro .main-intro-title',

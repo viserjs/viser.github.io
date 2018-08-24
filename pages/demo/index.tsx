@@ -1,12 +1,15 @@
 import * as $ from 'jquery';
-
 import exampleOrigin from './examples/index';
 import locale from '../common/locale';
+import demoLocale from './locale';
+import * as Clipboard from 'clipboard';
+import Nav from '../nav';
 import {
   getNameByLanguage,
   ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
   getPageLanguage, setPageLanguage, initPageLanguage, changePageLanguage,
   generateHashtag, getFolderAndItem,
+  get
 } from '../common/utils';
 import './index.scss';
 
@@ -35,16 +38,22 @@ const DEFAULT_ITEM = 'basic-line';
 class Demo {
   framework: string = 'react';
   editor: any;
+  clipboard: any;
 
   constructor() {
     initPageLanguage();
-
+    this.renderNav(getPageLanguage());
     this.initEditor();
 
     this.render();
     this.bindEvent();
   }
-
+  renderNav(pageLan) {
+    ReactDOM.render(
+      <Nav pageLan={pageLan} />,
+      document.getElementById('viser-nav')
+    );
+  }
   initEditor() {
     this.editor = (window as any).monaco.editor.create(document.getElementById('monaco-editor'), {
       value: '',
@@ -53,7 +62,7 @@ class Demo {
       scrollBeyondLastLine: false,
       automaticLayout: true,
       renderLineHighlight: 'none',
-      readOnly: true,
+      readOnly: false,
       theme: 'vs',
       minimap: {
         enabled: false,
@@ -61,9 +70,8 @@ class Demo {
     });
   }
 
-  getCode() {
+  async getCode() {
     const { folder, item } = this.getDemoFolderAndItem();
-
     const examples = exampleOrigin[folder].examples;
     const filterExamples = examples.filter((ex) => {
       const itemKey = this.getDemoItemKey(ex);
@@ -77,7 +85,7 @@ class Demo {
       return {};
     }
     const { path, cnName, enName } = filterExamples[0];
-
+    const basicPath = '/pages/demo';
     let reactCode = '';
     let vueCode = '';
     let angularCode = '';
@@ -86,17 +94,29 @@ class Demo {
     let vuePath = '';
     let angularPath = '';
 
-    try {
-      reactCode = require(`!!raw-loader!./examples/${folder}/${path}/react.tsx`);
-      vueCode = require(`!!raw-loader!./examples/${folder}/${path}/vue.vue`);
-      angularCode = require(`!!raw-loader!./examples/${folder}/${path}/angular.ts`);
-
-      reactPath = `./examples/${folder}/${path}/react.tsx`;
-      vuePath = `./examples/${folder}/${path}/vue.vue`;
-      angularPath = `./examples/${folder}/${path}/angular.ts`;
-    } catch(err) {
-      console.error(err);
+    // try {
+    // reactCode = require(`!!raw-loader!./examples/${folder}/${path}/react.tsx`);
+    const reactCode_r: any = await get(`${basicPath}/examples/${folder}/${path}/react.tsx`);
+    if (reactCode_r.flag) {
+      reactCode = await reactCode_r.data.text();
     }
+    // vueCode = require(`!!raw-loader!./examples/${folder}/${path}/vue.vue`);
+    const vueCode_r: any = await get(`${basicPath}/examples/${folder}/${path}/vue.vue`);
+    if (vueCode_r.flag) {
+      vueCode = await vueCode_r.data.text();
+    }
+    // angularCode = require(`!!raw-loader!./examples/${folder}/${path}/angular.ts`);
+    const angularCode_r: any = await get(`${basicPath}/examples/${folder}/${path}/angular.ts`);
+    if (angularCode_r.flag) {
+      angularCode = await angularCode_r.data.text();
+    }
+
+    reactPath = `./examples/${folder}/${path}/react.tsx`;
+    vuePath = `./examples/${folder}/${path}/vue.vue`;
+    angularPath = `./examples/${folder}/${path}/angular.ts`;
+    // } catch (err) {
+    //   console.error(err);
+    // }
 
     return {
       reactCode, vueCode, angularCode,
@@ -117,8 +137,8 @@ class Demo {
     return example.enName.toLowerCase().replace(/\s/g, '-');
   }
 
-  runCode(framework) {
-    const code = this.getCode();
+  async runCode(framework) {
+    const code = await this.getCode();
     const mount = document.getElementById('mount');
 
     // Unmount React;
@@ -140,15 +160,14 @@ class Demo {
     mount.innerHTML = '';
 
     const codePath = code[`${framework}Path`];
-
     if (framework === 'react') {
-      delete require.cache[require.resolve(`${codePath}`)];
+      // delete require.cache[require.resolve(`${codePath}`)];
       const App = require(`${codePath}`).default;
       ReactDOM.render(<App />, document.getElementById('mount'));
     }
 
     if (framework === 'angular') {
-      delete require.cache[require.resolve(`${codePath}`)];
+      // delete require.cache[require.resolve(`${codePath}`)];
       const AppModule = require(`${codePath}`).default;
       platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
     }
@@ -183,8 +202,8 @@ class Demo {
     this.runCode(self.framework);
   }
 
-  renderCodeEditor() {
-    const code = this.getCode();
+  async renderCodeEditor() {
+    const code = await this.getCode();
     const codeValue = code[`${this.framework}Code`];
     const language = this.framework === 'vue' ? 'html' : 'typescript';
 
@@ -204,10 +223,15 @@ class Demo {
         $(o.selector).html(o.text);
       });
     }
+    if (demoLocale && demoLocale[language] && demoLocale[language].length) {
+      demoLocale[language].forEach((o) => {
+        $(o.selector).html(o.text);
+      });
+    }
   }
 
-  renderDemoTitle() {
-    const code = this.getCode();
+  async renderDemoTitle() {
+    const code = await this.getCode();
     $('.case-type').html(getNameByLanguage(code));
   }
 
@@ -280,6 +304,27 @@ class Demo {
 
       self.refresh();
     });
+    this.clipboard = new Clipboard($('.case-code-topbar .case-copy')[0], {
+      text: () => {
+        return this.editor.getValue();
+      }
+    });
+    this.clipboard.on('success', function (e) {
+      if ($('.case-code-topbar .case-tip').length !== 0) {
+        $('.case-code-topbar .case-tip').remove();
+      }
+      const template = `<span class="case-tip">${getPageLanguage() === 'cn' ? '复制成功' : 'copy successed'}</span>`;
+      $(template).insertBefore('.case-code-topbar .case-copy');
+      e.clearSelection();
+    });
+    this.clipboard.on('error', function (e) {
+      if ($('.case-code-topbar .case-tip').length !== 0) {
+        $('.case-code-topbar .case-tip').remove();
+      }
+      const template = `<span class="case-tip err">${getPageLanguage() === 'cn' ? '复制失败' : 'copy failed'}</span>`;
+      $(template).insertBefore('.case-code-topbar .case-copy');
+      e.clearSelection();
+    });
   }
 
   unbindEvent() {
@@ -287,6 +332,7 @@ class Demo {
     $('.case-box .case-code-switch .case-code-switch-item').off('click');
     $('.left-panel .common-nav-folder.expandable .common-nav-title').off('click');
     $('.page-language-switch').off('click');
+    this.clipboard.destroy();
   }
 
   render() {
@@ -299,6 +345,7 @@ class Demo {
 
   refresh() {
     this.unbindEvent();
+    this.renderNav(getPageLanguage());
     this.render();
     this.bindEvent();
   }

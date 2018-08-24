@@ -1,5 +1,8 @@
 import mdList from './mds';
 import locale from '../common/locale';
+import { render } from 'react-dom';
+import * as React from 'react';
+import Nav from '../nav';
 import {
   getNameByLanguage,
   ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
@@ -19,10 +22,16 @@ const DEFAULT_ITEM = 'installation';
 class Docs {
   constructor() {
     initPageLanguage();
+    this.renderNav(getPageLanguage());
     this.render();
     this.bindEvent();
   }
-
+  renderNav(pageLan) {
+    render(
+      <Nav pageLan={pageLan} />,
+      document.getElementById('viser-nav')
+    );
+  }
   getDocsFolderAndItem() {
     const { folder, item } = getFolderAndItem();
     return {
@@ -145,6 +154,7 @@ class Docs {
 
   refresh() {
     this.unbindEvent();
+    this.renderNav(getPageLanguage());
     this.render();
     this.bindEvent();
   }

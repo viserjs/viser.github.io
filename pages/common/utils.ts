@@ -1,5 +1,6 @@
 import D from 'oui-dom-utils';
 import E from 'oui-dom-events';
+import * as fetch from 'cross-fetch';
 
 /**
  * Language Utils
@@ -46,7 +47,7 @@ export const changePageLanguage = () => {
 
 export const getNameByLanguage = (o) => {
   const language = getPageLanguage();
-  switch(language) {
+  switch (language) {
     case 'en': {
       if (o && o.enName) {
         return o.enName;
@@ -72,7 +73,7 @@ export const getNameByLanguage = (o) => {
 export const generateHashtag = (folder, item) => {
   if (folder && item) {
     return `#/${folder}/${item}`;
-  } else if (folder){
+  } else if (folder) {
     return `#/${folder}/${item}`;
   }
   return '#';
@@ -126,3 +127,31 @@ export const off = E.off;
 export const delegate = E.delegate;
 
 export const undelegate = E.undelegate;
+
+export const get = (url: any) => {
+  return new Promise((resolve: any) => {
+    return fetch(url)
+      //没必要传参数，只要url拼接即可
+      .then((res: any) => {
+        if (res.status >= 400) {
+          return {
+            flag: false
+          }
+        }
+        return {
+          flag: true,
+          data: res
+        }
+      })
+      .then(json => resolve(json))
+  });
+}
+
+export const getInitNav = (): any => {
+  const selectedNav = window.localStorage.getItem('selectedNav');
+  if (selectedNav) return selectedNav;
+  return null;
+}
+export const setInitNav = (nav: string) => {
+  window.localStorage.setItem('selectedNav', nav);
+}

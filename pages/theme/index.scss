@@ -1,0 +1,23 @@
+@import '../styles/common.scss';
+@import '../styles/icon.scss';
+@import '../styles/header.scss';
+@import '../styles/main.scss';
+
+.theme-content{
+    height: 100%;
+    .theme-pannel{
+        height: 100%;
+        box-sizing: border-box;
+        background-color: #fff;
+        &.theme-left{
+            float: left;
+            width:25%;
+            overflow-y: scroll;
+        }
+        &.theme-right{
+            float: left;
+            width:75%;
+            padding:20px;
+        }
+    }
+}

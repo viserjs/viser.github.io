@@ -47,6 +47,23 @@ const mds = [
         cnName: 'graph 方法 api',
       },
     ],
+  },
+  {
+    folderKey: 'aboutus',
+    cnName: '关于viser',
+    enName: 'about viser',
+    mds: [
+      {
+        itemKey: 'update',
+        cnName: '更新日志',
+        enName: 'update log'
+      },
+      {
+        itemKey: 'syntax',
+        cnName: '组件语法',
+        enName: 'component syntax'
+      }
+    ]
   }
 ];
 

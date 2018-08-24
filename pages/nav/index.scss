@@ -1,0 +1,72 @@
+#viser-nav{
+    float: right;
+    user-select: none;
+    .viser-dropdown{
+        color: white;
+        min-width:95px;
+        height: 34px;
+        position: relative;
+        .visble-tit{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 400;
+            white-space: nowrap;
+            &::after{
+                display: inline-block;
+                width: 0;
+                height: 0;
+                margin-left: .255em;
+                vertical-align: .255em;
+                content: "";
+                border-top: .2em solid;
+                border-right: .2em solid transparent;
+                border-left: .2em solid transparent;
+            }
+        }
+        .viser-dropmenu{
+            position: absolute;
+            top:100%;
+            left:0;
+            z-index: 999;
+            min-width: 140px;
+            padding:7px 0;
+            margin:4px 0 0;
+            font-size: 14px;
+            text-align: left;
+            background-color: white;
+            background-clip:padding-box;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            border: none;
+            a{
+                display: flex;
+                align-items: center;
+                padding: 12px 24px;
+                color:#212529;
+                font-weight: 400;
+                white-space: nowrap;
+                line-height: 30px;
+                height:30px;
+                .pic{
+                    height:24px;
+                    width:24px;
+                    display:inline-block;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    margin-right: 16px;
+                }
+                &:hover{
+                    background-color: #e6f7ff;
+                }
+                span{
+                    margin-left: 5px;
+                    color:#999;
+                }
+            }
+        }
+    }
+}
