@@ -9,7 +9,7 @@ import {
   ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
   getPageLanguage, setPageLanguage, initPageLanguage, changePageLanguage,
   generateHashtag, getFolderAndItem,
-  get
+  get, combineFrameCode
 } from '../common/utils';
 import './index.scss';
 
@@ -138,53 +138,63 @@ class Demo {
   }
 
   async runCode(framework) {
-    const code = await this.getCode();
-    const mount = document.getElementById('mount');
+    const code: any = this.editor.getValue();
+    const doc = combineFrameCode(framework, code);
+    // window.console.log(code);
+    // window.console.log(doc);
 
-    // Unmount React;
-    ReactDOM.unmountComponentAtNode(mount);
-    // Unmount Vue
-    if (vm && vm.existed) {
-      vm.existed = false;
-    }
-    // Unmount Angular
-    if (ngRef) {
-      const mountParent = mount.parentNode;
-      ngRef.destroy();
-      ngRef = undefined;
-      const newMount = document.createElement('div');
-      newMount.setAttribute('id', 'mount');
-      mountParent.appendChild(newMount);
-    }
-    // Remove Dom
-    mount.innerHTML = '';
+    $('#mount').html('<iframe></iframe>');
+    const frame = $('#mount iframe')[0];
+    const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+    iframeDoc.open();
+    iframeDoc.write(doc);
+    iframeDoc.close();
+    // const mount = document.getElementById('mount');
 
-    const codePath = code[`${framework}Path`];
-    if (framework === 'react') {
-      // delete require.cache[require.resolve(`${codePath}`)];
-      const App = require(`${codePath}`).default;
-      ReactDOM.render(<App />, document.getElementById('mount'));
-    }
+    // // Unmount React;
+    // ReactDOM.unmountComponentAtNode(mount);
+    // // Unmount Vue
+    // if (vm && vm.existed) {
+    //   vm.existed = false;
+    // }
+    // // Unmount Angular
+    // if (ngRef) {
+    //   const mountParent = mount.parentNode;
+    //   ngRef.destroy();
+    //   ngRef = undefined;
+    //   const newMount = document.createElement('div');
+    //   newMount.setAttribute('id', 'mount');
+    //   mountParent.appendChild(newMount);
+    // }
+    // // Remove Dom
+    // mount.innerHTML = '';
 
-    if (framework === 'angular') {
-      // delete require.cache[require.resolve(`${codePath}`)];
-      const AppModule = require(`${codePath}`).default;
-      platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
-    }
+    // const codePath = code[`${framework}Path`];
+    // if (framework === 'react') {
+    //   // delete require.cache[require.resolve(`${codePath}`)];
+    //   const App = require(`${codePath}`).default;
+    //   ReactDOM.render(<App />, document.getElementById('mount'));
+    // }
 
-    if (framework === 'vue') {
-      const VueApp = require(`${codePath}`).default;
-      const container = document.createElement('div');
-      document.getElementById('mount').appendChild(container);
-      vm = new Vue({
-        data: {
-          existed: true
-        },
-        el: container,
-        template: '<VueApp v-if="existed"/>',
-        components: { VueApp }
-      });
-    }
+    // if (framework === 'angular') {
+    //   // delete require.cache[require.resolve(`${codePath}`)];
+    //   const AppModule = require(`${codePath}`).default;
+    //   platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
+    // }
+
+    // if (framework === 'vue') {
+    //   const VueApp = require(`${codePath}`).default;
+    //   const container = document.createElement('div');
+    //   document.getElementById('mount').appendChild(container);
+    //   vm = new Vue({
+    //     data: {
+    //       existed: true
+    //     },
+    //     el: container,
+    //     template: '<VueApp v-if="existed"/>',
+    //     components: { VueApp }
+    //   });
+    // }
 
 
   }
@@ -199,7 +209,7 @@ class Demo {
       }
     });
 
-    this.runCode(self.framework);
+    // this.runCode(self.framework);
   }
 
   async renderCodeEditor() {
@@ -209,6 +219,7 @@ class Demo {
 
     this.editor.setValue(codeValue);
     (window as any).monaco.editor.setModelLanguage(this.editor.getModel(), language);
+    this.runCode(this.framework);
   }
 
   renderLanguage() {

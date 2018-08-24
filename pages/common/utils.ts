@@ -1,6 +1,7 @@
 import D from 'oui-dom-utils';
 import E from 'oui-dom-events';
 import * as fetch from 'cross-fetch';
+import { template, pkgMap } from './iframe-templage';
 
 /**
  * Language Utils
@@ -154,4 +155,35 @@ export const getInitNav = (): any => {
 }
 export const setInitNav = (nav: string) => {
   window.localStorage.setItem('selectedNav', nav);
+}
+const codeDeal = (oriCode: string, framework: string): string => {
+  let code = oriCode.replace(/const.*?require.*?;/g, '').replace(/export\s*?default/g, '');
+  const reg = /import\s.*?\{.*?\}.*?;/;
+  if (reg.test(code)) {
+    const injects = code.match(reg);
+    // window.console.log(injects);
+    injects.forEach(item => {
+      const tempVar = item.replace(/(.*?\{|\}.*)/g, '');
+      const tempPkg = pkgMap[item.replace(/^(.*?['"])/g, '').replace(/['"].*/, '').trim()];
+      const temp = `const {${tempVar}}=${tempPkg};`;
+      code = code.replace(item, temp);
+      // window.console.log(code);
+    });
+  }
+  code = code.replace(/import.*?;/g, '');
+  switch (framework) {
+    case 'react':
+      code += ' ReactDOM.render(<App />, document.getElementById("mount"));';
+      break;
+    default:
+  }
+  window.console.log(code);
+  return code;
+}
+export const combineFrameCode = (framework: string, oriCode: string): string => {
+  const code = codeDeal(oriCode, framework);
+  if (template[framework]) {
+    return template[framework].replace(/\{code\}/, code);
+  }
+  return '';
 }
