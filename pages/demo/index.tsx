@@ -39,7 +39,7 @@ let vm;
 Vue.use(ViserVue);
 Vue.use(ViserGraphVue);
 // // store Ng Instance globally;
-// let ngRef;
+let ngRef;
 
 const navTpl = require('./nav.tpl');
 
@@ -180,9 +180,9 @@ class Demo {
     //   const code = await this.getCode(framework);
     //   const codePath = code[`${framework}Path`];
     //   const AppModule = require(`${codePath}`).default;
+    //   window.console.log(require(`${codePath}`));
     //   debugger;
-    //   // return window.console.log(AppModule.toString());
-    //   platBrowserDync.platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
+    //   return platBrowserDync.platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
     // }
     $('.case-btn-cont').show();
     const code: any = this.editor.getValue();

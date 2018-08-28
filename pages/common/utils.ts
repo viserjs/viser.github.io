@@ -1,7 +1,7 @@
 import D from 'oui-dom-utils';
 import E from 'oui-dom-events';
 import * as fetch from 'cross-fetch';
-import { template, pkgMap } from './iframe-templage';
+import { template, pkgMap, moduleTemp } from './iframe-templage';
 
 /**
  * Language Utils
@@ -216,9 +216,13 @@ const codeDeal = (oriCode: string, framework: string): string => {
     case 'angular':
       code = code.replace(/const.*?require.*?;/g, '');
       code = transpileModule(code);
-      code = code.replace('Object.defineProperty(exports, "__esModule", { value: true });', `if(!exports){var exports={}}\nObject.defineProperty(exports, "__esModule", { value: true });`);
-      code += `\nconsole.log(exports.default);\nparent.angular.getNgApp(exports.default);`;
+      // code = code.replace('Object.defineProperty(exports, "__esModule", { value: true });', `if(!exports){var exports={}}\nObject.defineProperty(exports, "__esModule", { value: true });`);
+      // code = `(function(){\n${code}\nwindow.exports=exports;\n})();`;
+      code = code.replace('var AppComponent = (function () {', 'var AppComponent = /** @class */ (function () {')
+        .replace('var AppModule = (function () {', 'var AppModule = /** @class */ (function () {')
       window.console.log(code);
+      const tempMo = moduleTemp.split('{{code}}');
+      code = tempMo[0] + code + tempMo[1];
       break;
     default:
   }
