@@ -156,34 +156,82 @@ export const getInitNav = (): any => {
 export const setInitNav = (nav: string) => {
   window.localStorage.setItem('selectedNav', nav);
 }
+export const transpileModule = (input, options = {
+  module: 'none',//不适用模块，。。
+  target: (window as any).ts.ScriptTarget.ES5,
+  noLib: true,
+  noResolve: true,
+  suppressOutputPathCheck: true
+}) => {
+  //此方法使用前提是需要有monaco编辑器，并配置vs/language/typescript/lib/typescriptServices 
+  //目前不支持jsx，请不要再react代码上使用此函数
+  const inputFileName = "module.ts";
+  const sourceFile = (window as any).ts.createSourceFile(inputFileName, input, options.target || (window as any).ts.ScriptTarget.ES5);
+  // Output
+  let outputText;
+  const program = (window as any).ts.createProgram([inputFileName], options, {
+    getSourceFile: function (fileName) { return fileName.indexOf("module") === 0 ? sourceFile : undefined; },
+    writeFile: function (_name, text) { outputText = text; },
+    getDefaultLibFileName: function () { return "lib.d.ts"; },
+    useCaseSensitiveFileNames: function () { return false; },
+    getCanonicalFileName: function (fileName) { return fileName; },
+    getCurrentDirectory: function () { return ""; },
+    getNewLine: function () { return "\r\n"; },
+    fileExists: function (fileName) { return fileName === inputFileName; },
+    readFile: function () { return ""; },
+    directoryExists: function () { return true; },
+    getDirectories: function () { return []; }
+  });
+  // Emit
+  program.emit();
+  if (outputText === undefined) {
+    throw new Error("Output generation failed");
+  }
+  return outputText;
+}
+
 const codeDeal = (oriCode: string, framework: string): string => {
-  let code = oriCode.replace(/const.*?require.*?;/g, '').replace(/export\s*?default/g, '');
-  const reg = /import\s.*?\{.*?\}.*?;/;
+  let code = oriCode.replace(/\s*?\/\/[\s\S]*?\n/g, '');
+  const reg = /import\s.*?\{.*?\}.*?;/g;
   if (reg.test(code)) {
     const injects = code.match(reg);
     // window.console.log(injects);
     injects.forEach(item => {
       const tempVar = item.replace(/(.*?\{|\}.*)/g, '');
       const tempPkg = pkgMap[item.replace(/^(.*?['"])/g, '').replace(/['"].*/, '').trim()];
-      const temp = `const {${tempVar}}=${tempPkg};`;
+      const temp = `const {${tempVar}}=${framework === 'react' ? tempPkg : 'parent.angular'};`;
       code = code.replace(item, temp);
       // window.console.log(code);
     });
   }
-  code = code.replace(/import.*?;/g, '');
+  code = code.replace(/import.*?;/g, '')
+    .replace(/as\s*?any\s*?;/g, '')
+    .replace(/\(window\s+?as\s+?any\)/g, 'window')
+    .replace(/as\s*?any\s*?/g, '');
   switch (framework) {
     case 'react':
+      code = code.replace(/const.*?require.*?;/g, '').replace(/export\s*?default/g, '');
       code += ' ReactDOM.render(<App />, document.getElementById("mount"));';
+      break;
+    case 'angular':
+      code = code.replace(/const.*?require.*?;/g, '');
+      code = transpileModule(code);
+      code = code.replace('Object.defineProperty(exports, "__esModule", { value: true });', `if(!exports){var exports={}}\nObject.defineProperty(exports, "__esModule", { value: true });`);
+      code += `\nconsole.log(exports.default);\nparent.angular.getNgApp(exports.default);`;
+      window.console.log(code);
       break;
     default:
   }
-  window.console.log(code);
+  // window.console.log(code);
   return code;
 }
 export const combineFrameCode = (framework: string, oriCode: string): string => {
+  // 由于replace第二个参数$**会将后续的内容进行对正则进行匹配影响最终生成的html，故使用字符拼接
   const code = codeDeal(oriCode, framework);
   if (template[framework]) {
-    return template[framework].replace(/\{code\}/, code);
+    const temp = template[framework].split('{code}');
+    // window.console.log(temp[0] + code + temp[1]);
+    return temp[0] + code + temp[1];
   }
   return '';
 }

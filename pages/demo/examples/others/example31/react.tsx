@@ -11,7 +11,7 @@ const scale = [{
 
 const legendOpts = {
   useHtml: true,
-  position: "right" as "right",
+  position: "right",
   legendMarker: {
     'g2-legend-marker': {
       borderRadius: 'none'
@@ -48,8 +48,8 @@ export default class App extends React.Component {
       const dv = new DataSet.View().source(sourceData)
         .transform({
           type: 'fill-rows',
-          groupBy: [ 'name' ],
-          orderBy: [ 'year' ]
+          groupBy: ['name'],
+          orderBy: ['year']
         })
         .transform({
           type: 'impute',
@@ -59,18 +59,18 @@ export default class App extends React.Component {
         })
         .transform({
           type: 'aggregate',
-          fields: [ 'n' ],
-          operations: [ 'sum' ],
-          groupBy: [ 'year', 'name' ],
-          orderBy: [ 'year' ],
-          as: [ 'count' ]
+          fields: ['n'],
+          operations: ['sum'],
+          groupBy: ['year', 'name'],
+          orderBy: ['year'],
+          as: ['count']
         });
-      this.setState({data: dv});
+      this.setState({ data: dv });
     })
   }
 
   render() {
-    const  { data } = this.state;
+    const { data } = this.state;
     return (
       <div>
         <Chart forceFit height={400} animate={false} padding={[20, 140, 60, 50]} data={data} scale={scale}>

@@ -9,7 +9,7 @@ import {
   ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
   getPageLanguage, setPageLanguage, initPageLanguage, changePageLanguage,
   generateHashtag, getFolderAndItem,
-  get, combineFrameCode
+  get, combineFrameCode, transpileModule
 } from '../common/utils';
 import './index.scss';
 
@@ -20,14 +20,26 @@ import ViserGraphVue from 'viser-graph-vue';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+/*****************
+ * inject to window
+******************/
+//由于没有浏览器包，不得不将angular的方法注入到window；
+import * as platBrowserDync from '@angular/platform-browser-dynamic';
+import * as core from '@angular/core';
+import * as platBrowser from '@angular/platform-browser';
+import * as viserNg from 'viser-ng';
+const getNgApp = (app: any) => {
+  platBrowserDync.platformBrowserDynamic().bootstrapModule(app);
+}
+const angular = { ...core, ...platBrowser, ...platBrowserDync, ...viserNg, getNgApp };
+(window as any).angular = { ...angular };// 用于iframe调用parent获取需要的而不必去引用包
 
 // store Vue Instance globally;
 let vm;
 Vue.use(ViserVue);
 Vue.use(ViserGraphVue);
-// store Ng Instance globally;
-let ngRef;
+// // store Ng Instance globally;
+// let ngRef;
 
 const navTpl = require('./nav.tpl');
 
@@ -36,7 +48,7 @@ const DEFAULT_FOLDER = 'line';
 const DEFAULT_ITEM = 'basic-line';
 
 class Demo {
-  framework: string = 'react';
+  framework: string = 'angular';
   editor: any;
   clipboard: any;
 
@@ -56,13 +68,14 @@ class Demo {
   }
   initEditor() {
     this.editor = (window as any).monaco.editor.create(document.getElementById('monaco-editor'), {
-      value: '',
-      language: 'javascript',
+      value: 'loading code......',
+      language: 'typescript',
       lineNumbers: false,
       scrollBeyondLastLine: false,
       automaticLayout: true,
       renderLineHighlight: 'none',
       readOnly: false,
+      formatOnType: true,
       theme: 'vs',
       minimap: {
         enabled: false,
@@ -70,7 +83,7 @@ class Demo {
     });
   }
 
-  async getCode() {
+  async getCode(framework = '') {
     const { folder, item } = this.getDemoFolderAndItem();
     const examples = exampleOrigin[folder].examples;
     const filterExamples = examples.filter((ex) => {
@@ -93,30 +106,30 @@ class Demo {
     let reactPath = '';
     let vuePath = '';
     let angularPath = '';
-
-    // try {
-    // reactCode = require(`!!raw-loader!./examples/${folder}/${path}/react.tsx`);
-    const reactCode_r: any = await get(`${basicPath}/examples/${folder}/${path}/react.tsx`);
-    if (reactCode_r.flag) {
-      reactCode = await reactCode_r.data.text();
+    if (framework === 'react') {
+      // reactCode = require(`!!raw-loader!./examples/${folder}/${path}/react.tsx`);
+      const reactCode_r: any = await get(`${basicPath}/examples/${folder}/${path}/react.tsx`);
+      if (reactCode_r.flag) {
+        reactCode = await reactCode_r.data.text();
+      }
     }
-    // vueCode = require(`!!raw-loader!./examples/${folder}/${path}/vue.vue`);
-    const vueCode_r: any = await get(`${basicPath}/examples/${folder}/${path}/vue.vue`);
-    if (vueCode_r.flag) {
-      vueCode = await vueCode_r.data.text();
+    if (framework === 'vue') {
+      // vueCode = require(`!!raw-loader!./examples/${folder}/${path}/vue.vue`);
+      const vueCode_r: any = await get(`${basicPath}/examples/${folder}/${path}/vue.vue`);
+      if (vueCode_r.flag) {
+        vueCode = await vueCode_r.data.text();
+      }
     }
-    // angularCode = require(`!!raw-loader!./examples/${folder}/${path}/angular.ts`);
-    const angularCode_r: any = await get(`${basicPath}/examples/${folder}/${path}/angular.ts`);
-    if (angularCode_r.flag) {
-      angularCode = await angularCode_r.data.text();
+    if (framework === 'angular') {
+      // angularCode = require(`!!raw-loader!./examples/${folder}/${path}/angular.ts`);
+      const angularCode_r: any = await get(`${basicPath}/examples/${folder}/${path}/angular.ts`);
+      if (angularCode_r.flag) {
+        angularCode = await angularCode_r.data.text();
+      }
     }
-
     reactPath = `./examples/${folder}/${path}/react.tsx`;
     vuePath = `./examples/${folder}/${path}/vue.vue`;
     angularPath = `./examples/${folder}/${path}/angular.ts`;
-    // } catch (err) {
-    //   console.error(err);
-    // }
 
     return {
       reactCode, vueCode, angularCode,
@@ -138,25 +151,55 @@ class Demo {
   }
 
   async runCode(framework) {
+    const mount = document.getElementById('mount');
+    // Unmount Vue
+    if (vm && vm.existed) {
+      vm.existed = false;
+    }
+    // Remove Dom
+    mount.innerHTML = '';
+    if (framework === 'vue') {
+      $('.case-btn-cont').hide();
+      const code = await this.getCode(framework);
+      const codePath = code[`${framework}Path`];
+      // window.console.log(codePath);
+      const VueApp = require(`./examples/line/example1/vue.vue`).default;
+      const container = document.createElement('div');
+      document.getElementById('mount').appendChild(container);
+      vm = new Vue({
+        data: {
+          existed: true
+        },
+        el: container,
+        template: '<VueApp v-if="existed"/>',
+        components: { VueApp }
+      });
+      return;
+    }
+    // if (framework === 'angular') {
+    //   const code = await this.getCode(framework);
+    //   const codePath = code[`${framework}Path`];
+    //   const AppModule = require(`${codePath}`).default;
+    //   debugger;
+    //   // return window.console.log(AppModule.toString());
+    //   platBrowserDync.platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
+    // }
+    $('.case-btn-cont').show();
     const code: any = this.editor.getValue();
     const doc = combineFrameCode(framework, code);
     // window.console.log(code);
     // window.console.log(doc);
-
+    // window.console.log(transpileModule(code));
     $('#mount').html('<iframe></iframe>');
     const frame = $('#mount iframe')[0];
     const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+
     iframeDoc.open();
     iframeDoc.write(doc);
     iframeDoc.close();
-    // const mount = document.getElementById('mount');
 
     // // Unmount React;
     // ReactDOM.unmountComponentAtNode(mount);
-    // // Unmount Vue
-    // if (vm && vm.existed) {
-    //   vm.existed = false;
-    // }
     // // Unmount Angular
     // if (ngRef) {
     //   const mountParent = mount.parentNode;
@@ -166,10 +209,8 @@ class Demo {
     //   newMount.setAttribute('id', 'mount');
     //   mountParent.appendChild(newMount);
     // }
-    // // Remove Dom
-    // mount.innerHTML = '';
 
-    // const codePath = code[`${framework}Path`];
+
     // if (framework === 'react') {
     //   // delete require.cache[require.resolve(`${codePath}`)];
     //   const App = require(`${codePath}`).default;
@@ -183,23 +224,23 @@ class Demo {
     // }
 
     // if (framework === 'vue') {
-    //   const VueApp = require(`${codePath}`).default;
+    // const VueApp = require(`./examples/line/example1/vue.vue`).default;
     //   const container = document.createElement('div');
     //   document.getElementById('mount').appendChild(container);
-    //   vm = new Vue({
-    //     data: {
-    //       existed: true
-    //     },
-    //     el: container,
-    //     template: '<VueApp v-if="existed"/>',
-    //     components: { VueApp }
-    //   });
+    // vm = new Vue({
+    //   data: {
+    //     existed: true
+    //   },
+    //   el: container,
+    //   template: '<VueApp v-if="existed"/>',
+    //   components: { VueApp }
+    // });
     // }
 
 
   }
 
-  renderCase() {
+  renderCase(isClick = false) {
     const self = this;
     // change top framework switch
     $('.case-box .case-code-switch-item').each(function () {
@@ -208,12 +249,13 @@ class Demo {
         $(this).addClass('active');
       }
     });
-
-    // this.runCode(self.framework);
+    if (isClick) {
+      this.runCode(self.framework);
+    }
   }
 
   async renderCodeEditor() {
-    const code = await this.getCode();
+    const code = await this.getCode(this.framework);
     const codeValue = code[`${this.framework}Code`];
     const language = this.framework === 'vue' ? 'html' : 'typescript';
 
@@ -242,7 +284,7 @@ class Demo {
   }
 
   async renderDemoTitle() {
-    const code = await this.getCode();
+    const code = await this.getCode(this.framework);
     $('.case-type').html(getNameByLanguage(code));
   }
 
@@ -292,7 +334,7 @@ class Demo {
       const framework = $(this).attr('data-framework');
       self.framework = framework;
       self.renderCodeEditor();
-      self.renderCase();
+      self.renderCase(true);
     });
 
     // bind framework switch event
@@ -336,6 +378,9 @@ class Demo {
       $(template).insertBefore('.case-code-topbar .case-copy');
       e.clearSelection();
     });
+    $(document).on('click', '.case-btn-cont .case-run', function (e) {
+      self.runCode($('.case-code-switch .active').html().trim().toLowerCase());
+    });
   }
 
   unbindEvent() {
@@ -372,7 +417,7 @@ const loadEditor = () => {
         window['require'].config({
           paths: { vs: '/lib/monaco-editor/min/vs' }
         });
-        window['require'](['vs/editor/editor.main'], function () {
+        window['require'](['vs/editor/editor.main', 'vs/language/typescript/lib/typescriptServices'], function () {
           resolve(this);
         });
       } else {

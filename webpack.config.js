@@ -67,7 +67,8 @@ let config = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: "[name].js",
-    publicPath: "http://localhost:3000/build/"
+    publicPath: "http://localhost:3000/build/",
+    chunkFilename: '[name].js'
   },
 
   resolve: {
