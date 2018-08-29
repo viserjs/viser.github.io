@@ -1,6 +1,9 @@
 ## 简介
 
-Viser，一个基于 G2 实现的，为数据可视化工程师量身定制的工具。Viser 现已支持几大主流前端框架，例如 React, Vue 和 AngularJS。
+Viser 一个基于 G2 实现的，为数据可视化工程师量身定制的工具。
+Viser-Graph 一个基于 G6 实现的，为呈现关系型数据的定制化工具。
+
+Viser Viser-Graph 现已支持几大主流前端框架，例如 React, Vue 和 AngularJS。
 
 ### 核心价值
 

@@ -1,15 +1,24 @@
-import mdList from './mds';
+import { viserMds, viserGraphMds } from './mds';
 import locale from '../common/locale';
 import { render } from 'react-dom';
 import * as React from 'react';
 import Nav from '../nav';
 import {
   getNameByLanguage,
-  ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
-  getPageLanguage, setPageLanguage, initPageLanguage, changePageLanguage,
-  generateHashtag, getFolderAndItem,
-  addClass, removeClass,
-  on, off, delegate, undelegate,
+  ALL_PAGE_LANGUAGES,
+  DEFAULT_PAGE_LANGUAGE,
+  getPageLanguage,
+  setPageLanguage,
+  initPageLanguage,
+  changePageLanguage,
+  generateHashtag,
+  getFolderAndItem,
+  addClass,
+  removeClass,
+  on,
+  off,
+  delegate,
+  undelegate,
 } from '../common/utils';
 
 import './index.scss';
@@ -20,16 +29,40 @@ const DEFAULT_FOLDER = 'guide';
 const DEFAULT_ITEM = 'installation';
 
 class Docs {
+  typeKey: 'viser';
   constructor() {
     initPageLanguage();
     this.renderNav(getPageLanguage());
     this.render();
     this.bindEvent();
+
+    const selectedNav = localStorage.getItem('selectedNav');
+    location.hash = `#/${selectedNav}/${DEFAULT_FOLDER}/${DEFAULT_ITEM}/${getPageLanguage()}.md`;
   }
+  // 设置 docs 类型
+  setTypeKey = (typeKey: any) => {
+    if (this.typeKey !== typeKey) {
+      this.typeKey = typeKey;
+      location.hash = `#/${typeKey}/${DEFAULT_FOLDER}/${DEFAULT_ITEM}/${getPageLanguage()}.md`;
+      this.refresh();
+    }
+  };
+  getDosList() {
+    const selectedNav = localStorage.getItem('selectedNav');
+    switch (selectedNav) {
+      case 'viser':
+        return viserMds;
+      case 'viser-graph':
+        return viserGraphMds;
+      default:
+        return [];
+    }
+  }
+
   renderNav(pageLan) {
     render(
-      <Nav pageLan={pageLan} />,
-      document.getElementById('viser-nav')
+      <Nav pageLan={pageLan} setTypeKey={this.setTypeKey} />,
+      document.getElementById('viser-nav'),
     );
   }
   getDocsFolderAndItem() {
@@ -51,19 +84,28 @@ class Docs {
   renderLanguage() {
     let pageLanguageInStore = getPageLanguage();
 
-    if (!pageLanguageInStore || ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) === -1) {
+    if (
+      !pageLanguageInStore ||
+      ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) === -1
+    ) {
       pageLanguageInStore = DEFAULT_PAGE_LANGUAGE;
       setPageLanguage(pageLanguageInStore);
     }
 
-    const pageLanguageSwitchDom = document.querySelector('.common-header .page-language-switch');
-    ALL_PAGE_LANGUAGES.forEach((lang) => {
+    const pageLanguageSwitchDom = document.querySelector(
+      '.common-header .page-language-switch',
+    );
+    ALL_PAGE_LANGUAGES.forEach(lang => {
       removeClass(pageLanguageSwitchDom, lang);
     });
     addClass(pageLanguageSwitchDom, pageLanguageInStore);
 
-    if (locale && locale[pageLanguageInStore] && locale[pageLanguageInStore].length) {
-      locale[pageLanguageInStore].forEach((o) => {
+    if (
+      locale &&
+      locale[pageLanguageInStore] &&
+      locale[pageLanguageInStore].length
+    ) {
+      locale[pageLanguageInStore].forEach(o => {
         this.renderText(o.selector, o.text);
       });
     }
@@ -71,18 +113,22 @@ class Docs {
 
   renderLeftMenu() {
     const { folder, item } = this.getDocsFolderAndItem();
-
-    const menuList = mdList.map((v) => {
+    const mds = this.getDosList();
+    const menuList = mds.map(v => {
       const folderMatched = v.folderKey === folder;
       return {
         ...v,
         folderDisplayName: getNameByLanguage(v),
-        mds: v.mds.map((o) => {
+        mds: v.mds.map(o => {
           const itemMatched = o.itemKey === item;
           return {
             ...o,
             itemDisplayName: getNameByLanguage(o),
-            linkName: generateHashtag(v.folderKey, o.itemKey),
+            linkName: generateHashtag(
+              localStorage.getItem('selectedNav'),
+              v.folderKey,
+              o.itemKey,
+            ),
             activeClass: folderMatched && itemMatched ? 'active' : '',
           };
         }),
@@ -100,7 +146,6 @@ class Docs {
     const { folder, item } = this.getDocsFolderAndItem();
 
     let content = '';
-
     try {
       content = require(`./mds/${folder}/${item}/${language}.md`);
     } catch (err) {
@@ -114,35 +159,49 @@ class Docs {
     changePageLanguage();
 
     this.refresh();
-  }
+  };
 
   handleSwitchContent = () => {
     setTimeout(() => {
       this.refresh();
     }, 0);
-  }
+  };
 
   unbindEvent() {
-    const pageLanguageSwitchDom = document.querySelector('.common-header .page-language-switch');
+    const pageLanguageSwitchDom = document.querySelector(
+      '.common-header .page-language-switch',
+    );
     if (pageLanguageSwitchDom) {
       off(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
     }
 
     const leftMenuDom = document.querySelector('.left-panel');
     if (leftMenuDom) {
-      undelegate(leftMenuDom, '.common-nav-item', 'click', this.handleSwitchContent);
+      undelegate(
+        leftMenuDom,
+        '.common-nav-item',
+        'click',
+        this.handleSwitchContent,
+      );
     }
   }
 
   bindEvent() {
-    const pageLanguageSwitchDom = document.querySelector('.common-header .page-language-switch');
+    const pageLanguageSwitchDom = document.querySelector(
+      '.common-header .page-language-switch',
+    );
     if (pageLanguageSwitchDom) {
       on(pageLanguageSwitchDom, 'click', this.handleSwitchPageLanguage);
     }
 
     const leftMenuDom = document.querySelector('.left-panel');
     if (leftMenuDom) {
-      delegate(leftMenuDom, '.common-nav-item', 'click', this.handleSwitchContent);
+      delegate(
+        leftMenuDom,
+        '.common-nav-item',
+        'click',
+        this.handleSwitchContent,
+      );
     }
   }
 
