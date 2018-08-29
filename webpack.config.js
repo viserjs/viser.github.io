@@ -61,12 +61,14 @@ let config = {
     docs: './pages/docs/index',
     home: './pages/home/index',
     'home-viser': './pages/home/home-viser',
+    theme: './pages/theme/index',
   },
 
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: "[name].js",
-    publicPath: "http://localhost:3000/build/"
+    publicPath: "http://localhost:3000/build/",
+    chunkFilename: '[name].js'
   },
 
   resolve: {
@@ -93,7 +95,7 @@ let config = {
         })
       },
       { test: /\.tsx?$/, loader: "ts-loader" },
-      { test: /\.tpl$/, loader: "handlebars-loader?helperDirs[]="+__dirname+"/helpers"},
+      { test: /\.tpl$/, loader: "handlebars-loader?helperDirs[]=" + __dirname + "/helpers" },
       {
         test: /\.md$/,
         use: [
@@ -158,11 +160,11 @@ let config = {
     }),
     new ExtractTextPlugin("[name].css"),
   ] : [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env),
-    }),
-    new ExtractTextPlugin("[name].css"),
-  ],
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(env),
+      }),
+      new ExtractTextPlugin("[name].css"),
+    ],
 };
 
 module.exports = config;

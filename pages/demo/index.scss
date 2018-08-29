@@ -4,7 +4,42 @@
 @import '../styles/main.scss';
 @import '../styles/nav.scss';
 
+@font-face {
+  font-family: 'font-viser';  /* project id 807564 */
+  src: url('//at.alicdn.com/t/font_807564_prqm62fshd8.eot');
+  src: url('//at.alicdn.com/t/font_807564_prqm62fshd8.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_807564_prqm62fshd8.woff') format('woff'),
+  url('//at.alicdn.com/t/font_807564_prqm62fshd8.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_807564_prqm62fshd8.svg#iconfont') format('svg');
+}
+@keyframes wave{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
 #main-content {
+  #mount iframe{
+    width:100%;
+    height:100%;
+    border:0;
+    padding:0;
+    margin:0;
+  }
+  .icon-viser{
+    font-family: 'font-viser';
+    display: inline-block;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+  }
   .case-type {
     background: #fff;
     color: #333;
@@ -65,7 +100,32 @@
     position: relative;
     box-sizing: border-box;
   }
-
+  .case-code-topbar{
+    color:#999;
+    padding: 10px 14px 10px 10px;
+    font-size:14px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    .case-btn-cont{
+      float:right;
+      .case-tip{
+        color: #28a745;
+        opacity: 0;
+        animation:wave ease 1.5s;
+        -webkit-animation:wave ease 1.5s;
+        &.err{
+          color:#f00;
+        }
+      }
+      .case-btn{
+        cursor: pointer;
+        margin-left: 5px;
+        user-select: none;
+        &:hover{
+          color:#40A9FE;
+        }
+      }
+    }
+  }
   .case-code-detail {
     display: block;
     height: calc(100% - 40px);

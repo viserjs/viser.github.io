@@ -1,4 +1,7 @@
 import locale from './locale';
+import { render } from 'react-dom';
+import * as React from 'react';
+import Nav from '../nav';
 import {
   initPageLanguage, getPageLanguage, setPageLanguage, changePageLanguage,
   ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
@@ -10,11 +13,17 @@ import './index.scss';
 class Home {
   constructor() {
     initPageLanguage();
+    this.renderNav(getPageLanguage());
     this.renderLanguage();
     this.renderImage();
     this.bindEvent();
   }
-
+  renderNav(pageLan) {
+    render(
+      <Nav pageLan={pageLan} />,
+      document.getElementById('viser-nav')
+    );
+  }
   renderImage() {
     document.getElementById('viser-mount-1-1').innerHTML = '<img src="/assets/image/s1-1.png"/>';
     document.getElementById('viser-mount-2-1').innerHTML = '<img src="/assets/image/s2-1.png"/>';
@@ -54,7 +63,7 @@ class Home {
 
   handleSwitchPageLanguage = () => {
     changePageLanguage();
-
+    this.renderNav(getPageLanguage());
     this.unbindEvent();
     this.renderLanguage();
     this.bindEvent();

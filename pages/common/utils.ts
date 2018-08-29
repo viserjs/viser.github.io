@@ -1,5 +1,7 @@
 import D from 'oui-dom-utils';
 import E from 'oui-dom-events';
+import * as fetch from 'cross-fetch';
+import { template, pkgMap } from './iframe-templage';
 
 /**
  * Language Utils
@@ -10,13 +12,16 @@ export const DEFAULT_PAGE_LANGUAGE = 'en';
 
 export const getPageLanguage = () => {
   const pageLanguageInStore = window.localStorage.getItem('page_language');
-  if (pageLanguageInStore && ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) !== -1) {
+  if (
+    pageLanguageInStore &&
+    ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) !== -1
+  ) {
     return pageLanguageInStore;
   }
   return null;
 };
 
-export const setPageLanguage = (language) => {
+export const setPageLanguage = language => {
   window.localStorage.setItem('page_language', language);
 };
 
@@ -24,14 +29,14 @@ export const initPageLanguage = () => {
   const pageLanguageInStore = getPageLanguage();
   if (!pageLanguageInStore) {
     // Optimise for Chinese user
-    const navigatorLanguage = (window.navigator.language).toLowerCase();
+    const navigatorLanguage = window.navigator.language.toLowerCase();
     if (navigatorLanguage && navigatorLanguage.indexOf('cn') !== -1) {
       setPageLanguage('cn');
     } else {
       setPageLanguage(DEFAULT_PAGE_LANGUAGE);
     }
   }
-}
+};
 
 export const changePageLanguage = () => {
   const pageLanguageInStore = getPageLanguage();
@@ -42,11 +47,11 @@ export const changePageLanguage = () => {
   } else {
     setPageLanguage(DEFAULT_PAGE_LANGUAGE);
   }
-}
+};
 
-export const getNameByLanguage = (o) => {
+export const getNameByLanguage = o => {
   const language = getPageLanguage();
-  switch(language) {
+  switch (language) {
     case 'en': {
       if (o && o.enName) {
         return o.enName;
@@ -69,43 +74,29 @@ export const getNameByLanguage = (o) => {
  * Route Utils
  */
 
-export const generateHashtag = (folder, item) => {
-  if (folder && item) {
-    return `#/${folder}/${item}`;
-  } else if (folder){
-    return `#/${folder}/${item}`;
+export const generateHashtag = (typeKey, folder, item) => {
+  if (typeKey && folder && item) {
+    return `#/${typeKey}/${folder}/${item}`;
+  } else if (typeKey && folder) {
+    return `#/${typeKey}/${folder}`;
+  } else if (typeKey) {
+    return `#/${typeKey}/${folder}`;
   }
   return '#';
-}
+};
 
 export const getFolderAndItem = () => {
   const hash = window.location.hash;
-  const hashReg = /^#?\/?([^\/]*)\/?([^\/]*)\/?$/;
-  // Test Case
-  // console.log(hashReg.exec('#/'));
-  // console.log(hashReg.exec('#//'));
-  // console.log(hashReg.exec('#///'));
-  // console.log(hashReg.exec('#////'));
-  // console.log(hashReg.exec('#'));
-  // console.log(hashReg.exec(''));
-  // console.log(hashReg.exec('#/1'));
-  // console.log(hashReg.exec('#/1/'));
-  // console.log(hashReg.exec('#1'));
-  // console.log(hashReg.exec('#1/'));
-  // console.log(hashReg.exec('#1/2'));
-  // console.log(hashReg.exec('#/1/2'));
-  // console.log(hashReg.exec('#1/2/'));
-  // console.log(hashReg.exec('#/1/2/'));
-
-  const result = hashReg.exec(hash);
-  if (!result) {
-    return { folder: '', item: '' };
+  const result = hash.split('/');
+  if (result.length === 0) {
+    return { tempKey: '', folder: '', item: '' };
   }
   return {
-    folder: result[1] || '',
-    item: result[2] || '',
+    typeKey: result[1] || '',
+    folder: result[2] || '',
+    item: result[3] || '',
   };
-}
+};
 
 /**
  * DOM Utils
@@ -126,3 +117,93 @@ export const off = E.off;
 export const delegate = E.delegate;
 
 export const undelegate = E.undelegate;
+
+export const get = (url: any) => {
+  return new Promise((resolve: any) => {
+    return (
+      fetch(url)
+        //没必要传参数，只要url拼接即可
+        .then((res: any) => {
+          if (res.status >= 400) {
+            return {
+              flag: false,
+            };
+          }
+          return {
+            flag: true,
+            data: res,
+          };
+        })
+        .then(json => resolve(json))
+    );
+  });
+};
+
+export const getInitNav = (): any => {
+  const selectedNav = window.localStorage.getItem('selectedNav');
+  if (selectedNav) return selectedNav;
+  return null;
+};
+export const setInitNav = (nav: string) => {
+  window.localStorage.setItem('selectedNav', nav);
+};
+
+const codeDeal = (oriCode: string, framework: string): string => {
+  let code = oriCode.replace(/\s*?\/\/[\s\S]*?\n/g, '');
+  const reg = /import\s.*?\{.*?\}.*?;/g;
+  if (reg.test(code)) {
+    const injects = code.match(reg);
+    injects.forEach(item => {
+      const tempVar = item.replace(/(.*?\{|\}.*)/g, '');
+      const tempPkg =
+        pkgMap[
+          item
+            .replace(/^(.*?['"])/g, '')
+            .replace(/['"].*/, '')
+            .trim()
+        ];
+      const temp = `const {${tempVar}}=${tempPkg};`;
+      code = code.replace(item, temp);
+    });
+  }
+  code = code
+    .replace(/import.*?;/g, '')
+    .replace(/as\s*?any\s*?;/g, '')
+    .replace(/\(window\s+?as\s+?any\)/g, 'window')
+    .replace(/as\s*?any\s*?/g, '');
+  switch (framework) {
+    case 'react':
+      code = code
+        .replace(/const.*?require.*?;/g, '')
+        .replace(/export\s*?default/g, '');
+      code += ' ReactDOM.render(<App />, document.getElementById("mount"));';
+      break;
+    case 'angular':
+      const moduleName = code
+        .match(/export\s*?default\s*?class[\s\S]*/)[0]
+        .replace(/export\s*?default\s*?class/gi, '')
+        .replace(/\{\s*?\}/g, '')
+        .trim();
+      code = code.replace(/export[\s\S]*/, `class ${moduleName}{}`);
+      code = code.replace(/const.*?require.*?;/g, '');
+      code += `\nconst { platformBrowserDynamic } = ng.platformBrowserDynamic;\nplatformBrowserDynamic().bootstrapModule(${moduleName});`;
+      break;
+    default:
+  }
+  return code;
+};
+export const combineFrameCode = (
+  framework: string,
+  oriCode: string,
+): string => {
+  // 由于replace第二个参数$**会将后续的内容进行对正则进行匹配影响最终生成的html，故使用字符拼接
+  if (/<script>/.test(oriCode) && /<template>/.test(oriCode)) {
+    return '';
+  }
+  const code = codeDeal(oriCode, framework);
+  if (template[framework]) {
+    const temp = template[framework].split('{code}');
+    return temp[0] + code + temp[1];
+  }
+  return '';
+};

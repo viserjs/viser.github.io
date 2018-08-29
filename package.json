@@ -2,7 +2,7 @@
   "name": "viserjs.github.io",
   "version": "1.0.0",
   "description": "viser data visualization",
-  "main": "",
+  "main": "run.js",
   "author": "viserjs",
   "scripts": {
     "start": "node ./run.js",
@@ -14,6 +14,8 @@
   ],
   "dependencies": {
     "@antv/data-set": "^0.8.3",
+    "clipboard": "^2.0.1",
+    "cross-fetch": "^2.2.2",
     "handlebars": "^4.0.11",
     "load-script": "^1.0.0",
     "monaco-editor": "^0.10.1",
