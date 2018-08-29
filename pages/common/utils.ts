@@ -1,7 +1,7 @@
 import D from 'oui-dom-utils';
 import E from 'oui-dom-events';
 import * as fetch from 'cross-fetch';
-import { template, pkgMap, moduleTemp } from './iframe-templage';
+import { template, pkgMap } from './iframe-templage';
 
 /**
  * Language Utils
@@ -71,18 +71,20 @@ export const getNameByLanguage = (o) => {
  * Route Utils
  */
 
-export const generateHashtag = (folder, item) => {
-  if (folder && item) {
-    return `#/${folder}/${item}`;
-  } else if (folder) {
-    return `#/${folder}/${item}`;
+export const generateHashtag = (typeKey, folder, item) => {
+  if (typeKey && folder && item) {
+    return `#/${typeKey}/${folder}/${item}`;
+  } else if (typeKey && folder) {
+    return `#/${typeKey}/${folder}`;
+  } else if (typeKey) {
+    return `#/${typeKey}/${folder}`;
   }
   return '#';
 }
 
 export const getFolderAndItem = () => {
   const hash = window.location.hash;
-  const hashReg = /^#?\/?([^\/]*)\/?([^\/]*)\/?$/;
+  // const hashReg = /^#?\/?([^\/]*)\/?([^\/]*)\/?$/;
   // Test Case
   // console.log(hashReg.exec('#/'));
   // console.log(hashReg.exec('#//'));
@@ -99,13 +101,14 @@ export const getFolderAndItem = () => {
   // console.log(hashReg.exec('#1/2/'));
   // console.log(hashReg.exec('#/1/2/'));
 
-  const result = hashReg.exec(hash);
-  if (!result) {
-    return { folder: '', item: '' };
+  const result = hash.split('/');
+  if (result.length === 0) {
+    return { tempKey: '', folder: '', item: '' };
   }
   return {
-    folder: result[1] || '',
-    item: result[2] || '',
+    typeKey: result[1] || '',
+    folder: result[2] || '',
+    item: result[3] || '',
   };
 }
 
@@ -156,50 +159,16 @@ export const getInitNav = (): any => {
 export const setInitNav = (nav: string) => {
   window.localStorage.setItem('selectedNav', nav);
 }
-export const transpileModule = (input, options = {
-  module: 'none',//不适用模块，。。
-  target: (window as any).ts.ScriptTarget.ES5,
-  noLib: true,
-  noResolve: true,
-  suppressOutputPathCheck: true
-}) => {
-  //此方法使用前提是需要有monaco编辑器，并配置vs/language/typescript/lib/typescriptServices 
-  //目前不支持jsx，请不要再react代码上使用此函数
-  const inputFileName = "module.ts";
-  const sourceFile = (window as any).ts.createSourceFile(inputFileName, input, options.target || (window as any).ts.ScriptTarget.ES5);
-  // Output
-  let outputText;
-  const program = (window as any).ts.createProgram([inputFileName], options, {
-    getSourceFile: function (fileName) { return fileName.indexOf("module") === 0 ? sourceFile : undefined; },
-    writeFile: function (_name, text) { outputText = text; },
-    getDefaultLibFileName: function () { return "lib.d.ts"; },
-    useCaseSensitiveFileNames: function () { return false; },
-    getCanonicalFileName: function (fileName) { return fileName; },
-    getCurrentDirectory: function () { return ""; },
-    getNewLine: function () { return "\r\n"; },
-    fileExists: function (fileName) { return fileName === inputFileName; },
-    readFile: function () { return ""; },
-    directoryExists: function () { return true; },
-    getDirectories: function () { return []; }
-  });
-  // Emit
-  program.emit();
-  if (outputText === undefined) {
-    throw new Error("Output generation failed");
-  }
-  return outputText;
-}
 
 const codeDeal = (oriCode: string, framework: string): string => {
   let code = oriCode.replace(/\s*?\/\/[\s\S]*?\n/g, '');
   const reg = /import\s.*?\{.*?\}.*?;/g;
   if (reg.test(code)) {
     const injects = code.match(reg);
-    // window.console.log(injects);
     injects.forEach(item => {
       const tempVar = item.replace(/(.*?\{|\}.*)/g, '');
       const tempPkg = pkgMap[item.replace(/^(.*?['"])/g, '').replace(/['"].*/, '').trim()];
-      const temp = `const {${tempVar}}=${framework === 'react' ? tempPkg : 'parent.angular'};`;
+      const temp = `const {${tempVar}}=${tempPkg};`;
       code = code.replace(item, temp);
       // window.console.log(code);
     });
@@ -214,15 +183,13 @@ const codeDeal = (oriCode: string, framework: string): string => {
       code += ' ReactDOM.render(<App />, document.getElementById("mount"));';
       break;
     case 'angular':
+      const moduleName = code.match(/export\s*?default\s*?class[\s\S]*/)[0]
+        .replace(/export\s*?default\s*?class/gi, '')
+        .replace(/\{\s*?\}/g, '')
+        .trim();
+      code = code.replace(/export[\s\S]*/, `class ${moduleName}{}`);
       code = code.replace(/const.*?require.*?;/g, '');
-      code = transpileModule(code);
-      // code = code.replace('Object.defineProperty(exports, "__esModule", { value: true });', `if(!exports){var exports={}}\nObject.defineProperty(exports, "__esModule", { value: true });`);
-      // code = `(function(){\n${code}\nwindow.exports=exports;\n})();`;
-      code = code.replace('var AppComponent = (function () {', 'var AppComponent = /** @class */ (function () {')
-        .replace('var AppModule = (function () {', 'var AppModule = /** @class */ (function () {')
-      window.console.log(code);
-      const tempMo = moduleTemp.split('{{code}}');
-      code = tempMo[0] + code + tempMo[1];
+      code += `\nconst { platformBrowserDynamic } = ng.platformBrowserDynamic;\nplatformBrowserDynamic().bootstrapModule(${moduleName});`;
       break;
     default:
   }
@@ -231,6 +198,9 @@ const codeDeal = (oriCode: string, framework: string): string => {
 }
 export const combineFrameCode = (framework: string, oriCode: string): string => {
   // 由于replace第二个参数$**会将后续的内容进行对正则进行匹配影响最终生成的html，故使用字符拼接
+  if (/<script>/.test(oriCode) && /<template>/.test(oriCode)) {
+    return '';
+  }
   const code = codeDeal(oriCode, framework);
   if (template[framework]) {
     const temp = template[framework].split('{code}');

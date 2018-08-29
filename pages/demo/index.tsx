@@ -6,10 +6,10 @@ import * as Clipboard from 'clipboard';
 import Nav from '../nav';
 import {
   getNameByLanguage,
-  ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
-  getPageLanguage, setPageLanguage, initPageLanguage, changePageLanguage,
+  // ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE, setPageLanguage,
+  getPageLanguage, initPageLanguage, changePageLanguage,
   generateHashtag, getFolderAndItem,
-  get, combineFrameCode, transpileModule
+  get, combineFrameCode
 } from '../common/utils';
 import './index.scss';
 
@@ -24,15 +24,7 @@ import * as ReactDOM from 'react-dom';
  * inject to window
 ******************/
 //由于没有浏览器包，不得不将angular的方法注入到window；
-import * as platBrowserDync from '@angular/platform-browser-dynamic';
-import * as core from '@angular/core';
-import * as platBrowser from '@angular/platform-browser';
-import * as viserNg from 'viser-ng';
-const getNgApp = (app: any) => {
-  platBrowserDync.platformBrowserDynamic().bootstrapModule(app);
-}
-const angular = { ...core, ...platBrowser, ...platBrowserDync, ...viserNg, getNgApp };
-(window as any).angular = { ...angular };// 用于iframe调用parent获取需要的而不必去引用包
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // store Vue Instance globally;
 let vm;
@@ -43,15 +35,15 @@ let ngRef;
 
 const navTpl = require('./nav.tpl');
 
-const ALL_FRAMEWORKS = ['react', 'vue', 'angular'];
-const DEFAULT_FOLDER = 'line';
-const DEFAULT_ITEM = 'basic-line';
+// const ALL_FRAMEWORKS = ['react', 'vue', 'angular'];
+const DEFAULT_FOLDER = '';
+const DEFAULT_ITEM = '';
 
 class Demo {
-  framework: string = 'angular';
+  framework: string = 'react';
   editor: any;
   clipboard: any;
-
+  typeKey: 'viser';
   constructor() {
     initPageLanguage();
     this.renderNav(getPageLanguage());
@@ -60,9 +52,15 @@ class Demo {
     this.render();
     this.bindEvent();
   }
+  getTypeKey = (key: any) => {
+    if (this.typeKey !== key) {
+      this.typeKey = key;
+      this.refresh();
+    }
+  }
   renderNav(pageLan) {
     ReactDOM.render(
-      <Nav pageLan={pageLan} />,
+      <Nav getTypeKey={this.getTypeKey} pageLan={pageLan} />,
       document.getElementById('viser-nav')
     );
   }
@@ -84,8 +82,8 @@ class Demo {
   }
 
   async getCode(framework = '') {
-    const { folder, item } = this.getDemoFolderAndItem();
-    const examples = exampleOrigin[folder].examples;
+    const { typeKey, folder, item } = this.getDemoFolderAndItem();
+    const examples = exampleOrigin[typeKey][folder].examples;
     const filterExamples = examples.filter((ex) => {
       const itemKey = this.getDemoItemKey(ex);
       if (item === itemKey) {
@@ -139,8 +137,16 @@ class Demo {
   }
 
   getDemoFolderAndItem() {
-    const { folder, item } = getFolderAndItem();
+    // window.console.log(Object.keys(exampleOrigin[this.typeKey]));
+    let { typeKey, folder, item } = getFolderAndItem();
+    if (!typeKey || !folder || !item || typeKey !== this.typeKey) {
+      typeKey = this.typeKey
+      folder = Object.keys(exampleOrigin[typeKey])[0];
+      item = exampleOrigin[typeKey][folder]['examples'][0]['enName'].toLowerCase().trim().replace(/\s/g, '-');
+      window.location.hash = `#/${typeKey}/${folder}/${item}`;
+    }
     return {
+      typeKey: typeKey || '',
       folder: folder || DEFAULT_FOLDER,
       item: item || DEFAULT_ITEM,
     };
@@ -152,18 +158,27 @@ class Demo {
 
   async runCode(framework) {
     const mount = document.getElementById('mount');
+
     // Unmount Vue
     if (vm && vm.existed) {
       vm.existed = false;
     }
+    if (ngRef) {
+      const mountParent = mount.parentNode;
+      ngRef.destroy();
+      ngRef = undefined;
+      const newMount = document.createElement('div');
+      newMount.setAttribute('id', 'mount');
+      mountParent.appendChild(newMount);
+    }
     // Remove Dom
     mount.innerHTML = '';
     if (framework === 'vue') {
-      $('.case-btn-cont').hide();
+      $('.case-code-topbar').hide();
       const code = await this.getCode(framework);
       const codePath = code[`${framework}Path`];
       // window.console.log(codePath);
-      const VueApp = require(`./examples/line/example1/vue.vue`).default;
+      const VueApp = require(`${codePath}`).default;
       const container = document.createElement('div');
       document.getElementById('mount').appendChild(container);
       vm = new Vue({
@@ -176,15 +191,14 @@ class Demo {
       });
       return;
     }
-    // if (framework === 'angular') {
-    //   const code = await this.getCode(framework);
-    //   const codePath = code[`${framework}Path`];
-    //   const AppModule = require(`${codePath}`).default;
-    //   window.console.log(require(`${codePath}`));
-    //   debugger;
-    //   return platBrowserDync.platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
-    // }
-    $('.case-btn-cont').show();
+    if (framework === 'angular') {
+      $('.case-code-topbar').hide();
+      const code = await this.getCode(framework);
+      const codePath = code[`${framework}Path`];
+      const AppModule = require(`${codePath}`).default;
+      return platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
+    }
+    $('.case-code-topbar').show();
     const code: any = this.editor.getValue();
     const doc = combineFrameCode(framework, code);
     // window.console.log(code);
@@ -240,7 +254,7 @@ class Demo {
 
   }
 
-  renderCase(isClick = false) {
+  renderCase() {
     const self = this;
     // change top framework switch
     $('.case-box .case-code-switch-item').each(function () {
@@ -249,19 +263,18 @@ class Demo {
         $(this).addClass('active');
       }
     });
-    if (isClick) {
-      this.runCode(self.framework);
-    }
   }
 
-  async renderCodeEditor() {
+  async renderCodeEditor(isClick = false) {
     const code = await this.getCode(this.framework);
     const codeValue = code[`${this.framework}Code`];
     const language = this.framework === 'vue' ? 'html' : 'typescript';
 
     this.editor.setValue(codeValue);
     (window as any).monaco.editor.setModelLanguage(this.editor.getModel(), language);
+    // if (!isClick) {
     this.runCode(this.framework);
+    // }
   }
 
   renderLanguage() {
@@ -289,22 +302,23 @@ class Demo {
   }
 
   renderLeftMenu() {
-    const { folder, item } = this.getDemoFolderAndItem();
+    const { typeKey, folder, item } = this.getDemoFolderAndItem();
 
     const menuList = [];
-    Object.keys(exampleOrigin).forEach((key) => {
+    Object.keys(exampleOrigin[typeKey]).forEach((key) => {
       const folderKey = key;
       const folderMatched = folderKey === folder;
       menuList.push({
-        ...exampleOrigin[key],
+        ...exampleOrigin[typeKey][key],
+        typeKey,
         folderKey,
-        folderDisplayName: getNameByLanguage(exampleOrigin[key]),
-        examples: exampleOrigin[key].examples.map((example) => {
+        folderDisplayName: getNameByLanguage(exampleOrigin[typeKey][key]),
+        examples: exampleOrigin[typeKey][key].examples.map((example) => {
           const itemKey = this.getDemoItemKey(example);
           const itemMatched = itemKey === item;
           return {
             ...example,
-            linkName: generateHashtag(folderKey, itemKey),
+            linkName: generateHashtag(typeKey, folderKey, itemKey),
             itemKey,
             itemDisplayName: getNameByLanguage(example),
             activeClass: folderMatched && itemMatched ? 'active' : '',
@@ -333,8 +347,9 @@ class Demo {
     $('.case-box .case-code-switch .case-code-switch-item').on('click', function () {
       const framework = $(this).attr('data-framework');
       self.framework = framework;
-      self.renderCodeEditor();
-      self.renderCase(true);
+      self.renderCase();
+      self.renderCodeEditor(true);
+      // self.runCode(self.framework);
     });
 
     // bind framework switch event
@@ -388,7 +403,9 @@ class Demo {
     $('.case-box .case-code-switch .case-code-switch-item').off('click');
     $('.left-panel .common-nav-folder.expandable .common-nav-title').off('click');
     $('.page-language-switch').off('click');
-    this.clipboard.destroy();
+    if (this.clipboard && this.clipboard.destroy) {
+      this.clipboard.destroy();
+    }
   }
 
   render() {
@@ -417,7 +434,7 @@ const loadEditor = () => {
         window['require'].config({
           paths: { vs: '/lib/monaco-editor/min/vs' }
         });
-        window['require'](['vs/editor/editor.main', 'vs/language/typescript/lib/typescriptServices'], function () {
+        window['require'](['vs/editor/editor.main'], function () {
           resolve(this);
         });
       } else {

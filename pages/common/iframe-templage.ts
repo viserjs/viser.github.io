@@ -1,69 +1,12 @@
 export const pkgMap = {
     //包名映射的变量名
     'viser-react': 'ViserReact',
-    'viser-graph-react': 'ViserGraphReact'
+    'viser-graph-react': 'ViserGraphReact',
+    '@angular/core': 'ng.core',
+    '@angular/platform-browser': 'ng.platformBrowser',
+    'viser-ng': 'ViserNg'
 }
-export const moduleTemp = `
-/******/ (function(modules) { // webpackBootstrap
-    /******/    // The module cache
-    /******/    var installedModules = {};
-    
-    /******/    // The require function
-    /******/    function __webpack_require__(moduleId) {
-    
-    /******/        // Check if module is in cache
-    /******/        if(installedModules[moduleId])
-    /******/            return installedModules[moduleId].exports;
-    
-    /******/        // Create a new module (and put it into the cache)
-    /******/        var module = installedModules[moduleId] = {
-    /******/            exports: {},
-    /******/            id: moduleId,
-    /******/            loaded: false
-    /******/        };
-    
-    /******/        // Execute the module function
-    /******/        modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-    
-    /******/        // Flag the module as loaded
-    /******/        module.loaded = true;
-    
-    /******/        // Return the exports of the module
-    /******/        return module.exports;
-    /******/    }
-    
-    
-    /******/    // expose the modules object (__webpack_modules__)
-    /******/    __webpack_require__.m = modules;
-    
-    /******/    // expose the module cache
-    /******/    __webpack_require__.c = installedModules;
-    
-    /******/    // __webpack_public_path__
-    /******/    __webpack_require__.p = "/bundle";
-    
-    /******/    // Load entry module and return exports
-    /******/    return __webpack_require__(0);
-    /******/ })
-    /************************************************************************/
-    /******/ ([
-    /* 0 */
-    /***/ function(module, exports, __webpack_require__) {
-    
-        'use strict';
-    
-        var App=__webpack_require__(1).default;
-        window.console.log(__webpack_require__(1));
-        window.App=App;
-        parent.angular.getNgApp(App);
-    /***/ },
-    /* 1 */
-    /***/ function(module, exports) {
-        {{code}}
-    
-    /***/ }
-    /******/ ]);
-`
+
 export const template = {
     react: `<!DOCTYPE html>
     <html lang="en">
@@ -116,13 +59,22 @@ export const template = {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script src="/assets/pkg/data-set.min.js"></script>
+        <script src="/assets/pkg/typescript.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/core-js@2.5.7/client/shim.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/zone.js@0.8.26/dist/zone.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/rxjs@5.2.0/bundles/Rx.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@angular/core@5.0.1/bundles/core.umd.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@angular/common@5.0.1/bundles/common.umd.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@angular/compiler@5.0.1/bundles/compiler.umd.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@angular/platform-browser@5.0.1/bundles/platform-browser.umd.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@angular/platform-browser-dynamic@5.0.1/bundles/platform-browser-dynamic.umd.js"></script>
+        <script src="/assets/pkg/viser-ng.min.js"></script>
         <title>Document</title>
         <style>*{margin:0;padding:0;}</style>
     </head>
     <body>
     <div id="mount"></div>
-    <script>
+    <script type="text/typescript">
     {code}
     </script>  
     </body></html>`
