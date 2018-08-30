@@ -14,22 +14,18 @@ import {
   getFolderAndItem,
   get,
   combineFrameCode,
+  getInitNav
 } from '../common/utils';
 import './index.scss';
 
-import Vue from 'vue';
-import ViserVue from 'viser-vue';
-import ViserGraphVue from 'viser-graph-vue';
+// import Vue from 'vue';
+// import ViserVue from 'viser-vue';
+// import ViserGraphVue from 'viser-graph-vue';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-// store Vue Instance globally;
-let vm;
-Vue.use(ViserVue);
-Vue.use(ViserGraphVue);
-// // store Ng Instance globally;
 let ngRef;
 
 const navTpl = require('./nav.tpl');
@@ -39,7 +35,7 @@ const DEFAULT_FOLDER = '';
 const DEFAULT_ITEM = '';
 
 class Demo {
-  framework: string = 'react';
+  framework: string = 'angular';
   editor: any;
   clipboard: any;
   typeKey: 'viser';
@@ -149,7 +145,6 @@ class Demo {
       enName,
     };
   }
-
   getDemoFolderAndItem() {
     let { typeKey, folder, item } = getFolderAndItem();
     if (!typeKey || !folder || !item || typeKey !== this.typeKey) {
@@ -171,14 +166,24 @@ class Demo {
   getDemoItemKey(example) {
     return example.enName.toLowerCase().replace(/\s/g, '-');
   }
+  // getAngularPath() {
+  //   const { typeKey, folder, item } = this.getDemoFolderAndItem();
+  //   const examples = exampleOrigin[typeKey][folder].examples;
+  //   const filterExamples = examples.filter(ex => {
+  //     const itemKey = this.getDemoItemKey(ex);
+  //     if (item === itemKey) {
+  //       return true;
+  //     }
+  //     return false;
+  //   });
+  //   const { path } = filterExamples[0];
+  //   const codePath = `./examples/${folder}/${path}/angular.ts`;
+  //   return codePath;
+  // }
 
   async runCode(framework) {
     const mount = document.getElementById('mount');
 
-    // Unmount Vue
-    if (vm && vm.existed) {
-      vm.existed = false;
-    }
     if (ngRef) {
       const mountParent = mount.parentNode;
       ngRef.destroy();
@@ -187,31 +192,12 @@ class Demo {
       newMount.setAttribute('id', 'mount');
       mountParent.appendChild(newMount);
     }
-    // Remove Dom
-    if (framework === 'vue') {
-      $('.case-code-topbar').hide();
-      const code = await this.getCode(framework);
-      mount.innerHTML = '';
-      const codePath = code[`${framework}Path`];
-      // window.console.log(codePath);
-      const VueApp = require(`${codePath}`).default;
-      const container = document.createElement('div');
-      document.getElementById('mount').appendChild(container);
-      vm = new Vue({
-        data: {
-          existed: true,
-        },
-        el: container,
-        template: '<VueApp v-if="existed"/>',
-        components: { VueApp },
-      });
-      return;
-    }
     if (framework === 'angular') {
       $('.case-code-topbar').hide();
       const code = await this.getCode(framework);
       mount.innerHTML = '';
       const codePath = code[`${framework}Path`];
+      delete require.cache[require.resolve(`${codePath}`)];
       const AppModule = require(`${codePath}`).default;
       return platformBrowserDynamic()
         .bootstrapModule(AppModule)
@@ -323,6 +309,9 @@ class Demo {
     $('.case-box .case-code-switch .case-code-switch-item').on(
       'click',
       function () {
+        if ($(this).hasClass('active')) {
+          return;
+        }
         const framework = $(this).attr('data-framework');
         self.framework = framework;
         self.renderCase();

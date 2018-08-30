@@ -154,8 +154,8 @@ export const setInitNav = (nav: string) => {
   window.localStorage.setItem('selected_nav', nav);
 }
 
-const codeDeal = (oriCode: string, framework: string): string => {
-  let code = oriCode.replace(/\s*?\/\/[\s\S]*?\n/g, '');
+const codeDeal = (oriCode: string, framework: string): any => {
+  let code = oriCode;
   const reg = /import\s.*?\{.*?\}.*?;/g;
   if (reg.test(code)) {
     const injects = code.match(reg);
@@ -176,24 +176,26 @@ const codeDeal = (oriCode: string, framework: string): string => {
     .replace(/import.*?;/g, '')
     .replace(/as\s*?any\s*?;/g, '')
     .replace(/\(window\s+?as\s+?any\)/g, 'window')
-    .replace(/as\s*?any\s*?/g, '');
+    .replace(/as\s*?any\s*?/g, '')
+    .replace(/const.*?require.*?;/g, '');
   switch (framework) {
     case 'react':
       code = code
-        .replace(/const.*?require.*?;/g, '')
         .replace(/export\s*?default/g, '');
       code += ' ReactDOM.render(<App />, document.getElementById("mount"));';
       break;
-    case 'angular':
-      const moduleName = code
-        .match(/export\s*?default\s*?class[\s\S]*/)[0]
-        .replace(/export\s*?default\s*?class/gi, '')
-        .replace(/\{\s*?\}/g, '')
-        .trim();
-      code = code.replace(/export[\s\S]*/, `class ${moduleName}{}`);
-      code = code.replace(/const.*?require.*?;/g, '');
-      code += `\nconst { platformBrowserDynamic } = ng.platformBrowserDynamic;\nplatformBrowserDynamic().bootstrapModule(${moduleName});`;
-      break;
+    case 'vue':
+      const vueRes: any = {};
+      {
+        const template = code.match(/<template[\s\S]*?>[\s\S]*?<\/template>/gi)[0].replace(/<\/?template[\s\S]*?>/gi, '');
+        const script = code.match(/<scrip[\s\S]*?>[\s\S]*?<\/script>/gi)[0].replace(/<\/?script[\s\S]*?>/gi, '');
+        const variable = script.replace(/export\s*?default[\s\S]*?$/, '');
+        const exports = script.match(/export\s*?default[\s\S]*?$/)[0].replace(/export\s*?default\s*?\{/gi, '').replace(/\}\s*?;?\s*?$/gi, '');
+        vueRes.template = template;
+        vueRes.variable = variable;
+        vueRes.exports = exports;
+      }
+      return vueRes;
     default:
   }
   return code;
@@ -203,13 +205,27 @@ export const combineFrameCode = (
   oriCode: string,
 ): string => {
   // 由于replace第二个参数$**会将后续的内容进行对正则进行匹配影响最终生成的html，故使用字符拼接
-  if (/<script>/.test(oriCode) || /<template>/.test(oriCode)) {
-    return '';
-  }
   const code = codeDeal(oriCode, framework);
   if (template[framework]) {
-    const temp = template[framework].split('{code}');
-    return temp[0] + code + temp[1];
+    switch (framework) {
+      case 'vue':
+        {
+          let temp = template['vue'];
+          Object.keys(code).map((item: any) => {
+            const split = `{${item}}`;
+            const tempArr = temp.split(split);
+            temp = tempArr[0] + code[item] + tempArr[1];
+          });
+          return temp;
+        }
+      default: {
+        if (/<script>/.test(oriCode) || /<template>/.test(oriCode)) {
+          return '';
+        }
+        const temp = template[framework].split('{code}');
+        return temp[0] + code + temp[1];
+      }
+    }
   }
   return '';
 };
