@@ -312,9 +312,6 @@ class Demo {
   bindEvent() {
     const self = this;
     // TODO: bind JSFiddle event
-    // $('.case-box .op .run').on('click', function() {
-    //   const index = $(this).attr('data-index');
-    // });
 
     $('.left-panel').on('click', '.common-nav-item', function () {
       setTimeout(() => {
