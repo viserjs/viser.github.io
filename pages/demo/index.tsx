@@ -35,7 +35,7 @@ const DEFAULT_FOLDER = '';
 const DEFAULT_ITEM = '';
 
 class Demo {
-  framework: string = 'angular';
+  framework: string = 'react';
   editor: any;
   clipboard: any;
   typeKey: 'viser';
