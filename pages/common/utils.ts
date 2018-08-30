@@ -12,13 +12,16 @@ export const DEFAULT_PAGE_LANGUAGE = 'en';
 
 export const getPageLanguage = () => {
   const pageLanguageInStore = window.localStorage.getItem('page_language');
-  if (pageLanguageInStore && ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) !== -1) {
+  if (
+    pageLanguageInStore &&
+    ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) !== -1
+  ) {
     return pageLanguageInStore;
   }
   return null;
 };
 
-export const setPageLanguage = (language) => {
+export const setPageLanguage = language => {
   window.localStorage.setItem('page_language', language);
 };
 
@@ -26,14 +29,14 @@ export const initPageLanguage = () => {
   const pageLanguageInStore = getPageLanguage();
   if (!pageLanguageInStore) {
     // Optimise for Chinese user
-    const navigatorLanguage = (window.navigator.language).toLowerCase();
+    const navigatorLanguage = window.navigator.language.toLowerCase();
     if (navigatorLanguage && navigatorLanguage.indexOf('cn') !== -1) {
       setPageLanguage('cn');
     } else {
       setPageLanguage(DEFAULT_PAGE_LANGUAGE);
     }
   }
-}
+};
 
 export const changePageLanguage = () => {
   const pageLanguageInStore = getPageLanguage();
@@ -44,9 +47,9 @@ export const changePageLanguage = () => {
   } else {
     setPageLanguage(DEFAULT_PAGE_LANGUAGE);
   }
-}
+};
 
-export const getNameByLanguage = (o) => {
+export const getNameByLanguage = o => {
   const language = getPageLanguage();
   switch (language) {
     case 'en': {
@@ -80,35 +83,18 @@ export const generateHashtag = (typeKey, folder, item?) => {
     return `#/${typeKey}/${folder}`;
   }
   return '#';
-}
+};
 
 export const getFolderAndItem = (isDemo: boolean = true) => {
   const hash = window.location.hash;
-  // const hashReg = /^#?\/?([^\/]*)\/?([^\/]*)\/?$/;
-  // Test Case
-  // console.log(hashReg.exec('#/'));
-  // console.log(hashReg.exec('#//'));
-  // console.log(hashReg.exec('#///'));
-  // console.log(hashReg.exec('#////'));
-  // console.log(hashReg.exec('#'));
-  // console.log(hashReg.exec(''));
-  // console.log(hashReg.exec('#/1'));
-  // console.log(hashReg.exec('#/1/'));
-  // console.log(hashReg.exec('#1'));
-  // console.log(hashReg.exec('#1/'));
-  // console.log(hashReg.exec('#1/2'));
-  // console.log(hashReg.exec('#/1/2'));
-  // console.log(hashReg.exec('#1/2/'));
-  // console.log(hashReg.exec('#/1/2/'));
-
   const result = hash.split('/');
   if (result.length === 0) {
     return { tempKey: '', folder: '', item: '' };
   }
   if (!isDemo) {
     return {
-      folder: result[1] || '',
-      item: result[2] || '',
+      folder: result[2] || '',
+      item: result[3] || '',
     }
   }
   return {
@@ -116,7 +102,7 @@ export const getFolderAndItem = (isDemo: boolean = true) => {
     folder: result[2] || '',
     item: result[3] || '',
   };
-}
+};
 
 /**
  * DOM Utils
@@ -140,28 +126,30 @@ export const undelegate = E.undelegate;
 
 export const get = (url: any) => {
   return new Promise((resolve: any) => {
-    return fetch(url)
-      //没必要传参数，只要url拼接即可
-      .then((res: any) => {
-        if (res.status >= 400) {
-          return {
-            flag: false
+    return (
+      fetch(url)
+        //没必要传参数，只要url拼接即可
+        .then((res: any) => {
+          if (res.status >= 400) {
+            return {
+              flag: false,
+            };
           }
-        }
-        return {
-          flag: true,
-          data: res
-        }
-      })
-      .then(json => resolve(json))
+          return {
+            flag: true,
+            data: res,
+          };
+        })
+        .then(json => resolve(json))
+    );
   });
-}
+};
 
 export const getInitNav = (): any => {
   const selectedNav = window.localStorage.getItem('selected_nav');
   if (selectedNav) return selectedNav;
   return null;
-}
+};
 export const setInitNav = (nav: string) => {
   window.localStorage.setItem('selected_nav', nav);
 }
@@ -173,23 +161,32 @@ const codeDeal = (oriCode: string, framework: string): string => {
     const injects = code.match(reg);
     injects.forEach(item => {
       const tempVar = item.replace(/(.*?\{|\}.*)/g, '');
-      const tempPkg = pkgMap[item.replace(/^(.*?['"])/g, '').replace(/['"].*/, '').trim()];
+      const tempPkg =
+        pkgMap[
+        item
+          .replace(/^(.*?['"])/g, '')
+          .replace(/['"].*/, '')
+          .trim()
+        ];
       const temp = `const {${tempVar}}=${tempPkg};`;
       code = code.replace(item, temp);
-      // window.console.log(code);
     });
   }
-  code = code.replace(/import.*?;/g, '')
+  code = code
+    .replace(/import.*?;/g, '')
     .replace(/as\s*?any\s*?;/g, '')
     .replace(/\(window\s+?as\s+?any\)/g, 'window')
     .replace(/as\s*?any\s*?/g, '');
   switch (framework) {
     case 'react':
-      code = code.replace(/const.*?require.*?;/g, '').replace(/export\s*?default/g, '');
+      code = code
+        .replace(/const.*?require.*?;/g, '')
+        .replace(/export\s*?default/g, '');
       code += ' ReactDOM.render(<App />, document.getElementById("mount"));';
       break;
     case 'angular':
-      const moduleName = code.match(/export\s*?default\s*?class[\s\S]*/)[0]
+      const moduleName = code
+        .match(/export\s*?default\s*?class[\s\S]*/)[0]
         .replace(/export\s*?default\s*?class/gi, '')
         .replace(/\{\s*?\}/g, '')
         .trim();
@@ -199,10 +196,12 @@ const codeDeal = (oriCode: string, framework: string): string => {
       break;
     default:
   }
-  // window.console.log(code);
   return code;
-}
-export const combineFrameCode = (framework: string, oriCode: string): string => {
+};
+export const combineFrameCode = (
+  framework: string,
+  oriCode: string,
+): string => {
   // 由于replace第二个参数$**会将后续的内容进行对正则进行匹配影响最终生成的html，故使用字符拼接
   if (/<script>/.test(oriCode) || /<template>/.test(oriCode)) {
     return '';
@@ -210,8 +209,7 @@ export const combineFrameCode = (framework: string, oriCode: string): string => 
   const code = codeDeal(oriCode, framework);
   if (template[framework]) {
     const temp = template[framework].split('{code}');
-    // window.console.log(temp[0] + code + temp[1]);
     return temp[0] + code + temp[1];
   }
   return '';
-}
+};

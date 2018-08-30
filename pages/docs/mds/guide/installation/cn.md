@@ -1,10 +1,10 @@
 ## 安装
 
-Viser 为 React, Vue 和 Angular 提供了3个不同的分发版本。我们同时提供了npm安装和umd引入两种方式来使用Viser。
+Viser Viser-Graph 为 React, Vue 和 Angular 提供了 3 个不同的分发版本。我们同时提供了 npm 安装和 umd 引入两种方式来使用 Viser。
 
-npm安装是使用 Viser 最简单也是最快捷的方式。我们强烈建议您在开发单页应用(SPA)时采用这种方式进行安装。Viser 可以完美兼容 CommonJS 打包工具，例如我们最常用的 Webpack。
+npm 安装是使用 Viser 最简单也是最快捷的方式。我们强烈建议您在开发单页应用(SPA)时采用这种方式进行安装。Viser 可以完美兼容 CommonJS 打包工具，例如我们最常用的 Webpack。
 
-UMD 引入是使用script标签引入来使用 Viser。当你需要快速使用的时候，这是最便捷的方式。
+UMD 引入是使用 script 标签引入来使用 Viser。当你需要快速使用的时候，这是最便捷的方式。
 
 ### Vue 分发版
 
@@ -27,7 +27,7 @@ $ npm install viser-vue
  <script src="https://unpkg.com/viser-vue/umd/viser-vue.min.js"></script>
 ```
 
-然后你可以使用全局变量 ```window.ViserVue``` 来进行调用 Viser。
+然后你可以使用全局变量 `window.ViserVue` 来进行调用 Viser。
 
 ### Angular 分发版
 
@@ -50,7 +50,7 @@ $ npm install viser-ng
  <script src="https://unpkg.com/viser-ng/umd/viser-ng.min.js"></script>
 ```
 
-然后你可以使用全局变量 ```window.ViserNg``` 来进行调用 Viser。
+然后你可以使用全局变量 `window.ViserNg` 来进行调用 Viser。
 
 ### React 分发版
 
@@ -73,7 +73,7 @@ $ npm install viser-react
  <script src="https://unpkg.com/viser-react/umd/viser-react.min.js"></script>
 ```
 
-然后你可以使用全局变量 ```window.ViserReact``` 来进行调用 Viser。
+然后你可以使用全局变量 `window.ViserReact` 来进行调用 Viser。
 
 ## Demo
 
