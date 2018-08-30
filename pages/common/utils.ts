@@ -71,7 +71,7 @@ export const getNameByLanguage = (o) => {
  * Route Utils
  */
 
-export const generateHashtag = (typeKey, folder, item) => {
+export const generateHashtag = (typeKey, folder, item?) => {
   if (typeKey && folder && item) {
     return `#/${typeKey}/${folder}/${item}`;
   } else if (typeKey && folder) {
@@ -82,7 +82,7 @@ export const generateHashtag = (typeKey, folder, item) => {
   return '#';
 }
 
-export const getFolderAndItem = () => {
+export const getFolderAndItem = (isDemo: boolean = true) => {
   const hash = window.location.hash;
   // const hashReg = /^#?\/?([^\/]*)\/?([^\/]*)\/?$/;
   // Test Case
@@ -104,6 +104,12 @@ export const getFolderAndItem = () => {
   const result = hash.split('/');
   if (result.length === 0) {
     return { tempKey: '', folder: '', item: '' };
+  }
+  if (!isDemo) {
+    return {
+      folder: result[1] || '',
+      item: result[2] || '',
+    }
   }
   return {
     typeKey: result[1] || '',
@@ -152,12 +158,12 @@ export const get = (url: any) => {
 }
 
 export const getInitNav = (): any => {
-  const selectedNav = window.localStorage.getItem('selectedNav');
+  const selectedNav = window.localStorage.getItem('selected_nav');
   if (selectedNav) return selectedNav;
   return null;
 }
 export const setInitNav = (nav: string) => {
-  window.localStorage.setItem('selectedNav', nav);
+  window.localStorage.setItem('selected_nav', nav);
 }
 
 const codeDeal = (oriCode: string, framework: string): string => {
@@ -198,7 +204,7 @@ const codeDeal = (oriCode: string, framework: string): string => {
 }
 export const combineFrameCode = (framework: string, oriCode: string): string => {
   // 由于replace第二个参数$**会将后续的内容进行对正则进行匹配影响最终生成的html，故使用字符拼接
-  if (/<script>/.test(oriCode) && /<template>/.test(oriCode)) {
+  if (/<script>/.test(oriCode) || /<template>/.test(oriCode)) {
     return '';
   }
   const code = codeDeal(oriCode, framework);

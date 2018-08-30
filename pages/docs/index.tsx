@@ -33,7 +33,7 @@ class Docs {
     );
   }
   getDocsFolderAndItem() {
-    const { folder, item } = getFolderAndItem();
+    const { folder, item } = getFolderAndItem(false);
     return {
       folder: folder || DEFAULT_FOLDER,
       item: item || DEFAULT_ITEM,

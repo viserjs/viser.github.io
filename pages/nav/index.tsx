@@ -51,6 +51,9 @@ export default class Nav extends React.Component<any, any> {
     }
     public componentDidMount() {
         const self = this;
+        if (!getInitNav()) {
+            setInitNav(self.state.selected);
+        }
         (window as any).document.addEventListener('click', function (e) {
             const target = e.target;
             const nav = (window as any).document.getElementById('viser-nav');

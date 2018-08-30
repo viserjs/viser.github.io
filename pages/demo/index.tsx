@@ -172,10 +172,10 @@ class Demo {
       mountParent.appendChild(newMount);
     }
     // Remove Dom
-    mount.innerHTML = '';
     if (framework === 'vue') {
       $('.case-code-topbar').hide();
       const code = await this.getCode(framework);
+      mount.innerHTML = '';
       const codePath = code[`${framework}Path`];
       // window.console.log(codePath);
       const VueApp = require(`${codePath}`).default;
@@ -194,6 +194,7 @@ class Demo {
     if (framework === 'angular') {
       $('.case-code-topbar').hide();
       const code = await this.getCode(framework);
+      mount.innerHTML = '';
       const codePath = code[`${framework}Path`];
       const AppModule = require(`${codePath}`).default;
       return platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
@@ -266,13 +267,14 @@ class Demo {
   }
 
   async renderCodeEditor(isClick = false) {
+    // window.console.log('framework', this.framework)
     const code = await this.getCode(this.framework);
     const codeValue = code[`${this.framework}Code`];
     const language = this.framework === 'vue' ? 'html' : 'typescript';
 
     this.editor.setValue(codeValue);
     (window as any).monaco.editor.setModelLanguage(this.editor.getModel(), language);
-    // if (!isClick) {
+    // if (this.framework === 'react') {
     this.runCode(this.framework);
     // }
   }
