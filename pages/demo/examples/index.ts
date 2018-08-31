@@ -706,6 +706,11 @@ const examples = {
           enName: 'Waffle',
           cnName: '华夫图',
         },
+        {
+          path: 'example37',
+          enName: 'liquid-fill-gauge',
+          cnName: '水波图',
+        },
       ],
       icon: 'others'
     },
