@@ -24,10 +24,32 @@ export const viserMds = [
         enName: 'Feature',
         cnName: '特点',
       },
+    ],
+  },
+  {
+    folderKey: 'api',
+    cnName: 'api',
+    enName: 'api',
+    mds: [
+      {
+        itemKey: 'viserChart',
+        enName: 'chart',
+        cnName: 'chart',
+      },
+      {
+        itemKey: 'viserCoord',
+        enName: 'coord',
+        cnName: 'coord',
+      },
+      {
+        itemKey: 'viserAxis',
+        enName: 'axis',
+        cnName: 'axis',
+      },
       {
         itemKey: 'event',
         enName: 'Event',
-        cnName: '事件',
+        cnName: 'Event',
       },
     ],
   },
