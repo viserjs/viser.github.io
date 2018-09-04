@@ -1,5 +1,21 @@
 const examples = {
   viser: {
+    components: {
+      enName: 'components',
+      cnName: '组件使用',
+      examples: [
+        {
+          path: 'example4',
+          enName: 'area color2',
+          cnName: '区域着色2',
+        },
+        {
+          path: 'example6',
+          enName: 'tail legend',
+          cnName: '尾部跟随图例',
+        },
+      ],
+    },
     line: {
       enName: 'Line',
       cnName: '线性图',
@@ -30,7 +46,7 @@ const examples = {
           cnName: '多条阶梯折线图',
         },
       ],
-      icon: 'xianxingtu'
+      icon: 'xianxingtu',
     },
     bar: {
       enName: 'Bar',
@@ -102,7 +118,7 @@ const examples = {
           cnName: '区间条形图',
         },
       ],
-      icon: 'zhuzhuangtu'
+      icon: 'zhuzhuangtu',
     },
     pie: {
       enName: 'Pie',
@@ -144,7 +160,7 @@ const examples = {
           cnName: '南丁格尔玫瑰环图',
         },
       ],
-      icon: 'bingtu'
+      icon: 'bingtu',
     },
     point: {
       enName: 'Point',
@@ -171,7 +187,7 @@ const examples = {
           cnName: '气泡图',
         },
       ],
-      icon: 'diantu'
+      icon: 'diantu',
     },
     area: {
       enName: 'Area',
@@ -203,7 +219,7 @@ const examples = {
           cnName: '区间面积图',
         },
       ],
-      icon: 'mianjitu'
+      icon: 'mianjitu',
     },
     box: {
       enName: 'Box',
@@ -235,7 +251,7 @@ const examples = {
           cnName: '极坐标系下箱型图',
         },
       ],
-      icon: 'xiangxiantu'
+      icon: 'xiangxiantu',
     },
     stock: {
       enName: 'Stock',
@@ -252,7 +268,7 @@ const examples = {
           cnName: '股票图与范围区域图',
         },
       ],
-      icon: 'gupiaotu'
+      icon: 'gupiaotu',
     },
     heatmap: {
       enName: 'Heatmap',
@@ -287,13 +303,14 @@ const examples = {
           path: 'example6',
           enName: 'Heatmap',
           cnName: '热力图',
-        }, {
+        },
+        {
           path: 'example7',
           enName: 'Hexagon Box',
           cnName: '六边形分箱',
         },
       ],
-      icon: 'relitu'
+      icon: 'relitu',
     },
     gauge: {
       enName: 'Gauge',
@@ -347,7 +364,7 @@ const examples = {
           cnName: '对称漏斗图',
         },
       ],
-      icon: 'loudoutu'
+      icon: 'loudoutu',
     },
     map: {
       enName: 'map',
@@ -384,7 +401,7 @@ const examples = {
           cnName: '带热力图的地图',
         },
       ],
-      icon: 'ditu'
+      icon: 'ditu',
     },
     radar: {
       enName: 'Radar',
@@ -406,7 +423,7 @@ const examples = {
           cnName: '雷达图复杂曲线',
         },
       ],
-      icon: 'leidatu'
+      icon: 'leidatu',
     },
     facet: {
       enName: 'Facet',
@@ -458,7 +475,7 @@ const examples = {
           cnName: '矩阵分面',
         },
       ],
-      icon: 'fenmian'
+      icon: 'fenmian',
     },
     relation: {
       enName: 'Relation',
@@ -520,7 +537,7 @@ const examples = {
           cnName: 'Circle Packing',
         },
       ],
-      icon: 'guanxitu'
+      icon: 'guanxitu',
     },
     others: {
       enName: 'others',
@@ -663,7 +680,8 @@ const examples = {
         },
         {
           path: 'example28',
-          enName: 'Kernel Function Probability Density Regression curvr with Tow fields',
+          enName:
+            'Kernel Function Probability Density Regression curvr with Tow fields',
           cnName: '核函数概率密度回归曲线（两字段）',
         },
         {
@@ -712,7 +730,7 @@ const examples = {
           cnName: '水波图',
         },
       ],
-      icon: 'others'
+      icon: 'others',
     },
   },
   viserGraph: {
@@ -724,7 +742,8 @@ const examples = {
           path: 'example0',
           enName: 'basic graph',
           cnName: '基础graph',
-        }, {
+        },
+        {
           path: 'example00',
           enName: 'basic tree',
           cnName: '基础tree',
@@ -755,9 +774,9 @@ const examples = {
           cnName: '函数生成树',
         },
       ],
-      icon: 'others'
-    }
-  }
+      icon: 'others',
+    },
+  },
 };
 
 export default examples;
