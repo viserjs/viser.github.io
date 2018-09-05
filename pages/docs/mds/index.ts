@@ -47,6 +47,26 @@ export const viserMds = [
         cnName: 'axis',
       },
       {
+        itemKey: 'viserLegend',
+        enName: 'legend',
+        cnName: 'legend',
+      },
+      {
+        itemKey: 'viserGuide',
+        enName: 'guide',
+        cnName: 'guide',
+      },
+      {
+        itemKey: 'viserScale',
+        enName: 'scale',
+        cnName: 'scale',
+      },
+      {
+        itemKey: 'viserFacet',
+        enName: 'facet',
+        cnName: 'facet',
+      },
+      {
         itemKey: 'event',
         enName: 'Event',
         cnName: 'Event',
