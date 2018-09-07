@@ -20,9 +20,26 @@ export const viserMds = [
         cnName: '用法',
       },
       {
+        itemKey: 'render',
+        enName: 'Render',
+        cnName: '渲染方式',
+      },
+      {
         itemKey: 'feature',
         enName: 'Feature',
         cnName: '特点',
+      },
+    ],
+  },
+  {
+    folderKey: 'dataset',
+    cnName: '数据处理',
+    enName: 'Dataset',
+    mds: [
+      {
+        itemKey: 'usage',
+        enName: 'Usage',
+        cnName: '用法',
       },
     ],
   },
@@ -67,9 +84,39 @@ export const viserMds = [
         cnName: 'facet',
       },
       {
+        itemKey: 'viserTooltip',
+        enName: 'tooltip',
+        cnName: 'tooltip',
+      },
+      {
+        itemKey: 'viserView',
+        enName: 'view',
+        cnName: 'view',
+      },
+      {
+        itemKey: 'viserSeries',
+        enName: 'series',
+        cnName: 'series',
+      },
+      {
+        itemKey: 'viserShape',
+        enName: 'shape',
+        cnName: 'shape',
+      },
+      {
+        itemKey: 'viserSlider',
+        enName: 'slider',
+        cnName: 'slider',
+      },
+      {
         itemKey: 'event',
         enName: 'Event',
         cnName: 'Event',
+      },
+      {
+        itemKey: 'viserStyle',
+        enName: 'style',
+        cnName: 'style',
       },
     ],
   },
@@ -79,14 +126,14 @@ export const viserMds = [
     enName: 'about viser',
     mds: [
       {
-        itemKey: 'update',
+        itemKey: 'updateLog',
         cnName: '更新日志',
-        enName: 'update log',
+        enName: 'updateLog',
       },
       {
-        itemKey: 'syntax',
-        cnName: '组件语法',
-        enName: 'component syntax',
+        itemKey: 'us',
+        cnName: '我们',
+        enName: 'Us',
       },
     ],
   },
