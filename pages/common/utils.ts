@@ -196,6 +196,13 @@ const codeDeal = (oriCode: string, framework: string): any => {
         vueRes.exports = exports;
       }
       return vueRes;
+    case 'angular':
+      {
+        const moduleName = code.match(/export\s*?default[\s\S]*$/gi)[0].replace(/export\s*?default\s*?class\s*?/gi, '').replace(/\{\s*?\}/, '').trim();
+        code = code.replace(/export\s*?default[\s\S]*$/gi, `class ${moduleName}={}`);
+
+      }
+      break;
     default:
   }
   return code;

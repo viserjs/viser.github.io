@@ -24,9 +24,14 @@ import './index.scss';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+// import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import * as ViserNg from 'viser-ng';
+import * as ViserGraphNg from 'viser-graph-ng';
+(window as any).ViserNg = ViserNg;
+(window as any).ViserGraphNg = ViserGraphNg;
 
-let ngRef;
+
+// let ngRef;
 
 const navTpl = require('./nav.tpl');
 
@@ -35,7 +40,7 @@ const DEFAULT_FOLDER = '';
 const DEFAULT_ITEM = '';
 
 class Demo {
-  framework: string = 'react';
+  framework: string = 'angular';
   editor: any;
   clipboard: any;
   typeKey: 'viser';
@@ -184,27 +189,27 @@ class Demo {
   async runCode(framework) {
     const mount = document.getElementById('mount');
 
-    if (ngRef) {
-      const mountParent = mount.parentNode;
-      ngRef.destroy();
-      ngRef = undefined;
-      const newMount = document.createElement('div');
-      newMount.setAttribute('id', 'mount');
-      mountParent.appendChild(newMount);
-    }
-    if (framework === 'angular') {
-      $('.case-code-topbar').hide();
-      const code = await this.getCode(framework);
-      mount.innerHTML = '';
-      const codePath = code[`${framework}Path`];
-      delete require.cache[require.resolve(`${codePath}`)];
-      const AppModule = require(`${codePath}`).default;
-      return platformBrowserDynamic()
-        .bootstrapModule(AppModule)
-        .then(ref => {
-          ngRef = ref;
-        });
-    }
+    // if (ngRef) {
+    //   const mountParent = mount.parentNode;
+    //   ngRef.destroy();
+    //   ngRef = undefined;
+    //   const newMount = document.createElement('div');
+    //   newMount.setAttribute('id', 'mount');
+    //   mountParent.appendChild(newMount);
+    // }
+    // if (framework === 'angular') {
+    //   $('.case-code-topbar').hide();
+    //   const code = await this.getCode(framework);
+    //   mount.innerHTML = '';
+    //   const codePath = code[`${framework}Path`];
+    //   delete require.cache[require.resolve(`${codePath}`)];
+    //   const AppModule = require(`${codePath}`).default;
+    //   return platformBrowserDynamic()
+    //     .bootstrapModule(AppModule)
+    //     .then(ref => {
+    //       ngRef = ref;
+    //     });
+    // }
     $('.case-code-topbar').show();
     const code: any = this.editor.getValue();
     const doc = combineFrameCode(framework, code);
