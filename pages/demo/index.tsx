@@ -14,27 +14,18 @@ import {
   getFolderAndItem,
   get,
   combineFrameCode,
+  getInitNav,
 } from '../common/utils';
 import './index.scss';
 
-import Vue from 'vue';
-import ViserVue from 'viser-vue';
-import ViserGraphVue from 'viser-graph-vue';
+// import Vue from 'vue';
+// import ViserVue from 'viser-vue';
+// import ViserGraphVue from 'viser-graph-vue';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-/*****************
- * inject to window
- ******************/
-//由于没有浏览器包，不得不将angular的方法注入到window；
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-// store Vue Instance globally;
-let vm;
-Vue.use(ViserVue);
-Vue.use(ViserGraphVue);
-// // store Ng Instance globally;
 let ngRef;
 
 const navTpl = require('./nav.tpl');
@@ -70,14 +61,15 @@ class Demo {
     );
   }
   initEditor() {
+    console.log('editor1');
     this.editor = (window as any).monaco.editor.create(
       document.getElementById('monaco-editor'),
       {
         value: 'loading code......',
-        language: 'typescript',
-        lineNumbers: false,
+        language: 'none',
+        lineNumbers: true,
         scrollBeyondLastLine: false,
-        automaticLayout: true,
+        automaticLayout: false,
         renderLineHighlight: 'none',
         readOnly: false,
         formatOnType: true,
@@ -154,7 +146,6 @@ class Demo {
       enName,
     };
   }
-
   getDemoFolderAndItem() {
     let { typeKey, folder, item } = getFolderAndItem();
     if (!typeKey || !folder || !item || typeKey !== this.typeKey) {
@@ -176,14 +167,24 @@ class Demo {
   getDemoItemKey(example) {
     return example.enName.toLowerCase().replace(/\s/g, '-');
   }
+  // getAngularPath() {
+  //   const { typeKey, folder, item } = this.getDemoFolderAndItem();
+  //   const examples = exampleOrigin[typeKey][folder].examples;
+  //   const filterExamples = examples.filter(ex => {
+  //     const itemKey = this.getDemoItemKey(ex);
+  //     if (item === itemKey) {
+  //       return true;
+  //     }
+  //     return false;
+  //   });
+  //   const { path } = filterExamples[0];
+  //   const codePath = `./examples/${folder}/${path}/angular.ts`;
+  //   return codePath;
+  // }
 
   async runCode(framework) {
     const mount = document.getElementById('mount');
 
-    // Unmount Vue
-    if (vm && vm.existed) {
-      vm.existed = false;
-    }
     if (ngRef) {
       const mountParent = mount.parentNode;
       ngRef.destroy();
@@ -192,30 +193,12 @@ class Demo {
       newMount.setAttribute('id', 'mount');
       mountParent.appendChild(newMount);
     }
-    // Remove Dom
-    mount.innerHTML = '';
-    if (framework === 'vue') {
-      $('.case-code-topbar').hide();
-      const code = await this.getCode(framework);
-      const codePath = code[`${framework}Path`];
-      // window.console.log(codePath);
-      const VueApp = require(`${codePath}`).default;
-      const container = document.createElement('div');
-      document.getElementById('mount').appendChild(container);
-      vm = new Vue({
-        data: {
-          existed: true,
-        },
-        el: container,
-        template: '<VueApp v-if="existed"/>',
-        components: { VueApp },
-      });
-      return;
-    }
     if (framework === 'angular') {
       $('.case-code-topbar').hide();
       const code = await this.getCode(framework);
+      mount.innerHTML = '';
       const codePath = code[`${framework}Path`];
+      delete require.cache[require.resolve(`${codePath}`)];
       const AppModule = require(`${codePath}`).default;
       return platformBrowserDynamic()
         .bootstrapModule(AppModule)
@@ -233,44 +216,6 @@ class Demo {
     iframeDoc.open();
     iframeDoc.write(doc);
     iframeDoc.close();
-
-    // // Unmount React;
-    // ReactDOM.unmountComponentAtNode(mount);
-    // // Unmount Angular
-    // if (ngRef) {
-    //   const mountParent = mount.parentNode;
-    //   ngRef.destroy();
-    //   ngRef = undefined;
-    //   const newMount = document.createElement('div');
-    //   newMount.setAttribute('id', 'mount');
-    //   mountParent.appendChild(newMount);
-    // }
-
-    // if (framework === 'react') {
-    //   // delete require.cache[require.resolve(`${codePath}`)];
-    //   const App = require(`${codePath}`).default;
-    //   ReactDOM.render(<App />, document.getElementById('mount'));
-    // }
-
-    // if (framework === 'angular') {
-    //   // delete require.cache[require.resolve(`${codePath}`)];
-    //   const AppModule = require(`${codePath}`).default;
-    //   platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => { ngRef = ref; });
-    // }
-
-    // if (framework === 'vue') {
-    // const VueApp = require(`./examples/line/example1/vue.vue`).default;
-    //   const container = document.createElement('div');
-    //   document.getElementById('mount').appendChild(container);
-    // vm = new Vue({
-    //   data: {
-    //     existed: true
-    //   },
-    //   el: container,
-    //   template: '<VueApp v-if="existed"/>',
-    //   components: { VueApp }
-    // });
-    // }
   }
 
   renderCase() {
@@ -285,16 +230,17 @@ class Demo {
   }
 
   async renderCodeEditor(isClick = false) {
+    // window.console.log('framework', this.framework)
     const code = await this.getCode(this.framework);
     const codeValue = code[`${this.framework}Code`];
     const language = this.framework === 'vue' ? 'html' : 'typescript';
 
     this.editor.setValue(codeValue);
-    (window as any).monaco.editor.setModelLanguage(
-      this.editor.getModel(),
-      language,
-    );
-    // if (!isClick) {
+    // (window as any).monaco.editor.setModelLanguage(
+    //   this.editor.getModel(),
+    //   language,
+    // );
+    // if (this.framework === 'react') {
     this.runCode(this.framework);
     // }
   }
@@ -356,9 +302,6 @@ class Demo {
   bindEvent() {
     const self = this;
     // TODO: bind JSFiddle event
-    // $('.case-box .op .run').on('click', function() {
-    //   const index = $(this).attr('data-index');
-    // });
 
     $('.left-panel').on('click', '.common-nav-item', function() {
       setTimeout(() => {
@@ -370,6 +313,9 @@ class Demo {
     $('.case-box .case-code-switch .case-code-switch-item').on(
       'click',
       function() {
+        if ($(this).hasClass('active')) {
+          return;
+        }
         const framework = $(this).attr('data-framework');
         self.framework = framework;
         self.renderCase();
