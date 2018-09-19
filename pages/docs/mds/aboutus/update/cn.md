@@ -1,1 +1,0 @@
-cn comming soon
