@@ -229,14 +229,7 @@ class Demo {
     const language = this.framework === 'vue' ? 'html' : 'typescript';
 
     this.editor.setValue(codeValue);
-<<<<<<< HEAD
     // (window as any).monaco.editor.setModelLanguage(this.editor.getModel(), language);
-=======
-    // (window as any).monaco.editor.setModelLanguage(
-    //   this.editor.getModel(),
-    //   language,
-    // );
->>>>>>> upstream/master
     // if (this.framework === 'react') {
     this.runCode(this.framework);
     // }
