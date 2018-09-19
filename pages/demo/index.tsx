@@ -66,7 +66,7 @@ class Demo {
     );
   }
   initEditor() {
-    console.log('editor1');
+    // console.log('editor1');
     this.editor = (window as any).monaco.editor.create(
       document.getElementById('monaco-editor'),
       {
@@ -192,12 +192,12 @@ class Demo {
       const codePath = code[`angularPath`];
       // debugger
       // delete require.cache[require.resolve(`${codePath}`)];
-      // const AppModule = require(`${codePath}`).default;
-      // return platformBrowserDynamic()
-      //   .bootstrapModule(AppModule)
-      //   .then(ref => {
-      //     ngRef = ref;
-      //   });
+      const AppModule = require(`${codePath}`).default;
+      return platformBrowserDynamic()
+        .bootstrapModule(AppModule)
+        .then(ref => {
+          ngRef = ref;
+        });
     }
     $('.case-code-topbar').show();
     const code: any = this.editor.getValue();
