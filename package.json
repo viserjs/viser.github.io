@@ -13,7 +13,9 @@
     "tslint"
   ],
   "dependencies": {
+    "@ali/oneui-canary": "^2.3.2",
     "@antv/data-set": "^0.8.3",
+    "@rematch/core": "^0.6.0",
     "clipboard": "^2.0.1",
     "cross-fetch": "^2.2.2",
     "handlebars": "^4.0.11",
@@ -21,6 +23,7 @@
     "monaco-editor": "^0.10.1",
     "oui-dom-events": "^0.2.2",
     "oui-dom-utils": "^0.3.8",
+    "react-redux": "^5.0.7",
     "viser": "^2.2.2",
     "viser-graph": "^0.1.7",
     "viser-graph-ng": "^0.1.8",

@@ -200,7 +200,8 @@ const codeDeal = (oriCode: string, framework: string): any => {
       {
         const moduleName = code.match(/export\s*?default[\s\S]*$/gi)[0].replace(/export\s*?default\s*?class\s*?/gi, '').replace(/\{\s*?\}/, '').trim();
         code = code.replace(/export\s*?default[\s\S]*$/gi, `class ${moduleName}={}`);
-
+        code = code.replace(/\s*class/g, 'class')
+          .replace('#mount', 'my-app');
       }
       break;
     default:
@@ -236,3 +237,65 @@ export const combineFrameCode = (
   }
   return '';
 };
+
+export const downloadFile = (blob: any, filename: string, mimetype: string) => {
+  /**
+   * download method from network
+  */
+  if (!blob) {
+    throw {
+      name: 'Argument Null Exception',
+      nameof: 'blob',
+      description: 'The supplied variable is null'
+    }
+  }
+  if (!filename) {
+    throw {
+      name: 'Argument Null Exception',
+      nameof: 'filename',
+      description: 'The supplied variable is null'
+    }
+  }
+  if (!mimetype) {
+    throw {
+      name: 'Argument Null Exception',
+      nameof: 'mime',
+      description: 'The supplied variable is null'
+    }
+  }
+  if (!Array.isArray(blob)) {
+    throw {
+      name: 'Type Error',
+      nameof: 'blob',
+      description: 'Supplied data is not an array'
+    }
+  }
+  let objectBlob;
+  try {
+    objectBlob = new (window as any).Blob(['\ufeff', blob], { type: mimetype });
+  } catch (e) {
+    const bb = new (window as any).MSBlobBuilder();
+    bb.append(['\ufeff']);
+    bb.append(blob);
+    objectBlob = bb.getBlob();
+  }
+  if (!navigator.msSaveOrOpenBlob) {
+    const objUrl = (window as any).URL.createObjectURL(objectBlob);
+
+    let a = document.createElement('a');
+    a.download = filename;
+    a.href = objUrl;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      a.remove();
+      a = undefined;
+      (window as any).URL.revokeObjectURL(objUrl);
+      return;
+    }, 100)
+  } else {
+    (window as any).navigator.msSaveOrOpenBlob(objectBlob, filename);
+    return;
+  }
+}

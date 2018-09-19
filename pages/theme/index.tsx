@@ -2,7 +2,7 @@ import locale from '../common/locale';
 import { render } from 'react-dom';
 import * as React from 'react';
 import Nav from '../nav';
-import Content from './Content';
+import Content from './layout/Content';
 import {
     ALL_PAGE_LANGUAGES, DEFAULT_PAGE_LANGUAGE,
     getPageLanguage, setPageLanguage, initPageLanguage, changePageLanguage,

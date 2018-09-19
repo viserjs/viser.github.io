@@ -65,7 +65,7 @@ const locale = {
       text: '立即使用',
     },
     {
-      selector: '.home-footer',
+      selector: '.home-footer-copyright',
       text: '与来自 AntV 的 <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> 深度合作<br/>本项目基于 MIT 协议发布<br />Copyright (c) 2018 Viser Group. 版权所有<br />',
     },
   ],

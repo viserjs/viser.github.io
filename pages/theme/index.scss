@@ -21,3 +21,14 @@
         }
     }
 }
+.clearfix{
+    zoom:1;
+    &::after{
+        display:block;
+        content: '';
+        height:0;
+        width: 100%;
+        visibility: hidden;
+        clear: both;
+    }
+}
