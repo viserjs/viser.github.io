@@ -734,6 +734,11 @@ const examples = {
           enName: 'area-horizon-graph',
           cnName: '地平面图',
         },
+        {
+          path: 'example39',
+          enName: 'area-null',
+          cnName: '区域图（存在空值）',
+        },
       ],
       icon: 'others',
     },
