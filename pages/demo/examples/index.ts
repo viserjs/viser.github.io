@@ -729,6 +729,11 @@ const examples = {
           enName: 'liquid-fill-gauge',
           cnName: '水波图',
         },
+        {
+          path: 'example38',
+          enName: 'area-horizon-graph',
+          cnName: '地平面图',
+        },
       ],
       icon: 'others',
     },
