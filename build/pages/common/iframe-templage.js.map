@@ -1,0 +1,1 @@
+{"version":3,"file":"iframe-templage.js","sourceRoot":"","sources":["../../../pages/common/iframe-templage.ts"],"names":[],"mappings":";;AAAa,QAAA,MAAM,GAAG;IAClB,UAAU;IACV,aAAa,EAAE,YAAY;IAC3B,mBAAmB,EAAE,iBAAiB;IACtC,WAAW,EAAE,UAAU;IACvB,iBAAiB,EAAE,eAAe;CACrC,CAAA;AAEY,QAAA,QAAQ,GAAG;IACpB,KAAK,EAAE,wiCAuBQ;IACf,GAAG,EAAE,0uCAkCG;IACR,OAAO,EAAE,2uDA0BM;CAClB,CAAA"}

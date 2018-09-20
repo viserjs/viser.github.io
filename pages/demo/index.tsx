@@ -14,7 +14,7 @@ import {
   getFolderAndItem,
   get,
   combineFrameCode,
-  getInitNav
+  getInitNav,
 } from '../common/utils';
 import './index.scss';
 
@@ -25,6 +25,11 @@ import './index.scss';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import * as ViserNg from 'viser-ng';
+import * as ViserGraphNg from 'viser-graph-ng';
+(window as any).ViserNg = ViserNg;
+(window as any).ViserGraphNg = ViserGraphNg;
+
 
 let ngRef;
 
@@ -61,17 +66,17 @@ class Demo {
     );
   }
   initEditor() {
+    // console.log('editor1');
     this.editor = (window as any).monaco.editor.create(
       document.getElementById('monaco-editor'),
       {
         value: 'loading code......',
-        language: 'typescript',
-        lineNumbers: false,
-        scrollBeyondLastLine: false,
+        language: 'none',
+        lineNumbers: true,
+        scrollBeyondLastLine: true,
         automaticLayout: true,
         renderLineHighlight: 'none',
         readOnly: false,
-        formatOnType: true,
         theme: 'vs',
         minimap: {
           enabled: false,
@@ -130,10 +135,9 @@ class Demo {
         angularCode = await angularCode_r.data.text();
       }
     }
-    reactPath = `./examples/${folder}/${path}/react.tsx`;
-    vuePath = `./examples/${folder}/${path}/vue.vue`;
+    // reactPath = `./examples/${folder}/${path}/react.tsx`;
+    // vuePath = `./examples/${folder}/${path}/vue.vue`;
     angularPath = `./examples/${folder}/${path}/angular.ts`;
-
     return {
       reactCode,
       vueCode,
@@ -166,21 +170,10 @@ class Demo {
   getDemoItemKey(example) {
     return example.enName.toLowerCase().replace(/\s/g, '-');
   }
-  // getAngularPath() {
-  //   const { typeKey, folder, item } = this.getDemoFolderAndItem();
-  //   const examples = exampleOrigin[typeKey][folder].examples;
-  //   const filterExamples = examples.filter(ex => {
-  //     const itemKey = this.getDemoItemKey(ex);
-  //     if (item === itemKey) {
-  //       return true;
-  //     }
-  //     return false;
-  //   });
-  //   const { path } = filterExamples[0];
-  //   const codePath = `./examples/${folder}/${path}/angular.ts`;
-  //   return codePath;
-  // }
+  public getNgPath() {
+    const hash = (window as any).location.hash.split('/');
 
+  }
   async runCode(framework) {
     const mount = document.getElementById('mount');
 
@@ -194,10 +187,11 @@ class Demo {
     }
     if (framework === 'angular') {
       $('.case-code-topbar').hide();
-      const code = await this.getCode(framework);
+      const code = await this.getCode('angular');
       mount.innerHTML = '';
-      const codePath = code[`${framework}Path`];
-      delete require.cache[require.resolve(`${codePath}`)];
+      const codePath = code[`angularPath`];
+      // debugger
+      // delete require.cache[require.resolve(`${codePath}`)];
       const AppModule = require(`${codePath}`).default;
       return platformBrowserDynamic()
         .bootstrapModule(AppModule)
@@ -235,7 +229,7 @@ class Demo {
     const language = this.framework === 'vue' ? 'html' : 'typescript';
 
     this.editor.setValue(codeValue);
-    (window as any).monaco.editor.setModelLanguage(this.editor.getModel(), language);
+    // (window as any).monaco.editor.setModelLanguage(this.editor.getModel(), language);
     // if (this.framework === 'react') {
     this.runCode(this.framework);
     // }
