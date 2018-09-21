@@ -739,6 +739,11 @@ const examples = {
           enName: 'area-null',
           cnName: '区域图（存在空值）',
         },
+        {
+          path: 'example40',
+          enName: 'area-rainfall',
+          cnName: '雨量流量关系图',
+        },
       ],
       icon: 'others',
     },
