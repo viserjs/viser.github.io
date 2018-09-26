@@ -754,6 +754,11 @@ const examples = {
           enName: 'pie-platelets',
           cnName: '饼图-花瓣图',
         },
+        {
+          path: 'example43',
+          enName: 'test',
+          cnName: 'test',
+        },
       ],
       icon: 'others',
     },

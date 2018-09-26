@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Axis, Chart, Coord, registerShape, View, Tooltip, Pie, StackArea, StackInterval, Legend } from 'viser-react';
+import { Chart, Coord, registerShape, Tooltip, StackInterval, Legend } from 'viser-react';
 
 const data = [{
     type: '分类一',
