@@ -756,8 +756,8 @@ const examples = {
         },
         {
           path: 'example43',
-          enName: 'test',
-          cnName: 'test',
+          enName: 'pie-size',
+          cnName: '饼图-半径大小',
         },
       ],
       icon: 'others',
