@@ -749,6 +749,11 @@ const examples = {
           enName: 'bar-diverge',
           cnName: '柱状图-diverging',
         },
+        {
+          path: 'example42',
+          enName: 'pie-platelets',
+          cnName: '饼图-花瓣图',
+        },
       ],
       icon: 'others',
     },
