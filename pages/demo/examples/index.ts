@@ -759,6 +759,31 @@ const examples = {
           enName: 'pie-size',
           cnName: '饼图-半径大小',
         },
+        {
+          path: 'example44',
+          enName: 'pie-slice',
+          cnName: '饼图-分割空白',
+        },
+        {
+          path: 'example45',
+          enName: 'pie-texture',
+          cnName: '饼图-带纹理',
+        },
+        {
+          path: 'example46',
+          enName: 'pie-triangle',
+          cnName: '饼图-三角',
+        },
+        {
+          path: 'example47',
+          enName: 'rose-ranged',
+          cnName: '玫瑰图-限定角度范围',
+        },
+        {
+          path: 'example48',
+          enName: 'rectbin-size',
+          cnName: '矩形大小分箱图',
+        },
       ],
       icon: 'others',
     },
