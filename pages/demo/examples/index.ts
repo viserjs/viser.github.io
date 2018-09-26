@@ -741,8 +741,13 @@ const examples = {
         },
         {
           path: 'example40',
-          enName: 'area-rainfall',
-          cnName: '雨量流量关系图',
+          enName: 'pie-ranged',
+          cnName: '饼图-限定角度范围',
+        },
+        {
+          path: 'example41',
+          enName: 'bar-diverge',
+          cnName: '柱状图-diverging',
         },
       ],
       icon: 'others',
