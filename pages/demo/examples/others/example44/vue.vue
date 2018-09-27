@@ -1,10 +1,10 @@
 <template>
     <div>
-        <v-chart :forceFit="true" height="400" :data="data" :padding="[40,0]">
-            <v-tooltip></v-tooltip>
+        <v-chart :forceFit="true" height="400" :data="data" >
+            <v-tooltip :showTitle="false"></v-tooltip>
             <v-legend dataKey="type"></v-legend>
             <v-coord type="theta" innerRadius="0.75"></v-coord>
-            <v-pie position="value" color="type" label="type" shape="sliceShape"></v-pie>
+            <v-pie position="value" color="type" shape="sliceShape"></v-pie>
         </v-chart>
     </div>
 </template>

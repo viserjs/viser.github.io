@@ -12,8 +12,7 @@
 </template>
 
 <script>
-const _DataSet = DataSet,
-    DataView = _DataSet.DataView;
+const DataView = DataSet.DataView;
 
 const data = [{
     "group": "All Survey Responses",

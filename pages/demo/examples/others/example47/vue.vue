@@ -1,13 +1,18 @@
 <template>
-    <div>
-        <v-chart :forceFit="true" height="400" :data="data" :padding="[50,40]">
-            <v-axis></v-axis>
-            <v-tooltip></v-tooltip>
-            <v-legend dataKey="type"></v-legend>
-            <v-coord type="polar" startAngle="180" endAngle="270"></v-coord>
-            <v-stack-interval position="type*value" :color="['type', 'rgb(252,143,72)-rgb(255,215,135)']" :label="['value', { offset: -15, label: { textAlign: 'center', fill: '#000' } }]" :style="{ lineWidth: 1, stroke: '#fff' }"></v-stack-interval>
-        </v-chart>
-    </div>
+  <div>
+    <v-chart :forceFit="true" height="400" :data="data" :padding="[50,40]">
+        <v-axis></v-axis>
+        <v-tooltip></v-tooltip>
+        <v-legend dataKey="type"></v-legend>
+        <v-coord type="polar" startAngle="180" endAngle="270"></v-coord>
+        <v-stack-interval
+          position="type*value"
+          :color="['type', 'rgb(252,143,72)-rgb(255,215,135)']"
+          :label="['value', { offset: -15, label: { textAlign: 'center', fill: '#000' } }]"
+          :style="{ lineWidth: 1, stroke: '#fff' }">
+        </v-stack-interval>
+    </v-chart>
+  </div>
 </template>
 
 <script>

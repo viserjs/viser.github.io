@@ -1,6 +1,7 @@
 <template>
     <div>
         <v-chart :forceFit="true" height="400" :data="data" :scale="scale">
+            <v-axis />
             <v-tooltip :crosshairs="true"></v-tooltip>
             <v-area position="year*value" color="type" shape="smooth"></v-area>
             <v-line position="year*value" color="type" size="2" shape="smooth"></v-line>
