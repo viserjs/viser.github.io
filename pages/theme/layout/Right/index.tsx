@@ -22,13 +22,17 @@ class App extends React.Component<Props & any, State> {
         Global.registerTheme('newTheme', {
             colors: ['red', 'red', 'red']
         });
-        setTimeout(this.setTheme, 3000, 'dark');
+        const self = this;
+        setTimeout(self.setTheme, 3000, 'dark');
+        setTimeout(() => {
+            self.setState({ theme: 'dark' })
+        }, 3000)
     }
     render() {
-        window.console.log('render', Global);
+        // Global.setTheme('dark');
         const props = this.props;
         return <div className="theme-right  theme-pannel">
-            <Chart forceFit height={400} data={props.commonData}>
+            <Chart forceFit height={400} data={props.commonData} theme='dark'>
                 <Tooltip />
                 <Axis />
                 <Line position="year*value" />

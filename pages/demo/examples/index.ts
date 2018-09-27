@@ -784,6 +784,21 @@ const examples = {
           enName: 'rectbin-size',
           cnName: '矩形大小分箱图',
         },
+        {
+          path: 'example49',
+          enName: 'peking-aqi',
+          cnName: '北京市2010至2015年空气质量指数',
+        },
+        // {// 存在问题注释
+        //   path: 'example50',
+        //   enName: 'pie-multi-donuts',
+        //   cnName: '多环图',
+        // },
+        {
+          path: 'example51',
+          enName: 'map-symbol',
+          cnName: '符号地图',
+        },
       ],
       icon: 'others',
     },

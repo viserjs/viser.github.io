@@ -27,7 +27,7 @@ export default class App extends React.Component {
             data={data}
         >
             <Axis />
-            <Legend offset={40} />
+            <Legend offset={40} dataKey="x" slidable={true} />
             <Polygon position="x*y" color={['count', '#BAE7FF-#1890FF-#0050B3']} />
         </Chart>
     }
