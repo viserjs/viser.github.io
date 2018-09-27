@@ -156,7 +156,7 @@ export const setInitNav = (nav: string) => {
 
 const codeDeal = (oriCode: string, framework: string): any => {
   let code = oriCode;
-  const reg = /import\s.*?\{.*?\}.*?;/g;
+  const reg = /import\s.*?\{[\s\S]*?\}[\s\S]*?;/g;
   if (reg.test(code)) {
     const injects = code.match(reg);
     injects.forEach(item => {
@@ -164,8 +164,8 @@ const codeDeal = (oriCode: string, framework: string): any => {
       const tempPkg =
         pkgMap[
         item
-          .replace(/^(.*?['"])/g, '')
-          .replace(/['"].*/, '')
+          .replace(/^([\s\S]*?['"])/g, '')
+          .replace(/['"][\s\S]*/, '')
           .trim()
         ];
       const temp = `const {${tempVar}}=${tempPkg};`;

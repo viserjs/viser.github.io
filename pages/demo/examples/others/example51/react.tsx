@@ -30,13 +30,13 @@ export default class App extends React.Component {
                         dataKey: 'longitude',
                         max: -66,
                         min: -125,
-                        sync: true
+                        // sync: true
                     },
                     {
                         dataKey: 'latitude',
                         max: 50,
                         min: 24,
-                        sync: true
+                        // sync: true
                     }
                 ]}
             >
