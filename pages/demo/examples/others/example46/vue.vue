@@ -1,12 +1,12 @@
 <template>
-    <div>
-        <v-chart :forceFit="true" height="400" :data="data" >
-            <v-tooltip></v-tooltip>
-            <v-legend dataKey="type"></v-legend>
-            <v-coord type="theta" radius="0.8"></v-coord>
-            <v-pie position="value" label="type" color="type" shape="triangleShape"></v-pie>
-        </v-chart>
-    </div>
+  <div>
+    <v-chart :forceFit="true" height="400" :data="data" >
+      <v-tooltip></v-tooltip>
+      <v-legend dataKey="type"></v-legend>
+      <v-coord type="theta" radius="0.8"></v-coord>
+      <v-pie position="value" label="type" color="type" shape="triangleShape"></v-pie>
+    </v-chart>
+  </div>
 </template>
 
 <script>

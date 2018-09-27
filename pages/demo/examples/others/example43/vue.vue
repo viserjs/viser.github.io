@@ -1,9 +1,9 @@
 <template>
     <div>
-        <v-chart :forceFit="true" height="400" :data="data" :padding="[40]">
+        <v-chart :forceFit="true" height="400" :data="data" >
             <v-tooltip></v-tooltip>
             <v-legend dataKey="type"></v-legend>
-            <v-coord type="theta"></v-coord>
+            <v-coord type="theta" :radius="0.8"></v-coord>
             <v-pie position="value" color="type" shape="sliceShape" label="type"></v-pie>
         </v-chart>
     </div>
