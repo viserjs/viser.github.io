@@ -318,7 +318,7 @@ const shapes = {
 - 描述：动画配置。
 
 ```
-<Series animate={{
+const animate = {
   appear: {
     // 初始入场动画配置
   }
@@ -331,7 +331,8 @@ const shapes = {
   update: {
     // 更新时改变动画配置
   }
-}} />
+};
+<Series animate={animate} />
 ```
 
 ### onMouseDown?: eventFunc;
