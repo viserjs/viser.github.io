@@ -55,12 +55,7 @@ class AppComponent {
   ];
   series = series;
   constructor() {
-    (async () => {
-      let data;
-      data = await getJSON('/assets/data/unemployment.json').catch(e => {
-        window.console.warn(e.stack);
-        data = [];
-      });
+    getJSON('/assets/data/unemployment.json').then(data => {
       const dv = new DataSet.View().source(data);
       dv.transform({
         type: 'map',
@@ -70,7 +65,7 @@ class AppComponent {
         },
       });
       this.data = dv;
-    })();
+    });
   }
 }
 
@@ -80,4 +75,4 @@ class AppComponent {
   providers: [],
   bootstrap: [AppComponent],
 })
-export default class AppModule {}
+export default class AppModule { }

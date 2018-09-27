@@ -779,11 +779,11 @@ const examples = {
           enName: 'rose-ranged',
           cnName: '玫瑰图-限定角度范围',
         },
-        {
-          path: 'example48',
-          enName: 'rectbin-size',
-          cnName: '矩形大小分箱图',
-        },
+        // {
+        //   path: 'example48',
+        //   enName: 'rectbin-size',
+        //   cnName: '矩形大小分箱图',
+        // },
         {
           path: 'example49',
           enName: 'peking-aqi',
@@ -799,6 +799,11 @@ const examples = {
           enName: 'map-symbol',
           cnName: '符号地图',
         },
+        // {
+        //   path: 'example52',
+        //   enName: 'area-large',
+        //   cnName: '大规模区域图',
+        // },
       ],
       icon: 'others',
     },

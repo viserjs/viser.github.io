@@ -54,29 +54,28 @@ class AppComponent {
     colors: any = [];
     scale: any = [];
     constructor() {
-        getJSON("/assets/data/peking-aqi.json")
-            .then(data => {
-                this.ticks = ticks;
-                this.colors = colors;
-                this.scale = [
-                    {
-                        dataKey: 'date',
-                        type: 'time',
-                        mask: 'YYYY-MM-DD',
-                        tickCount: 4,
-                        alias: '日期',
-                        nice: false
-                    },
-                    {
-                        dataKey: 'aqi',
-                        min: 0,
-                        ticks: ticks,
-                        alias: 'AQI(空气质量指数)'
-                    }
-                ];
-                this.data = data;
-                this.dv = this.getData();
-            });
+        getJSON("/assets/data/peking-aqi.json").then(data => {
+            this.ticks = ticks;
+            this.colors = colors;
+            this.scale = [
+                {
+                    dataKey: 'date',
+                    type: 'time',
+                    mask: 'YYYY-MM-DD',
+                    tickCount: 4,
+                    alias: '日期',
+                    nice: false
+                },
+                {
+                    dataKey: 'aqi',
+                    min: 0,
+                    ticks: ticks,
+                    alias: 'AQI(空气质量指数)'
+                }
+            ];
+            this.data = data;
+            this.dv = this.getData();
+        });
     }
     getData = () => {
         const { data, start, end } = this;
