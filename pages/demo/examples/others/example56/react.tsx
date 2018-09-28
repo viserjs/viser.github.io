@@ -31,7 +31,7 @@ export default class App extends React.Component {
     const time = now.getTime();
     const temperature1 = ~~(Math.random() * 5) + 22;
     const temperature2 = ~~(Math.random() * 7) + 17;
-    let newData = me.state.data;
+    let newData = me.state.data.slice();
     if (newData.length >= 200) {
       newData.shift();
       newData.shift();
