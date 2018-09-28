@@ -1,0 +1,25 @@
+.theme-color-bar{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    width: auto;
+    height: 32px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    .color-block{
+        width: 20px;
+        height: 20px;
+        margin-left: 2px;
+        margin-right: 2px;
+        display: inline-block;
+        border-radius: 3px;
+    }
+}

@@ -729,6 +729,81 @@ const examples = {
           enName: 'liquid-fill-gauge',
           cnName: '水波图',
         },
+        {
+          path: 'example38',
+          enName: 'area-horizon-graph',
+          cnName: '地平面图',
+        },
+        {
+          path: 'example39',
+          enName: 'area-null',
+          cnName: '区域图（存在空值）',
+        },
+        {
+          path: 'example40',
+          enName: 'pie-ranged',
+          cnName: '饼图-限定角度范围',
+        },
+        {
+          path: 'example41',
+          enName: 'bar-diverge',
+          cnName: '柱状图-diverging',
+        },
+        {
+          path: 'example42',
+          enName: 'pie-platelets',
+          cnName: '饼图-花瓣图',
+        },
+        {
+          path: 'example43',
+          enName: 'pie-size',
+          cnName: '饼图-半径大小',
+        },
+        {
+          path: 'example44',
+          enName: 'pie-slice',
+          cnName: '饼图-分割空白',
+        },
+        {
+          path: 'example45',
+          enName: 'pie-texture',
+          cnName: '饼图-带纹理',
+        },
+        {
+          path: 'example46',
+          enName: 'pie-triangle',
+          cnName: '饼图-三角',
+        },
+        {
+          path: 'example47',
+          enName: 'rose-ranged',
+          cnName: '玫瑰图-限定角度范围',
+        },
+        // {
+        //   path: 'example48',
+        //   enName: 'rectbin-size',
+        //   cnName: '矩形大小分箱图',
+        // },
+        {
+          path: 'example49',
+          enName: 'peking-aqi',
+          cnName: '北京市2010至2015年空气质量指数',
+        },
+        // {// 存在问题注释
+        //   path: 'example50',
+        //   enName: 'pie-multi-donuts',
+        //   cnName: '多环图',
+        // },
+        {
+          path: 'example51',
+          enName: 'map-symbol',
+          cnName: '符号地图',
+        },
+        // {
+        //   path: 'example52',
+        //   enName: 'area-large',
+        //   cnName: '大规模区域图',
+        // },
       ],
       icon: 'others',
     },

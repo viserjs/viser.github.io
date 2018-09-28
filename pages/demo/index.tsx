@@ -25,6 +25,11 @@ import './index.scss';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import * as ViserNg from 'viser-ng';
+import * as ViserGraphNg from 'viser-graph-ng';
+(window as any).ViserNg = ViserNg;
+(window as any).ViserGraphNg = ViserGraphNg;
+
 
 let ngRef;
 
@@ -61,18 +66,17 @@ class Demo {
     );
   }
   initEditor() {
-    console.log('editor1');
+    // console.log('editor1');
     this.editor = (window as any).monaco.editor.create(
       document.getElementById('monaco-editor'),
       {
         value: 'loading code......',
         language: 'none',
         lineNumbers: true,
-        scrollBeyondLastLine: false,
-        automaticLayout: false,
+        scrollBeyondLastLine: true,
+        automaticLayout: true,
         renderLineHighlight: 'none',
         readOnly: false,
-        formatOnType: true,
         theme: 'vs',
         minimap: {
           enabled: false,
@@ -131,10 +135,9 @@ class Demo {
         angularCode = await angularCode_r.data.text();
       }
     }
-    reactPath = `./examples/${folder}/${path}/react.tsx`;
-    vuePath = `./examples/${folder}/${path}/vue.vue`;
+    // reactPath = `./examples/${folder}/${path}/react.tsx`;
+    // vuePath = `./examples/${folder}/${path}/vue.vue`;
     angularPath = `./examples/${folder}/${path}/angular.ts`;
-
     return {
       reactCode,
       vueCode,
@@ -167,21 +170,10 @@ class Demo {
   getDemoItemKey(example) {
     return example.enName.toLowerCase().replace(/\s/g, '-');
   }
-  // getAngularPath() {
-  //   const { typeKey, folder, item } = this.getDemoFolderAndItem();
-  //   const examples = exampleOrigin[typeKey][folder].examples;
-  //   const filterExamples = examples.filter(ex => {
-  //     const itemKey = this.getDemoItemKey(ex);
-  //     if (item === itemKey) {
-  //       return true;
-  //     }
-  //     return false;
-  //   });
-  //   const { path } = filterExamples[0];
-  //   const codePath = `./examples/${folder}/${path}/angular.ts`;
-  //   return codePath;
-  // }
+  public getNgPath() {
+    const hash = (window as any).location.hash.split('/');
 
+  }
   async runCode(framework) {
     const mount = document.getElementById('mount');
 
@@ -195,10 +187,11 @@ class Demo {
     }
     if (framework === 'angular') {
       $('.case-code-topbar').hide();
-      const code = await this.getCode(framework);
+      const code = await this.getCode('angular');
       mount.innerHTML = '';
-      const codePath = code[`${framework}Path`];
-      delete require.cache[require.resolve(`${codePath}`)];
+      const codePath = code[`angularPath`];
+      // debugger
+      // delete require.cache[require.resolve(`${codePath}`)];
       const AppModule = require(`${codePath}`).default;
       return platformBrowserDynamic()
         .bootstrapModule(AppModule)
@@ -221,7 +214,7 @@ class Demo {
   renderCase() {
     const self = this;
     // change top framework switch
-    $('.case-box .case-code-switch-item').each(function() {
+    $('.case-box .case-code-switch-item').each(function () {
       $(this).removeClass('active');
       if (self.framework === $(this).attr('data-framework')) {
         $(this).addClass('active');
@@ -236,10 +229,7 @@ class Demo {
     const language = this.framework === 'vue' ? 'html' : 'typescript';
 
     this.editor.setValue(codeValue);
-    // (window as any).monaco.editor.setModelLanguage(
-    //   this.editor.getModel(),
-    //   language,
-    // );
+    // (window as any).monaco.editor.setModelLanguage(this.editor.getModel(), language);
     // if (this.framework === 'react') {
     this.runCode(this.framework);
     // }
@@ -303,7 +293,7 @@ class Demo {
     const self = this;
     // TODO: bind JSFiddle event
 
-    $('.left-panel').on('click', '.common-nav-item', function() {
+    $('.left-panel').on('click', '.common-nav-item', function () {
       setTimeout(() => {
         self.refresh();
       }, 0);
@@ -312,7 +302,7 @@ class Demo {
     // bind code-switch event
     $('.case-box .case-code-switch .case-code-switch-item').on(
       'click',
-      function() {
+      function () {
         if ($(this).hasClass('active')) {
           return;
         }
@@ -327,17 +317,17 @@ class Demo {
     // bind framework switch event
     $('.left-panel .common-nav-folder.expandable .common-nav-title').on(
       'click',
-      function() {
+      function () {
         if (
           $(this)
             .parent()
             .hasClass('expanded')
         ) {
-          $('.left-panel .common-nav-folder.expandable').each(function() {
+          $('.left-panel .common-nav-folder.expandable').each(function () {
             $(this).removeClass('expanded');
           });
         } else {
-          $('.left-panel .common-nav-folder.expandable').each(function() {
+          $('.left-panel .common-nav-folder.expandable').each(function () {
             $(this).removeClass('expanded');
           });
           $(this)
@@ -348,7 +338,7 @@ class Demo {
     );
 
     // bind page language switch event
-    $('.page-language-switch').on('click', function() {
+    $('.page-language-switch').on('click', function () {
       changePageLanguage();
 
       self.refresh();
@@ -358,27 +348,27 @@ class Demo {
         return this.editor.getValue();
       },
     });
-    this.clipboard.on('success', function(e) {
+    this.clipboard.on('success', function (e) {
       if ($('.case-code-topbar .case-tip').length !== 0) {
         $('.case-code-topbar .case-tip').remove();
       }
       const template = `<span class="case-tip">${
         getPageLanguage() === 'cn' ? '复制成功' : 'copy successed'
-      }</span>`;
+        }</span>`;
       $(template).insertBefore('.case-code-topbar .case-copy');
       e.clearSelection();
     });
-    this.clipboard.on('error', function(e) {
+    this.clipboard.on('error', function (e) {
       if ($('.case-code-topbar .case-tip').length !== 0) {
         $('.case-code-topbar .case-tip').remove();
       }
       const template = `<span class="case-tip err">${
         getPageLanguage() === 'cn' ? '复制失败' : 'copy failed'
-      }</span>`;
+        }</span>`;
       $(template).insertBefore('.case-code-topbar .case-copy');
       e.clearSelection();
     });
-    $(document).on('click', '.case-btn-cont .case-run', function(e) {
+    $(document).on('click', '.case-btn-cont .case-run', function (e) {
       self.runCode(
         $('.case-code-switch .active')
           .html()
@@ -426,7 +416,7 @@ const loadEditor = () => {
         window['require'].config({
           paths: { vs: '/lib/monaco-editor/min/vs' },
         });
-        window['require'](['vs/editor/editor.main'], function() {
+        window['require'](['vs/editor/editor.main'], function () {
           resolve(this);
         });
       } else {
