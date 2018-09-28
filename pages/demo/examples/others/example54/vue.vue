@@ -3,7 +3,7 @@
     <v-chart :forceFit="true" :height="height" :data="data" :scale="scale" :padding="0">
       <v-tooltip/>
       <v-interval
-        shape="liquid-fill-gauge"
+        :shape="['path',path=>['liquid-fill-path',path]]"
         position="gender*value"
         color="gender"
         :v-style="{
@@ -18,12 +18,13 @@
         :top="true"
         :position="{
             gender: row.gender,
-            value: 50
+            value: 45
         }"
         :content="row.value + '%'"
         :v-style="{
-            fontSize: 40,
-            textAlign: 'center'
+            fontSize: window.innerWidth/10,
+            textAlign: 'center',
+            opacity:0.75
         }"
       />
     </v-chart>

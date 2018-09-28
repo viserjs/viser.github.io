@@ -834,6 +834,16 @@ const examples = {
           enName: 'liquid-fill-path',
           cnName: '水波图—自定义路径',
         },
+        {
+          path: 'example55',
+          enName: 'line chart with dash',
+          cnName: '带虚线部分的折线图',
+        },
+        {
+          path: 'example56',
+          enName: 'line chart update constantly',
+          cnName: '实时更新数据的折线图',
+        },
       ],
       icon: 'others',
     },

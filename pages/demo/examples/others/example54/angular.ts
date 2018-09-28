@@ -39,7 +39,7 @@ const scale = [
     <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale" [padding]="padding">
       <v-tooltip></v-tooltip>
       <v-interval
-        shape="liquid-fill-gauge"
+        [shape]="shape"
         position="gender*value"
         color="gender"
         [style]="{
@@ -53,7 +53,7 @@ const scale = [
         [top]="guideTop"
         [position]="{
             gender: row.gender,
-            value: 50
+            value: 45
         }"
         [content]="row.value + '%'"
         [style]="guideStyle"
@@ -70,9 +70,11 @@ class AppComponent {
   padding = 0;
   guideTop = true;
   guideStyle = {
-    fontSize: 40,
+    fontSize: (window.innerWidth-700)/10,
     textAlign: 'center',
+    opacity:.75
   };
+  shape=['path',path=>['liquid-fill-path',path]];
 }
 
 @NgModule({
