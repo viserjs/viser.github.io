@@ -43,17 +43,18 @@ const scale = [
         position="gender*value"
         color="gender"
         [style]="{
-            lineWidth: 10,
-            opacity: 0.75
+          lineWidth: 10,
+          opacity: 0.75
         }"
+        [tooltip]="tooltip"
       ></v-interval>
       <v-guide
         *ngFor="let row of data"
         type="text"
         [top]="guideTop"
         [position]="{
-            gender: row.gender,
-            value: 45
+          gender: row.gender,
+          value: 45
         }"
         [content]="row.value + '%'"
         [style]="guideStyle"
@@ -70,11 +71,20 @@ class AppComponent {
   padding = 0;
   guideTop = true;
   guideStyle = {
-    fontSize: (window.innerWidth-700)/10,
+    fontSize: 100,
     textAlign: 'center',
-    opacity:.75
+    opacity: 0.75,
   };
-  shape=['path',path=>['liquid-fill-path',path]];
+  shape = ['path', path => ['liquid-fill-path', path]];
+  tooltip = [
+    'gender*value',
+    (gender, value) => {
+      return {
+        name: gender,
+        value,
+      };
+    },
+  ];
 }
 
 @NgModule({

@@ -7,9 +7,18 @@
         position="gender*value"
         color="gender"
         :v-style="{
-            lineWidth: 10,
-            opacity: 0.75
+          lineWidth: 10,
+          opacity: 0.75
         }"
+        :tooltip="[
+          'gender*value',
+          (gender, value) => {
+            return {
+              name: gender,
+              value,
+            };
+          },
+        ]"
       />
       <v-guide
         v-for="(row, index) in data"
@@ -17,14 +26,14 @@
         type="text"
         :top="true"
         :position="{
-            gender: row.gender,
-            value: 45
+          gender: row.gender,
+          value: 45
         }"
         :content="row.value + '%'"
         :v-style="{
-            fontSize: window.innerWidth/10,
-            textAlign: 'center',
-            opacity:0.75
+          fontSize: 100,
+          textAlign: 'center',
+          opacity: 0.75,
         }"
       />
     </v-chart>
