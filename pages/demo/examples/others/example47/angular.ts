@@ -34,15 +34,15 @@ const data = [
 @Component({
   selector: '#mount',
   template: `
-<div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [padding]="padding">
+    <div>
+      <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [padding]="padding">
         <v-tooltip></v-tooltip>
         <v-axis></v-axis>
         <v-legend dataKey="type"></v-legend>
         <v-coord type="polar" startAngle="180" endAngle="270"></v-coord>
         <v-stack-interval position="type*value" [color]="color" [label]="label" [style]="style"></v-stack-interval>
-    </v-chart>
-</div>
+      </v-chart>
+    </div>
   `,
 })
 class AppComponent {

@@ -6,7 +6,7 @@
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
                 <v-line position="date*aqi" opacity="0.75"></v-line>
-                <v-guide v-for="(tick,i) in ticks" :key="i" type="region" :start="['min',tick]" :end="['max',ticks[i+1]]" :style="{fill:colors[i],fillOpacity:0.4}"></v-guide>
+                <v-guide v-for="(tick,i) in ticks" :key="i" type="region" :start="['min',tick]" :end="['max',ticks[i+1]]" :v-style="{fill:colors[i],fillOpacity:0.4}"></v-guide>
             </v-chart>
         </div>
         <div id="slider">
@@ -35,41 +35,40 @@
 </template>
 
 <script>
-const getJSON = src =>
-  new Promise(resolve => $.getJSON(src, data => resolve(data)));
 
 export default {
-  async mounted() {
-    const data = await getJSON("/assets/data/peking-aqi.json");
-    const ticks = [0, 50, 100, 150, 200, 300, 500];
-    const colors = [
-      "#5AC405",
-      "#F9C709",
-      "#FD942C",
-      "#e4440D",
-      "#810043",
-      "#45001B"
-    ];
-    this.$data.data = data;
-    this.$data.dv = this.getData();
-    this.$data.ticks = ticks;
-    this.$data.colors = colors;
-    this.$data.scale = [
-      {
-        dataKey: "date",
-        type: "time",
-        mask: "YYYY-MM-DD",
-        tickCount: 4,
-        alias: "日期",
-        nice: false
-      },
-      {
-        dataKey: "aqi",
-        min: 0,
-        ticks: ticks,
-        alias: "AQI(空气质量指数)"
-      }
-    ];
+  mounted() {
+    $.getJSON('/assets/data/peking-aqi.json', (data) => {
+      const ticks = [0, 50, 100, 150, 200, 300, 500];
+      const colors = [
+        "#5AC405",
+        "#F9C709",
+        "#FD942C",
+        "#e4440D",
+        "#810043",
+        "#45001B"
+      ];
+      this.$data.data = data;
+      this.$data.dv = this.getData();
+      this.$data.ticks = ticks;
+      this.$data.colors = colors;
+      this.$data.scale = [
+        {
+          dataKey: "date",
+          type: "time",
+          mask: "YYYY-MM-DD",
+          tickCount: 4,
+          alias: "日期",
+          nice: false
+        },
+        {
+          dataKey: "aqi",
+          min: 0,
+          ticks: ticks,
+          alias: "AQI(空气质量指数)"
+        }
+      ];
+    });
   },
   methods: {
     getData() {

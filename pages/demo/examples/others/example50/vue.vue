@@ -16,29 +16,27 @@
 </template>
 
 <script>
-const getJSON = src =>
-  new Promise(resolve => $.getJSON(src, data => resolve(data)));
-
 export default {
-  async mounted() {
-    const data = await getJSON("/assets/data/population-by-age.json");
-    const dv = new DataSet.View().source(data);
-    dv
-      .transform({
-        type: "fold",
-        fields: ["小于5岁", "5至13岁", "14至17岁"], // 展开字段集
-        key: "age",
-        value: "count"
-      })
-      .transform({
-        type: "percent",
-        field: "count",
-        dimension: "age",
-        groupBy: ["state"],
-        as: ["percent"]
-      });
-    this.$data.data = data;
-    this.$data.dv = dv;
+  mounted() {
+    $.getJSON('/assets/data/population-by-age.json', (data) => {
+      const dv = new DataSet.View().source(data);
+      dv
+        .transform({
+          type: "fold",
+          fields: ["小于5岁", "5至13岁", "14至17岁"], // 展开字段集
+          key: "age",
+          value: "count"
+        })
+        .transform({
+          type: "percent",
+          field: "count",
+          dimension: "age",
+          groupBy: ["state"],
+          as: ["percent"]
+        });
+      this.$data.data = data;
+      this.$data.dv = dv;
+    });
   },
   data() {
     return {
