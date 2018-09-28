@@ -799,11 +799,16 @@ const examples = {
           enName: 'map-symbol',
           cnName: '符号地图',
         },
-        // {
-        //   path: 'example52',
-        //   enName: 'area-large',
-        //   cnName: '大规模区域图',
-        // },
+        {
+          path: 'example52',
+          enName: 'area-large',
+          cnName: '大规模区域图',
+        },
+        {
+          path: 'example53',
+          enName: 'area-range-line',
+          cnName: '范围区域图与线图',
+        },
       ],
       icon: 'others',
     },

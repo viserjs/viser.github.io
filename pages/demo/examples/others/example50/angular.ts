@@ -9,82 +9,82 @@ const DataSet = require('@antv/data-set');
 const getJSON = src => new Promise(resolve => $.getJSON(src, data => resolve(data)));
 
 @Component({
-    selector: '#mount',
-    template: `
+  selector: '#mount',
+  template: `
 <div *ngIf="data.length">
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="dv" padding="0">
-        <v-tooltip></v-tooltip>
-        <v-facet
-            type="list"
-            [fields]="fields"
-            col="9"
-            [showTitle]="showTitle"
-            padding="0"
-            [eachView]="eachView"
-        />
-    </v-chart>
+  <v-chart [forceFit]="forceFit" [height]="height" [data]="dv" padding="0">
+    <v-tooltip></v-tooltip>
+    <v-facet
+      type="list"
+      [fields]="fields"
+      col="9"
+      [showTitle]="showTitle"
+      padding="0"
+      [eachView]="eachView"
+    />
+  </v-chart>
 </div>
   `
 })
 class AppComponent {
-    forceFit: boolean = true;
-    height: number = 400;
-    data: any = [];
-    dv: any = {};
-    fields: any = ['state'];
-    showTitle: boolean = false;
-    eachView: any = (view, facet) => {
-        view.coord("theta", {
-            radius: 0.8,
-            innerRadius: 0.6
-        });
-        view
-            .intervalStack()
-            .position("percent")
-            .color("age");
-        view.guide().html({
-            position: ["50%", "50%"],
-            html:
-                '<div style="color:#8c8c8c;font-size: 14px;text-align: center;width: 10em;">' +
-                facet.data[0].state +
-                "</div>",
-            alignX: "middle",
-            alignY: "middle"
-        });
-    };
-    constructor() {
-        getJSON("/assets/data/population-by-age.json").then(data => {
-            const dv = new DataSet.View().source(data);
-            dv.transform({
-                type: "fold",
-                fields: ["小于5岁", "5至13岁", "14至17岁"], // 展开字段集
-                key: "age",
-                value: "count"
-            }).transform({
-                type: "percent",
-                field: "count",
-                dimension: "age",
-                groupBy: ["state"],
-                as: ["percent"]
-            });
-            this.data = data;
-            this.dv = dv;
-        })
-    }
+  forceFit: boolean = true;
+  height: number = 400;
+  data: any = [];
+  dv: any = {};
+  fields: any = ['state'];
+  showTitle: boolean = false;
+  eachView: any = (view, facet) => {
+    view.coord("theta", {
+      radius: 0.8,
+      innerRadius: 0.6
+    });
+    view
+      .intervalStack()
+      .position("percent")
+      .color("age");
+    view.guide().html({
+      position: ["50%", "50%"],
+      html:
+        '<div style="color:#8c8c8c;font-size: 14px;text-align: center;width: 10em;">' +
+        facet.data[0].state +
+        "</div>",
+      alignX: "middle",
+      alignY: "middle"
+    });
+  };
+  constructor() {
+    getJSON("/assets/data/population-by-age.json").then(data => {
+      const dv = new DataSet.View().source(data);
+      dv.transform({
+        type: "fold",
+        fields: ["小于5岁", "5至13岁", "14至17岁"], // 展开字段集
+        key: "age",
+        value: "count"
+      }).transform({
+        type: "percent",
+        field: "count",
+        dimension: "age",
+        groupBy: ["state"],
+        as: ["percent"]
+      });
+      this.data = data;
+      this.dv = dv;
+    })
+  }
 }
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
-    imports: [
-        BrowserModule,
-        ViserModule
-    ],
-    providers: [],
-    bootstrap: [
-        AppComponent
-    ]
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ViserModule
+  ],
+  providers: [],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export default class AppModule { }
 
