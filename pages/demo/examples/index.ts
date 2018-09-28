@@ -5,9 +5,29 @@ const examples = {
       cnName: '组件使用',
       examples: [
         {
+          path: 'example1',
+          enName: 'special data and range mark',
+          cnName: '特殊数据点标注和特殊数据区间标注',
+        },
+        {
+          path: 'example2',
+          enName: 'legend position',
+          cnName: '图例位置',
+        },
+        {
+          path: 'example3',
+          enName: 'area color1',
+          cnName: '区域着色1',
+        },
+        {
           path: 'example4',
           enName: 'area color2',
           cnName: '区域着色2',
+        },
+        {
+          path: 'example5',
+          enName: 'realtime area color',
+          cnName: '实时数据应用区域着色',
         },
         {
           path: 'example6',
@@ -799,11 +819,31 @@ const examples = {
           enName: 'map-symbol',
           cnName: '符号地图',
         },
-        // {
-        //   path: 'example52',
-        //   enName: 'area-large',
-        //   cnName: '大规模区域图',
-        // },
+        {
+          path: 'example52',
+          enName: 'area-large',
+          cnName: '大规模区域图',
+        },
+        {
+          path: 'example53',
+          enName: 'area-range-line',
+          cnName: '范围区域图与线图',
+        },
+        {
+          path: 'example54',
+          enName: 'liquid-fill-path',
+          cnName: '水波图—自定义路径',
+        },
+        {
+          path: 'example55',
+          enName: 'line chart with dash',
+          cnName: '带虚线部分的折线图',
+        },
+        {
+          path: 'example56',
+          enName: 'line chart update constantly',
+          cnName: '实时更新数据的折线图',
+        },
       ],
       icon: 'others',
     },

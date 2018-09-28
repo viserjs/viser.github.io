@@ -38,10 +38,10 @@ export default {
     });
   },
   data() {
-    return {
-      dv: {},
-      airports: []
-    };
+  return {
+    dv: {},
+    airports: []
+  };
   }
 };
 </script>
