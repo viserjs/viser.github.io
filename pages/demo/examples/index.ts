@@ -844,6 +844,11 @@ const examples = {
           enName: 'line chart update constantly',
           cnName: '实时更新数据的折线图',
         },
+        {
+          path: 'example57',
+          enName: 'sparklines',
+          cnName: '迷你图',
+        },
       ],
       icon: 'others',
     },
