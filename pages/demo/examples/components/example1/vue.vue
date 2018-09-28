@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import * as $ from 'jquery';
 const scale = [
   {
     dataKey: 'time',

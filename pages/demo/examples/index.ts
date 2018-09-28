@@ -10,9 +10,24 @@ const examples = {
           cnName: '特殊数据点标注和特殊数据区间标注',
         },
         {
+          path: 'example2',
+          enName: 'legend position',
+          cnName: '图例位置',
+        },
+        {
+          path: 'example3',
+          enName: 'area color1',
+          cnName: '区域着色1',
+        },
+        {
           path: 'example4',
           enName: 'area color2',
           cnName: '区域着色2',
+        },
+        {
+          path: 'example5',
+          enName: 'realtime area color',
+          cnName: '实时数据应用区域着色',
         },
         {
           path: 'example6',
