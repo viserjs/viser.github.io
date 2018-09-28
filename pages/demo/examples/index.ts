@@ -5,6 +5,11 @@ const examples = {
       cnName: '组件使用',
       examples: [
         {
+          path: 'example1',
+          enName: 'special data and range mark',
+          cnName: '特殊数据点标注和特殊数据区间标注',
+        },
+        {
           path: 'example4',
           enName: 'area color2',
           cnName: '区域着色2',
