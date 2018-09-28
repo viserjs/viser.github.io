@@ -809,6 +809,11 @@ const examples = {
           enName: 'area-range-line',
           cnName: '范围区域图与线图',
         },
+        {
+          path: 'example54',
+          enName: 'liquid-fill-path',
+          cnName: '水波图—自定义路径',
+        },
       ],
       icon: 'others',
     },
