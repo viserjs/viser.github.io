@@ -53,6 +53,7 @@ export default class App extends React.Component {
               style={{
                 fontSize: window.innerWidth/10,
                 textAlign: 'center',
+                opacity:.75
               }}
             />
           );
