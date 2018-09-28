@@ -41,7 +41,7 @@ class AppComponent {
   height: number = 400;
   data: any = [];
   scale:any=scale;
-  constructor(private zone: NgZone){
+  constructor(){
     setInterval(()=>{
       this.updateData();
     },1000);
@@ -52,7 +52,7 @@ class AppComponent {
     const time = now.getTime();
     const temperature1 = ~~(Math.random() * 5) + 22;
     const temperature2 = ~~(Math.random() * 7) + 17;
-    let newData = me.data;
+    let newData = me.data.slice();
     if (newData.length >= 200) {
       newData.shift();
       newData.shift();
@@ -67,10 +67,7 @@ class AppComponent {
       temperature: temperature2,
       type: '记录2'
     });
-    this.zone.run(() => {
-      // 要更新视图的代码
-      this.data=newData;
-     });
+    this.data=newData;
   }
 }
 

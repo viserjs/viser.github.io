@@ -40,7 +40,7 @@ export default {
       const time = now.getTime();
       const temperature1 = ~~(Math.random() * 5) + 22;
       const temperature2 = ~~(Math.random() * 7) + 17;
-      let newData = me.data;
+      let newData = me.data.slice();
       if (newData.length >= 200) {
         newData.shift();
         newData.shift();
