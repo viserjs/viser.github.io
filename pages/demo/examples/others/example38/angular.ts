@@ -26,8 +26,6 @@ const series = {
   28615: 'Government',
   35181: 'Self-employed',
 };
-const getJSON = src =>
-  new Promise(resolve => $.getJSON(src, data => resolve(data)));
 
 @Component({
   selector: '#mount',
@@ -55,8 +53,8 @@ class AppComponent {
   ];
   series = series;
   constructor() {
-    getJSON('/assets/data/unemployment.json').then(data => {
-      const dv = new DataSet.View().source(data);
+    $.getJSON('/assets/data/unemployment.json', sourceData => {
+      const dv = new DataSet.View().source(sourceData);
       dv.transform({
         type: 'map',
         callback: function callback(row) {
@@ -75,4 +73,4 @@ class AppComponent {
   providers: [],
   bootstrap: [AppComponent],
 })
-export default class AppModule { }
+export default class AppModule {}

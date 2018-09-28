@@ -6,25 +6,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 const DataSet = require('@antv/data-set');
 
-const getJSON = src => new Promise(resolve => $.getJSON(src, data => resolve(data)));
-
 @Component({
   selector: '#mount',
   template: `
-<div *ngIf="data.length">
-  <v-chart [forceFit]="forceFit" [height]="height" [data]="dv" padding="0">
-    <v-tooltip></v-tooltip>
-    <v-facet
-      type="list"
-      [fields]="fields"
-      col="9"
-      [showTitle]="showTitle"
-      padding="0"
-      [eachView]="eachView"
-    />
-  </v-chart>
-</div>
-  `
+    <div *ngIf="data.length">
+      <v-chart [forceFit]="forceFit" [height]="height" [data]="dv" padding="0">
+        <v-tooltip></v-tooltip>
+        <v-facet
+          type="list"
+          [fields]="fields"
+          col="9"
+          [showTitle]="showTitle"
+          padding="0"
+          [eachView]="eachView"
+        />
+      </v-chart>
+    </div>
+  `,
 })
 class AppComponent {
   forceFit: boolean = true;
@@ -34,57 +32,49 @@ class AppComponent {
   fields: any = ['state'];
   showTitle: boolean = false;
   eachView: any = (view, facet) => {
-    view.coord("theta", {
+    view.coord('theta', {
       radius: 0.8,
-      innerRadius: 0.6
+      innerRadius: 0.6,
     });
     view
       .intervalStack()
-      .position("percent")
-      .color("age");
+      .position('percent')
+      .color('age');
     view.guide().html({
-      position: ["50%", "50%"],
+      position: ['50%', '50%'],
       html:
         '<div style="color:#8c8c8c;font-size: 14px;text-align: center;width: 10em;">' +
         facet.data[0].state +
-        "</div>",
-      alignX: "middle",
-      alignY: "middle"
+        '</div>',
+      alignX: 'middle',
+      alignY: 'middle',
     });
   };
   constructor() {
-    getJSON("/assets/data/population-by-age.json").then(data => {
-      const dv = new DataSet.View().source(data);
+    $.getJSON('/assets/data/population-by-age.json', sourceData => {
+      const dv = new DataSet.View().source(sourceData);
       dv.transform({
-        type: "fold",
-        fields: ["小于5岁", "5至13岁", "14至17岁"], // 展开字段集
-        key: "age",
-        value: "count"
+        type: 'fold',
+        fields: ['小于5岁', '5至13岁', '14至17岁'], // 展开字段集
+        key: 'age',
+        value: 'count',
       }).transform({
-        type: "percent",
-        field: "count",
-        dimension: "age",
-        groupBy: ["state"],
-        as: ["percent"]
+        type: 'percent',
+        field: 'count',
+        dimension: 'age',
+        groupBy: ['state'],
+        as: ['percent'],
       });
-      this.data = data;
+      this.data = sourceData;
       this.dv = dv;
-    })
+    });
   }
 }
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    ViserModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, ViserModule],
   providers: [],
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent],
 })
-export default class AppModule { }
-
+export default class AppModule {}

@@ -26,24 +26,20 @@ const series = {
   28615: "Government",
   35181: "Self-employed"
 };
-const getJSON = src =>
-  new Promise(resolve => $.getJSON(src, data => resolve(data)));
+
 export default {
-  async mounted() {
-    let data;
-    data = await getJSON("/assets/data/unemployment.json").catch(e => {
-      window.console.warn(e.stack);
-      data = [];
+  mounted() {
+    $.getJSON('/assets/data/unemployment.json', (sourceData) => {
+      const dv = new DataSet.View().source(sourceData);
+      dv.transform({
+        type: "map",
+        callback: function callback(row) {
+          row.series = series[row.series];
+          return row;
+        }
+      });
+      this.$data.data = dv;
     });
-    const dv = new DataSet.View().source(data);
-    dv.transform({
-      type: "map",
-      callback: function callback(row) {
-        row.series = series[row.series];
-        return row;
-      }
-    });
-    this.$data.data = dv;
   },
   data() {
     return {
