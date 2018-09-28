@@ -1,9 +1,8 @@
 <template>
   <div>
-    <v-chart :forceFit="true" height="400" :data="dv" >
+    <v-chart :forceFit="true" height="500" :data="dv" >
         <v-axis></v-axis>
-        <v-legend :offset="40"></v-legend>
-        <v-polygon type="polar" startAngle="180" endAngle="270"></v-polygon>
+        <v-legend></v-legend>
         <v-polygon
           position="x*y"
           :color="['count', '#BAE7FF-#1890FF-#0050B3']">
@@ -26,12 +25,12 @@ export default {
         fields: ['x', 'y'], // 对应坐标轴上的一个点
         bins: [20, 10],
       });
-      console.log(this);
+      this.dv=dv;
     });
   },
   data() {
     return {
-      dv: []
+      dv: {}
     };
   }
 };

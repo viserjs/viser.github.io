@@ -799,11 +799,11 @@ const examples = {
           enName: 'rose-ranged',
           cnName: '玫瑰图-限定角度范围',
         },
-        // {
-        //   path: 'example48',
-        //   enName: 'rectbin-size',
-        //   cnName: '矩形大小分箱图',
-        // },
+        {
+          path: 'example48',
+          enName: 'rectbin-size',
+          cnName: '矩形大小分箱图',
+        },
         {
           path: 'example49',
           enName: 'peking-aqi',
