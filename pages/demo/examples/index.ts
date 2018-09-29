@@ -809,11 +809,11 @@ const examples = {
           enName: 'peking-aqi',
           cnName: '北京市2010至2015年空气质量指数',
         },
-        // {// 存在问题注释
-        //   path: 'example50',
-        //   enName: 'pie-multi-donuts',
-        //   cnName: '多环图',
-        // },
+        {// 存在问题注释
+          path: 'example50',
+          enName: 'pie-multi-donuts',
+          cnName: '多环图',
+        },
         {
           path: 'example51',
           enName: 'map-symbol',
