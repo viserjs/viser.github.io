@@ -88,7 +88,6 @@ class AppComponent {
       const data = this.getData();
       this.originDv = data.originDv;
       this.chartDv = data.chartDv;
-      console.log(this);
     });
   }
 
