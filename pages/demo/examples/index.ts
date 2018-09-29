@@ -854,6 +854,11 @@ const examples = {
           enName: 'sankey-layouts',
           cnName: '桑基图布局',
         },
+        {
+          path: 'example70',
+          enName: 'veen',
+          cnName: '维恩图',
+        },
       ],
       icon: 'others',
     },

@@ -4,22 +4,11 @@ import * as $ from 'jquery';
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
-const DataSet=require('@antv/data-set');
-
-
+const DataSet = require('@antv/data-set');
 @Component({
   selector: '#mount',
   template: `
   <div *ngIf="this.valid(graph)">
-    <div class="toolbar" style="text-align:center;">
-      <label>Select nodeAlign style: </label>
-      <select name="node-align" [value]="select" (change)="handleChange">
-          <option value="sankeyLeft">sankeyLeft</option>
-          <option value="sankeyRight">sankeyRight</option>
-          <option value="sankeyCenter">sankeyCenter</option>
-          <option value="sankeyJustify">sankeyJustify</option>
-      </select>
-    </div>
     <v-chart
       [forceFit]="true"
       height="400"
@@ -37,41 +26,63 @@ const DataSet=require('@antv/data-set');
   `,
 })
 class AppComponent {
-  graph:any={};
-  select:string='sankeyLeft';
-  scale:any=[
+  graph: any = {};
+  scale: any = [
     {
-      dataKey:'x',
-      sync:true
+      dataKey: 'x',
+      sync: true,
     },
     {
-      dataKey:'y',
-      sync:true
-    }
+      dataKey: 'y',
+      sync: true,
+    },
   ];
-  dv:any={};
-  handleChange:any=(e:any)=>{
-    const value:string=e.target.value;
-    this.select=value;
-    this.dv=this.getData();
-  };
-  getData:any=():any=>{
-    const {graph,select}=this;
-    const dv:any = new DataSet.View().source(graph, {
-      type: 'graph'
+  dv: any = {};
+  constructor() {
+    $.getJSON('/assets/data/energy.json', (data) => {
+      const edges = data.links;
+      const graph = {
+        nodes: [],
+        edges: edges
+      };
+      const nodeById = {};
+
+      function addNode(id) {
+        if (!nodeById[id]) {
+          const node = {
+            id: id,
+            name: id
+          };
+          nodeById[id] = node;
+          graph.nodes.push(node);
+        }
+      }
+
+      edges.forEach(function(edge) {
+        addNode(edge.source);
+        addNode(edge.target);
+      });
+      this.graph = graph;
+      this.dv=this.getData();
+    });
+  }
+  getData: any = (): any => {
+    const { graph } = this;
+    const dv: any = new DataSet.View().source(graph, {
+      type: 'graph',
     });
     dv.transform({
       type: 'diagram.sankey',
       nodeId: function nodeId(node) {
         return node.id;
       },
-      nodeAlign: select
+      nodeAlign: 'sankeyLeft',  // change nodeAlign  , available option sankeyLeft / sankeyRight / sankeyCenter / sankeyJustify
     });
     return dv;
   };
-  valid:any=(data):boolean=>{
+  valid: any = (data): boolean => {
     return !!Object.keys(data).length;
-  }
+  };
 }
 
 @NgModule({

@@ -1,14 +1,5 @@
 <template>
   <div v-if="Object.keys(graph).length">
-    <div class="toolbar" style="text-align:center;">
-      <label>Select nodeAlign style: </label>
-      <select name="node-align" :value="select" :change="handleChange">
-          <option value="sankeyLeft">sankeyLeft</option>
-          <option value="sankeyRight">sankeyRight</option>
-          <option value="sankeyCenter">sankeyCenter</option>
-          <option value="sankeyJustify">sankeyJustify</option>
-      </select>
-    </div>
     <v-chart
       :forceFit="true"
       height="400"
@@ -60,7 +51,7 @@ export default {
   },
   methods:{
     getData(){
-      const {graph,select}=this;
+      const { graph }=this;
       const dv = new DataSet.View().source(graph, {
         type: 'graph'
       });
@@ -69,20 +60,14 @@ export default {
         nodeId: function nodeId(node) {
           return node.id;
         },
-        nodeAlign: select
+        nodeAlign: 'sankeyLeft',  // change nodeAlign  , available option sankeyLeft / sankeyRight / sankeyCenter / sankeyJustify
       });
       return dv;
     },
-    handleChange(e){
-      const value=e.target.value;
-      this.select=value;
-      this.dv=this.getData();
-    }
   },
   data() {
     return {
       graph:{},
-      select:'sankeyLeft',
       scale:[
         {
           dataKey:'x',
