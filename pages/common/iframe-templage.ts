@@ -19,7 +19,7 @@ export const template = {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <script crossorigin src="/assets/pkg/react.production.min.js"></script>
         <script crossorigin src="/assets/pkg/react-dom.production.min.js"></script>
-        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script src="/assets/pkg/babel.min.js"></script>
         <script src="/assets/pkg/viser-react.min.js"></script>
         <script src="/assets/pkg/jquery.min.js"></script>
         <script src="/assets/pkg/viser-graph-react.min.js"></script>
@@ -40,15 +40,13 @@ export const template = {
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Vue example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="/assets/pkg/babel.min.js"></script>
     <script src="/assets/pkg/jquery.min.js"></script>
     <script src="/assets/pkg/vue.min.js"></script>
     <script src="/assets/pkg/data-set.min.js"></script>
     <script src="/assets/pkg/viser-vue.min.js"></script>
     <script src="/assets/pkg/viser-graph-vue.min.js"></script>
-    <script src="/assets//pkg/jquery.min.js"></script>
-    <script src="https://webapi.amap.com/maps?v=1.4.1&key=0d78256ea89beeb8c25d1cd047549d1f"></script>
-    <script src="https://webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+    <script src="/assets/pkg/jquery.min.js"></script>
     <style type="text/css">
     * {
         margin: 0;

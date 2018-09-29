@@ -252,9 +252,9 @@ const shapes = {
   使用回调函数控制文本显示。
 
 ```
-<Series label={'x*y*z', (x, y, z) => {
+<Series label={['x*y*z', (x, y, z) => {
   return; // something
-}}/>
+}]}/>
 ```
 
 ### tooltip?: any;

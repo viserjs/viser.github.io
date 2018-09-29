@@ -5,7 +5,7 @@ const DataSet = require('@antv/data-set');
 
 export default class App extends React.Component {
   state = {
-    data: [],
+    dv: {},
   };
   componentDidMount() {
     $.getJSON('/assets/data/gaussion-distribution.json', data => {
@@ -16,15 +16,15 @@ export default class App extends React.Component {
         fields: ['x', 'y'], // 对应坐标轴上的一个点
         bins: [20, 10],
       });
-      this.setState({ data, dv });
+      this.setState({  dv });
     });
   }
   render() {
-    const { data } = this.state;
+    const { dv } = this.state;
     return (
-      <Chart forceFit={true} height={400} data={data}>
+      <Chart forceFit={true} height={500} data={dv}>
         <Axis />
-        <Legend offset={40} dataKey="x" slidable={true} />
+        <Legend  />
         <Polygon position="x*y" color={['count', '#BAE7FF-#1890FF-#0050B3']} />
       </Chart>
     );
