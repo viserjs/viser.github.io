@@ -5,24 +5,19 @@ const DataSet = require('@antv/data-set');
 
 export default class App extends React.Component {
   state = {
-    select: 'sankeyLeft',
     graph: {},
   };
-  handleChange = e => {
-    const value = e.target.value;
-    this.setState({ select: value });
-  };
   getData = () => {
-    const { graph, select } = this.state;
+    const { graph } = this.state;
     const dv = new DataSet.View().source(graph, {
       type: 'graph',
     });
     dv.transform({
       type: 'diagram.sankey',
-      nodeId: function nodeId(node) {
+      nodeId: (node) => {
         return node.id;
       },
-      nodeAlign: select,
+      nodeAlign: 'sankeyJustify',  // change nodeAlign  , available option sankeyLeft / sankeyRight / sankeyCenter / sankeyJustify
     });
     return dv;
   };
@@ -68,21 +63,9 @@ export default class App extends React.Component {
         sync: true,
       },
     ];
+
     return (
       <div id="mountNode">
-        <div className="toolbar" style={{ textAlign: 'center' }}>
-          <label>Select nodeAlign style: </label>
-          <select
-            name="node-align"
-            value={this.state.select}
-            onChange={this.handleChange}
-          >
-            <option value="sankeyLeft">sankeyLeft</option>
-            <option value="sankeyRight">sankeyRight</option>
-            <option value="sankeyCenter">sankeyCenter</option>
-            <option value="sankeyJustify">sankeyJustify</option>
-          </select>
-        </div>
         <Chart forceFit={true} height={400} scale={scale}>
           <Tooltip showTitle={false} />
           <View data={dv.edges}>

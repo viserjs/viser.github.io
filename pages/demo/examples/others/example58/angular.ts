@@ -9,15 +9,6 @@ const DataSet = require('@antv/data-set');
   selector: '#mount',
   template: `
   <div *ngIf="this.valid(graph)">
-    <div class="toolbar" style="text-align:center;">
-      <label>Select nodeAlign style: </label>
-      <select name="node-align" [value]="select" (change)="handleChange">
-          <option value="sankeyLeft">sankeyLeft</option>
-          <option value="sankeyRight">sankeyRight</option>
-          <option value="sankeyCenter">sankeyCenter</option>
-          <option value="sankeyJustify">sankeyJustify</option>
-      </select>
-    </div>
     <v-chart
       [forceFit]="true"
       height="400"
@@ -36,7 +27,6 @@ const DataSet = require('@antv/data-set');
 })
 class AppComponent {
   graph: any = {};
-  select: string = 'sankeyLeft';
   scale: any = [
     {
       dataKey: 'x',
@@ -76,13 +66,8 @@ class AppComponent {
       this.dv=this.getData();
     });
   }
-  handleChange: any = (e: any) => {
-    const value: string = e.target.value;
-    this.select = value;
-    this.dv = this.getData();
-  };
   getData: any = (): any => {
-    const { graph, select } = this;
+    const { graph } = this;
     const dv: any = new DataSet.View().source(graph, {
       type: 'graph',
     });
@@ -91,7 +76,7 @@ class AppComponent {
       nodeId: function nodeId(node) {
         return node.id;
       },
-      nodeAlign: select,
+      nodeAlign: 'sankeyLeft',  // change nodeAlign  , available option sankeyLeft / sankeyRight / sankeyCenter / sankeyJustify
     });
     return dv;
   };
