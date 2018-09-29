@@ -849,6 +849,11 @@ const examples = {
           enName: 'sparklines',
           cnName: '迷你图',
         },
+        {
+          path: 'example58',
+          enName: 'sankey-layouts',
+          cnName: '桑基图布局',
+        },
       ],
       icon: 'others',
     },
