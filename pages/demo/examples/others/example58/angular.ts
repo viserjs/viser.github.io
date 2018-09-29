@@ -48,6 +48,34 @@ class AppComponent {
     },
   ];
   dv: any = {};
+  constructor() {
+    $.getJSON('/assets/data/energy.json', (data) => {
+      const edges = data.links;
+      const graph = {
+        nodes: [],
+        edges: edges
+      };
+      const nodeById = {};
+
+      function addNode(id) {
+        if (!nodeById[id]) {
+          const node = {
+            id: id,
+            name: id
+          };
+          nodeById[id] = node;
+          graph.nodes.push(node);
+        }
+      }
+
+      edges.forEach(function(edge) {
+        addNode(edge.source);
+        addNode(edge.target);
+      });
+      this.graph = graph;
+      this.dv=this.getData();
+    });
+  }
   handleChange: any = (e: any) => {
     const value: string = e.target.value;
     this.select = value;
