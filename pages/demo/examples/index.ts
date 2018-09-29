@@ -799,21 +799,21 @@ const examples = {
           enName: 'rose-ranged',
           cnName: '玫瑰图-限定角度范围',
         },
-        // {
-        //   path: 'example48',
-        //   enName: 'rectbin-size',
-        //   cnName: '矩形大小分箱图',
-        // },
+        {
+          path: 'example48',
+          enName: 'rectbin-size',
+          cnName: '矩形大小分箱图',
+        },
         {
           path: 'example49',
           enName: 'peking-aqi',
           cnName: '北京市2010至2015年空气质量指数',
         },
-        // {// 存在问题注释
-        //   path: 'example50',
-        //   enName: 'pie-multi-donuts',
-        //   cnName: '多环图',
-        // },
+        {// 存在问题注释
+          path: 'example50',
+          enName: 'pie-multi-donuts',
+          cnName: '多环图',
+        },
         {
           path: 'example51',
           enName: 'map-symbol',
@@ -843,6 +843,21 @@ const examples = {
           path: 'example56',
           enName: 'line chart update constantly',
           cnName: '实时更新数据的折线图',
+        },
+        {
+          path: 'example57',
+          enName: 'sparklines',
+          cnName: '迷你图',
+        },
+        {
+          path: 'example58',
+          enName: 'sankey-layouts',
+          cnName: '桑基图布局',
+        },
+        {
+          path: 'example70',
+          enName: 'veen',
+          cnName: '维恩图',
         },
       ],
       icon: 'others',

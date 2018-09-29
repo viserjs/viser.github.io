@@ -15,6 +15,7 @@
   "dependencies": {
     "@ali/oneui-canary": "^2.3.2",
     "@antv/data-set": "^0.8.3",
+    "@antv/g2-brush": "0.0.2",
     "@rematch/core": "^0.6.0",
     "@types/clipboard": "^2.0.1",
     "clipboard": "^2.0.1",
@@ -27,12 +28,12 @@
     "react-redux": "^5.0.7",
     "viser": "^2.3.0",
     "viser-graph": "^0.1.7",
-    "viser-graph-ng": "^0.1.8",
-    "viser-graph-react": "^0.1.8",
-    "viser-graph-vue": "^0.1.8",
-    "viser-ng": "^2.3.0",
-    "viser-react": "^2.3.0",
-    "viser-vue": "^2.3.0"
+    "viser-graph-ng": "^0.1.10",
+    "viser-graph-react": "^0.1.11",
+    "viser-graph-vue": "^0.1.10",
+    "viser-ng": "^2.3.3",
+    "viser-react": "^2.3.4",
+    "viser-vue": "^2.3.3"
   },
   "devDependencies": {
     "@angular/common": "^5.0.5",

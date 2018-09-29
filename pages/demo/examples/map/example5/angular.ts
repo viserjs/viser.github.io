@@ -151,7 +151,7 @@ class AppComponent {
           flight.longitude = [origin.longitude, destination.longitude];
           flight.latitude = [origin.latitude, destination.latitude];
       });
-      console.log(this);
+
       this.mapDv = mapDv;
       this.airports = airports;
       this.subFlights = subFlights;

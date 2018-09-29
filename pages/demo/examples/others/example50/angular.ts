@@ -10,16 +10,16 @@ const DataSet = require('@antv/data-set');
   selector: '#mount',
   template: `
     <div *ngIf="data.length">
-      <v-chart [forceFit]="forceFit" [height]="height" [data]="dv" padding="0">
+      <v-chart [forceFit]="forceFit" [height]="height" [data]="dv" [padding]="0">
         <v-tooltip></v-tooltip>
         <v-facet
           type="list"
           [fields]="fields"
-          col="9"
+          [cols]="9"
           [showTitle]="showTitle"
           padding="0"
           [eachView]="eachView"
-        />
+        ></v-facet>
       </v-chart>
     </div>
   `,

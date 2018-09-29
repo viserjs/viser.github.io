@@ -117,7 +117,6 @@ export default class App extends React.Component {
           if (preId !== iata) {
               subFlights = this.getFlights(iata);
               flightView.changeData(subFlights);
-              console.log(subFlights);
               preId = iata;
           }
       }
@@ -141,9 +140,6 @@ export default class App extends React.Component {
 
   render() {
     const { mapDv, airports, subFlights } = this.state;
-
-    console.log('render',  mapDv, airports, subFlights );
-
     return (
       <div>
         <Chart forceFit height={400} animate={false} padding={0} scale={scale}

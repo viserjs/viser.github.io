@@ -200,8 +200,8 @@ const codeDeal = (oriCode: string, framework: string): any => {
       {
         const moduleName = code.match(/export\s*?default[\s\S]*$/gi)[0].replace(/export\s*?default\s*?class\s*?/gi, '').replace(/\{\s*?\}/, '').trim();
         code = code.replace(/export\s*?default[\s\S]*$/gi, `class ${moduleName}={}`);
-        code = code.replace(/\s*class/g, 'class')
-          .replace('#mount', 'my-app');
+        code = code.replace(/\s*class/g, 'class');
+          // .replace('#mount', 'my-app');
       }
       break;
     default:
