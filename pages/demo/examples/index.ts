@@ -809,7 +809,7 @@ const examples = {
           enName: 'peking-aqi',
           cnName: '北京市2010至2015年空气质量指数',
         },
-        {// 存在问题注释
+        {
           path: 'example50',
           enName: 'pie-multi-donuts',
           cnName: '多环图',
@@ -858,6 +858,26 @@ const examples = {
           path: 'example70',
           enName: 'veen',
           cnName: '维恩图',
+        },
+        {
+          path: 'example59',
+          enName: 'veen-hollow',
+          cnName: '空心维恩图',
+        },
+        {
+          path: 'example60',
+          enName: 'brush-ds-state',
+          cnName: 'g2-brush 结合 DataSet',
+        },
+        // {//api问题暂时注释
+        //   path: 'example61',
+        //   enName: 'brush-filter-shape',
+        //   cnName: 'g2-brush 过滤图形',
+        // },
+        {
+          path: 'example62',
+          enName: 'brush-highlight',
+          cnName: 'g2-brush 高亮图形',
         },
       ],
       icon: 'others',
