@@ -869,16 +869,16 @@ const examples = {
           enName: 'brush-ds-state',
           cnName: 'viser-brush 结合 DataSet',
         },
-        {//api问题暂时注释
+        {
           path: 'example61',
           enName: 'brush-filter-shape',
           cnName: 'viser-brush 过滤图形',
         },
         // {
-          //   path: 'example62',
-          //   enName: 'brush-highlight',
-          //   cnName: 'g2-brush 高亮图形',
-          // },
+        //   path: 'example62',
+        //   enName: 'brush-highlight',
+        //   cnName: 'viser-brush 高亮图形',
+        // },
         {
           path: 'example63',
           enName: 'pie-column',

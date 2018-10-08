@@ -11,7 +11,7 @@ style.innerHTML=`
 }
 `;
 window.document.getElementsByTagName('head')[0].appendChild(style);
-
+let chart;
 export default class App extends React.Component{
   state={
     data:[],
@@ -109,6 +109,7 @@ export default class App extends React.Component{
           <button id="clear" onClick={this.setBrushType}>清除选择</button>
         </div>
         <Chart
+          ref={node=>chart=node}
           forceFit={true}
           height={600}
           data={data}
