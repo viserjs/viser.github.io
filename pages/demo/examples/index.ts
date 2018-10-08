@@ -879,6 +879,11 @@ const examples = {
           enName: 'brush-highlight',
           cnName: 'g2-brush 高亮图形',
         },
+        {
+          path: 'example71',
+          enName: 'brush-bar',
+          cnName: 'g2-brush 柱状图',
+        },
       ],
       icon: 'others',
     },
