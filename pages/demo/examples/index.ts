@@ -884,6 +884,16 @@ const examples = {
           enName: 'brush-bar',
           cnName: 'g2-brush 柱状图',
         },
+        {
+          path: 'example72',
+          enName: 'brush-line',
+          cnName: 'g2-brush 折线图',
+        },
+        {
+          path: 'example73',
+          enName: 'brush-polygon',
+          cnName: 'g2-brush 多边形',
+        },
       ],
       icon: 'others',
     },
