@@ -15,7 +15,8 @@ window.document.getElementsByTagName('head')[0].appendChild(style);
 export default class App extends React.Component{
   state={
     data:[],
-    showTooltip:true
+    showTooltip:true,
+    type:'XY'
   }
   componentDidMount(){
     $.getJSON('/assets/data/iris.json', data=>{
@@ -77,75 +78,17 @@ export default class App extends React.Component{
       });
     }
   }
+  onBrushstart=ev=>{
+    
+  }
   setBrushType=(e) =>{
     const type=e.target.id;
-    if (!brush) {
-      brush = new Brush({
-        canvas: chart.get('canvas'),
-        dragable: true,
-        type: type,
-        onBrushstart: function onBrushstart(ev) {
-          chart.hideTooltip();
-          var x = ev.x,
-            y = ev.y;
-
-          var views = chart.getViewsByPoint({
-            x: x,
-            y: y
-          });
-          if (views.length > 1) {
-            this.chart = views[1];
-            var coord = views[1].get('coord');
-            this.plot = {
-              start: coord.start,
-              end: coord.end
-            };
-            this.xScale = views[1].getXScale();
-            this.yScale = views[1].getYScales()[0];
-          }
-        },
-        onBrushmove: function onBrushmove(ev) {
-          chart.hideTooltip();
-
-          var data = ev.data;
-
-          chart.eachShape(function(record, shape) {
-            if (!shape.get('_originAttrs')) {
-              shape.set('_originAttrs', Util.cloneDeep(shape.__attrs)); // 缓存原来的属性
-            }
-            if (data.indexOf(record) === -1) {
-              shape.attr('fill', '#ccc');
-            } else {
-              var originAttrs = shape.get('_originAttrs');
-              shape.__attrs = Util.cloneDeep(originAttrs);
-            }
-          });
-        },
-        onDragmove: function onDragmove(ev) {
-          chart.hideTooltip();
-
-          var data = ev.data;
-
-          chart.eachShape(function(record, shape) {
-            if (!shape.get('_originAttrs')) {
-              shape.set('_originAttrs', Util.cloneDeep(shape.__attrs)); // 缓存原来的属性
-            }
-            if (data.indexOf(record) === -1) {
-              shape.attr('fill', '#ccc');
-            } else {
-              var originAttrs = shape.get('_originAttrs');
-              shape.__attrs = Util.cloneDeep(originAttrs);
-            }
-          });
-        }
-      });
+    console.log(type);
+    if (type === 'clear') {
+      brush.container.clear();
+      // brush.canvas.draw();
     } else {
-      if (type === 'clear') {
-        brush.container.clear();
-        // brush.canvas.draw();
-      } else {
-        brush.setType(type);
-      }
+      this.setState({type});
     }
   }
   render(){
@@ -181,7 +124,9 @@ export default class App extends React.Component{
             eachView={this.eachView}
           />
           <Brush
-
+            dragable={true}
+            type={this.state.type}
+            onBrushstart={this.onBrushstart}
           />
         </Chart>
       </div>
