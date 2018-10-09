@@ -25,6 +25,7 @@
     "monaco-editor": "^0.10.1",
     "oui-dom-events": "^0.2.2",
     "oui-dom-utils": "^0.3.8",
+    "react-color": "^2.14.1",
     "react-redux": "^5.0.7",
     "viser": "^2.3.0",
     "viser-graph": "^0.1.7",

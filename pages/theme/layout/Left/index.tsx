@@ -16,15 +16,23 @@ colors.sort((a: any, b: any) => {
 });
 
 class App extends React.Component<any, any> {
-  public handleColorClick = (colors: string, bgColor: string) => {
-    // window.console.log(colors, bgColor);
+  public handleColorClick = (colors: string, bgColor: string,title:string,e:any) => {
+    this.props.changeCurrentField({key:'title',value:title});
   };
   public handleDownload = () => {
     downloadFile(['{cc:1}'], 'test.json', 'application/json');
   };
-
+  public handleChangeField=(e)=>{
+    const key=e.target.name;
+    const value=e.target.value;
+    this.props.changeCurrentField({key,value});
+  }
+  public handleGetColor=(color)=>{
+    console.log(color);
+  }
   render() {
-    const { pageLan, setData } = this.props;
+    const { pageLan, setData,currentTheme } = this.props;
+    console.log(currentTheme);
     return (
       <div className="theme-left theme-pannel">
         <TabSld title={getTransText('function', pageLan)} visible={true}>
@@ -64,11 +72,17 @@ class App extends React.Component<any, any> {
           <div>
             <Input
               type="text"
+              name="title"
               label={getTransText('function/themname', pageLan)}
+              value={currentTheme.title}
+              onChange={this.handleChangeField}
             />
             <Input
               type="number"
+              name="seriesNum"
               label={getTransText('function/seriesNum', pageLan)}
+              value={currentTheme.seriesNum}
+              onChange={this.handleChangeField}
             />
           </div>
           <hr />
@@ -83,32 +97,62 @@ class App extends React.Component<any, any> {
                     bgColor={color.background}
                     blockWidth={color.colors.length > 16 ? 15 : 20}
                     onClick={this.handleColorClick}
+                    title={color.name}
                   />
                 </Col>
               ))}
           </div>
         </TabSld>
         <TabSld title={getTransText('basic', pageLan)}>
-          <div>cc</div>
+          <Input
+            showColor={true}
+            label={getTransText('basic/bgColor',pageLan)}
+            completeSelect={this.handleGetColor}
+          />
+          <Input
+            label={getTransText('basic/title',pageLan)}
+            showColor={true}
+          />
+          <Input
+            label={getTransText('basic/subtitle',pageLan)}
+            showColor={true}
+          />
+          {/*这里等吧颜色数组循环出来再做*/}
+          <Input
+            label={getTransText('basic/theme',pageLan)}
+            showColor={true}
+          />
+          {/*=========*/}
+          <Input 
+            label={getTransText('basic/tag',pageLan)}
+            showColor={true}
+          />
+          <Input 
+            label={getTransText('basic/strokethick',pageLan)}
+            showColor={true}
+          />
+          <Input 
+            label={getTransText('basic/stroke',pageLan)}
+            showColor={true}
+          />
         </TabSld>
-        <TabSld title="cxfassdf" />
-        <TabSld title="cxfassdf" />
-        <TabSld title="cxfassdf" />
-        <TabSld title="cxfassdf" />
+        <TabSld title={getTransText('axis',pageLan)}></TabSld>
+        <TabSld title={getTransText('legend',pageLan)}></TabSld>
+        <TabSld title={getTransText('tooltip',pageLan)}></TabSld>
       </div>
     );
   }
 }
 
-const mapState = ({ theme: { defaultTheme, theme } }) => {
+const mapState = ({ theme: {  currentTheme } }) => {
   return {
-    theme,
-    defaultTheme,
+    currentTheme
   };
 };
-const mapDispatch = ({ theme: { setData } }) => {
+const mapDispatch = ({ theme: { setData ,changeCurrentField} }) => {
   return {
     setData,
+    changeCurrentField
   };
 };
 const Left = connect(

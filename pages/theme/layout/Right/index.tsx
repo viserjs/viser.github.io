@@ -1,47 +1,57 @@
 import * as React from 'react';
-import { Chart, Tooltip, Axis, Line, Point, Global } from 'viser-react';
+import { Chart, Tooltip,Coord, Axis,Area,Bar, Line, Point, Global,Pie } from 'viser-react';
 import { connect } from 'react-redux';
-
+import './index.scss';
 
 
 class Props {
-
+    public commonData:any=[];
 }
 class State {
-    public theme: string = 'default';
+    public theme: string = 'dark';
+    public showChart:boolean=true;
 }
 class App extends React.Component<Props & any, State> {
     public state = new State();
     public chart:any;
     static defaultProps = new Props();
     public setTheme = async (themeName: string) => {
-        await this.setState({ theme: themeName });
         Global.setTheme(this.state.theme);
     }
     public componentDidMount() {
         const self=this;
-        setInterval(()=>{
-            if(!self.chart||!self.chart.chart){
-                return;
-            }
-            self.setState({
-                theme:self.state.theme==='default'?'dark':'default'
-            },()=>{
-                const chart=self.chart.chart.chartInstance;
-                console.log(chart);
-                chart.repaint();
-            });
-        },2000)
+        
     }
     render() {
         const props = this.props;
         return <div className="theme-right  theme-pannel">
-            <Chart ref={node=>this.chart=node} forceFit height={400} data={props.commonData} theme={'dark'}>
-                <Tooltip />
-                <Axis />
-                <Line position="year*value" />
-                <Point position="year*value" shape="circle" />
-            </Chart>
+        {this.state.showChart&&(
+            <div className="chart-box">
+                <div className="chart-item">
+                    <Chart ref={node=>this.chart=node} forceFit height={300} data={props.commonData}>
+                        <Tooltip />
+                        <Axis />
+                        <Line position="week*value" color="city"/>
+                        <Point position="week*value" color="city" shape="circle" />
+                    </Chart>
+                </div>
+                <div className="chart-item">
+                    <Chart ref={node=>this.chart=node} forceFit height={300} data={props.commonData}>
+                        <Tooltip />
+                        <Axis />
+                        <Line position="week*value" color="city"/>
+                        <Area position="week*value" color="city" />
+                    </Chart>
+                </div>
+                <div>
+                    <Chart ref={node=>this.chart=node} forceFit height={300} data={props.commonData}>
+                        <Tooltip />
+                        <Axis />
+                        <Bar position="week*value" color="city" adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]}/>
+                    </Chart>
+                </div>
+            </div>
+        )}
         </div>
     }
 }
