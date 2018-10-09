@@ -82,14 +82,14 @@ export default class App extends React.Component{
     
   }
   setBrushType=(e) =>{
-    const type=e.target.id;
-    console.log(type);
-    if (type === 'clear') {
-      brush.container.clear();
-      // brush.canvas.draw();
-    } else {
-      this.setState({type});
-    }
+    // const type=e.target.id;
+    // console.log(type);
+    // if (type === 'clear') {
+    //   brush.container.clear();
+    //   // brush.canvas.draw();
+    // } else {
+    //   this.setState({type});
+    // }
   }
   render(){
     const {data,showTooltip}=this.state;

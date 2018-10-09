@@ -874,11 +874,11 @@ const examples = {
           enName: 'brush-filter-shape',
           cnName: 'viser-brush 过滤图形',
         },
-        // {
-        //   path: 'example62',
-        //   enName: 'brush-highlight',
-        //   cnName: 'viser-brush 高亮图形',
-        // },
+        {
+          path: 'example62',
+          enName: 'brush-highlight',
+          cnName: 'viser-brush 高亮图形',
+        },
         {
           path: 'example63',
           enName: 'pie-column',
