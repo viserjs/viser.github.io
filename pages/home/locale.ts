@@ -66,8 +66,18 @@ const locale = {
     },
     {
       selector: '.home-footer-copyright',
-      text: '与来自 AntV 的 <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> 深度合作<br/>本项目基于 MIT 协议发布<br />Copyright (c) 2018 Viser Group. 版权所有<br />',
+      text: `<span class="fr">与来自 AntV 的 <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> 深度合作  |  本项目基于 MIT 协议发布  |  Copyright (c) 2018 Viser Group. 版权所有</span>
+      <span class="fl">
+        更多产品：
+        <a href="https://antv.alipay.com/zh-cn/g2/3.x/api/index.html" target="_blank">G2</a>
+        <a href="https://www.yuque.com/antv/g6/api-g6" target="_blank">G6</a>
+        <a href="https://antv.alipay.com/zh-cn/f2/3.x/api/index.html" target="_blank">F2</a>
+        <a href="https://antv.alipay.com/zh-cn/vis/chart/index.html" target="_blank">图表用法</a>
+        <a href="https://antv.alipay.com/zh-cn/vis/design/color.html" target="_blank">默认配色板</a>
+      </span>
+      `,
     },
+    //<a href="" target="_blank"></a>
   ],
   en: [
     {
@@ -135,8 +145,17 @@ const locale = {
       text: 'Install Now',
     },
     {
-      selector: '.home-footer',
-      text: 'Deep cooperation with <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> from AntV.<br/>Released under the MIT License.<br />Copyright (c) 2018 Viser Group. All Rights Reserved.<br />',
+      selector: '.home-footer-copyright',
+      text: `<span class="fr">Deep cooperation with <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> from AntV. | Released under the MIT License. | Copyright (c) 2018 Viser Group. All Rights Reserved.</span>
+      <span class="fl">
+        more products：
+        <a href="https://antv.alipay.com/zh-cn/g2/3.x/api/index.html" target="_blank">G2</a>
+        <a href="https://www.yuque.com/antv/g6/api-g6" target="_blank">G6</a>
+        <a href="https://antv.alipay.com/zh-cn/f2/3.x/api/index.html" target="_blank">F2</a>
+        <a href="https://antv.alipay.com/zh-cn/vis/chart/index.html" target="_blank">The Chart Usage</a>
+        <a href="https://antv.alipay.com/zh-cn/vis/design/color.html" target="_blank">Default palette</a>
+      </span>
+      `,
     },
   ],
 };
