@@ -11,7 +11,7 @@ style.innerHTML=`
 }
 `;
 window.document.getElementsByTagName('head')[0].appendChild(style);
-let chart;
+let chart,brush;
 export default class App extends React.Component{
   state={
     data:[],
@@ -81,7 +81,9 @@ export default class App extends React.Component{
   onBrushstart=ev=>{
     
   }
-  setBrushType=(e) =>{
+  setBrushType(e){
+      console.log('brush',brush);
+      console.log('chart',chart);
     // const type=e.target.id;
     // console.log(type);
     // if (type === 'clear') {
@@ -125,6 +127,7 @@ export default class App extends React.Component{
             eachView={this.eachView}
           />
           <Brush
+          ref={node=>brush=node}
             dragable={true}
             type={this.state.type}
             onBrushstart={this.onBrushstart}
