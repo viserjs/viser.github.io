@@ -3,18 +3,18 @@ import './index.scss';
 class TabSld extends React.Component<any, any> {
     public state = {
         visible: typeof this.props.visible !== 'undefined' ? this.props.visible : false,
-        height: 0
+        height: 'auto'
     };
     public handleVisible = () => {
         this.setState({ visible: !this.state.visible });
     }
     public componentDidMount() {
-        let marHeight = 0;
-        const style = (window as any).getComputedStyle ?
-            (window as any).getComputedStyle(this.refs.wrap) :
-            (this as any).refs.wrap.currentStyle;
-        marHeight = parseFloat(style.marginTop) + parseFloat(style.marginBottom);
-        this.setState({ height: (this as any).refs.wrap.clientHeight + marHeight });
+        // let marHeight = 0;
+        // const style = (window as any).getComputedStyle ?
+        //     (window as any).getComputedStyle(this.refs.wrap) :
+        //     (this as any).refs.wrap.currentStyle;
+        // marHeight = parseFloat(style.marginTop) + parseFloat(style.marginBottom);
+        // this.setState({ height: (this as any).refs.wrap.clientHeight + marHeight });
     }
     render() {
         return <div className="tab-sld">

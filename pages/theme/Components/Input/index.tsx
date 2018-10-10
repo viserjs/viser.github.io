@@ -5,10 +5,10 @@ import {colorRGB2Hex} from '../../../common/utils';
 import './index.scss';
 
 const gloStore={
-    target:null,
-    color:'',
-    clicked:true
+    
 };
+let tempId;
+let count=0;
 const document=(window as any).document;
 if(!document.getElementById('sketchPicker-box')){
     const div=document.createElement('div');
@@ -25,8 +25,8 @@ class Sketch extends React.Component<SketchProps,SketchState>{
     public state=new SketchState();
     static defaultProps=new SketchState();
     public onChangeComplete=(color)=>{
-        gloStore.color=color.hex;
-        gloStore.clicked=false;
+        gloStore[tempId].color=color.hex;
+        gloStore[tempId].clicked=false;
     }
     render(){
         const {cfg}=this.props;
@@ -64,7 +64,7 @@ class Props{
     public completeSelect?:any;
 }
 class State{
-
+    componentId:number;
 }
 
 
@@ -73,9 +73,9 @@ class State{
     if(!gloStore||!box.innerHTML){
         return ;
     }
-    if(e.target!==gloStore.target&&!box.contains(e.target)){
+    if(e.target!==gloStore[tempId].target&&!box.contains(e.target)){
         createSketcher();
-        gloStore.target=null;
+        gloStore[tempId].target=null;
     }
 });
 
@@ -83,29 +83,41 @@ export default class Input extends React.Component<Props,State>{
     public state = new State();
     static defaultProps = new Props();
     public handleClick=(e)=>{
+        const {componentId}=this.state;
+        // console.log(componentId);
+        tempId=componentId;
         let y=e.clientY+20;
         const color=colorRGB2Hex(e.target.style.backgroundColor);
         if(y>window.innerHeight-305){
             y=e.clientY-325;
         }
-        gloStore.target=e.target;
-        gloStore.color=color;
+        gloStore[componentId].target=e.target;
+        gloStore[componentId].color=color;
         createSketcher({
             x:e.clientX-110,
             y,
-            color
+            color,
         });
     };
     public componentDidMount(){
         const self=this;
+        const timeId=count++;
+        gloStore[timeId]={
+            target:null,
+            color:'',
+            clicked:true
+        }
+        self.setState({
+            componentId:timeId
+        });
         if(self.props.completeSelect){
             setInterval(()=>{
-                if(!gloStore.clicked&&self.props.value!==gloStore.color){
-                    self.props.completeSelect(gloStore.color);
-                    gloStore.clicked=true;
+                if(!gloStore[timeId].clicked&&self.props.value!==gloStore[timeId].color){
+                    self.props.completeSelect(gloStore[timeId].color);
+                    gloStore[timeId].clicked=true;
                 }
             },100);
-        }
+        };
     }
     render(){
         const {props}=this;
@@ -114,7 +126,6 @@ export default class Input extends React.Component<Props,State>{
         (typeof props.value !== 'undefined') && (inputProp.value = props.value);
         (typeof props.type !== 'undefined') && (inputProp.type = props.type);
         (typeof props.onChange !== 'undefined') && (inputProp.onChange =(e)=>{
-            console.log('chg');
             props.onChange(e)
         });
         (typeof props.onBlur !== 'undefined') && (inputProp.onBlur = (e)=>{

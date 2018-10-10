@@ -319,3 +319,26 @@ export const colorRGB2Hex=color=>{
   const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   return hex;
 }
+export const repeatArray=(arr,num)=>{
+  /**
+   * 注意新数组和老数组间是浅层复制关系
+   * 在一个基础数组上创建一个新数组，
+   * 如果新数组长度超过原数组将循环读取原数组，知道长度达到新数组长度，
+   * 如果新数组长度小于原数组，将截取
+   */
+  if(arr.constructor.name!=='Array'){
+    return [];
+  }
+  const len=arr.length-1;
+  let count=0;
+  const result=new Array(num).join(',').split(',');
+  result.forEach((item,index)=>{
+    if(count>len){
+      count=0;
+    }
+    result[index]=arr[count];
+    count++;
+  });
+  return result;
+}
+(window as any).repeatArray=repeatArray;

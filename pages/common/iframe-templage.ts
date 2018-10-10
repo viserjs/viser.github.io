@@ -24,7 +24,7 @@ export const template = {
         <script src="/assets/pkg/babel.min.js"></script>
         <script src="/assets/pkg/viser-react.min.js"></script>
         <script src="/assets/pkg/jquery.min.js"></script>
-        <script src="/assets/pkg/viser-graph-react.min.js"></script>
+        <!--<script src="/assets/pkg/viser-graph-react.min.js"></script>-->
         <script src="/assets/pkg/lodash.core.min.js"></script>
         <script src="/assets/pkg/data-set.min.js"></script>
         <title>Document</title>
