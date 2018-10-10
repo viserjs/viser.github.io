@@ -46,8 +46,7 @@ export const template = {
     <script src="/assets/pkg/jquery.min.js"></script>
     <script src="/assets/pkg/vue.min.js"></script>
     <script src="/assets/pkg/data-set.min.js"></script>
-    <script src="/assets/pkg/viser-vue.min.js"></script>
-    <script src="/assets/pkg/viser-graph-vue.min.js"></script>
+    <script src="/assets/pkg/{scriptpkg}.min.js"></script>
     <script src="/assets/pkg/jquery.min.js"></script>
     <style type="text/css">
     * {
@@ -59,8 +58,7 @@ export const template = {
     <body>
     <div id="mount"></div>
     <script type="text/babel">
-    Vue.use(ViserVue.default);
-    Vue.use(ViserGraphVue.default);
+    Vue.use({userModule}.default);
     {variable}
     new Vue({
         el: '#mount',

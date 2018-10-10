@@ -219,6 +219,14 @@ export const combineFrameCode = (
       case 'vue':
         {
           let temp = template['vue'];
+          const pkg=getInitNav();
+          if(!pkg||pkg==='viser'){
+            temp=temp.replace(/\{scriptpkg\}/,'viser-vue')
+            .replace(/\{userModule\}/,'ViserVue');
+          }else if(pkg==='viser-graph'){
+            temp=temp.replace(/\{scriptpkg\}/,'viser-graph-vue')
+            .replace(/\{userModule\}/,'ViserGraphVue');
+          }
           Object.keys(code).map((item: any) => {
             const split = `{${item}}`;
             const tempArr = temp.split(split);
