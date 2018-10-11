@@ -13,24 +13,30 @@ class State {
 }
 class App extends React.Component<Props & any, State> {
     public state = new State();
-    public chart:any;
     static defaultProps = new Props();
-    public setTheme = async (themeName: string) => {
-        Global.setTheme(this.state.theme);
+    public componentDidMount(){
+        const {currentTheme}=this.props;
+        Global.registerTheme(currentTheme.title,{
+            ...currentTheme.theme
+        });
+        this.forceUpdate();
     }
-    public componentDidMount() {
-        const self=this;
-        
+    public componentWillReceiveProps(nextProps){
+        const {currentTheme}=nextProps;
+        Global.registerTheme(currentTheme.title,{
+            ...currentTheme.theme
+        });
+        this.forceUpdate();
     }
     render() {
         const {props} = this;
-        const {props:{currentTheme}}=this;
-        console.log(currentTheme);
+        const {currentTheme}=this.props;
+        // Global.setTheme('newTheme');
         return <div className="theme-right  theme-pannel">
         {this.state.showChart&&(
             <div className="chart-box">
                 <div className="chart-item">
-                    <Chart ref={node=>this.chart=node} forceFit height={300} data={props.commonData}>
+                    <Chart forceFit height={300} data={props.commonData} theme={currentTheme.title}>
                         <Tooltip />
                         <Axis />
                         <Line position="week*value" color="city"/>
@@ -38,7 +44,7 @@ class App extends React.Component<Props & any, State> {
                     </Chart>
                 </div>
                 <div className="chart-item">
-                    <Chart ref={node=>this.chart=node} forceFit height={300} data={props.commonData}>
+                    <Chart forceFit height={300} data={props.commonData} theme={currentTheme.title}>
                         <Tooltip />
                         <Axis />
                         <Line position="week*value" color="city"/>
@@ -46,7 +52,7 @@ class App extends React.Component<Props & any, State> {
                     </Chart>
                 </div>
                 <div>
-                    <Chart ref={node=>this.chart=node} forceFit height={300} data={props.commonData}>
+                    <Chart forceFit height={300} data={props.commonData} theme={currentTheme.title}>
                         <Tooltip />
                         <Axis />
                         <Bar position="week*value" color="city" adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]}/>
