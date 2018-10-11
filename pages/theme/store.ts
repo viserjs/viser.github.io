@@ -1,6 +1,6 @@
 import { init } from '@rematch/core';
 import * as _ from 'lodash';
-import {repeatArray} from '../common/utils';
+import {repeatArray,deepObjectMerge} from '../common/utils';
 import theme from './theme';
 
 const randNum = (): number => {
@@ -213,6 +213,12 @@ const models = {
                             colors_pie_16:repeatArray(payload.colors,16),
                         }
                     }
+                }
+            },
+            mergeConfig(state,payload){
+                return {
+                    ...state,
+                    currentTheme:deepObjectMerge(state.currentTheme,payload)
                 }
             }
         },

@@ -1,6 +1,7 @@
 import D from 'oui-dom-utils';
 import E from 'oui-dom-events';
 import * as fetch from 'cross-fetch';
+import * as _ from 'lodash';
 import { template, pkgMap } from './iframe-templage';
 
 /**
@@ -377,12 +378,45 @@ export const copyString=(str:string)=>{
   }
   return flag;
 }
-const createPromise=(el,method,arg3)=>{
+const fileClick=(el)=>{
   return new Promise(resolve=>{
-    return el[method](arg3,e=>{
+    el.click();
+    const temp=e=>{
+      el.removeEventListener('change',temp);
       return resolve(e);
-    })
+    };
+    el.addEventListener('change',temp);
   });
+};
+const fileReader=(file)=>{
+  return new Promise(resolve=>{
+    const fr=new FileReader();
+    fr.readAsText(file,'utf-8');
+    fr.onload=data=>{
+      return resolve((data as any).target.result);
+    }
+    fr.onabort=()=>{
+      return resolve(null);
+    }
+    fr.onerror=()=>{
+      return resolve(null);
+    }
+  });
+};
+const validJson=json=>{
+  if(json.constructor.name!=='Object'){
+    return false;
+  }
+  const contain=["defaultColor","plotCfg","fontFamily","defaultLegendPosition","colors","colors_16","colors_24","colors_pie","colors_pie_16","shapes","sizes","opacities","axis","label","treemapLabels","innerLabels","thetaLabels","legend","tooltip","tooltipMarker","tooltipCrosshairsRect","tooltipCrosshairsLine","shape","guide","pixelRatio"];
+  const target=Object.keys(json);
+  let flag=true;
+  for(const i in target){
+    if(contain.indexOf(target[i])<0){
+      flag=false;
+      break;
+    }
+  }
+  return flag;
 }
 export const dataFromFile=async ()=>{
   let file=(window as any).document.getElementById('file-upload-temp-container');
@@ -394,7 +428,39 @@ export const dataFromFile=async ()=>{
     (window as any).document.getElementsByTagName('body')[0].appendChild(temp);
     file=(window as any).document.getElementById('file-upload-temp-container');
   }
-  file.click();
-  await createPromise(file,'removeEventListener','change');
-  
+  const result:any=await fileClick(file);
+  const files=result.target.files;
+  // 只支持单文件上传,如果格式不是json，将退出
+  const fileName=files[0].name.split('.')[0];
+  const mime=files[0].name.split('.')[1];
+  if(mime.toLowerCase()!=='json'){
+    alert('The file\'s type only support *.json');
+    return null;
+  }
+  const data:any=await fileReader(files[0]);
+  if(!data){
+    alert(`Read ${files[0].name} error!`);
+    return null;
+  }
+  // console.log(Object.keys(JSON.parse(data)).map(item=>`"${item}"`).join(','));
+  if(!validJson(JSON.parse(data))){
+    //如果存在不属于配置的字段，将不会继续，读取的配置将与原先的配置进行合并
+    alert('The formate of file\'s data is error!!');
+    return null;
+  }
+  return {
+    seriesNum:3,
+    theme:JSON.parse(data),
+    title:fileName
+  };
+}
+
+export const deepObjectMerge=(firstObj, secondObj) =>{ // 深度合并对象
+  const FirstOBJ=_.cloneDeep(firstObj);
+  const SecondOBJ=_.cloneDeep(secondObj);
+  for (var key in SecondOBJ) {
+      FirstOBJ[key] = FirstOBJ[key] && FirstOBJ[key].toString() === "[object Object]" ?
+          deepObjectMerge(FirstOBJ[key], SecondOBJ[key]) : FirstOBJ[key] = SecondOBJ[key];
+  }
+  return FirstOBJ;
 }

@@ -92,8 +92,12 @@ class App extends React.Component<any, any> {
       },1000)
     });
   }
-  public handleUpload=()=>{
-    dataFromFile();
+  public handleUpload=async ()=>{
+    const data=await dataFromFile();
+    if(!data){
+      return;
+    }
+    this.props.mergeConfig(data);
   }
   render() {
     const { pageLan, setData,currentTheme ,changeColors} = this.props;
@@ -460,14 +464,15 @@ const mapState = ({ theme: {  currentTheme } }) => {
     currentTheme
   };
 };
-const mapDispatch = ({ theme: { setData ,changeCurrentField,setCurrentTheme,setDefaultTheme,changeColors,setColorSeries} }) => {
+const mapDispatch = ({ theme: { setData ,changeCurrentField,setCurrentTheme,setDefaultTheme,changeColors,setColorSeries,mergeConfig} }) => {
   return {
     setData,
     changeCurrentField,
     setCurrentTheme,
     setDefaultTheme,
     changeColors,
-    setColorSeries
+    setColorSeries,
+    mergeConfig
   };
 };
 const Left = connect(
