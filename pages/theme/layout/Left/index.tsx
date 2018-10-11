@@ -6,6 +6,7 @@ import Tabs from '@alife/oui-tabs';
 import TabSld from '../../Components/Tabsld';
 import Button from '../../Components/Button';
 import Input from '../../Components/Input';
+// import Select from '../../Components/Select';
 import ColorBar from '../../Components/ColorBar';
 import Col from '../../Components/Col';
 import { getTransText } from '../../translation';
@@ -78,7 +79,7 @@ class App extends React.Component<any, any> {
   render() {
     const { pageLan, setData,currentTheme ,changeColors} = this.props;
     const TabPane=Tabs.TabPane;
-    // console.log(currentTheme);
+    console.log(currentTheme);
     return (
       <div className="theme-left theme-pannel">
         <Modal
@@ -122,7 +123,7 @@ class App extends React.Component<any, any> {
             </TabPane>
           </Tabs>
         </Modal>
-        <TabSld title={getTransText('function', pageLan)} visible={true}>
+        <TabSld title={getTransText('function', pageLan)} visible={true}>{/*功能*/}
           <div className="btn-group">
             <Button
               type="dark"
@@ -181,7 +182,6 @@ class App extends React.Component<any, any> {
               onChange={this.handleChangeField}
             />
           </div>
-          <hr />
           <h5>默认方案</h5>
           <div className="clearfix">
             {colors &&
@@ -199,7 +199,14 @@ class App extends React.Component<any, any> {
               ))}
           </div>
         </TabSld>
-        <TabSld title={getTransText('basic', pageLan)}>
+        <TabSld title={getTransText('basic', pageLan)}>{/*基本配置*/}
+          <Input
+            showColor={true}
+            label={getTransText('basic/defaultColor',pageLan)}
+            completeSelect={color=>this.handleGetColor('defaultColor',color)}
+            value={currentTheme.theme.defaultColor||'#fff'}
+            onChange={e=>this.handleChangeTheme('defaultColor',e)}
+          />
           <Input
             showColor={true}
             label={getTransText('basic/bgColor',pageLan)}
@@ -207,14 +214,7 @@ class App extends React.Component<any, any> {
             value={currentTheme.theme.background||'#fff'}
             onChange={e=>this.handleChangeTheme('background',e)}
           />
-          <Input
-            label={getTransText('basic/title',pageLan)}
-            showColor={true}
-          />
-          <Input
-            label={getTransText('basic/subtitle',pageLan)}
-            showColor={true}
-          />
+          
           {/*==========*/}
           {currentTheme.theme.colors.map((color,index)=>{
             let label:any={};
@@ -237,28 +237,142 @@ class App extends React.Component<any, any> {
             />
           })}
           <div className="ctrl-btn">
-            <span className="item" onClick={()=>changeColors('increase')}>增加</span>
+            <span className="item" onClick={()=>changeColors('increase')}>{getTransText('increase',pageLan)}</span>
             {currentTheme.theme.colors.length>1&&(
-            <span className="item" onClick={()=>changeColors('decrease')}>减少</span>
+            <span className="item" onClick={()=>changeColors('decrease')}>{getTransText('decrease',pageLan)}</span>
             )}
           </div>
           {/*=========*/}
-          <Input 
-            label={getTransText('basic/tag',pageLan)}
+        </TabSld>
+        <TabSld title={getTransText('label',pageLan)}>{/*文本样式*/}
+          {/* <h5>{getTransText}</h5> */}
+          <Input
             showColor={true}
+            value={currentTheme.theme.label.textStyle.fill}
+            label={getTransText('label/fontColor',pageLan)}
+            onChange={e=>this.handleChangeTheme('label/textStyle/fill',e)}
+            completeSelect={color=>this.handleGetColor('label/textStyle/fill',color)}
           />
-          <Input 
-            label={getTransText('basic/strokethick',pageLan)}
-            showColor={true}
+          <Input
+            type="number"
+            value={currentTheme.theme.label.textStyle.fontSize}
+            label={getTransText('label/fontSize',pageLan)}
+            onChange={e=>this.handleChangeTheme('label/textStyle/fontSize',e)}
           />
-          <Input 
-            label={getTransText('basic/stroke',pageLan)}
-            showColor={true}
+          <Input
+            type="number"
+            value={currentTheme.theme.label.offset}
+            label={getTransText('label/offset',pageLan)}
+            onChange={e=>this.handleChangeTheme('label/offset',e)}
           />
         </TabSld>
-        <TabSld title={getTransText('axis',pageLan)}></TabSld>
-        <TabSld title={getTransText('legend',pageLan)}></TabSld>
-        <TabSld title={getTransText('tooltip',pageLan)}></TabSld>
+        <TabSld title={getTransText('axis',pageLan)}>{/*坐标轴*/}
+          <Input
+            showColor={true}
+            value={currentTheme.theme.axis.bottom.label.textStyle.fill}
+            label={getTransText('axis/fontColor',pageLan)}
+            onChange={e=>this.handleChangeTheme('axis/~/label/textStyle/fill',e)}
+            completeSelect={color=>this.handleGetColor('axis/~/label/textStyle/fill',color)}
+          />
+          <Input
+            type="number"
+            value={currentTheme.theme.axis.bottom.label.textStyle.fontSize}
+            label={getTransText('axis/fontSize',pageLan)}
+            onChange={e=>this.handleChangeTheme('axis/~/label/textStyle/fontSize',e)}
+          />
+          <Input
+            type="number"
+            value={currentTheme.theme.axis.bottom.label.textStyle.lineHeight}
+            label={getTransText('axis/lineHeight',pageLan)}
+            onChange={e=>this.handleChangeTheme('axis/~/label/textStyle/lineHeight',e)}
+          />
+          <Input
+            showColor={true}
+            value={currentTheme.theme.axis.bottom.line.stroke}
+            label={getTransText('axis/lineStroke',pageLan)}
+            onChange={e=>this.handleChangeTheme('axis/~/line/stroke',e)}
+            completeSelect={color=>this.handleGetColor('axis/~/line/stroke',color)}
+          />
+          <Input
+            type="number"
+            value={currentTheme.theme.axis.bottom.tickLine.lineWidth}
+            label={getTransText('axis/tickLineWidth',pageLan)}
+            onChange={e=>this.handleChangeTheme('axis/~/tickLine/lineWidth',e)}
+          />
+          <Input
+            type="number"
+            value={currentTheme.theme.axis.bottom.tickLine.length}
+            label={getTransText('axis/tickLineLength',pageLan)}
+            onChange={e=>this.handleChangeTheme('axis/~/tickLine/length',e)}
+          />
+          <Input
+            showColor={true}
+            value={currentTheme.theme.axis.bottom.tickLine.stroke}
+            label={getTransText('axis/tickLineColor',pageLan)}
+            onChange={e=>this.handleChangeTheme('axis/~/tickLine/stroke',e)}
+            completeSelect={color=>this.handleGetColor('axis/~/tickLine/stroke',color)}
+          />
+          <Input
+            showColor={true}
+            value={currentTheme.theme.axis.circle.grid.lineStyle.stroke}
+            label={getTransText('axis/gridColor',pageLan)}
+            onChange={e=>this.handleChangeTheme('axis/~/grid/lineStyle/stroke',e)}
+            completeSelect={color=>this.handleGetColor('axis/~/grid/lineStyle/stroke',color)}
+          />
+          <Input
+            type="number"
+            value={currentTheme.theme.axis.circle.grid.lineStyle.lineWidth}
+            label={getTransText('axis/girdWidth',pageLan)}
+            onChange={e=>this.handleChangeTheme('axis/~/grid/lineStyle/lineWidth',e)}
+          />
+        </TabSld>
+        <TabSld title={getTransText('legend',pageLan)}>{/*图例*/}
+          <Input
+            type="number"
+            value={currentTheme.theme.legend.bottom.height}
+            label={getTransText('legend/height',pageLan)}
+            onChange={e=>this.handleChangeTheme('legend/~/height',e)}
+          />
+          <Input
+            type="number"
+            value={currentTheme.theme.legend.bottom.itemGap}
+            label={getTransText('legend/itemGap',pageLan)}
+            onChange={e=>this.handleChangeTheme('legend/~/itemGap',e)}
+          />
+          <Input
+            type="number"
+            value={currentTheme.theme.legend.bottom.offset}
+            label={getTransText('legend/offset',pageLan)}
+            onChange={e=>this.handleChangeTheme('legend/~/offset',e)}
+          />
+          <Input
+            type="number"
+            value={currentTheme.theme.legend.bottom.textStyle.fontSize}
+            label={getTransText('legend/fontSize',pageLan)}
+            onChange={e=>this.handleChangeTheme('legend/~/textStyle/fontSize',e)}
+          />
+          <Input
+            type="number"
+            value={currentTheme.theme.legend.bottom.textStyle.lineHeight}
+            label={getTransText('legend/lineHeight',pageLan)}
+            onChange={e=>this.handleChangeTheme('legend/~/textStyle/lineHeight',e)}
+          />
+          <Input
+            showColor={true}
+            value={currentTheme.theme.legend.bottom.textStyle.fill}
+            label={getTransText('legend/fill',pageLan)}
+            onChange={e=>this.handleChangeTheme('legend/~/textStyle/fill',e)}
+            completeSelect={color=>this.handleGetColor('legend/~/textStyle/fill',color)}
+          />
+          <Input
+            showColor={true}
+            value={currentTheme.theme.legend.bottom.unCheckColor}
+            label={getTransText('legend/unCheckColor',pageLan)}
+            onChange={e=>this.handleChangeTheme('legend/~/unCheckColor',e)}
+            completeSelect={color=>this.handleGetColor('legend/~/unCheckColor',color)}
+          />
+        </TabSld>
+        <TabSld title={getTransText('tooltip',pageLan)}></TabSld>{/*提示框*/}
       </div>
     );
   }

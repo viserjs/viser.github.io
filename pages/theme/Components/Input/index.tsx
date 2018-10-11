@@ -62,6 +62,7 @@ class Props{
     public style?: any;
     public showColor?:boolean=false;
     public completeSelect?:any;
+    public placeholder?:string;
 }
 class State{
     componentId:number;
@@ -123,6 +124,7 @@ export default class Input extends React.Component<Props,State>{
         const {props}=this;
         const inputProp: any = {};
         (typeof props.name !== 'undefined') && (inputProp.name = props.name);
+        (typeof props.placeholder !== 'undefined') && (inputProp.placeholder = props.placeholder);
         (typeof props.value !== 'undefined') && (inputProp.value = props.value);
         (typeof props.type !== 'undefined') && (inputProp.type = props.type);
         (typeof props.onChange !== 'undefined') && (inputProp.onChange =(e)=>{

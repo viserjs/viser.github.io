@@ -1,4 +1,12 @@
 export const translation = {
+    increase:{
+        cn:'增加',
+        en:'Increase'
+    },
+    decrease:{
+        cn:'减少',
+        en:'Decrease'
+    },
     function: {
         cn: '功能',
         en: 'FUNCTION',
@@ -37,6 +45,10 @@ export const translation = {
         cn: '基本配置',
         en: 'BASIC OPTION',
         sub:{
+            defaultColor:{
+                cn:'默认主题色',
+                en:'Default Color'
+            },
             bgColor:{
                 cn:'背景',
                 en:'Background'
@@ -65,20 +77,101 @@ export const translation = {
                 cn:'描边',
                 en:'Stroke'
             },
+            
+        }
+    },
+    label:{
+        cn:'文本样式',
+        en:'Label',
+        sub:{
+            fontColor:{
+                cn:'文本颜色',
+                en:'Font Color'
+            },
+            fontSize:{
+                cn:'字体大小',
+                en:'Font Size'
+            },
+            offset:{
+                cn:'字体偏移量',
+                en:'Text Offset'
+            }
         }
     },
     axis:{
         cn:'坐标轴',
         en:'Axis',
         sub:{
-
+            fontColor:{
+                cn:'字体颜色',
+                en:'Font Color'
+            },
+            fontSize:{
+                cn:'字体大小',
+                en:'Font Size'
+            },
+            lineHeight:{
+                cn:'行高',
+                en:'Line Height'
+            },
+            lineStroke:{
+                cn:'坐标轴线颜色',
+                en:'Axis Line Stroke'
+            },
+            tickLineWidth:{
+                cn:'刻度线宽度',
+                en:'TickLine Width'
+            },
+            tickLineLength:{
+                cn:'刻度线长度',
+                en:'TickLine Length'
+            },
+            tickLineColor:{
+                cn:'刻度线颜色',
+                en:'TickLine Color'
+            },
+            gridColor:{
+                cn:'网格线颜色',
+                en:'Grid Color'
+            },
+            girdWidth:{
+                cn:'网格线宽度',
+                en:'Grid Width'
+            }
         }
     },
     legend:{
         cn:'图例',
         en:'Legend',
         sub:{
-
+            height:{
+                cn:'高度',
+                en:'Height'
+            },
+            itemGap:{
+                cn:'图例项间距',
+                en:'Item Gap'
+            },
+            offset:{
+                cn:'偏移量',
+                en:'Offset'
+            },
+            fontSize:{
+                cn:'字体大小',
+                en:'Font Size'
+            },
+            lineHeight:{
+                cn:'行高',
+                en:'Line Height'
+            },
+            fill:{
+                cn:'字体颜色',
+                en:'Font Color'
+            },
+            unCheckColor:{
+                cn:'未选中项颜色',
+                en:'UnCheckColor'
+            }
         }
     },
     tooltip:{
@@ -88,7 +181,7 @@ export const translation = {
 
         }
     },
-    
+
 }
 
 export const getTransText = (key: string, language: string): any => {
@@ -98,10 +191,18 @@ export const getTransText = (key: string, language: string): any => {
     }
     if (/\//g.test(key)) {
         const keys = key.split('/');
+        const len=keys.length-1;
         if (!translation[keys[0]]) {
             return null;
         }
-        return translation[keys[0]]['sub'][keys[1]][language];
+        let temp=translation;
+        keys.forEach((item,index)=>{
+            if(index>=len){
+                return temp=temp[item];
+            }
+            temp=temp[item]['sub'];
+        });
+        return temp[language];
     }
     if (!translation[key]) {
         return null;

@@ -1,4 +1,5 @@
 import { init } from '@rematch/core';
+import * as _ from 'lodash';
 import {repeatArray} from '../common/utils';
 import theme from './theme';
 
@@ -25,17 +26,17 @@ const dataCreater=(num=defaultNum):any=>{
     });
     return result;
 }
-const themes=JSON.parse(JSON.stringify(theme));
+const themes=_.cloneDeep(theme);
 const models = {
     theme: {
         state: {
             defaultTheme:{
-                theme: JSON.parse(JSON.stringify(themes)),
+                theme: _.cloneDeep(themes),
                 title:'custom',
                 seriesNum:defaultNum,
             },
             currentTheme:{
-                theme:JSON.parse(JSON.stringify(themes)),
+                theme:_.cloneDeep(themes),
                 title:'custom',
                 seriesNum:defaultNum,
             },
@@ -60,7 +61,7 @@ const models = {
                     commonData:dataCreater(defaultNum),
                     currentTheme:{
                         ...state.currentTheme,
-                        theme:JSON.parse(JSON.stringify(themes))
+                        theme:_.cloneDeep(themes)
                     }
                 }
             },
@@ -71,18 +72,58 @@ const models = {
                 */
                 // console.log(payload);
                 const paths=payload.path.split('/');
-                const theme=state.currentTheme.theme;
+                const theme=_.cloneDeep(state.currentTheme.theme);
                 // console.log(theme);
                 let temp=theme;
                 const len=paths.length;
                 let lastKey;
-                paths.forEach((path,index)=>{
-                    if(index>=len-1){
-                        return lastKey=path;
-                    }
-                    temp=temp[path];
-                });
-                temp[lastKey]=payload.value;
+                if(paths[0]==='axis'){
+                    const arr=['bottom','circle','helix','left','radius','right','top'];
+                    arr.forEach(key=>{
+                        temp=theme;
+                        paths.forEach((path,index)=>{
+                            if(index>=len-1){
+                                return lastKey=path;
+                            }
+                            if(typeof temp[path==='~'?key:path]==='undefined'||temp[path === '~' ? key : path] ===null){
+                                temp[path==='~'?key:path]={};
+                            }
+                            temp=temp[path==='~'?key:path];
+                        });
+                        temp[lastKey]=payload.value;
+                    });
+                }else if(paths[0]==='legend'){
+                    const arr=['bottom','gradient','left','right','top'];
+                    arr.forEach(key=>{
+                        temp=theme;
+                        paths.forEach((path,index)=>{
+                            if(index>=len-1){
+                                return lastKey=path;
+                            }
+                            if(typeof temp[path==='~'?key:path]==='undefined'||temp[path === '~' ? key : path] ===null){
+                                temp[path==='~'?key:path]={};
+                            }
+                            temp=temp[path==='~'?key:path];
+                        });
+                        temp[lastKey]=payload.value;
+                    });
+                }else{
+                    paths.forEach((path,index)=>{
+                        if(index>=len-1){
+                            return lastKey=path;
+                        }
+                        temp=temp[path];
+                    });
+                    temp[lastKey]=payload.value;
+                }
+                if(payload.path==='defaultColor'){
+                    //设置默认主题色后将改变所有颜色的第一颜色
+                    theme['colors'][0]=payload.value;
+                    theme['colors_16'][0]=payload.value;
+                    theme['colors_24'][0]=payload.value;
+                    theme['colors_pie'][0]=payload.value;
+                    theme['colors_pie_16'][0]=payload.value;
+                }
                 if(/colors\//.test(payload.path)){
                     theme['colors_16']=repeatArray(theme.colors.slice(),16);
                     theme['colors_24']=repeatArray(theme.colors.slice(),24);

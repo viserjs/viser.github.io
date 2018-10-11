@@ -13,6 +13,13 @@
     .tab-body{
         .tab-wrap{
             margin:15px;
+            h5{
+                color:#555555;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-top: 20px;
+                border-top: 1px solid #eee;
+            }
         }
         overflow: hidden;
         transition: all linear .35s;
