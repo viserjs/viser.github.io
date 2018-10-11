@@ -36,7 +36,7 @@ class App extends React.Component<Props & any, State> {
         {this.state.showChart&&(
             <div className="chart-box">
                 <div className="chart-item">
-                    <Chart forceFit height={300} data={props.commonData} theme={currentTheme.title}>
+                    <Chart viewId="1" forceFit height={300} data={props.commonData} theme={currentTheme.title}>
                         <Tooltip />
                         <Axis />
                         <Line position="week*value" color="city"/>
@@ -44,7 +44,7 @@ class App extends React.Component<Props & any, State> {
                     </Chart>
                 </div>
                 <div className="chart-item">
-                    <Chart forceFit height={300} data={props.commonData} theme={currentTheme.title}>
+                    <Chart viewId="2" forceFit height={300} data={props.commonData} theme={currentTheme.title}>
                         <Tooltip />
                         <Axis />
                         <Line position="week*value" color="city"/>
@@ -52,7 +52,7 @@ class App extends React.Component<Props & any, State> {
                     </Chart>
                 </div>
                 <div>
-                    <Chart forceFit height={300} data={props.commonData} theme={currentTheme.title}>
+                    <Chart viewId="3" forceFit height={300} data={props.commonData} theme={currentTheme.title}>
                         <Tooltip />
                         <Axis />
                         <Bar position="week*value" color="city" adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]}/>

@@ -407,7 +407,7 @@ const validJson=json=>{
   if(json.constructor.name!=='Object'){
     return false;
   }
-  const contain=["defaultColor","plotCfg","fontFamily","defaultLegendPosition","colors","colors_16","colors_24","colors_pie","colors_pie_16","shapes","sizes","opacities","axis","label","treemapLabels","innerLabels","thetaLabels","legend","tooltip","tooltipMarker","tooltipCrosshairsRect","tooltipCrosshairsLine","shape","guide","pixelRatio"];
+  const contain=["background","defaultColor","plotCfg","fontFamily","defaultLegendPosition","colors","colors_16","colors_24","colors_pie","colors_pie_16","shapes","sizes","opacities","axis","label","treemapLabels","innerLabels","thetaLabels","legend","tooltip","tooltipMarker","tooltipCrosshairsRect","tooltipCrosshairsLine","shape","guide","pixelRatio"];
   const target=Object.keys(json);
   let flag=true;
   for(const i in target){
@@ -455,10 +455,11 @@ export const dataFromFile=async ()=>{
   };
 }
 
-export const deepObjectMerge=(firstObj, secondObj) =>{ // 深度合并对象
-  const FirstOBJ=_.cloneDeep(firstObj);
-  const SecondOBJ=_.cloneDeep(secondObj);
+export const deepObjectMerge=(FirstOBJ, SecondOBJ) =>{ // 深度合并对象
   for (var key in SecondOBJ) {
+    if(typeof SecondOBJ[key]==='undefined'){
+      continue;
+    }
       FirstOBJ[key] = FirstOBJ[key] && FirstOBJ[key].toString() === "[object Object]" ?
           deepObjectMerge(FirstOBJ[key], SecondOBJ[key]) : FirstOBJ[key] = SecondOBJ[key];
   }

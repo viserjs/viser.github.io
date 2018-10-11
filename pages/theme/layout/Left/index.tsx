@@ -20,6 +20,10 @@ colors.sort((a: any, b: any) => {
 });
 const getString=(data:any,type:string='js'):string=>{
   const obj=_.cloneDeep(data);
+  if(!obj.background){
+    obj.background='#ffffff';
+  }
+  // console.log(obj);
   let result;
   obj.colors=repeatArray(obj.colors,8);
   try{
@@ -33,6 +37,7 @@ const getString=(data:any,type:string='js'):string=>{
   }catch(e){
     result='';
   }
+  // console.log(result);
   return result;
 }
 
@@ -102,7 +107,7 @@ class App extends React.Component<any, any> {
   render() {
     const { pageLan, setData,currentTheme ,changeColors} = this.props;
     const TabPane=Tabs.TabPane;
-    // console.log(currentTheme);
+    console.log(currentTheme);
     return (
       <div className="theme-left theme-pannel">
         <Modal
@@ -231,14 +236,14 @@ class App extends React.Component<any, any> {
             showColor={true}
             label={getTransText('basic/defaultColor',pageLan)}
             completeSelect={color=>this.handleGetColor('defaultColor',color)}
-            value={currentTheme.theme.defaultColor||'#fff'}
+            value={currentTheme.theme.defaultColor||'#ffffff'}
             onChange={e=>this.handleChangeTheme('defaultColor',e)}
           />
           <Input
             showColor={true}
             label={getTransText('basic/bgColor',pageLan)}
             completeSelect={color=>this.handleGetColor('background',color)}
-            value={currentTheme.theme.background||'#fff'}
+            value={currentTheme.theme.background||'#ffffff'}
             onChange={e=>this.handleChangeTheme('background',e)}
           />
           

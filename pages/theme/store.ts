@@ -217,9 +217,11 @@ const models = {
                 }
             },
             mergeConfig(state,payload){
+                const currentTheme=_.cloneDeep(state.currentTheme);
+                const newTheme=_.cloneDeep(payload);
                 return {
                     ...state,
-                    currentTheme:deepObjectMerge(state.currentTheme,payload)
+                    currentTheme:deepObjectMerge(currentTheme,newTheme)
                 }
             }
         },
