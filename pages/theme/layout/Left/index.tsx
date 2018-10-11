@@ -10,7 +10,7 @@ import Select from '../../Components/Select';
 import ColorBar from '../../Components/ColorBar';
 import Col from '../../Components/Col';
 import { getTransText } from '../../translation';
-import { downloadFile ,repeatArray,colorRGB2Hex,copyString} from '../../../common/utils';
+import { downloadFile ,repeatArray,colorRGB2Hex,copyString,dataFromFile} from '../../../common/utils';
 import './index.scss';
 
 // load a json contain colors
@@ -92,6 +92,9 @@ class App extends React.Component<any, any> {
       },1000)
     });
   }
+  public handleUpload=()=>{
+    dataFromFile();
+  }
   render() {
     const { pageLan, setData,currentTheme ,changeColors} = this.props;
     const TabPane=Tabs.TabPane;
@@ -155,6 +158,7 @@ class App extends React.Component<any, any> {
               type="default"
               icon="import"
               className="no-right-radius no-right-border"
+              onClick={this.handleUpload}
             >
               {getTransText('function/import', pageLan)}
             </Button>

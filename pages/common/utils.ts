@@ -347,7 +347,7 @@ export const copyString=(str:string)=>{
    * @param str:想要复制的字符串
    * @param dom:点击触发复制的dom节点
    */
-  let textarea=(window as any).document.getElementById('clipboard-box');
+  let textarea=(window as any).document.getElementById('clipboard-box-container');
   if(!textarea){
     let tempIpt=(window as any).document.createElement('textarea');
     tempIpt.style.fontSize='12pt';
@@ -362,9 +362,9 @@ export const copyString=(str:string)=>{
     tempIpt.style.left='-999px';
     tempIpt.style.top='-999px';
     tempIpt.setAttribute('readonly','');
-    tempIpt.id="clipboard-box";
+    tempIpt.id="clipboard-box-container";
     (window as any).document.getElementsByTagName('body')[0].appendChild(tempIpt);
-    textarea=(window as any).document.getElementById('clipboard-box');
+    textarea=(window as any).document.getElementById('clipboard-box-container');
   }
   textarea.value=str;
   textarea.select();
@@ -376,4 +376,25 @@ export const copyString=(str:string)=>{
     flag=false;
   }
   return flag;
+}
+const createPromise=(el,method)=>{
+  return new Promise(resolve=>{
+    return el[]
+  });
+}
+export const dataFromFile=async ()=>{
+  let file=(window as any).document.getElementById('file-upload-temp-container');
+  if(!file){
+    const temp=(window as any).document.createElement('input');
+    temp.id="file-upload-temp-container";
+    temp.type="file";
+    temp.style.display='none';
+    (window as any).document.getElementsByTagName('body')[0].appendChild(temp);
+    file=(window as any).document.getElementById('file-upload-temp-container');
+  }
+  file.click();
+  file.removeEventListener('change')
+  file.addEventListener('change',e=>{
+    console.log(e);
+  })
 }
