@@ -23,9 +23,9 @@ class App extends React.Component<Props & any, State> {
         
     }
     render() {
-        const {currentTheme}=this.props;
+        const {props} = this;
+        const {props:{currentTheme}}=this;
         console.log(currentTheme);
-        const props = this.props;
         return <div className="theme-right  theme-pannel">
         {this.state.showChart&&(
             <div className="chart-box">
