@@ -32,7 +32,7 @@ size 属性, 在图例上显示图形的大小。
 
 ### offset?: number;
 
-- 描述：数值，设置坐标轴文本 label 距离坐标轴线的距离
+- 描述：数值，图例偏移值
 
 ### offsetX?: number;
 
