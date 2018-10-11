@@ -61,7 +61,8 @@ const models = {
                     commonData:dataCreater(defaultNum),
                     currentTheme:{
                         ...state.currentTheme,
-                        theme:_.cloneDeep(themes)
+                        theme:_.cloneDeep(themes),
+                        seriesNum:defaultNum
                     }
                 }
             },
