@@ -377,9 +377,11 @@ export const copyString=(str:string)=>{
   }
   return flag;
 }
-const createPromise=(el,method)=>{
+const createPromise=(el,method,arg3)=>{
   return new Promise(resolve=>{
-    return el[]
+    return el[method](arg3,e=>{
+      return resolve(e);
+    })
   });
 }
 export const dataFromFile=async ()=>{
@@ -393,8 +395,6 @@ export const dataFromFile=async ()=>{
     file=(window as any).document.getElementById('file-upload-temp-container');
   }
   file.click();
-  file.removeEventListener('change')
-  file.addEventListener('change',e=>{
-    console.log(e);
-  })
+  await createPromise(file,'removeEventListener','change');
+  
 }
