@@ -84,6 +84,10 @@ export const translation = {
         cn:'文本样式',
         en:'Label',
         sub:{
+            defaultLabel:{
+                cn:'默认文本配置',
+                en:'Default Label'
+            },
             fontColor:{
                 cn:'文本颜色',
                 en:'Font Color'
@@ -95,6 +99,18 @@ export const translation = {
             offset:{
                 cn:'字体偏移量',
                 en:'Text Offset'
+            },
+            innerLabel:{
+                cn:'内部文本配置',
+                en:'Inner Label'
+            },
+            innerFontSize:{
+                cn:'内部字体大小',
+                en:'Inner FontSize'
+            },
+            innerFill:{
+                cn:'内部字体颜色',
+                en:'Inner FontColor'
             }
         }
     },
@@ -178,7 +194,30 @@ export const translation = {
         cn:'提示框',
         en:'Tooltip',
         sub:{
-
+            crosshairs:{
+                cn:'辅助线',
+                en:'Crosshairs'
+            },
+            offset:{
+                cn:'偏移量',
+                en:'Offset'
+            },
+            fontSize:{
+                cn:'字体大小',
+                en:'fontSize'
+            },
+            borderRadius:{
+                cn:'倒角大小',
+                en:'Border Radius'
+            },
+            lineHeight:{
+                cn:'行高',
+                en:'LineHeight'
+            },
+            color:{
+                cn:'字体颜色',
+                en:'Font Color'
+            }
         }
     },
 

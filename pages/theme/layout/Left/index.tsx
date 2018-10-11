@@ -6,11 +6,11 @@ import Tabs from '@alife/oui-tabs';
 import TabSld from '../../Components/Tabsld';
 import Button from '../../Components/Button';
 import Input from '../../Components/Input';
-// import Select from '../../Components/Select';
+import Select from '../../Components/Select';
 import ColorBar from '../../Components/ColorBar';
 import Col from '../../Components/Col';
 import { getTransText } from '../../translation';
-import { downloadFile ,repeatArray} from '../../../common/utils';
+import { downloadFile ,repeatArray,colorRGB2Hex} from '../../../common/utils';
 import './index.scss';
 
 // load a json contain colors
@@ -65,8 +65,8 @@ class App extends React.Component<any, any> {
     // console.log(path);
     this.props.setCurrentTheme({path,value:color});
   }
-  public handleChangeTheme=(path,e)=>{
-    this.props.setCurrentTheme({path,value:e.target.value});
+  public handleChangeTheme=(path,e,afterFix=null)=>{
+    this.props.setCurrentTheme({path,value:afterFix?e.target.value+afterFix:e.target.value});
   }
   public handleSetDefault=()=>{
     this.props.setDefaultTheme();
@@ -245,7 +245,7 @@ class App extends React.Component<any, any> {
           {/*=========*/}
         </TabSld>
         <TabSld title={getTransText('label',pageLan)}>{/*文本样式*/}
-          {/* <h5>{getTransText}</h5> */}
+          <h5 style={{paddingTop:0,border:'none'}}>{getTransText('label/defaultLabel',pageLan)}</h5>
           <Input
             showColor={true}
             value={currentTheme.theme.label.textStyle.fill}
@@ -264,6 +264,20 @@ class App extends React.Component<any, any> {
             value={currentTheme.theme.label.offset}
             label={getTransText('label/offset',pageLan)}
             onChange={e=>this.handleChangeTheme('label/offset',e)}
+          />
+          <h5>{getTransText('label/innerLabel',pageLan)}</h5>
+          <Input
+            type="number"
+            value={currentTheme.theme.innerLabels.textStyle.fontSize}
+            label={getTransText('label/innerFontSize',pageLan)}
+            onChange={e=>this.handleChangeTheme('innerLabels/textStyle/fontSize',e)}
+          />
+          <Input
+            showColor={true}
+            value={currentTheme.theme.innerLabels.textStyle.fill}
+            label={getTransText('label/innerFill',pageLan)}
+            onChange={e=>this.handleChangeTheme('innerLabels/textStyle/fill',e)}
+            completeSelect={color=>this.handleGetColor('innerLabels/textStyle/fill',color)}
           />
         </TabSld>
         <TabSld title={getTransText('axis',pageLan)}>{/*坐标轴*/}
@@ -372,7 +386,47 @@ class App extends React.Component<any, any> {
             completeSelect={color=>this.handleGetColor('legend/~/unCheckColor',color)}
           />
         </TabSld>
-        <TabSld title={getTransText('tooltip',pageLan)}></TabSld>{/*提示框*/}
+        <TabSld title={getTransText('tooltip',pageLan)}>{/*提示框*/}
+          <Select
+            label={getTransText('tooltip/crosshairs',pageLan)}
+            value={currentTheme.theme.tooltip.crosshairs.toString()}
+            onChange={e=>this.handleChangeTheme('tooltip/crosshairs',e)}
+          >
+              <option value="true">true</option>
+              <option value="false">false</option>
+          </Select>
+          <Input
+            type="number"
+            label={getTransText('tooltip/offset',pageLan)}
+            value={currentTheme.theme.tooltip.offset}
+            onChange={e=>this.handleChangeTheme('tooltip/offset',e)}
+          />
+          <Input
+            type="number"
+            label={getTransText('tooltip/fontSize',pageLan)}
+            value={parseFloat(currentTheme.theme.tooltip['g2-tooltip'].fontSize)}
+            onChange={e=>this.handleChangeTheme('tooltip/g2-tooltip/fontSize',e,'px')}
+          />
+          <Input
+            type="number"
+            label={getTransText('tooltip/borderRadius',pageLan)}
+            value={parseFloat(currentTheme.theme.tooltip['g2-tooltip'].borderRadius)}
+            onChange={e=>this.handleChangeTheme('tooltip/g2-tooltip/borderRadius',e,'px')}
+          />
+          <Input
+            type="number"
+            label={getTransText('tooltip/lineHeight',pageLan)}
+            value={parseFloat(currentTheme.theme.tooltip['g2-tooltip'].lineHeight)}
+            onChange={e=>this.handleChangeTheme('tooltip/g2-tooltip/lineHeight',e,'px')}
+          />
+          <Input
+            showColor={true}
+            label={getTransText('tooltip/color',pageLan)}
+            value={colorRGB2Hex(currentTheme.theme.tooltip['g2-tooltip'].color)}
+            onChange={e=>this.handleChangeTheme('tooltip/g2-tooltip/color',e)}
+            completeSelect={color=>this.handleGetColor('tooltip/g2-tooltip/color',color)}
+          />
+        </TabSld>
       </div>
     );
   }

@@ -90,7 +90,11 @@ const models = {
                             }
                             temp=temp[path==='~'?key:path];
                         });
-                        temp[lastKey]=payload.value;
+                        temp[lastKey]=payload.value==='true'?true:(
+                            payload.value==='false'?
+                            false:
+                            payload.value
+                        );
                     });
                 }else if(paths[0]==='legend'){
                     const arr=['bottom','gradient','left','right','top'];
@@ -105,7 +109,11 @@ const models = {
                             }
                             temp=temp[path==='~'?key:path];
                         });
-                        temp[lastKey]=payload.value;
+                        temp[lastKey]=payload.value==='true'?true:(
+                            payload.value==='false'?
+                            false:
+                            payload.value
+                        );
                     });
                 }else{
                     paths.forEach((path,index)=>{
@@ -114,7 +122,11 @@ const models = {
                         }
                         temp=temp[path];
                     });
-                    temp[lastKey]=payload.value;
+                    temp[lastKey]=payload.value==='true'?true:(
+                        payload.value==='false'?
+                        false:
+                        payload.value
+                    );
                 }
                 if(payload.path==='defaultColor'){
                     //设置默认主题色后将改变所有颜色的第一颜色
