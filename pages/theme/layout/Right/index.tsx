@@ -21,6 +21,7 @@ class App extends React.Component<Props & any, State> {
             ...currentTheme.theme
         });
         Global.setTheme('newTheme');
+        // 这里设置后，global已经能看到改变了，只有设置dark的时候才有效果
         console.log(Global);
         return <div className="theme-right  theme-pannel">
         {this.state.showChart&&(
