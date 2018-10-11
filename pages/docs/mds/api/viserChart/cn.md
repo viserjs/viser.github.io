@@ -10,11 +10,11 @@
 
 ### width?: number;
 
-- 描述：指定图表的宽度，默认单位为 'px'，当 forceFit: true 是宽度不生效。
+- 描述：指定图表的宽度，默认单位为 'px'，当 forceFit: true 时宽度不生效。
 
 ### animate?: boolean | object;
 
-描述：图表动画开关，默认为 true，即开启动画。
+- 描述：图表动画开关，默认为 true，即开启动画。
 
 ### forceFit?: boolean;
 
@@ -96,8 +96,8 @@ padding: [20, 'auto', 30, 'auto'] // 暂未支持
 
 ### scale
 
-类型：Object
-描述：配置数据比例尺，该配置会影响数据在图表中的展示方式。
+- 类型：Object
+- 描述：配置数据比例尺，该配置会影响数据在图表中的展示方式。
 
 # 事件
 

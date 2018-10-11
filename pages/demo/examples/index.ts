@@ -34,6 +34,21 @@ const examples = {
           enName: 'tail legend',
           cnName: '尾部跟随图例',
         },
+        {
+          path: 'example7',
+          enName: 'map label',
+          cnName: '地图label',
+        },
+        {
+          path: 'example8',
+          enName: 'scatter diagram label',
+          cnName: '散点图label',
+        },
+        {
+          path: 'example9',
+          enName: 'Rectangular tree graph label',
+          cnName: '矩形树图label',
+        },
       ],
     },
     line: {
