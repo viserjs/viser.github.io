@@ -107,7 +107,7 @@ class App extends React.Component<any, any> {
   render() {
     const { pageLan, setData,currentTheme ,changeColors} = this.props;
     const TabPane=Tabs.TabPane;
-    console.log(currentTheme);
+    // console.log(currentTheme);
     return (
       <div className="theme-left theme-pannel">
         <Modal
