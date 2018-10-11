@@ -11,7 +11,7 @@ export const ALL_PAGE_LANGUAGES = ['en', 'cn'];
 export const DEFAULT_PAGE_LANGUAGE = 'en';
 
 export const getPageLanguage = () => {
-  const pageLanguageInStore = window.localStorage.getItem('page_language');
+  const pageLanguageInStore = (window as any).localStorage.getItem('page_language');
   if (
     pageLanguageInStore &&
     ALL_PAGE_LANGUAGES.indexOf(pageLanguageInStore) !== -1
@@ -22,14 +22,14 @@ export const getPageLanguage = () => {
 };
 
 export const setPageLanguage = language => {
-  window.localStorage.setItem('page_language', language);
+  (window as any).localStorage.setItem('page_language', language);
 };
 
 export const initPageLanguage = () => {
   const pageLanguageInStore = getPageLanguage();
   if (!pageLanguageInStore) {
     // Optimise for Chinese user
-    const navigatorLanguage = window.navigator.language.toLowerCase();
+    const navigatorLanguage = (window as any).navigator.language.toLowerCase();
     if (navigatorLanguage && navigatorLanguage.indexOf('cn') !== -1) {
       setPageLanguage('cn');
     } else {
@@ -86,7 +86,7 @@ export const generateHashtag = (typeKey, folder, item?) => {
 };
 
 export const getFolderAndItem = (isDemo: boolean = true) => {
-  const hash = window.location.hash;
+  const hash = (window as any).location.hash;
   const result = hash.split('/');
   if (result.length === 0) {
     return { tempKey: '', folder: '', item: '' };
@@ -146,12 +146,12 @@ export const get = (url: any) => {
 };
 
 export const getInitNav = (): any => {
-  const selectedNav = window.localStorage.getItem('selected_nav');
+  const selectedNav = (window as any).localStorage.getItem('selected_nav');
   if (selectedNav) return selectedNav;
   return null;
 };
 export const setInitNav = (nav: string) => {
-  window.localStorage.setItem('selected_nav', nav);
+  (window as any).localStorage.setItem('selected_nav', nav);
 }
 
 const codeDeal = (oriCode: string, framework: string): any => {
@@ -341,4 +341,39 @@ export const repeatArray=(arr,num)=>{
   });
   return result;
 }
-(window as any).repeatArray=repeatArray;
+
+export const copyString=(str:string)=>{
+  /**
+   * @param str:想要复制的字符串
+   * @param dom:点击触发复制的dom节点
+   */
+  let textarea=(window as any).document.getElementById('clipboard-box');
+  if(!textarea){
+    let tempIpt=(window as any).document.createElement('textarea');
+    tempIpt.style.fontSize='12pt';
+    tempIpt.style.border='0';
+    tempIpt.style.padding='0';
+    tempIpt.style.margin='0';
+    tempIpt.style.position='absolute';
+    tempIpt.style.zIndex=-999;
+    tempIpt.style.overFlow='auto';
+    tempIpt.style.width='10px';
+    tempIpt.style.height='10px';
+    tempIpt.style.left='-999px';
+    tempIpt.style.top='-999px';
+    tempIpt.setAttribute('readonly','');
+    tempIpt.id="clipboard-box";
+    (window as any).document.getElementsByTagName('body')[0].appendChild(tempIpt);
+    textarea=(window as any).document.getElementById('clipboard-box');
+  }
+  textarea.value=str;
+  textarea.select();
+  let flag;
+  try {
+    flag= document.execCommand('copy') ? true: false;
+  } catch (err) {
+    window.console.log(err);
+    flag=false;
+  }
+  return flag;
+}

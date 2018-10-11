@@ -267,6 +267,10 @@ export const translation = {
                         en:'Read json file and use obj = JSON.parse(data) to parse json string to object;'
                     }
                 }
+            },
+            copytip:{
+                cn:'复制成功！',
+                en:'复制失败！'
             }
         }
     }

@@ -10,7 +10,7 @@ import Select from '../../Components/Select';
 import ColorBar from '../../Components/ColorBar';
 import Col from '../../Components/Col';
 import { getTransText } from '../../translation';
-import { downloadFile ,repeatArray,colorRGB2Hex} from '../../../common/utils';
+import { downloadFile ,repeatArray,colorRGB2Hex,copyString} from '../../../common/utils';
 import './index.scss';
 
 // load a json contain colors
@@ -38,7 +38,9 @@ const getString=(data:any,type:string='js'):string=>{
 
 class App extends React.Component<any, any> {
   state={
-    showModal:false
+    showModal:false,
+    jsMess:'',
+    jsonMess:''
   }
   public handleColorClick = (colors: string, bgColor: string,title:string,e:any) => {
     this.props.changeCurrentField({key:'title',value:title});
@@ -76,10 +78,24 @@ class App extends React.Component<any, any> {
       showModal:false
     });
   }
+  public handleCopy=(str:string,path:string)=>{
+    const {pageLan}=this.props;
+    const flag=copyString(str);
+    const className=flag?'success copy-tip':'error copy-tip';
+    const mess=`<span class="${className}">${getTransText('download/copytip',pageLan)}</span>`;
+    const self=this;
+    self.setState({[path]:mess},()=>{
+      setTimeout(()=>{
+        self.setState({
+          [path]:''
+        })
+      },1000)
+    });
+  }
   render() {
     const { pageLan, setData,currentTheme ,changeColors} = this.props;
     const TabPane=Tabs.TabPane;
-    console.log(currentTheme);
+    // console.log(currentTheme);
     return (
       <div className="theme-left theme-pannel">
         <Modal
@@ -101,8 +117,9 @@ class App extends React.Component<any, any> {
                 <li>{getTransText('download/js/text2',pageLan)}</li>
               </ol>
               <div>
-                <Button type="dark" size="small" className="no-right-radius no-right-border" onClick={()=>this.handleDownload(getString(currentTheme.theme,'js') , currentTheme.title, 'text/javascript' )}>{getTransText('download/download',pageLan)}</Button>
-                <Button type="default" size="small" className="no-left-radius no-left-border">{getTransText('download/copy',pageLan)}</Button>
+                <Button type="dark" size="medium" className="no-right-radius no-right-border" onClick={()=>this.handleDownload(getString(currentTheme.theme,'js') , currentTheme.title, 'text/javascript' )}>{getTransText('download/download',pageLan)}</Button>
+                <Button type="default" size="medium" className="no-left-radius no-left-border" onClick={e=>this.handleCopy(getString(currentTheme.theme,'js'),'jsMess')}>{getTransText('download/copy',pageLan)}</Button>
+                <span dangerouslySetInnerHTML={{__html:this.state.jsMess}}></span>
               </div>
               <pre className="code-display-pen">
                 {getString(currentTheme.theme,'js')}
@@ -114,8 +131,9 @@ class App extends React.Component<any, any> {
                 <li>{getTransText('download/json/text2',pageLan)}</li>
               </ol>
               <div>
-                <Button type="dark" size="small" className="no-right-radius no-right-border" onClick={()=>this.handleDownload(getString(currentTheme.theme,'json') , currentTheme.title, 'application/json' )}>{getTransText('download/download',pageLan)}</Button>
-                <Button type="default" size="small" className="no-left-radius no-left-border">{getTransText('download/copy',pageLan)}</Button>
+                <Button type="dark" size="medium" className="no-right-radius no-right-border" onClick={()=>this.handleDownload(getString(currentTheme.theme,'json') , currentTheme.title, 'application/json' )}>{getTransText('download/download',pageLan)}</Button>
+                <Button type="default" size="medium" className="no-left-radius no-left-border" onClick={e=>this.handleCopy(getString(currentTheme.theme,'json'),'jsonMess')}>{getTransText('download/copy',pageLan)}</Button>
+                <span dangerouslySetInnerHTML={{__html:this.state.jsonMess}}></span>
               </div>
               <pre className="code-display-pen">
                 {getString(currentTheme.theme,'json')}
@@ -144,6 +162,7 @@ class App extends React.Component<any, any> {
               type="default"
               icon="export"
               className="no-left-radius"
+              onClick={()=>this.handleDownload(getString(currentTheme.theme,'json') , currentTheme.title, 'application/json' )}
             >
               {getTransText('function/export', pageLan)}
             </Button>

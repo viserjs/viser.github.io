@@ -1,3 +1,22 @@
+@mixin keyframes($a) {
+    @-webkit-keyframes #{$a} {
+    @content;
+    }
+    @-moz-keyframes #{$a} {
+    @content;
+    }
+    @keyframes #{$a} {
+    @content;
+    }
+}
+@include keyframes(fadeWave) {
+    0% {
+        opacity: 1;
+    }   
+    100% {
+        opacity: 0;
+    }
+}  
 .theme-left{
     hr{
         margin-top: 20px;
@@ -48,7 +67,19 @@
         margin-inline-end: 0px;
         padding-inline-start: 40px;
     }
+    .copy-tip{
+        margin-left: 20px;
+        font-size: 12px;
+        animation: fadeWave ease 1s forwards;
+        &.success{
+            color:#2b821d;
+        }
+        &.error{
+            color:#f00;
+        }
+    }
 }
+
 .code-display-pen{
     max-height:300px;
     overflow: auto;
