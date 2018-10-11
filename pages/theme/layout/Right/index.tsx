@@ -23,6 +23,8 @@ class App extends React.Component<Props & any, State> {
         
     }
     render() {
+        const {currentTheme}=this.props;
+        console.log(currentTheme);
         const props = this.props;
         return <div className="theme-right  theme-pannel">
         {this.state.showChart&&(
@@ -56,9 +58,9 @@ class App extends React.Component<Props & any, State> {
     }
 }
 
-const mapState = ({ theme: { defaultTheme, commonData } }) => {
+const mapState = ({ theme: { currentTheme, commonData } }) => {
     return {
-        defaultTheme,
+        currentTheme,
         commonData
     }
 }
