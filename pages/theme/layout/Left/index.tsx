@@ -84,38 +84,38 @@ class App extends React.Component<any, any> {
       <div className="theme-left theme-pannel">
         <Modal
           visible={this.state.showModal}
-          title="主题下载"
+          title={getTransText('download',pageLan)}
           width={900}
           footer={
-            <Button type="default" onClick={this.handleCancel}>关闭</Button>
+            <Button type="default" onClick={this.handleCancel}>{getTransText('download/close',pageLan)}</Button>
           }
           onCancel={this.handleCancel}
         >
-          <p>下载主题并引入后，可以在Viser中使用该主题</p>
+          <p>{getTransText('download/titText',pageLan)}</p>
           <Tabs
             defaultActiveKey="1"
           >
-            <TabPane tab="JS 版本" key="1">
+            <TabPane tab={getTransText('download/js',pageLan)} key="1">
               <ol>
-                <li>下载或复制以下的主题保存至 *.js 文件;</li>
-                <li>将该文件在在组件中引用</li>
+                <li>{getTransText('download/js/text1',pageLan)}</li>
+                <li>{getTransText('download/js/text2',pageLan)}</li>
               </ol>
               <div>
-                <Button type="dark" size="small" className="no-right-radius no-right-border" onClick={()=>this.handleDownload(getString(currentTheme.theme,'js') , currentTheme.title, 'text/javascript' )}>下载</Button>
-                <Button type="default" size="small" className="no-left-radius no-left-border">复制</Button>
+                <Button type="dark" size="small" className="no-right-radius no-right-border" onClick={()=>this.handleDownload(getString(currentTheme.theme,'js') , currentTheme.title, 'text/javascript' )}>{getTransText('download/download',pageLan)}</Button>
+                <Button type="default" size="small" className="no-left-radius no-left-border">{getTransText('download/copy',pageLan)}</Button>
               </div>
               <pre className="code-display-pen">
                 {getString(currentTheme.theme,'js')}
               </pre>
             </TabPane>
-            <TabPane tab="JSON 版本" key="2">
+            <TabPane tab={getTransText('download/json',pageLan)} key="2">
               <ol>
-                <li>下载或复制以下的主题保存至 *.json 文件;</li>
-                <li>读取该 JSON 文件，并使用 obj = JSON.parse(data) 将其转换成对象；</li>
+                <li>{getTransText('download/json/text1',pageLan)}</li>
+                <li>{getTransText('download/json/text2',pageLan)}</li>
               </ol>
               <div>
-                <Button type="dark" size="small" className="no-right-radius no-right-border" onClick={()=>this.handleDownload(getString(currentTheme.theme,'json') , currentTheme.title, 'application/json' )}>下载</Button>
-                <Button type="default" size="small" className="no-left-radius no-left-border">复制</Button>
+                <Button type="dark" size="small" className="no-right-radius no-right-border" onClick={()=>this.handleDownload(getString(currentTheme.theme,'json') , currentTheme.title, 'application/json' )}>{getTransText('download/download',pageLan)}</Button>
+                <Button type="default" size="small" className="no-left-radius no-left-border">{getTransText('download/copy',pageLan)}</Button>
               </div>
               <pre className="code-display-pen">
                 {getString(currentTheme.theme,'json')}

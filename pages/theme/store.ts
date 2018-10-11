@@ -137,6 +137,7 @@ const models = {
                     theme['colors_pie_16'][0]=payload.value;
                 }
                 if(/colors\//.test(payload.path)){
+                    theme['defaultColor']=theme.colors[0];
                     theme['colors_16']=repeatArray(theme.colors.slice(),16);
                     theme['colors_24']=repeatArray(theme.colors.slice(),24);
                     theme['colors_pie']=repeatArray(theme.colors.slice(),8);
@@ -204,7 +205,12 @@ const models = {
                         theme:{
                             ...state.currentTheme.theme,
                             colors:payload.colors||[],
-                            background:payload.background||'#ffffff'
+                            background:payload.background||'#ffffff',
+                            defaultColor:payload.colors[0],
+                            colors_16:repeatArray(payload.colors,16),
+                            colors_24:repeatArray(payload.colors,24),
+                            colors_pie:repeatArray(payload.colors,8),
+                            colors_pie_16:repeatArray(payload.colors,16),
                         }
                     }
                 }

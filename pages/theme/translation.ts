@@ -220,7 +220,56 @@ export const translation = {
             }
         }
     },
-
+    download:{
+        cn:'主题下载',
+        en:'Theme Download',
+        sub:{
+            titText:{
+                cn:'下载主题并引入后，可以在Viser中使用该主题',
+                en:'Download theme and import it,you can use theme in Viser'
+            },
+            download:{
+                cn:'下载',
+                en:'Download'
+            },
+            copy:{
+                cn:'复制',
+                en:'Copy'
+            },
+            close:{
+                cn:'关闭',
+                en:'Close'
+            },
+            js:{
+                cn:'JS 版本',
+                en:'JS Version',
+                sub:{
+                    text1:{
+                        cn:'下载或复制以下的主题保存至 *.js 文件;',
+                        en:'Download or copy theme text and save as *.js file;'
+                    },
+                    text2:{
+                        cn:'将该文件在在组件中引用',
+                        en:'Import this file in your project;'
+                    }
+                }
+            },
+            json:{
+                cn:'JSON 版本',
+                en:'JSON Version',
+                sub:{
+                    text1:{
+                        cn:'下载或复制以下的主题保存至 *.json 文件;',
+                        en:'Download or copy json text save as *.json file;'
+                    },
+                    text2:{
+                        cn:'读取该 JSON 文件，并使用 obj = JSON.parse(data) 将其转换成对象;',
+                        en:'Read json file and use obj = JSON.parse(data) to parse json string to object;'
+                    }
+                }
+            }
+        }
+    }
 }
 
 export const getTransText = (key: string, language: string): any => {
