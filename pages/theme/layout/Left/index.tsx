@@ -57,13 +57,16 @@ class App extends React.Component<any, any> {
     showModal: false,
     jsMess: '',
     jsonMess: '',
+    selectedId: ''
   };
   public handleColorClick = (
     colors: string,
     bgColor: string,
     title: string,
+    selectedId: any,
     e: any,
   ) => {
+    this.setState({ selectedId });
     this.props.changeCurrentField({ key: 'title', value: title });
     this.props.setColorSeries({
       colors,
@@ -165,7 +168,7 @@ class App extends React.Component<any, any> {
                   {getTransText('download/download', pageLan)}
                 </Button>
                 <Button
-                size="small"
+                  size="small"
                   onClick={e =>
                     this.handleCopy(
                       getString(currentTheme.theme, 'js'),
@@ -188,7 +191,7 @@ class App extends React.Component<any, any> {
               </ol>
               <div>
                 <Button
-                size="small"
+                  size="small"
                   type="primary"
                   onClick={() =>
                     this.handleDownload(
@@ -201,7 +204,7 @@ class App extends React.Component<any, any> {
                   {getTransText('download/download', pageLan)}
                 </Button>
                 <Button
-                size="small"
+                  size="small"
                   onClick={e =>
                     this.handleCopy(
                       getString(currentTheme.theme, 'json'),
@@ -229,7 +232,7 @@ class App extends React.Component<any, any> {
               className="mr-12"
               onClick={this.handleShowModal}
             >
-              <Icon type="download"/>
+              <Icon type="download" />
               {getTransText('function/download', pageLan)}
             </Button>
             <Button
@@ -247,7 +250,7 @@ class App extends React.Component<any, any> {
                 )
               }
             >
-            <Icon type="fbi-zhuanrang" />
+              <Icon type="fbi-zhuanrang" />
               {getTransText('function/export', pageLan)}
             </Button>
           </div>
@@ -288,6 +291,8 @@ class App extends React.Component<any, any> {
               colors.map((color: any, key: number) => (
                 <Col span={color.colors.length > 8 ? 24 : 12} key={key}>
                   <ColorBar
+                    colorId={key}
+                    selectedId={this.state.selectedId}
                     colors={color.colors}
                     bgColor={color.background}
                     blockWidth={color.colors.length > 16 ? 15 : 20}
@@ -311,7 +316,7 @@ class App extends React.Component<any, any> {
             showColor={true}
             label={getTransText('basic/bgColor', pageLan)}
             completeSelect={color => this.handleGetColor('background/fill', color)}
-            value={(currentTheme.theme.background&&currentTheme.theme.background.fill) || '#ffffff'}
+            value={(currentTheme.theme.background && currentTheme.theme.background.fill) || '#ffffff'}
             onChange={e => this.handleChangeTheme('background/fill', e)}
           />
 
