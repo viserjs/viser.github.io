@@ -15,13 +15,14 @@
             float: left;
             width: 25%;
             overflow-y: scroll;
+            border-right: 1px solid #eee;
         }
 
         &.theme-right {
             float: left;
             width: 75%;
             padding: 20px;
-            overflow-y:auto;
+            overflow-y: auto;
         }
     }
 }
