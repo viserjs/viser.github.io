@@ -9,18 +9,20 @@ const randNum = (): number => {
 };
 const defaultNum = 3;
 const dataCreater = (num = defaultNum): any => {
-  const weeks = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+  const weeks = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   if (num.constructor.name !== 'Number' && num <= 0) {
     return [];
   }
   const arr = new Array(num).join(',').split(',');
   const result = [];
+  let count=0;
   weeks.forEach(week => {
     arr.forEach((item, index) => {
       result.push({
         week: week,
         value: randNum(),
         city: 'area' + index,
+        id:count++
       });
     });
   });
@@ -56,6 +58,7 @@ const models = {
       },
       setDefaultTheme(state) {
         // console.log(state.defaultTheme);
+        // console.log(themes);
         return {
           ...state,
           commonData: dataCreater(defaultNum),
@@ -136,6 +139,9 @@ const models = {
           paths.forEach((path, index) => {
             if (index >= len - 1) {
               return (lastKey = path);
+            }
+            if(typeof temp[path]==='undefined'){
+              temp[path]={};
             }
             temp = temp[path];
           });

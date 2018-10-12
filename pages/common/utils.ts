@@ -327,7 +327,7 @@ export const repeatArray=(arr,num)=>{
    * 如果新数组长度超过原数组将循环读取原数组，知道长度达到新数组长度，
    * 如果新数组长度小于原数组，将截取
    */
-  if(arr.constructor.name!=='Array'){
+  if(!arr||arr.constructor.name!=='Array'){
     return [];
   }
   const len=arr.length-1;

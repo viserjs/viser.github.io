@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'btn-ico';
-    /* project id 807564 */
-    src: url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.eot');
-    src: url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.eot?#iefix') format('embedded-opentype'),
-        url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.woff') format('woff'),
-        url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.ttf') format('truetype'),
-        url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.svg#iconfont') format('svg');
+    /* project id 870363 */
+    src: url('//at.alicdn.com/t/font_870363_kp22h30w2el.eot');
+  src: url('//at.alicdn.com/t/font_870363_kp22h30w2el.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_870363_kp22h30w2el.woff') format('woff'),
+  url('//at.alicdn.com/t/font_870363_kp22h30w2el.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_870363_kp22h30w2el.svg#iconfont') format('svg');
 }
 
 .viser-custom-btn {
@@ -21,7 +21,6 @@
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857;
-    border-radius: 4px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -56,26 +55,22 @@
     &.default {
         color: #333;
         background-color: #fff;
-        border-color: #ccc;
+        border-color: #dadada;
 
-        &:hover,
-        &:focus,
-        &:active {
-            border-color: #ddd;
-            background-color: #eee;
+        &:hover{
+            border-color: #33a0fe;
+            color:#33a0fe;
         }
     }
 
     &.dark {
         color: #fff;
-        border-color: #314866;
-        background-color: #3a5477;
+        border-color: #0088fe;
+        background-color: #0088fe;
 
-        &:hover,
-        &:focus,
-        &:active {
-            border-color: #3a5477;
-            background-color: #4a6d9a;
+        &:hover {
+            border-color: #33a0fe;
+            background-color: #33a0fe;
         }
     }
 

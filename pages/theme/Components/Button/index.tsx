@@ -2,13 +2,13 @@ import * as React from 'react';
 import './index.scss';
 
 const icons = {
-  reset: '&#xe614;',
-  import: '&#xe635;',
-  export: '&#xe634;',
-  download: '&#xe60e;',
-  refresh: '&#xe62e;',
-  copy: '&#xe632;',
-  arrow: '&#xe645;',
+  reset: '&#xe611;',
+  import: '&#xe601;',
+  export: '&#xe600;',
+  download: '&#xe712;',
+  refresh: '&#xe602;',
+  copy: '&#xe765;',
+  arrow: '&#xe65c;',
 };
 interface IProps {
   type?: string;

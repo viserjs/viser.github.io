@@ -6,7 +6,7 @@ import Tabs from '@alife/oui-tabs';
 import TabSld from '../../Components/Tabsld';
 import Button from '../../Components/Button';
 import Input from '../../Components/Input';
-import Select from '../../Components/Select';
+// import Select from '../../Components/Select';
 import ColorBar from '../../Components/ColorBar';
 import Col from '../../Components/Col';
 import { getTransText } from '../../translation';
@@ -323,9 +323,9 @@ class App extends React.Component<any, any> {
           <Input
             showColor={true}
             label={getTransText('basic/bgColor', pageLan)}
-            completeSelect={color => this.handleGetColor('background', color)}
-            value={currentTheme.theme.background || '#ffffff'}
-            onChange={e => this.handleChangeTheme('background', e)}
+            completeSelect={color => this.handleGetColor('background/fill', color)}
+            value={(currentTheme.theme.background&&currentTheme.theme.background.fill) || '#ffffff'}
+            onChange={e => this.handleChangeTheme('background/fill', e)}
           />
 
           {/*==========*/}
@@ -387,12 +387,12 @@ class App extends React.Component<any, any> {
               this.handleChangeTheme('label/textStyle/fontSize', e)
             }
           />
-          <Input
+          {/* <Input
             type="number"
             value={currentTheme.theme.label.offset}
             label={getTransText('label/offset', pageLan)}
             onChange={e => this.handleChangeTheme('label/offset', e)}
-          />
+          /> */}
           <h5>{getTransText('label/innerLabel', pageLan)}</h5>
           <Input
             type="number"
@@ -435,14 +435,14 @@ class App extends React.Component<any, any> {
               this.handleChangeTheme('axis/~/label/textStyle/fontSize', e)
             }
           />
-          <Input
+          {/* <Input
             type="number"
             value={currentTheme.theme.axis.bottom.label.textStyle.lineHeight}
             label={getTransText('axis/lineHeight', pageLan)}
             onChange={e =>
               this.handleChangeTheme('axis/~/label/textStyle/lineHeight', e)
             }
-          />
+          /> */}
           <Input
             showColor={true}
             value={currentTheme.theme.axis.bottom.line.stroke}
@@ -497,24 +497,24 @@ class App extends React.Component<any, any> {
         </TabSld>
         <TabSld title={getTransText('legend', pageLan)}>
           {/*图例*/}
-          <Input
+          {/* <Input
             type="number"
             value={currentTheme.theme.legend.bottom.height}
             label={getTransText('legend/height', pageLan)}
             onChange={e => this.handleChangeTheme('legend/~/height', e)}
-          />
-          <Input
+          /> */}
+          {/* <Input
             type="number"
             value={currentTheme.theme.legend.bottom.itemGap}
             label={getTransText('legend/itemGap', pageLan)}
             onChange={e => this.handleChangeTheme('legend/~/itemGap', e)}
-          />
-          <Input
+          /> */}
+          {/* <Input
             type="number"
             value={currentTheme.theme.legend.bottom.offset}
             label={getTransText('legend/offset', pageLan)}
             onChange={e => this.handleChangeTheme('legend/~/offset', e)}
-          />
+          /> */}
           <Input
             type="number"
             value={currentTheme.theme.legend.bottom.textStyle.fontSize}
@@ -523,14 +523,14 @@ class App extends React.Component<any, any> {
               this.handleChangeTheme('legend/~/textStyle/fontSize', e)
             }
           />
-          <Input
+          {/* <Input
             type="number"
             value={currentTheme.theme.legend.bottom.textStyle.lineHeight}
             label={getTransText('legend/lineHeight', pageLan)}
             onChange={e =>
               this.handleChangeTheme('legend/~/textStyle/lineHeight', e)
             }
-          />
+          /> */}
           <Input
             showColor={true}
             value={currentTheme.theme.legend.bottom.textStyle.fill}
@@ -552,20 +552,20 @@ class App extends React.Component<any, any> {
         </TabSld>
         <TabSld title={getTransText('tooltip', pageLan)}>
           {/*提示框*/}
-          <Select
+          {/* <Select
             label={getTransText('tooltip/crosshairs', pageLan)}
             value={currentTheme.theme.tooltip.crosshairs.toString()}
             onChange={e => this.handleChangeTheme('tooltip/crosshairs', e)}
           >
             <option value="true">true</option>
             <option value="false">false</option>
-          </Select>
-          <Input
+          </Select> */}
+          {/* <Input
             type="number"
             label={getTransText('tooltip/offset', pageLan)}
             value={currentTheme.theme.tooltip.offset}
             onChange={e => this.handleChangeTheme('tooltip/offset', e)}
-          />
+          /> */}
           <Input
             type="number"
             label={getTransText('tooltip/fontSize', pageLan)}
@@ -586,7 +586,7 @@ class App extends React.Component<any, any> {
               this.handleChangeTheme('tooltip/g2-tooltip/borderRadius', e, 'px')
             }
           />
-          <Input
+          {/* <Input
             type="number"
             label={getTransText('tooltip/lineHeight', pageLan)}
             value={parseFloat(
@@ -595,7 +595,7 @@ class App extends React.Component<any, any> {
             onChange={e =>
               this.handleChangeTheme('tooltip/g2-tooltip/lineHeight', e, 'px')
             }
-          />
+          /> */}
           <Input
             showColor={true}
             label={getTransText('tooltip/color', pageLan)}

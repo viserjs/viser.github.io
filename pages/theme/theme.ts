@@ -103,6 +103,9 @@ const LEGEND_LIST_ITEM_CLASS = 'g2-legend-list-item';
 const LEGEND_MARKER_CLASS = 'g2-legend-marker';
 
 const Theme = {
+  background:{
+    fill:'#ffffff'
+  },
   defaultColor: DEFAULT_COLOR, // 默认主题色
   plotCfg: {
     padding: [20, 20, 95, 80],
@@ -159,6 +162,14 @@ const Theme = {
         length: 4,
         alignWithLabel: true,
       },
+      grid: {
+        zIndex: -1,
+        lineStyle: {
+          stroke: '#E9E9E9',
+          lineWidth: 1,
+        },
+        hideFirstLine: true,
+      },
     },
     bottom: {
       position: 'bottom',
@@ -184,6 +195,14 @@ const Theme = {
         length: 4,
         alignWithLabel: true,
       },
+      grid: {
+        zIndex: -1,
+        lineStyle: {
+          stroke: '#E9E9E9',
+          lineWidth: 1,
+        },
+        hideFirstLine: true,
+      },
     },
     left: {
       position: 'left',
@@ -199,14 +218,21 @@ const Theme = {
           fontFamily: FONT_FAMILY,
         },
       },
-      line: null,
-      tickLine: null,
+      line: {
+        lineWidth: 1,
+        stroke: '#BFBFBF',
+      },
+      tickLine: {
+        lineWidth: 1,
+        stroke: '#BFBFBF',
+        length: 4,
+        alignWithLabel: true,
+      },
       grid: {
         zIndex: -1,
         lineStyle: {
           stroke: '#E9E9E9',
           lineWidth: 1,
-          lineDash: [3, 3],
         },
         hideFirstLine: true,
       },
@@ -225,13 +251,20 @@ const Theme = {
           fontFamily: FONT_FAMILY,
         },
       },
-      line: null,
-      tickLine: null,
+      line: {
+        lineWidth: 1,
+        stroke: '#BFBFBF',
+      },
+      tickLine: {
+        lineWidth: 1,
+        stroke: '#BFBFBF',
+        length: 4,
+        alignWithLabel: true,
+      },
       grid: {
         lineStyle: {
           stroke: '#E9E9E9',
           lineWidth: 1,
-          lineDash: [3, 3],
         },
         hideFirstLine: true,
       },
@@ -299,7 +332,6 @@ const Theme = {
       },
     },
     helix: {
-      grid: null,
       label: null,
       title: null,
       line: {
@@ -311,6 +343,13 @@ const Theme = {
         length: 4,
         stroke: '#BFBFBF',
         alignWithLabel: true,
+      },
+      grid: {
+        lineStyle: {
+          stroke: '#E9E9E9',
+          lineWidth: 1,
+        },
+        type: 'circle',
       },
     },
   },

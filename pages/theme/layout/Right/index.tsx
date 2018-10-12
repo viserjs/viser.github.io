@@ -8,6 +8,9 @@ import {
   Area,
   Bar,
   Global,
+  Legend,
+  Pie,
+  Coord
 } from 'viser-react';
 import { connect } from 'react-redux';
 import './index.scss';
@@ -35,27 +38,47 @@ class App extends React.Component<Props & any, State> {
           <div className="chart-item">
             <Chart viewId="1" forceFit height={300} data={commonData}>
               <Tooltip />
-              <Axis />
+              <Axis title={{text:'cc'}}/>
               <Line position="week*value" color="city" />
+              <Legend dataKey="city"/>
               <Point position="week*value" color="city" shape="circle" />
             </Chart>
-          </div>
-          <div className="chart-item">
             <Chart viewId="2" forceFit height={300} data={commonData}>
-              <Tooltip />
               <Axis />
+              <Tooltip />
+              <Legend dataKey="city"/>
               <Line position="week*value" color="city" />
               <Area position="week*value" color="city" />
             </Chart>
           </div>
-          <div>
-            <Chart viewId="3" forceFit height={300} data={commonData}>
+          <div className="chart-item">
+            <Chart viewId="3" forceFit height={600} data={commonData}>
               <Tooltip />
+              <Coord type="theta"/>
               <Axis />
+              <Legend dataKey="week"/>
+              <Pie
+                position="value"
+                color="id"
+                label={['value', {
+                  formatter: val=>val,
+                  offset:-40
+                }]}
+              />
+            </Chart>
+          </div>
+          <div>
+          <Chart viewId="4" forceFit height={300} data={commonData}>
+              <Axis />
+              <Tooltip />
+              <Legend dataKey="city"/>
               <Bar
                 position="week*value"
                 color="city"
                 adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]}
+                label={['value',{
+                  formatter:val=>val
+                }]}
               />
             </Chart>
           </div>
