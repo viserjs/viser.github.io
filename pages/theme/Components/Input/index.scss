@@ -1,30 +1,65 @@
-.custom-input-wrap{
+.custom-input-wrap {
     margin-bottom: 15px;
-    &::after{
+
+    &::after {
         display: block;
         content: '';
-        height:0;
-        width:100%;
+        height: 0;
+        width: 100%;
         visibility: hidden;
         clear: both;
     }
-    .input-label{
+
+    .input-label {
         float: left;
-        width:25%;
+        width: 25%;
         text-align: right;
         padding-top: 7px;
         font-size: 14px;
         box-sizing: border-box;
     }
-    .input-item{
+
+    .input-item {
         box-sizing: border-box;
         position: relative;
-        padding:0 15px;
-        &.right{
-            float:right;
-            width:75%;
+        padding: 0 15px;
+
+        &.right {
+            float: right;
+            width: 75%;
         }
-        input{
+
+        .color-block {
+            display: block;
+            position: absolute;
+            height: 34px;
+            width: 34px;
+            top: 0;
+            right: 15px;
+            border: 1px solid #eee;
+            background: #fff;
+            box-sizing: border-box;
+
+            i {
+                display: block;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                box-sizing: border-box;
+                border: 1px solid #eee;
+                top: 50%;
+                left: 50%;
+                margin-top: -10px;
+                margin-left: -10px;
+                cursor: pointer;
+            }
+
+            &:hover {
+                border-color: #ddd;
+            }
+        }
+
+        input {
             display: block;
             width: 100%;
             height: 34px;
@@ -35,14 +70,36 @@
             background-color: #fff;
             background-image: none;
             border: 1px solid #ccc;
-            transition: border-color ease-in-out 0.15s,box-shadow ease-in-out 0.15s;
+            transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
             border-color: #eee;
             box-shadow: none;
             border-radius: 0;
-            &:hover,&:active,&:focus{
-                border-color:#ddd;
+
+            &:hover,
+            &:active,
+            &:focus {
+                border-color: #ddd;
                 outline: none;
             }
+
+            &.color-ipt {
+                padding-right: 34px;
+            }
         }
+    }
+}
+
+#sketchPicker-box {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+
+    .sketch-Box {
+        position: fixed;
+        top: 0;
+        left: 0;
     }
 }

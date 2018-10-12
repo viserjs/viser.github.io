@@ -1,4 +1,4 @@
-.theme-color-bar{
+.theme-color-bar {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
@@ -14,12 +14,14 @@
     margin-bottom: 8px;
     box-sizing: border-box;
     cursor: pointer;
-    .color-block{
+
+    .color-block {
         width: 20px;
         height: 20px;
         margin-left: 2px;
         margin-right: 2px;
         display: inline-block;
         border-radius: 3px;
+        margin-bottom: 10px;
     }
 }

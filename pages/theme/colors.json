@@ -1,5 +1,4 @@
-[
-    {
+[{
         "colors": [
             "#d87c7c",
             "#919e8b",
@@ -12,7 +11,8 @@
             "#724e58",
             "#4b565b"
         ],
-        "background": "#fef8ef"
+        "background": "#fef8ef",
+        "name": "vintage"
     },
     {
         "colors": [
@@ -28,7 +28,8 @@
             "#91ca8c",
             "#f49f42"
         ],
-        "background": "#333333"
+        "background": "#333333",
+        "name": "dark-theme"
     },
     {
         "colors": [
@@ -39,7 +40,8 @@
             "#a5e7f0",
             "#cbb0e3"
         ],
-        "background": ""
+        "background": "",
+        "name": "westeros"
     },
     {
         "colors": [
@@ -50,7 +52,8 @@
             "#f2d643",
             "#ebdba4"
         ],
-        "background": ""
+        "background": "",
+        "name": "essos"
     },
     {
         "colors": [
@@ -61,7 +64,8 @@
             "#f58db2",
             "#f2b3c9"
         ],
-        "background": ""
+        "background": "",
+        "name": "wonderland"
     },
     {
         "colors": [
@@ -72,7 +76,8 @@
             "#c4ebad",
             "#96dee8"
         ],
-        "background": ""
+        "background": "",
+        "name": "walden"
     },
     {
         "colors": [
@@ -85,7 +90,8 @@
             "#d2f5a6",
             "#76f2f2"
         ],
-        "background": "#293441"
+        "background": "#293441",
+        "name": "chalk"
     },
     {
         "colors": [
@@ -105,7 +111,8 @@
             "#f0805a",
             "#26c0c0"
         ],
-        "background": ""
+        "background": "",
+        "name": "infographic"
     },
     {
         "colors": [
@@ -130,7 +137,8 @@
             "#6f5553",
             "#c14089"
         ],
-        "background": ""
+        "background": "",
+        "name": "macarons"
     },
     {
         "colors": [
@@ -155,7 +163,8 @@
             "#d5b158",
             "#38b6b6"
         ],
-        "background": ""
+        "background": "",
+        "name": "roma"
     },
     {
         "colors": [
@@ -168,7 +177,8 @@
             "#cda819",
             "#32a487"
         ],
-        "background": ""
+        "background": "",
+        "name": "shine"
     },
     {
         "colors": [
@@ -179,7 +189,8 @@
             "#cc70af",
             "#7cb4cc"
         ],
-        "background": "#5b5c6e"
+        "background": "#5b5c6e",
+        "name": "purple-passion"
     },
     {
         "colors": [
@@ -189,6 +200,7 @@
             "#797fba",
             "#715c87"
         ],
-        "background": "#333333"
+        "background": "#333333",
+        "name": "halloween"
     }
 ]

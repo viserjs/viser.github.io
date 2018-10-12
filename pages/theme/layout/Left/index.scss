@@ -1,25 +1,117 @@
-.theme-left{
-    hr{
+@mixin keyframes($a) {
+    @-webkit-keyframes #{$a} {
+        @content;
+    }
+
+    @-moz-keyframes #{$a} {
+        @content;
+    }
+
+    @keyframes #{$a} {
+        @content;
+    }
+}
+
+@include keyframes(fadeWave) {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.theme-left {
+    hr {
         margin-top: 20px;
         margin-bottom: 20px;
         border: 0;
         border-top: 1px solid #eee;
     }
-    .mr-12{
-        margin-right: 12px;
+
+    .ctrl-btn {
+        padding-left: calc(25% + 15px);
+        margin-bottom: 10px;
+
+        .item {
+            font-size: 14px;
+            color: #61a0a8;
+            cursor: pointer;
+            margin-right: 10px;
+        }
     }
-    .no-right-radius{
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+}
+
+.mr-12 {
+    margin-right: 12px;
+}
+
+// .no-right-radius {
+//     border-top-right-radius: 0;
+//     border-bottom-right-radius: 0;
+// }
+
+// .no-left-radius {
+//     border-top-left-radius: 0;
+//     border-bottom-left-radius: 0;
+// }
+
+.btn-group {
+    margin-bottom: 12px;
+}
+
+// .no-right-border {
+//     border-right: 0;
+// }
+
+.ant-tabs-nav {
+    .ant-tabs-tab {
+        height: auto;
     }
-    .no-left-radius{
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+}
+
+.ant-tabs-content {
+    ol {
+        display: block;
+        list-style-type: decimal;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
     }
-    .btn-group{
-        margin-bottom:12px;
+
+    .copy-tip {
+        margin-left: 20px;
+        font-size: 12px;
+        animation: fadeWave ease 1s forwards;
+
+        &.success {
+            color: #2b821d;
+        }
+
+        &.error {
+            color: #f00;
+        }
     }
-    .no-right-border{
-        border-right: 0;
+}
+
+.code-display-pen {
+    max-height: 300px;
+    overflow: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    transition: 0.5s;
+    padding: 10px;
+
+    &:hover {
+        box-shadow: inset 0 0 10px #ccc;
     }
 }
