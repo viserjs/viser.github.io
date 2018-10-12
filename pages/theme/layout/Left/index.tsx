@@ -4,7 +4,8 @@ import * as _ from 'lodash';
 import Modal from '@alife/oui-modal';
 import Tabs from '@alife/oui-tabs';
 import TabSld from '../../Components/Tabsld';
-import Button from '../../Components/Button';
+import Button from '@alife/oui-button';
+import Icon from '@alife/oui-icon';
 import Input from '../../Components/Input';
 // import Select from '../../Components/Select';
 import ColorBar from '../../Components/ColorBar';
@@ -151,9 +152,8 @@ class App extends React.Component<any, any> {
               </ol>
               <div>
                 <Button
-                  type="dark"
-                  size="medium"
-                  className="no-right-radius no-right-border"
+                  type="primary"
+                  size="small"
                   onClick={() =>
                     this.handleDownload(
                       getString(currentTheme.theme, 'js'),
@@ -165,9 +165,7 @@ class App extends React.Component<any, any> {
                   {getTransText('download/download', pageLan)}
                 </Button>
                 <Button
-                  type="default"
-                  size="medium"
-                  className="no-left-radius no-left-border"
+                size="small"
                   onClick={e =>
                     this.handleCopy(
                       getString(currentTheme.theme, 'js'),
@@ -190,9 +188,8 @@ class App extends React.Component<any, any> {
               </ol>
               <div>
                 <Button
-                  type="dark"
-                  size="medium"
-                  className="no-right-radius no-right-border"
+                size="small"
+                  type="primary"
                   onClick={() =>
                     this.handleDownload(
                       getString(currentTheme.theme, 'json'),
@@ -204,9 +201,7 @@ class App extends React.Component<any, any> {
                   {getTransText('download/download', pageLan)}
                 </Button>
                 <Button
-                  type="default"
-                  size="medium"
-                  className="no-left-radius no-left-border"
+                size="small"
                   onClick={e =>
                     this.handleCopy(
                       getString(currentTheme.theme, 'json'),
@@ -230,25 +225,20 @@ class App extends React.Component<any, any> {
           {/*功能*/}
           <div className="btn-group">
             <Button
-              type="dark"
-              icon="download"
+              type="primary"
               className="mr-12"
               onClick={this.handleShowModal}
             >
+              <Icon type="download"/>
               {getTransText('function/download', pageLan)}
             </Button>
             <Button
-              type="default"
-              icon="import"
-              className="no-right-radius no-right-border"
               onClick={this.handleUpload}
             >
+              <Icon type="upload" />
               {getTransText('function/import', pageLan)}
             </Button>
             <Button
-              type="default"
-              icon="export"
-              className="no-left-radius"
               onClick={() =>
                 this.handleDownload(
                   getString(currentTheme.theme, 'json'),
@@ -257,24 +247,21 @@ class App extends React.Component<any, any> {
                 )
               }
             >
+            <Icon type="fbi-zhuanrang" />
               {getTransText('function/export', pageLan)}
             </Button>
           </div>
           <div className="btn-group">
             <Button
-              type="default"
-              icon="refresh"
-              className="no-right-radius no-right-border"
               onClick={setData}
             >
+              <Icon type="refresh" />
               {getTransText('function/refresh', pageLan)}
             </Button>
             <Button
-              type="default"
-              icon="reset"
-              className="no-left-radius"
               onClick={this.handleSetDefault}
             >
+              <Icon type="reset" />
               {getTransText('function/reset', pageLan)}
             </Button>
           </div>
