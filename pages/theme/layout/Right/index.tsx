@@ -36,27 +36,29 @@ class App extends React.Component<Props & any, State> {
         {/* <ViserDemoChart data={commonData} /> */}
         <div className="chart-box" key={new Date().getTime()}>
           <div className="chart-item">
-            <Chart viewId="1" forceFit height={300} data={commonData}>
-              <Tooltip />
-              <Axis title={{text:'cc'}}/>
-              <Line position="week*value" color="city" />
-              <Legend dataKey="city"/>
-              <Point position="week*value" color="city" shape="circle" />
-            </Chart>
-            <Chart viewId="2" forceFit height={300} data={commonData}>
-              <Axis />
-              <Tooltip />
-              <Legend dataKey="city"/>
-              <Line position="week*value" color="city" />
-              <Area position="week*value" color="city" />
-            </Chart>
+            <div>
+              <Chart viewId="1" forceFit height={300} data={commonData}>
+                <Axis title={{text:'cc'}}/>
+                <Tooltip />
+                <Line position="week*value" color="city" />
+                <Legend dataKey="city"/>
+                <Point position="week*value" color="city" shape="circle" />
+              </Chart>
+            </div>
+            <div>
+              <Chart viewId="2" forceFit height={300} data={commonData}>
+                <Axis />
+                <Tooltip />
+                <Legend dataKey="city"/>
+                <Line position="week*value" color="city" />
+                <Area position="week*value" color="city" />
+              </Chart>
+            </div>
           </div>
           <div className="chart-item">
             <Chart viewId="3" forceFit height={600} data={commonData}>
-              <Tooltip />
               <Coord type="theta"/>
-              <Axis />
-              <Legend dataKey="week"/>
+              <Tooltip />
               <Pie
                 position="value"
                 color="id"
@@ -67,6 +69,7 @@ class App extends React.Component<Props & any, State> {
               />
             </Chart>
           </div>
+          <div style={{clear:'both'}}></div>
           <div>
           <Chart viewId="4" forceFit height={300} data={commonData}>
               <Axis />
