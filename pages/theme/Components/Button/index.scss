@@ -1,12 +1,14 @@
 @font-face {
-    font-family: 'btn-ico';  /* project id 807564 */
+    font-family: 'btn-ico';
+    /* project id 807564 */
     src: url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.eot');
     src: url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.woff') format('woff'),
-    url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.svg#iconfont') format('svg');
-  }
-.viser-custom-btn{
+        url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.woff') format('woff'),
+        url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_807564_l4vqp9vqdx.svg#iconfont') format('svg');
+}
+
+.viser-custom-btn {
     display: inline-block;
     margin-bottom: 0;
     font-weight: normal;
@@ -30,42 +32,56 @@
     -ms-transition: .5s;
     -o-transition: .5s;
     outline: none;
-    &:hover,&:focus{
+
+    &:hover,
+    &:focus {
         color: #333;
         text-decoration: none;
     }
-    &.small{
-        padding:3px 6px;
+
+    &.small {
+        padding: 3px 6px;
         font-size: 12px;
     }
-    &.medium{
-        padding:6px 12px;
+
+    &.medium {
+        padding: 6px 12px;
     }
-    &.large{
-        padding:12px 24px;
-        font-size:16px;
+
+    &.large {
+        padding: 12px 24px;
+        font-size: 16px;
     }
-    &.default{
+
+    &.default {
         color: #333;
         background-color: #fff;
         border-color: #ccc;
-        &:hover,&:focus,&:active{
+
+        &:hover,
+        &:focus,
+        &:active {
             border-color: #ddd;
             background-color: #eee;
         }
     }
-    &.dark{
+
+    &.dark {
         color: #fff;
         border-color: #314866;
         background-color: #3a5477;
-        &:hover,&:focus,&:active{
+
+        &:hover,
+        &:focus,
+        &:active {
             border-color: #3a5477;
             background-color: #4a6d9a;
         }
     }
-    .icon-font{
-        font-family:"btn-ico" !important;
-        font-style:normal;
+
+    .icon-font {
+        font-family: "btn-ico" !important;
+        font-style: normal;
         -webkit-font-smoothing: antialiased;
         -webkit-text-stroke-width: 0.2px;
         -moz-osx-font-smoothing: grayscale;

@@ -1,52 +1,61 @@
-.custom-select-wrap{
-  margin-bottom: 15px;
-  &::after{
-      display: block;
-      content: '';
-      height:0;
-      width:100%;
-      visibility: hidden;
-      clear: both;
-  }
-  .select-label{
-      float: left;
-      width:25%;
-      text-align: right;
-      padding-top: 7px;
-      font-size: 14px;
-      box-sizing: border-box;
-  }
-  .select-item{
-      box-sizing: border-box;
-      position: relative;
-      padding:0 15px;
-      &.right{
-          float:right;
-          width:75%;
-      }
-      select{
-          cursor: pointer;
-          display: block;
-          width: 100%;
-          height: 34px;
-          padding: 6px 12px;
-          font-size: 14px;
-          line-height: 1.42857;
-          color: #555;
-          background-color: #fff;
-          background-image: none;
-          border: 1px solid #ccc;
-          transition: border-color ease-in-out 0.15s,box-shadow ease-in-out 0.15s;
-          border-color: #eee;
-          box-shadow: none;
-          border-radius: 0;
-          &:hover,&:active,&:focus{
-              border-color:#ddd;
-              outline: none;
-          }
-          &.color-ipt{
-              padding-right: 34px;
-          }
-      }
-  }
+.custom-select-wrap {
+    margin-bottom: 15px;
+
+    &::after {
+        display: block;
+        content: '';
+        height: 0;
+        width: 100%;
+        visibility: hidden;
+        clear: both;
+    }
+
+    .select-label {
+        float: left;
+        width: 25%;
+        text-align: right;
+        padding-top: 7px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    .select-item {
+        box-sizing: border-box;
+        position: relative;
+        padding: 0 15px;
+
+        &.right {
+            float: right;
+            width: 75%;
+        }
+
+        select {
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+            border-color: #eee;
+            box-shadow: none;
+            border-radius: 0;
+
+            &:hover,
+            &:active,
+            &:focus {
+                border-color: #ddd;
+                outline: none;
+            }
+
+            &.color-ipt {
+                padding-right: 34px;
+            }
+        }
+    }
 }

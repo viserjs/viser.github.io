@@ -1,26 +1,29 @@
-.tab-sld{
-    .tit{
+.tab-sld {
+    .tit {
         border-top: 1px solid #ddd;
-        background-color:#f5f5f5;
+        background-color: #f5f5f5;
         color: #293c55;
         padding: 0;
         transition: 0.5s;
         font-size: 15px;
-        padding:10px 16px;
+        padding: 10px 16px;
         cursor: pointer;
         user-select: none;
     }
-    .tab-body{
-        .tab-wrap{
-            margin:15px;
-            h5{
-                color:#555555;
+
+    .tab-body {
+        .tab-wrap {
+            margin: 15px;
+
+            h5 {
+                color: #555555;
                 margin-top: 10px;
                 margin-bottom: 10px;
                 padding-top: 20px;
                 border-top: 1px solid #eee;
             }
         }
+
         overflow: hidden;
         transition: all linear .35s;
         -webkit-transition: all linear .35s;
@@ -28,5 +31,5 @@
         -ms-transition: all linear .35s;
         -o-transition: all linear .35s;
         box-sizing: border-box;
-}
+    }
 }

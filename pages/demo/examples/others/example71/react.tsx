@@ -1,48 +1,48 @@
 import * as React from 'react';
 import * as $ from 'jquery';
-import {Axis,Chart,Tooltip,Brush,Interval} from 'viser-react';
-const DataSet=require('@antv/data-set');
+import { Axis, Chart, Tooltip, Brush, Interval } from 'viser-react';
+const DataSet = require('@antv/data-set');
 
-export default class App extends React.Component{
-  state={
-    data:[],
-    scale:[],
-    ds:{}
+export default class App extends React.Component {
+  state = {
+    data: [],
+    scale: [],
+    ds: null,
   };
-  getDv=()=>{
-    const {ds,data}=this.state;
+  getDv = () => {
+    const { ds, data } = this.state;
     const dv = ds.createView();
     dv.source(data).transform({
       as: ['count'],
       groupBy: ['release'],
       operations: ['count'],
-      type: 'aggregate'
+      type: 'aggregate',
     });
     return dv;
-  }
-  componentDidMount(){
-    $.getJSON('/assets/data/top2000.json',data=>{
+  };
+  componentDidMount() {
+    $.getJSON('/assets/data/top2000.json', data => {
       const ds = new DataSet();
-      const scale=[
+      const scale = [
         {
           dataKey: 'count',
-          alias: 'top2000 唱片总量'
+          alias: 'top2000 唱片总量',
         },
         {
           dataKey: 'release',
           tickInterval: 5,
-          alias: '唱片发行年份'
-        }
+          alias: '唱片发行年份',
+        },
       ];
-      this.setState({scale,data,ds});
+      this.setState({ scale, data, ds });
     });
   }
-  render(){
-    const {data,scale}=this.state;
-    if(!data.length){
+  render() {
+    const { data, scale } = this.state;
+    if (!data.length) {
       return null;
     }
-    const dv=this.getDv();
+    const dv = this.getDv();
     return (
       <Chart
         container="mountNode"
@@ -53,11 +53,8 @@ export default class App extends React.Component{
       >
         <Tooltip />
         <Axis />
-        <Interval 
-          position="release*count"
-          color="#e50000"
-        />
-        <Brush type="x"/>
+        <Interval position="release*count" color="#e50000" />
+        <Brush canvas={null} type="x" />
       </Chart>
     );
   }

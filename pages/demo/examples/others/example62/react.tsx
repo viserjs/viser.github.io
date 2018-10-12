@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as $ from 'jquery';
-import {Chart,Brush,Legend,Facet,Tooltip} from 'viser-react';
+import { Chart, Brush, Legend, Facet, Tooltip } from 'viser-react';
 
-const style=window.document.createElement('style');
-style.innerHTML=`
+const style = window.document.createElement('style');
+style.innerHTML = `
 #toolbar button{
   margin:0 5px;
   padding:5px;
@@ -11,47 +11,61 @@ style.innerHTML=`
 }
 `;
 window.document.getElementsByTagName('head')[0].appendChild(style);
-let chart,brush;
-export default class App extends React.Component{
-  state={
-    data:[],
-    showTooltip:true,
-    type:'XY'
-  }
-  componentDidMount(){
-    $.getJSON('/assets/data/iris.json', data=>{
-      this.setState({data});
+let chart, brush;
+export default class App extends React.Component {
+  state = {
+    data: [],
+    showTooltip: true,
+    type: 'XY',
+  };
+  componentDidMount() {
+    $.getJSON('/assets/data/iris.json', data => {
+      this.setState({ data });
     });
   }
-  eachView=(view,facet)=>{
+  eachView = (view, facet) => {
     view.axis(facet.colField, {
       label: null,
       line: {
         lineWidth: 1,
-        stroke: '#000'
+        stroke: '#000',
       },
       tickLine: {
         lineWidth: 1,
         stroke: '#000',
-        length: 4
-      }
+        length: 4,
+      },
     });
     view.axis(facet.rowField, {
       label: null,
       line: {
         lineWidth: 1,
-        stroke: '#000'
+        stroke: '#000',
       },
       tickLine: {
         lineWidth: 1,
         stroke: '#000',
-        length: 4
-      }
+        length: 4,
+      },
     });
     if (facet.rowIndex === facet.colIndex) {
-      view.point().position(facet.colField + '*' + facet.colField).color('Species', ['#880000', '#008800', '#000088']).opacity(0.5).shape('circle').size(3).active(false);
+      view
+        .point()
+        .position(facet.colField + '*' + facet.colField)
+        .color('Species', ['#880000', '#008800', '#000088'])
+        .opacity(0.5)
+        .shape('circle')
+        .size(3)
+        .active(false);
     } else {
-      view.point().position([facet.colField, facet.rowField]).color('Species', ['#880000', '#008800', '#000088']).opacity(0.5).shape('circle').size(3).active(false);
+      view
+        .point()
+        .position([facet.colField, facet.rowField])
+        .color('Species', ['#880000', '#008800', '#000088'])
+        .opacity(0.5)
+        .shape('circle')
+        .size(3)
+        .active(false);
     }
     if ([0, 1, 2, 3].indexOf(facet.rowIndex) > -1 && facet.colIndex === 0) {
       view.guide().text({
@@ -61,8 +75,8 @@ export default class App extends React.Component{
           rotate: -90,
           fontSize: 12,
           fill: '#999',
-          textAlign: 'center'
-        }
+          textAlign: 'center',
+        },
       });
     }
     if ([0, 1, 2, 3].indexOf(facet.colIndex) > -1 && facet.rowIndex === 3) {
@@ -72,18 +86,16 @@ export default class App extends React.Component{
         style: {
           fontSize: 12,
           fill: '#999',
-          textAlign: 'center'
+          textAlign: 'center',
         },
-        offsetY: 20
+        offsetY: 20,
       });
     }
-  }
-  onBrushstart=ev=>{
-    
-  }
-  setBrushType(e){
-      console.log('brush',brush);
-      console.log('chart',chart);
+  };
+  onBrushstart = ev => {};
+  setBrushType(e) {
+    console.log('brush', brush);
+    console.log('chart', chart);
     // const type=e.target.id;
     // console.log(type);
     // if (type === 'clear') {
@@ -93,41 +105,50 @@ export default class App extends React.Component{
     //   this.setState({type});
     // }
   }
-  render(){
-    const {data,showTooltip}=this.state;
-    const scale=[
+  render() {
+    const { data, showTooltip } = this.state;
+    const scale = [
       {
-        dataKey:'Species',
-        sync:true
-      }
+        dataKey: 'Species',
+        sync: true,
+      },
     ];
-    return(
+    return (
       <div>
-        <div id="toolbar" style={{textAlign: 'center'}}>
-          <button id="XY" onClick={this.setBrushType}>矩形选择</button>
-          <button id="X" onClick={this.setBrushType}>横向选择</button>
-          <button id="Y" onClick={this.setBrushType}>纵向选择</button>
-          <button id="POLYGON" onClick={this.setBrushType}>圈选</button>
-          <button id="clear" onClick={this.setBrushType}>清除选择</button>
+        <div id="toolbar" style={{ textAlign: 'center' }}>
+          <button id="XY" onClick={this.setBrushType}>
+            矩形选择
+          </button>
+          <button id="X" onClick={this.setBrushType}>
+            横向选择
+          </button>
+          <button id="Y" onClick={this.setBrushType}>
+            纵向选择
+          </button>
+          <button id="POLYGON" onClick={this.setBrushType}>
+            圈选
+          </button>
+          <button id="clear" onClick={this.setBrushType}>
+            清除选择
+          </button>
         </div>
         <Chart
-          ref={node=>chart=node}
+          ref={node => (chart = node)}
           forceFit={true}
           height={600}
           data={data}
           scale={scale}
         >
-          <Legend hoverable={false}/>
-          {showTooltip&&(
-            <Tooltip />
-          )}
+          <Legend hoverable={false} />
+          {showTooltip && <Tooltip />}
           <Facet
             type="matrix"
             fields={['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth']}
             eachView={this.eachView}
           />
           <Brush
-          ref={node=>brush=node}
+            canvas={null}
+            ref={node => (brush = node)}
             dragable={true}
             type={this.state.type}
             onBrushstart={this.onBrushstart}
