@@ -74,13 +74,13 @@ class App extends React.Component<Props & any, State> {
           <Chart viewId="4" forceFit height={300} data={commonData}>
               <Axis />
               <Tooltip />
-              <Legend dataKey="city"/>
+              <Legend dataKey="city" />
               <Bar
                 position="week*value"
                 color="city"
                 adjust={[{ type: 'dodge', marginRatio: 1 / 32 }]}
-                label={['value',{
-                  formatter:val=>val
+                label={['value', {
+                  formatter: val => val
                 }]}
               />
             </Chart>

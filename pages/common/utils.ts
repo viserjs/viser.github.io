@@ -202,7 +202,7 @@ const codeDeal = (oriCode: string, framework: string): any => {
         const moduleName = code.match(/export\s*?default[\s\S]*$/gi)[0].replace(/export\s*?default\s*?class\s*?/gi, '').replace(/\{\s*?\}/, '').trim();
         code = code.replace(/export\s*?default[\s\S]*$/gi, `class ${moduleName}={}`);
         code = code.replace(/\s*class/g, 'class');
-          // .replace('#mount', 'my-app');
+        // .replace('#mount', 'my-app');
       }
       break;
     default:
@@ -220,13 +220,13 @@ export const combineFrameCode = (
       case 'vue':
         {
           let temp = template['vue'];
-          const pkg=getInitNav();
-          if(!pkg||pkg==='viser'){
-            temp=temp.replace(/\{scriptpkg\}/,'viser-vue')
-            .replace(/\{userModule\}/,'ViserVue');
-          }else if(pkg==='viser-graph'){
-            temp=temp.replace(/\{scriptpkg\}/,'viser-graph-vue')
-            .replace(/\{userModule\}/,'ViserGraphVue');
+          const pkg = getInitNav();
+          if (!pkg || pkg === 'viser') {
+            temp = temp.replace(/\{scriptpkg\}/, 'viser-vue')
+              .replace(/\{userModule\}/, 'ViserVue');
+          } else if (pkg === 'viser-graph') {
+            temp = temp.replace(/\{scriptpkg\}/, 'viser-graph-vue')
+              .replace(/\{userModule\}/, 'ViserGraphVue');
           }
           Object.keys(code).map((item: any) => {
             const split = `{${item}}`;
@@ -309,8 +309,8 @@ export const downloadFile = (blob: any, filename: string, mimetype: string) => {
   }
 }
 
-export const colorRGB2Hex=color=>{
-  if(!/rgb/gi.test(color)||!color){ // 如果不是rgb则返回
+export const colorRGB2Hex = color => {
+  if (!/rgb/gi.test(color) || !color) { // 如果不是rgb则返回
     return color;
   }
   const rgb = color.split(',');
@@ -320,148 +320,148 @@ export const colorRGB2Hex=color=>{
   const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   return hex;
 }
-export const repeatArray=(arr,num)=>{
+export const repeatArray = (arr, num) => {
   /**
    * 注意新数组和老数组间是浅层复制关系
    * 在一个基础数组上创建一个新数组，
    * 如果新数组长度超过原数组将循环读取原数组，知道长度达到新数组长度，
    * 如果新数组长度小于原数组，将截取
    */
-  if(!arr||arr.constructor.name!=='Array'){
+  if (!arr || arr.constructor.name !== 'Array') {
     return [];
   }
-  const len=arr.length-1;
-  let count=0;
-  const result=new Array(num).join(',').split(',');
-  result.forEach((item,index)=>{
-    if(count>len){
-      count=0;
+  const len = arr.length - 1;
+  let count = 0;
+  const result = new Array(num).join(',').split(',');
+  result.forEach((item, index) => {
+    if (count > len) {
+      count = 0;
     }
-    result[index]=arr[count];
+    result[index] = arr[count];
     count++;
   });
   return result;
 }
 
-export const copyString=(str:string)=>{
+export const copyString = (str: string) => {
   /**
    * @param str:想要复制的字符串
    * @param dom:点击触发复制的dom节点
    */
-  let textarea=(window as any).document.getElementById('clipboard-box-container');
-  if(!textarea){
-    let tempIpt=(window as any).document.createElement('textarea');
-    tempIpt.style.fontSize='12pt';
-    tempIpt.style.border='0';
-    tempIpt.style.padding='0';
-    tempIpt.style.margin='0';
-    tempIpt.style.position='absolute';
-    tempIpt.style.zIndex=-999;
-    tempIpt.style.overFlow='auto';
-    tempIpt.style.width='10px';
-    tempIpt.style.height='10px';
-    tempIpt.style.left='-999px';
-    tempIpt.style.top='-999px';
-    tempIpt.setAttribute('readonly','');
-    tempIpt.id="clipboard-box-container";
+  let textarea = (window as any).document.getElementById('clipboard-box-container');
+  if (!textarea) {
+    let tempIpt = (window as any).document.createElement('textarea');
+    tempIpt.style.fontSize = '12pt';
+    tempIpt.style.border = '0';
+    tempIpt.style.padding = '0';
+    tempIpt.style.margin = '0';
+    tempIpt.style.position = 'absolute';
+    tempIpt.style.zIndex = -999;
+    tempIpt.style.overFlow = 'auto';
+    tempIpt.style.width = '10px';
+    tempIpt.style.height = '10px';
+    tempIpt.style.left = '-999px';
+    tempIpt.style.top = '-999px';
+    tempIpt.setAttribute('readonly', '');
+    tempIpt.id = "clipboard-box-container";
     (window as any).document.getElementsByTagName('body')[0].appendChild(tempIpt);
-    textarea=(window as any).document.getElementById('clipboard-box-container');
+    textarea = (window as any).document.getElementById('clipboard-box-container');
   }
-  textarea.value=str;
+  textarea.value = str;
   textarea.select();
   let flag;
   try {
-    flag= document.execCommand('copy') ? true: false;
+    flag = document.execCommand('copy') ? true : false;
   } catch (err) {
     window.console.log(err);
-    flag=false;
+    flag = false;
   }
   return flag;
 }
-const fileClick=(el)=>{
-  return new Promise(resolve=>{
+const fileClick = (el) => {
+  return new Promise(resolve => {
     el.click();
-    const temp=e=>{
-      el.removeEventListener('change',temp);
+    const temp = e => {
+      el.removeEventListener('change', temp);
       return resolve(e);
     };
-    el.addEventListener('change',temp);
+    return el.addEventListener('change', temp);
   });
 };
-const fileReader=(file)=>{
-  return new Promise(resolve=>{
-    const fr=new FileReader();
-    fr.readAsText(file,'utf-8');
-    fr.onload=data=>{
+const fileReader = (file) => {
+  return new Promise(resolve => {
+    const fr = new FileReader();
+    fr.readAsText(file, 'utf-8');
+    fr.onload = data => {
       return resolve((data as any).target.result);
     }
-    fr.onabort=()=>{
+    fr.onabort = () => {
       return resolve(null);
     }
-    fr.onerror=()=>{
+    fr.onerror = () => {
       return resolve(null);
     }
   });
 };
-const validJson=json=>{
-  if(json.constructor.name!=='Object'){
+const validJson = json => {
+  if (json.constructor.name !== 'Object') {
     return false;
   }
-  const contain=["background","defaultColor","plotCfg","fontFamily","defaultLegendPosition","colors","colors_16","colors_24","colors_pie","colors_pie_16","shapes","sizes","opacities","axis","label","treemapLabels","innerLabels","thetaLabels","legend","tooltip","tooltipMarker","tooltipCrosshairsRect","tooltipCrosshairsLine","shape","guide","pixelRatio"];
-  const target=Object.keys(json);
-  let flag=true;
-  for(const i in target){
-    if(contain.indexOf(target[i])<0){
-      flag=false;
+  const contain = ["background", "defaultColor", "plotCfg", "fontFamily", "defaultLegendPosition", "colors", "colors_16", "colors_24", "colors_pie", "colors_pie_16", "shapes", "sizes", "opacities", "axis", "label", "treemapLabels", "innerLabels", "thetaLabels", "legend", "tooltip", "tooltipMarker", "tooltipCrosshairsRect", "tooltipCrosshairsLine", "shape", "guide", "pixelRatio"];
+  const target = Object.keys(json);
+  let flag = true;
+  for (const i in target) {
+    if (contain.indexOf(target[i]) < 0) {
+      flag = false;
       break;
     }
   }
   return flag;
 }
-export const dataFromFile=async ()=>{
-  let file=(window as any).document.getElementById('file-upload-temp-container');
-  if(!file){
-    const temp=(window as any).document.createElement('input');
-    temp.id="file-upload-temp-container";
-    temp.type="file";
-    temp.style.display='none';
+export const dataFromFile = async () => {
+  let file = (window as any).document.getElementById('file-upload-temp-container');
+  if (!file) {
+    const temp = (window as any).document.createElement('input');
+    temp.id = "file-upload-temp-container";
+    temp.type = "file";
+    temp.style.display = 'none';
     (window as any).document.getElementsByTagName('body')[0].appendChild(temp);
-    file=(window as any).document.getElementById('file-upload-temp-container');
+    file = (window as any).document.getElementById('file-upload-temp-container');
   }
-  const result:any=await fileClick(file);
-  const files=result.target.files;
+  const result: any = await fileClick(file);
+  const files = result.target.files;
   // 只支持单文件上传,如果格式不是json，将退出
-  const fileName=files[0].name.split('.')[0];
-  const mime=files[0].name.split('.')[1];
-  if(mime.toLowerCase()!=='json'){
+  const fileName = files[0].name.split('.')[0];
+  const mime = files[0].name.split('.')[1];
+  if (mime.toLowerCase() !== 'json') {
     alert('The file\'s type only support *.json');
     return null;
   }
-  const data:any=await fileReader(files[0]);
-  if(!data){
+  const data: any = await fileReader(files[0]);
+  if (!data) {
     alert(`Read ${files[0].name} error!`);
     return null;
   }
   // console.log(Object.keys(JSON.parse(data)).map(item=>`"${item}"`).join(','));
-  if(!validJson(JSON.parse(data))){
+  if (!validJson(JSON.parse(data))) {
     //如果存在不属于配置的字段，将不会继续，读取的配置将与原先的配置进行合并
     alert('The formate of file\'s data is error!!');
     return null;
   }
   return {
-    seriesNum:3,
-    theme:JSON.parse(data),
-    title:fileName
+    seriesNum: 3,
+    theme: JSON.parse(data),
+    title: fileName
   };
 }
 
-export const deepObjectMerge=(FirstOBJ, SecondOBJ) =>{ // 深度合并对象
+export const deepObjectMerge = (FirstOBJ, SecondOBJ) => { // 深度合并对象
   for (var key in SecondOBJ) {
-    if(typeof SecondOBJ[key]==='undefined'){
+    if (typeof SecondOBJ[key] === 'undefined') {
       continue;
     }
-      FirstOBJ[key] = FirstOBJ[key] && FirstOBJ[key].toString() === "[object Object]" ?
-          deepObjectMerge(FirstOBJ[key], SecondOBJ[key]) : FirstOBJ[key] = SecondOBJ[key];
+    FirstOBJ[key] = FirstOBJ[key] && FirstOBJ[key].toString() === "[object Object]" ?
+      deepObjectMerge(FirstOBJ[key], SecondOBJ[key]) : FirstOBJ[key] = SecondOBJ[key];
   }
   return FirstOBJ;
 }

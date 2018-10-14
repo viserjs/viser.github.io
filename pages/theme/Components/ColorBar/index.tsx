@@ -7,6 +7,8 @@ class Props {
   public bgColor?: string;
   public blockWidth?: number;
   public title?: string;
+  public colorId: any;
+  public selectedId: any;
 }
 class State {
   public colors: any = [];
@@ -27,10 +29,10 @@ export default class ColorBar extends React.Component<Props, State> {
     const { state, props } = this;
     return (
       <div
-        className="theme-color-bar"
+        className={`theme-color-bar${props.colorId === props.selectedId ? ' selected' : ''}`}
         style={state.bgColor ? { backgroundColor: state.bgColor } : {}}
         onClick={(e: any) => {
-          props.onClick(state.colors, state.bgColor, state.title, e);
+          props.onClick(state.colors, state.bgColor, state.title, props.colorId, e);
         }}
       >
         {state.colors &&
