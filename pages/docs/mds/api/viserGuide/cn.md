@@ -250,7 +250,7 @@ chart.guide().text({
 
 用于设置辅助背景框的样式。
 
-## 辅助背景框
+## 辅助html
 
 ```
 interface IHtmlGuide {
@@ -318,8 +318,8 @@ html 层级。
 interface IArcGuide {
   type?: 'arc';
   top?: boolean;  // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  start?: object | Array<number | string> | func;  // 辅助框起始位置，值为原始数据值，支持 callback
-  end?: object | Array<number | string> | func;  // 辅助框结束位置，值为原始数据值，支持 callback
+  start?: object | Array<number | string> | func;  // 辅助圆弧起始位置，值为原始数据值，支持 callback
+  end?: object | Array<number | string> | func;  // 辅助圆弧结束位置，值为原始数据值，支持 callback
   style?: object;
 }
 ```
@@ -419,7 +419,7 @@ line 的长度，default 为 30。
 
 标注点朝向：'upward' | 'downward', default 为'upward'，即向上
 
-## 辅助区域
+## 辅助区域过滤
 
 辅助区域过滤，将图表中位于矩形选区中的图形元素提取出来，重新着色。
 
@@ -434,7 +434,7 @@ interface IRegionFilter {
 }
 ```
 
-### type?: 'regionFilter'
+### top?: boolean
 
 指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层。
 
