@@ -18,7 +18,7 @@
 
 ### show?: boolean;
 
-- 描述：否展示提示信息
+- 描述：是否展示提示信息
 
 ### triggerOn?: triggerType;
 
@@ -111,19 +111,19 @@ itemTpl: '<li data-index={index}>'
 
 ### g2TooltipTitle?: any;
 
-- 描述：设置 tooltip 容器的 CSS 样式。
+- 描述：设置 tooltip 标题的 CSS 样式。
 
 ### g2TooltipList?: any;
 
-- 描述：设置 tooltip 标题的 CSS 样式。
+- 描述：设置 tooltip 列表容器的 CSS 样式。
 
 ### g2TooltipListItem?: any;
 
-- 描述：设置 tooltip 列表容器的 CSS 样式。
+- 描述：设置 tooltip 列表容器中每一项的 CSS 样式。
 
 ### g2TooltipMarker?: any;
 
-- 描述：设置 tooltip 列表容器中每一项的 CSS 样式。
+- 设置tooltip 列表容器中每一项 marker 的 CSS 样式。
 
 ### onShow?: eventFunc;
 
