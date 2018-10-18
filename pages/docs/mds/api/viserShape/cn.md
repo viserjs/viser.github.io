@@ -43,7 +43,7 @@ cfg 参数包含经过图形映射后的所有数据以及该数据对应的原�
 | interval  | interval 默认的图形形状是矩形，而矩形实际是由四个点组成的，我们根据 pointInfo 中的 x、y、size 以及 y0 这四个值来计算出这四个点，然后顺时针连接而成。 <img src="https://zos.alipayobjects.com/skylark/f36a2e27-13e8-4d55-8c93-b698e15bcc1f/attach/3378/94a6515e2eb60265/image.png"/>                                                            |
 | polygon   | polygon 多边形其实也是由多个点连接而成，在 pointInfo 中 x 和 y 都是数组结构。 <img src="https://zos.alipayobjects.com/skylark/b4f6981c-ccd3-4237-97bd-dd88950758ea/attach/3378/ed2b5c05a1ff3581/image.png"/>                                                                                                                                   |
 | schema    | schema 作为一种自定义的几何图形，在 G2 中默认提供了 box 和 candle 两种 shape，分别用于绘制箱型图和股票图，注意这两种形状的矩形部分四个点的连接顺序都是顺时针，并且起始点均为左下角，这样就可以无缝转换至极坐标。<img src="https://zos.alipayobjects.com/skylark/8afa13da-95d1-4282-a08b-f1c421b0d972/attach/3378/d82c45d3a526bd80/image.png"/> |
-| edge      | edge 边同 line 线一致，区别就是 edge 是一个线段，连接边的两个端点即可。/>                                                                                                                                                                                                                                                                      |
+| edge      | edge 边同 line 线一致，区别就是 edge 是一个线段，连接边的两个端点即可。                                                                                                                                                                                                                                                                    |
 
 ### parsePath
 

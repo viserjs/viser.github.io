@@ -84,8 +84,8 @@ onChange: (obj) => {
 }
 ```
 
-- startValue 起点滑块当前对应的原始数据值，如果是 time 或者 timeCat 类型是，该值为时间戳，请注意。
-- endValue 终点滑块当前对应的原始数据值，如果是 time 或者 timeCat 类型是，该值为时间戳，请注意。
+- startValue 起点滑块当前对应的原始数据值，如果是 time 或者 timeCat 类型时，该值为时间戳，请注意。
+- endValue 终点滑块当前对应的原始数据值，如果是 time 或者 timeCat 类型时，该值为时间戳，请注意。
 - startText 起点滑块当前的显示文本值
 - endText 终点滑块当前的显示文本值
 
@@ -99,7 +99,7 @@ todo
 
 ```
 {
-  img: 'https://gw.alipayobjects.com/zos/rmsportal/QXtfhORGlDuRvLXFzpsQ.png', // 可以使图片地址也可以是 data urls
+  img: 'https://gw.alipayobjects.com/zos/rmsportal/QXtfhORGlDuRvLXFzpsQ.png', // 可以是图片地址也可以是 data urls
   width: 5,
   height: 26
 }
