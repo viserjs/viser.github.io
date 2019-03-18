@@ -25,10 +25,10 @@ import './index.scss';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import * as ViserNg from 'viser-ng';
-import * as ViserGraphNg from 'viser-graph-ng';
-(window as any).ViserNg = ViserNg;
-(window as any).ViserGraphNg = ViserGraphNg;
+// import * as ViserNg from 'viser-ng';
+// import * as ViserGraphNg from 'viser-graph-ng';
+// (window as any).ViserNg = ViserNg;
+// (window as any).ViserGraphNg = ViserGraphNg;
 
 
 let ngRef;
@@ -73,10 +73,11 @@ class Demo {
         value: 'loading code......',
         language: 'none',
         lineNumbers: true,
-        scrollBeyondLastLine: true,
-        automaticLayout: true,
+        scrollBeyondLastLine: false,
+        automaticLayout: false,
         renderLineHighlight: 'none',
         readOnly: false,
+        formatOnType: true,
         theme: 'vs',
         minimap: {
           enabled: false,
@@ -166,13 +167,8 @@ class Demo {
       item: item || DEFAULT_ITEM,
     };
   }
-
   getDemoItemKey(example) {
     return example.enName.toLowerCase().replace(/\s/g, '-');
-  }
-  public getNgPath() {
-    const hash = (window as any).location.hash.split('/');
-
   }
   async runCode(framework) {
     const mount = document.getElementById('mount');
@@ -187,11 +183,10 @@ class Demo {
     }
     if (framework === 'angular') {
       $('.case-code-topbar').hide();
-      const code = await this.getCode('angular');
+      const code = await this.getCode(framework);
       mount.innerHTML = '';
-      const codePath = code[`angularPath`];
-      // debugger
-      // delete require.cache[require.resolve(`${codePath}`)];
+      const codePath = code[`${framework}Path`];
+      delete require.cache[require.resolve(`${codePath}`)];
       const AppModule = require(`${codePath}`).default;
       return platformBrowserDynamic()
         .bootstrapModule(AppModule)
