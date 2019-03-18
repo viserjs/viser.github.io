@@ -13,7 +13,6 @@
     "tslint"
   ],
   "dependencies": {
-    "@ali/oneui-canary": "^2.3.2",
     "@alife/oui-button": "^2.0.13",
     "@alife/oui-icon": "^2.0.26",
     "@alife/oui-modal": "^2.0.13",

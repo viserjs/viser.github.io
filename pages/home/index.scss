@@ -201,7 +201,8 @@ footer.home-footer {
       clear: both;
     }
     &.home-footer-copyright{
-      .fl{
+      .left{
+        text-align: left;
         a{
           color: #fff;
           margin: 0 5px;

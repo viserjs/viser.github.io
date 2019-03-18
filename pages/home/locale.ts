@@ -79,14 +79,18 @@ const locale = {
     {
       selector: '.home-footer-copyright',
       text: `<span class="fr">与来自 AntV 的 <a href="//antv.alipay.com/zh-cn/g2/3.x/index.html" target="_blank">G2</a> 深度合作  |  本项目基于 MIT 协议发布  |  Copyright (c) 2018 Viser Group. 版权所有</span>
-      <span class="fl">
+      <div class="left">
         更多产品：
         <a href="https://antv.alipay.com/zh-cn/g2/3.x/api/index.html" target="_blank">G2</a>
         <a href="https://www.yuque.com/antv/g6/api-g6" target="_blank">G6</a>
         <a href="https://antv.alipay.com/zh-cn/f2/3.x/api/index.html" target="_blank">F2</a>
         <a href="https://antv.alipay.com/zh-cn/vis/chart/index.html" target="_blank">图表用法</a>
         <a href="https://antv.alipay.com/zh-cn/vis/design/color.html" target="_blank">默认配色板</a>
-      </span>
+      </div>
+      <div class="left">
+        其他：
+        <a href="https://viserjs.gitee.io/">国内站点</a>
+      </div>
       `,
     },
     //<a href="" target="_blank"></a>
