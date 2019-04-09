@@ -65,6 +65,16 @@ const examples = {
           enName: 'Multi ladders smooth line',
           cnName: '多条阶梯折线图',
         },
+        {
+          path: 'example6',
+          enName: 'Analysis on the Trend of Deaths Caused by Global Terrorist Attacks',
+          cnName: '全球恐怖袭击致死人数趋势分析',
+        },
+        {
+          path: 'example7',
+          enName: 'Domestic sales trend of a product',
+          cnName: '某产品国内销售趋势',
+        },
       ],
       icon: 'xianxingtu',
     },
