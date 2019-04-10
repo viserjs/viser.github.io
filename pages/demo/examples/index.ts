@@ -145,6 +145,16 @@ const examples = {
                     enName: 'Domestic sales trend of a product',
                     cnName: '某产品国内销售趋势',
                 },
+                {
+                    path: 'example8',
+                    enName: 'Seven-day Annualized Rate of Return',
+                    cnName: '余额宝七日年化收益率',
+                },
+                {
+                    path: 'example9',
+                    enName: 'Trend of visiting a website',
+                    cnName: '某网站访问趋势',
+                },
             ],
             icon: 'xianxingtu',
         },
