@@ -64,46 +64,6 @@ const examples = {
                     enName: 'use-filter',
                     cnName: 'filter的使用',
                 },
-                {
-                    path: 'example13',
-                    enName: 'legend-color',
-                    cnName: 'legend-color',
-                },
-                {
-                    path: 'example14',
-                    enName: 'legend-html',
-                    cnName: 'legend-html',
-                },
-                {
-                    path: 'example15',
-                    enName: 'legend-pagination',
-                    cnName: 'legend-翻页',
-                },
-                {
-                    path: 'example16',
-                    enName: 'legend-position-choose',
-                    cnName: 'legend-图例位置',
-                },
-                {
-                    path: 'example17',
-                    enName: 'legend-size',
-                    cnName: 'legend-size',
-                },
-                {
-                    path: 'example18',
-                    enName: 'legend-tail',
-                    cnName: 'legend-尾部跟随图例',
-                },
-                {
-                    path: 'example19',
-                    enName: 'tooltip-canvastooltip',
-                    cnName: 'tooltip-canvastooltip',
-                },
-                {
-                    path: 'example20',
-                    enName: 'tooltip-customized',
-                    cnName: '自定义 tooltip',
-                },
             ],
         },
         line: {
