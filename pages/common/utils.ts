@@ -128,7 +128,7 @@ export const undelegate = E.undelegate;
 export const get = (url: any) => {
   return new Promise((resolve: any) => {
     return (
-      fetch(url)
+      window.fetch(url)
         //没必要传参数，只要url拼接即可
         .then((res: any) => {
           if (res.status >= 400) {

@@ -3,6 +3,7 @@ const examples = {
         components: {
             enName: 'components',
             cnName: '组件使用',
+            icon:'component',
             examples: [
                 {
                     path: 'example1',
@@ -79,21 +80,25 @@ const examples = {
                     path: 'example1',
                     enName: 'Basic line',
                     cnName: '基础折线图',
+                    pic: 'https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/line/basic-b9ffb.png'
                 },
                 {
                     path: 'example2',
                     enName: 'Multi line',
                     cnName: '多条折线图',
+                    pic: 'https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/line/series-1c551.png'
                 },
                 {
                     path: 'example3',
                     enName: 'Multi smooth line',
                     cnName: '曲线折线图',
+                    pic: 'https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/line/curved-37a82.png'
                 },
                 {
                     path: 'example4',
                     enName: 'Ladders smooth line',
                     cnName: '阶梯折线图',
+                    pic: 'https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/line/step-f79bd.png'
                 },
                 {
                     path: 'example5',

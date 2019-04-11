@@ -16,6 +16,9 @@
       "dom"
     ]
   },
+  "include":[
+    "pages/**/*"
+  ],
   "exclude": [
     "node_modules",
     "build"

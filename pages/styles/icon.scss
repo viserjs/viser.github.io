@@ -1,10 +1,11 @@
 @font-face {
   font-family: 'iconfont';  /* project id 473307 */
-  src: url('//at.alicdn.com/t/font_473307_at1kqefvvxjkbj4i.eot');
-  src: url('//at.alicdn.com/t/font_473307_at1kqefvvxjkbj4i.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_473307_at1kqefvvxjkbj4i.woff') format('woff'),
-  url('//at.alicdn.com/t/font_473307_at1kqefvvxjkbj4i.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_473307_at1kqefvvxjkbj4i.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_473307_wcqwm9kq1c8.eot');
+  src: url('//at.alicdn.com/t/font_473307_wcqwm9kq1c8.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_473307_wcqwm9kq1c8.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_473307_wcqwm9kq1c8.woff') format('woff'),
+  url('//at.alicdn.com/t/font_473307_wcqwm9kq1c8.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_473307_wcqwm9kq1c8.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -15,6 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-component:before { content: "\e60c"; }
 
 .icon-bingtu:before { content: "\e600"; }
 
