@@ -83,6 +83,18 @@ const examples = {
                     cnName: 'legend-color',
                     pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/component/legend-color.png"
                 },
+                {
+                    path: 'example14',
+                    enName: 'legend-html',
+                    cnName: 'legend-html',
+                    pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/component/legend-html-fc34b.png"
+                },
+                {
+                    path: 'example15',
+                    enName: 'legend-pagination',
+                    cnName: 'legend-翻页',
+                    pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/component/legend-pagenation-f149e.png"
+                },
             ],
         },
         line: {
