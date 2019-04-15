@@ -31,7 +31,7 @@ export const template = {
         <style>*{margin:0;padding:0;}</style>
     </head>
     <body>
-    <div id="mount"></div>
+    <div id="mount">waiting for demo running...</div>
     <script type="text/babel">
     {code}
     </script>
@@ -56,7 +56,7 @@ export const template = {
     </style>
     </head>
     <body>
-    <div id="mount"></div>
+    <div id="mount">waiting for demo running...</div>
     <script type="text/babel">
     Vue.use({userModule}.default);
     {variable}
