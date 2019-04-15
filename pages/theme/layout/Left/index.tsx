@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as _ from 'lodash';
-import Modal from '@alife/oui-modal';
-import Tabs from '@alife/oui-tabs';
+import {Modal,Tabs,Button,Icon } from 'antd';
 import TabSld from '../../Components/Tabsld';
-import Button from '@alife/oui-button';
-import Icon from '@alife/oui-icon';
 import Input from '../../Components/Input';
 // import Select from '../../Components/Select';
 import ColorBar from '../../Components/ColorBar';
@@ -133,6 +130,7 @@ class App extends React.Component<any, any> {
     const { pageLan, setData, currentTheme, changeColors } = this.props;
     const TabPane = Tabs.TabPane;
     // console.log(currentTheme);
+    const Btn: any = Button;
     return (
       <div className="theme-left theme-pannel">
         <Modal
@@ -140,9 +138,9 @@ class App extends React.Component<any, any> {
           title={getTransText('download', pageLan)}
           width={900}
           footer={
-            <Button type="default" onClick={this.handleCancel}>
+            <Btn type="default" onClick={this.handleCancel}>
               {getTransText('download/close', pageLan)}
-            </Button>
+            </Btn>
           }
           onCancel={this.handleCancel}
         >
@@ -154,7 +152,7 @@ class App extends React.Component<any, any> {
                 <li>{getTransText('download/js/text2', pageLan)}</li>
               </ol>
               <div>
-                <Button
+                <Btn
                   type="primary"
                   size="small"
                   onClick={() =>
@@ -166,8 +164,8 @@ class App extends React.Component<any, any> {
                   }
                 >
                   {getTransText('download/download', pageLan)}
-                </Button>
-                <Button
+                </Btn>
+                <Btn
                   size="small"
                   onClick={e =>
                     this.handleCopy(
@@ -177,7 +175,7 @@ class App extends React.Component<any, any> {
                   }
                 >
                   {getTransText('download/copy', pageLan)}
-                </Button>
+                </Btn>
                 <span dangerouslySetInnerHTML={{ __html: this.state.jsMess }} />
               </div>
               <pre className="code-display-pen">
@@ -190,7 +188,7 @@ class App extends React.Component<any, any> {
                 <li>{getTransText('download/json/text2', pageLan)}</li>
               </ol>
               <div>
-                <Button
+                <Btn
                   size="small"
                   type="primary"
                   onClick={() =>
@@ -202,8 +200,8 @@ class App extends React.Component<any, any> {
                   }
                 >
                   {getTransText('download/download', pageLan)}
-                </Button>
-                <Button
+                </Btn>
+                <Btn
                   size="small"
                   onClick={e =>
                     this.handleCopy(
@@ -213,7 +211,7 @@ class App extends React.Component<any, any> {
                   }
                 >
                   {getTransText('download/copy', pageLan)}
-                </Button>
+                </Btn>
                 <span
                   dangerouslySetInnerHTML={{ __html: this.state.jsonMess }}
                 />
@@ -227,21 +225,21 @@ class App extends React.Component<any, any> {
         <TabSld title={getTransText('function', pageLan)} visible={true}>
           {/*功能*/}
           <div className="btn-group">
-            <Button
+            <Btn
               type="primary"
               className="mr-12"
               onClick={this.handleShowModal}
             >
               <Icon type="download" />
               {getTransText('function/download', pageLan)}
-            </Button>
-            <Button
+            </Btn>
+            <Btn
               onClick={this.handleUpload}
             >
               <Icon type="upload" />
               {getTransText('function/import', pageLan)}
-            </Button>
-            <Button
+            </Btn>
+            <Btn
               onClick={() =>
                 this.handleDownload(
                   getString(currentTheme.theme, 'json'),
@@ -252,21 +250,21 @@ class App extends React.Component<any, any> {
             >
               <Icon type="fbi-zhuanrang" />
               {getTransText('function/export', pageLan)}
-            </Button>
+            </Btn>
           </div>
           <div className="btn-group">
-            <Button
+            <Btn
               onClick={setData}
             >
               <Icon type="refresh" />
               {getTransText('function/refresh', pageLan)}
-            </Button>
-            <Button
+            </Btn>
+            <Btn
               onClick={this.handleSetDefault}
             >
               <Icon type="reset" />
               {getTransText('function/reset', pageLan)}
-            </Button>
+            </Btn>
           </div>
           <div>
             <Input

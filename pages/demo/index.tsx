@@ -45,10 +45,12 @@ class Demo {
   clipboard: any;
   typeKey: 'viser';
   constructor() {
+    if (window.localStorage.getItem('code-wrap-width')) { 
+      this.setCodeWrapWidth(parseFloat(window.localStorage.getItem('code-wrap-width')));
+    }
     initPageLanguage();
     this.renderNav(getPageLanguage());
     this.initEditor();
-
     this.render();
     this.bindEvent();
   }
@@ -67,6 +69,9 @@ class Demo {
   }
   initEditor() {
     // console.log('editor1');
+    if (this.editor) { 
+      this.editor.destroy();
+    }
     this.editor = (window as any).monaco.editor.create(
       document.getElementById('monaco-editor'),
       {
@@ -172,7 +177,7 @@ class Demo {
   }
   async runCode(framework) {
     const mount = document.getElementById('mount');
-
+    mount.innerHTML = 'waiting for demo running...';
     if (ngRef) {
       const mountParent = mount.parentNode;
       ngRef.destroy();
@@ -284,6 +289,11 @@ class Demo {
     $('.left-panel').html(navTpl({ menuList }));
   }
 
+  setCodeWrapWidth(codeWidth) { 
+    $('.case-code').css('width', `${codeWidth}px`);
+    $('.case-demo').css('width', `calc( 100% - ${codeWidth + 15}px )`);
+  }
+
   bindEvent() {
     const self = this;
     // TODO: bind JSFiddle event
@@ -371,6 +381,54 @@ class Demo {
           .toLowerCase(),
       );
     });
+    let dragX: number = 0;
+    let codeWidth: number = 0;
+    let isDrag: boolean = false;
+    // drap #dragline to resize code-wrap&demo-wrap
+    $(document).on('mousedown', '#dragger-line', function (e) { 
+      dragX = e.clientX;
+      isDrag = true;
+      // 防止拖动，鼠标离开window bug
+      if ($('#mount iframe').length) { 
+        $('#mount iframe').css('pointerEvents','none');
+      }
+    });
+    // 鼠标移动进行拖拽操作
+    $(document).on('mousemove', function (e) { 
+      if (!isDrag) { 
+        return;
+      }
+      dragX = e.clientX;
+      const boxWidth: number = parseFloat($('.right-panel').innerWidth());
+      const boxLeft: number = parseFloat($('.right-panel').css('paddingLeft'));
+      const boxRight: number = parseFloat($('.right-panel').css('paddingRight'));
+      codeWidth = window.innerWidth - dragX - parseFloat($('.right-panel').css('paddingRight')) + 3;
+      if (codeWidth > (boxWidth-boxLeft-boxRight-200 )|| codeWidth < 400) { 
+        return;
+      }
+      self.setCodeWrapWidth(codeWidth);
+    });
+    // 鼠标抬起的时候就直接禁止拖拽
+    $(document).on('mouseup', function (e) { 
+      if (isDrag) { 
+        // 进行存储
+        window.localStorage.setItem('code-wrap-width',codeWidth.toString());
+        self.initEditor();
+        self.renderCodeEditor();
+      }
+      isDrag = false;
+      if ($('#mount iframe').length) { 
+        $('#mount iframe').css('pointerEvents','all');
+      }
+    });
+    // window大小变化重新刷新editor高度
+    $(window).on('resize', function () { 
+      self.initEditor();
+      self.renderCodeEditor();
+    });
+    window.addEventListener('storage', function (e) { 
+      console.log(e);
+    });
   }
 
   unbindEvent() {
@@ -380,6 +438,10 @@ class Demo {
       'click',
     );
     $('.page-language-switch').off('click');
+    $(document).off('mousedown', '#dragger-line');
+    $(document).off('mousemove');
+    $(document).off('mouseup');
+    $(window).off('resize');
     if (this.clipboard && this.clipboard.destroy) {
       this.clipboard.destroy();
     }
