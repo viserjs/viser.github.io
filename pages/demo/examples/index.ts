@@ -159,23 +159,25 @@ const examples = {
                     path: 'example10',
                     enName: 'Comparison of global search trends between blockchain and NLP',
                     cnName: '某网站24小时UV趋势',
+                    pic:"https://img.alicdn.com/tfs/TB12TcHQ9zqK1RjSZFjXXblCFXa-875-396.jpg"
                 },
                 {
                     path: 'example11',
                     enName: '24-hour UV Trend of a Website',
                     cnName: 'blockchain 和 NLP 全球搜索趋势对比',
+                    pic:"https://img.alicdn.com/tfs/TB1JxU9Q4naK1RjSZFBXXcW7VXa-866-358.jpg"
                 },
                 {
                     path: 'example12',
                     enName: 'Real-time monitoring of CPU occupancy',
                     cnName: 'CPU 占用率实时监控',
-                    pic: ''
+                    pic: 'https://img.alicdn.com/tfs/TB1Fr.NQYrpK1RjSZTEXXcWAVXa-857-400.jpg'
                 },
                 {
                     path: 'example13',
                     enName: 'Double line',
                     cnName: '双折线图',
-                    pic: ''
+                    pic: 'https://img.alicdn.com/tfs/TB1pJdIee3tHKVjSZSgXXX4QFXa-832-336.jpg'
                 },
                 // {
                 //     path: 'example14',
