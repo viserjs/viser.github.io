@@ -120,6 +120,34 @@ const examples = {
                     enName: 'Trend of visiting a website',
                     cnName: '某网站访问趋势',
                 },
+                {
+                    path: 'example10',
+                    enName: 'Comparison of global search trends between blockchain and NLP',
+                    cnName: '某网站24小时UV趋势',
+                },
+                {
+                    path: 'example11',
+                    enName: '24-hour UV Trend of a Website',
+                    cnName: 'blockchain 和 NLP 全球搜索趋势对比',
+                },
+                {
+                    path: 'example12',
+                    enName: 'Real-time monitoring of CPU occupancy',
+                    cnName: 'CPU 占用率实时监控',
+                    pic: ''
+                },
+                {
+                    path: 'example13',
+                    enName: 'Double line',
+                    cnName: '双折线图',
+                    pic: ''
+                },
+                // {
+                //     path: 'example14',
+                //     enName: 'Birth rates in countries',
+                //     cnName: '各国人口出生率',
+                //     pic: ''
+                // },
             ],
             icon: 'xianxingtu',
         },
@@ -997,6 +1025,16 @@ const examples = {
                     path: 'example8',
                     enName: 'functionTree',
                     cnName: '函数生成树',
+                },
+                {
+                    path: 'example9',
+                    enName: 'Compact tree',
+                    cnName: '紧凑树',
+                },
+                {
+                    path: 'example10',
+                    enName: 'Relation Map of Mi',
+                    cnName: '小米关系图谱',
                 },
             ],
             icon: 'others',
