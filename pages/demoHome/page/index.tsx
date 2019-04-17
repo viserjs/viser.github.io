@@ -13,6 +13,13 @@ export default class App extends React.Component<Props, State> {
     public componentWillUnmount() {
         window.removeEventListener('resize', this.handleWrapperHeight);
     }
+    public componentWillReceiveProps(nextProps:any) { 
+        if (this.props.typeKey !== nextProps.typeKey) { 
+            this.setState({
+                activeKey:null
+            });
+        }
+    }
 
     public handleSetActiveKey = (activeKey:string) => { 
         this.setState({
