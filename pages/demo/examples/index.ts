@@ -95,6 +95,36 @@ const examples = {
                     cnName: 'legend-翻页',
                     pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/component/legend-pagenation-f149e.png"
                 },
+                {
+                    path: 'example16',
+                    enName: 'legend-position-choose',
+                    cnName: 'legend-图例位置',
+                    pic:"https://img.alicdn.com/tfs/TB1DLpFRwDqK1RjSZSyXXaxEVXa-878-476.jpg"
+                },
+                {
+                    path: 'example17',
+                    enName: 'legend-size',
+                    cnName: 'legend-size',
+                    pic:"https://img.alicdn.com/tfs/TB1nz8HRrPpK1RjSZFFXXa5PpXa-825-568.jpg"
+                },
+                {
+                    path: 'example18',
+                    enName: 'legend-tail',
+                    cnName: 'legend-尾部跟随图例',
+                    pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/component/legend-tail.png"
+                },
+                {
+                    path: 'example19',
+                    enName: 'tooltip-canvastooltip',
+                    cnName: 'tooltip-canvastooltip',
+                    pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/component/tooltip-canvastooltip.png"
+                },
+                {
+                    path: 'example20',
+                    enName: 'tooltip-customized',
+                    cnName: '自定义 tooltip',
+                    pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/component/tooltip-customized.png"
+                },
             ],
         },
         line: {
