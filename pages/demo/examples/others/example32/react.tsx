@@ -107,6 +107,7 @@ export default class App extends React.Component {
 
     const {originDv, chartDv} = this.getDv();
     const sliderOpts = {
+      container: 'viser-slider-1',
       width: 'auto',
       height: 26,
       start, // 和状态量对应

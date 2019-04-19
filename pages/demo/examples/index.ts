@@ -209,12 +209,18 @@ const examples = {
                     cnName: '双折线图',
                     pic: 'https://img.alicdn.com/tfs/TB1pJdIee3tHKVjSZSgXXX4QFXa-832-336.jpg'
                 },
-                {
-                    path: 'example14',
-                    enName: 'Birth rates in countries',
-                    cnName: '各国人口出生率',
-                    pic: ''
-                },
+                // {
+                //     path: 'example14',
+                //     enName: 'Birth rates in countries',
+                //     cnName: '各国人口出生率',
+                //     pic: 'https://img.alicdn.com/tfs/TB1Uji9RSzqK1RjSZPxXXc4tVXa-1066-399.png'
+                // },
+                // {
+                //     path: 'example15',
+                //     enName: 'Per capita expenditure ranking of residents in past years',
+                //     cnName: '历年居民人均支出排行',
+                //     pic: ''
+                // },
             ],
             icon: 'xianxingtu',
         },
