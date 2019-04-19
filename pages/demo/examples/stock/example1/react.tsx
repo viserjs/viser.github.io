@@ -100,6 +100,7 @@ export default class App extends React.Component {
     }
 
     const sliderOpts = {
+      container:'viser-slider-1',
       width: 'auto',
       height: 26,
       padding: [ 20, 40, 20, 40 ],
