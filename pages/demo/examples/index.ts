@@ -125,6 +125,18 @@ const examples = {
                     cnName: '自定义 tooltip',
                     pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/component/tooltip-customized.png"
                 },
+                {
+                    path: 'example21',
+                    enName: 'tooltip-fixed-position',
+                    cnName: 'tooltip-固定位置',
+                    pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/component/tooltip-fixed-position.png"
+                },
+                {
+                    path: 'example22',
+                    enName: 'tooltip-htmlContent',
+                    cnName: 'tooltip-htmlContent',
+                    pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/component/tooltip-html-content-2d17a.png"
+                },
             ],
         },
         line: {
