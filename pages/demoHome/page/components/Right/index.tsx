@@ -4,7 +4,6 @@ import examples from '../../../../demo/examples';
 import LazyLoad from 'react-lazyload';
 import {Row,Col} from 'antd';
 import './index.scss';
-import { t } from '@angular/core/src/render3';
 
 export default class App extends React.Component<Props, State> {
     public static defaultProps = new Props();
@@ -13,7 +12,6 @@ export default class App extends React.Component<Props, State> {
     public timeout: any;// 用来延时可滚动
     public titlesTop: any = [];
     public componentDidMount() { 
-        this.handleDealDomTop();
         this.wrapper.addEventListener('scroll', this.handleDomScroll);
     }
     public componentWillUnmount() { 
@@ -46,6 +44,7 @@ export default class App extends React.Component<Props, State> {
         this.titlesTop = tempArr;
     }
     public handleDomScroll = (e: any) => { 
+        this.handleDealDomTop();
         const { canScroll} = this.state;
         const { onScroll } = this.props;
         if(!onScroll||!canScroll) {
