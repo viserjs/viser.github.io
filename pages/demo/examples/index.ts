@@ -179,12 +179,12 @@ const examples = {
                     cnName: '双折线图',
                     pic: 'https://img.alicdn.com/tfs/TB1pJdIee3tHKVjSZSgXXX4QFXa-832-336.jpg'
                 },
-                // {
-                //     path: 'example14',
-                //     enName: 'Birth rates in countries',
-                //     cnName: '各国人口出生率',
-                //     pic: ''
-                // },
+                {
+                    path: 'example14',
+                    enName: 'Birth rates in countries',
+                    cnName: '各国人口出生率',
+                    pic: ''
+                },
             ],
             icon: 'xianxingtu',
         },
