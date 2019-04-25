@@ -199,13 +199,14 @@ export default class App extends React.Component {
       .g2-legend {
           width: 250px !important;
           height: 100%;
-          font-size: 14px;
-          color: #595959;
+          font-size: 14px !important;
+          color: #595959 !important;
+          top: 0 !important;
       }
 
       .g2-legend-title {
-          color: #5a5a5a;
-          font-size: 14px;
+          color: #5a5a5a !important;
+          font-size: 14px !important;
       }
 
       .g2-legend-list {
@@ -279,6 +280,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    const Ilegend:any = Legend;
     return (
       <Chart forceFit data={data} height={400} padding={[20, 210, 30, 50]} scale={[{
         dataKey:'year',
@@ -286,28 +288,28 @@ export default class App extends React.Component {
         range: [0, 1]
       }]}>
         <Tooltip />
-        <Legend
+        <Ilegend
           useHtml={true}
           position='right'
-          // reactive={true}
-          // legendStyle={{
-          //   MARKER_CLASS: {
-          //     width: '18px',
-          //     height: '18px',
-          //     lineHeight: '18px',
-          //     borderRadius: '50px',
-          //     display: 'inline-block',
-          //     marginRight: '4px',
-          //     textAlign: 'center',
-          //     fontZize: '10px',
-          //     marginTop: '3px',
-          //     color: 'white',
-          //     float: 'left',
-          //     borderStyle: 'solid',
-          //     borderWidth: '1px',
-          //     borderColor: '#ccc'
-          //   }
-          // }}
+          reactive={true}
+          legendStyle={{
+            MARKER_CLASS: {
+              width: '18px',
+              height: '18px',
+              lineHeight: '18px',
+              borderRadius: '50px',
+              display: 'inline-block',
+              marginRight: '4px',
+              textAlign: 'center',
+              fontZize: '10px',
+              marginTop: '3px',
+              color: 'white',
+              float: 'left',
+              borderStyle: 'solid',
+              borderWidth: '1px',
+              borderColor: '#ccc'
+            }
+          }}
           containerTpl={containerTpl}
           itemTpl={itemTpl}
         />
