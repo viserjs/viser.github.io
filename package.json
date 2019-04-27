@@ -28,7 +28,7 @@
     "react-color": "^2.14.1",
     "react-lazyload": "^2.5.0",
     "react-redux": "^5.0.7",
-    "viser": "^2.3.0",
+    "viser": "^2.3.4",
     "viser-graph": "^0.1.7",
     "viser-graph-ng": "^0.1.10",
     "viser-graph-react": "^0.1.11",

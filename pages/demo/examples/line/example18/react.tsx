@@ -29,7 +29,7 @@ export default class App extends React.Component {
         tickCount: 10,
         type: 'timeCat'
       }]}>
-        <Tooltip crosshairs='y' shared={true}/>
+        <Tooltip crosshairs='y' shared={true} />
         <Legend attachLast={true}/>
         <Axis dataKey="date" label={label}/>
         <Axis dataKey="price" label={label}/>

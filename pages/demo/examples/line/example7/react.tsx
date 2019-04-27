@@ -57,8 +57,8 @@ export default class App extends React.Component {
             lineWidth: 2
           }}
         />
-        <Guide 
-          type="line" 
+        <Guide
+          type="text"
           top={true} 
           start={['2012-09', 5396]}
           end={['2018-02', 5396]}
