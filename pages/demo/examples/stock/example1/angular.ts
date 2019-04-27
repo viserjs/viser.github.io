@@ -113,6 +113,7 @@ const barOpts = {
     </v-chart>
     <v-plugin>
       <v-slider [width]="'auto'" [height]="26"
+        container='viser-slider-1'
         [padding]="[ 20, 40, 20, 40 ]" [start]="start" [end]="end" [data]="data"
         [xAxis]="'time'" [yAxis]="'volumn'" [scales]="scales" [onChange]="this.slideChange"
       ></v-slider>

@@ -35,6 +35,7 @@ const colors = [
       <div id="slider">
         <v-plugin>
           <v-slider
+            container='viser-slider-1'
             width="auto"
             height="26"
             [start]="start"

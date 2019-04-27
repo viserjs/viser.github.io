@@ -54,6 +54,7 @@ const facetOpts = {
     </v-chart>
     <v-plugin>
       <v-slider width="auto" [height]="26"
+        container='viser-slider-1'
         [start]="start" [end]="end" [data]="originDv"
         [xAxis]="'time'" [yAxis]="'value'" [scales]="scales"
         [backgroundChart]="{

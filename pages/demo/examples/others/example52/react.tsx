@@ -110,6 +110,7 @@ export default class App extends React.Component {
         </Chart>
         <Plugin>
           <Slider
+            container='viser-slider-1'
             width="auto"
             height={26}
             start={start}

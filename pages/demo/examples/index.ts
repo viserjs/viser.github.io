@@ -125,6 +125,18 @@ const examples = {
                     cnName: '自定义 tooltip',
                     pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/component/tooltip-customized.png"
                 },
+                {
+                    path: 'example21',
+                    enName: 'tooltip-fixed-position',
+                    cnName: 'tooltip-固定位置',
+                    pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/component/tooltip-fixed-position.png"
+                },
+                {
+                    path: 'example22',
+                    enName: 'tooltip-htmlContent',
+                    cnName: 'tooltip-htmlContent',
+                    pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/component/tooltip-html-content-2d17a.png"
+                },
             ],
         },
         line: {
@@ -213,6 +225,12 @@ const examples = {
                 //     path: 'example14',
                 //     enName: 'Birth rates in countries',
                 //     cnName: '各国人口出生率',
+                //     pic: 'https://img.alicdn.com/tfs/TB1Uji9RSzqK1RjSZPxXXc4tVXa-1066-399.png'
+                // },
+                // {
+                //     path: 'example15',
+                //     enName: 'Per capita expenditure ranking of residents in past years',
+                //     cnName: '历年居民人均支出排行',
                 //     pic: ''
                 // },
             ],
@@ -1194,6 +1212,18 @@ const examples = {
                     enName: 'brush-polygon',
                     cnName: 'g2-brush 多边形',
                     pic:"https://img.alicdn.com/tfs/TB1LT8VQNTpK1RjSZFKXXa2wXXa-718-284.jpg"
+                },
+                {
+                    path: 'example74',
+                    enName: 'column-error',
+                    cnName: '柱状图-ErrorBar',
+                    pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/other/column-error-9d07c.png"
+                },
+                {
+                    path: 'example75',
+                    enName: 'geo-projection',
+                    cnName: '地理映射',
+                    pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/other/geo-projection-d4979.png"
                 },
             ],
             icon: 'others',

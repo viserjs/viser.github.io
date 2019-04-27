@@ -6,6 +6,7 @@
     </v-chart>
     <v-plugin>
       <v-slider width="auto" :height="26"
+        container='viser-slider-1'
         :start="start" :end="end"
         :data="originDv" x-axis="time" y-axis="value" :scales="{
           time: {

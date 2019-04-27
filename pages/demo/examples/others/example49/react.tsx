@@ -112,6 +112,7 @@ export default class App extends React.Component {
           {data.length !== 0 && (
             <Plugin>
               <Slider
+                container='viser-slider-1'
                 width="auto"
                 height={26}
                 start={start} // 和状态量对应

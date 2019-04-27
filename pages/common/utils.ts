@@ -174,7 +174,7 @@ const codeDeal = (oriCode: string, framework: string): any => {
     });
   }
   code = code
-    .replace(/import.*?;/g, '')
+    .replace(/import\s.*?;/g, '')
     .replace(/as\s*?any\s*?;/g, '')
     .replace(/\(window\s+?as\s+?any\)/g, 'window')
     .replace(/as\s*?any\s*?/g, '')
