@@ -221,18 +221,36 @@ const examples = {
                     cnName: '双折线图',
                     pic: 'https://img.alicdn.com/tfs/TB1pJdIee3tHKVjSZSgXXX4QFXa-832-336.jpg'
                 },
-                // {
-                //     path: 'example14',
-                //     enName: 'Birth rates in countries',
-                //     cnName: '各国人口出生率',
-                //     pic: 'https://img.alicdn.com/tfs/TB1Uji9RSzqK1RjSZPxXXc4tVXa-1066-399.png'
-                // },
-                // {
-                //     path: 'example15',
-                //     enName: 'Per capita expenditure ranking of residents in past years',
-                //     cnName: '历年居民人均支出排行',
-                //     pic: ''
-                // },
+                {
+                    path: 'example14',
+                    enName: 'Birth rates in countries',
+                    cnName: '各国人口出生率',
+                    pic: 'https://img.alicdn.com/tfs/TB1Uji9RSzqK1RjSZPxXXc4tVXa-1066-399.png'
+                },
+                {
+                    path: 'example15',
+                    enName: 'Per capita expenditure ranking of residents in past years',
+                    cnName: '历年居民人均支出排行',
+                    pic: 'https://img.alicdn.com/tfs/TB10VvtSQPoK1RjSZKbXXX1IXXa-1026-413.png'
+                },
+                {
+                    path: 'example16',
+                    enName: 'Operational Analysis of an APP',
+                    cnName: '某 APP 经营分析',
+                    pic: 'https://img.alicdn.com/tfs/TB1eMomfK3tHKVjSZSgXXX4QFXa-1013-317.png'
+                },
+                {
+                    path: 'example17',
+                    enName: 'Nintendo Game Sales Trend',
+                    cnName: '任天堂游戏销售趋势',
+                    pic: 'https://img.alicdn.com/tfs/TB1tt2qSMHqK1RjSZFPXXcwapXa-1026-373.png'
+                },
+                {
+                    path: 'example18',
+                    enName: 'Comparison of Crude Oil Price Trends between China and the United States and International',
+                    cnName: '中美两国与国际原油价格走势对比',
+                    pic: 'https://img.alicdn.com/tfs/TB1D9rqSSzqK1RjSZFpXXakSXXa-1029-380.png'
+                },
             ],
             icon: 'xianxingtu',
         },
@@ -317,6 +335,18 @@ const examples = {
                     enName: 'Ranged bar',
                     cnName: '区间条形图',
                     pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/bar/ranged.png"
+                },
+                {
+                    path: 'example14',
+                    enName: 'Supermarket Category Sales Data',
+                    cnName: '超市品类销售数据',
+                    pic:"https://img.alicdn.com/tfs/TB1md_RSNnaK1RjSZFtXXbC2VXa-1014-409.png"
+                },
+                {
+                    path: 'example15',
+                    enName: 'Contrast of Product Category Sales',
+                    cnName: '产品类别销售额对比',
+                    pic:"https://img.alicdn.com/tfs/TB1AtsMXLc3T1VjSZLeXXbZsVXa-1020-380.png"
                 },
             ],
             icon: 'zhuzhuangtu',

@@ -9,7 +9,7 @@
     >
       <v-tooltip 
         crosshairs='y'
-        :shared="shared"
+        :shared="SHARED"
         :htmlContent="htmlContent"
       >
       </v-tooltip>
@@ -44,6 +44,8 @@
 
 <script>
 const DataSet = require('@antv/data-set');
+var SHARED = true;
+var KEY_DOWN = false;
 export default {
   mounted(){
     $.getJSON('/assets/data/fertility.json',data=>{
@@ -59,13 +61,13 @@ export default {
       this.setStyle();
       const that = this;
       $(document).keydown(function() {
-        that.$data.KEY_DOWN = true;
-        that.$data.shared = false;
+        KEY_DOWN = true;
+        SHARED = false;
       });
 
       $(document).keyup(function() {
-        that.$data.KEY_DOWN = false;
-        that.$data.shared = true;
+        KEY_DOWN = false;
+        SHARED = true;
       });
     });
   },
@@ -126,8 +128,8 @@ export default {
   data() {
     return {
       data:[],
-      KEY_DOWN: false,
-      shared: true,
+      SHARED,
+      KEY_DOWN,
       label:{
         textStyle: {
           fill: '#aaaaaa'
@@ -170,14 +172,14 @@ export default {
         }
         listDom += '</ul>';
 
-        if (this.KEY_DOWN) {
+        if (KEY_DOWN) {
           if (title === '1955' && items[0].name === 'China') {
             var storyDom = '<li class="g2-tooltip-story">中国折线，受三年自然灾害影响，<br/>1959-1961年间出生率锐减。</li>';
             return html + titleDom + listDom + storyDom + '</div>';
           }
           return html + titleDom + listDom + '</div>';
         } else {
-          var tailDom = '<li class="g2-tooltip-tail">按住ALT键查看单独数据点</li>';
+          var tailDom = '<li class="g2-tooltip-tail">按住ALT键查看单独数据点(此功能目前有bug)</li>';
           return html + titleDom + listDom + tailDom + '</div>';
         }
       }

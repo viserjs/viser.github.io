@@ -5,8 +5,188 @@ import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ViserModule } from 'viser-ng';
 
-const DataSet = require('@antv/data-set');
+function getYearsum() {
+  var sum = 0;
+  for (var i = 0; i < data.length; i++) {
+    var d = data[i];
+    if (d.year === 2016) {
+      sum += d.value;
+    }
+  }
+  return sum;
+}
 
+function getYearPercent(sum) {
+  var percentage = {};
+  for (var i = 0; i < data.length; i++) {
+    var d = data[i];
+    if (d.year === 2016) {
+      percentage[d.type] = {
+        percent: d.value / sum,
+        value: d.value
+      };
+    }
+  }
+  return percentage;
+}
+
+const label = {
+  textStyle: {
+    fill: '#aaaaaa'
+  }
+}
+
+const labelFormat = {
+  textStyle: {
+    fill: '#aaaaaa'
+  },
+  formatter: function formatter(text) {
+    return text.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+  }
+}
+
+const data = [{
+  year: 2013,
+  type: '食品烟酒',
+  value: 4127
+}, {
+  year: 2013,
+  type: '衣着',
+  value: 1027
+}, {
+  year: 2013,
+  type: '居住',
+  value: 2999
+}, {
+  year: 2013,
+  type: '生活用品',
+  value: 806
+}, {
+  year: 2013,
+  type: '交通通行',
+  value: 1627
+}, {
+  year: 2013,
+  type: '文教娱',
+  value: 1398
+}, {
+  year: 2013,
+  type: '医疗保健',
+  value: 912
+}, {
+  year: 2013,
+  type: '其他',
+  value: 325
+}, {
+  year: 2014,
+  type: '食品烟酒',
+  value: 4494
+}, {
+  year: 2014,
+  type: '衣着',
+  value: 1099
+}, {
+  year: 2014,
+  type: '居住',
+  value: 3201
+}, {
+  year: 2014,
+  type: '生活用品',
+  value: 890
+}, {
+  year: 2014,
+  type: '交通通行',
+  value: 1869
+}, {
+  year: 2014,
+  type: '文教娱',
+  value: 1536
+}, {
+  year: 2014,
+  type: '医疗保健',
+  value: 1045
+}, {
+  year: 2014,
+  type: '其他',
+  value: 358
+}, {
+  year: 2015,
+  type: '食品烟酒',
+  value: 4814
+}, {
+  year: 2015,
+  type: '衣着',
+  value: 1164
+}, {
+  year: 2015,
+  type: '居住',
+  value: 3419
+}, {
+  year: 2015,
+  type: '生活用品',
+  value: 951
+}, {
+  year: 2015,
+  type: '交通通行',
+  value: 2087
+}, {
+  year: 2015,
+  type: '文教娱',
+  value: 1723
+}, {
+  year: 2015,
+  type: '医疗保健',
+  value: 1165
+}, {
+  year: 2015,
+  type: '其他',
+  value: 389
+}, {
+  year: 2016,
+  type: '食品烟酒',
+  value: 5151
+}, {
+  year: 2016,
+  type: '衣着',
+  value: 1203
+}, {
+  year: 2016,
+  type: '居住',
+  value: 3746
+}, {
+  year: 2016,
+  type: '生活用品',
+  value: 1044
+}, {
+  year: 2016,
+  type: '交通通行',
+  value: 2338
+}, {
+  year: 2016,
+  type: '文教娱',
+  value: 1915
+}, {
+  year: 2016,
+  type: '医疗保健',
+  value: 1307
+}, {
+  year: 2016,
+  type: '其他',
+  value: 406
+}];
+
+const yearSum = getYearsum();
+const yearPercent = getYearPercent(yearSum);
+
+const containerTpl = '<div class="g2-legend">2016 年支出排行<div class="g2-legend-list"></div></div>';
+
+const itemTpl = function itemTpl(value, color, checked, index) {
+  var markerDom = '<div class="g2-legend-marker" style="background-color:' + color + '">' + (index + 1) + '</div>';
+  var nameDom = '<div class="legend-item-name">' + value + '</div>';
+  var percentDom = '<div class="legend-item-percent">' + yearPercent[value].percent.toFixed(2) + '</div>';
+  var valueDom = '<div class="legend-item-value">' + yearPercent[value].value + '</div>';
+  return '<div class="g2-legend-list-item" data-value="' + value + '">' + markerDom + nameDom + percentDom + valueDom + '</div>';
+}
 @Component({
   selector: '#mount',
   template: `
@@ -19,27 +199,19 @@ const DataSet = require('@antv/data-set');
             [scale]="scale"
             [padding]="padding"
           >
-            <v-tooltip 
-              crosshairs='y'
-              [shared]="shared"
-              [htmlContent]="htmlContent"
-            >
-            </v-tooltip>
-            <v-legend></v-legend>
+            <v-tooltip></v-tooltip>
+            <v-legend
+              [useHtml]="true"
+              position="right"
+              [reactive]="true" 
+              [containerTpl]="containerTpl"
+              [itemTpl]="itemTpl"
+            ></v-legend>
             <v-line 
               position="year*value"
-              color='country'
-              [size]="size"
-              [opacity]='opacity'
+              [color]='color'
             >
             </v-line>
-            <v-point 
-              position="year*value"
-              color='country'
-              [size]='size2'
-              [style]='style'
-            >
-            </v-point>
             <v-axis
               dataKey="year"
               [label]="label"
@@ -47,7 +219,7 @@ const DataSet = require('@antv/data-set');
             </v-axis>
             <v-axis
               dataKey="value"
-              [label]="label"
+              [label]="labelFormat"
             >
             </v-axis>
           </v-chart>
@@ -56,86 +228,39 @@ const DataSet = require('@antv/data-set');
   `,
 })
 class AppComponent {
-  data:any=[];
-  KEY_DOWN=false;
-  shared=true;
-  label={
-    textStyle: {
-      fill: '#aaaaaa'
-    }
-  };
-  size=['country', function(val) {
-    if (val === 'China') {
-      return 4;
-    }
-    return 2;
-  }];
-  size2=['country', function(val) {
-    if (val === 'China') {
-      return 4;
-    }
-    return 0;
-  }];
-  style={
-    lineWidth: 2
-  };
-  opacity=['country', function(val) {
-    if (val === 'China') {
-      return 1;
-    }
-    return 0.7;
-  }];
+  data=data;
+  padding=[20, 210, 30, 50];
+  containerTpl=containerTpl;
+  itemTpl=itemTpl;
   scale=[{
     dataKey:'year',
+    type: 'timeCat',
     range: [0, 1]
   }];
-  padding=[10, 30, 80, 30];
-  htmlContent=(title, items) => {
-    var html = '<div class="g2-tooltip">';
-    var titleDom = '<div class="g2-tooltip-title" style="margin-bottom: 4px;">' + title + '</div>';
-    var listDom = '<ul class="g2-tooltip-list">';
-    for (var i = 0; i < items.length; i++) {
-      var item = items[i];
-      var itemDom = '<li data-index={index}>' + '<span style="background-color:' + item.color + ';width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;"></span>' + item.name + '<span class="g2-tooltip-value">' + item.value + '</span>' + '</li>';
-      listDom += itemDom;
-    }
-    listDom += '</ul>';
-
-    if (this.KEY_DOWN) {
-      if (title === '1955' && items[0].name === 'China') {
-        var storyDom = '<li class="g2-tooltip-story">中国折线，受三年自然灾害影响，<br/>1959-1961年间出生率锐减。</li>';
-        return html + titleDom + listDom + storyDom + '</div>';
-      }
-      return html + titleDom + listDom + '</div>';
-    } else {
-      var tailDom = '<li class="g2-tooltip-tail">按住ALT键查看单独数据点</li>';
-      return html + titleDom + listDom + tailDom + '</div>';
+  label=label;
+  labelFormat=labelFormat;
+  legendStyle={
+    MARKER_CLASS: {
+      width: '18px',
+      height: '18px',
+      lineHeight: '18px',
+      borderRadius: '50px',
+      display: 'inline-block',
+      marginRight: '4px',
+      textAlign: 'center',
+      fontZize: '10px',
+      marginTop: '3px',
+      color: 'white',
+      float: 'left',
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      borderColor: '#ccc'
     }
   };
+  color=['type', ['#ff4d4f', '#ff7a45', '#ffa940', '#facc14', '#bae637', '#73d13d', '#36cfc9', '#40a9ff']]
 
   constructor(){
-    $.getJSON('/assets/data/fertility.json',data=>{
-      const ds = new DataSet();
-      const dv = ds.createView().source(data);
-      dv.transform({
-        type: 'sort',
-        callback: function callback(a, b) {
-          return a.year - b.year;
-        }
-      });
-      this.data = dv.rows;
-      this.setStyle();
-      const that = this;
-      $(document).keydown(function() {
-        that.KEY_DOWN = true;
-        that.shared = false;
-      });
-
-      $(document).keyup(function() {
-        that.KEY_DOWN = false;
-        that.shared = true;
-      });
-    });
+    this.setStyle(); 
   }
   setStyle(){
     const id = 'legend-html';
@@ -143,46 +268,94 @@ class AppComponent {
         return;
     }
     const styleTxt = `
-        .g2-tooltip {
-          position: absolute;
-          background-color: rgba(255, 255, 255, 0.9);
-          border-radius: 3px;
-          color: rgb(87, 87, 87);
-          font-size: 12px;
-          line-height: 20px;
-          padding: 10px 10px 6px 10px;
-          box-shadow: 0px 0px 10px #aeaeae;
-          pointer-events: none;
-        }
+      .g2-legend {
+          width: 250px !important;
+          height: 100%;
+          font-size: 14px !important;
+          color: #595959 !important;
+          top: 0 !important;
+      }
 
-        .g2-tooltip-list {
-          margin: 0;
-          padding: 0;
-          list-style-type: none;
-        }
-        .g2-tooltip-value {
-          margin-left: 30px;
-          display: inline;
-          float: right;
-        }
-        .g2-tooltip-tail {
-          background-color: #f9f9f9;
-          color: #909090;
-          font-size: 14px;
-          padding-bottom: 10px;
+      .g2-legend-title {
+          color: #5a5a5a !important;
+          font-size: 14px !important;
+      }
+
+      .g2-legend-list {
           margin-top: 10px;
-          list-style-type: none;
-          text-align: center;
-          padding-top: 10px;
-        }
-        .g2-tooltip-story {
-          color: #9b9b9b;
-          font-size: 12px;
-          padding-bottom: 10px;
-          margin-top: 10px;
-          list-style-type: none;
-          padding-top: 10px;
-        }
+      }
+
+      .g2-legend-list-item {
+          width: 100%;
+          height: 30px;
+          margin-bottom: 10px;
+      }
+      .g2-legend-marker{
+          width: 18px !important; 
+          height: 18px !important;
+          line-height: 18px; 
+          text-align: center; 
+          margin-top: 3px; 
+          color: white; 
+          float: left; 
+          border-style: solid; 
+          border-width: 1px; 
+          border-color: rgb(204, 204, 204);
+      }
+
+      .legend-item-name {
+          min-width:60px;
+          height: 100%;
+          float: left;
+          margin-left: 8px;
+          font-size: 10px;
+          color: #595959;
+          text-align: left;
+      }
+
+      .legend-item-name:after {
+          display: inline-block;
+          width: 0;
+          height: 100%;
+          vertical-align: middle;
+          content: '';
+      }
+
+      .legend-item-percent {
+          min-width: 30px;
+          height: 100%;
+          float: left;
+          margin-left: 10px;
+          font-size: 10px;
+          color: #949494;
+          text-align: left;
+      }
+
+      .legend-item-percent:after {
+          display: inline-block;
+          width: 0;
+          height: 100%;
+          vertical-align: middle;
+          content: '';
+      }
+
+      .legend-item-value {
+          min-width: 80px;
+          height: 100%;
+          float: left;
+          margin-left: 10px;
+          font-size: 10px;
+          color: #595959;
+          text-align: left;
+      }
+
+      .legend-item-value:after {
+          display: inline-block;
+          width: 0;
+          height: 100%;
+          vertical-align: middle;
+          content: '';
+      }
     `;
     const style = document.createElement('style');
     style.setAttribute('id', id);
