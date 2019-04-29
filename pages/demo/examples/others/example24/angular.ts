@@ -91,6 +91,7 @@ class AppComponent  implements OnInit {
   
   ngOnInit() {
     // 定义一个变量来保存这些信息或者直接写入数据中
+    // 感谢@spawpaw提供新的解决方案
     this.data.forEach((value, index) => {
       value.start = {x: 0, y: this.y + index * this.yGap + index * 0.125};
       value.end = {x: 1, y: this.y + (index + 1) * this.yGap + index * 0.125};
