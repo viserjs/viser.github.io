@@ -282,7 +282,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Chart forceFit data={data} height={400} padding={[100, 20, 30, 45]}>
-        <Tooltip 
+        <Tooltip
           x={$("#mountNode").width() - 20}
           y={100}
           follow={false}
