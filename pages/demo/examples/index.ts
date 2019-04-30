@@ -1279,6 +1279,18 @@ const examples = {
                     cnName: 'g2-brush 多边形',
                     pic:"https://img.alicdn.com/tfs/TB1LT8VQNTpK1RjSZFKXXa2wXXa-718-284.jpg"
                 },
+                {
+                    path: 'example74',
+                    enName: 'column-error',
+                    cnName: '柱状图-ErrorBar',
+                    pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/other/column-error-9d07c.png"
+                },
+                {
+                    path: 'example75',
+                    enName: 'geo-projection',
+                    cnName: '地理映射',
+                    pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/other/geo-projection-d4979.png"
+                },
             ],
             icon: 'others',
         },
