@@ -1,6 +1,6 @@
 <template>
     <v-chart :data="data" :forceFit="true" :height="500" :scale="scale">
-        <v-tooltip :useHtml="false" :crosshairs="{type:'line'}"></v-tooltip>
+        <v-tooltip :useHtml="false" :crosshairs="chairs"></v-tooltip>
         <v-axis></v-axis>
         <v-legend></v-legend>
         <v-stack-area
@@ -137,6 +137,7 @@ export default {
     data() {
         return {
             data,
+            chairs:{type:'line'},
             scale:[
                 {
                     dataKey: 'year',

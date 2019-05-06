@@ -8,7 +8,7 @@
       <v-guide 
         type="text" 
         :top="true"
-        :position="['椅子', 'min']"
+        :position="pos1"
         content='家具'
         :style="style"
         :offsetY="40"
@@ -16,7 +16,7 @@
       <v-guide  
         type="text" 
         :top="true"
-        :position="['电话', 'min']"
+        :position="pos2"
         content='技术'
         :style="style"
         :offsetY="40"
@@ -24,7 +24,7 @@
       <v-guide  
         type="text" 
         :top="true" 
-        :position="['笔', 'min']"
+        :position="pos3"
         content='办公用品'
         :style="style"
         :offsetY="40"
@@ -32,14 +32,14 @@
       />
       <v-guide  
         type="line" 
-        :start="['30%', '100%']"
-        :end="['30%', '120%']"
+        :start="start1"
+        :end="end1"
         :lineStyle="lineStyle"
       />
       <v-guide  
         type="line" 
-        :start="['60%', '100%']"
-        :end="['60%', '120%']"
+        :start="start2"
+        :end="end2"
         :lineStyle="lineStyle"
       />
     </v-chart>
@@ -141,7 +141,14 @@
         tickLine,
         labelFormat,
         title,
-        lineStyle
+        lineStyle,
+        pos1:['椅子', 'min'],
+        pos2:['电话', 'min'],
+        pos3:['笔', 'min'],
+        start1:['30%', '100%'],
+        end1:['30%', '120%'],
+        start2:['60%', '100%'],
+        end2:['60%', '120%']
       };
     }
   };

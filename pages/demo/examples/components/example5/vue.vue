@@ -5,37 +5,25 @@
       <v-axis />
       <v-legend :attachLast="true" />
       <v-legend dataKey="predict" :show="false" />
-      <v-line position="time*value" shape="smooth" :color="['type', ['#cccccc', '#2593fc']]"
+      <v-line position="time*value" shape="smooth" :color="color"
         :size="2"
-        :animate="{
-          update: {
-            duration: 0,
-          },
-        }"
+        :animate="animate"
       />
       <v-guide
         type="line"
         :top="true"
-        :start="['min', 60]"
-        :end="['max', 60]"
-        :lineStyle="{
-          stroke: '#F5222D',
-          lineWidth: 2,
-        }"
-        :text="{
-          content: '预警线',
-          position: 'start',
-          offsetX: 20,
-          offsetY: -5,
-        }"
+        :start="start1"
+        :end="end1"
+        :lineStyle="linestyle"
+        :text="text"
       />
       <v-guide
         type="regionFilter"
         :top="true"
-        :start="['min', 60]"
-        :end="['max', 60]"
+        :start="start2"
+        :end="end2"
         color="#F5222D"
-        :apply="['line']"
+        :apply="apply"
       />
       <v-guide
         type="dataMarker"
@@ -128,6 +116,27 @@ export default {
       scale,
       height: 440,
       padding: [10, 100, 50, 50],
+      color:['type', ['#cccccc', '#2593fc']],
+      start1:['min', 60],
+      end1:['max', 60],
+      start2:['min', 60],
+      end2:['max', 60],
+      apply:['line'],
+      animate:{
+        update: {
+          duration: 0,
+        },
+      },
+      linestyle:{
+        stroke: '#F5222D',
+        lineWidth: 2,
+      },
+      text:{
+        content: '预警线',
+        position: 'start',
+        offsetX: 20,
+        offsetY: -5,
+      },
       dataMarkerOpts:{
         style: {
           text: {

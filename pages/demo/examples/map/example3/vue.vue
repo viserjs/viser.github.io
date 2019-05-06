@@ -1,6 +1,6 @@
 <template>
   <div :style="style">
-    <v-chart :forceFit="true" :height="600" :padding="[55, 20]" :data="geoData">
+    <v-chart :forceFit="true" :height="600" :padding="padding" :data="geoData">
       <v-tooltip :showTitle="false" />
       <v-view :data="geoData"><div></div></v-view>
       <v-view :data="data">
@@ -213,6 +213,7 @@ export default {
     return {
       style: {width: '50%', height:'400px',position: 'absolute', right: 0,top: 0,},
       data: [],
+      padding:[55, 20],
       geoData: {},
       polygonOpts,
       name: '',

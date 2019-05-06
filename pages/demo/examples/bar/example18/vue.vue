@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="400" :data="data" :scale="scale" :padding="[20, 20, 50, 30]">
+    <v-chart :forceFit="true" :height="400" :data="data" :scale="scale" :padding="padding">
       <v-tooltip :shared="true"/>
       <v-axis dataKey="time" :label="label" :tickLine="tickLine"/>
       <v-axis dataKey="value" :label="label"/>
@@ -69,7 +69,9 @@
         label,
         tickLine,
         opacity,
-        style
+        style,
+        padding:[20, 20, 50, 30],
+        
       };
     }
   };

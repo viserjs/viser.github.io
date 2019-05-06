@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-chart :forceFit="true" height="400" :data="data" :padding="[40,0]">
+        <v-chart :forceFit="true" height="400" :data="data" :padding="pad">
             <v-tooltip></v-tooltip>
             <v-legend dataKey="type"></v-legend>
             <v-coord type="theta" startAngle="180" endAngle="270"></v-coord>
@@ -40,7 +40,8 @@ const data = [
 export default {
   data() {
     return {
-      data: data
+      data: data,
+      pad:[40,0],
     };
   }
 };

@@ -20,7 +20,7 @@
             position="year*value"
             :color="color"
             :opacity="opacity"
-            :vStyle="{lineCap:'round'}"
+            :vStyle="style"
         ></v-stack-line>
     </v-chart>
 </div>
@@ -102,6 +102,7 @@ export default {
                 return html + titleDom + sumDom + listDom + '</div>';
             },
             color:["country", colors],
+            style:{lineCap:'round'},
             opacity:[
                 'country',
                 function(country) {

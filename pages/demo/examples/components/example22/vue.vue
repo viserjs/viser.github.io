@@ -4,7 +4,7 @@
         :forceFit="true"
         :height="500"
         :data="data"
-        :padding="[50, 50, 50, 50]"
+        :padding="padding"
         :scale="scale"
     >
         <v-tooltip
@@ -20,16 +20,12 @@
         <v-point
           position="data*minTemp"
           :size="5"
-          :color="[
-            'minTemp', ['#6ab7da', '#806bd9', '#da6bcc']
-          ]"
+          :color="color1"
         ></v-point>
         <v-point
           position="data*maxTemp"
           :size="5"
-          :color="[
-            'minTemp', ['#6ab7da', '#806bd9', '#da6bcc']
-          ]"
+          :color="color2"
         ></v-point>
     </v-chart>
 </div>
@@ -379,6 +375,9 @@ export default {
     data() {
         return {
             data:dv,
+            color1:['minTemp', ['#6ab7da', '#806bd9', '#da6bcc']],
+            color2:['minTemp', ['#6ab7da', '#806bd9', '#da6bcc']],
+            padding:[50, 50, 50, 50],
             scale:[
               {
                 dataKey: 'data',

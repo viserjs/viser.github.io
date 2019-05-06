@@ -5,20 +5,12 @@
       <v-tooltip :show-title="false"/>
       <v-legend data-key="trend" position="left"/>
       <v-view :data="mapDv" >
-        <v-polygon position="longitude*latitude" :vStyle="{
-            fill: '#DDDDDD',
-            stroke: '#b1b1b1',
-            lineWidth: 0.5,
-            fillOpacity: 0.85
-        }" />
+        <v-polygon position="longitude*latitude" :vStyle="style1" />
       </v-view>
       <v-view :data="airports">
         <v-point :position="'longitude*latitude'" shape="circle"
           :color="'rgb(97,145,185)'"
-          :vStyle="{
-              stroke: '#eee',
-              lineWidth: 1
-          }" :size="['count', [ 3, 18 ]]" tooltip="iata*count"/>
+          :vStyle="style2" :size="size" tooltip="iata*count"/>
       </v-view>
       <v-view :data="subFlights">
         <v-tooltip :show-title="false"/>
@@ -123,6 +115,17 @@ export default {
   data() {
     return {
       scale,
+      size:['count', [ 3, 18 ]],
+      style1:{
+          fill: '#DDDDDD',
+          stroke: '#b1b1b1',
+          lineWidth: 0.5,
+          fillOpacity: 0.85
+      },
+      style2:{
+          stroke: '#eee',
+          lineWidth: 1
+      },
       mapDv: [],
       airports: [],
       subFlights: [],

@@ -3,7 +3,7 @@
         <v-chart
             :forceFit="true"
             :height="600"
-            :padding="[10,200,50,50]"
+            :padding="padding"
             :data="data"
         >
             <v-tooltip></v-tooltip>
@@ -56,6 +56,7 @@ export default {
         return {
             data: [],
             dv:[],
+            padding:[10,200,50,50],
             sizeLine:[
                 'country',
                 function(country) {

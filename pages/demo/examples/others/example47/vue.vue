@@ -1,15 +1,15 @@
 <template>
   <div>
-    <v-chart :forceFit="true" height="400" :data="data" :padding="[50,40]">
+    <v-chart :forceFit="true" height="400" :data="data" :padding="pad">
         <v-axis></v-axis>
         <v-tooltip></v-tooltip>
         <v-legend dataKey="type"></v-legend>
         <v-coord type="polar" startAngle="180" endAngle="270"></v-coord>
         <v-stack-interval
           position="type*value"
-          :color="['type', 'rgb(252,143,72)-rgb(255,215,135)']"
-          :label="['value', { offset: -15, label: { textAlign: 'center', fill: '#000' } }]"
-          :style="{ lineWidth: 1, stroke: '#fff' }">
+          :color="color"
+          :label="label"
+          :style="style">
         </v-stack-interval>
     </v-chart>
   </div>
@@ -46,7 +46,11 @@ const data = [
 export default {
   data() {
     return {
-      data: data
+      data: data,
+      color:['type', 'rgb(252,143,72)-rgb(255,215,135)'],
+      pad:[50,40],
+      label:['value', { offset: -15, label: { textAlign: 'center', fill: '#000' } }],
+      style:{ lineWidth: 1, stroke: '#fff' },
     };
   }
 };

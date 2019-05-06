@@ -4,7 +4,7 @@
         :forceFit="true"
         :height="500"
         :data="data"
-        :padding="[100,20,80,50]"
+        :padding="padding"
     >
         <v-tooltip
             crosshairs="y"
@@ -163,6 +163,7 @@ export default {
     data() {
         return {
             data:data,
+            padding:[100,20,80,50],
             htmlContent:function htmlContent(title, items) {
                 var alias = {
                     download: '当日累计下载量',

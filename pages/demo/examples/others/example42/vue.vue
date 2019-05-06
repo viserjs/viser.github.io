@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-chart :forceFit="true" height="400" :data="data" :padding="[40,0]">
+        <v-chart :forceFit="true" height="400" :data="data" :padding="pad">
             <v-tooltip></v-tooltip>
             <v-legend dataKey="type"></v-legend>
             <v-coord type="theta"></v-coord>
@@ -74,7 +74,8 @@ ViserVue.registerShape('interval', 'platelet', {
 export default {
   data() {
     return {
-      data: data
+      data: data,
+      pad:[40,0]
     };
   }
 };

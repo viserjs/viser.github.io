@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :padding="[20, 60, 40, 100]" :data="data" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :padding="pad" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis :data-key="axis1Opts.dataKey" :line="axis1Opts.line" :tickLine="axis1Opts.tickLine" :grid="axis1Opts.grid" :label="axis1Opts.label" />
       <v-axis :data-key="axis2Opts.dataKey" :line="axis2Opts.line" :tickLine="axis2Opts.tickLine" />
@@ -68,6 +68,7 @@ export default {
     return {
       data: source,
       scale,
+      pad:[20, 60, 40, 100],
       height: 400,
       axis1Opts,
       axis2Opts,

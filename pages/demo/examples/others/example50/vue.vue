@@ -3,7 +3,7 @@
     <v-tooltip></v-tooltip>
     <v-facet
       type="list"
-      :fields="['state']"
+      :fields="fields"
       :cols="9"
       :showTitle="false"
       :padding="0"
@@ -40,6 +40,7 @@ export default {
     return {
       data: [],
       dv: {},
+      fields:['state'],
       eachView: (view, facet) => {
         view.coord('theta', {
           radius: 0.8,

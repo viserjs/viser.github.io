@@ -4,9 +4,9 @@
       <v-tooltip />
       <v-legend />
       <v-axis />
-      <v-facet type="mirror" :fields="['gender']" :transpose="true">
+      <v-facet type="mirror" :fields="fields" :transpose="true">
         <v-facet-view>
-          <v-bar position="age*total_percentage" :color="['gender', [ '#1890ff', '#f04864' ]]" />
+          <v-bar position="age*total_percentage" :color="color" />
         </v-facet-view>
       </v-facet>
     </v-chart>
@@ -70,6 +70,8 @@
       return {
         data: [],
         scale,
+        color:['gender', [ '#1890ff', '#f04864' ]],
+        fields:['gender'],
       };
     },
   };

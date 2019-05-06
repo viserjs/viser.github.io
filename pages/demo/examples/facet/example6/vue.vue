@@ -4,7 +4,7 @@
       <v-tooltip :crosshairs="false" />
       <v-legend dataKey="cut" position="top" />
       <v-axis data-key="cut" :label="null" :tickLine="null" />
-      <v-facet type="tree" :fields="['clarity']" :line="{ stroke: '#c0d0e0' }" :lineSmooth="true" :views="views" />
+      <v-facet type="tree" :fields="fields" :line="line" :lineSmooth="true" :views="views" />
     </v-chart>
   </div>
 </template>
@@ -53,8 +53,10 @@
     data() {
       return {
         data: [],
+        line:{ stroke: '#c0d0e0' },
         scale,
         views,
+        fields:['clarity']
       };
     },
   };

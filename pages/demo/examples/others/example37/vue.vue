@@ -6,25 +6,16 @@
         shape="liquid-fill-gauge"
         position="gender*value"
         color="gender"
-        :v-style="{
-            lineWidth: 10,
-            opacity: 0.75
-        }"
+        :v-style="style1"
       />
       <v-guide
         v-for="(row, index) in data"
         :key="index"
         type="text"
         :top="true"
-        :position="{
-            gender: row.gender,
-            value: 50
-        }"
+        :position="pos"
         :content="row.value + '%'"
-        :v-style="{
-            fontSize: 40,
-            textAlign: 'center'
-        }"
+        :v-style="style2"
       />
     </v-chart>
   </div>
@@ -55,6 +46,18 @@
       return {
         data,
         scale,
+        style1:{
+            lineWidth: 10,
+            opacity: 0.75
+        },
+        pos:{
+            gender: row.gender,
+            value: 50
+        },
+        style2:{
+            fontSize: 40,
+            textAlign: 'center'
+        },
         height: 400,
       };
     }

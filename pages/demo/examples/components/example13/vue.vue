@@ -1,5 +1,5 @@
 <template>
-    <v-chart :data="data" :forceFit="true" :height="500" :padding="[20, 80, 120, 85]" :scale="scale">
+    <v-chart :data="data" :forceFit="true" :height="500" :padding="padding" :scale="scale">
         <v-axis
             dataKey="name"
             :tickLine="null"
@@ -54,6 +54,7 @@ export default {
         return {
             data:source,
             scale,
+            padding:[20, 80, 120, 85],
             grid1:{
                 align: 'center',
                 lineStyle: {

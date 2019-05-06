@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-chart :forceFit="true" :height="400" :scale="scale" :padding="[20, 20, 50, 60]">
+  <v-chart :forceFit="true" :height="400" :scale="scale" :padding="padding">
     <v-tooltip :shared="true" />
     <v-view :data="data">
       <v-axis dataKey='year' :label="label" :tickLine="tickLine"/>
@@ -10,7 +10,7 @@
     <v-view :data="dv.rows">
       <v-tooltip :show="false" />
       <v-line position="Year*Value" :vStyle="style" />
-      <v-guide type="text" content="趋势线" :position="['min', 'min']" :vStyle="guideStyle" :offsetY="-140" />
+      <v-guide type="text" content="趋势线" :position="pos" :vStyle="guideStyle" :offsetY="-140" />
     </v-view>
   </v-chart>
 </div>
@@ -135,7 +135,9 @@ export default {
       tickLine,
       title,
       style,
-      guideStyle
+      guideStyle,
+      pos:['min', 'min'],
+      padding:[20, 20, 50, 60],
     };
   }
 };

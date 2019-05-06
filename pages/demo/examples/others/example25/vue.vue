@@ -1,33 +1,13 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :padding="[20, 160, 80, 60]" :data="data" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :padding="padding" :data="data" :scale="scale">
       <v-tooltip />
       <v-legend position="right" />
-      <v-axis data-key="population" :label="{
-        formatter: (val) => {
-          return (val / 1000000) + 'M';
-        }
-      }"/>
+      <v-axis data-key="population" :label="label"/>
       <v-interval position="State*population"
-        :color="['age', (age) => {
-              return colorMap[age];
-            }]"
-        :tooltip="['age*population', (age, population) => {
-          return {
-            name: age,
-            value: population
-          };
-        }]"
-        :adjust="[
-          {
-            type: 'dodge',
-            dodgeBy: 'type', // 按照 type 字段进行分组
-            marginRatio: 0 // 分组中各个柱子之间不留空隙
-          },
-          {
-            type: 'stack'
-          }
-        ]"
+        :color="color"
+        :tooltip="tooltip"
+        :adjust="adjust"
       />
     </v-chart>
   </div>
@@ -91,6 +71,31 @@ export default {
       height: 400,
       scale,
       colorMap,
+      color:['age', (age) => {
+        return colorMap[age];
+      }],
+      padding:[20, 160, 80, 60],
+      label:{
+        formatter: (val) => {
+          return (val / 1000000) + 'M';
+        }
+      },
+      tooltip:['age*population', (age, population) => {
+        return {
+          name: age,
+          value: population
+        };
+      }],
+      adjust:[
+        {
+          type: 'dodge',
+          dodgeBy: 'type', // 按照 type 字段进行分组
+          marginRatio: 0 // 分组中各个柱子之间不留空隙
+        },
+        {
+          type: 'stack'
+        }
+      ],
     };
   }
 };

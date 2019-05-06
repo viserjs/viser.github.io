@@ -7,7 +7,7 @@
       <v-guide 
         type="dataMarker" 
         :top="true"
-        :position="['2014-01', 1750]"
+        :position="pos"
         content='因政策调整导致销量下滑'
         :style="style"
         :lineLength="30"
@@ -118,7 +118,8 @@
         style,
         label,
         tickLine,
-        labelInterval
+        labelInterval,
+        pos:['2014-01', 1750]
       };
     }
   };

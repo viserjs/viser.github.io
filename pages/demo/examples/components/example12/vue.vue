@@ -1,6 +1,6 @@
 <template>
      <div>
-    <v-chart :force-fit="true" :height="height" renderer="svg" :padding="[80, 80]">
+    <v-chart :force-fit="true" :height="height" renderer="svg" :padding="padding">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
       <v-legend></v-legend>
@@ -64,6 +64,7 @@ export default {
         return {
             data: [],
             scale,
+            padding:[80, 80],
             height: 400,
             filter,
             stackBarStyle: {
