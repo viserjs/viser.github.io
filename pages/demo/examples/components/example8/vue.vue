@@ -1,5 +1,5 @@
 <template>
-    <v-chart :forceFit="true" :height="500" :data="data" :scale="scale" :padding="['auto']">
+    <v-chart :forceFit="true" :height="500" :data="data" :scale="scale" :padding="padding">
       <v-legend dataKey="country" />
       <v-tooltip />
       <v-axis dataKey="year" />
@@ -140,6 +140,7 @@ export default {
   data() {
     return {
       data: dv,
+      padding:['auto'],
       scale:[
           {
               dataKey: 'percent',

@@ -20,10 +20,7 @@
             <v-polygon
                 position="longitude*latitude"
                 color="#ebedf0"
-                :vStyle="{
-                    lineWidth: 1,
-                    stroke: '#fafbfc'
-                }"
+                :vStyle="style1"
                 :active="false"
             ></v-polygon>
         </v-view>
@@ -34,14 +31,8 @@
                 position="longitude*latitude"
                 color="#1890ff"
                 :opacity=".6"
-                :size="[
-                    'value',
-                    [5, 15]
-                ]"
-                :vStyle="{
-                    lineWidth: 1,
-                    stroke: '#1890ff'
-                }"
+                :size="size"
+                :vStyle="style2"
                 shape="circle"
             ></v-point>
         </v-view>
@@ -137,6 +128,18 @@ export default {
         return {
             userDv: [],
             dv:[],
+            style1:{
+                lineWidth: 1,
+                stroke: '#fafbfc'
+            },
+            style2:{
+                lineWidth: 1,
+                stroke: '#1890ff'
+            },
+            size:[
+                    'value',
+                    [5, 15]
+                ],
             scale:[
                 {
                     dataKey: 'longitude',

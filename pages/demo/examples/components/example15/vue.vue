@@ -3,8 +3,8 @@
         :data="data"
         :forceFit="true"
         :height="500"
-        :padding="[20,180,50,50]"
-        :plotBackground="{ stroke: '#ccc' }"
+        :padding="padding"
+        :plotBackground="plotbg"
         :scale="scale"
     >
         <v-tooltip
@@ -15,7 +15,7 @@
             :useHtml="true"
             :flipPage="true"
             position="right"
-            :title="{text:'图例可滚动'}"
+            :title="title"
         ></v-legend>
         <v-axis
             dataKey="year"
@@ -27,14 +27,14 @@
             dataKey="count"
             :title="null"
             :line="null"
-            :tickLine="{length:8}"
+            :tickLine="tickLine"
             :subTickCount="10"
-            :subTickLine="{ lineWidth: 1, stroke: '#ddd', length: 5 }"
+            :subTickLine="subtick"
             :grid="null"
         ></v-axis>
         <v-area
             position="year*count"
-            :adjust="['stack', 'symmetric']"
+            :adjust="adjust"
             color="name"
             shape="smooth"
             :opacity="1"
@@ -73,6 +73,12 @@ export default {
     data() {
         return {
             data: [],
+            padding:[20,180,50,50],
+            adjust:['stack', 'symmetric'],
+            plotbg:{ stroke: '#ccc' },
+            title:{text:'图例可滚动'},
+            subtick:{ lineWidth: 1, stroke: '#ddd', length: 5 },
+            tickLine:{length:8},
             scale:[
                 {
                     dataKey: 'year',

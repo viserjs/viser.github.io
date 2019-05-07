@@ -5,7 +5,7 @@
         <v-legend></v-legend>
         <v-polygon
           position="x*y"
-          :color="['count', '#BAE7FF-#1890FF-#0050B3']">
+          :color="color">
         </v-polygon>
     </v-chart>
   </div>
@@ -30,7 +30,8 @@ export default {
   },
   data() {
     return {
-      dv: {}
+      dv: {},
+      color:['count', '#BAE7FF-#1890FF-#0050B3']
     };
   }
 };

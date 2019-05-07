@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :padding="[ 20, 120, 95 ]" :data="data" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :padding="padding" :data="data" :scale="scale">
       <v-tooltip :show-title="false" :item-tpl="tooltipOpts.itemTpl" />
       <v-legend />
       <v-coord type="rect" direction="LT" />
@@ -11,13 +11,7 @@
         :top="true"
         :position="getPosition(obj)"
         :content="getContent(obj)"
-        :vStyle="{
-          fill: '#fff',
-          fontSize: '12',
-          textAlign: 'center',
-          shadowBlur: 2,
-          shadowColor: 'rgba(0, 0, 0, .45)'
-        }"
+        :vStyle="style"
       />
     </v-chart>
   </div>
@@ -92,10 +86,18 @@ export default {
   data() {
     return {
       data,
+      padding:[ 20, 120, 95 ],
       scale,
       height: 400,
       tooltipOpts,
       funnelOpts,
+      style:{
+        fill: '#fff',
+        fontSize: '12',
+        textAlign: 'center',
+        shadowBlur: 2,
+        shadowColor: 'rgba(0, 0, 0, .45)'
+      },
     };
   },
 };

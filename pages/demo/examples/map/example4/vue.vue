@@ -5,26 +5,14 @@
       <v-coord/>
       <v-view :data="bgData">
         <v-polygon position="x*y" color="grey" :opacity="0.5"
-          :vStyle="{
-            stroke: 'white',
-            lineWidth: 1
-          }"
+          :vStyle="style1"
           tooltip="key"
         />
       </v-view>
       <v-view :data="data">
         <v-polygon position="x*y" color="#2FC25B"
-          :vStyle="{
-            stroke: 'white',
-            lineWidth: 5
-          }"
-          :label="['key', {
-            offset: 0,
-            textStyle: {
-              fontSize: 14,
-              fontWeight: 500
-            }
-          }]"
+          :vStyle="style2"
+          :label="label"
           tooltip="capital"
         />
       </v-view>
@@ -63,6 +51,21 @@ export default {
       bgData: [],
       data: [],
       scale,
+      label:['key', {
+        offset: 0,
+        textStyle: {
+          fontSize: 14,
+          fontWeight: 500
+        }
+      }],
+      style1:{
+        stroke: 'white',
+        lineWidth: 1
+      },
+      style2:{
+        stroke: 'white',
+        lineWidth: 5
+      }
     };
   },
 };

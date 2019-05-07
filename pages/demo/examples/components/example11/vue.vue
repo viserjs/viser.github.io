@@ -1,7 +1,7 @@
 <template>
      <div>
     <button v-on:click="handleClick">switch density</button>
-    <v-chart :force-fit="true" :height="height" renderer="svg" :padding="[80, 80]">
+    <v-chart :force-fit="true" :height="height" renderer="svg" :padding="padding">
       <v-tooltip></v-tooltip>
       <v-axis></v-axis>
       <v-legend></v-legend>
@@ -78,6 +78,7 @@ export default {
             data: [],
             scale,
             height: 400,
+            padding:[80, 80],
             stackBarStyle: {
                 stroke: '#fff',
                 lineWidth: 1

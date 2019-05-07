@@ -6,14 +6,14 @@
     >
       <v-view
         :data="data"
-        :end="{x:0.45,y:1}"
+        :end="end"
       >
         <v-axis></v-axis>
         <v-point position="Horsepower*Miles_per_Gallon"></v-point>
       </v-view>
       <v-view
         :data="data"
-        :start="{x:0.55,y:0}"
+        :start="start"
       >
         <v-axis></v-axis>
         <v-point position="Acceleration*Displacement"></v-point>
@@ -70,7 +70,9 @@ export default {
   },
   data() {
     return {
-      data:[]
+      data:[],
+      end:{x:0.45,y:1},
+      start:{x:0.55,y:0}
     };
   }
 };

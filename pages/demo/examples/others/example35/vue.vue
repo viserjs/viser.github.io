@@ -2,16 +2,7 @@
   <div>
     <v-chart forceFit="true" :height="400" :padding="10" :data="data">
       <v-tooltip showTitle="false"/>
-      <v-polygon position="x*y" color="category" :v-style="{
-        stroke: 'white',
-        lineWidth: 2
-      }" :label="['symbol', {
-        offset: 0,
-        textStyle: {
-          fontSize: 14,
-          fontWeight: 500
-        }
-      }]" :tooltip="'symbol*name*number*atomic_mass*category'"/>
+      <v-polygon position="x*y" color="category" :v-style="style" :label="label" :tooltip="'symbol*name*number*atomic_mass*category'"/>
     </v-chart>
   </div>
 </template>
@@ -33,6 +24,17 @@ export default {
     return {
       height: 400,
       data: [],
+      style:{
+        stroke: 'white',
+        lineWidth: 2
+      },
+      label:['symbol', {
+        offset: 0,
+        textStyle: {
+          fontSize: 14,
+          fontWeight: 500
+        }
+      }],
     };
   }
 };

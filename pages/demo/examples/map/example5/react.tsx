@@ -99,7 +99,6 @@ export default class App extends React.Component {
   }
 
   plotMove = (ev, chart) => {
-    debugger;
     if (chart && chart._attrs && (chart._attrs.views.length === 3)) {
       const airView = chart._attrs.views[1];
       const flightView = chart._attrs.views[2];

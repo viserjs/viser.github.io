@@ -2,11 +2,11 @@
     <div v-if="data.length">
         <div id="mountNode">
             <h4 style="text-align:center;margin-bottom:5px;">北京市 2010-2015 年 AQI 指数</h4>
-            <v-chart :forceFit="true" height="400" :padding="[20,20,40,80]" :data="dv" :scale="scale">
+            <v-chart :forceFit="true" height="400" :padding="pad" :data="dv" :scale="scale">
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
                 <v-line position="date*aqi" opacity="0.75"></v-line>
-                <v-guide v-for="(tick,i) in ticks" :key="i" type="region" :start="['min',tick]" :end="['max',ticks[i+1]]" :v-style="{fill:colors[i],fillOpacity:0.4}"></v-guide>
+                <v-guide v-for="(tick,i) in ticks" :key="i" type="region" :start="start1" :end="end1" :v-style="style1"></v-guide>
             </v-chart>
         </div>
         <div id="slider">
@@ -19,15 +19,9 @@
                     :end="end"
                     xAxis="date"
                     yAxis="aqi"
-                    :scale="{
-                        time:{
-                            type:'time',
-                            tickCount:10,
-                            mask:'YYYY-MM-DD'
-                        }
-                    }"
+                    :scale="scale1"
                     :data="data"
-                    :backgroundChart="{type:'line'}"
+                    :backgroundChart="bg"
                     :onChange="onChange"
                 ></v-slider>
             </v-plugin>
@@ -102,6 +96,18 @@ export default {
     return {
       dv: {},
       data: [],
+      pad:[20,20,40,80],
+      start1:['min',tick],
+      end1:['max',ticks[i+1]],
+      style1:{fill:colors[i],fillOpacity:0.4},
+      scale1:{
+          time:{
+              type:'time',
+              tickCount:10,
+              mask:'YYYY-MM-DD'
+          }
+      },
+      bg:{type:'line'},
       ticks: [],
       colors: [],
       scale: [],

@@ -1,23 +1,15 @@
 <template>
   <div v-if="data.length">
-    <v-chart :force-fit="true" :height="400" :animate="false" :padding="[ 20, 20, 0, 80]" :data="chartDv" :scale="scale">
+    <v-chart :force-fit="true" :height="400" :animate="false" :padding="pad1" :data="chartDv" :scale="scale">
       <v-axis />
-      <v-facet type="mirror" :fields="['type']" :show-title="false" :padding="[ 0, 0, 40, 0]" :views="facetOpts.views"/>
+      <v-facet type="mirror" :fields="fields" :show-title="false" :padding="pad2" :views="facetOpts.views"/>
     </v-chart>
     <v-plugin>
       <v-slider width="auto" :height="26"
         container='viser-slider-1'
         :start="start" :end="end"
-        :data="originDv" x-axis="time" y-axis="value" :scales="{
-          time: {
-            type: 'time',
-            tickCount: 10,
-            mask: 'M/DD H:mm'
-          }
-        }"
-        :background-chart="{
-          type: 'line'
-        }"
+        :data="originDv" x-axis="time" y-axis="value" :scales="scales"
+        :background-chart="bgchart"
         :on-change="slideChange"/>
     </v-plugin>
   </div>
@@ -122,6 +114,19 @@ export default {
   data() {
     return {
       data: [],
+      pad1:[ 20, 20, 0, 80],
+      pad2:[ 0, 0, 40, 0],
+      fields:['type'],
+      scales:{
+        time: {
+          type: 'time',
+          tickCount: 10,
+          mask: 'M/DD H:mm'
+        }
+      },
+      bgchart:{
+        type: 'line'
+      },
       scale,
       originDv: [],
       chartDv: [],

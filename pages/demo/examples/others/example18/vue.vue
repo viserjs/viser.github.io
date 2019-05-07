@@ -27,13 +27,7 @@
         :key="index"
         :start="getStart(entry)"
         :content="getContent(entry)"
-        :style="{
-          fill: '#C4C4C4',
-          fontSize: 12,
-          fontWeight: 100,
-          textAlign: 'center',
-          textBaseline: 'middle'
-        }"
+        :style="style"
       />
     </v-chart>
   </div>
@@ -133,6 +127,13 @@ export default {
       data: [],
       scale,
       legendOpt,
+      style:{
+        fill: '#C4C4C4',
+        fontSize: 12,
+        fontWeight: 100,
+        textAlign: 'center',
+        textBaseline: 'middle'
+      },
       guideLineOpt,
       padding: [20, 0, 105],
       color: ['mean_temp', 'rgb(44, 123, 182)-rgb(0, 166, 202)-rgb(0, 204, 188)-rgb(144, 235, 157)-rgb(255, 255, 140)-rgb(249, 208, 87)-rgb(242, 158, 46)-rgb(231, 104, 24)-rgb(215, 25, 28)'],

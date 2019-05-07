@@ -1,30 +1,13 @@
 <template>
   <div v-if="data.length">
-    <v-chart :forceFit="true" height="400" :data="dv" :padding="[40,40,40,80]" :scale="scale" :animate="false">
+    <v-chart :forceFit="true" height="400" :data="dv" :padding="pad" :scale="scale" :animate="false">
       <v-tooltip></v-tooltip>
       <v-axis dataKey="rain" :grid="null"></v-axis>
       <v-axis dataKey="flow" :title="true"></v-axis>
       <v-legend
         :custom="true"
         position="top"
-        :items="[
-            {
-                value: 'flow',
-                marker: {
-                    symbol: 'circle',
-                    fill: 'l(100) 0:#a50f15 1:#fee5d9',
-                    radius: 5
-                }
-            },
-            {
-                value: 'rain',
-                marker: {
-                    symbol: 'circle',
-                    fill: 'l(100) 0:#293c55 1:#f7f7f7',
-                    radius: 5
-                }
-            }
-        ]"
+        :items="items"
       ></v-legend>
       <v-area position="time*flow" color="l(100) 0:#a50f15 1:#fee5d9" opacity="0.85"></v-area>
       <v-area position="time*rain" color="l(100) 0:#293c55 1:#f7f7f7" opacity="0.85"></v-area>
@@ -38,15 +21,9 @@
             :end="end"
             xAxis="time"
             yAxis="flow"
-            :scales="{
-                time: {
-                    type: 'time',
-                    tickCount: 10,
-                    mask: 'M/DD H:mm'
-                }
-            }"
+            :scales="scale1"
             :data="data"
-            :backgroundChart="{type:'line'}"
+            :backgroundChart="bg"
             :onChange="onChange"
         ></v-slider>
     </v-plugin>
@@ -99,6 +76,25 @@ export default {
       start: "2009/7/20 0:00",
       end: "2009/9/9 0:00",
       dv: {},
+      pad:[40,40,40,80],
+      items:[
+          {
+              value: 'flow',
+              marker: {
+                  symbol: 'circle',
+                  fill: 'l(100) 0:#a50f15 1:#fee5d9',
+                  radius: 5
+              }
+          },
+          {
+              value: 'rain',
+              marker: {
+                  symbol: 'circle',
+                  fill: 'l(100) 0:#293c55 1:#f7f7f7',
+                  radius: 5
+              }
+          }
+      ],
       scale: [
         {
           dataKey: "time",
@@ -114,7 +110,15 @@ export default {
           dataKey: "rain",
           alias: "降雨量(mm)"
         }
-      ]
+      ],
+      scale1:{
+          time: {
+              type: 'time',
+              tickCount: 10,
+              mask: 'M/DD H:mm'
+          }
+      },
+      bg:{type:'line'},
     };
   }
 };

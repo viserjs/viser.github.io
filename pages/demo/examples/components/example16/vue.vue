@@ -8,11 +8,9 @@
       <v-axis dataKey="value" :show="false"/>
       <v-legend :position="position" />
       <v-area position="year*range" color="#045493" :opacity="0.05" :tooltip="false" />
-      <v-line position="year*range" :color="['type', ['#d97841', '#4495c2']]"
+      <v-line position="year*range" :color="color"
         :size="3"
-        :v-style="{
-          opacity: 0.7,
-        }"
+        :v-style="style"
       />
     </v-chart>
   </div>
@@ -72,7 +70,11 @@ export default {
       scale,
       height: 440,
       padding: 'auto',
-      position: 'top-left'
+      position: 'top-left',
+      color:['type', ['#d97841', '#4495c2']],
+      style:{
+        opacity: 0.7,
+      },
     };
   },
   methods:{

@@ -426,9 +426,9 @@ class Demo {
       self.initEditor();
       self.renderCodeEditor();
     });
-    window.addEventListener('storage', function (e) { 
-      console.log(e);
-    });
+    // window.addEventListener('storage', function (e) { 
+    //   console.log(e);
+    // });
   }
 
   unbindEvent() {

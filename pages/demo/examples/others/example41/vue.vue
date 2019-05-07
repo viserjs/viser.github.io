@@ -4,8 +4,8 @@
             <v-tooltip></v-tooltip>
             <v-legend dataKey="fold"></v-legend>
             <v-coord type="rect" direction="LB"></v-coord>
-            <v-axis dataKey="type" :label="{offset:10}" :title="null"></v-axis>
-            <v-axis dataKey="value" position="right" :title="null" :tickLine="null" :label="{formatter:val=>val+'%'}"></v-axis>
+            <v-axis dataKey="type" :label="lab1" :title="null"></v-axis>
+            <v-axis dataKey="value" position="right" :title="null" :tickLine="null" :label="lab2"></v-axis>
             <v-stack-bar position="type*value" :color="color"></v-stack-bar>
         </v-chart>
     </div>
@@ -170,7 +170,9 @@ export default {
   data() {
     return {
       data: dv,
-      color:['opinion',opinion=>colorMap[opinion]]
+      color:['opinion',opinion=>colorMap[opinion]],
+      lab1:{offset:10},
+      lab2:{formatter:val=>val+'%'}
     };
   }
 };

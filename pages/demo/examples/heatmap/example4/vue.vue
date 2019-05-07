@@ -5,7 +5,7 @@
       <v-axis :data-key="axis1Opts.dataKey" :position="axis1Opts.position" :tickLine="axis1Opts.tickLine" :line="axis1Opts.line" :label="axis1Opts.label" />
       <v-axis :data-key="axis2Opts.dataKey" :grid="axis2Opts.grid" />
       <v-coord type="rect" direction="TL" />
-      <v-polygon position="week*day*date" :color="['commits', '#BAE7FF-#1890FF-#0050B3']" shape="boundary-polygon" />
+      <v-polygon position="week*day*date" :color="color" shape="boundary-polygon" />
     </v-chart>
   </div>
 </template>
@@ -133,7 +133,8 @@ export default {
       height: 400,
       padding,
       axis1Opts,
-      axis2Opts
+      axis2Opts,
+      color:['commits', '#BAE7FF-#1890FF-#0050B3']
     };
   },
 };

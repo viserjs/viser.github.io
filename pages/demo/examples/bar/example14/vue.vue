@@ -29,7 +29,7 @@
         type='dataMarker'
         :top="true"
         content='因政策调整导致销量下滑'
-        :position="['2014-01', 1750]"
+        :position="position"
         :style="style"
         lineLength="30"
       >
@@ -163,7 +163,8 @@ export default {
       labelFormat,
       tickLine,
       title,
-      style
+      style,
+      position:['2014-01', 1750],
     }
   }
 };

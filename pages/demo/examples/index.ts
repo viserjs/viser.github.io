@@ -338,8 +338,8 @@ const examples = {
                 },
                 {
                     path: 'example14',
-                    enName: 'Supermarket Category Sales Data',
-                    cnName: '超市品类销售数据',
+                    enName: 'Sales Data of Super Category of a Merchant',
+                    cnName: '某商超品类销售数据',
                     pic:"https://img.alicdn.com/tfs/TB1md_RSNnaK1RjSZFtXXbC2VXa-1014-409.png"
                 },
                 {
@@ -347,6 +347,42 @@ const examples = {
                     enName: 'Contrast of Product Category Sales',
                     cnName: '产品类别销售额对比',
                     pic:"https://img.alicdn.com/tfs/TB1AtsMXLc3T1VjSZLeXXbZsVXa-1020-380.png"
+                },
+                {
+                    path: 'example16',
+                    enName: 'Age Distribution of Active Users of an APP',
+                    cnName: '某 APP 活跃用户年龄分布',
+                    pic:"https://img.alicdn.com/tfs/TB11NkYTxnaK1RjSZFBXXcW7VXa-933-381.png"
+                },
+                {
+                    path: 'example17',
+                    enName: "Netflix's Market Value Growth",
+                    cnName: 'Netflix 公司市值增长',
+                    pic:"https://img.alicdn.com/tfs/TB1MsMyTrvpK1RjSZFqXXcXUVXa-947-388.png"
+                },
+                {
+                    path: 'example18',
+                    enName: "Fresh sales trend",
+                    cnName: '生鲜销售趋势',
+                    pic:"https://img.alicdn.com/tfs/TB1UBooTCrqK1RjSZK9XXXyypXa-943-385.png"
+                },
+                {
+                    path: 'example19',
+                    enName: "Distribution of single call duration for group A pre-sale consultation in 2018-08",
+                    cnName: '2018-08 A组售前咨询单次通话时长分布',
+                    pic:"https://img.alicdn.com/tfs/TB1xEgxTwHqK1RjSZFgXXa7JXXa-934-376.png"
+                },
+                {
+                    path: 'example20',
+                    enName: "Operation Cash Flow of an Enterprise (Trend of Five-Year Report)",
+                    cnName: '某企业经营现金流（5年报趋势)',
+                    pic:"https://img.alicdn.com/tfs/TB1UecCTq6qK1RjSZFmXXX0PFXa-954-422.png"
+                },
+                {
+                    path: 'example21',
+                    enName: "Female Employee Ratio of the Three Big Technologies in the United States",
+                    cnName: '美国科技三巨头女性员工比例',
+                    pic:"https://img.alicdn.com/tfs/TB1u1L9mnZmx1VjSZFGXXax2XXa-960-418.png"
                 },
             ],
             icon: 'zhuzhuangtu',

@@ -17,12 +17,7 @@
       <v-slider width="auto" :height="26" :padding="[ 20, 40, 20, 40 ]"
         container='viser-slider-1'
         :start="start" :end="end"
-        :data="data" xAxis="time" yAxis="volumn" :scales="{
-          time: {
-            type: 'timeCat',
-            nice: false,
-          }
-        }" :on-change="slideChange" />
+        :data="data" xAxis="time" yAxis="volumn" :scales="scalesld" :on-change="slideChange" />
     </v-plugin>
   </div>
 </template>
@@ -171,6 +166,12 @@ export default {
       candleOpts,
       axis1Opts,
       barOpts,
+      scalesld:{
+        time: {
+          type: 'timeCat',
+          nice: false,
+        }
+      },
     };
   },
 };

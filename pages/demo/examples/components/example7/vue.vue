@@ -1,5 +1,5 @@
 <template>
-    <v-chart :forceFit="true" :height="window.innerHeight" :data="worldMap" :padding="[55,20]">
+    <v-chart :forceFit="true" :height="window.innerHeight" :data="worldMap" :padding="padding">
       <v-legend dataKey="trend" position="left"></v-legend>
       <v-polygon 
         position="longitude*latitude"
@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       worldMap: [],
+      padding:[55,20],
       label:[
         'name',
         {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-chart :forceFit="true" height="400" :padding="[20,20]" :scale="scale" :data="data">
+        <v-chart :forceFit="true" height="400" :padding="pad" :scale="scale" :data="data">
             <v-area position="date*rate" color="series" opacity="0.85"></v-area>
         </v-chart>
     </div>
@@ -44,6 +44,7 @@ export default {
   data() {
     return {
       data: [],
+      pad:[20,20],
       scale: [
         {
           dataKey: "date",

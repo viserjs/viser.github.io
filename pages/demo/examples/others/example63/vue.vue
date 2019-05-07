@@ -29,8 +29,8 @@
       >
         <v-stack-bar
           position="1*value"
-          :color="['otherType','#fcd7de-#f04864']"
-          :label="['otherType',{offset:-20}]"
+          :color="color"
+          :label="label"
         >
         </v-stack-bar>
       </v-view>
@@ -117,6 +117,8 @@ export default {
       chartHeight,
       data,
       others,
+      color:['otherType','#fcd7de-#f04864'],
+      label:['otherType',{offset:-20}],
       scale:[
         {
           dataKey:'value',

@@ -3,7 +3,7 @@
     <v-chart :forceFit="true" height="400" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis />
-      <v-line position="time*temperature" :color="['type',['#ff7f0e', '#2ca02c']]" shape="smooth" ></v-line>
+      <v-line position="time*temperature" :color="color" shape="smooth" ></v-line>
     </v-chart>
   </div>
 </template>
@@ -61,7 +61,8 @@ export default {
   data() {
     return {
       data: [],
-      scale
+      scale,
+      color:['type',['#ff7f0e', '#2ca02c']],
     };
   }
 };

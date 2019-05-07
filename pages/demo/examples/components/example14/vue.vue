@@ -2,7 +2,7 @@
     <v-chart 
         :forceFit="true" 
         :height="500" 
-        :padding="[80,300,80,80]" 
+        :padding="padding" 
         :data="data" 
         :scale="scale" 
         :filter="filter"
@@ -23,7 +23,7 @@
             :reactive="true" 
             :containerTpl="containerTplLegend" 
             :itemTpl="itemTplLegend" 
-            :offset="[15,0]" 
+            :offset="offset" 
         ></v-legend>
         <v-stack-interval
             position="percent"
@@ -135,6 +135,8 @@ export default {
     data() {
         return {
             data:dv,
+            padding:[80,300,80,80],
+            offset:[15,0],
             scale:[
                 {
                     dataKey: 'percent',
