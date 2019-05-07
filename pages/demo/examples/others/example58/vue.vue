@@ -10,7 +10,7 @@
         <v-sankey position="x*y" shape="arc" color="#bbb" opacity="0.6" tooltip="value"></v-sankey>
       </v-view>
       <v-view :data="dv.nodes">
-        <v-polygon position="x*y" color="name" :v-style="{stroke:'#ccc'}"></v-polygon>
+        <v-polygon position="x*y" color="name" :v-style="style"></v-polygon>
       </v-view>
     </v-chart>
   </div>
@@ -78,7 +78,8 @@ export default {
           sync:true
         }
       ],
-      dv:{}
+      dv:{},
+      style:{stroke:'#ccc'},
     };
   }
 };

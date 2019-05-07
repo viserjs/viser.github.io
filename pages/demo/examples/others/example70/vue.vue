@@ -2,15 +2,7 @@
   <div>
     <v-chart :force-fit="true" :height="height" :data="data" >
       <v-venn label="sets" size="size" color="id"
-        :v-style="{
-          lineWidth: 10,
-          padding: 10,
-          textStyle: {
-            fill: 'white',
-            textAlign: 'center',
-            fontSize: 32
-          }
-        }">
+        :v-style="style">
       </v-venn>
     </v-chart>
   </div>
@@ -24,6 +16,15 @@ export default {
     return {
       data,
       height: 400,
+      style:{
+        lineWidth: 10,
+        padding: 10,
+        textStyle: {
+          fill: 'white',
+          textAlign: 'center',
+          fontSize: 32
+        }
+      },
     };
   },
 };

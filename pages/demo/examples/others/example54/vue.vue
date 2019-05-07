@@ -3,38 +3,20 @@
     <v-chart :forceFit="true" :height="height" :data="data" :scale="scale" :padding="0">
       <v-tooltip/>
       <v-interval
-        :shape="['path',path=>['liquid-fill-path',path]]"
+        :shape="shape"
         position="gender*value"
         color="gender"
-        :v-style="{
-          lineWidth: 10,
-          opacity: 0.75
-        }"
-        :tooltip="[
-          'gender*value',
-          (gender, value) => {
-            return {
-              name: gender,
-              value,
-            };
-          },
-        ]"
+        :v-style="style1"
+        :tooltip="tooltip1"
       />
       <v-guide
         v-for="(row, index) in data"
         :key="index"
         type="text"
         :top="true"
-        :position="{
-          gender: row.gender,
-          value: 45
-        }"
+        :position="pos"
         :content="row.value + '%'"
-        :v-style="{
-          fontSize: 100,
-          textAlign: 'center',
-          opacity: 0.75,
-        }"
+        :v-style="style2"
       />
     </v-chart>
   </div>
@@ -66,6 +48,29 @@
         data,
         scale,
         height: 400,
+        shape:['path',path=>['liquid-fill-path',path]],
+        style1:{
+          lineWidth: 10,
+          opacity: 0.75
+        },
+        tooltip1:[
+          'gender*value',
+          (gender, value) => {
+            return {
+              name: gender,
+              value,
+            };
+          },
+        ],
+        pos:{
+          gender: row.gender,
+          value: 45
+        },
+        style2:{
+          fontSize: 100,
+          textAlign: 'center',
+          opacity: 0.75,
+        },
       };
     }
   };

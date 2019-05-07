@@ -3,9 +3,9 @@
     <v-chart :height="400" :width="400" :data="data" :padding="0">
       <v-tooltip :showTitle="false" />
       <v-point position="x*y" shape="circle" tooltip="name" 
-        :size="['r', r => r * 400]"
+        :size="size"
         :color="color"
-        :vStyle="{ stroke: 'rgb(183, 55, 121)' }"
+        :vStyle="style"
         :label="label" />
     </v-chart>
   </div>
@@ -61,6 +61,8 @@ export default {
       data: [],
       padding: [ 60, 0, 40, 0 ],
       label: nodesLabel,
+      size:['r', r => r * 400],
+      style:{ stroke: 'rgb(183, 55, 121)' },
       color:['r', 'rgb(252, 253, 191)-rgb(231, 82, 99)-rgb(183, 55, 121)']
     };
   },

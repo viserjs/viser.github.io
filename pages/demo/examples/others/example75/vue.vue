@@ -131,11 +131,7 @@
       ></v-coord>
       <v-polygon
         position="x*y"
-        :style="{
-          fill: null,
-          stroke: '#ddd',
-          lineWidth:1
-        }"
+        :style="style1"
       ></v-polygon>
     </v-view>
     <v-view :data="dv">
@@ -144,10 +140,7 @@
       ></v-coord>
       <v-polygon
         position="x*y"
-        :style="{
-          stroke: '#ddd',
-          lineWidth:1
-        }"
+        :style="style2"
       ></v-polygon>
     </v-view>
   </v-chart>
@@ -171,6 +164,15 @@ const DataSet = require('@antv/data-set');
         dv: [],
         dvGraticule:[],
         value: 'geoPeirceQuincuncial',
+        style1:{
+          fill: null,
+          stroke: '#ddd',
+          lineWidth:1
+        },
+        style2:{
+          stroke: '#ddd',
+          lineWidth:1
+        },
         scale:[
             {
                 dataKey: 'x',

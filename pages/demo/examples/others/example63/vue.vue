@@ -30,7 +30,7 @@
         <v-stack-bar
           position="1*value"
           :color="color"
-          :label="['otherType',{offset:-20}]"
+          :label="label"
         >
         </v-stack-bar>
       </v-view>
@@ -118,6 +118,7 @@ export default {
       data,
       others,
       color:['otherType','#fcd7de-#f04864'],
+      label:['otherType',{offset:-20}],
       scale:[
         {
           dataKey:'value',

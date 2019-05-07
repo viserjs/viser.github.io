@@ -4,9 +4,9 @@
       <v-tooltip :crosshairs="true"></v-tooltip>
       <v-legend dataKey="type"></v-legend>
       <v-view :data="dv" :scale="scale">
-        <v-axis dataKey="Median" :title="{text:'Median'}"></v-axis>
-        <v-axis dataKey="date" :title="null" :line="{stroke:'#000'}" :grid="{line:{stroke:'#d9d9d9'}}"></v-axis>
-        <v-axis dataKey="times" :title="timeTitle" :line="{stroke:'#000'}" :grid="{line:{stroke:'#d9d9d9',lineDash:[0,0]}}"></v-axis>
+        <v-axis dataKey="Median" :title="tit"></v-axis>
+        <v-axis dataKey="date" :title="null" :line="line1" :grid="grid1"></v-axis>
+        <v-axis dataKey="times" :title="timeTitle" :line="line2" :grid="grid2"></v-axis>
         <v-area position="date*times" :color="color1" opacity="0.8" shape="smooth"></v-area>
         <v-area position="date*Median" size="2" color="#000" shape="smooth"></v-area>
       </v-view>
@@ -18,7 +18,7 @@
           :color="color3"
           size="30"
           shape="circle"
-          :label="['version',{custom:true,renderer:formatter,offset:-5}]"
+          :label="label"
         ></v-point>
       </v-view>
     </v-chart>
@@ -67,6 +67,12 @@ export default {
       color1:['grade',['#d8d8ff', '#6060ff']],
       color2:['type',['#ff7f00','#093']],
       color3:['type',['#ff7f00','#093']],
+      tit:{text:'Median'},
+      line1:{stroke:'#000'},
+      grid1:{line:{stroke:'#d9d9d9'}},
+      line2:{stroke:'#000'},
+      grid2:{line:{stroke:'#d9d9d9',lineDash:[0,0]}},
+      label:['version',{custom:true,renderer:formatter,offset:-5}],
       scale:[
         {
           dataKey: 'date',

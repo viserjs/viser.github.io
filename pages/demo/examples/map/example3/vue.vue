@@ -42,9 +42,9 @@ export default {
   mounted() {
     const self = this;
     jQuery('#mount').append('<div id="china" style="width: 50%;height:400px;position: absolute;left: 0;top: 0;"></div>');
-    $.when(
-      $.getScript('https://webapi.amap.com/maps?v=1.4.1&key=0d78256ea89beeb8c25d1cd047549d1f'),
-      $.getScript('https://webapi.amap.com/ui/1.0/main.js?v=1.0.11')).then(() => {
+    $.getScript('https://webapi.amap.com/maps?v=1.4.1&key=0d78256ea89beeb8c25d1cd047549d1f')
+    .then(()=>$.getScript('https://webapi.amap.com/ui/1.0/main.js?v=1.0.11'))
+    .then(()=>{
       // 调用高德 api 绘制底图以及获取 geo 数据
       const map = new AMap.Map('china', {
         zoom: 4
