@@ -384,6 +384,42 @@ const examples = {
                     cnName: '美国科技三巨头女性员工比例',
                     pic:"https://img.alicdn.com/tfs/TB1u1L9mnZmx1VjSZFGXXax2XXa-960-418.png"
                 },
+                {
+                    path: 'example22',
+                    enName: "Analysis on the Trend of App Income and Expenditure Proportion of Change Housekeeper",
+                    cnName: '零钱管家 APP 收支占比趋势分析',
+                    pic:"https://img.alicdn.com/tfs/TB1iG5tnTZmx1VjSZFGXXax2XXa-844-384.png"
+                },
+                {
+                    path: 'example23',
+                    enName: "China Mobile Internet Subdivision Structure Proportion",
+                    cnName: '中国移动互联网细分结构占比',
+                    pic:"https://img.alicdn.com/tfs/TB12HOtnTZmx1VjSZFGXXax2XXa-842-415.png"
+                },
+                {
+                    path: 'example24',
+                    enName: "City Product Sales Top10",
+                    cnName: '城市产品销售额 Top10',
+                    pic:"https://img.alicdn.com/tfs/TB199mWU7zoK1RjSZFlXXai4VXa-852-421.png"
+                },
+                {
+                    path: 'example25',
+                    enName: "Comparisons of planting area and total cultivated land area of ten global GM crops in 2016",
+                    cnName: '2016 年全球十大转基因作物种植面积和耕地总面积对比',
+                    pic:"https://img.alicdn.com/tfs/TB1n0atnTZmx1VjSZFGXXax2XXa-816-408.png"
+                },
+                {
+                    path: 'example26',
+                    enName: "Who lives in the capital? ",
+                    cnName: '谁住在首都？',
+                    pic:"https://img.alicdn.com/tfs/TB1dhiVUYvpK1RjSZFqXXcXUVXa-821-397.png"
+                },
+                {
+                    path: 'example27',
+                    enName: 'The contrast of Product Category Sales',
+                    cnName: '产品类别销售金额对比',
+                    pic:"https://img.alicdn.com/tfs/TB1SO5MU3TqK1RjSZPhXXXfOFXa-846-383.png"
+                },
             ],
             icon: 'zhuzhuangtu',
         },
@@ -432,6 +468,18 @@ const examples = {
                     enName: 'Donut Rose',
                     cnName: '南丁格尔玫瑰环图',
                     pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/pie/donut-rose.png"
+                },
+                {
+                    path: 'example8',
+                    enName: 'Sex Distribution of Short Video Users in the First Quarter of 2018',
+                    cnName: '2018 年第一季度短视频用户性别分布',
+                    pic:"https://img.alicdn.com/tfs/TB1_CCkU9zqK1RjSZPcXXbTepXa-705-302.png"
+                },
+                {
+                    path: 'example9',
+                    enName: 'Educational Distribution of Visitors to a Website',
+                    cnName: '某网站来访用户学历分布',
+                    pic:"https://img.alicdn.com/tfs/TB1uy5VUYvpK1RjSZFqXXcXUVXa-318-344.png"
                 },
             ],
             icon: 'bingtu',
