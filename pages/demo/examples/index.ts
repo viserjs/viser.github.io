@@ -481,6 +481,18 @@ const examples = {
                     cnName: '某网站来访用户学历分布',
                     pic:"https://img.alicdn.com/tfs/TB1uy5VUYvpK1RjSZFqXXcXUVXa-318-344.png"
                 },
+                {
+                    path: 'example10',
+                    enName: 'An Analysis of the Voting Result of Where to Play in the Outing',
+                    cnName: 'outing 去哪玩投票结果分析',
+                    pic:"https://img.alicdn.com/tfs/TB1VEP.V9zqK1RjSZFjXXblCFXa-646-318.png"
+                },
+                {
+                    path: 'example11',
+                    enName: 'Personnel Constellation Distribution in a Department',
+                    cnName: '某部门人员星座分布',
+                    pic:"https://img.alicdn.com/tfs/TB1fjscV3HqK1RjSZFPXXcwapXa-345-334.png"
+                },
             ],
             icon: 'bingtu',
         },
@@ -548,6 +560,42 @@ const examples = {
                     enName: 'Range Area',
                     cnName: '区间面积图',
                     pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/area/range.png"
+                },
+                {
+                    path: 'example6',
+                    enName: 'Cumulative sales trend of fireworks in a company',
+                    cnName: '某公司烟花国内累计销售额趋势',
+                    pic:"https://img.alicdn.com/tfs/TB1IoNwdfc3T1VjSZLeXXbZsVXa-1010-386.png"
+                },
+                {
+                    path: 'example7',
+                    enName: 'Profit Change of an Aquatic Company in Month 2017',
+                    cnName: '某水产公司 2017 年月盈利变化',
+                    pic:"https://img.alicdn.com/tfs/TB1PXP9VYPpK1RjSZFFXXa5PpXa-1015-426.png"
+                },
+                {
+                    path: 'example8',
+                    enName: 'Natural Gas Import and Export in the United States, 2015 - 2040',
+                    cnName: '美国天然气进出口情况，2015 - 2040 年',
+                    pic:"https://img.alicdn.com/tfs/TB1FIn7V9zqK1RjSZFLXXcn2XXa-1015-412.png"
+                },
+                {
+                    path: 'example9',
+                    enName: 'The Step-by-Step Situation of World Population in Political Systems',
+                    cnName: '世界人口在各政体中的分步情况',
+                    pic:"https://img.alicdn.com/tfs/TB1wvkoV4YaK1RjSZFnXXa80pXa-1020-407.png"
+                },
+                {
+                    path: 'example10',
+                    enName: 'Import and export trade between Denmark and the Kingdom of Norway 1700-1780',
+                    cnName: '丹麦-挪威王国 1700-1780 的进出口贸易',
+                    pic:"https://img.alicdn.com/tfs/TB19v7BV4jaK1RjSZKzXXXVwXXa-1023-399.png"
+                },
+                {
+                    path: 'example11',
+                    enName: 'Relationship between Video Subscription Number and Monthly Revenue of a Channel',
+                    cnName: '某频道视频订阅数和月收入关系',
+                    pic:"https://img.alicdn.com/tfs/TB1aRz4V6DpK1RjSZFrXXa78VXa-1007-423.png"
                 },
             ],
             icon: 'mianjitu',
@@ -844,6 +892,18 @@ const examples = {
                     enName: 'Matrix Facet',
                     cnName: '矩阵分面',
                     pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/facet/matrix.png"
+                },
+                {
+                    path: 'example10',
+                    enName: 'Birth rates in countries',
+                    cnName: '各国人口出生率',
+                    pic:"https://img.alicdn.com/tfs/TB1w.ZkV4jaK1RjSZFAXXbdLFXa-978-365.png"
+                },
+                {
+                    path: 'example11',
+                    enName: 'Birth Rate of Population in Countries',
+                    cnName: '各国人口的出生率',
+                    pic:"https://img.alicdn.com/tfs/TB1Wvz.VYvpK1RjSZPiXXbmwXXa-972-336.png"
                 },
             ],
             icon: 'fenmian',
