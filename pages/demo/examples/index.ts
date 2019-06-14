@@ -420,6 +420,25 @@ const examples = {
                     cnName: '产品类别销售金额对比',
                     pic:"https://img.alicdn.com/tfs/TB1SO5MU3TqK1RjSZPhXXXfOFXa-846-383.png"
                 },
+                {
+                    path: 'example28',
+                    enName: 'Top 5 Sales Department',
+                    cnName: 'top 5 销售部门',
+                    pic:"https://img.alicdn.com/tfs/TB1SO5MU3TqK1RjSZPhXXXfOFXa-846-383.png"
+                },
+                {
+                    path: 'example29',
+                    enName: 'Physical fitness index scoring table',
+                    cnName: '体能指标评分表',
+                    pic:"https://img.alicdn.com/tfs/TB1SO5MU3TqK1RjSZPhXXXfOFXa-846-383.png"
+                },
+                {
+                    path: 'example30',
+                    enName: 'Top10 Sales Distribution of a Product Industry',
+                    cnName: '某产品行业销量分布 Top10',
+                    pic:"https://img.alicdn.com/tfs/TB1SO5MU3TqK1RjSZPhXXXfOFXa-846-383.png"
+                },
+                
             ],
             icon: 'zhuzhuangtu',
         },
@@ -491,6 +510,12 @@ const examples = {
                     path: 'example11',
                     enName: 'Personnel Constellation Distribution in a Department',
                     cnName: '某部门人员星座分布',
+                    pic:"https://img.alicdn.com/tfs/TB1fjscV3HqK1RjSZFPXXcwapXa-345-334.png"
+                },
+                {
+                    path: 'example12',
+                    enName: 'Project Overall Monitoring',
+                    cnName: '项目整体监控',
                     pic:"https://img.alicdn.com/tfs/TB1fjscV3HqK1RjSZFPXXcwapXa-345-334.png"
                 },
             ],
