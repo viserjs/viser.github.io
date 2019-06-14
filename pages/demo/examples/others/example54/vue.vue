@@ -14,7 +14,10 @@
         :key="index"
         type="text"
         :top="true"
-        :position="pos"
+        :position="{
+          gender: row.gender,
+          value: 45
+        }"
         :content="row.value + '%'"
         :v-style="style2"
       />
@@ -62,10 +65,6 @@
             };
           },
         ],
-        pos:{
-          gender: row.gender,
-          value: 45
-        },
         style2:{
           fontSize: 100,
           textAlign: 'center',
