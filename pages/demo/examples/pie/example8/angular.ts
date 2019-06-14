@@ -45,7 +45,7 @@ const eachView = function (view, facet) {
             [forceFit]="true"
             height="400"
             [data]="data"
-            [padding]="padding"
+            padding="auto"
           >
             <v-tooltip></v-tooltip>
             <v-facet 

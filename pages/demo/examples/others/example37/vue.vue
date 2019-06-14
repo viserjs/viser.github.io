@@ -13,7 +13,10 @@
         :key="index"
         type="text"
         :top="true"
-        :position="pos"
+        :position="{
+            gender: row.gender,
+            value: 50
+        }"
         :content="row.value + '%'"
         :v-style="style2"
       />
@@ -49,10 +52,6 @@
         style1:{
             lineWidth: 10,
             opacity: 0.75
-        },
-        pos:{
-            gender: row.gender,
-            value: 50
         },
         style2:{
             fontSize: 40,
