@@ -512,12 +512,12 @@ const examples = {
                     cnName: '某部门人员星座分布',
                     pic:"https://img.alicdn.com/tfs/TB1fjscV3HqK1RjSZFPXXcwapXa-345-334.png"
                 },
-                {
-                    path: 'example12',
-                    enName: 'Project Overall Monitoring',
-                    cnName: '项目整体监控',
-                    pic:"https://img.alicdn.com/tfs/TB1fjscV3HqK1RjSZFPXXcwapXa-345-334.png"
-                },
+                // {
+                //     path: 'example12',
+                //     enName: 'Project Overall Monitoring',
+                //     cnName: '项目整体监控',
+                //     pic:"https://img.alicdn.com/tfs/TB1fjscV3HqK1RjSZFPXXcwapXa-345-334.png"
+                // },
             ],
             icon: 'bingtu',
         },
