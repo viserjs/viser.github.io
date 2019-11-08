@@ -1,5 +1,101 @@
 const examples = {
     viser: {
+        event: {
+            enName: 'Event',
+            cnName: '图表事件',
+            examples: [
+                // component
+                {
+                    path: 'example1',
+                    enName: 'use-label-desity',
+                    cnName: 'label density 的使用',
+                    pic:"https://img.alicdn.com/tfs/TB1QfXWQOrpK1RjSZFhXXXSdXXa-712-423.jpg"
+                },
+                {
+                    path: 'example2',
+                    enName: 'legend-position-choose',
+                    cnName: 'legend-图例位置',
+                    pic:"https://img.alicdn.com/tfs/TB1DLpFRwDqK1RjSZSyXXaxEVXa-878-476.jpg"
+                },
+                // bar
+                {
+                    path: 'example3',
+                    enName: 'Sales Data of Super Category of a Merchant',
+                    cnName: '某商超品类销售数据',
+                    pic:"https://img.alicdn.com/tfs/TB1md_RSNnaK1RjSZFtXXbC2VXa-1014-409.png"
+                },
+                {
+                    path: 'example4',
+                    enName: 'Top 5 Sales Department',
+                    cnName: 'top 5 销售部门',
+                    pic:"https://img.alicdn.com/tfs/TB1SO5MU3TqK1RjSZPhXXXfOFXa-846-383.png"
+                },
+                {
+                    path: 'example5',
+                    enName: 'Physical fitness index scoring table',
+                    cnName: '体能指标评分表',
+                    pic:"https://img.alicdn.com/tfs/TB1SO5MU3TqK1RjSZPhXXXfOFXa-846-383.png"
+                },
+                {
+                    path: 'example6',
+                    enName: 'Top10 Sales Distribution of a Product Industry',
+                    cnName: '某产品行业销量分布 Top10',
+                    pic:"https://img.alicdn.com/tfs/TB1SO5MU3TqK1RjSZPhXXXfOFXa-846-383.png"
+                },
+                // stock
+                {
+                    path: 'example7',
+                    enName: 'Stock',
+                    cnName: '股票图',
+                    pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/candlestick/basic.png"
+                },
+                // map
+                {
+                    path: 'example8',
+                    enName: 'route maps at airports in us',
+                    cnName: '美国各个机场的航线图',
+                    pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/map/with-connection.png"
+                },
+                // other
+                {
+                    path: 'example9',
+                    enName: 'Rainfall traffic contrast',
+                    cnName: '雨量流量对比',
+                    pic:"https://img.alicdn.com/tfs/TB1HItYQFzqK1RjSZFCXXbbxVXa-741-376.jpg"
+                },
+                {
+                    path: 'example10',
+                    enName: 'peking-aqi',
+                    cnName: '北京市2010至2015年空气质量指数',
+                    pic:"https://img.alicdn.com/tfs/TB1U68VQFzqK1RjSZFoXXbfcXXa-724-419.jpg"
+                },
+                {
+                    path: 'example11',
+                    enName: 'area-large',
+                    cnName: '大规模区域图',
+                    pic:"https://img.alicdn.com/tfs/TB1IqRZQMHqK1RjSZFEXXcGMXXa-756-386.jpg"
+                },
+                {
+                    path: 'example12',
+                    enName: 'brush-ds-state',
+                    cnName: 'viser-brush 结合 DataSet',
+                    pic:"https://img.alicdn.com/tfs/TB1bxhYQFzqK1RjSZFoXXbfcXXa-726-380.jpg"
+                },
+                {
+                    path: 'example13',
+                    enName: 'brush-filter-shape',
+                    cnName: 'viser-brush 过滤图形',
+                    pic:"https://antv.alipay.com/assets/dist/3.0.0/g2/3.x/other/brush-filter-shape.png"
+                },
+                {
+                    path: 'example14',
+                    enName: 'geo-projection',
+                    cnName: '地理映射',
+                    pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/other/geo-projection-d4979.png"
+                },
+            ],
+            icon: 'dianjichufa',
+        },
         components: {
             enName: 'components',
             cnName: '组件使用',
