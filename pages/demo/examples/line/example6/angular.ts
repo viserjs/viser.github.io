@@ -19,7 +19,7 @@ const DataSet=require('@antv/data-set');
               <v-view [data]="dv1">
                 <v-axis
                   dataKey="Year"
-                  subTickCount="3"
+                  [subTickCount]="3"
                   [subTickLine]="subTickLine"
                   [tickLine]="tickLine" 
                   [label]="label"

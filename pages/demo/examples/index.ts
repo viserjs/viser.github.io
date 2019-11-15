@@ -233,6 +233,12 @@ const examples = {
                     cnName: 'tooltip-htmlContent',
                     pic:"https://gw.alipayobjects.com/os/s/prod/antv/assets/dist/3.0.0/g2/3.x/component/tooltip-html-content-2d17a.png"
                 },
+                {
+                    path: 'example23',
+                    enName: 'theme-customized',
+                    cnName: '自定义主题',
+                    pic:"https://img.alicdn.com/tfs/TB12u1im4n1gK0jSZKPXXXvUXXa-514-390.png"
+                },
             ],
         },
         line: {
