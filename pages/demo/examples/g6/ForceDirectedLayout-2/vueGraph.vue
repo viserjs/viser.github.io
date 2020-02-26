@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from '../../../packages/viser-graph-vue/src/index';
+import { GlobalG6 as G6 } from 'viser-graph-vue';
 import { oriData } from './data'
 
 

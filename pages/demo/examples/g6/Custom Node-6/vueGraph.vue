@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from '../../../packages/viser-graph-vue/src/index';
+import { GlobalG6 as G6 } from 'viser-graph-vue';
 const lightBlue = '#5b8ff9';
 const lightOrange = '#5ad8a6';
 

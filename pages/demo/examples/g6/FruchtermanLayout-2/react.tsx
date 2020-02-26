@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Graph, Node } from '../../../packages/viser-graph-react/src/index';
+import { Graph, Node } from 'viser-graph-react';
 import { oriData } from './data'
 
 const colors = [ '#BDD2FD', '#BDEFDB', '#C2C8D5', '#FBE5A2', '#F6C3B7', '#B6E3F5', '#D3C6EA', '#FFD8B8', '#AAD8D8', '#FFD6E7' ];

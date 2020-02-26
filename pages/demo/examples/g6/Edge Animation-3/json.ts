@@ -1,4 +1,4 @@
-import { ViserGraph, GlobalG6 as G6 } from '../../../packages/viser-graph/src/index';
+import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
 
 G6.registerEdge('line-growth', {
   afterDraw(cfg, group) {

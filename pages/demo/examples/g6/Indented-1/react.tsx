@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Graph, Node, Edge, GlobalG6 as G6 } from '../../../packages/viser-graph-react/src/index';
+import { Graph, Node, Edge, GlobalG6 as G6 } from 'viser-graph-react';
 
 G6.registerNode('file-node', {
   draw: function draw(cfg, group) {

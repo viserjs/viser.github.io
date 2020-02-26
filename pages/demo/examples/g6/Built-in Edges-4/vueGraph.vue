@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from '../../../packages/viser-graph-vue/src/index';
+import { GlobalG6 as G6 } from 'viser-graph-vue';
 G6.registerNode('my-rect', {
   getAnchorPoints: function getAnchorPoints() {
     return [[ 0.5, 0 ], [ 0.5, 1 ]];

@@ -1,4 +1,4 @@
-import { ViserGraph } from '../../../packages/viser-graph/src/index';
+import { ViserGraph } from 'viser-graph';
 import { data } from './data';
 
 new ViserGraph({

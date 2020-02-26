@@ -2,7 +2,7 @@ import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ViserGraphModule, GlobalG6 as G6 } from '../../../packages/viser-graph-ng/src/index';
+import { ViserGraphModule, GlobalG6 as G6 } from 'viser-graph-ng';
 
 G6.registerNode('justPoints', {
   draw(cfg, group) {

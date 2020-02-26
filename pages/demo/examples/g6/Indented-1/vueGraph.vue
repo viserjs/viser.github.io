@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from '../../../packages/viser-graph-vue/src/index';
+import { GlobalG6 as G6 } from 'viser-graph-vue';
 G6.registerNode('file-node', {
   draw: function draw(cfg, group) {
     const keyShape = group.addShape('rect', {

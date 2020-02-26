@@ -11,8 +11,8 @@
 </template>
 
 <script>
-// import { GlobalG6 as G6 } from '../../../packages/viser-graph-vue/src/index';
-import { Graph } from '../../../packages/viser-graph-vue/src/index';
+// import { GlobalG6 as G6 } from 'viser-graph-vue';
+import { Graph } from 'viser-graph-vue';
 const data = {
   id: "Modeling Methods",
   children: [

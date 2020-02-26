@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Graph } from '../../../packages/viser-graph-react/src/index';
+import { Graph } from 'viser-graph-react';
 import { data } from './data'
 
 const graph = {

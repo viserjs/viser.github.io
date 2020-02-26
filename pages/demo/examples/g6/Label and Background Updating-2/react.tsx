@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Graph, Node } from '../../../packages/viser-graph-react/src/index';
+import { Graph, Node } from 'viser-graph-react';
 
 const img = new Image();
 img.src = 'https://gw.alipayobjects.com/os/s/prod/antv/assets/image/logo-with-text-73b8a.svg';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Graph, Node, Edge, registerLayout } from '../../../packages/viser-graph-react/src/index';
+import { Graph, Node, Edge, registerLayout } from 'viser-graph-react';
 const data = {
   nodes: [{
     id: '0',

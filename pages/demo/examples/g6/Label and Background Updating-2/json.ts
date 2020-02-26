@@ -1,4 +1,4 @@
-import { ViserGraph } from '../../../packages/viser-graph/src/index';
+import { ViserGraph } from 'viser-graph';
 
 const img = new Image();
 img.src = 'https://gw.alipayobjects.com/os/s/prod/antv/assets/image/logo-with-text-73b8a.svg';

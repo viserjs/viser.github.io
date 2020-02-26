@@ -1536,58 +1536,22 @@ const examples = {
             cnName: 'g6 关系图',
             examples: [
                 {
-                    path: 'example0',
-                    enName: 'basic graph',
-                    cnName: '基础graph',
+                    path: 'Built-in Edges-1',
+                    enName: 'Built-in Edges-1',
+                    cnName: 'Built-in Edges-1',
                     pic:"https://img.alicdn.com/tfs/TB17hOPRkvoK1RjSZFNXXcxMVXa-262-62.png"
                 },
                 {
-                    path: 'example00',
-                    enName: 'basic tree',
-                    cnName: '基础tree',
-                    pic:"https://img.alicdn.com/tfs/TB1AFC_RiLaK1RjSZFxXXamPFXa-194-136.png"
+                  path: 'Built-in Edges-2',
+                  enName: 'Built-in Edges-2',
+                  cnName: 'Built-in Edges-2',
+                  pic:"https://img.alicdn.com/tfs/TB17hOPRkvoK1RjSZFNXXcxMVXa-262-62.png"
                 },
                 {
-                    path: 'example1',
-                    enName: 'compactBoxTree',
-                    cnName: '紧凑树',
-                    pic:"https://img.alicdn.com/tfs/TB1An2XRhnaK1RjSZFBXXcW7VXa-525-346.png"
-                },
-                {
-                    path: 'example2',
-                    enName: 'dendrogram',
-                    cnName: '系统树',
-                    pic:"https://img.alicdn.com/tfs/TB1_Z6dRhjaK1RjSZKzXXXVwXXa-528-195.png"
-                },
-                {
-                    path: 'example3',
-                    enName: 'indentedTree',
-                    cnName: '生态树',
-                    pic:"https://img.alicdn.com/tfs/TB1EcHPee3tHKVjSZSgXXX4QFXa-365-551.png"
-                },
-                {
-                    path: 'example4',
-                    enName: 'mindmap',
-                    cnName: '脑图',
-                    pic:"https://img.alicdn.com/tfs/TB1zQq2RkvoK1RjSZFwXXciCFXa-520-207.png"
-                },
-                {
-                    path: 'example8',
-                    enName: 'functionTree',
-                    cnName: '函数生成树',
-                    pic:"https://img.alicdn.com/tfs/TB1XaS3RgHqK1RjSZFkXXX.WFXa-522-377.png"
-                },
-                {
-                    path: 'example9',
-                    enName: 'Compact tree',
-                    cnName: '紧凑树',
-                    pic:"https://img.alicdn.com/tfs/TB1An2XRhnaK1RjSZFBXXcW7VXa-525-346.png"
-                },
-                {
-                    path: 'example10',
-                    enName: 'Relation Map of Mi',
-                    cnName: '小米关系图谱',
-                    pic:"https://img.alicdn.com/tfs/TB11xzbRkvoK1RjSZFDXXXY3pXa-518-517.png"
+                  path: 'Long Label-1',
+                  enName: 'Long Label-1',
+                  cnName: 'Long Label-1',
+                  pic:"https://img.alicdn.com/tfs/TB17hOPRkvoK1RjSZFNXXcxMVXa-262-62.png"
                 },
             ],
             icon: 'others',

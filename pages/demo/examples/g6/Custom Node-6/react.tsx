@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Graph, GlobalG6 as G6 } from '../../../packages/viser-graph-react/src/index';
+import { Graph, GlobalG6 as G6 } from 'viser-graph-react';
 
 const lightBlue = '#5b8ff9';
 const lightOrange = '#5ad8a6';

@@ -1,4 +1,4 @@
-import { ViserGraph, GlobalG6 as G6 } from '../../../packages/viser-graph/src/index';
+import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
 
 const lightBlue = '#5b8ff9';
 const lightOrange = '#5ad8a6';

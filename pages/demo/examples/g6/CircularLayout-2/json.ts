@@ -1,4 +1,4 @@
-import { ViserGraph } from '../../../packages/viser-graph/src/index';
+import { ViserGraph } from 'viser-graph';
 
 const data = {
   nodes: [{
