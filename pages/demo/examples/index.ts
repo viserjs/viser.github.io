@@ -1895,12 +1895,12 @@ const examples = {
                   cnName: '脑图树2',
                   pic:"https://img.alicdn.com/tfs/TB1d_qxwuH2gK0jSZJnXXaT1FXa-598-543.png"
               },
-              {
-                  path: 'Mindmap-3',
-                  enName: 'Mindmap-3',
-                  cnName: '脑图树3',
-                  pic:"https://img.alicdn.com/tfs/TB1GXCswAL0gK0jSZFtXXXQCXXa-597-532.png"
-              },
+              // {
+              //     path: 'Mindmap-3',
+              //     enName: 'Mindmap-3',
+              //     cnName: '脑图树3',
+              //     pic:"https://img.alicdn.com/tfs/TB1GXCswAL0gK0jSZFtXXXQCXXa-597-532.png"
+              // },
               {
                   path: 'Mindmap-4',
                   enName: 'Mindmap-4',
