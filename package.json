@@ -15,6 +15,7 @@
   "dependencies": {
     "@antv/data-set": "^0.8.3",
     "@antv/g2-brush": "0.0.2",
+    "@antv/g6": "^3.3.6",
     "@rematch/core": "^0.6.0",
     "@types/clipboard": "^2.0.1",
     "antd": "^3.16.2",

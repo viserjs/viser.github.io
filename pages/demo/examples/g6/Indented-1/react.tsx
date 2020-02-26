@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Graph, Node, Edge, GlobalG6 as G6 } from 'viser-graph-react';
+import { Graph, Node, Edge, GlobalG6 } from 'viser-graph-react';
 
-G6.registerNode('file-node', {
+GlobalG6.registerNode('file-node', {
   draw: function draw(cfg, group) {
     const keyShape = group.addShape('rect', {
       attrs: {
@@ -50,7 +50,7 @@ G6.registerNode('file-node', {
     return keyShape;
   }
 });
-G6.registerEdge('step-line', {
+GlobalG6.registerEdge('step-line', {
   getControlPoints: function getControlPoints(cfg) {
     const startPoint = cfg.startPoint;
     const endPoint = cfg.endPoint;

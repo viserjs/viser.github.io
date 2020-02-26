@@ -1548,9 +1548,9 @@ const examples = {
                   pic:"https://img.alicdn.com/tfs/TB17hOPRkvoK1RjSZFNXXcxMVXa-262-62.png"
                 },
                 {
-                  path: 'Long Label-1',
-                  enName: 'Long Label-1',
-                  cnName: 'Long Label-1',
+                  path: 'CompactBox-1',
+                  enName: 'CompactBox-1',
+                  cnName: 'CompactBox-1',
                   pic:"https://img.alicdn.com/tfs/TB17hOPRkvoK1RjSZFNXXcxMVXa-262-62.png"
                 },
             ],
