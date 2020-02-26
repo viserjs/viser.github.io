@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from 'viser-graph-vue';
 
 import { data } from './data'
 

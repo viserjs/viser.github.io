@@ -1535,24 +1535,439 @@ const examples = {
             enName: 'g6 relation',
             cnName: 'g6 关系图',
             examples: [
-                {
-                    path: 'Built-in Edges-1',
-                    enName: 'Built-in Edges-1',
-                    cnName: 'Built-in Edges-1',
-                    pic:"https://img.alicdn.com/tfs/TB17hOPRkvoK1RjSZFNXXcxMVXa-262-62.png"
-                },
-                {
+              {
+                  path: 'Built-in Nodes-1',
+                  enName: 'Built-in Nodes-1',
+                  cnName: '内置节点1',
+                  pic:"https://img.alicdn.com/tfs/TB1juGpwpT7gK0jSZFpXXaTkpXa-204-225.png"
+              },
+              {
+                  path: 'Built-in Nodes-2',
+                  enName: 'Built-in Nodes-2',
+                  cnName: '内置节点2',
+                  pic:"https://img.alicdn.com/tfs/TB1rr5wwrj1gK0jSZFuXXcrHpXa-231-160.png"
+              },
+              {
+                  path: 'Built-in Nodes-3',
+                  enName: 'Built-in Nodes-3',
+                  cnName: '内置节点3',
+                  pic:"https://img.alicdn.com/tfs/TB1EFWrwxn1gK0jSZKPXXXvUXXa-205-124.png"
+              },
+              {
+                  path: 'Built-in Nodes-4',
+                  enName: 'Built-in Nodes-4',
+                  cnName: '内置节点4',
+                  pic:"https://img.alicdn.com/tfs/TB1uNepwpT7gK0jSZFpXXaTkpXa-297-107.png"
+              },
+              {
+                  path: 'Built-in Nodes-5',
+                  enName: 'Built-in Nodes-5',
+                  cnName: '内置节点5',
+                  pic:"https://img.alicdn.com/tfs/TB1JE1rwET1gK0jSZFhXXaAtVXa-191-145.png"
+              },
+              {
+                  path: 'Built-in Nodes-6',
+                  enName: 'Built-in Nodes-6',
+                  cnName: '内置节点6',
+                  pic:"https://img.alicdn.com/tfs/TB1o1yqwpP7gK0jSZFjXXc5aXXa-277-253.png"
+              },
+              {
+                  path: 'Built-in Nodes-7',
+                  enName: 'Built-in Nodes-7',
+                  cnName: '内置节点7',
+                  pic:"https://img.alicdn.com/tfs/TB1JBmrwCf2gK0jSZFPXXXsopXa-225-223.png"
+              },
+              {
+                  path: 'Built-in Nodes-8',
+                  enName: 'Built-in Nodes-8',
+                  cnName: '内置节点8',
+                  pic:"https://img.alicdn.com/tfs/TB1uMyuwxD1gK0jSZFKXXcJrVXa-286-125.png"
+              },
+              {
+                  path: 'Built-in Edges-1',
+                  enName: 'Built-in Edges-1',
+                  cnName: '内置边1',
+                  pic:"https://img.alicdn.com/tfs/TB1mzapwvb2gK0jSZK9XXaEgFXa-256-268.png"
+              },
+              {
                   path: 'Built-in Edges-2',
                   enName: 'Built-in Edges-2',
-                  cnName: 'Built-in Edges-2',
-                  pic:"https://img.alicdn.com/tfs/TB17hOPRkvoK1RjSZFNXXcxMVXa-262-62.png"
-                },
-                {
+                  cnName: '内置边2',
+                  pic:"https://img.alicdn.com/tfs/TB12nKswuH2gK0jSZFEXXcqMpXa-295-148.png"
+              },
+              {
+                  path: 'Built-in Edges-3',
+                  enName: 'Built-in Edges-3',
+                  cnName: '内置边3',
+                  pic:"https://img.alicdn.com/tfs/TB1B7CswAL0gK0jSZFAXXcA9pXa-343-235.png"
+              },
+              {
+                  path: 'Built-in Edges-4',
+                  enName: 'Built-in Edges-4',
+                  cnName: '内置边4',
+                  pic:"https://img.alicdn.com/tfs/TB1aoiywBr0gK0jSZFnXXbRRXXa-259-292.png"
+              },
+              {
+                  path: 'Built-in Edges-5',
+                  enName: 'Built-in Edges-5',
+                  cnName: '内置边5',
+                  pic:"https://img.alicdn.com/tfs/TB1roqwwrj1gK0jSZFuXXcrHpXa-221-170.png"
+              },
+              {
+                  path: 'Built-in Edges-6',
+                  enName: 'Built-in Edges-6',
+                  cnName: '内置边6',
+                  pic:"https://img.alicdn.com/tfs/TB1UASqwAL0gK0jSZFtXXXQCXXa-290-274.png"
+              },
+              {
+                  path: 'Built-in Edges-7',
+                  enName: 'Built-in Edges-7',
+                  cnName: '内置边7',
+                  pic:"https://img.alicdn.com/tfs/TB1gleqwAL0gK0jSZFtXXXQCXXa-268-107.png"
+              },
+              {
+                  path: 'CircularLayout-1',
+                  enName: 'Circular Layout-1',
+                  cnName: 'Circular 环形布局1',
+                  pic:"https://img.alicdn.com/tfs/TB1N_1swAL0gK0jSZFAXXcA9pXa-654-544.png"
+              },
+              {
+                  path: 'CircularLayout-2',
+                  enName: 'Circular Layout-2',
+                  cnName: 'Circular 环形布局2',
+                  pic:"https://img.alicdn.com/tfs/TB1t9uswET1gK0jSZFhXXaAtVXa-658-554.png"
+              },
+              {
+                  path: 'CircularLayout-3',
+                  enName: 'Circular Layout-3',
+                  cnName: 'Circular 环形布局3',
+                  pic:"https://img.alicdn.com/tfs/TB1mcazwBr0gK0jSZFnXXbRRXXa-540-373.png"
+              },
+              {
+                  path: 'CircularLayout-4',
+                  enName: 'Circular Layout-4',
+                  cnName: 'Circular 环形布局4',
+                  pic:"https://img.alicdn.com/tfs/TB13Fivwxv1gK0jSZFFXXb0sXXa-478-459.png"
+              },
+              {
                   path: 'CompactBox-1',
                   enName: 'CompactBox-1',
-                  cnName: 'CompactBox-1',
-                  pic:"https://img.alicdn.com/tfs/TB17hOPRkvoK1RjSZFNXXcxMVXa-262-62.png"
-                },
+                  cnName: '紧凑树1',
+                  pic:"https://img.alicdn.com/tfs/TB1m5mrwBv0gK0jSZKbXXbK2FXa-684-551.png"
+              },
+              {
+                  path: 'CompactBox-2',
+                  enName: 'CompactBox-2',
+                  cnName: '紧凑树2',
+                  pic:"https://img.alicdn.com/tfs/TB1WhmnwqL7gK0jSZFBXXXZZpXa-689-510.png"
+              },
+              // TODO  fetch data
+              // {
+              //     path: 'ConcentricLayout-1',
+              //     enName: 'Concentric Layout-1',
+              //     cnName: 'Concentric 同心圆布局1',
+              //     pic:"https://img.alicdn.com/tfs/TB1UJGxwrj1gK0jSZFuXXcrHpXa-455-448.png"
+              // },
+              {
+                  path: 'Custom Edge-1',
+                  enName: 'Custom Edge-1',
+                  cnName: '自定义边1',
+                  pic:"https://img.alicdn.com/tfs/TB1VYevwxv1gK0jSZFFXXb0sXXa-243-183.png"
+              },
+              {
+                  path: 'Custom Edge-2',
+                  enName: 'Custom Edge-2',
+                  cnName: '自定义边2',
+                  pic:"https://img.alicdn.com/tfs/TB1cpaxwuH2gK0jSZJnXXaT1FXa-240-178.png"
+              },
+              {
+                  path: 'Custom Edge-3',
+                  enName: 'Custom Edge-3',
+                  cnName: '自定义边3',
+                  pic:"https://img.alicdn.com/tfs/TB19HGqwpY7gK0jSZKzXXaikpXa-310-78.png"
+              },
+              {
+                  path: 'Custom Node-1',
+                  enName: 'Custom Node-1',
+                  cnName: '自定义节点1',
+                  pic:"https://img.alicdn.com/tfs/TB16HCtwET1gK0jSZFhXXaAtVXa-584-242.png"
+              },
+              {
+                  path: 'Custom Node-2',
+                  enName: 'Custom Node-2',
+                  cnName: '自定义节点2',
+                  pic:"https://img.alicdn.com/tfs/TB1_lOrwxz1gK0jSZSgXXavwpXa-553-224.png"
+              },
+              {
+                  path: 'Custom Node-3',
+                  enName: 'Custom Node-3',
+                  cnName: '自定义节点3',
+                  pic:"https://img.alicdn.com/tfs/TB1of9rwEH1gK0jSZSyXXXtlpXa-554-196.png"
+              },
+              {
+                  path: 'Custom Node-4',
+                  enName: 'Custom Node-4',
+                  cnName: '自定义节点4',
+                  pic:"https://img.alicdn.com/tfs/TB1jgyqwuT2gK0jSZFvXXXnFXXa-550-200.png"
+              },
+              {
+                  path: 'Custom Node-5',
+                  enName: 'Custom Node-5',
+                  cnName: '自定义节点5',
+                  pic:"https://img.alicdn.com/tfs/TB1z3OqwuT2gK0jSZFvXXXnFXXa-544-211.png"
+              },
+              {
+                  path: 'Custom Node-6',
+                  enName: 'Custom Node-6',
+                  cnName: '自定义节点6',
+                  pic:"https://img.alicdn.com/tfs/TB1Ys9wwxD1gK0jSZFyXXciOVXa-327-126.png"
+              },
+              {
+                  path: 'Custom Node-7',
+                  enName: 'Custom Node-7',
+                  cnName: '自定义节点7',
+                  pic:"https://img.alicdn.com/tfs/TB1snuvwEY1gK0jSZFCXXcwqXXa-683-270.png"
+              },
+              {
+                  path: 'CustomTreeItems-1',
+                  enName: 'Custom Tree Items-1',
+                  cnName: '定制树图元素样式1',
+                  pic:"https://img.alicdn.com/tfs/TB1E69vwxD1gK0jSZFKXXcJrVXa-680-402.png"
+              },
+              {
+                  path: 'CustomTreeItems-2',
+                  enName: 'Custom Tree Items-2',
+                  cnName: '定制树图元素样式2',
+                  pic:"https://img.alicdn.com/tfs/TB1_5yuwy_1gK0jSZFqXXcpaXXa-289-440.png"
+              },
+              {
+                  path: 'DagreLayout-1',
+                  enName: 'Dagre Layout-1',
+                  cnName: 'Dagre 流程图布局1',
+                  pic:"https://img.alicdn.com/tfs/TB171StwET1gK0jSZFhXXaAtVXa-334-542.png"
+              },
+              {
+                  path: 'DagreLayout-2',
+                  enName: 'Dagre Layout-2',
+                  cnName: 'Dagre 流程图布局2',
+                  pic:"https://img.alicdn.com/tfs/TB1A_WqwpT7gK0jSZFpXXaTkpXa-288-537.png"
+              },
+              {
+                  path: 'Dendrogram-1',
+                  enName: 'Dendrogram-1',
+                  cnName: '生态树1',
+                  pic:"https://img.alicdn.com/tfs/TB1TDuwwq61gK0jSZFlXXXDKFXa-506-535.png"
+              },
+              {
+                  path: 'Dendrogram-2',
+                  enName: 'Dendrogram-2',
+                  cnName: '生态树2',
+                  pic:"https://img.alicdn.com/tfs/TB1vDKwwq61gK0jSZFlXXXDKFXa-673-421.png"
+              },
+              {
+                  path: 'Edge Animation-1',
+                  enName: 'Edge Animation-1',
+                  cnName: '边动画1',
+                  pic:"https://img.alicdn.com/tfs/TB1XNWswAP2gK0jSZPxXXacQpXa-311-215.png"
+              },
+              {
+                  path: 'Edge Animation-2',
+                  enName: 'Edge Animation-2',
+                  cnName: '边动画2',
+                  pic:"https://img.alicdn.com/tfs/TB1yRirwpP7gK0jSZFjXXc5aXXa-279-198.png"
+              },
+              {
+                  path: 'Edge Animation-3',
+                  enName: 'Edge Animation-3',
+                  cnName: '边动画3',
+                  pic:"https://img.alicdn.com/tfs/TB1CT9wwAT2gK0jSZFkXXcIQFXa-290-192.png"
+              },
+              // TODO  fetch data
+              // {
+              //     path: 'ForceDirectedLayout-1',
+              //     enName: 'Force-directed Layout-1',
+              //     cnName: '力导向图布局1',
+              //     pic:"https://img.alicdn.com/tfs/TB1LCCzwBr0gK0jSZFnXXbRRXXa-387-367.png"
+              // },
+              // TODO  fetch data
+              // {
+              //     path: 'ForceDirectedLayout-2',
+              //     enName: 'Force-directed Layout-2',
+              //     cnName: '力导向图布局2',
+              //     pic:"https://img.alicdn.com/tfs/TB1RsmwwAT2gK0jSZPcXXcKkpXa-415-420.png"
+              // },
+              {
+                  path: 'ForceDirectedLayout-3',
+                  enName: 'Force-directed Layout-3',
+                  cnName: '力导向图布局3',
+                  pic:"https://img.alicdn.com/tfs/TB1cpetwrr1gK0jSZR0XXbP8XXa-408-299.png"
+              },
+              {
+                  path: 'ForceDirectedLayout-4',
+                  enName: 'Force-directed Layout-4',
+                  cnName: '力导向图布局4',
+                  pic:"https://img.alicdn.com/tfs/TB1q_erwpP7gK0jSZFjXXc5aXXa-311-216.png"
+              },
+              // TODO  fetch data
+              // {
+              //     path: 'FruchtermanLayout-1',
+              //     enName: 'Fruchterman Layout-1',
+              //     cnName: 'Fruchterman 图布局1',
+              //     pic:"https://img.alicdn.com/tfs/TB1XdiswBv0gK0jSZKbXXbK2FXa-493-459.png"
+              // },
+              // TODO  fetch data
+              // {
+              //     path: 'FruchtermanLayout-2',
+              //     enName: 'Fruchterman Layout-2',
+              //     cnName: 'Fruchterman 图布局2',
+              //     pic:"https://img.alicdn.com/tfs/TB15UarwpP7gK0jSZFjXXc5aXXa-310-327.png"
+              // },
+              {
+                  path: 'Grid-1',
+                  enName: 'Grid-1',
+                  cnName: 'Grid 网格布局1',
+                  pic:"https://img.alicdn.com/tfs/TB1vDSqwuT2gK0jSZFvXXXnFXXa-634-499.png"
+              },
+              {
+                  path: 'Grid-2',
+                  enName: 'Grid-2',
+                  cnName: 'Grid 网格布局2',
+                  pic:"https://img.alicdn.com/tfs/TB1PnWrwEH1gK0jSZSyXXXtlpXa-631-483.png"
+              },
+              // TODO  fetch data
+              // {
+              //     path: 'Highlight Nodes-1',
+              //     enName: 'Highlight Nodes-1',
+              //     cnName: '高亮相邻节点1',
+              //     pic:"https://img.alicdn.com/tfs/TB1DP5xwuH2gK0jSZJnXXaT1FXa-467-452.png"
+              // },
+              {
+                  path: 'Indented-1',
+                  enName: 'Indented-1',
+                  cnName: '缩进树1',
+                  pic:"https://img.alicdn.com/tfs/TB16kStwET1gK0jSZFhXXaAtVXa-239-427.png"
+              },
+              {
+                  path: 'Indented-2',
+                  enName: 'Indented-2',
+                  cnName: '缩进树2',
+                  pic:"https://img.alicdn.com/tfs/TB1DzqwwrY1gK0jSZTEXXXDQVXa-667-542.png"
+              },
+              {
+                  path: 'Label and Background Updating-1',
+                  enName: 'Label and Background Updating-1',
+                  cnName: '改变标签或背景1',
+                  pic:"https://img.alicdn.com/tfs/TB1zl9wwxD1gK0jSZFyXXciOVXa-440-118.png"
+              },
+              {
+                  path: 'Label and Background Updating-2',
+                  enName: 'Label and Background Updating-2',
+                  cnName: '改变标签或背景2',
+                  pic:"https://img.alicdn.com/tfs/TB1dR5twET1gK0jSZFhXXaAtVXa-317-110.png"
+              },
+              {
+                  path: 'Long Label-1',
+                  enName: 'Long Label-1',
+                  cnName: '超长文本1',
+                  pic:"https://img.alicdn.com/tfs/TB1emSwwxD1gK0jSZFyXXciOVXa-270-87.png"
+              },
+              {
+                  path: 'Long Label-2',
+                  enName: 'Long Label-2',
+                  cnName: '超长文本2',
+                  pic:"https://img.alicdn.com/tfs/TB1Eq9vwy_1gK0jSZFqXXcpaXXa-343-107.png"
+              },
+              {
+                  path: 'MDSLayout-1',
+                  enName: 'MDS Layout-1',
+                  cnName: 'MDS 布局1',
+                  pic:"https://img.alicdn.com/tfs/TB11aGvwAL0gK0jSZFxXXXWHVXa-683-490.png"
+              },
+              {
+                  path: 'Mindmap-1',
+                  enName: 'Mindmap-1',
+                  cnName: '脑图树1',
+                  pic:"https://img.alicdn.com/tfs/TB1GpuuwAL0gK0jSZFAXXcA9pXa-681-510.png"
+              },
+              {
+                  path: 'Mindmap-2',
+                  enName: 'Mindmap-2',
+                  cnName: '脑图树2',
+                  pic:"https://img.alicdn.com/tfs/TB1d_qxwuH2gK0jSZJnXXaT1FXa-598-543.png"
+              },
+              {
+                  path: 'Mindmap-3',
+                  enName: 'Mindmap-3',
+                  cnName: '脑图树3',
+                  pic:"https://img.alicdn.com/tfs/TB1GXCswAL0gK0jSZFtXXXQCXXa-597-532.png"
+              },
+              {
+                  path: 'Mindmap-4',
+                  enName: 'Mindmap-4',
+                  cnName: '脑图树4',
+                  pic:"https://img.alicdn.com/tfs/TB1ZiGswxz1gK0jSZSgXXavwpXa-681-504.png"
+              },
+              {
+                  path: 'Node Animation-1',
+                  enName: 'Node Animation-1',
+                  cnName: '节点动画1',
+                  pic:"https://img.alicdn.com/tfs/TB1vPKwwAT2gK0jSZPcXXcKkpXa-464-315.png"
+              },
+              {
+                  path: 'Node Group-1',
+                  enName: 'Node Group-1',
+                  cnName: '节点分组1',
+                  pic:"https://img.alicdn.com/tfs/TB1lz9wwAT2gK0jSZPcXXcKkpXa-496-436.png"
+              },
+              {
+                  path: 'Node Group-2',
+                  enName: 'Node Group-2',
+                  cnName: '节点分组2',
+                  pic:"https://img.alicdn.com/tfs/TB1QyWowqL7gK0jSZFBXXXZZpXa-359-366.png"
+              },
+              {
+                  path: 'Onload Multiple Data-1',
+                  enName: 'Onload Data to TreeGraph-1',
+                  cnName: '动态加载树图数据1',
+                  pic:"https://img.alicdn.com/tfs/TB1S3iwwxD1gK0jSZFKXXcJrVXa-539-529.png"
+              },
+              {
+                  path: 'Onload Multiple Data-2',
+                  enName: 'Onload Data to TreeGraph-2',
+                  cnName: '动态加载树图数据2',
+                  pic:"https://img.alicdn.com/tfs/TB1Ut1vwAL0gK0jSZFxXXXWHVXa-554-540.png"
+              },
+              // TODO  fetch data
+              // {
+              //     path: 'RadialLayout-1',
+              //     enName: 'Radial Layout-1',
+              //     cnName: 'Radial 辐射布局1',
+              //     pic:"https://img.alicdn.com/tfs/TB1mZKwwxv1gK0jSZFFXXb0sXXa-332-228.png"
+              // },
+              // {
+              //     path: 'RadialLayout-2',
+              //     enName: 'Radial Layout-2',
+              //     cnName: 'Radial 辐射布局2',
+              //     pic:"https://img.alicdn.com/tfs/TB1.PSrwpT7gK0jSZFpXXaTkpXa-289-224.png"
+              // },
+              // {
+              //     path: 'RadialLayout-3',
+              //     enName: 'Radial Layout-3',
+              //     cnName: 'Radial 辐射布局3',
+              //     pic:"https://img.alicdn.com/tfs/TB1.MyAwBr0gK0jSZFnXXbRRXXa-393-289.png"
+              // },
+              {
+                  path: 'RadialTree-1',
+                  enName: 'Radial Tree-1',
+                  cnName: '辐射树1',
+                  pic:"https://img.alicdn.com/tfs/TB1yM1AwBr0gK0jSZFnXXbRRXXa-502-406.png"
+              },
+              {
+                  path: 'RadialTree-2',
+                  enName: 'Radial Tree-2',
+                  cnName: '辐射树2',
+                  pic:"https://img.alicdn.com/tfs/TB1TduwwuL2gK0jSZFmXXc7iXXa-662-541.png"
+              },
             ],
             icon: 'others',
         },

@@ -1,6 +1,6 @@
-import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
+import { ViserGraph, GlobalG6 } from 'viser-graph';
 
-G6.registerNode('my-rect', {
+GlobalG6.registerNode('my-rect', {
   getAnchorPoints: function getAnchorPoints() {
     return [[ 0.5, 0 ], [ 0.5, 1 ]];
   }

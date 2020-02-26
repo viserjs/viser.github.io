@@ -2,7 +2,7 @@ import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ViserGraphModule, GlobalG6 as G6 } from 'viser-graph-ng';
+import { ViserGraphModule } from 'viser-graph-ng';
 
 const data = {
   nodes: [

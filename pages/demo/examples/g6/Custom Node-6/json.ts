@@ -1,10 +1,10 @@
-import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
+import { ViserGraph, GlobalG6 } from 'viser-graph';
 
 const lightBlue = '#5b8ff9';
 const lightOrange = '#5ad8a6';
 
    // 注册自定义名为 pie-node 的节点类型
-G6.registerNode('pie-node', {
+GlobalG6.registerNode('pie-node', {
   drawShape: (cfg, group) => {
     const radius = cfg.size / 2; // 节点半径
     const inPercentage = cfg.inDegree / cfg.degree; // 入度占总度数的比例

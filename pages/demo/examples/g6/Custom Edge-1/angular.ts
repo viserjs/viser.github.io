@@ -2,9 +2,9 @@ import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ViserGraphModule, GlobalG6 as G6 } from 'viser-graph-ng';
+import { ViserGraphModule, GlobalG6 } from 'viser-graph-ng';
 
-G6.registerEdge('line-arrow', {
+GlobalG6.registerEdge('line-arrow', {
   getPath(points) {
     const startPoint = points[0];
     const endPoint = points[1];
@@ -26,7 +26,7 @@ G6.registerEdge('line-arrow', {
     // 添加结束点
     points.push(endPoint);
     const path = this.getPath(points);
-    const style = G6.Util.mix({}, G6.Global.defaultEdge.style, {
+    const style = GlobalG6.Util.mix({}, GlobalG6.Global.defaultEdge.style, {
       stroke: '#BBB',
       lineWidth: 1,
       path,

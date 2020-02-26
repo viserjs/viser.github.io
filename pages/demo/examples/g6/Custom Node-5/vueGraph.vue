@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from 'viser-graph-vue';
-G6.registerNode('justPoints', {
+import { GlobalG6 } from 'viser-graph-vue';
+GlobalG6.registerNode('justPoints', {
   draw(cfg, group) {
 
     const baseR = 30;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Graph, GlobalG6 as G6 } from 'viser-graph-react';
+import { Graph } from 'viser-graph-react';
 
 /**
  * 计算字符串的长度

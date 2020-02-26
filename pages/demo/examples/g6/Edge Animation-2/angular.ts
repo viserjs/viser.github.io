@@ -2,7 +2,7 @@ import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ViserGraphModule, GlobalG6 as G6 } from 'viser-graph-ng';
+import { ViserGraphModule, GlobalG6 } from 'viser-graph-ng';
 
 const dashArray = [
   [ 0, 1 ],
@@ -18,7 +18,7 @@ const dashArray = [
 
 const lineDash = [ 4, 2, 1, 2 ];
 const interval = 9; // lineDash 的和
-G6.registerEdge('line-dash', {
+GlobalG6.registerEdge('line-dash', {
   afterDraw(cfg, group) {
     // 获得该边的第一个图形，这里是边的 path
     const shape = group.get('children')[0];

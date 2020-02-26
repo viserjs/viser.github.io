@@ -1,4 +1,4 @@
-import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
+import { ViserGraph, GlobalG6 } from 'viser-graph';
 
 const data = {
   id: "Modeling Methods",
@@ -65,7 +65,7 @@ const COLLAPSE_ICON = function COLLAPSE_ICON(x, y, r) {
 const EXPAND_ICON = function EXPAND_ICON(x, y, r) {
   return [[ 'M', x, y ], [ 'a', r, r, 0, 1, 0, r * 2, 0 ], [ 'a', r, r, 0, 1, 0, -r * 2, 0 ], [ 'M', x + 2, y ], [ 'L', x + 2 * r - 2, y ], [ 'M', x + r, y - r + 2 ], [ 'L', x + r, y + r - 2 ]];
 };
-G6.registerNode('tree-node', {
+GlobalG6.registerNode('tree-node', {
   drawShape: function drawShape(cfg, group) {
     const rect = group.addShape('rect', {
       attrs: {

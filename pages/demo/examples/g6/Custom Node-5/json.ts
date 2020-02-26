@@ -1,6 +1,6 @@
-import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
+import { ViserGraph, GlobalG6 } from 'viser-graph';
 
-G6.registerNode('justPoints', {
+GlobalG6.registerNode('justPoints', {
   draw(cfg, group) {
 
     const baseR = 30;

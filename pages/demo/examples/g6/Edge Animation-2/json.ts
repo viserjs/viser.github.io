@@ -1,4 +1,4 @@
-import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
+import { ViserGraph, GlobalG6 } from 'viser-graph';
 
 const dashArray = [
   [ 0, 1 ],
@@ -14,7 +14,7 @@ const dashArray = [
 
 const lineDash = [ 4, 2, 1, 2 ];
 const interval = 9; // lineDash 的和
-G6.registerEdge('line-dash', {
+GlobalG6.registerEdge('line-dash', {
   afterDraw(cfg, group) {
     // 获得该边的第一个图形，这里是边的 path
     const shape = group.get('children')[0];

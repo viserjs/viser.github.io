@@ -2,9 +2,9 @@ import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ViserGraphModule, GlobalG6 as G6 } from 'viser-graph-ng';
+import { ViserGraphModule, GlobalG6 } from 'viser-graph-ng';
 
-G6.registerNode('expandNode', {
+GlobalG6.registerNode('expandNode', {
   draw: function draw(cfg, group) {
     const mainGroup = group.addGroup({
       id: 'main-group'

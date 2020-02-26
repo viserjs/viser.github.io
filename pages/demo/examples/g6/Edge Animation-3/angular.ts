@@ -2,9 +2,9 @@ import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ViserGraphModule, GlobalG6 as G6 } from 'viser-graph-ng';
+import { ViserGraphModule, GlobalG6 } from 'viser-graph-ng';
 
-G6.registerEdge('line-growth', {
+GlobalG6.registerEdge('line-growth', {
   afterDraw(cfg, group) {
     const shape = group.get('children')[0];
     const length = shape.getTotalLength();

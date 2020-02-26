@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Graph, GlobalG6 as G6 } from 'viser-graph-react';
+import { Graph, GlobalG6 } from 'viser-graph-react';
 
-const Util = G6.Util;
+const Util = GlobalG6.Util;
 const data = {
   nodes: [{
     id: 'node1',
@@ -62,7 +62,7 @@ const data = {
 };
 
 // 缩放动画
-G6.registerNode('circle-animate', {
+GlobalG6.registerNode('circle-animate', {
   afterDraw(cfg, group) {
     const shape = group.get('children')[0];
     shape.animate({
@@ -78,7 +78,7 @@ G6.registerNode('circle-animate', {
 }, 'circle');
 
 // 背景动画
-G6.registerNode('background-animate', {
+GlobalG6.registerNode('background-animate', {
   afterDraw(cfg, group) {
     const r = cfg.size / 2;
     const back1 = group.addShape('circle', {
@@ -131,7 +131,7 @@ G6.registerNode('background-animate', {
 }, 'circle');
 
 // 图片动画
-G6.registerNode('inner-animate', {
+GlobalG6.registerNode('inner-animate', {
   afterDraw(cfg, group) {
     const size = cfg.size;
     const width = size[0] - 12;

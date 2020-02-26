@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from 'viser-graph-vue';
-G6.registerEdge('line-arrow', {
+import { GlobalG6 } from 'viser-graph-vue';
+GlobalG6.registerEdge('line-arrow', {
   getPath(points) {
     const startPoint = points[0];
     const endPoint = points[1];
@@ -31,7 +31,7 @@ G6.registerEdge('line-arrow', {
     // 添加结束点
     points.push(endPoint);
     const path = this.getPath(points);
-    const style = G6.Util.mix({}, G6.Global.defaultEdge.style, {
+    const style = GlobalG6.Util.mix({}, GlobalG6.Global.defaultEdge.style, {
       stroke: '#BBB',
       lineWidth: 1,
       path,

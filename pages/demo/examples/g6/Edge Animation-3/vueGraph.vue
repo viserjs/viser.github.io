@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from 'viser-graph-vue';
-G6.registerEdge('line-growth', {
+import { GlobalG6 } from 'viser-graph-vue';
+GlobalG6.registerEdge('line-growth', {
   afterDraw(cfg, group) {
     const shape = group.get('children')[0];
     const length = shape.getTotalLength();

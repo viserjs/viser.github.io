@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Graph, GlobalG6 as G6, Node } from 'viser-graph-react';
+import { Graph, Node, GlobalG6 } from 'viser-graph-react';
 
-G6.registerNode('expandNode', {
+GlobalG6.registerNode('expandNode', {
   draw: function draw(cfg, group) {
     const mainGroup = group.addGroup({
       id: 'main-group'

@@ -1,6 +1,6 @@
-import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
+import { ViserGraph, GlobalG6 } from 'viser-graph';
 
-G6.registerNode('expandNode', {
+GlobalG6.registerNode('expandNode', {
   draw: function draw(cfg, group) {
     const mainGroup = group.addGroup({
       id: 'main-group'

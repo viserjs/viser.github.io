@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { Graph } from 'viser-graph-react';
-
-
 const data = {
   nodes: [{
     id: '0',

@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from 'viser-graph-vue';
-G6.registerEdge('line-arrow', {
+import { GlobalG6 } from 'viser-graph-vue';
+GlobalG6.registerEdge('line-arrow', {
   options: {
     style: {
       stroke: '#ccc'

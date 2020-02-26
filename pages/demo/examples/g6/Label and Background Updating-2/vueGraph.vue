@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from 'viser-graph-vue';
+
 const img = new Image();
 img.src = 'https://gw.alipayobjects.com/os/s/prod/antv/assets/image/logo-with-text-73b8a.svg';
 

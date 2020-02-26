@@ -1,4 +1,4 @@
-import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
+import { ViserGraph } from 'viser-graph';
 
 /**
  * 计算字符串的长度

@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from 'viser-graph-vue';
 const data = {
   nodes: [{
     id: '2',

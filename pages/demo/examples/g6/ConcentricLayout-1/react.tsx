@@ -3,7 +3,7 @@ import { Graph } from 'viser-graph-react';
 import { data } from './data';
 
 const graph = {
-  data,
+  data: data,
   container: 'mount',
   type: 'graph',
   width: 500,

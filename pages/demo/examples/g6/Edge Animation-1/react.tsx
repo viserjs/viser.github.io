@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Graph, GlobalG6 as G6 } from 'viser-graph-react';
+import { Graph, GlobalG6 } from 'viser-graph-react';
 
-G6.registerEdge('circle-running', {
+GlobalG6.registerEdge('circle-running', {
   afterDraw(cfg, group) {
     // 获得当前边的第一个图形，这里是边本身的 path
     const shape = group.get('children')[0];

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Graph, GlobalG6 as G6 } from 'viser-graph-react';
+import { Graph, GlobalG6 } from 'viser-graph-react';
 
-G6.registerNode('stacked-bar-node', {
+GlobalG6.registerNode('stacked-bar-node', {
   draw(cfg, group) {
     /*
       G：

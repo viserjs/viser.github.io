@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from 'viser-graph-vue';
+import { GlobalG6 } from 'viser-graph-vue';
 const data = {
   nodes: [{
     id: '1',
@@ -181,7 +181,7 @@ const data = {
     target: '8'
   }]
 };
-G6.registerNode('sql', {
+GlobalG6.registerNode('sql', {
   drawShape(cfg, group) {
     const rect = group.addShape('rect', {
       attrs: {
@@ -213,7 +213,7 @@ G6.registerNode('sql', {
   }
 },
 'single-shape');
-G6.Global.nodeStateStyle.selected = {
+GlobalG6.Global.nodeStateStyle.selected = {
   stroke: '#d9d9d9',
   fill: '#5394ef'
 };

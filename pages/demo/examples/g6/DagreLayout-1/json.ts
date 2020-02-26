@@ -1,4 +1,4 @@
-import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
+import { ViserGraph, GlobalG6 } from 'viser-graph';
 
 const data = {
   nodes: [{
@@ -171,7 +171,7 @@ const data = {
   }]
 };
 
-G6.registerNode('sql', {
+GlobalG6.registerNode('sql', {
   drawShape(cfg, group) {
     const rect = group.addShape('rect', {
       attrs: {
@@ -203,7 +203,7 @@ G6.registerNode('sql', {
   }
 },
 'single-shape');
-G6.Global.nodeStateStyle.selected = {
+GlobalG6.Global.nodeStateStyle.selected = {
   stroke: '#d9d9d9',
   fill: '#5394ef'
 };

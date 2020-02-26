@@ -2,7 +2,7 @@ import 'zone.js';
 import 'reflect-metadata';
 import { Component, enableProdMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ViserGraphModule, GlobalG6 as G6 } from 'viser-graph-ng';
+import { ViserGraphModule, GlobalG6 } from 'viser-graph-ng';
 
 const data = {
   nodes: [{
@@ -174,7 +174,7 @@ const data = {
     target: '8'
   }]
 };
-G6.registerNode('sql', {
+GlobalG6.registerNode('sql', {
   drawShape(cfg, group) {
     const rect = group.addShape('rect', {
       attrs: {
@@ -206,7 +206,7 @@ G6.registerNode('sql', {
   }
 },
 'single-shape');
-G6.Global.nodeStateStyle.selected = {
+GlobalG6.Global.nodeStateStyle.selected = {
   stroke: '#d9d9d9',
   fill: '#5394ef'
 };

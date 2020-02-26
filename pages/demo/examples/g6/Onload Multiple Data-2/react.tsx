@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Graph, GlobalG6 as G6, Node, Edge } from 'viser-graph-react';
+import { Graph, Node, Edge } from 'viser-graph-react';
 
 const data = {
   isRoot: true,

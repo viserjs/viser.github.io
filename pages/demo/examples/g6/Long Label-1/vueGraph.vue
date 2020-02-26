@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { GlobalG6 as G6 } from 'viser-graph-vue';
 /**
  * 计算字符串的长度
  * @param {string} str 指定的字符串

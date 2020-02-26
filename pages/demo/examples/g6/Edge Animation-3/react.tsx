@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Graph, GlobalG6 as G6 } from 'viser-graph-react';
+import { Graph, GlobalG6 } from 'viser-graph-react';
 
-G6.registerEdge('line-growth', {
+GlobalG6.registerEdge('line-growth', {
   afterDraw(cfg, group) {
     const shape = group.get('children')[0];
     const length = shape.getTotalLength();

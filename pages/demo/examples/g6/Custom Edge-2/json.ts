@@ -1,6 +1,6 @@
-import { ViserGraph, GlobalG6 as G6 } from 'viser-graph';
+import { ViserGraph, GlobalG6 } from 'viser-graph';
 
-G6.registerEdge('line-arrow', {
+GlobalG6.registerEdge('line-arrow', {
   options: {
     style: {
       stroke: '#ccc'
