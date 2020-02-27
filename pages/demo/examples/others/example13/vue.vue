@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :padding="[ 40, 40, 130, 40 ]" :data="data" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :padding="padding" :data="data" :scale="scale">
       <v-coord type="polar" />
       <v-axis :data-key="axis1Opts.dataKey" :label="axis1Opts.label" :tickLine="axis1Opts.tickLine" :line="axis1Opts.line" />
       <v-axis :data-key="axis2Opts.dataKey" :grid="axis2Opts.grid" :tickLine="axis2Opts.tickLine" :label="axis2Opts.label" />
@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       height: 400,
+      padding:[ 40, 40, 130, 40 ],
       data,
       scale,
       axis1Opts,

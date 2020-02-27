@@ -1,219 +1,136 @@
 <template>
-  <div>
-    <v-chart :forceFit="true" :height="height" :padding="padding" :scale="scale">
-      <v-tooltip />
-      <v-view :data="viewData1">
-        <v-line position="date*pv*count" color="#4FAAEB"/>
-        <v-line position="date*time" color="#9AD681"/>
-        <v-axis dataKey="time" :grid="grid"/>
-      </v-view>
-      <v-view :data="viewData2">
-        <v-tooltip :show="ifShow"/>
-        <v-line position="date*time" color="white" :v-style="lineStyles"/>
-      </v-view>
-    </v-chart>
-  </div>
+    <div>
+        <v-chart :forceFit="true" height="400" :data="data" :scale="scale">
+            <v-axis />
+            <v-tooltip :crosshairs="true"></v-tooltip>
+            <v-area position="year*value" color="type" shape="smooth"></v-area>
+            <v-line position="year*value" color="type" size="2" shape="smooth"></v-line>
+        </v-chart>
+    </div>
 </template>
 
 <script>
-const DataSet = require('@antv/data-set');
-const second = 1000;
-const minute = 1000 * 60;
-const hour = 60 * minute;
-const day = 24 * hour;
-
-function toInterge(number) {
-  const fix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-
-  if (Math.round(number) === number) {
-    return '' + number;
+const data = [
+  {
+    year: "1986",
+    ACME: 162,
+    Compitor: 42
+  },
+  {
+    year: "1987",
+    ACME: 134,
+    Compitor: 54
+  },
+  {
+    year: "1988",
+    ACME: 116,
+    Compitor: 26
+  },
+  {
+    year: "1989",
+    ACME: 122,
+    Compitor: 32
+  },
+  {
+    year: "1990",
+    ACME: 178,
+    Compitor: 68
+  },
+  {
+    year: "1991",
+    ACME: 144,
+    Compitor: 54
+  },
+  {
+    year: "1992",
+    ACME: 125,
+    Compitor: 35
+  },
+  {
+    year: "1993",
+    ACME: 176,
+    Compitor: 66
+  },
+  {
+    year: "1994",
+    ACME: 156
+  },
+  {
+    year: "1995",
+    ACME: 195
+  },
+  {
+    year: "1996",
+    ACME: 215
+  },
+  {
+    year: "1997",
+    ACME: 176,
+    Compitor: 36
+  },
+  {
+    year: "1998",
+    ACME: 167,
+    Compitor: 47
+  },
+  {
+    year: "1999",
+    ACME: 142
+  },
+  {
+    year: "2000",
+    ACME: 117
+  },
+  {
+    year: "2001",
+    ACME: 113,
+    Compitor: 23
+  },
+  {
+    year: "2002",
+    ACME: 132
+  },
+  {
+    year: "2003",
+    ACME: 146,
+    Compitor: 46
+  },
+  {
+    year: "2004",
+    ACME: 169,
+    Compitor: 59
+  },
+  {
+    year: "2005",
+    ACME: 184,
+    Compitor: 44
   }
-  return '' + Number(number).toFixed(fix);
-}
-
-function humanizeDuration(duration) {
-  const fix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-
-  if (duration === 0) {
-    return 0;
-  }
-  if (duration < minute) {
-    return toInterge(duration / second, fix) + ' 秒';
-  }
-  if (duration < hour) {
-    return toInterge(duration / minute, fix) + ' 分';
-  }
-  if (duration < day) {
-    return toInterge(duration / hour, fix) + '小时';
-  }
-  return toInterge(duration / hour / 24, fix) + ' 天';
-}
-
-  const data = [{
-    "date": 1489593600000,
-    "pv": 17,
-    "successRate": 0.23529411764705882,
-    "time": 12351000,
-    "count": 4
-  }, {
-    "date": 1489680000000,
-    "pv": 10,
-    "successRate": 0.6,
-    "time": 18000,
-    "count": 6
-  }, {
-    "date": 1489766400000,
-    "pv": 3,
-    "successRate": 0,
-    "time": 0,
-    "count": 0
-  }, {
-    "date": 1489852800000,
-    "pv": 3,
-    "successRate": 0,
-    "time": 0,
-    "count": 0
-  }, {
-    "date": 1489939200000,
-    "pv": 18,
-    "successRate": 0.2222222222222222,
-    "time": 21157000,
-    "count": 4
-  }, {
-    "date": 1490025600000,
-    "pv": 32,
-    "successRate": 0.25,
-    "time": 3543000,
-    "count": 8
-  }, {
-    "date": 1490112000000,
-    "pv": 25,
-    "successRate": 0.56,
-    "time": 10000,
-    "count": 14
-  }, {
-    "date": 1490198400000,
-    "pv": 23,
-    "successRate": 0.43478260869565216,
-    "time": 24000,
-    "count": 10
-  }, {
-    "date": 1490284800000,
-    "pv": 7,
-    "successRate": 0.2857142857142857,
-    "time": 0,
-    "count": 2
-  }];
-
-  const dash = [{
-    "count": 4,
-    "date": 1489593600000,
-    "time": null
-  }, {
-    "count": 6,
-    "date": 1489680000000,
-    "time": 18000
-  }, {
-    "count": 0,
-    "date": 1489766400000,
-    "time": 0
-  }, {
-    "count": 0,
-    "date": 1489852800000,
-    "time": 0
-  }, {
-    "count": 4,
-    "date": 1489939200000,
-    "time": 21157000
-  }, {
-    "count": 8,
-    "date": 1490025600000,
-    "time": null
-  }, {
-    "count": 14,
-    "date": 1490112000000,
-    "time": null
-  }, {
-    "count": 10,
-    "date": 1490198400000,
-    "time": 24000
-  }, {
-    "count": 2,
-    "date": 1490284800000,
-    "time": 0
-  }];
-
-  function pick(data, field) {
-    return data.map(function(item) {
-      const result = {};
-      for (let key in item) {
-        if (item.hasOwnProperty(key) && field.indexOf(key) !== -1) {
-          result[key] = item[key];
-        }
-      }
-      return result;
-    });
-  }
-
-const padding = [20, 80, 80, 80];
-const height = 400;
-const scale = [
-    {
-        dataKey: 'date',
-        alias: '日期',
-        type: 'time',
-        mask: 'MM-DD' 
-    },
-    {
-        dataKey: 'pv',
-        alias: '进入次数',
-        min: 0 
-    },
-    {
-        dataKey: 'count',
-        alias: '次数'
-    },
-    {
-        dataKey: 'time',
-        alias: '平均时长',
-        formatter: function formatter(value) {
-          return humanizeDuration(value, 0);
-        }
-    }
 ];
-
-const view1 = new DataSet.View()
-
-view1.source(pick(data, ['pv','time','date']));
-
-const viewData1 = view1.rows;
-
-const view2 = new DataSet.View()
-
-view2.source(pick(dash, ['pv','time','date']));
-
-const viewData2 = view2.rows;
-
-const lineStyles = {
-    lineDash: [4, 4]
+const scale = [
+  {
+    dataKey: "value",
+    alias: "The Share Price in Dollars",
+    formatter: val => "$" + val
+  },
+  {
+    dataKey: "year",
+    range: [0, 1]
+  }
+];
+const dv = new DataSet.View().source(data);
+dv.transform({
+  type: "fold",
+  fields: ["ACME", "Compitor"],
+  key: "type",
+  value: "value"
+});
+export default {
+  data() {
+      return{
+          data:dv,
+          scale
+      }
+  }
 };
-
-const ifShow = false;
-
-const grid= null;
-
-  export default {
-    data() {
-      return {
-        viewData1,
-        viewData2,
-        scale,
-        padding,
-        height,
-        lineStyles,
-        ifShow,
-        grid
-      };
-    }
-  };
 </script>
+

@@ -7,29 +7,13 @@
       <v-legend dataKey="marker" :show="false" />
       <v-line
         position="year*value"
-        :color="['country', function(country) {
-          if (country === 'Switzerland') return '#0e5b8b';
-          return '#dadcf0';
-        }]"
+        :color="color1"
       />
       <v-point
         position="year*value"
-        :color="['country', function(country) {
-          if (country === 'Switzerland') return '#0e5b8b';
-          return '#dadcf0';
-        }]"
-        :size="['marker', function(marker) {
-          if (marker === 'true') return 4;
-          return 0;
-        }]"
-        :style="['country', {
-          opacity: 0.6,
-          fill: function fill(val) {
-            if (val === 'Switzerland') return '#0e5b8b';
-            return '#dadcf0';
-          },
-          lineWidth: 0
-        }]"
+        :color="color2"
+        :size="size"
+        :style="style"
       />
     </v-chart>
   </div>
@@ -265,6 +249,26 @@
         scale,
         height: 440,
         padding: 'auto',
+        size:['marker', function(marker) {
+          if (marker === 'true') return 4;
+          return 0;
+        }],
+        style:['country', {
+          opacity: 0.6,
+          fill: function fill(val) {
+            if (val === 'Switzerland') return '#0e5b8b';
+            return '#dadcf0';
+          },
+          lineWidth: 0
+        }],
+        color1:['country', function(country) {
+          if (country === 'Switzerland') return '#0e5b8b';
+          return '#dadcf0';
+        }],
+        color2:['country', function(country) {
+          if (country === 'Switzerland') return '#0e5b8b';
+          return '#dadcf0';
+        }]
       };
     }
   };

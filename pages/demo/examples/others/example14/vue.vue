@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :padding="[ 40, 40, 130, 40 ]" :data="data" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :padding="padding" :data="data" :scale="scale">
       <v-tooltip title="question" />
       <v-coord type="polar" :inner-radius="0.1" direction="rotate" />
       <v-interval
@@ -15,9 +15,7 @@
         :top="true"
         :position="getPosition(obj)"
         :content="getContent(obj)"
-        :v-style="{
-          textAlign: 'right',
-        }"
+        :v-style="style"
       />
     </v-chart>
   </div>
@@ -68,9 +66,13 @@ export default {
   data() {
     return {
       height: 500,
+      padding:[ 40, 40, 130, 40 ],
       data,
       scale,
       interval1Opts,
+      style:{
+        textAlign: 'right',
+      },
     };
   }
 };

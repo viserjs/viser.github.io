@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :width="640" :height="400" :padding="[0]" :data="data" :scale="scale">
+    <v-chart :width="640" :height="400" :padding="pad" :data="data" :scale="scale">
       <v-tooltip :show-title="false" />
       <v-coord type="rect" direction="TL" />
       <v-point position="x*y" color="category" shape="cloud" tooltip="value*category" />
@@ -70,6 +70,7 @@ export default {
   },
   data() {
     return {
+      pad:[0],
       data: [],
       scale,
     };

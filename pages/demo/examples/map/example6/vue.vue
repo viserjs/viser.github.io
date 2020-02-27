@@ -1,15 +1,13 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="400" :padding="[0, 20, 0]" :scale="scale">
+    <v-chart :forceFit="true" :height="400" :padding="padding" :scale="scale">
       <v-view :data="geoData" :scale="scale">
-        <v-polygon position="longitude*latitude" color="gray" :label="['name', {offset: 0}]" />
+        <v-polygon position="longitude*latitude" color="gray" :label="label" />
       </v-view>
       <v-view :data="data">
         <v-heatmap :position="'longitude*latitude'" :size="18"
-          :color="['value', '#F51D27-#FA541C-#FF8C12-#FFC838-#FAFFA8-#80FF73-#12CCCC-#1890FF-#6E32C2']"
-          :vStyle="{
-            blur: 23,
-          }" />
+          :color="color"
+          :vStyle="style" />
       </v-view>
     </v-chart>
   </div>
@@ -55,8 +53,14 @@ export default {
   data() {
     return {
       data: [],
+      padding:[0, 20, 0],
+      label:['name', {offset: 0}],
+      style:{
+        blur: 23,
+      },
       geoData: {},
       scale,
+      color:['value', '#F51D27-#FA541C-#FF8C12-#FFC838-#FAFFA8-#80FF73-#12CCCC-#1890FF-#6E32C2']
     };
   },
 };

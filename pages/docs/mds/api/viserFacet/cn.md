@@ -39,11 +39,11 @@
 
 ### colField?: string | string[];
 
-- 描述：对应数轴上的一个点
+- 描述：
 
 ### rowField?: string | string[];
 
-- 描述：rowField
+- 描述：
 
 ### colValue?: number;
 

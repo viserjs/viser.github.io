@@ -146,7 +146,7 @@ roots: type 为 tree 时, data 数据模型
     index: 1, // 渲染层级
     children: [
       {
-        // 子元素集 （自元素数据模型和根节点同构）
+        // 子元素集 （子元素数据模型和根节点同构）
         id: 'leaf',
       },
     ],
@@ -164,7 +164,7 @@ roots: type 为 tree 时, data 数据模型
 
 #### height
 
-画布宽，单位像素 {number}  可选
+画布高，单位像素 {number}  可选
 
 #### fitview
 

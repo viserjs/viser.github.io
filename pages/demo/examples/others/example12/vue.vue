@@ -2,7 +2,7 @@
   <div>
     <v-chart :force-fit="true" :height="height" :padding="80" :data="dv">
       <v-coord type="polar" :innerRadius="0.1" />
-      <v-axis dataKey="percent" :title="{offset: 40, text: '百分比'}" />
+      <v-axis dataKey="percent" :title="title" />
       <v-legend dataKey="难民类型" position="bottom" />
       <v-stack-interval :position="stackInterval1Opts.position" :color="stackInterval1Opts.color"
         :v-style="stackInterval1Opts.style" />
@@ -54,6 +54,7 @@ export default {
       height: 400,
       dv,
       stackInterval1Opts,
+      title:{offset: 40, text: '百分比'}
     };
   }
 };

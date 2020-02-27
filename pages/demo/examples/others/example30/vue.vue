@@ -6,7 +6,7 @@
       <v-point position="carat*price" />
       <v-view :data="dv" >
         <v-legend :offset="45" />
-        <v-heatmap position="carat*price" :color="['density', 'blue-cyan-lime-yellow-red']" />
+        <v-heatmap position="carat*price" :color="color" />
       </v-view>
     </v-chart>
   </div>
@@ -34,6 +34,7 @@ export default {
       data: [],
       dv: [],
       height: 400,
+      color:['density', 'blue-cyan-lime-yellow-red']
     };
   }
 };

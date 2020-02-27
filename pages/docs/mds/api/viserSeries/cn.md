@@ -82,7 +82,7 @@
 
 ### color?: any;
 
-- 描述：将数据值映射到图形的颜色上的方法。示例
+- 描述：将数据值映射到图形的颜色上的方法。
 
 - 常量
   只支持接收一个参数，value 可以是：
@@ -233,7 +233,7 @@ const shapes = {
 - 字段
 
 ```
-<Series label='field'/>  // 使用字段映射到透明度
+<Series label='field'/>  // 使用字段映射到文本
 ```
 
 - 字段配置
@@ -252,9 +252,9 @@ const shapes = {
   使用回调函数控制文本显示。
 
 ```
-<Series label={'x*y*z', (x, y, z) => {
+<Series label={['x*y*z', (x, y, z) => {
   return; // something
-}}/>
+}]}/>
 ```
 
 ### tooltip?: any;
@@ -307,7 +307,7 @@ const shapes = {
 
 ### active?: boolean;
 
-- 描述：开启以及关闭 shape 对于鼠标 hover 时的响应效果， 默认为各个 shaoe 内置了 active 效果 。
+- 描述：开启以及关闭 shape 对于鼠标 hover 时的响应效果， 默认为各个 shape 内置了 active 效果 。
 
 ```
 <Series active={false} />

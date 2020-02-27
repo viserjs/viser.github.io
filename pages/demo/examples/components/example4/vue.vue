@@ -6,7 +6,7 @@
       <v-line
         shape="smooth"
         position="year*value"
-        :color="['type', ['#F5222D', '#FAAD14']]"
+        :color="color"
         :size="2.5"
       />
       <v-area
@@ -168,6 +168,7 @@
       return {
         data: dv,
         scale,
+        color:['type', ['#F5222D', '#FAAD14']],
         height: 440,
         padding: [20, 20, 120, 50],
 
