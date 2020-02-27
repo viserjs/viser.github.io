@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="400" :padding="[0, 20, 0]" :scale="scale">
+    <v-chart :forceFit="true" :height="400" :padding="padding" :scale="scale">
       <v-coord type="rect" direction="TL" />
       <v-tooltip :showTitle="tooltipOpts.showTitle" :containerTpl="tooltipOpts.containerTpl" :itemTpl="tooltipOpts.itemTpl" :g2Tooltip="tooltipOpts.g2Tooltip" />
       <v-view :data="geoData" :scale="scale">
@@ -92,6 +92,7 @@ export default {
   data() {
     return {
       data: [],
+      padding:[0, 20, 0],
       geoData: {},
       scale,
       tooltipOpts,

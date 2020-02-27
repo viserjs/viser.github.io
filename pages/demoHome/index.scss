@@ -1,0 +1,18 @@
+@import "../styles/common.scss";
+@import "../styles/icon.scss";
+@import "../styles/header.scss";
+@import "../styles/main.scss";
+@import "~antd/dist/antd.css";
+
+.clearfix {
+  zoom: 1;
+
+  &::after {
+    display: block;
+    content: "";
+    height: 0;
+    width: 100%;
+    visibility: hidden;
+    clear: both;
+  }
+}

@@ -4,7 +4,7 @@
       <v-tooltip />
       <v-legend />
       <v-coord type="polar" />
-      <v-facet type="circle" :fields="['clarity']" :views="views" />
+      <v-facet type="circle" :fields="fields" :views="views" />
     </v-chart>
   </div>
 </template>
@@ -54,6 +54,7 @@
         data: [],
         scale,
         views,
+        fields:['clarity'],
       };
     },
   };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="400" :padding="[20, 80, 80, 80]" :data="data" :scale="scale">
+    <v-chart :forceFit="true" :height="400" :padding="padding" :data="data" :scale="scale">
       <v-tooltip />
       <v-axis dataKey="date" :show="false" />
       <v-axis dataKey="actual" :show="false" />
@@ -9,29 +9,13 @@
       <v-interval position="date*expected" color="#752136" shape="borderRadius"
         tooltip="expected" :opacity="0.6" />
       <v-interval position="date*actual" color="#db0d2d" tooltip="actual"
-        :shape="['date*actual', function(date, val) {
-          if (val === 0) {
-            return;
-          } else {
-            return 'borderRadius';
-          }
-        }]"
+        :shape="shape"
       />
-      <v-guide type="text" :position="['min', 'max']" content="活动"
-        :v-style="{
-          fill: '#ff2c55',
-          fontSize: 20,
-          fontWeight: 'bold',
-          textBaseline: 'top'
-        }"
+      <v-guide type="text" :position="pos1" content="活动"
+        :v-style="style1"
       />
-      <v-guide type="text" :position="['max', 'max']" content="67 / 900 千卡"
-        :v-style="{
-          fill: '#cbcbcb',
-          fontSize: 20,
-          textAlign: 'end',
-          textBaseline: 'top'
-        }"
+      <v-guide type="text" :position="pos2" content="67 / 900 千卡"
+        :v-style="style2"
       />
     </v-chart>
   </div>
@@ -117,9 +101,31 @@ export default {
   data() {
     return {
       height: 400,
+      padding:[20, 80, 80, 80],
       data: activeData,
       scale,
       axisOpts,
+      shape:['date*actual', function(date, val) {
+        if (val === 0) {
+          return;
+        } else {
+          return 'borderRadius';
+        }
+      }],
+      pos1:['min', 'max'],
+      style1:{
+        fill: '#ff2c55',
+        fontSize: 20,
+        fontWeight: 'bold',
+        textBaseline: 'top'
+      },
+      pos2:['max', 'max'],
+      style2:{
+        fill: '#cbcbcb',
+        fontSize: 20,
+        textAlign: 'end',
+        textBaseline: 'top'
+      },
     };
   }
 };

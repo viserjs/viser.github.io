@@ -11,11 +11,15 @@
     "outDir": "build",
     "sourceMap": true,
     "allowJs": true,
+    "skipLibCheck":true,
     "lib": [
       "es6",
       "dom"
     ]
   },
+  "include":[
+    "pages/**/*"
+  ],
   "exclude": [
     "node_modules",
     "build"

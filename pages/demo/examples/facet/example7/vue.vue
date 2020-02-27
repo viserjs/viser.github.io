@@ -4,7 +4,7 @@
       <v-tooltip :showTitle="false" />
       <v-legend dataKey="cut" position="top" />
       <v-coord type="theta" />
-      <v-facet type="tree" :fields="fields" :line="{ stroke: '#00a3d7' }" :lineSmooth="true" :views="views" />
+      <v-facet type="tree" :fields="fields" :line="line" :lineSmooth="true" :views="views" />
     </v-chart>
   </div>
 </template>
@@ -57,6 +57,7 @@
       return {
         data,
         padding: [60, 90, 80, 80],
+        line:{ stroke: '#00a3d7' },
         views,
         fields: ['grade', 'class'],
       };

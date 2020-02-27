@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
-      <v-tooltip :crosshairs="{ type: 'line' }" />
+      <v-tooltip :crosshairs="crosshairs" />
       <v-axis dataKey="value" />
       <v-legend />
       <v-line position="year*value" :size="2" color="type" />
@@ -57,6 +57,7 @@
         data,
         scale,
         height: 400,
+        corsshairs:{ type: 'line' },
       };
     }
   };

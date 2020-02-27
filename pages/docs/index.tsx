@@ -19,6 +19,7 @@ import {
   off,
   delegate,
   undelegate,
+  getInitNav
 } from '../common/utils';
 
 import './index.scss';
@@ -29,27 +30,28 @@ const DEFAULT_FOLDER = 'guide';
 const DEFAULT_ITEM = 'installation';
 
 class Docs {
-  typeKey: 'viser';
+  typeKey = 'viser';
   constructor() {
     initPageLanguage();
     this.renderNav(getPageLanguage());
     this.render();
     this.bindEvent();
-
-    const selectedNav = localStorage.getItem('selectedNav');
-    location.hash = `#/${selectedNav}/${DEFAULT_FOLDER}/${DEFAULT_ITEM}/${getPageLanguage()}.md`;
   }
   // 设置 docs 类型
   setTypeKey = (typeKey: any) => {
+    // window.console.log('this:' + this.typeKey + 'typeKey:' + typeKey);
+    const obj = this.getDosList();
+    // window.console.log(obj);
+    const folderKey = obj[0]['folderKey'];
+    const itemKey = obj[0]['mds'][0]['itemKey'];
+    window.location.hash = `#/${getInitNav()}/${folderKey}/${itemKey}`;
     if (this.typeKey !== typeKey) {
       this.typeKey = typeKey;
-      location.hash = `#/${typeKey}/${DEFAULT_FOLDER}/${DEFAULT_ITEM}/${getPageLanguage()}.md`;
       this.refresh();
     }
   };
   getDosList() {
-    const selectedNav = localStorage.getItem('selectedNav');
-    switch (selectedNav) {
+    switch (getInitNav()) {
       case 'viser':
         return viserMds;
       case 'viser-graph':
@@ -66,7 +68,7 @@ class Docs {
     );
   }
   getDocsFolderAndItem() {
-    const { folder, item } = getFolderAndItem();
+    const { folder, item } = getFolderAndItem(false);
     return {
       folder: folder || DEFAULT_FOLDER,
       item: item || DEFAULT_ITEM,
@@ -125,7 +127,7 @@ class Docs {
             ...o,
             itemDisplayName: getNameByLanguage(o),
             linkName: generateHashtag(
-              localStorage.getItem('selectedNav'),
+              getInitNav(),
               v.folderKey,
               o.itemKey,
             ),

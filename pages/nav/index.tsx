@@ -41,7 +41,7 @@ export default class Nav extends React.Component<any, any> {
   };
   public handleClick = (e, value, completed, key) => {
     e.preventDefault();
-    if (value !== this.state.selected && completed) {
+    if ( completed) {
       setInitNav(value);
       this.setState({
         selected: getInitNav() || 'viser',
@@ -54,11 +54,14 @@ export default class Nav extends React.Component<any, any> {
   };
   public componentDidMount() {
     const self = this;
-    (window as any).document.addEventListener('click', function(e) {
+    if (!getInitNav()) {
+      setInitNav(self.state.selected);
+    }
+    (window as any).document.addEventListener('click', function (e) {
       const target = e.target;
       const nav = (window as any).document.getElementById('viser-nav');
       if (!nav.contains(target)) {
-        self.setState({ visble: false });
+        self.setState({ visible: false });
       }
     });
     if (typeof this.props.setTypeKey !== 'undefined') {

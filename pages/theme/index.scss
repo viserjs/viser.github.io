@@ -2,22 +2,41 @@
 @import '../styles/icon.scss';
 @import '../styles/header.scss';
 @import '../styles/main.scss';
+@import "~antd/dist/antd.css";
 
-.theme-content{
+.theme-content {
     height: 100%;
-    .theme-pannel{
+
+    .theme-pannel {
         height: 100%;
         box-sizing: border-box;
         background-color: #fff;
-        &.theme-left{
+
+        &.theme-left {
             float: left;
-            width:25%;
+            width: 25%;
             overflow-y: scroll;
+            border-right: 1px solid #eee;
         }
-        &.theme-right{
+
+        &.theme-right {
             float: left;
-            width:75%;
-            padding:20px;
+            width: 75%;
+            padding: 20px;
+            overflow-y: auto;
         }
+    }
+}
+
+.clearfix {
+    zoom: 1;
+
+    &::after {
+        display: block;
+        content: '';
+        height: 0;
+        width: 100%;
+        visibility: hidden;
+        clear: both;
     }
 }

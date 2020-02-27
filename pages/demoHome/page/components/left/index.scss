@@ -1,0 +1,46 @@
+.demo-preview-left {
+  width: 200px;
+  height: 100%;
+  padding-top: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+  box-shadow: rgba(63, 62, 67, 0.1) 2px 0 4px;
+  .toc-list {
+    position: relative;
+    .toc-list-item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 32px;
+      line-height: 32px;
+      a {
+        height: 100%;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        margin: 0;
+        padding-left: 18px;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.65);
+        box-sizing: border-box;
+        cursor: pointer;
+        &:hover {
+          color: #1890ff;
+        }
+        i {
+          color: #abb3c9;
+          margin-right: 16px;
+        }
+      }
+      &.active {
+        a {
+          background-color: #e6f7ff;
+          border-right: 2px solid #188fff;
+          font-weight: 400;
+          color: #1890ff;
+        }
+      }
+    }
+  }
+}

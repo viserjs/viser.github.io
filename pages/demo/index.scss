@@ -79,17 +79,28 @@
   .case-demo {
     padding: 50px 15px 0 0;
     width: calc(100% - 430px);
-    border-right: 1px dashed #eee;
-
+    // border-right: 1px dashed #eee;
     .case-demo-item {
       position: absolute;
       width: 100%;
       height: 100%;
     }
+
   }
   .case-code {
     padding-left: 15px;
     width: 415px;
+    position: relative;
+    #dragger-line{
+      position: absolute;
+      left: 12px;
+      top: 80px;
+      height: calc( 100% - 80px );
+      width: 3px;
+      background-color: #eeeeee;
+      user-select: none;
+      cursor: ew-resize;
+    }
   }
 
   .case-demo,

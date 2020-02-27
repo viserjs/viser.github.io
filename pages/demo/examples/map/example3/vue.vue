@@ -1,6 +1,6 @@
 <template>
   <div :style="style">
-    <v-chart :forceFit="true" :height="600" :padding="[55, 20]" :data="geoData">
+    <v-chart :forceFit="true" :height="600" :padding="padding" :data="geoData">
       <v-tooltip :showTitle="false" />
       <v-view :data="geoData"><div></div></v-view>
       <v-view :data="data">
@@ -42,9 +42,9 @@ export default {
   mounted() {
     const self = this;
     jQuery('#mount').append('<div id="china" style="width: 50%;height:400px;position: absolute;left: 0;top: 0;"></div>');
-    $.when(
-      $.getScript('https://webapi.amap.com/maps?v=1.4.1&key=0d78256ea89beeb8c25d1cd047549d1f'),
-      $.getScript('https://webapi.amap.com/ui/1.0/main.js?v=1.0.11')).then(() => {
+    $.getScript('https://webapi.amap.com/maps?v=1.4.1&key=0d78256ea89beeb8c25d1cd047549d1f')
+    .then(()=>$.getScript('https://webapi.amap.com/ui/1.0/main.js?v=1.0.11'))
+    .then(()=>{
       // 调用高德 api 绘制底图以及获取 geo 数据
       const map = new AMap.Map('china', {
         zoom: 4
@@ -213,6 +213,7 @@ export default {
     return {
       style: {width: '50%', height:'400px',position: 'absolute', right: 0,top: 0,},
       data: [],
+      padding:[55, 20],
       geoData: {},
       polygonOpts,
       name: '',

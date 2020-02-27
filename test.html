@@ -1,97 +1,97 @@
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="/assets/pkg/typescript.js"></script>
-    <!-- <script src="/assets/pkg/typescript.compile.min.js"></script> -->
-    <script type="text/javascript" src="https://unpkg.com/core-js@2.5.7/client/shim.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/zone.js@0.8.26/dist/zone.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/rxjs@5.2.0/bundles/Rx.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/@angular/core@5.0.1/bundles/core.umd.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/@angular/common@5.0.1/bundles/common.umd.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/@angular/compiler@5.0.1/bundles/compiler.umd.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/@angular/platform-browser@5.0.1/bundles/platform-browser.umd.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/@angular/platform-browser-dynamic@5.0.1/bundles/platform-browser-dynamic.umd.js"></script>
-    <script src="/assets/pkg/viser-ng.min.js"></script>
-    <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>angular example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.min.js"></script>
+  <script type="text/javascript" src="/assets/pkg/typescript.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/core-js@2.5.7/client/shim.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/zone.js@0.8.26/dist/zone.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/rxjs@5.2.0/bundles/Rx.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/@angular/core@5.0.1/bundles/core.umd.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/@angular/common@5.0.1/bundles/common.umd.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/@angular/compiler@5.0.1/bundles/compiler.umd.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/@angular/platform-browser@5.0.1/bundles/platform-browser.umd.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/@angular/platform-browser-dynamic@5.0.1/bundles/platform-browser-dynamic.umd.js"></script>
+  <script src="/assets/pkg/viser-ng.min.js"></script>
+  <!-- <script src="/assets/pkg/viser-graph-ng.min.js"></script> -->
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="mount">
+  <div id="mount"></div>
+  <script type="text/typescript">
+    const {Component,NgModule}=ng.core;
+    const {BrowserModule}=ng.platformBrowser;
+    const {ViserModule}=ViserNg;
+    const data = [
+    { year: '1991', value: 3 },
+    { year: '1992', value: 4 },
+    { year: '1993', value: 3.5 },
+    { year: '1994', value: 5 },
+    { year: '1995', value: 4.9 },
+    { year: '1996', value: 6 },
+    { year: '1997', value: 7 },
+    { year: '1998', value: 9 },
+    { year: '1999', value: 13 },
+  ];
+  
+  const scale = [{
+    dataKey: 'value',
+    min: 0,
+  },{
+    dataKey: 'year',
+    min: 0,
+    max: 1,
+  }];
+  
+  @Component({
+    selector: '#mount',
+    template: `
+    <div>
+      <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
+        <v-tooltip></v-tooltip>
+        <v-axis></v-axis>
+        <v-line position="year*value"></v-line>
+        <v-point position="year*value" shape="circle"></v-point>
+      </v-chart>
     </div>
-    <script type="text/typescript">
-    
+    `
+  })
+  class AppComponent {
+    forceFit: boolean= true;
+    height: number = 400;
+    data = data;
+    scale = scale;
+  }
+  
+  @NgModule({
+    declarations: [
+      AppComponent
+    ],
+    imports: [
+      BrowserModule,
+      ViserModule
+    ],
+    providers: [],
+    bootstrap: [
+      AppComponent
+    ]
+  })
+  class AppModule { }
 
-const { Component, enableProdMode, NgModule }=ng.core;
-const { BrowserModule }=ng.platformBrowser;
-const { ViserModule }=ViserNg;
-
-const data = [
-  { year: '1991', value: 3 },
-  { year: '1992', value: 4 },
-  { year: '1993', value: 3.5 },
-  { year: '1994', value: 5 },
-  { year: '1995', value: 4.9 },
-  { year: '1996', value: 6 },
-  { year: '1997', value: 7 },
-  { year: '1998', value: 9 },
-  { year: '1999', value: 13 },
-];
-
-const scale = [{
-  dataKey: 'value',
-  min: 0,
-},{
-  dataKey: 'year',
-  min: 0,
-  max: 1,
-}];
-
-@Component({
-  selector: '#mount',
-  template: `
-  <div>
-    <v-chart [forceFit]="forceFit" [height]="height" [data]="data" [scale]="scale">
-      <v-tooltip></v-tooltip>
-      <v-axis></v-axis>
-      <v-line position="year*value"></v-line>
-      <v-point position="year*value" shape="circle"></v-point>
-    </v-chart>
-  </div>
-  `
-})
-class AppComponent {
-  forceFit: boolean= true;
-  height: number = 400;
-  data = data;
-  scale = scale;
-}
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    ViserModule
-  ],
-  providers: [],
-  bootstrap: [
-    AppComponent
-  ]
-})
-class AppModule{}
 const { platformBrowserDynamic } = ng.platformBrowserDynamic;
+
 platformBrowserDynamic().bootstrapModule(AppModule);
-    </script>
+
+</script>
+
 </body>
 
 </html>

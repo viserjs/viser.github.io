@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart :forceFit="true" height="400" :padding="[20, 20]" :scale="scale">
+    <v-chart :forceFit="true" height="400" :padding="padding" :scale="scale">
       <v-tooltip :showTitle="false" />
       <v-legend data-key="trend" position="left" />
       <v-view :data="geoData" :scale="scale">
@@ -84,6 +84,7 @@ export default {
   data() {
     return {
       data: [],
+      padding:[20, 20],
       geoData: [],
       scale,
       userDataScale,

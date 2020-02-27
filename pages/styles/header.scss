@@ -25,7 +25,9 @@
   background: $primary;
   width: 200px;
   box-sizing: border-box;
-
+  &:hover{
+    color:white;
+  }
   &::after {
     content: ' ';
     display: block;

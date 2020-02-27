@@ -62,6 +62,7 @@ let config = {
     home: './pages/home/index',
     'home-viser': './pages/home/home-viser',
     theme: './pages/theme/index',
+    demoHome: './pages/demoHome/index',
   },
 
   output: {

@@ -1,22 +1,11 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="400" :padding="[20, 80, 80, 80]" :data="data" :scale="scale">
+    <v-chart :forceFit="true" :height="400" :padding="pad" :data="data" :scale="scale">
       <v-legend />
       <v-axis :data-key="axis1Opts.dataKey" :grid="axis1Opts.grid" :label="axis1Opts.label"/>
       <v-axis :data-key="axis2Opts.dataKey" :grid="axis2Opts.grid" :label="axis2Opts.label" :line="axis2Opts.line"/>
       <v-stack-interval position="year*sales" color="type" :size="35"
-        :shape="['type', function(val) {
-          if (val === 'Profit') { // 顶部圆角
-            return 'bottom';
-          } else if (val === 'Sales') { // 底部圆角
-            return 'top';
-          } else {
-            return; // 其他默认
-          }
-        }]" :v-style="{
-          stroke: '#545454',
-          lineWidth: 2
-        }"
+        :shape="shape" :v-style="style"
       />
     </v-chart>
   </div>
@@ -162,8 +151,22 @@ export default {
   data() {
     return {
       height: 400,
+      pad:[20, 80, 80, 80],
       data: data,
       scale,
+      shape:['type', function(val) {
+        if (val === 'Profit') { // 顶部圆角
+          return 'bottom';
+        } else if (val === 'Sales') { // 底部圆角
+          return 'top';
+        } else {
+          return; // 其他默认
+        }
+      }],
+      style:{
+        stroke: '#545454',
+        lineWidth: 2
+      },
       axis1Opts,
       axis2Opts,
     };

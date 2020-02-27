@@ -4,7 +4,7 @@
       <v-tooltip />
       <v-legend />
       <v-axis />
-      <v-facet type="rect" :fields="['cut', 'clarity']">
+      <v-facet type="rect" :fields="fields">
         <v-facet-view>
           <v-point position="carat*price" color="cut" :opacity="0.3" :size="3" shape="circle" />
         </v-facet-view>
@@ -38,6 +38,7 @@
       return {
         data: [],
         scale,
+        fields:['cut', 'clarity'],
       };
     },
   };

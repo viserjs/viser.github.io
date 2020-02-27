@@ -1,29 +1,20 @@
 <template>
   <div>
-    <v-chart :force-fit="true" :height="height" :padding="[100, 150]" :data="data" :scale="scale">
+    <v-chart :force-fit="true" :height="height" :padding="padding" :data="data" :scale="scale">
       <v-tooltip />
       <v-legend :custom="true" :clickable="false" :items="legendItems"/>
       <v-view v-for="(item, i) in data" :key="i" :start="getStart(i)" :end="getEnd(i)" :data="[item]" :scale="getScale(item, i)">
         <v-coord type="rect" direction='LB'/>
         <v-axis dataKey="target" :show="false"/>
         <v-axis dataKey="actual" position="right"/>
-        <v-point position="title*target" color="#square" shape="line" :size="12" :v-style="{lineWidth: 2}"/>
+        <v-point position="title*target" color="#square" shape="line" :size="12" :v-style="style1"/>
         <v-interval position="title*actual" color="#223273" :size="15"/>
         <v-guide type="region" :start="getGuide(item, 0, 'start')" :end="getGuide(item, 0, 'end')"
-          :v-style="{
-            fill: '#FFA39E',
-            fillOpacity: 0.85
-          }"/>
+          :v-style="style2"/>
         <v-guide type="region" :start="getGuide(item, 1, 'start')" :end="getGuide(item, 1, 'end')"
-          :v-style="{
-            fill: '#FFD591',
-            fillOpacity: 0.85
-          }"/>
+          :v-style="style3"/>
         <v-guide type="region" :start="getGuide(item, 2, 'start')" :end="getGuide(item, 2, 'end')"
-          :v-style="{
-            fill: '#A7E8B4',
-            fillOpacity: 0.85
-          }"/>
+          :v-style="style4"/>
       </v-view>
     </v-chart>
   </div>
@@ -120,6 +111,20 @@ export default {
   data() {
     return {
       data,
+      padding:[100, 150],
+      style1:{lineWidth: 2},
+      style2:{
+        fill: '#FFA39E',
+        fillOpacity: 0.85
+      },
+      style3:{
+        fill: '#FFD591',
+        fillOpacity: 0.85
+      },
+      style4:{
+        fill: '#A7E8B4',
+        fillOpacity: 0.85
+      },
       height: 400,
       scale,
       colorMap,

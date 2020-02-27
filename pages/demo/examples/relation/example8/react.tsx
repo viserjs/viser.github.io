@@ -59,7 +59,7 @@ const style = {
   stroke: '#fff',
 };
 
-const tooltip = ['name', (name, count) => ({ name, count })];
+const tooltip = ['name*value', (name, count) => ({ name, count })];
 
 const label = ['name', {
   offset: 0,
